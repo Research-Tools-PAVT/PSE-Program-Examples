@@ -26,10 +26,19 @@ print(S.sexpr())
 
 """
 Model :
-[p1 = [(0, 2) -> 1, (3, 4) -> 1, else -> 0],
- p2 = [(0, 2) -> 1, else -> 0],
- q2 = [else -> 1],
- q1 = [(0, 2) -> 0, else -> 1]]
+[p1 = [(2, 3) -> 1, (4, 5) -> 1, else -> 0],
+ p2 = [else -> 0],
+ q2 = [else -> 0],
+ q1 = [else ->
+       If(And(Var(0) == 4, Not(Var(1) == 5)),
+          0,
+          If(And(Not(Var(0) == 4), Var(1) == 5),
+             0,
+             If(And(Var(0) == 4, Var(1) == 5),
+                1,
+                If(And(Not(Var(0) == 4), Not(Var(1) == 5)),
+                   1,
+                   7))))]]
 """
 
 """
@@ -41,11 +50,55 @@ Model :
 (declare-fun q2 (Int Int) Real)
 (assert (forall ((x Int) (y Int)) (or (= (p1 x y) 0) (= (p1 x y) 1))))
 (assert (forall ((x Int) (y Int)) (or (= (p2 x y) 0) (= (p2 x y) 1))))
-(assert (forall ((x Int) (y Int)) (or (>= (q1 x y) 0.0) (<= (q1 x y) 1.0))))
-(assert (forall ((x Int) (y Int)) (or (>= (q2 x y) 0.0) (<= (q2 x y) 1.0))))
+(assert (forall ((x Int) (y Int)) (and (>= (q1 x y) 0.0) (<= (q1 x y) 1.0))))
+(assert (forall ((x Int) (y Int)) (and (>= (q2 x y) 0.0) (<= (q2 x y) 1.0))))
 (assert (exists ((x Int) (y Int))
   (let ((a!1 (+ (* (to_real (p1 x y)) (q1 x y)) (* (to_real (p2 x y)) (q2 x y)))))
     (> a!1 (/ 1.0 2.0)))))
 (assert (exists ((x Int) (y Int)) (> (* (to_real (p1 x y)) (q1 x y)) (/ 1.0 2.0))))
-(get-model)
+(rmodel->model-converter-wrapper
+x!1 -> 2
+x!3 -> 4
+y!0 -> 3
+y!2 -> 5
+p1 -> {
+  2 3 -> 1
+  4 5 -> 1
+  else -> 0
+}
+p2 -> {
+  0
+}
+q2 -> {
+  (q2!36 (k!35 (:var 0)) (k!34 (:var 1)))
+}
+k!33 -> {
+  4 -> 4
+  else -> 2
+}
+k!35 -> {
+  2
+}
+q1!37 -> {
+  2 3 -> 1.0
+  4 5 -> 1.0
+  2 5 -> 0.0
+  4 3 -> 0.0
+  else -> 7.0
+}
+k!32 -> {
+  5 -> 5
+  else -> 3
+}
+q2!36 -> {
+  2 3 -> 0.0
+  else -> 6.0
+}
+q1 -> {
+  (q1!37 (k!33 (:var 0)) (k!32 (:var 1)))
+}
+k!34 -> {
+  3
+}
+)
 """

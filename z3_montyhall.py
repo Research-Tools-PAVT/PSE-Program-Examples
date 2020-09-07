@@ -14,8 +14,8 @@ S = Solver()
 
 S.add(ForAll([x, y], Or(P1(x, y) == 0, P1(x, y) == 1)))
 S.add(ForAll([x, y], Or(P2(x, y) == 0, P2(x, y) == 1)))
-S.add(ForAll([x, y], Or(q1(x, y) >= 0, q1(x, y) <= 1)))
-S.add(ForAll([x, y], Or(q2(x, y) >= 0, q2(x, y) <= 1)))
+S.add(ForAll([x, y], And(q1(x, y) >= 0, q1(x, y) <= 1)))
+S.add(ForAll([x, y], And(q2(x, y) >= 0, q2(x, y) <= 1)))
 
 S.add(Exists([x, y], P1(x, y) * q1(x, y) + P2(x, y) * q2(x, y) > 0.5))
 S.add(Exists([x, y], P1(x, y) * q1(x, y) > 0.5))

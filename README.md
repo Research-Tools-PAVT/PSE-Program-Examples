@@ -5,9 +5,6 @@ Probabilistic Symbolic Execution
 ## KLEE using Dockers
 
 ```bash 
-docker run --name winklee -v ${pwd}:/cpp -ti --ulimit='stack=-1:-1' klee/klee:2.1
-
-docker run --rm --name winklee -v ${pwd}:/cpp -ti --ulimit='stack=-1:-1' klee/klee:2.1
 clang -I ../../home/klee/klee_src/include -emit-llvm -c -g -O0 -Xclang -disable-O0-optnone montyhall.cpp
 
 klee montyhall.bc

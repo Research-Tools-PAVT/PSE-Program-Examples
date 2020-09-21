@@ -16,7 +16,7 @@ int branch_options(int a, int b, int c)
    {
       x = 90;
       y = 100;
-      z = -40;
+      z = 70;
    }
    else if (a < -100)
    {
@@ -26,7 +26,7 @@ int branch_options(int a, int b, int c)
    else if (a >= 0 && c >= 50)
    {
       x = -95;
-      y = -45;
+      y = 4500;
    }
    else
    {
@@ -35,16 +35,8 @@ int branch_options(int a, int b, int c)
       z = 70;
    }
 
-   // if (a > 0 && b > 0 && c > 0) {
-   //   // Doesnot halt even after specifying low threshold?
-   //    while (a > 0) {
-   //       x++;
-   //       --a;
-   //    }
-   // }
-
    assert(x + y > 30);
-   assert(x + y + z <= 50);
+   assert(x + y + z >= 50);
    return x + y + z;
 }
 

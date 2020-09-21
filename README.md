@@ -2,20 +2,18 @@
 
 Probabilistic Symbolic Execution
 
-## KLEE using Dockers
+## KLEE PTree Dump
 
 ```bash 
-clang -I ../../home/klee/klee_src/include -emit-llvm -c -g -O0 -Xclang -disable-O0-optnone montyhall.cpp
+rm -rf klee* *.bc
 
-klee montyhall.bc
+clang -I ../../home/klee/klee_src/include -emit-llvm -c -g -O0 -Xclang -disable-O0-optnone sample_example.cpp
 
-ktest-tool klee-last/test000001.ktest
-ktest-tool klee-last/test000002.ktest
-ktest-tool klee-last/test000003.ktest
+klee sample_example.bc --ptree-dump
+ktest-tool klee-last/test000006.ktest
 
-export LD_LIBRARY_PATH=../../home/klee/klee_build/lib/:$LD_LIBRARY_PATH
+gcc -I ../../home/klee/klee_src/include/ -L ../home/klee/klee_build/lib/ sample_example.cpp -lkleeRuntest
+KTEST_FILE=klee-last/test000006.ktest ./a.out
 
-gcc -I ../../home/klee/klee_src/include/ -L ../home/klee/klee_build/lib/ montyhall.cpp -lkleeRuntest
 echo $?
-
 ```

@@ -2,20 +2,20 @@
 #include <assert.h>
 #include <random>
 #include <klee/klee.h>
-std::default_random_engine generator;
 
 /**
  * switch => door_switch
 */
 bool montyhall(bool door_switch)
 {
-    std::uniform_int_distribution<int> distribution(1, 3);
+	std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(0, 3);
 
     int host_door = 0;
     int car_door = distribution(generator);
     int choice = distribution(generator);
 
-    klee_make_symbolic(&choice, sizeof(choice), "choice_sym");
+    klee_make_pse_symbolic(&choice, sizeof(choice), "choice_pse_var_sym");
     klee_make_symbolic(&car_door, sizeof(car_door), "car_door_sym");
     klee_make_symbolic(&host_door, sizeof(host_door), "host_door_sym");
 
@@ -92,7 +92,6 @@ int main()
     int choice = 0;
     bool door_switch = false;
 
-    klee_make_symbolic(&door_switch, sizeof(door_switch), "door_switch_sym");
-
-    return montyhall(choice, door_switch);
+    klee_make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym");
+    return montyhall(door_switch);
 }

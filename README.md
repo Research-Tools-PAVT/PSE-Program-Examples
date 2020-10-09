@@ -1,20 +1,39 @@
-# PSE 
+# PSE Project
 
-Probabilistic Symbolic Execution
+Probabilistic Symbolic Execution using KLEE, LLVM and Z3. 
 
-## KLEE PTree Dump
+## KLEE ETree Dump
 
+#####  Monty Hall Example 
+ 
 ```bash 
-rm -rf klee* *.bc *.dot
+rm -rf klee* *.bc *.dot *.out
+clang++ -I ../../home/klee/klee_src/include -c -emit-llvm -g -O1 -Xclang -disable-O0-optnone monty_hall.cpp
 
-clang -I ../../home/klee/klee_src/include -emit-llvm -c -g -O0 -Xclang -disable-O0-optnone sample_example.cpp
-opt -dot-callgraph sample_example.bc
+klee --print-exectree monty_hall.bc
+klee --print-exectree --set-codeflow monty_hall.bc
 
-klee sample_example.bc --ptree-dump
-ktest-tool klee-last/test000006.ktest
+ktest-tool klee-last/test000002.ktest
+
+gcc -I ../../home/klee/klee_src/include/ -L ../home/klee/klee_build/lib/ monty_hall.cpp -lkleeRuntest
+KTEST_FILE=klee-last/test000002.ktest ./a.out
+
+echo $?
+```
+
+#### Sample Run
+
+```bash
+rm -rf klee* *.bc *.dot *.out
+clang++ -I ../../home/klee/klee_src/include -c -emit-llvm -g -O1 -Xclang -disable-O0-optnone sample_example.cpp
+
+klee --print-exectree sample_example.bc
+klee --print-exectree --set-codeflow sample_example.bc
+
+ktest-tool klee-last/test000002.ktest
 
 gcc -I ../../home/klee/klee_src/include/ -L ../home/klee/klee_build/lib/ sample_example.cpp -lkleeRuntest
-KTEST_FILE=klee-last/test000006.ktest ./a.out
+KTEST_FILE=klee-last/test000002.ktest ./a.out
 
 echo $?
 ```

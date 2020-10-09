@@ -37,3 +37,39 @@ KTEST_FILE=klee-last/test000002.ktest ./a.out
 
 echo $?
 ```
+
+## Sample Output 
+
+```bash
+KLEE: output directory is "/home/vmconsys655/pse_project/klee-out-1"
+KLEE: Using Z3 solver backend
+
+KLEE: done: total instructions = 492
+KLEE: done: completed paths = 2
+KLEE: done: generated tests = 2
+ktest file : 'klee-last/test000002.ktest'
+args       : ['sample_example.bc']
+num objects: 3
+object 0: name: 'a_pse_sym'
+object 0: size: 4
+object 0: data: b'\x00\x00\x00\x00'
+object 0: hex : 0x00000000
+object 0: int : 0
+object 0: uint: 0
+object 0: text: ....
+object 1: name: 'b_pse_sym'
+object 1: size: 4
+object 1: data: b'\x00\x00\x00\x00'
+object 1: hex : 0x00000000
+object 1: int : 0
+object 1: uint: 0
+object 1: text: ....
+object 2: name: 'c_sym'
+object 2: size: 4
+object 2: data: b'2\x00\x00\x00'
+object 2: hex : 0x32000000
+object 2: int : 50
+object 2: uint: 50
+object 2: text: 2...
+159
+```

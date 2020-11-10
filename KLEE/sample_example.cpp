@@ -6,59 +6,33 @@
 std::default_random_engine generator;
 std::uniform_int_distribution<int> distribution(10, 150);
     
-int weird_sum_func(int a, int b, int c)
+int weird_func(int a, int b, int c)
 {
-
-   // Forall Variables. 	
-   int x = 0, y = 0, z = 0;
-
-   if (a > 0)
-   {
-      x = 2;
+   if (a > b + c) {
+      return a + b + c;
+      klee_dump_kquery_var();
+   } else {
+      return a - b - c;
    }
-
-   if (a > 10 && b >= 3)
-   {
-      x = -20;
-      y = distribution(generator);
-      z = 100;
-   }
-   else if (a < 0)
-   {
-      x = 80;
-      z = 90;
-   }
-   else if (a >= 0 && c >= 50)
-   {
-      x = distribution(generator);
-      y = distribution(generator);
-   }
-   else
-   {
-      x = 80;
-      y = 90;
-      z = 100;
-   }
-
-   assert(x + y > 30);
-   assert(x + y + z >= 50);
-   
-   
-   return x + y + z;
 }
 
 int main(void)
 {
    int a, b, c;
    
-   klee_make_pse_symbolic(&a, sizeof(a), "a_pse_sym");
-   klee_make_pse_symbolic(&b, sizeof(b), "b_pse_sym");
+   float _distribution1[] = {1, 2, 3, 4, 5, 6};
+   float _probabilities1[] = {0.1, 0.1, 0.2, 0.3, 0.1, 0.2};
+
+   float _distribution2[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+   float _probabilities2[] = {0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1};
    
-   a = distribution(generator);
-   b = distribution(generator);
-   c = distribution(generator);
+   klee_make_pse_symbolic(&a, sizeof(a), "a_pse_sym", _distribution1, _probabilities1);
+   klee_make_pse_symbolic(&b, sizeof(b), "b_pse_sym", _distribution2, _probabilities2);
+   
+   a = _distribution1[2];        // PSE Variable
+   b = _distribution2[3];        // PSE Variable
+   c = distribution(generator);  // ForAll Variable
    
    klee_make_symbolic(&c, sizeof(c), "c_sym");
-   
-   return weird_sum_func(a, b, c);
+   return weird_func(a, b, c);
 }

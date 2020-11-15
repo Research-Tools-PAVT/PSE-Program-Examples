@@ -1,0 +1,22 @@
+klee --write-kqueries montyhall.bc
+PID: 12452
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2020-11-15 10:02:36
+BEGIN searcher description
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+END searcher description
+Finished: 2020-11-15 10:02:37
+Elapsed: 00:00:01
+KLEE: done: explored paths = 9
+KLEE: done: avg. constructs per query = 23
+KLEE: done: total queries = 12
+KLEE: done: valid queries = 0
+KLEE: done: invalid queries = 12
+KLEE: done: query cex = 12
+
+KLEE: done: total instructions = 427
+KLEE: done: completed paths = 9
+KLEE: done: generated tests = 9

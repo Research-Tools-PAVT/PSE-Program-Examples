@@ -1,0 +1,12 @@
+array a_pse_sym[4] : w32 -> w8 = symbolic
+array b_pse_sym[4] : w32 -> w8 = symbolic
+array c_sym[4] : w32 -> w8 = symbolic
+(query [(Eq false
+             (And (Slt 89
+                       N0:(ReadLSB w32 0 a_pse_sym))
+                  (Slt (Add w32 N1:(ReadLSB w32 0 c_sym)
+                                N2:(ReadLSB w32 0 b_pse_sym))
+                       N0)))
+         (Slt (Add w32 N1 N0) N2)
+         (Slt N2 (Sub w32 N2 N1))]
+        false)

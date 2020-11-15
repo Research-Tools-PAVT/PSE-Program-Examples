@@ -10,7 +10,8 @@
 /**
  * switch => door_switch
 */
-bool montyhall(bool door_switch) {
+bool montyhall(bool door_switch)
+{
   std::default_random_engine generator;
   std::uniform_int_distribution<int> distribution(0, 3);
 
@@ -29,54 +30,75 @@ bool montyhall(bool door_switch) {
   /**
      * Based on car door and choice, choose a host door. 
     */
-  if (car_door != 1 && choice != 1) {
+  if (car_door != 1 && choice != 1)
+  {
     host_door = 1;
-    klee_dump_kquery_state();
-  } else if (car_door != 2 && choice != 2) {
+  }
+  else if (car_door != 2 && choice != 2)
+  {
     host_door = 2;
-  } else {
+  }
+  else
+  {
     host_door = 3;
   }
 
   /**
      * Based door_switch and host_door, change choices. 
     */
-  if (door_switch) {
+  if (door_switch)
+  {
     klee_dump_kquery_state();
-    if (host_door == 1) {
-      if (choice == 2) {
+    if (host_door == 1)
+    {
+      if (choice == 2)
+      {
         choice = 3;
-      } else {
+      }
+      else
+      {
         choice = 2;
       }
-    } else if (host_door == 2) {
-      if (choice == 1) {
+    }
+    else if (host_door == 2)
+    {
+      if (choice == 1)
+      {
         choice = 3;
-      } else {
+      }
+      else
+      {
         choice = 1;
       }
-    } else {
-      if (choice == 1) {
+    }
+    else
+    {
+      if (choice == 1)
+      {
         choice = 2;
-      } else {
+        klee_dump_symbolic_details(&choice, "choice_branch");
+      }
+      else
+      {
         choice = 1;
       }
     }
   }
 
-  klee_dump_kquery_state();
-
-  if (choice == car_door) {
+  if (choice == car_door)
+  {
     return true;
-  } else {
-    klee_dump_kquery_state();
+  }
+  else
+  {
     return false;
   }
 
   return true;
 }
 
-int main() {
+int main()
+{
   int choice = 0;
   bool door_switch = false;
 
@@ -86,4 +108,3 @@ int main() {
   klee_make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", _distribution, _probabilities);
   return montyhall(door_switch);
 }
-

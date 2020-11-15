@@ -1,0 +1,60 @@
+
+State Id : 1, New Query : at montyhall.cpp:51 5 --> 
+
+array car_door_sym[4] : w32 -> w8 = symbolic
+array choice_pse_var_sym[4] : w32 -> w8 = symbolic
+array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
+(query [(Eq false
+             (Eq 1
+                 (ReadLSB w32 0 car_door_sym)))
+         (Eq false
+             (Eq 1
+                 (ReadLSB w32 0 choice_pse_var_sym)))
+         (Eq false
+             (Eq 0 (Read w8 0 door_switch_pse_var_sym)))]
+        false)
+
+
+State Id : 4, New Query : at montyhall.cpp:51 5 --> 
+
+array car_door_sym[4] : w32 -> w8 = symbolic
+array choice_pse_var_sym[4] : w32 -> w8 = symbolic
+array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
+(query [(Eq false
+             (And (Eq false
+                      (Eq 1
+                          N0:(ReadLSB w32 0 car_door_sym)))
+                  (Eq false
+                      (Eq 1
+                          N1:(ReadLSB w32 0 choice_pse_var_sym)))))
+         (Eq false
+             (And (Eq false (Eq 2 N0))
+                  (Eq false (Eq 2 N1))))
+         (Eq false
+             (Eq 0 (Read w8 0 door_switch_pse_var_sym)))]
+        false)
+
+
+State Id : 2, New Query : at montyhall.cpp:51 5 --> 
+
+array car_door_sym[4] : w32 -> w8 = symbolic
+array choice_pse_var_sym[4] : w32 -> w8 = symbolic
+array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
+(query [(Eq false
+             (And (Eq false
+                      (Eq 1
+                          N0:(ReadLSB w32 0 car_door_sym)))
+                  (Eq false
+                      (Eq 1
+                          N1:(ReadLSB w32 0 choice_pse_var_sym)))))
+         (Eq false (Eq 2 N0))
+         (Eq false (Eq 2 N1))
+         (Eq false
+             (Eq 0 (Read w8 0 door_switch_pse_var_sym)))]
+        false)
+
+
+Location : montyhall.cpp:79 9
+Given Name : choice_branch
+Variable Type : choice_pse_var_sym (Symbolic)
+2

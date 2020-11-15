@@ -1,0 +1,22 @@
+
+State Id : 3, New Query : at example3.cpp:49 9 --> 
+
+(set-logic QF_AUFBV )
+(declare-fun a_pse_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
+(declare-fun b_pse_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
+(declare-fun c_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
+(assert (let ( (?B1 (concat  (select  c_sym (_ bv3 32) ) (concat  (select  c_sym (_ bv2 32) ) (concat  (select  c_sym (_ bv1 32) ) (select  c_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  b_pse_sym (_ bv3 32) ) (concat  (select  b_pse_sym (_ bv2 32) ) (concat  (select  b_pse_sym (_ bv1 32) ) (select  b_pse_sym (_ bv0 32) ) ) ) ) ) (?B3 (concat  (select  a_pse_sym (_ bv3 32) ) (concat  (select  a_pse_sym (_ bv2 32) ) (concat  (select  a_pse_sym (_ bv1 32) ) (select  a_pse_sym (_ bv0 32) ) ) ) ) ) ) (and  (=  false (and  (bvslt  (bvadd  ?B1 ?B2 ) ?B3 ) (bvslt  (bvsub  ?B1 ?B3 ) ?B2 ) ) ) (=  false (bvslt  (bvadd  ?B1 ?B3 ) ?B2 ) ) ) ) )
+(check-sat)
+(exit)
+
+
+State Id : 1, New Query : at example3.cpp:35 9 --> 
+
+(set-logic QF_AUFBV )
+(declare-fun a_pse_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
+(declare-fun b_pse_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
+(declare-fun c_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
+(assert (let ( (?B1 (concat  (select  c_sym (_ bv3 32) ) (concat  (select  c_sym (_ bv2 32) ) (concat  (select  c_sym (_ bv1 32) ) (select  c_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  b_pse_sym (_ bv3 32) ) (concat  (select  b_pse_sym (_ bv2 32) ) (concat  (select  b_pse_sym (_ bv1 32) ) (select  b_pse_sym (_ bv0 32) ) ) ) ) ) (?B3 (concat  (select  a_pse_sym (_ bv3 32) ) (concat  (select  a_pse_sym (_ bv2 32) ) (concat  (select  a_pse_sym (_ bv1 32) ) (select  a_pse_sym (_ bv0 32) ) ) ) ) ) ) (and  (bvslt  (bvadd  ?B1 ?B2 ) ?B3 ) (bvslt  (bvsub  ?B1 ?B3 ) ?B2 ) ) ) )
+(check-sat)
+(exit)
+

@@ -146,7 +146,7 @@ object 2: text: ....
 0
 ```
 
-## Replay for MontyHall. 
+## Replay for MontyHall 
 
 ```bash
 KLEE: output directory is "/home/mlc655/Documents/PSE-Program-Examples/klee-out-0"

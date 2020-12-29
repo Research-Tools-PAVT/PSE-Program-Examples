@@ -9,15 +9,6 @@ Given Name : a
 Variable Type : a_pse_sym (Symbolic)
 3
 
-State Id : 1, New Query : at example1.cpp:20 9 --> 
-
-array c_sym[4] : w32 -> w8 = symbolic
-(query [(Slt (Add w32 4
-                       (ReadLSB w32 0 c_sym))
-              3)]
-        false)
-
-
 State Id : 2, New Query : at example1.cpp:29 9 --> 
 
 array c_sym[4] : w32 -> w8 = symbolic
@@ -28,26 +19,24 @@ array c_sym[4] : w32 -> w8 = symbolic
         false)
 
 
-Location : example1.cpp:21 9
-Given Name : a
-Variable Type : Not Symbolic
-3
+State Id : 1, New Query : at example1.cpp:20 9 --> 
+
+array c_sym[4] : w32 -> w8 = symbolic
+(query [(Slt (Add w32 4
+                       (ReadLSB w32 0 c_sym))
+              3)]
+        false)
+
 
 Location : example1.cpp:30 9
 Given Name : a
 Variable Type : Not Symbolic
 3
 
-Location : example1.cpp:22 9
-Given Name : b
+Location : example1.cpp:21 9
+Given Name : a
 Variable Type : Not Symbolic
-4
-
-Location : example1.cpp:23 9
-Given Name : t
-Variable Type : Not Symbolic
-(Add w32 7
-          (ReadLSB w32 0 c_sym))
+3
 
 Location : example1.cpp:31 9
 Given Name : b
@@ -58,4 +47,15 @@ Location : example1.cpp:32 9
 Given Name : t
 Variable Type : Not Symbolic
 (Sub w32 4294967295
+          (ReadLSB w32 0 c_sym))
+
+Location : example1.cpp:22 9
+Given Name : b
+Variable Type : Not Symbolic
+4
+
+Location : example1.cpp:23 9
+Given Name : t
+Variable Type : Not Symbolic
+(Add w32 7
           (ReadLSB w32 0 c_sym))

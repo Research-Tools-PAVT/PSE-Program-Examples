@@ -10,7 +10,7 @@ State Id : 1, New Query : at montyhall.cpp:51 5 -->
 (exit)
 
 
-State Id : 4, New Query : at montyhall.cpp:51 5 --> 
+State Id : 3, New Query : at montyhall.cpp:51 5 --> 
 
 (set-logic QF_AUFBV )
 (declare-fun car_door_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )

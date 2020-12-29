@@ -5,7 +5,9 @@ array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
              (Eq 1
                  (ReadLSB w32 0 car_door_sym)))
          (Eq false
+             (Eq 1
+                 N0:(ReadLSB w32 0 choice_pse_var_sym)))
+         (Eq false
              (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
-         (Eq 2
-             (ReadLSB w32 0 choice_pse_var_sym))]
+         (Eq false (Eq 2 N0))]
         false)

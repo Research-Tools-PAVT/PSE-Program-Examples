@@ -1,0 +1,123 @@
+montyhall.cpp:33 21
+Fork :: 1
+(And (Eq false
+          (Eq 1
+              (ReadLSB w32 0 car_door_sym)))
+      (Eq false
+          (Eq 1
+              (ReadLSB w32 0 choice_pse_var_sym))))
+Constraints :: 
+(And (Eq false
+          (Eq 1
+              (ReadLSB w32 0 car_door_sym)))
+      (Eq false
+          (Eq 1
+              (ReadLSB w32 0 choice_pse_var_sym))))
+Constraints :: 
+(Eq false
+     (And (Eq false
+              (Eq 1
+                  (ReadLSB w32 0 car_door_sym)))
+          (Eq false
+              (Eq 1
+                  (ReadLSB w32 0 choice_pse_var_sym)))))
+montyhall.cpp:37 26
+Fork :: 2
+(And (Eq false
+          (Eq 2
+              (ReadLSB w32 0 car_door_sym)))
+      (Eq false
+          (Eq 2
+              (ReadLSB w32 0 choice_pse_var_sym))))
+Constraints :: 
+(And (Eq false
+          (Eq 2
+              (ReadLSB w32 0 car_door_sym)))
+      (Eq false
+          (Eq 2
+              (ReadLSB w32 0 choice_pse_var_sym))))
+Constraints :: 
+(Eq false
+     (And (Eq false
+              (Eq 2
+                  (ReadLSB w32 0 car_door_sym)))
+          (Eq false
+              (Eq 2
+                  (ReadLSB w32 0 choice_pse_var_sym)))))
+montyhall.cpp:49 7
+Fork :: 1
+(Eq false
+     (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
+Constraints :: 
+(Eq false
+     (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
+Constraints :: 
+(Eq 0 (Read w8 0 door_switch_pse_var_sym))
+montyhall.cpp:49 7
+Fork :: 3
+(Eq false
+     (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
+Constraints :: 
+(Eq false
+     (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
+Constraints :: 
+(Eq 0 (Read w8 0 door_switch_pse_var_sym))
+montyhall.cpp:49 7
+Fork :: 2
+(Eq false
+     (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
+Constraints :: 
+(Eq false
+     (Eq 0 (Read w8 0 door_switch_pse_var_sym)))
+Constraints :: 
+(Eq 0 (Read w8 0 door_switch_pse_var_sym))
+montyhall.cpp:52 9
+Fork :: 3
+false
+montyhall.cpp:52 9
+Fork :: 1
+true
+montyhall.cpp:52 9
+Fork :: 2
+false
+montyhall.cpp:54 11
+Fork :: 1
+(Eq 2
+     (ReadLSB w32 0 choice_pse_var_sym))
+Constraints :: 
+(Eq 2
+     (ReadLSB w32 0 choice_pse_var_sym))
+Constraints :: 
+(Eq false
+     (Eq 2
+         (ReadLSB w32 0 choice_pse_var_sym)))
+montyhall.cpp:63 14
+Fork :: 2
+true
+montyhall.cpp:63 14
+Fork :: 3
+false
+montyhall.cpp:76 11
+Fork :: 3
+(Eq 1
+     (ReadLSB w32 0 choice_pse_var_sym))
+Constraints :: 
+(Eq 1
+     (ReadLSB w32 0 choice_pse_var_sym))
+Constraints :: 
+(Eq false
+     (Eq 1
+         (ReadLSB w32 0 choice_pse_var_sym)))
+montyhall.cpp:65 11
+Fork :: 2
+(Eq 1
+     (ReadLSB w32 0 choice_pse_var_sym))
+Constraints :: 
+(Eq 1
+     (ReadLSB w32 0 choice_pse_var_sym))
+Constraints :: 
+(Eq false
+     (Eq 1
+         (ReadLSB w32 0 choice_pse_var_sym)))
+Fork :: 3
+true

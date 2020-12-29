@@ -20,16 +20,16 @@ Given Name : b
 Variable Type : b_pse_sym (Symbolic)
 (ReadLSB w32 0 b_pse_sym)
 
+Location : example2.cpp:43 5
+Given Name : t
+Variable Type : Not Symbolic
+2880154539
+
 Location : example2.cpp:33 5
 Given Name : t
 Variable Type : Not Symbolic
 (Add w32 (ReadLSB w32 0 b_pse_sym)
           (ReadLSB w32 0 a_pse_sym))
-
-Location : example2.cpp:43 5
-Given Name : t
-Variable Type : Not Symbolic
-2880154539
 
 Location : example2.cpp:34 5
 Given Name : a

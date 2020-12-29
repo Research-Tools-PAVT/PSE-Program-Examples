@@ -457,22 +457,25 @@ define linkonce_odr dso_local i64 @_ZNSt8__detail4_ModImLm2147483647ELm16807ELm0
 ; Function Attrs: nounwind readnone speculatable willreturn
 declare void @llvm.dbg.value(metadata, metadata, metadata) #1
 
-; Function Attrs: nounwind uwtable
-define dso_local void @klee_div_zero_check(i64 %0) #6 !dbg !1663 {
-  call void @llvm.dbg.value(metadata i64 %0, metadata !1668, metadata !DIExpression()), !dbg !1669
-  %2 = icmp eq i64 %0, 0, !dbg !1670
-  br i1 %2, label %3, label %4, !dbg !1672
+; Function Attrs: noinline nounwind uwtable
+define dso_local void @klee_div_zero_check(i64 %0) #7 !dbg !1663 {
+  %2 = alloca i64, align 8
+  store i64 %0, i64* %2, align 8
+  call void @llvm.dbg.declare(metadata i64* %2, metadata !1667, metadata !DIExpression()), !dbg !1668
+  %3 = load i64, i64* %2, align 8, !dbg !1669
+  %4 = icmp eq i64 %3, 0, !dbg !1671
+  br i1 %4, label %5, label %6, !dbg !1672
 
-3:                                                ; preds = %1
-  tail call void @klee_report_error(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.5, i64 0, i64 0), i32 14, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.1.6, i64 0, i64 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.2.7, i64 0, i64 0)) #8, !dbg !1673
+5:                                                ; preds = %1
+  call void @klee_report_error(i8* getelementptr inbounds ([58 x i8], [58 x i8]* @.str.5, i64 0, i64 0), i32 14, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.1.6, i64 0, i64 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.2.7, i64 0, i64 0)) #9, !dbg !1673
   unreachable, !dbg !1673
 
-4:                                                ; preds = %1
+6:                                                ; preds = %1
   ret void, !dbg !1674
 }
 
 ; Function Attrs: noreturn
-declare dso_local void @klee_report_error(i8*, i32, i8*, i8*) local_unnamed_addr #7
+declare dso_local void @klee_report_error(i8*, i32, i8*, i8*) #8
 
 attributes #0 = { uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { nounwind readnone speculatable willreturn }
@@ -481,8 +484,9 @@ attributes #3 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-
 attributes #4 = { norecurse uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #5 = { inlinehint uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #6 = { nounwind uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #7 = { noreturn "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="none" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #8 = { noreturn nounwind }
+attributes #7 = { noinline nounwind uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #8 = { noreturn "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #9 = { noreturn }
 
 !llvm.dbg.cu = !{!0, !1348}
 !llvm.module.flags = !{!1350, !1351, !1352}
@@ -1836,7 +1840,7 @@ attributes #8 = { noreturn nounwind }
 !1345 = !DIImportedEntity(tag: DW_TAG_imported_declaration, scope: !28, entity: !1334, file: !1179, line: 187)
 !1346 = !DIImportedEntity(tag: DW_TAG_imported_declaration, scope: !28, entity: !1336, file: !1179, line: 188)
 !1347 = !DIImportedEntity(tag: DW_TAG_imported_declaration, scope: !28, entity: !1340, file: !1179, line: 189)
-!1348 = distinct !DICompileUnit(language: DW_LANG_C89, file: !1349, producer: "clang version 9.0.1-12 ", isOptimized: true, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, nameTableKind: None)
+!1348 = distinct !DICompileUnit(language: DW_LANG_C89, file: !1349, producer: "clang version 9.0.1-12 ", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, nameTableKind: None)
 !1349 = !DIFile(filename: "/home/mlc655/klee/runtime/Intrinsic/klee_div_zero_check.c", directory: "/home/mlc655/klee-build/runtime/Intrinsic")
 !1350 = !{i32 7, !"Dwarf Version", i32 4}
 !1351 = !{i32 2, !"Debug Info Version", i32 3}
@@ -2151,15 +2155,15 @@ attributes #8 = { noreturn nounwind }
 !1660 = !DILocation(line: 141, column: 12, scope: !1661)
 !1661 = distinct !DILexicalBlock(scope: !1650, file: !80, line: 140, column: 8)
 !1662 = !DILocation(line: 142, column: 4, scope: !1650)
-!1663 = distinct !DISubprogram(name: "klee_div_zero_check", scope: !1664, file: !1664, line: 12, type: !1665, scopeLine: 12, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition | DISPFlagOptimized, unit: !1348, retainedNodes: !1667)
+!1663 = distinct !DISubprogram(name: "klee_div_zero_check", scope: !1664, file: !1664, line: 12, type: !1665, scopeLine: 12, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1348, retainedNodes: !2)
 !1664 = !DIFile(filename: "klee/runtime/Intrinsic/klee_div_zero_check.c", directory: "/home/mlc655")
 !1665 = !DISubroutineType(types: !1666)
 !1666 = !{null, !334}
-!1667 = !{!1668}
-!1668 = !DILocalVariable(name: "z", arg: 1, scope: !1663, file: !1664, line: 12, type: !334)
-!1669 = !DILocation(line: 0, scope: !1663)
-!1670 = !DILocation(line: 13, column: 9, scope: !1671)
-!1671 = distinct !DILexicalBlock(scope: !1663, file: !1664, line: 13, column: 7)
+!1667 = !DILocalVariable(name: "z", arg: 1, scope: !1663, file: !1664, line: 12, type: !334)
+!1668 = !DILocation(line: 12, column: 36, scope: !1663)
+!1669 = !DILocation(line: 13, column: 7, scope: !1670)
+!1670 = distinct !DILexicalBlock(scope: !1663, file: !1664, line: 13, column: 7)
+!1671 = !DILocation(line: 13, column: 9, scope: !1670)
 !1672 = !DILocation(line: 13, column: 7, scope: !1663)
-!1673 = !DILocation(line: 14, column: 5, scope: !1671)
+!1673 = !DILocation(line: 14, column: 5, scope: !1670)
 !1674 = !DILocation(line: 15, column: 1, scope: !1663)

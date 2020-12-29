@@ -20,6 +20,17 @@ Variable Type : Not Symbolic
 (Add w32 (ReadLSB w32 0 b_pse_sym)
           (ReadLSB w32 0 a_pse_sym))
 
+Location : example3.cpp:42 9
+Given Name : b
+Variable Type : b_pse_sym (Symbolic)
+(ReadLSB w32 0 b_pse_sym)
+
+Location : example3.cpp:43 9
+Given Name : a
+Variable Type : a_pse_sym (Symbolic)
+(Sub w32 (ReadLSB w32 0 b_pse_sym)
+          (ReadLSB w32 0 c_sym))
+
 Location : example3.cpp:33 9
 Given Name : a
 Variable Type : a_pse_sym (Symbolic)
@@ -42,17 +53,6 @@ array c_sym[4] : w32 -> w8 = symbolic
          (Slt (Sub w32 N0 N2) N1)]
         false)
 
-
-Location : example3.cpp:42 9
-Given Name : b
-Variable Type : b_pse_sym (Symbolic)
-(ReadLSB w32 0 b_pse_sym)
-
-Location : example3.cpp:43 9
-Given Name : a
-Variable Type : a_pse_sym (Symbolic)
-(Sub w32 (ReadLSB w32 0 b_pse_sym)
-          (ReadLSB w32 0 c_sym))
 
 Location : example3.cpp:44 9
 Given Name : local_m

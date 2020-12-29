@@ -1,5 +1,5 @@
 KLEE: Using Z3 solver backend
-KLEE: ERROR: example2.cpp:32: ASSERTION FAIL: a > b
-KLEE: NOTE: now ignoring this error at this location
 KLEE: ERROR: example2.cpp:44: ASSERTION FAIL: b >= a
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: example2.cpp:32: ASSERTION FAIL: a > b
 KLEE: NOTE: now ignoring this error at this location

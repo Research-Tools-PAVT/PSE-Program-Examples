@@ -15,7 +15,7 @@ array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
         false)
 
 
-State Id : 4, New Query : at montyhall.cpp:51 5 --> 
+State Id : 3, New Query : at montyhall.cpp:51 5 --> 
 
 array car_door_sym[4] : w32 -> w8 = symbolic
 array choice_pse_var_sym[4] : w32 -> w8 = symbolic

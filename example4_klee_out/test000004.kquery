@@ -4,5 +4,6 @@ array a_pse_sym[4] : w32 -> w8 = symbolic
               N0)
          (Slt N0 (Add w32 1 N0))
          (Eq false (Eq 10 N0))
-         (Eq N0 (Mul w32 2 N0))]
+         (Eq false
+             (Eq N0 (Mul w32 2 N0)))]
         false)

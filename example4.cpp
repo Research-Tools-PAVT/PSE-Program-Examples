@@ -4,9 +4,8 @@
 #include <stdio.h>
 
 int main (void) {
-	int a = 17;
+	int a;
 	klee_make_symbolic(&a, sizeof(a), "a_pse_sym");
-	
 	if (a > a - 1 && a < a + 1 && a != 10 && a != a * 2) {
 		a = 10;
 	} else {

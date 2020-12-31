@@ -1,0 +1,41 @@
+Fork State Id :: 1
+true
+example4.cpp:10 16
+Fork State Id :: 1
+(Slt (Add w32 4294967295
+               N0:(ReadLSB w32 0 a_pse_sym))
+      N0)
+example4.cpp:16 13
+Fork State Id :: 2
+false
+example4.cpp:10 29
+Fork State Id :: 1
+(And (Slt N0:(ReadLSB w32 0 a_pse_sym)
+           (Add w32 1 N0))
+      (Eq false (Eq 10 N0)))
+example4.cpp:22 12
+Fork State Id :: 2
+true
+example4.cpp:10 6
+Fork State Id :: 1
+(Eq false
+     (Eq N0:(ReadLSB w32 0 a_pse_sym)
+         (Mul w32 2 N0)))
+example4.cpp:16 13
+Fork State Id :: 3
+false
+example4.cpp:16 13
+Fork State Id :: 1
+false
+example4.cpp:22 12
+Fork State Id :: 3
+true
+example4.cpp:16 13
+Fork State Id :: 4
+false
+example4.cpp:22 12
+Fork State Id :: 1
+true
+example4.cpp:22 12
+Fork State Id :: 4
+true

@@ -46,40 +46,8 @@ define dso_local i32 @main() #0 !dbg !1173 {
   br label %22
 
 22:                                               ; preds = %21, %20
-  %23 = load i32, i32* %2, align 4, !dbg !1201
-  %24 = icmp slt i32 %23, 50, !dbg !1203
-  %25 = load i32, i32* %2, align 4, !dbg !1204
-  %26 = icmp sge i32 %25, 60, !dbg !1205
-  %or.cond3 = and i1 %24, %26, !dbg !1206
-  br i1 %or.cond3, label %27, label %28, !dbg !1206
-
-27:                                               ; preds = %22
-  store i32 50, i32* %2, align 4, !dbg !1207
-  br label %29, !dbg !1209
-
-28:                                               ; preds = %22
-  store i32 30, i32* %2, align 4, !dbg !1210
-  br label %29
-
-29:                                               ; preds = %28, %27
-  %30 = load i32, i32* %2, align 4, !dbg !1212
-  %31 = icmp sgt i32 %30, 5, !dbg !1214
-  %32 = load i32, i32* %2, align 4, !dbg !1215
-  %33 = icmp slt i32 %32, 70, !dbg !1216
-  %or.cond5 = and i1 %31, %33, !dbg !1217
-  br i1 %or.cond5, label %34, label %35, !dbg !1217
-
-34:                                               ; preds = %29
-  store i32 89, i32* %2, align 4, !dbg !1218
-  br label %36, !dbg !1220
-
-35:                                               ; preds = %29
-  store i32 78, i32* %2, align 4, !dbg !1221
-  br label %36
-
-36:                                               ; preds = %35, %34
-  %37 = load i32, i32* %1, align 4, !dbg !1223
-  ret i32 %37, !dbg !1223
+  %23 = load i32, i32* %1, align 4, !dbg !1201
+  ret i32 %23, !dbg !1201
 }
 
 ; Function Attrs: nounwind readnone speculatable willreturn
@@ -1296,26 +1264,4 @@ attributes #2 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-
 !1198 = !DILocation(line: 12, column: 2, scope: !1197)
 !1199 = !DILocation(line: 13, column: 5, scope: !1200)
 !1200 = distinct !DILexicalBlock(scope: !1179, file: !1, line: 12, column: 9)
-!1201 = !DILocation(line: 16, column: 6, scope: !1202)
-!1202 = distinct !DILexicalBlock(scope: !1173, file: !1, line: 16, column: 6)
-!1203 = !DILocation(line: 16, column: 8, scope: !1202)
-!1204 = !DILocation(line: 16, column: 16, scope: !1202)
-!1205 = !DILocation(line: 16, column: 18, scope: !1202)
-!1206 = !DILocation(line: 16, column: 13, scope: !1202)
-!1207 = !DILocation(line: 17, column: 5, scope: !1208)
-!1208 = distinct !DILexicalBlock(scope: !1202, file: !1, line: 16, column: 25)
-!1209 = !DILocation(line: 18, column: 2, scope: !1208)
-!1210 = !DILocation(line: 19, column: 5, scope: !1211)
-!1211 = distinct !DILexicalBlock(scope: !1202, file: !1, line: 18, column: 9)
-!1212 = !DILocation(line: 22, column: 6, scope: !1213)
-!1213 = distinct !DILexicalBlock(scope: !1173, file: !1, line: 22, column: 6)
-!1214 = !DILocation(line: 22, column: 8, scope: !1213)
-!1215 = !DILocation(line: 22, column: 15, scope: !1213)
-!1216 = !DILocation(line: 22, column: 17, scope: !1213)
-!1217 = !DILocation(line: 22, column: 12, scope: !1213)
-!1218 = !DILocation(line: 23, column: 5, scope: !1219)
-!1219 = distinct !DILexicalBlock(scope: !1213, file: !1, line: 22, column: 23)
-!1220 = !DILocation(line: 24, column: 2, scope: !1219)
-!1221 = !DILocation(line: 25, column: 5, scope: !1222)
-!1222 = distinct !DILexicalBlock(scope: !1213, file: !1, line: 24, column: 9)
-!1223 = !DILocation(line: 27, column: 1, scope: !1173)
+!1201 = !DILocation(line: 15, column: 1, scope: !1173)

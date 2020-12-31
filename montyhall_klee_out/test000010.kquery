@@ -1,0 +1,9 @@
+array car_door_sym[4] : w32 -> w8 = symbolic
+array choice_pse_var_sym[4] : w32 -> w8 = symbolic
+array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
+(query [(Extract 0 (ZExt w8 (Extract 0 (Read w8 0 door_switch_pse_var_sym))))
+         (Eq 1
+             (ReadLSB w32 0 choice_pse_var_sym))
+         (Eq 3
+             (ReadLSB w32 0 car_door_sym))]
+        false)

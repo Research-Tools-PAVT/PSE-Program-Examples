@@ -1,457 +1,89 @@
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-false
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-false
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-false
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-true
-klee/runtime/Freestanding/memcpy.c:16 3
-Fork :: 1
-false
-Fork :: 1
-true
-Fork :: 1
-true
-Fork :: 1
-true
-example3.cpp:27 21
-Fork :: 1
-(And (Slt (Add w32 N0:(ReadLSB w32 0 c_sym)
-                    N1:(ReadLSB w32 0 b_pse_sym))
-           N2:(ReadLSB w32 0 a_pse_sym))
-      (Slt (Sub w32 N0 N2) N1))
-Constraints :: 
-(And (Slt (Add w32 N0:(ReadLSB w32 0 c_sym)
-                    N1:(ReadLSB w32 0 b_pse_sym))
-           N2:(ReadLSB w32 0 a_pse_sym))
-      (Slt (Sub w32 N0 N2) N1))
-Constraints :: 
+
+File : example3.cpp, Line : 27, Predicate Start [Index] : 21, State Id [Fork] : 1
+:::True ==> 
+(Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+               (ReadLSB w32 0 c_sym))
+      (ReadLSB w32 0 a_pse_sym))
+:::False ==> 
 (Eq false
-     (And (Slt (Add w32 N0:(ReadLSB w32 0 c_sym)
-                        N1:(ReadLSB w32 0 b_pse_sym))
-               N2:(ReadLSB w32 0 a_pse_sym))
-          (Slt (Sub w32 N0 N2) N1)))
-example3.cpp:37 14
-Fork :: 2
-(Slt (Add w32 (ReadLSB w32 0 c_sym)
+     (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+                   (ReadLSB w32 0 c_sym))
+          (ReadLSB w32 0 a_pse_sym)))
+
+File : example3.cpp, Line : 37, Predicate Start [Index] : 14, State Id [Fork] : 2
+:::True ==> 
+(Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+               (ReadLSB w32 0 c_sym))
+      (ReadLSB w32 0 b_pse_sym))
+:::False ==> 
+(Eq false
+     (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+                   (ReadLSB w32 0 c_sym))
+          (ReadLSB w32 0 b_pse_sym)))
+
+File : example3.cpp, Line : 27, Predicate Start [Index] : 9, State Id [Fork] : 1
+:::True ==> 
+(Slt (Sub w32 (ReadLSB w32 0 c_sym)
                (ReadLSB w32 0 a_pse_sym))
       (ReadLSB w32 0 b_pse_sym))
-Constraints :: 
-(Slt (Add w32 (ReadLSB w32 0 c_sym)
-               (ReadLSB w32 0 a_pse_sym))
-      (ReadLSB w32 0 b_pse_sym))
-Constraints :: 
+:::False ==> 
 (Eq false
-     (Slt (Add w32 (ReadLSB w32 0 c_sym)
+     (Slt (Sub w32 (ReadLSB w32 0 c_sym)
                    (ReadLSB w32 0 a_pse_sym))
           (ReadLSB w32 0 b_pse_sym)))
-Fork :: 1
+
+File : example3.cpp, Line : 37, Predicate Start [Index] : 14, State Id [Fork] : 4
+:::True ==> 
+(Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+               (ReadLSB w32 0 c_sym))
+      (ReadLSB w32 0 b_pse_sym))
+:::False ==> 
+(Eq false
+     (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+                   (ReadLSB w32 0 c_sym))
+          (ReadLSB w32 0 b_pse_sym)))
+State Id [Fork] : 2
+:::True ==> 
 true
-Fork :: 2
+:::False ==> 
+false
+State Id [Fork] : 2
+:::True ==> 
 true
-Fork :: 2
+:::False ==> 
+false
+State Id [Fork] : 2
+:::True ==> 
 true
-Fork :: 1
+:::False ==> 
+false
+State Id [Fork] : 1
+:::True ==> 
 true
-Fork :: 1
+:::False ==> 
+false
+State Id [Fork] : 1
+:::True ==> 
 true
-Fork :: 2
+:::False ==> 
+false
+State Id [Fork] : 1
+:::True ==> 
 true
+:::False ==> 
+false
+State Id [Fork] : 4
+:::True ==> 
+true
+:::False ==> 
+false
+State Id [Fork] : 4
+:::True ==> 
+true
+:::False ==> 
+false
+State Id [Fork] : 4
+:::True ==> 
+true
+:::False ==> 
+false

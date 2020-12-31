@@ -1,5 +1,6 @@
 array c_sym[4] : w32 -> w8 = symbolic
-(query [(Slt (Add w32 4
-                       (ReadLSB w32 0 c_sym))
-              3)]
+(query [(Eq false
+             (Slt (Add w32 4
+                           (ReadLSB w32 0 c_sym))
+                  3))]
         false)

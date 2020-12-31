@@ -12,16 +12,4 @@ int main (void) {
 	} else {
 		a = 90;
 	}
-
-	if (a < 50 && a >= 60) {
-		a = 50;
-	} else {
-		a = 30;
-	}
-
-	if (a > 5 && a < 70) {
-		a = 89;
-	} else {
-		a = 78;
-	}
 }

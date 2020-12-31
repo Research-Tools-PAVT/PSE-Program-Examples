@@ -1,0 +1,73 @@
+
+File : example2.cpp, Line : 27, Predicate Start [Index] : 19, State Id [Fork] : 1
+:::True ==> 
+(And (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+                    (ReadLSB w32 0 c_sym))
+           N0:(ReadLSB w32 0 a_pse_sym))
+      (Sle 90 N0))
+:::False ==> 
+(Eq false
+     (And (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+                        (ReadLSB w32 0 c_sym))
+               N0:(ReadLSB w32 0 a_pse_sym))
+          (Sle 90 N0)))
+
+File : example2.cpp, Line : 38, Predicate Start [Index] : 12, State Id [Fork] : 2
+:::True ==> 
+(Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+               (ReadLSB w32 0 c_sym))
+      (ReadLSB w32 0 b_pse_sym))
+:::False ==> 
+(Eq false
+     (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+                   (ReadLSB w32 0 c_sym))
+          (ReadLSB w32 0 b_pse_sym)))
+
+File : example2.cpp, Line : 32, Predicate Start [Index] : 5, State Id [Fork] : 1
+:::True ==> 
+(Slt (Sub w32 N0:(Add w32 (ReadLSB w32 0 b_pse_sym)
+                           N1:(ReadLSB w32 0 c_sym))
+               N1)
+      N0)
+:::False ==> 
+(Eq false
+     (Slt (Sub w32 N0:(Add w32 (ReadLSB w32 0 b_pse_sym)
+                               N1:(ReadLSB w32 0 c_sym))
+                   N1)
+          N0))
+State Id [Fork] : 2
+:::True ==> 
+true
+:::False ==> 
+false
+State Id [Fork] : 1
+:::True ==> 
+true
+:::False ==> 
+false
+State Id [Fork] : 2
+:::True ==> 
+true
+:::False ==> 
+false
+
+File : example2.cpp, Line : 44, Predicate Start [Index] : 5, State Id [Fork] : 2
+:::True ==> 
+(Sle N0:(Sub w32 (ReadLSB w32 0 b_pse_sym)
+                  N1:(ReadLSB w32 0 c_sym))
+      (Add w32 N0 N1))
+:::False ==> 
+(Eq false
+     (Sle N0:(Sub w32 (ReadLSB w32 0 b_pse_sym)
+                      N1:(ReadLSB w32 0 c_sym))
+          (Add w32 N0 N1)))
+State Id [Fork] : 1
+:::True ==> 
+true
+:::False ==> 
+false
+State Id [Fork] : 1
+:::True ==> 
+true
+:::False ==> 
+false

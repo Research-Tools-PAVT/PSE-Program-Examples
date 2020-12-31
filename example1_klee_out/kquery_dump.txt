@@ -19,6 +19,11 @@ array c_sym[4] : w32 -> w8 = symbolic
         false)
 
 
+Location : example1.cpp:30 9
+Given Name : a
+Variable Type : Not Symbolic
+3
+
 State Id : 1, New Query : at example1.cpp:20 9 --> 
 
 array c_sym[4] : w32 -> w8 = symbolic
@@ -28,20 +33,15 @@ array c_sym[4] : w32 -> w8 = symbolic
         false)
 
 
-Location : example1.cpp:30 9
-Given Name : a
+Location : example1.cpp:31 9
+Given Name : b
 Variable Type : Not Symbolic
-3
+4
 
 Location : example1.cpp:21 9
 Given Name : a
 Variable Type : Not Symbolic
 3
-
-Location : example1.cpp:31 9
-Given Name : b
-Variable Type : Not Symbolic
-4
 
 Location : example1.cpp:32 9
 Given Name : t

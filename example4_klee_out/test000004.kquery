@@ -1,9 +1,9 @@
-array a_pse_sym[4] : w32 -> w8 = symbolic
-(query [(Slt (Add w32 4294967295
-                       N0:(ReadLSB w32 0 a_pse_sym))
-              N0)
-         (Slt N0 (Add w32 1 N0))
-         (Eq false (Eq 10 N0))
-         (Eq false
-             (Eq N0 (Mul w32 2 N0)))]
+array a_sym[4] : w32 -> w8 = symbolic
+array b_sym[4] : w32 -> w8 = symbolic
+array c_sym[4] : w32 -> w8 = symbolic
+(query [(Slt (ReadLSB w32 0 b_sym)
+              N0:(ReadLSB w32 0 a_sym))
+         (Slt (Mul w32 9
+                       (ReadLSB w32 0 c_sym))
+              N0)]
         false)

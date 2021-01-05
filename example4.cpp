@@ -16,7 +16,7 @@ int main(void)
 	klee_make_symbolic(&c, sizeof(c), "c_sym");
 	klee_make_pse_symbolic(&d, sizeof(d), "d_pse_sym", dist, prob);
 
-	if (a > b && d < a && c > a && d < b)
+	if (a > b || d < a || c >= a || d < b)
 	{
 		c *= 2;
 	}

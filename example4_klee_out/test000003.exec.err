@@ -1,7 +1,7 @@
 Error: external call with symbolic argument: printf
 File: example4.cpp
-Line: 23
+Line: 27
 assembly.ll line: 82
-State: 2
+State: 6
 Stack: 
-	#000000082 in main () at example4.cpp:23
+	#000000082 in main () at example4.cpp:27

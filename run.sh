@@ -1,6 +1,6 @@
 clang++ -I $HOME/klee/include -c -emit-llvm -std=c++17 -g -O0 -Xclang -disable-O0-optnone $1.cpp
 
-klee --write-kqueries $1.bc
+klee --write-kqueries --set-ptree-dump $1.bc --set-ptree-dump
 ktest-tool klee-last/test000001.ktest
 
 g++ -std=c++14 -march=native -I $HOME/klee/include/ -L $HOME/klee/lib/ $1.cpp -lkleeRuntest

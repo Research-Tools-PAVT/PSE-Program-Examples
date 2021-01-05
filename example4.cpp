@@ -3,16 +3,18 @@
 
 int main(void)
 {
-	int a;
-	int b;
-	int c = 90;
+	int c = 90, a = 90, b, d;
+	float dist[] = {1, 2, 3, 4, 5, 6};
+	float prob[] = {0.1, 0.4, 0.1, 0.1, 0.2, 0.1};
+
 	klee_make_symbolic(&a, sizeof(a), "a_sym");
 	klee_make_symbolic(&b, sizeof(b), "b_sym");
 	klee_make_symbolic(&c, sizeof(c), "c_sym");
+	klee_make_pse_symbolic(&d, sizeof(d), "d_pse_sym", dist, prob);
 
-	if (a > b)
+	if (a > b && d < a && c > a && d < b)
 	{
-		c *= 9;
+		c *= 2;
 	}
 	else
 	{
@@ -22,7 +24,7 @@ int main(void)
 		}
 		else
 		{
-			printf("%d", a);
+			printf("%d", d);
 		}
 	}
 

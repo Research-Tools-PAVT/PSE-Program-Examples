@@ -1,5 +1,1 @@
 KLEE: Using Z3 solver backend
-KLEE: ERROR: example4.cpp:27: external call with symbolic argument: printf
-KLEE: NOTE: now ignoring this error at this location
-KLEE: ERROR: example4.cpp:31: external call with symbolic argument: printf
-KLEE: NOTE: now ignoring this error at this location

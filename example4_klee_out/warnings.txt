@@ -1,2 +1,1 @@
-KLEE: WARNING: undefined reference to function: printf
 KLEE: PSE Message: Created Probabilistic Variable

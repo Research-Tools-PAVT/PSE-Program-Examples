@@ -1,0 +1,20 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "255bce95-9d89-48fe-b9a4-d91a8e7fc9bf"
+            },
+            "sExpr": "(Slt (Add w32 4 (ReadLSB w32 0 c_sym)) 3)"
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "657d473e-ff99-47a0-b5ec-feff2f069b4f"
+            },
+            "sExpr": "(Eq false (Slt (Add w32 4 (ReadLSB w32 0 c_sym)) 3))"
+        }
+    ]
+}

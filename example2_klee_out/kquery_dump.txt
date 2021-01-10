@@ -6,11 +6,10 @@ array b_pse_sym[4] : w32 -> w8 = symbolic
 array c_sym[4] : w32 -> w8 = symbolic
 (query [(Eq false
              (And (Slt (Add w32 N0:(ReadLSB w32 0 b_pse_sym)
-                                N1:(ReadLSB w32 0 c_sym))
-                       N2:(ReadLSB w32 0 a_pse_sym))
-                  (Sle 90 N2)))
-         (Eq false
-             (Slt (Add w32 N2 N1) N0))]
+                                (ReadLSB w32 0 c_sym))
+                       N1:(ReadLSB w32 0 a_pse_sym))
+                  (Sle 90 N1)))
+         (Eq false (Slt 800 N0))]
         false)
 
 
@@ -21,16 +20,16 @@ Variable Type : b_pse_sym (Symbolic)
                    N0:(ReadLSB w32 0 c_sym))
           N0)
 
+Location : example2.cpp:43 5
+Given Name : t
+Variable Type : Not Symbolic
+2880154539
+
 Location : example2.cpp:33 5
 Given Name : t
 Variable Type : Not Symbolic
 (Add w32 (ReadLSB w32 0 a_pse_sym)
           (ReadLSB w32 0 b_pse_sym))
-
-Location : example2.cpp:43 5
-Given Name : t
-Variable Type : Not Symbolic
-2880154539
 
 Location : example2.cpp:34 5
 Given Name : a

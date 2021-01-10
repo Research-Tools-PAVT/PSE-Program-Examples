@@ -94,7 +94,7 @@ for elems in results:
                               label='\n('.join(falseExpr.strip().split(' (')),
                               color="red"))
 
-## Add Nodes & Get Leaves
+# Add Nodes & Get Leaves
 for k, v in nodeMap.items():
     Tree.add_node(v)
     if len(v.edges) == 0:
@@ -109,21 +109,38 @@ def findNext(node):
             return edges.parent
 
 
+# Find the parent node for a child or vice-versa
+def getLabel(node):
+    for edges in Tree.edgeSet:
+        if node.data[0] == edges.child.data[0]:
+            return edges.data
+
+
 # Construct the paths.
 for pathIds, nodes in pathMap.items():
     temp = nodes
     path = []
-    while temp is not None:
-        path.append(temp)
+    while findNext(temp) is not None:
+        collection = {}
+        data = ' '.join(getLabel(temp).strip().split("\n"))
+        collection["treeNode"] = temp
+        if data is not None:
+            collection["sExpr"] = data
+            path.append(collection)
+        else:
+            path.append(collection)
         temp = findNext(temp)
-    paths[pathIds] = path
+    paths[f"Path {pathIds}"] = path
 
 Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
 
 # Print the paths
 for k, v in paths.items():
-    print(f"Path : {k} -> {[x.data for x in v]}")
+    print(f"Path : {k} -> {[x for x in v]}")
 
 with open(f"{name}_processed/{name}_processed.json", 'w',
           encoding='utf-8') as f:
     json.dump(results, f, ensure_ascii=False, indent=4)
+
+with open(f"{name}_processed/{name}_paths.json", 'w', encoding='utf-8') as f:
+    json.dump(paths, f, ensure_ascii=False, indent=4)

@@ -5,7 +5,7 @@ State Id : 3, New Query : at example2.cpp:49 5 -->
 (declare-fun a_pse_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun b_pse_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun c_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
-(assert (let ( (?B1 (concat  (select  c_sym (_ bv3 32) ) (concat  (select  c_sym (_ bv2 32) ) (concat  (select  c_sym (_ bv1 32) ) (select  c_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  b_pse_sym (_ bv3 32) ) (concat  (select  b_pse_sym (_ bv2 32) ) (concat  (select  b_pse_sym (_ bv1 32) ) (select  b_pse_sym (_ bv0 32) ) ) ) ) ) (?B3 (concat  (select  a_pse_sym (_ bv3 32) ) (concat  (select  a_pse_sym (_ bv2 32) ) (concat  (select  a_pse_sym (_ bv1 32) ) (select  a_pse_sym (_ bv0 32) ) ) ) ) ) ) (and  (=  false (and  (bvslt  (bvadd  ?B2 ?B1 ) ?B3 ) (bvsle  (_ bv90 32) ?B3 ) ) ) (=  false (bvslt  (bvadd  ?B3 ?B1 ) ?B2 ) ) ) ) )
+(assert (let ( (?B1 (concat  (select  b_pse_sym (_ bv3 32) ) (concat  (select  b_pse_sym (_ bv2 32) ) (concat  (select  b_pse_sym (_ bv1 32) ) (select  b_pse_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  a_pse_sym (_ bv3 32) ) (concat  (select  a_pse_sym (_ bv2 32) ) (concat  (select  a_pse_sym (_ bv1 32) ) (select  a_pse_sym (_ bv0 32) ) ) ) ) ) ) (and  (=  false (and  (bvslt  (bvadd  ?B1 (concat  (select  c_sym (_ bv3 32) ) (concat  (select  c_sym (_ bv2 32) ) (concat  (select  c_sym (_ bv1 32) ) (select  c_sym (_ bv0 32) ) ) ) ) ) ?B2 ) (bvsle  (_ bv90 32) ?B2 ) ) ) (=  false (bvslt  (_ bv800 32) ?B1 ) ) ) ) )
 (check-sat)
 (exit)
 

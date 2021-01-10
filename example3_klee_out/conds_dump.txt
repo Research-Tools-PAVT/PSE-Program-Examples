@@ -1,148 +1,3 @@
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
 {
 	File : example3.cpp,
 	Line : 27,
@@ -159,14 +14,14 @@
 	True Generate ID : 2,
 	trueQuery : 
 		[
-->(Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+ > (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                (ReadLSB w32 0 c_sym))
       (ReadLSB w32 0 a_pse_sym))],
 	False KLEE Id : 2,
 	False Generate ID : 3,
 	falseQuery : 
 		[
-->(Eq false
+ > (Eq false
      (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                    (ReadLSB w32 0 c_sym))
           (ReadLSB w32 0 a_pse_sym)))]
@@ -187,20 +42,20 @@
 	True Generate ID : 4,
 	trueQuery : 
 		[
-->(Eq false
+ > (Eq false
      (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                    (ReadLSB w32 0 c_sym))
-          (ReadLSB w32 0 a_pse_sym)))->(Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+          (ReadLSB w32 0 a_pse_sym))) > (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
                (ReadLSB w32 0 c_sym))
       (ReadLSB w32 0 b_pse_sym))],
 	False KLEE Id : 3,
 	False Generate ID : 5,
 	falseQuery : 
 		[
-->(Eq false
+ > (Eq false
      (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                    (ReadLSB w32 0 c_sym))
-          (ReadLSB w32 0 a_pse_sym)))->(Eq false
+          (ReadLSB w32 0 a_pse_sym))) > (Eq false
      (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
                    (ReadLSB w32 0 c_sym))
           (ReadLSB w32 0 b_pse_sym)))]
@@ -221,18 +76,18 @@
 	True Generate ID : 6,
 	trueQuery : 
 		[
-->(Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+ > (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                (ReadLSB w32 0 c_sym))
-      (ReadLSB w32 0 a_pse_sym))->(Slt (Sub w32 (ReadLSB w32 0 c_sym)
+      (ReadLSB w32 0 a_pse_sym)) > (Slt (Sub w32 (ReadLSB w32 0 c_sym)
                (ReadLSB w32 0 a_pse_sym))
       (ReadLSB w32 0 b_pse_sym))],
 	False KLEE Id : 4,
 	False Generate ID : 7,
 	falseQuery : 
 		[
-->(Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+ > (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                (ReadLSB w32 0 c_sym))
-      (ReadLSB w32 0 a_pse_sym))->(Eq false
+      (ReadLSB w32 0 a_pse_sym)) > (Eq false
      (Slt (Sub w32 (ReadLSB w32 0 c_sym)
                    (ReadLSB w32 0 a_pse_sym))
           (ReadLSB w32 0 b_pse_sym)))]
@@ -253,24 +108,24 @@
 	True Generate ID : 8,
 	trueQuery : 
 		[
-->(Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+ > (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                (ReadLSB w32 0 c_sym))
-      (ReadLSB w32 0 a_pse_sym))->(Eq false
+      (ReadLSB w32 0 a_pse_sym)) > (Eq false
      (Slt (Sub w32 (ReadLSB w32 0 c_sym)
                    (ReadLSB w32 0 a_pse_sym))
-          (ReadLSB w32 0 b_pse_sym)))->(Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
+          (ReadLSB w32 0 b_pse_sym))) > (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
                (ReadLSB w32 0 c_sym))
       (ReadLSB w32 0 b_pse_sym))],
 	False KLEE Id : 5,
 	False Generate ID : 9,
 	falseQuery : 
 		[
-->(Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
+ > (Slt (Add w32 (ReadLSB w32 0 b_pse_sym)
                (ReadLSB w32 0 c_sym))
-      (ReadLSB w32 0 a_pse_sym))->(Eq false
+      (ReadLSB w32 0 a_pse_sym)) > (Eq false
      (Slt (Sub w32 (ReadLSB w32 0 c_sym)
                    (ReadLSB w32 0 a_pse_sym))
-          (ReadLSB w32 0 b_pse_sym)))->(Eq false
+          (ReadLSB w32 0 b_pse_sym))) > (Eq false
      (Slt (Add w32 (ReadLSB w32 0 a_pse_sym)
                    (ReadLSB w32 0 c_sym))
           (ReadLSB w32 0 b_pse_sym)))]

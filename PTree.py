@@ -7,8 +7,8 @@ def format_stmts(node):
     return "\n".join([str(elems) for elems in node.data])
 
 
-class ExecutionTreeNode:
-    def __init__(self, content=""):
+class ExecutionTreeNode(dict):
+    def __init__(self, nodeId=""):
         self.left = None
         self.right = None
         self.type = None
@@ -17,7 +17,8 @@ class ExecutionTreeNode:
         self.id = None
         self.data = []
         self.edges = []
-        self.data.append(content)
+        dict.__init__(self, nodeId=nodeId, uid=str(uuid.uuid4()))
+        self.data.append(nodeId)
 
 
 class ExecutionTreeEdge:

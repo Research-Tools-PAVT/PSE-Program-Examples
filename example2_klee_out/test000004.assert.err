@@ -1,7 +1,7 @@
 Error: ASSERTION FAIL: b >= a
 File: example2.cpp
 Line: 44
-assembly.ll line: 191
+assembly.ll line: 188
 State: 5
 Stack: 
-	#000000191 in main () at example2.cpp:44
+	#000000188 in main () at example2.cpp:44

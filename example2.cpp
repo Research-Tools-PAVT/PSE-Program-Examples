@@ -35,7 +35,7 @@ int main(void)
     klee_dump_symbolic_details(&b, "b");
     klee_dump_kquery_state();
   }
-  else if (b > a + c)
+  else if (b > 800)
   {
     a = b - c;
     b = a + c;

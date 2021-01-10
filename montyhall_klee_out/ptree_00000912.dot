@@ -1,0 +1,49 @@
+digraph G {
+	size="10,7.5";
+	ratio=fill;
+	rotate=90;
+	center = "true";
+	node [style="filled",width=.1,height=.1,fontname="Terminus"]
+	edge [arrowsize=.3]
+	n0x55c6c4ca2ea0 [shape=diamond];
+	n0x55c6c4ca2ea0 -> n0x55c6c4f55260 [label=001];
+	n0x55c6c4ca2ea0 -> n0x55c6c4f55240 [label=001];
+	n0x55c6c4f55240 [shape=diamond];
+	n0x55c6c4f55240 -> n0x55c6c4de38a0 [label=001];
+	n0x55c6c4de38a0 [shape=diamond];
+	n0x55c6c4de38a0 -> n0x55c6c4f547a0 [label=001];
+	n0x55c6c4de38a0 -> n0x55c6c4f78e40 [label=001];
+	n0x55c6c4f78e40 [shape=diamond];
+	n0x55c6c4f78e40 -> n0x55c6c4f78ec0 [label=001];
+	n0x55c6c4f78e40 -> n0x55c6c4cbfb80 [label=001];
+	n0x55c6c4cbfb80 [shape=diamond,fillcolor=green];
+	n0x55c6c4f78ec0 [shape=diamond,fillcolor=green];
+	n0x55c6c4f547a0 [shape=diamond];
+	n0x55c6c4f547a0 -> n0x55c6c4ca39c0 [label=001];
+	n0x55c6c4f547a0 -> n0x55c6c4f782e0 [label=001];
+	n0x55c6c4f782e0 [shape=diamond,fillcolor=green];
+	n0x55c6c4ca39c0 [shape=diamond,fillcolor=green];
+	n0x55c6c4f55260 [shape=diamond];
+	n0x55c6c4f55260 -> n0x55c6c4e30f40 [label=001];
+	n0x55c6c4f55260 -> n0x55c6c4e31a00 [label=001];
+	n0x55c6c4e31a00 [shape=diamond];
+	n0x55c6c4e31a00 -> n0x55c6c4f55ca0 [label=001];
+	n0x55c6c4e31a00 -> n0x55c6c4d9c140 [label=001];
+	n0x55c6c4d9c140 [shape=diamond];
+	n0x55c6c4d9c140 -> n0x55c6c4ca3b20 [label=001];
+	n0x55c6c4d9c140 -> n0x55c6c4d0a160 [label=001];
+	n0x55c6c4d0a160 [shape=diamond,fillcolor=green];
+	n0x55c6c4ca3b20 [shape=diamond,fillcolor=green];
+	n0x55c6c4f55ca0 [shape=diamond];
+	n0x55c6c4f55ca0 -> n0x55c6c4d54640 [label=001];
+	n0x55c6c4f55ca0 -> n0x55c6c4d54ac0 [label=001];
+	n0x55c6c4d54ac0 [shape=diamond,fillcolor=green];
+	n0x55c6c4d54640 [shape=diamond,fillcolor=green];
+	n0x55c6c4e30f40 [shape=diamond];
+	n0x55c6c4e30f40 -> n0x55c6c4f54d00 [label=001];
+	n0x55c6c4f54d00 [shape=diamond];
+	n0x55c6c4f54d00 -> n0x55c6c4cbf740 [label=000];
+	n0x55c6c4f54d00 -> n0x55c6c4e31680 [label=001];
+	n0x55c6c4e31680 [shape=diamond,fillcolor=green];
+	n0x55c6c4cbf740 [shape=diamond,fillcolor=green];
+}

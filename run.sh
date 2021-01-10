@@ -13,5 +13,7 @@ mkdir $1_klee_out/
 mv klee-last/* $1_klee_out/
 rm -rf klee* *.bc *.dot *.out
 
+rm -rf $1_processed/
+mkdir $1_processed/
+
 python3 read_data.py ./$1_klee_out/conds_dump.txt $1
-rm -rf ./$1_klee_out/conds_dump.txt $1

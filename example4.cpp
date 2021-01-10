@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	int c = 90, a = 90, b, d;
+	int c, a, b, d;
 	float dist[] = {1, 2, 3, 4, 5, 6};
 	float prob[] = {0.1, 0.4, 0.1, 0.1, 0.2, 0.1};
 
@@ -16,13 +16,19 @@ int main(void)
 	klee_make_symbolic(&c, sizeof(c), "c_sym");
 	klee_make_pse_symbolic(&d, sizeof(d), "d_pse_sym", dist, prob);
 
-	if (a > b || c > d || a > c)
+	if (a > 0 && c > 0 && c < d && d > a && d > b)
 	{
-		a = c * d;
+		c = a * b;
 	}
 	else
 	{
-		b = c * d;
+		d = a + b;
+	}
+
+	if (c > 200)
+	{
+		a = 0;
+		b = 0;
 	}
 
 	return 0;

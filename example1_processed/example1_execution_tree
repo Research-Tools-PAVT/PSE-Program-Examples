@@ -1,0 +1,9 @@
+digraph sample {
+	1 -> 2 [label="(Slt
+(Add w32 4
+(ReadLSB w32 0 c_sym)) 3)" color=green]
+	1 -> 3 [label="(Eq false
+(Slt
+(Add w32 4
+(ReadLSB w32 0 c_sym)) 3))" color=Red]
+}

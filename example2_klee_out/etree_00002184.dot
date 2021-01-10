@@ -1,0 +1,8 @@
+digraph G {
+	size="10,5.5";
+	ratio=fill;
+	rotate=90;
+	center = "true";
+	node [width=.1, height=.1, fontname="Terminus"]
+	"0, Start" [shape=ellipse, color=black];
+}

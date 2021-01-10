@@ -1,0 +1,63 @@
+digraph sample {
+	1 -> 2 [label="(And
+(Slt 0
+(ReadLSB w32 0 a_sym))
+(Slt 0
+(ReadLSB w32 0 c_sym)))" color=green]
+	1 -> 3 [label="(Eq false
+(And
+(Slt 0
+(ReadLSB w32 0 a_sym))
+(Slt 0
+(ReadLSB w32 0 c_sym))))" color=Red]
+	2 -> 4 [label="(Slt
+(ReadLSB w32 0 c_sym)
+(ReadLSB w32 0 d_pse_sym))" color=green]
+	2 -> 5 [label="(Eq false
+(Slt
+(ReadLSB w32 0 c_sym)
+(ReadLSB w32 0 d_pse_sym)))" color=Red]
+	4 -> 10 [label="(Slt
+(ReadLSB w32 0 a_sym)
+(ReadLSB w32 0 d_pse_sym))" color=green]
+	4 -> 11 [label="(Eq false
+(Slt
+(ReadLSB w32 0 a_sym)
+(ReadLSB w32 0 d_pse_sym)))" color=Red]
+	10 -> 12 [label="(Slt
+(ReadLSB w32 0 b_sym)
+(ReadLSB w32 0 d_pse_sym))" color=green]
+	10 -> 13 [label="(Eq false
+(Slt
+(ReadLSB w32 0 b_sym)
+(ReadLSB w32 0 d_pse_sym)))" color=Red]
+	3 -> 6 [label="(Slt 200
+(ReadLSB w32 0 c_sym))" color=green]
+	3 -> 7 [label="(Eq false
+(Slt 200
+(ReadLSB w32 0 c_sym)))" color=Red]
+	5 -> 8 [label="(Slt 200
+(ReadLSB w32 0 c_sym))" color=green]
+	5 -> 9 [label="(Eq false
+(Slt 200
+(ReadLSB w32 0 c_sym)))" color=Red]
+	11 -> 14 [label="(Slt 200
+(ReadLSB w32 0 c_sym))" color=green]
+	11 -> 15 [label="(Eq false
+(Slt 200
+(ReadLSB w32 0 c_sym)))" color=Red]
+	12 -> 16 [label="(Slt 200
+(Mul w32
+(ReadLSB w32 0 a_sym)
+(ReadLSB w32 0 b_sym)))" color=green]
+	12 -> 17 [label="(Eq false
+(Slt 200
+(Mul w32
+(ReadLSB w32 0 a_sym)
+(ReadLSB w32 0 b_sym))))" color=Red]
+	13 -> 18 [label="(Slt 200
+(ReadLSB w32 0 c_sym))" color=green]
+	13 -> 19 [label="(Eq false
+(Slt 200
+(ReadLSB w32 0 c_sym)))" color=Red]
+}

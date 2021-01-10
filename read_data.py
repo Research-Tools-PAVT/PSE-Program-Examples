@@ -5,11 +5,16 @@ import json
 from PTree import *
 import uuid
 
+id = 0
+pathMap = {}
+aliasMap = {}
+nodeMap = {}
 results = []
+paths = {}
 Tree = ExecutionTree()
-root = ExecutionTreeNode("Root", 0)
 file = sys.argv[1]
 name = sys.argv[2]
+
 with open(file.strip(), "r") as fileptr:
     lines = fileptr.read().replace("\n", " ")
     for elems in lines.split("}"):
@@ -17,72 +22,108 @@ with open(file.strip(), "r") as fileptr:
             ConstraintObj = elems.split("{")[1].strip()
             temp = {}
             for fields in ConstraintObj.split(","):
-                [key, value] = fields.strip().split(":")
-                if "Query" in key.strip():
-                    temp[key.strip()] = [
-                        ' '.join(x.strip().split()) for x in value.strip()
-                        [1:len(value.strip()) -
-                         1].strip().split("->")[1:len(value.strip())]
-                    ]
-                elif "Branch" in key.strip() or "Negate" in key.strip():
-                    temp[key.strip()] = ' '.join(value.strip().split())
-                else:
-                    temp[key.strip()] = value.strip()
+                if len(fields.strip().split(":")) == 2:
+                    [key, value] = fields.strip().split(":")
+                    if "Query" in key.strip():
+                        temp[key.strip()] = [
+                            ' '.join(x.strip().split()) for x in value.strip()
+                            [1:len(value.strip()) -
+                             1].strip().split(" > ")[1:len(value.strip())]
+                        ]
+                    elif "Branch" in key.strip() or "Negate" in key.strip():
+                        temp[key.strip()] = ' '.join(value.strip().split())
+                    else:
+                        temp[key.strip()] = value.strip()
             results.append(temp)
 
-line_predicates = []
-linePredicateMap = dict()
-for index, objs in enumerate(results):
-    temp = {}
-    predicates = []
-
-    if objs["Line"] not in linePredicateMap:
-        linePredicateMap[objs["Line"]] = []
-
-    temp["Predicate"] = objs["Predicate"]
-    temp["Branch Predicate"] = ' '.join(
-        objs["Branch Predicate"].strip().split())
-    temp["Negate Predicate"] = ' '.join(
-        objs["Negate Predicate"].strip().split())
-    temp["trueQuery"] = objs["trueQuery"]
-    temp["falseQuery"] = objs["falseQuery"]
-
-    linePredicateMap[objs["Line"]].append(temp)
-
-    print("Building Execution Tree")
-    node = ExecutionTreeNode(index, index)
-    left = ExecutionTreeNode(2 * index + 1, 2 * index + 1)
-    right = ExecutionTreeNode(2 * index + 2, 2 * index + 2)
-    Tree.add_node(node)
-    Tree.add_node(left)
-    Tree.add_node(right)
-    trueExpr = objs["Branch Predicate"]
-    falseExpr = objs["Negate Predicate"]
-    node.edges.append(
-        ExecutionTreeEdge(node,
-                          left,
-                          label='\n('.join(trueExpr.strip().split(' (')),
-                          color="green"))
-    node.edges.append(
-        ExecutionTreeEdge(node,
-                          right,
-                          label='\n('.join(falseExpr.strip().split(' (')),
-                          color="Red"))
-    temp["Line"] = objs["Line"]
-    line_predicates.append(temp)
-
-Tree.save_cfg(filename=f"{name}_execution_tree")
-
 results.sort(key=lambda x: int(x["Line"]), reverse=False)
-with open(f"{name}_processed.json", 'w', encoding='utf-8') as f:
+
+for elems in results:
+    if elems.get("Current State Id", None):
+        current = int(elems["Current State Id"])
+        klee_true = int(elems["True KLEE Id"])
+        generate_true = int(elems["True Generate ID"])
+        klee_false = int(elems["False KLEE Id"])
+        generate_false = int(elems["False Generate ID"])
+
+        node = nodeMap.get(
+            f"{aliasMap.get(current, current)}",
+            ExecutionTreeNode(f"{aliasMap.get(current, current)}"))
+        left = nodeMap.get(f"{generate_true}",
+                           ExecutionTreeNode(f"{generate_true}"))
+        right = nodeMap.get(f"{generate_false}",
+                            ExecutionTreeNode(f"{generate_false}"))
+
+        nodeMap[aliasMap.get(current, current)] = node
+        nodeMap[generate_true] = left
+        nodeMap[generate_false] = right
+
+        if (klee_true == current):
+            aliasMap[current] = generate_true
+            aliasMap[klee_false] = generate_false
+        elif (klee_false == current):
+            aliasMap[current] = generate_false
+            aliasMap[klee_true] = generate_true
+        else:
+            pass
+
+        trueExpr = elems["Branch Predicate"]
+        falseExpr = elems["Negate Predicate"]
+
+        node.edges.append(
+            ExecutionTreeEdge(node,
+                              left,
+                              label='\n('.join(trueExpr.strip().split(' (')),
+                              color="green"))
+
+        node.edges.append(
+            ExecutionTreeEdge(node,
+                              right,
+                              label='\n('.join(falseExpr.strip().split(' (')),
+                              color="red"))
+
+        Tree.edgeSet.append(
+            ExecutionTreeEdge(node,
+                              left,
+                              label='\n('.join(trueExpr.strip().split(' (')),
+                              color="green"))
+
+        Tree.edgeSet.append(
+            ExecutionTreeEdge(node,
+                              right,
+                              label='\n('.join(falseExpr.strip().split(' (')),
+                              color="red"))
+
+## Add Nodes & Get Leaves
+for k, v in nodeMap.items():
+    Tree.add_node(v)
+    if len(v.edges) == 0:
+        id = id + 1
+        pathMap[id] = v
+
+
+# Find the parent node for a child or vice-versa
+def findNext(node):
+    for edges in Tree.edgeSet:
+        if node.data[0] == edges.child.data[0]:
+            return edges.parent
+
+
+# Construct the paths.
+for pathIds, nodes in pathMap.items():
+    temp = nodes
+    path = []
+    while temp is not None:
+        path.append(temp)
+        temp = findNext(temp)
+    paths[pathIds] = path
+
+Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
+
+# Print the paths
+for k, v in paths.items():
+    print(f"Path : {k} -> {[x.data for x in v]}")
+
+with open(f"{name}_processed/{name}_processed.json", 'w',
+          encoding='utf-8') as f:
     json.dump(results, f, ensure_ascii=False, indent=4)
-
-line_predicates.sort(key=lambda x: int(x["Line"]), reverse=False)
-with open(f"{name}_perline.json", 'w', encoding='utf-8') as f:
-    json.dump(line_predicates, f, ensure_ascii=False, indent=4)
-
-for elems in linePredicateMap:
-    linePredicateMap[elems].sort(key=lambda x: int(x["Predicate"]),
-                                 reverse=False)
-with open(f"{name}_bypredicates.json", 'w', encoding='utf-8') as f:
-    json.dump(linePredicateMap, f, ensure_ascii=False, indent=4)

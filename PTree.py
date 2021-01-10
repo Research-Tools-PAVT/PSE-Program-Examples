@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from graphviz import Source, Graph, Digraph
+import uuid
 
 
 def format_stmts(node):
@@ -7,13 +8,13 @@ def format_stmts(node):
 
 
 class ExecutionTreeNode:
-    def __init__(self, content, id):
+    def __init__(self, content=""):
         self.left = None
         self.right = None
         self.type = None
         self.parent = None
         self.added = False
-        self.id = id
+        self.id = None
         self.data = []
         self.edges = []
         self.data.append(content)
@@ -25,6 +26,7 @@ class ExecutionTreeEdge:
         self.child = child
         child.parent = parent
         self.label = label
+        self.data = label
         self.color = color
         self.graph = Digraph(comment="Execution Edge", format="png")
 
@@ -45,8 +47,11 @@ class ExecutionTree:
     def __init__(self, nodes=[]):
         self.nodes = nodes
         self.counter = 0
+        self.leaves = []
+        self.edgeSet = []
+        self.root = None
 
-    def save_cfg(self, name="sample", filename="sample", directory="."):
+    def save_cfg(self, name="ExecutionTree", filename="sample", directory="."):
         graph = Digraph(name=name,
                         filename=filename,
                         directory=directory,
@@ -63,6 +68,7 @@ class ExecutionTree:
 
     def add_node(self, node):
         if not node.added:
+            node.id = uuid.uuid4()
             self.counter += 1
             node.added = True
             node.uid = self.counter
@@ -73,12 +79,12 @@ if __name__ == "__main__":
     print("Building Execution Tree")
     Tree = ExecutionTree()
     root = ExecutionTreeNode("Root", 0)
-    arr = [1, 2]
+    arr = [1, 2, 3, 4]
     for index, elems in enumerate(arr):
         if index < len(arr) / 2:
-            node = ExecutionTreeNode(index, index)
-            left = ExecutionTreeNode(2 * index + 1, 2 * index + 1)
-            right = ExecutionTreeNode(2 * index + 2, 2 * index + 2)
+            node = ExecutionTreeNode(index)
+            left = ExecutionTreeNode(2 * index + 1)
+            right = ExecutionTreeNode(2 * index + 2)
             Tree.add_node(node)
             Tree.add_node(left)
             Tree.add_node(right)

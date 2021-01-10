@@ -9,9 +9,13 @@ digraph G {
 	n0x5578c592c440 -> n0x5578c5bb85e0 [label=001];
 	n0x5578c592c440 -> n0x5578c5bb84e0 [label=001];
 	n0x5578c5bb84e0 [shape=diamond];
-	n0x5578c5bb84e0 -> n0x5578c5b08820 [label=000];
+	n0x5578c5bb84e0 -> n0x5578c5b08820 [label=001];
 	n0x5578c5bb84e0 -> n0x5578c5a09ee0 [label=001];
 	n0x5578c5a09ee0 [shape=diamond,fillcolor=green];
 	n0x5578c5b08820 [shape=diamond,fillcolor=green];
-	n0x5578c5bb85e0 [shape=diamond,fillcolor=green];
+	n0x5578c5bb85e0 [shape=diamond];
+	n0x5578c5bb85e0 -> n0x5578c59b45e0 [label=000];
+	n0x5578c5bb85e0 -> n0x5578c5a57540 [label=001];
+	n0x5578c5a57540 [shape=diamond,fillcolor=green];
+	n0x5578c59b45e0 [shape=diamond,fillcolor=green];
 }

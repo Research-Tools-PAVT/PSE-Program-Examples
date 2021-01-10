@@ -11,5 +11,5 @@ array d_pse_sym[4] : w32 -> w8 = symbolic
          (Slt N0 N2)
          (Slt N3:(ReadLSB w32 0 b_sym)
               N2)
-         (Slt 200 (Mul w32 N0 N3))]
+         (Slt N2 (Mul w32 N0 N3))]
         false)

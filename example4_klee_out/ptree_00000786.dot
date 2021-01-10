@@ -6,12 +6,14 @@ digraph G {
 	node [style="filled",width=.1,height=.1,fontname="Terminus"]
 	edge [arrowsize=.3]
 	n0x5578c592c440 [shape=diamond];
-	n0x5578c592c440 -> n0x5578c5bb85e0 [label=001];
 	n0x5578c592c440 -> n0x5578c5bb84e0 [label=001];
 	n0x5578c5bb84e0 [shape=diamond];
-	n0x5578c5bb84e0 -> n0x5578c5b08820 [label=000];
+	n0x5578c5bb84e0 -> n0x5578c5b08820 [label=001];
 	n0x5578c5bb84e0 -> n0x5578c5a09ee0 [label=001];
 	n0x5578c5a09ee0 [shape=diamond,fillcolor=green];
-	n0x5578c5b08820 [shape=diamond,fillcolor=green];
-	n0x5578c5bb85e0 [shape=diamond,fillcolor=green];
+	n0x5578c5b08820 [shape=diamond];
+	n0x5578c5b08820 -> n0x5578c5b7a620 [label=000];
+	n0x5578c5b08820 -> n0x5578c5b09e00 [label=001];
+	n0x5578c5b09e00 [shape=diamond,fillcolor=green];
+	n0x5578c5b7a620 [shape=diamond,fillcolor=green];
 }

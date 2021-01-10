@@ -25,7 +25,7 @@ int main(void)
 		d = a + b;
 	}
 
-	if (c > 200)
+	if (c > d)
 	{
 		a = 0;
 		b = 0;

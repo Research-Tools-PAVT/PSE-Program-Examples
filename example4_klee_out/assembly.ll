@@ -81,16 +81,17 @@ define dso_local i32 @main() #0 !dbg !10 {
 
 42:                                               ; preds = %38, %34
   %43 = load i32, i32* %2, align 4, !dbg !69
-  %44 = icmp sgt i32 %43, 200, !dbg !71
-  br i1 %44, label %45, label %46, !dbg !72
+  %44 = load i32, i32* %5, align 4, !dbg !71
+  %45 = icmp sgt i32 %43, %44, !dbg !72
+  br i1 %45, label %46, label %47, !dbg !73
 
-45:                                               ; preds = %42
-  store i32 0, i32* %3, align 4, !dbg !73
-  store i32 0, i32* %4, align 4, !dbg !75
-  br label %46, !dbg !76
+46:                                               ; preds = %42
+  store i32 0, i32* %3, align 4, !dbg !74
+  store i32 0, i32* %4, align 4, !dbg !76
+  br label %47, !dbg !77
 
-46:                                               ; preds = %45, %42
-  ret i32 0, !dbg !77
+47:                                               ; preds = %46, %42
+  ret i32 0, !dbg !78
 }
 
 ; Function Attrs: nounwind readnone speculatable willreturn
@@ -104,47 +105,47 @@ declare dso_local void @klee_make_symbolic(i8*, i64, i8*) #3
 declare dso_local void @klee_make_pse_symbolic(i8*, i64, i8*, float*, float*) #3
 
 ; Function Attrs: noinline nounwind uwtable
-define dso_local i8* @memcpy(i8* %0, i8* %1, i64 %2) #4 !dbg !78 {
+define dso_local i8* @memcpy(i8* %0, i8* %1, i64 %2) #4 !dbg !79 {
   %4 = alloca i8*, align 8
   %5 = alloca i8*, align 8
   %6 = alloca i64, align 8
   %7 = alloca i8*, align 8
   %8 = alloca i8*, align 8
   store i8* %0, i8** %4, align 8
-  call void @llvm.dbg.declare(metadata i8** %4, metadata !88, metadata !DIExpression()), !dbg !89
+  call void @llvm.dbg.declare(metadata i8** %4, metadata !89, metadata !DIExpression()), !dbg !90
   store i8* %1, i8** %5, align 8
-  call void @llvm.dbg.declare(metadata i8** %5, metadata !90, metadata !DIExpression()), !dbg !91
+  call void @llvm.dbg.declare(metadata i8** %5, metadata !91, metadata !DIExpression()), !dbg !92
   store i64 %2, i64* %6, align 8
-  call void @llvm.dbg.declare(metadata i64* %6, metadata !92, metadata !DIExpression()), !dbg !93
-  call void @llvm.dbg.declare(metadata i8** %7, metadata !94, metadata !DIExpression()), !dbg !97
-  %9 = load i8*, i8** %4, align 8, !dbg !98
-  store i8* %9, i8** %7, align 8, !dbg !97
-  call void @llvm.dbg.declare(metadata i8** %8, metadata !99, metadata !DIExpression()), !dbg !102
-  %10 = load i8*, i8** %5, align 8, !dbg !103
-  store i8* %10, i8** %8, align 8, !dbg !102
-  br label %11, !dbg !104
+  call void @llvm.dbg.declare(metadata i64* %6, metadata !93, metadata !DIExpression()), !dbg !94
+  call void @llvm.dbg.declare(metadata i8** %7, metadata !95, metadata !DIExpression()), !dbg !98
+  %9 = load i8*, i8** %4, align 8, !dbg !99
+  store i8* %9, i8** %7, align 8, !dbg !98
+  call void @llvm.dbg.declare(metadata i8** %8, metadata !100, metadata !DIExpression()), !dbg !103
+  %10 = load i8*, i8** %5, align 8, !dbg !104
+  store i8* %10, i8** %8, align 8, !dbg !103
+  br label %11, !dbg !105
 
 11:                                               ; preds = %15, %3
-  %12 = load i64, i64* %6, align 8, !dbg !105
-  %13 = add i64 %12, -1, !dbg !105
-  store i64 %13, i64* %6, align 8, !dbg !105
-  %14 = icmp ugt i64 %12, 0, !dbg !106
-  br i1 %14, label %15, label %21, !dbg !104
+  %12 = load i64, i64* %6, align 8, !dbg !106
+  %13 = add i64 %12, -1, !dbg !106
+  store i64 %13, i64* %6, align 8, !dbg !106
+  %14 = icmp ugt i64 %12, 0, !dbg !107
+  br i1 %14, label %15, label %21, !dbg !105
 
 15:                                               ; preds = %11
-  %16 = load i8*, i8** %8, align 8, !dbg !107
-  %17 = getelementptr inbounds i8, i8* %16, i32 1, !dbg !107
-  store i8* %17, i8** %8, align 8, !dbg !107
-  %18 = load i8, i8* %16, align 1, !dbg !108
-  %19 = load i8*, i8** %7, align 8, !dbg !109
-  %20 = getelementptr inbounds i8, i8* %19, i32 1, !dbg !109
-  store i8* %20, i8** %7, align 8, !dbg !109
-  store i8 %18, i8* %19, align 1, !dbg !110
-  br label %11, !dbg !104, !llvm.loop !111
+  %16 = load i8*, i8** %8, align 8, !dbg !108
+  %17 = getelementptr inbounds i8, i8* %16, i32 1, !dbg !108
+  store i8* %17, i8** %8, align 8, !dbg !108
+  %18 = load i8, i8* %16, align 1, !dbg !109
+  %19 = load i8*, i8** %7, align 8, !dbg !110
+  %20 = getelementptr inbounds i8, i8* %19, i32 1, !dbg !110
+  store i8* %20, i8** %7, align 8, !dbg !110
+  store i8 %18, i8* %19, align 1, !dbg !111
+  br label %11, !dbg !105, !llvm.loop !112
 
 21:                                               ; preds = %11
-  %22 = load i8*, i8** %4, align 8, !dbg !112
-  ret i8* %22, !dbg !113
+  %22 = load i8*, i8** %4, align 8, !dbg !113
+  ret i8* %22, !dbg !114
 }
 
 attributes #0 = { noinline norecurse uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
@@ -228,46 +229,47 @@ attributes #4 = { noinline nounwind uwtable "correctly-rounded-divide-sqrt-fp-ma
 !68 = !DILocation(line: 25, column: 5, scope: !65)
 !69 = !DILocation(line: 28, column: 6, scope: !70)
 !70 = distinct !DILexicalBlock(scope: !10, file: !1, line: 28, column: 6)
-!71 = !DILocation(line: 28, column: 8, scope: !70)
-!72 = !DILocation(line: 28, column: 6, scope: !10)
-!73 = !DILocation(line: 30, column: 5, scope: !74)
-!74 = distinct !DILexicalBlock(scope: !70, file: !1, line: 29, column: 2)
-!75 = !DILocation(line: 31, column: 5, scope: !74)
-!76 = !DILocation(line: 32, column: 2, scope: !74)
-!77 = !DILocation(line: 34, column: 2, scope: !10)
-!78 = distinct !DISubprogram(name: "memcpy", scope: !79, file: !79, line: 12, type: !80, scopeLine: 12, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !3, retainedNodes: !2)
-!79 = !DIFile(filename: "klee/runtime/Freestanding/memcpy.c", directory: "/home/mlc6555")
-!80 = !DISubroutineType(types: !81)
-!81 = !{!82, !82, !83, !85}
-!82 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: null, size: 64)
-!83 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !84, size: 64)
-!84 = !DIDerivedType(tag: DW_TAG_const_type, baseType: null)
-!85 = !DIDerivedType(tag: DW_TAG_typedef, name: "size_t", file: !86, line: 46, baseType: !87)
-!86 = !DIFile(filename: "/usr/lib/llvm-9/lib/clang/9.0.1/include/stddef.h", directory: "")
-!87 = !DIBasicType(name: "long unsigned int", size: 64, encoding: DW_ATE_unsigned)
-!88 = !DILocalVariable(name: "destaddr", arg: 1, scope: !78, file: !79, line: 12, type: !82)
-!89 = !DILocation(line: 12, column: 20, scope: !78)
-!90 = !DILocalVariable(name: "srcaddr", arg: 2, scope: !78, file: !79, line: 12, type: !83)
-!91 = !DILocation(line: 12, column: 42, scope: !78)
-!92 = !DILocalVariable(name: "len", arg: 3, scope: !78, file: !79, line: 12, type: !85)
-!93 = !DILocation(line: 12, column: 58, scope: !78)
-!94 = !DILocalVariable(name: "dest", scope: !78, file: !79, line: 13, type: !95)
-!95 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !96, size: 64)
-!96 = !DIBasicType(name: "char", size: 8, encoding: DW_ATE_signed_char)
-!97 = !DILocation(line: 13, column: 9, scope: !78)
-!98 = !DILocation(line: 13, column: 16, scope: !78)
-!99 = !DILocalVariable(name: "src", scope: !78, file: !79, line: 14, type: !100)
-!100 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101, size: 64)
-!101 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !96)
-!102 = !DILocation(line: 14, column: 15, scope: !78)
-!103 = !DILocation(line: 14, column: 21, scope: !78)
-!104 = !DILocation(line: 16, column: 3, scope: !78)
-!105 = !DILocation(line: 16, column: 13, scope: !78)
-!106 = !DILocation(line: 16, column: 16, scope: !78)
-!107 = !DILocation(line: 17, column: 19, scope: !78)
-!108 = !DILocation(line: 17, column: 15, scope: !78)
-!109 = !DILocation(line: 17, column: 10, scope: !78)
-!110 = !DILocation(line: 17, column: 13, scope: !78)
-!111 = distinct !{!111, !104, !107}
-!112 = !DILocation(line: 18, column: 10, scope: !78)
-!113 = !DILocation(line: 18, column: 3, scope: !78)
+!71 = !DILocation(line: 28, column: 10, scope: !70)
+!72 = !DILocation(line: 28, column: 8, scope: !70)
+!73 = !DILocation(line: 28, column: 6, scope: !10)
+!74 = !DILocation(line: 30, column: 5, scope: !75)
+!75 = distinct !DILexicalBlock(scope: !70, file: !1, line: 29, column: 2)
+!76 = !DILocation(line: 31, column: 5, scope: !75)
+!77 = !DILocation(line: 32, column: 2, scope: !75)
+!78 = !DILocation(line: 34, column: 2, scope: !10)
+!79 = distinct !DISubprogram(name: "memcpy", scope: !80, file: !80, line: 12, type: !81, scopeLine: 12, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !3, retainedNodes: !2)
+!80 = !DIFile(filename: "klee/runtime/Freestanding/memcpy.c", directory: "/home/mlc6555")
+!81 = !DISubroutineType(types: !82)
+!82 = !{!83, !83, !84, !86}
+!83 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: null, size: 64)
+!84 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !85, size: 64)
+!85 = !DIDerivedType(tag: DW_TAG_const_type, baseType: null)
+!86 = !DIDerivedType(tag: DW_TAG_typedef, name: "size_t", file: !87, line: 46, baseType: !88)
+!87 = !DIFile(filename: "/usr/lib/llvm-9/lib/clang/9.0.1/include/stddef.h", directory: "")
+!88 = !DIBasicType(name: "long unsigned int", size: 64, encoding: DW_ATE_unsigned)
+!89 = !DILocalVariable(name: "destaddr", arg: 1, scope: !79, file: !80, line: 12, type: !83)
+!90 = !DILocation(line: 12, column: 20, scope: !79)
+!91 = !DILocalVariable(name: "srcaddr", arg: 2, scope: !79, file: !80, line: 12, type: !84)
+!92 = !DILocation(line: 12, column: 42, scope: !79)
+!93 = !DILocalVariable(name: "len", arg: 3, scope: !79, file: !80, line: 12, type: !86)
+!94 = !DILocation(line: 12, column: 58, scope: !79)
+!95 = !DILocalVariable(name: "dest", scope: !79, file: !80, line: 13, type: !96)
+!96 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !97, size: 64)
+!97 = !DIBasicType(name: "char", size: 8, encoding: DW_ATE_signed_char)
+!98 = !DILocation(line: 13, column: 9, scope: !79)
+!99 = !DILocation(line: 13, column: 16, scope: !79)
+!100 = !DILocalVariable(name: "src", scope: !79, file: !80, line: 14, type: !101)
+!101 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !102, size: 64)
+!102 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !97)
+!103 = !DILocation(line: 14, column: 15, scope: !79)
+!104 = !DILocation(line: 14, column: 21, scope: !79)
+!105 = !DILocation(line: 16, column: 3, scope: !79)
+!106 = !DILocation(line: 16, column: 13, scope: !79)
+!107 = !DILocation(line: 16, column: 16, scope: !79)
+!108 = !DILocation(line: 17, column: 19, scope: !79)
+!109 = !DILocation(line: 17, column: 15, scope: !79)
+!110 = !DILocation(line: 17, column: 10, scope: !79)
+!111 = !DILocation(line: 17, column: 13, scope: !79)
+!112 = distinct !{!112, !105, !108}
+!113 = !DILocation(line: 18, column: 10, scope: !79)
+!114 = !DILocation(line: 18, column: 3, scope: !79)

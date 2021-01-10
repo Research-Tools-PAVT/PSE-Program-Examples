@@ -3,6 +3,8 @@ import os
 import sys
 import json
 from PTree import *
+from Parser import *
+from sexpdata import loads, dumps
 import uuid
 
 id = 0
@@ -125,7 +127,8 @@ for pathIds, nodes in pathMap.items():
         data = ' '.join(getLabel(temp).strip().split("\n"))
         collection["treeNode"] = temp
         if data is not None:
-            collection["sExpr"] = data
+            collection["KLEE-Expr"] = data
+            collection["Parse"] = collectRecursive(loads(data))
             path.append(collection)
         else:
             path.append(collection)
@@ -133,10 +136,6 @@ for pathIds, nodes in pathMap.items():
     paths[f"Path {pathIds}"] = path
 
 Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
-
-# Print the paths
-for k, v in paths.items():
-    print(f"Path : {k} -> {[x for x in v]}")
 
 with open(f"{name}_processed/{name}_processed.json", 'w',
           encoding='utf-8') as f:

@@ -1,0 +1,233 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "20dfe579-808a-40a4-9301-0ba126a4d9fe"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "uid": "ab4f5144-3158-4731-82c8-81740903ef7e"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "20dfe579-808a-40a4-9301-0ba126a4d9fe"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "9",
+                "uid": "e4c48622-afa0-46f1-b11f-6f6adbd9e7e0"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        }
+    ],
+    "Path 3": [
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "61ca789d-c5e1-4132-977b-22a1379f01e7"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "64781ffe-6028-4c9d-9a5c-e5b76da58160"
+            },
+            "predicate": "(Eq false (Slt 800 (ReadLSB w32 0 b_pse_sym)))",
+            "parse": {
+                "action": "Eq",
+                "optype": "CompareOp",
+                "bool": "false",
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "800",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "b_pse_sym"
+                    }
+                }
+            },
+            "imap": [
+                [
+                    "b_pse_sym"
+                ]
+            ],
+            "vars": [
+                "b_pse_sym"
+            ]
+        }
+    ],
+    "Path 4": [
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "61ca789d-c5e1-4132-977b-22a1379f01e7"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "995c69de-8260-4a3e-906b-3ed3e9caa69c"
+            },
+            "predicate": "(Slt 800 (ReadLSB w32 0 b_pse_sym))",
+            "parse": {
+                "action": "Slt",
+                "optype": "CompareOp",
+                "const": "800",
+                "right": {
+                    "action": "ReadLSB",
+                    "optype": "MacroOp",
+                    "size": "w32",
+                    "const": "0",
+                    "var": "b_pse_sym"
+                }
+            },
+            "imap": [
+                [
+                    "b_pse_sym"
+                ]
+            ],
+            "vars": [
+                "b_pse_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "a50902ff-ee92-4b3c-9b4c-4322e07408aa"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        }
+    ],
+    "Path 5": [
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "61ca789d-c5e1-4132-977b-22a1379f01e7"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "995c69de-8260-4a3e-906b-3ed3e9caa69c"
+            },
+            "predicate": "(Slt 800 (ReadLSB w32 0 b_pse_sym))",
+            "parse": {
+                "action": "Slt",
+                "optype": "CompareOp",
+                "const": "800",
+                "right": {
+                    "action": "ReadLSB",
+                    "optype": "MacroOp",
+                    "size": "w32",
+                    "const": "0",
+                    "var": "b_pse_sym"
+                }
+            },
+            "imap": [
+                [
+                    "b_pse_sym"
+                ]
+            ],
+            "vars": [
+                "b_pse_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "701fef51-b12d-48bb-979d-c5a2a0d2011c"
+            },
+            "predicate": "Unsat",
+            "parse": {
+                "action": "Unsat",
+                "optype": null
+            },
+            "imap": [
+                []
+            ],
+            "vars": []
+        }
+    ]
+}

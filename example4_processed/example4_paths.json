@@ -2,1089 +2,405 @@
     "Path 1": [
         {
             "treeNode": {
-                "nodeId": "6",
-                "uid": "5077b103-22fd-4c36-99d5-e46911b9e6b4"
-            },
-            "KLEE-Expr": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "main_action": "Add",
-                    "size": "w32",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_3": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    }
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
                 "nodeId": "3",
-                "uid": "3db61687-227e-4179-a6f0-59a06447f934"
+                "uid": "6f8dc89e-9295-4cd2-8600-ff0f48615a9f"
             },
-            "KLEE-Expr": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
-            "Parse": {
-                "main_action": "Eq",
+            "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
+            "parse": {
+                "action": "Eq",
+                "optype": "CompareOp",
                 "bool": "false",
-                "arg_2": {
-                    "main_action": "And",
-                    "arg_1": {
-                        "main_action": "Slt",
+                "right": {
+                    "action": "And",
+                    "optype": "BitwiseOp",
+                    "left": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
                         "const": "0",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
                             "size": "w32",
                             "const": "0",
                             "var": "a_sym"
                         }
                     },
-                    "arg_2": {
-                        "main_action": "Slt",
+                    "right": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
                         "const": "0",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
                             "size": "w32",
                             "const": "0",
                             "var": "c_sym"
                         }
                     }
                 }
-            }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "dfee947f-1472-4bd6-b2e9-5dc1aae281b5"
+            },
+            "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
+            "parse": {
+                "action": "Slt",
+                "optype": "CompareOp",
+                "left": {
+                    "action": "Add",
+                    "optype": "BinaryArithOp",
+                    "size": "w32",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "a_sym"
+                    },
+                    "arg_3": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "b_sym"
+                    }
+                },
+                "right": {
+                    "action": "ReadLSB",
+                    "optype": "MacroOp",
+                    "size": "w32",
+                    "const": "0",
+                    "var": "c_sym"
+                }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
         }
     ],
     "Path 2": [
         {
             "treeNode": {
-                "nodeId": "7",
-                "uid": "214054c5-003d-4853-a9d6-a77236b18914"
-            },
-            "KLEE-Expr": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "main_action": "Add",
-                        "size": "w32",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        },
-                        "arg_3": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "b_sym"
-                        }
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
                 "nodeId": "3",
-                "uid": "3db61687-227e-4179-a6f0-59a06447f934"
+                "uid": "6f8dc89e-9295-4cd2-8600-ff0f48615a9f"
             },
-            "KLEE-Expr": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
-            "Parse": {
-                "main_action": "Eq",
+            "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
+            "parse": {
+                "action": "Eq",
+                "optype": "CompareOp",
                 "bool": "false",
-                "arg_2": {
-                    "main_action": "And",
-                    "arg_1": {
-                        "main_action": "Slt",
+                "right": {
+                    "action": "And",
+                    "optype": "BitwiseOp",
+                    "left": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
                         "const": "0",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
                             "size": "w32",
                             "const": "0",
                             "var": "a_sym"
                         }
                     },
-                    "arg_2": {
-                        "main_action": "Slt",
+                    "right": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
                         "const": "0",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
                             "size": "w32",
                             "const": "0",
                             "var": "c_sym"
                         }
                     }
                 }
-            }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "400b5a70-e14c-424c-ace8-cff9a0c42b71"
+            },
+            "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
+            "parse": {
+                "action": "Eq",
+                "optype": "CompareOp",
+                "bool": "false",
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "left": {
+                        "action": "Add",
+                        "optype": "BinaryArithOp",
+                        "size": "w32",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "a_sym"
+                        },
+                        "arg_3": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "b_sym"
+                        }
+                    },
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "c_sym"
+                    }
+                }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
         }
     ],
     "Path 3": [
         {
             "treeNode": {
-                "nodeId": "8",
-                "uid": "9e7626dd-50fd-4e3a-a256-14d486b5f6a3"
+                "nodeId": "2",
+                "uid": "a5b2e291-d832-4b25-ab44-e1b71f874b86"
             },
-            "KLEE-Expr": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "main_action": "Add",
+            "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
+            "parse": {
+                "action": "And",
+                "optype": "BitwiseOp",
+                "left": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "a_sym"
+                    }
+                },
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "c_sym"
+                    }
+                }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "7507d5df-d978-4055-bca3-2791cade193c"
+            },
+            "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
+            "parse": {
+                "action": "Slt",
+                "optype": "CompareOp",
+                "left": {
+                    "action": "Add",
+                    "optype": "BinaryArithOp",
                     "size": "w32",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
                         "size": "w32",
                         "const": "0",
                         "var": "a_sym"
                     },
                     "arg_3": {
-                        "sub_action": "ReadLSB",
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
                         "size": "w32",
                         "const": "0",
                         "var": "b_sym"
                     }
                 },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
+                "right": {
+                    "action": "ReadLSB",
+                    "optype": "MacroOp",
                     "size": "w32",
                     "const": "0",
                     "var": "c_sym"
                 }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "5",
-                "uid": "8e4c1b9c-3347-4dd3-9e09-8fa1d56d342a"
             },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
+            "imap": [
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
         }
     ],
     "Path 4": [
         {
             "treeNode": {
-                "nodeId": "9",
-                "uid": "2e315465-8b85-405f-90ac-a8b646b37424"
+                "nodeId": "2",
+                "uid": "a5b2e291-d832-4b25-ab44-e1b71f874b86"
             },
-            "KLEE-Expr": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "main_action": "Add",
+            "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
+            "parse": {
+                "action": "And",
+                "optype": "BitwiseOp",
+                "left": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
                         "size": "w32",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
+                        "const": "0",
+                        "var": "a_sym"
+                    }
+                },
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "c_sym"
+                    }
+                }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "f0d9c39e-5067-4ef4-ba6e-2ab77c12b3e2"
+            },
+            "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
+            "parse": {
+                "action": "Eq",
+                "optype": "CompareOp",
+                "bool": "false",
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "left": {
+                        "action": "Add",
+                        "optype": "BinaryArithOp",
+                        "size": "w32",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
                             "size": "w32",
                             "const": "0",
                             "var": "a_sym"
                         },
                         "arg_3": {
-                            "sub_action": "ReadLSB",
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
                             "size": "w32",
                             "const": "0",
                             "var": "b_sym"
                         }
                     },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
                         "size": "w32",
                         "const": "0",
                         "var": "c_sym"
                     }
                 }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "5",
-                "uid": "8e4c1b9c-3347-4dd3-9e09-8fa1d56d342a"
             },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        }
-    ],
-    "Path 5": [
-        {
-            "treeNode": {
-                "nodeId": "14",
-                "uid": "8ca23d28-c3cb-4a2f-b7f9-e0b1876945eb"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 d_pse_sym) (Mul w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                },
-                "arg_2": {
-                    "main_action": "Mul",
-                    "size": "w32",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_3": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "12",
-                "uid": "2f47669b-28ab-4e9c-9059-0b4a6f9e8eaa"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 b_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "b_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "10",
-                "uid": "376f2e76-31f7-4a38-9d3d-585706d65cb9"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 a_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "a_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "175d9ba6-2e82-439c-bfa7-63a224087489"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        }
-    ],
-    "Path 6": [
-        {
-            "treeNode": {
-                "nodeId": "15",
-                "uid": "e9c5a595-f83a-4092-b87a-93bec295edff"
-            },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 d_pse_sym) (Mul w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym))))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    },
-                    "arg_2": {
-                        "main_action": "Mul",
-                        "size": "w32",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        },
-                        "arg_3": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "b_sym"
-                        }
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "12",
-                "uid": "2f47669b-28ab-4e9c-9059-0b4a6f9e8eaa"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 b_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "b_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "10",
-                "uid": "376f2e76-31f7-4a38-9d3d-585706d65cb9"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 a_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "a_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "175d9ba6-2e82-439c-bfa7-63a224087489"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        }
-    ],
-    "Path 7": [
-        {
-            "treeNode": {
-                "nodeId": "16",
-                "uid": "2a0e9c48-3b38-437f-b3d5-812fbf2e36fa"
-            },
-            "KLEE-Expr": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "main_action": "Add",
-                    "size": "w32",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_3": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    }
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "11",
-                "uid": "09b7612e-1e00-4b9a-9c7d-2f74e518a794"
-            },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 a_sym) (ReadLSB w32 0 d_pse_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "175d9ba6-2e82-439c-bfa7-63a224087489"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        }
-    ],
-    "Path 8": [
-        {
-            "treeNode": {
-                "nodeId": "17",
-                "uid": "804875cb-6eb4-4f79-bc4f-685c9903dfea"
-            },
-            "KLEE-Expr": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "main_action": "Add",
-                        "size": "w32",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        },
-                        "arg_3": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "b_sym"
-                        }
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "11",
-                "uid": "09b7612e-1e00-4b9a-9c7d-2f74e518a794"
-            },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 a_sym) (ReadLSB w32 0 d_pse_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "175d9ba6-2e82-439c-bfa7-63a224087489"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        }
-    ],
-    "Path 9": [
-        {
-            "treeNode": {
-                "nodeId": "18",
-                "uid": "0700330c-6c64-456b-8b35-e5236ca7ecf7"
-            },
-            "KLEE-Expr": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "main_action": "Add",
-                    "size": "w32",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_3": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    }
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "13",
-                "uid": "90b20769-c467-4edb-b78f-9afe0bf321c2"
-            },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 b_sym) (ReadLSB w32 0 d_pse_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "10",
-                "uid": "376f2e76-31f7-4a38-9d3d-585706d65cb9"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 a_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "a_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "175d9ba6-2e82-439c-bfa7-63a224087489"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        }
-    ],
-    "Path 10": [
-        {
-            "treeNode": {
-                "nodeId": "19",
-                "uid": "4af2ffe5-9024-460f-a134-b735f7842d9e"
-            },
-            "KLEE-Expr": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "main_action": "Add",
-                        "size": "w32",
-                        "arg_2": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        },
-                        "arg_3": {
-                            "sub_action": "ReadLSB",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "b_sym"
-                        }
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "13",
-                "uid": "90b20769-c467-4edb-b78f-9afe0bf321c2"
-            },
-            "KLEE-Expr": "(Eq false (Slt (ReadLSB w32 0 b_sym) (ReadLSB w32 0 d_pse_sym)))",
-            "Parse": {
-                "main_action": "Eq",
-                "bool": "false",
-                "arg_2": {
-                    "main_action": "Slt",
-                    "arg_1": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    },
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "d_pse_sym"
-                    }
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "10",
-                "uid": "376f2e76-31f7-4a38-9d3d-585706d65cb9"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 a_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "a_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "175d9ba6-2e82-439c-bfa7-63a224087489"
-            },
-            "KLEE-Expr": "(Slt (ReadLSB w32 0 c_sym) (ReadLSB w32 0 d_pse_sym))",
-            "Parse": {
-                "main_action": "Slt",
-                "arg_1": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                },
-                "arg_2": {
-                    "sub_action": "ReadLSB",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "d_pse_sym"
-                }
-            }
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "e4d8db0f-e052-4fda-b6fe-1ced071a9e92"
-            },
-            "KLEE-Expr": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "Parse": {
-                "main_action": "And",
-                "arg_1": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "arg_2": {
-                    "main_action": "Slt",
-                    "const": "0",
-                    "arg_2": {
-                        "sub_action": "ReadLSB",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            }
+            "imap": [
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
         }
     ]
 }

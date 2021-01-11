@@ -108,9 +108,3 @@ int main()
   klee_make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", _distribution, _probabilities);
   return montyhall(door_switch);
 }
-
-/*
-while temp.parent is not None:
-    print(temp.data[0])
-    temp = temp.parent
-*/

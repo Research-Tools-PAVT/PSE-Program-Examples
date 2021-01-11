@@ -10,77 +10,23 @@ digraph ExecutionTree {
 (ReadLSB w32 0 a_sym))
 (Slt 0
 (ReadLSB w32 0 c_sym))))" color=red]
-	2 -> 4 [label="(Slt
-(ReadLSB w32 0 c_sym)
-(ReadLSB w32 0 d_pse_sym))" color=green]
-	2 -> 5 [label="(Eq false
-(Slt
-(ReadLSB w32 0 c_sym)
-(ReadLSB w32 0 d_pse_sym)))" color=red]
-	3 -> 6 [label="(Slt
+	2 -> 6 [label="(Slt
 (Add w32
 (ReadLSB w32 0 a_sym)
 (ReadLSB w32 0 b_sym))
 (ReadLSB w32 0 c_sym))" color=green]
-	3 -> 7 [label="(Eq false
+	2 -> 7 [label="(Eq false
 (Slt
 (Add w32
 (ReadLSB w32 0 a_sym)
 (ReadLSB w32 0 b_sym))
 (ReadLSB w32 0 c_sym)))" color=red]
-	4 -> 10 [label="(Slt
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 d_pse_sym))" color=green]
-	4 -> 11 [label="(Eq false
-(Slt
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 d_pse_sym)))" color=red]
-	5 -> 8 [label="(Slt
+	3 -> 4 [label="(Slt
 (Add w32
 (ReadLSB w32 0 a_sym)
 (ReadLSB w32 0 b_sym))
 (ReadLSB w32 0 c_sym))" color=green]
-	5 -> 9 [label="(Eq false
-(Slt
-(Add w32
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 b_sym))
-(ReadLSB w32 0 c_sym)))" color=red]
-	10 -> 12 [label="(Slt
-(ReadLSB w32 0 b_sym)
-(ReadLSB w32 0 d_pse_sym))" color=green]
-	10 -> 13 [label="(Eq false
-(Slt
-(ReadLSB w32 0 b_sym)
-(ReadLSB w32 0 d_pse_sym)))" color=red]
-	11 -> 16 [label="(Slt
-(Add w32
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 b_sym))
-(ReadLSB w32 0 c_sym))" color=green]
-	11 -> 17 [label="(Eq false
-(Slt
-(Add w32
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 b_sym))
-(ReadLSB w32 0 c_sym)))" color=red]
-	12 -> 14 [label="(Slt
-(ReadLSB w32 0 d_pse_sym)
-(Mul w32
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 b_sym)))" color=green]
-	12 -> 15 [label="(Eq false
-(Slt
-(ReadLSB w32 0 d_pse_sym)
-(Mul w32
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 b_sym))))" color=red]
-	13 -> 18 [label="(Slt
-(Add w32
-(ReadLSB w32 0 a_sym)
-(ReadLSB w32 0 b_sym))
-(ReadLSB w32 0 c_sym))" color=green]
-	13 -> 19 [label="(Eq false
+	3 -> 5 [label="(Eq false
 (Slt
 (Add w32
 (ReadLSB w32 0 a_sym)

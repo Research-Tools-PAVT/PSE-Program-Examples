@@ -24,29 +24,22 @@ int main(void)
   klee_make_pse_symbolic(&b, sizeof(b), "b_pse_sym", _distribution2, _probabilities2); // PSE Variable
   klee_make_symbolic(&c, sizeof(c), "c_sym");                                          // ForAll Variable
 
-  if ((a > b + c) && a >= 90)
+  if (a > b + c && a >= 90)
   {
     t = a + b;
     a = b + c;
     b = a - c;
     assert(a > b); // COMMENT Must always fail
-    klee_dump_symbolic_details(&t, "t");
-    klee_dump_symbolic_details(&a, "a");
-    klee_dump_symbolic_details(&b, "b");
-    klee_dump_kquery_state();
   }
   else if (b > 800)
   {
     a = b - c;
     b = a + c;
-    klee_dump_symbolic_details(&b, "b");
-    klee_dump_symbolic_details(&t, "t");
     assert(b >= a); // COMMENT Must always fail
   }
   else
   {
     assert(1);
-    klee_dump_kquery_state();
   }
 
   return 0;

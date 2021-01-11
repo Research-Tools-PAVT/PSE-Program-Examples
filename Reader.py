@@ -69,8 +69,8 @@ for elems in results:
         else:
             pass
 
-        trueExpr = elems["Branch Predicate"]
-        falseExpr = elems["Negate Predicate"]
+        trueExpr = elems.get("Branch Predicate", "Unsat")
+        falseExpr = elems.get("Negate Predicate", "Unsat")
 
         node.edges.append(
             ExecutionTreeEdge(node,
@@ -127,13 +127,19 @@ for pathIds, nodes in pathMap.items():
         data = ' '.join(getLabel(temp).strip().split("\n"))
         collection["treeNode"] = temp
         if data is not None:
-            collection["KLEE-Expr"] = data
-            collection["Parse"] = collectRecursive(loads(data))
+            parsedData = loads(data)
+            collection["predicate"] = data
+            collection["parse"] = collectRecursive(parsedData)
+            collection["imap"] = [processExpressionImap(parsedData)]
+            collection["vars"] = flatten(findVars(parsedData))
             path.append(collection)
         else:
             path.append(collection)
         temp = findNext(temp)
     paths[f"Path {pathIds}"] = path
+
+for pathIds, path in paths.items():
+    path.sort(key=lambda x: int(x["treeNode"]["nodeId"]), reverse=False)
 
 Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
 

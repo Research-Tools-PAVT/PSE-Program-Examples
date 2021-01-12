@@ -1,57 +1,72 @@
 
-State Id : 1, New Query : at montyhall.cpp:51 5 --> 
+State Id : 1, New Query : at montyhall.cpp:48 5 --> 
 
 array car_door_sym[4] : w32 -> w8 = symbolic
 array choice_pse_var_sym[4] : w32 -> w8 = symbolic
-array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
-(query [(Eq false
-             (Eq 1
-                 (ReadLSB w32 0 car_door_sym)))
-         (Eq false
-             (Eq 1
-                 (ReadLSB w32 0 choice_pse_var_sym)))
-         (Extract 0 (ZExt w8 (Extract 0 (Read w8 0 door_switch_pse_var_sym))))]
+array door_switch_pse_var_sym[4] : w32 -> w8 = symbolic
+(query [(Sle 0
+              N0:(ReadLSB w32 0 door_switch_pse_var_sym))
+         (Sle N0 1)
+         (Sle 0
+              N1:(ReadLSB w32 0 choice_pse_var_sym))
+         (Sle N1 3)
+         (Sle 0
+              N2:(ReadLSB w32 0 car_door_sym))
+         (Sle N2 3)
+         (Eq false (Eq 1 N2))
+         (Eq false (Eq 1 N1))
+         (Extract 0 (ZExt w8 (Eq false (Eq 0 N0))))]
         false)
 
 
-State Id : 2, New Query : at montyhall.cpp:51 5 --> 
+State Id : 2, New Query : at montyhall.cpp:48 5 --> 
 
 array car_door_sym[4] : w32 -> w8 = symbolic
 array choice_pse_var_sym[4] : w32 -> w8 = symbolic
-array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
-(query [(Eq false
-             (And (Eq false
-                      (Eq 1
-                          N0:(ReadLSB w32 0 car_door_sym)))
-                  (Eq false
-                      (Eq 1
-                          N1:(ReadLSB w32 0 choice_pse_var_sym)))))
-         (Eq false (Eq 2 N0))
+array door_switch_pse_var_sym[4] : w32 -> w8 = symbolic
+(query [(Sle 0
+              N0:(ReadLSB w32 0 door_switch_pse_var_sym))
+         (Sle N0 1)
+         (Sle 0
+              N1:(ReadLSB w32 0 choice_pse_var_sym))
+         (Sle N1 3)
+         (Sle 0
+              N2:(ReadLSB w32 0 car_door_sym))
+         (Sle N2 3)
+         (Eq false
+             (And (Eq false (Eq 1 N2))
+                  (Eq false (Eq 1 N1))))
+         (Eq false (Eq 2 N2))
          (Eq false (Eq 2 N1))
-         (Extract 0 (ZExt w8 (Extract 0 (Read w8 0 door_switch_pse_var_sym))))]
+         (Extract 0 (ZExt w8 (Eq false (Eq 0 N0))))]
         false)
 
 
-State Id : 3, New Query : at montyhall.cpp:51 5 --> 
+State Id : 3, New Query : at montyhall.cpp:48 5 --> 
 
 array car_door_sym[4] : w32 -> w8 = symbolic
 array choice_pse_var_sym[4] : w32 -> w8 = symbolic
-array door_switch_pse_var_sym[1] : w32 -> w8 = symbolic
-(query [(Eq false
-             (And (Eq false
-                      (Eq 1
-                          N0:(ReadLSB w32 0 car_door_sym)))
-                  (Eq false
-                      (Eq 1
-                          N1:(ReadLSB w32 0 choice_pse_var_sym)))))
+array door_switch_pse_var_sym[4] : w32 -> w8 = symbolic
+(query [(Sle 0
+              N0:(ReadLSB w32 0 door_switch_pse_var_sym))
+         (Sle N0 1)
+         (Sle 0
+              N1:(ReadLSB w32 0 choice_pse_var_sym))
+         (Sle N1 3)
+         (Sle 0
+              N2:(ReadLSB w32 0 car_door_sym))
+         (Sle N2 3)
          (Eq false
-             (And (Eq false (Eq 2 N0))
+             (And (Eq false (Eq 1 N2))
+                  (Eq false (Eq 1 N1))))
+         (Eq false
+             (And (Eq false (Eq 2 N2))
                   (Eq false (Eq 2 N1))))
-         (Extract 0 (ZExt w8 (Extract 0 (Read w8 0 door_switch_pse_var_sym))))]
+         (Extract 0 (ZExt w8 (Eq false (Eq 0 N0))))]
         false)
 
 
-Location : montyhall.cpp:79 9
+Location : montyhall.cpp:76 9
 Given Name : choice_branch
 Variable Type : choice_pse_var_sym (Symbolic)
 2

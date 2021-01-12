@@ -2,89 +2,161 @@
     "Path 1": [
         {
             "treeNode": {
-                "nodeId": "2",
-                "uid": "20dfe579-808a-40a4-9301-0ba126a4d9fe"
+                "nodeId": "3",
+                "uid": "0392a8c8-efaa-4435-b146-0f781fb51636"
             },
-            "predicate": "Unsat",
+            "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
             "parse": {
-                "action": "Unsat",
-                "optype": null
+                "action": "Eq",
+                "optype": "CompareOp",
+                "bool": "false",
+                "right": {
+                    "action": "And",
+                    "optype": "BitwiseOp",
+                    "left": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
+                        "const": "0",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "a_sym"
+                        }
+                    },
+                    "right": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
+                        "const": "0",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "c_sym"
+                        }
+                    }
+                }
             },
             "imap": [
-                []
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
             ],
-            "vars": []
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
         },
         {
             "treeNode": {
-                "nodeId": "8",
-                "uid": "ab4f5144-3158-4731-82c8-81740903ef7e"
+                "nodeId": "4",
+                "uid": "17015e45-b7b2-43c3-8f58-60322b170e5e"
             },
-            "predicate": "Unsat",
+            "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
             "parse": {
-                "action": "Unsat",
-                "optype": null
+                "action": "Slt",
+                "optype": "CompareOp",
+                "left": {
+                    "action": "Add",
+                    "optype": "BinaryArithOp",
+                    "size": "w32",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "a_sym"
+                    },
+                    "arg_3": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "b_sym"
+                    }
+                },
+                "right": {
+                    "action": "ReadLSB",
+                    "optype": "MacroOp",
+                    "size": "w32",
+                    "const": "0",
+                    "var": "c_sym"
+                }
             },
             "imap": [
-                []
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
             ],
-            "vars": []
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
         }
     ],
     "Path 2": [
         {
             "treeNode": {
-                "nodeId": "2",
-                "uid": "20dfe579-808a-40a4-9301-0ba126a4d9fe"
-            },
-            "predicate": "Unsat",
-            "parse": {
-                "action": "Unsat",
-                "optype": null
-            },
-            "imap": [
-                []
-            ],
-            "vars": []
-        },
-        {
-            "treeNode": {
-                "nodeId": "9",
-                "uid": "e4c48622-afa0-46f1-b11f-6f6adbd9e7e0"
-            },
-            "predicate": "Unsat",
-            "parse": {
-                "action": "Unsat",
-                "optype": null
-            },
-            "imap": [
-                []
-            ],
-            "vars": []
-        }
-    ],
-    "Path 3": [
-        {
-            "treeNode": {
                 "nodeId": "3",
-                "uid": "61ca789d-c5e1-4132-977b-22a1379f01e7"
+                "uid": "0392a8c8-efaa-4435-b146-0f781fb51636"
             },
-            "predicate": "Unsat",
+            "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
             "parse": {
-                "action": "Unsat",
-                "optype": null
+                "action": "Eq",
+                "optype": "CompareOp",
+                "bool": "false",
+                "right": {
+                    "action": "And",
+                    "optype": "BitwiseOp",
+                    "left": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
+                        "const": "0",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "a_sym"
+                        }
+                    },
+                    "right": {
+                        "action": "Slt",
+                        "optype": "CompareOp",
+                        "const": "0",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "c_sym"
+                        }
+                    }
+                }
             },
             "imap": [
-                []
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
             ],
-            "vars": []
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
         },
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "64781ffe-6028-4c9d-9a5c-e5b76da58160"
+                "uid": "e4dd4fb0-bd95-4fec-a36f-c5efe3b226d2"
             },
-            "predicate": "(Eq false (Slt 800 (ReadLSB w32 0 b_pse_sym)))",
+            "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
             "parse": {
                 "action": "Eq",
                 "optype": "CompareOp",
@@ -92,142 +164,243 @@
                 "right": {
                     "action": "Slt",
                     "optype": "CompareOp",
-                    "const": "800",
+                    "left": {
+                        "action": "Add",
+                        "optype": "BinaryArithOp",
+                        "size": "w32",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "a_sym"
+                        },
+                        "arg_3": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "b_sym"
+                        }
+                    },
                     "right": {
                         "action": "ReadLSB",
                         "optype": "MacroOp",
                         "size": "w32",
                         "const": "0",
-                        "var": "b_pse_sym"
+                        "var": "c_sym"
                     }
                 }
             },
             "imap": [
                 [
-                    "b_pse_sym"
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
                 ]
             ],
             "vars": [
-                "b_pse_sym"
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
+        }
+    ],
+    "Path 3": [
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "88722f30-37cd-44cf-bcdd-424f7af75792"
+            },
+            "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
+            "parse": {
+                "action": "And",
+                "optype": "BitwiseOp",
+                "left": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "a_sym"
+                    }
+                },
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "c_sym"
+                    }
+                }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "c_sym"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "8655704c-b1be-4696-b489-8bf193992a7f"
+            },
+            "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
+            "parse": {
+                "action": "Slt",
+                "optype": "CompareOp",
+                "left": {
+                    "action": "Add",
+                    "optype": "BinaryArithOp",
+                    "size": "w32",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "a_sym"
+                    },
+                    "arg_3": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "b_sym"
+                    }
+                },
+                "right": {
+                    "action": "ReadLSB",
+                    "optype": "MacroOp",
+                    "size": "w32",
+                    "const": "0",
+                    "var": "c_sym"
+                }
+            },
+            "imap": [
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
+            ],
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
             ]
         }
     ],
     "Path 4": [
         {
             "treeNode": {
-                "nodeId": "3",
-                "uid": "61ca789d-c5e1-4132-977b-22a1379f01e7"
+                "nodeId": "2",
+                "uid": "88722f30-37cd-44cf-bcdd-424f7af75792"
             },
-            "predicate": "Unsat",
+            "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
             "parse": {
-                "action": "Unsat",
-                "optype": null
-            },
-            "imap": [
-                []
-            ],
-            "vars": []
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "995c69de-8260-4a3e-906b-3ed3e9caa69c"
-            },
-            "predicate": "(Slt 800 (ReadLSB w32 0 b_pse_sym))",
-            "parse": {
-                "action": "Slt",
-                "optype": "CompareOp",
-                "const": "800",
-                "right": {
-                    "action": "ReadLSB",
-                    "optype": "MacroOp",
-                    "size": "w32",
+                "action": "And",
+                "optype": "BitwiseOp",
+                "left": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
                     "const": "0",
-                    "var": "b_pse_sym"
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "a_sym"
+                    }
+                },
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "const": "0",
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "c_sym"
+                    }
                 }
             },
             "imap": [
                 [
-                    "b_pse_sym"
+                    "a_sym",
+                    "c_sym"
                 ]
             ],
             "vars": [
-                "b_pse_sym"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "6",
-                "uid": "a50902ff-ee92-4b3c-9b4c-4322e07408aa"
-            },
-            "predicate": "Unsat",
-            "parse": {
-                "action": "Unsat",
-                "optype": null
-            },
-            "imap": [
-                []
-            ],
-            "vars": []
-        }
-    ],
-    "Path 5": [
-        {
-            "treeNode": {
-                "nodeId": "3",
-                "uid": "61ca789d-c5e1-4132-977b-22a1379f01e7"
-            },
-            "predicate": "Unsat",
-            "parse": {
-                "action": "Unsat",
-                "optype": null
-            },
-            "imap": [
-                []
-            ],
-            "vars": []
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "995c69de-8260-4a3e-906b-3ed3e9caa69c"
-            },
-            "predicate": "(Slt 800 (ReadLSB w32 0 b_pse_sym))",
-            "parse": {
-                "action": "Slt",
-                "optype": "CompareOp",
-                "const": "800",
-                "right": {
-                    "action": "ReadLSB",
-                    "optype": "MacroOp",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "b_pse_sym"
-                }
-            },
-            "imap": [
-                [
-                    "b_pse_sym"
-                ]
-            ],
-            "vars": [
-                "b_pse_sym"
+                "a_sym",
+                "c_sym"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "701fef51-b12d-48bb-979d-c5a2a0d2011c"
+                "uid": "611c6990-1b9a-4c37-9023-9b7d2bd501fc"
             },
-            "predicate": "Unsat",
+            "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
             "parse": {
-                "action": "Unsat",
-                "optype": null
+                "action": "Eq",
+                "optype": "CompareOp",
+                "bool": "false",
+                "right": {
+                    "action": "Slt",
+                    "optype": "CompareOp",
+                    "left": {
+                        "action": "Add",
+                        "optype": "BinaryArithOp",
+                        "size": "w32",
+                        "right": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "a_sym"
+                        },
+                        "arg_3": {
+                            "action": "ReadLSB",
+                            "optype": "MacroOp",
+                            "size": "w32",
+                            "const": "0",
+                            "var": "b_sym"
+                        }
+                    },
+                    "right": {
+                        "action": "ReadLSB",
+                        "optype": "MacroOp",
+                        "size": "w32",
+                        "const": "0",
+                        "var": "c_sym"
+                    }
+                }
             },
             "imap": [
-                []
+                [
+                    "a_sym",
+                    "b_sym",
+                    "c_sym"
+                ]
             ],
-            "vars": []
+            "vars": [
+                "a_sym",
+                "b_sym",
+                "c_sym"
+            ]
         }
     ]
 }

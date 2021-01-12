@@ -1,33 +1,33 @@
 
-State Id : 1, New Query : at montyhall.cpp:51 5 --> 
+State Id : 1, New Query : at montyhall.cpp:48 5 --> 
 
 (set-logic QF_AUFBV )
 (declare-fun car_door_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun choice_pse_var_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun door_switch_pse_var_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
-(assert (and  (and  (=  false (=  (_ bv1 32) (concat  (select  car_door_sym (_ bv3 32) ) (concat  (select  car_door_sym (_ bv2 32) ) (concat  (select  car_door_sym (_ bv1 32) ) (select  car_door_sym (_ bv0 32) ) ) ) ) ) ) (=  false (=  (_ bv1 32) (concat  (select  choice_pse_var_sym (_ bv3 32) ) (concat  (select  choice_pse_var_sym (_ bv2 32) ) (concat  (select  choice_pse_var_sym (_ bv1 32) ) (select  choice_pse_var_sym (_ bv0 32) ) ) ) ) ) ) ) (bvugt ((_ extract 0  0)  ((_ zero_extend 7)  ((_ extract 0  0)  (select  door_switch_pse_var_sym (_ bv0 32) ) ) ) ) (_ bv0 1) ) ) )
+(assert (let ( (?B1 (concat  (select  door_switch_pse_var_sym (_ bv3 32) ) (concat  (select  door_switch_pse_var_sym (_ bv2 32) ) (concat  (select  door_switch_pse_var_sym (_ bv1 32) ) (select  door_switch_pse_var_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  car_door_sym (_ bv3 32) ) (concat  (select  car_door_sym (_ bv2 32) ) (concat  (select  car_door_sym (_ bv1 32) ) (select  car_door_sym (_ bv0 32) ) ) ) ) ) (?B3 (concat  (select  choice_pse_var_sym (_ bv3 32) ) (concat  (select  choice_pse_var_sym (_ bv2 32) ) (concat  (select  choice_pse_var_sym (_ bv1 32) ) (select  choice_pse_var_sym (_ bv0 32) ) ) ) ) ) ) (and  (and  (and  (and  (and  (and  (and  (and  (bvsle  (_ bv0 32) ?B1 ) (bvsle  ?B1 (_ bv1 32) ) ) (bvsle  (_ bv0 32) ?B3 ) ) (bvsle  ?B3 (_ bv3 32) ) ) (bvsle  (_ bv0 32) ?B2 ) ) (bvsle  ?B2 (_ bv3 32) ) ) (=  false (=  (_ bv1 32) ?B2 ) ) ) (=  false (=  (_ bv1 32) ?B3 ) ) ) (bvugt ((_ extract 0  0)  ((_ zero_extend 7)  (ite (=  false (=  (_ bv0 32) ?B1 ) ) (_ bv1 1) (_ bv0 1) ) ) ) (_ bv0 1) ) ) ) )
 (check-sat)
 (exit)
 
 
-State Id : 2, New Query : at montyhall.cpp:51 5 --> 
+State Id : 2, New Query : at montyhall.cpp:48 5 --> 
 
 (set-logic QF_AUFBV )
 (declare-fun car_door_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun choice_pse_var_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun door_switch_pse_var_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
-(assert (let ( (?B1 (concat  (select  car_door_sym (_ bv3 32) ) (concat  (select  car_door_sym (_ bv2 32) ) (concat  (select  car_door_sym (_ bv1 32) ) (select  car_door_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  choice_pse_var_sym (_ bv3 32) ) (concat  (select  choice_pse_var_sym (_ bv2 32) ) (concat  (select  choice_pse_var_sym (_ bv1 32) ) (select  choice_pse_var_sym (_ bv0 32) ) ) ) ) ) ) (and  (and  (and  (=  false (and  (=  false (=  (_ bv1 32) ?B1 ) ) (=  false (=  (_ bv1 32) ?B2 ) ) ) ) (=  false (=  (_ bv2 32) ?B1 ) ) ) (=  false (=  (_ bv2 32) ?B2 ) ) ) (bvugt ((_ extract 0  0)  ((_ zero_extend 7)  ((_ extract 0  0)  (select  door_switch_pse_var_sym (_ bv0 32) ) ) ) ) (_ bv0 1) ) ) ) )
+(assert (let ( (?B1 (concat  (select  door_switch_pse_var_sym (_ bv3 32) ) (concat  (select  door_switch_pse_var_sym (_ bv2 32) ) (concat  (select  door_switch_pse_var_sym (_ bv1 32) ) (select  door_switch_pse_var_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  car_door_sym (_ bv3 32) ) (concat  (select  car_door_sym (_ bv2 32) ) (concat  (select  car_door_sym (_ bv1 32) ) (select  car_door_sym (_ bv0 32) ) ) ) ) ) (?B3 (concat  (select  choice_pse_var_sym (_ bv3 32) ) (concat  (select  choice_pse_var_sym (_ bv2 32) ) (concat  (select  choice_pse_var_sym (_ bv1 32) ) (select  choice_pse_var_sym (_ bv0 32) ) ) ) ) ) ) (and  (and  (and  (and  (and  (and  (and  (and  (and  (bvsle  (_ bv0 32) ?B1 ) (bvsle  ?B1 (_ bv1 32) ) ) (bvsle  (_ bv0 32) ?B3 ) ) (bvsle  ?B3 (_ bv3 32) ) ) (bvsle  (_ bv0 32) ?B2 ) ) (bvsle  ?B2 (_ bv3 32) ) ) (=  false (and  (=  false (=  (_ bv1 32) ?B2 ) ) (=  false (=  (_ bv1 32) ?B3 ) ) ) ) ) (=  false (=  (_ bv2 32) ?B2 ) ) ) (=  false (=  (_ bv2 32) ?B3 ) ) ) (bvugt ((_ extract 0  0)  ((_ zero_extend 7)  (ite (=  false (=  (_ bv0 32) ?B1 ) ) (_ bv1 1) (_ bv0 1) ) ) ) (_ bv0 1) ) ) ) )
 (check-sat)
 (exit)
 
 
-State Id : 3, New Query : at montyhall.cpp:51 5 --> 
+State Id : 3, New Query : at montyhall.cpp:48 5 --> 
 
 (set-logic QF_AUFBV )
 (declare-fun car_door_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun choice_pse_var_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
 (declare-fun door_switch_pse_var_sym () (Array (_ BitVec 32) (_ BitVec 8) ) )
-(assert (let ( (?B1 (concat  (select  car_door_sym (_ bv3 32) ) (concat  (select  car_door_sym (_ bv2 32) ) (concat  (select  car_door_sym (_ bv1 32) ) (select  car_door_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  choice_pse_var_sym (_ bv3 32) ) (concat  (select  choice_pse_var_sym (_ bv2 32) ) (concat  (select  choice_pse_var_sym (_ bv1 32) ) (select  choice_pse_var_sym (_ bv0 32) ) ) ) ) ) ) (and  (and  (=  false (and  (=  false (=  (_ bv1 32) ?B1 ) ) (=  false (=  (_ bv1 32) ?B2 ) ) ) ) (=  false (and  (=  false (=  (_ bv2 32) ?B1 ) ) (=  false (=  (_ bv2 32) ?B2 ) ) ) ) ) (bvugt ((_ extract 0  0)  ((_ zero_extend 7)  ((_ extract 0  0)  (select  door_switch_pse_var_sym (_ bv0 32) ) ) ) ) (_ bv0 1) ) ) ) )
+(assert (let ( (?B1 (concat  (select  door_switch_pse_var_sym (_ bv3 32) ) (concat  (select  door_switch_pse_var_sym (_ bv2 32) ) (concat  (select  door_switch_pse_var_sym (_ bv1 32) ) (select  door_switch_pse_var_sym (_ bv0 32) ) ) ) ) ) (?B2 (concat  (select  car_door_sym (_ bv3 32) ) (concat  (select  car_door_sym (_ bv2 32) ) (concat  (select  car_door_sym (_ bv1 32) ) (select  car_door_sym (_ bv0 32) ) ) ) ) ) (?B3 (concat  (select  choice_pse_var_sym (_ bv3 32) ) (concat  (select  choice_pse_var_sym (_ bv2 32) ) (concat  (select  choice_pse_var_sym (_ bv1 32) ) (select  choice_pse_var_sym (_ bv0 32) ) ) ) ) ) ) (and  (and  (and  (and  (and  (and  (and  (and  (bvsle  (_ bv0 32) ?B1 ) (bvsle  ?B1 (_ bv1 32) ) ) (bvsle  (_ bv0 32) ?B3 ) ) (bvsle  ?B3 (_ bv3 32) ) ) (bvsle  (_ bv0 32) ?B2 ) ) (bvsle  ?B2 (_ bv3 32) ) ) (=  false (and  (=  false (=  (_ bv1 32) ?B2 ) ) (=  false (=  (_ bv1 32) ?B3 ) ) ) ) ) (=  false (and  (=  false (=  (_ bv2 32) ?B2 ) ) (=  false (=  (_ bv2 32) ?B3 ) ) ) ) ) (bvugt ((_ extract 0  0)  ((_ zero_extend 7)  (ite (=  false (=  (_ bv0 32) ?B1 ) ) (_ bv1 1) (_ bv0 1) ) ) ) (_ bv0 1) ) ) ) )
 (check-sat)
 (exit)
 

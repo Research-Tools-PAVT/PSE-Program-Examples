@@ -4,27 +4,24 @@
 
 #include <assert.h>
 #include <klee/klee.h>
-#include <random>
 #include <stdio.h>
+#include <vector>
+#include "PSE.h"
 
 /**
  * switch => door_switch
 */
 bool montyhall(bool door_switch)
 {
-  std::default_random_engine generator;
-  std::uniform_int_distribution<int> distribution(0, 3);
+
+  std::vector<int> car_door_dist = {0, 1, 2, 3};
+  std::vector<int> choice_dist = {0, 1, 2, 3};
 
   int host_door = 0;
-  int car_door = distribution(generator);
-  int choice = distribution(generator);
+  int car_door, choice;
 
-  // No distribution or probabilities here.
-  // acts like a ForAll Variable here.
-  float empty[] = {};
-
-  klee_make_pse_symbolic(&choice, sizeof(choice), "choice_pse_var_sym", empty, empty);
-  klee_make_symbolic(&car_door, sizeof(car_door), "car_door_sym");
+  make_pse_symbolic(&choice, sizeof(choice), "choice_pse_var_sym", choice_dist);
+  make_pse_symbolic(&car_door, sizeof(car_door), "car_door_sym", car_door_dist);
   klee_make_symbolic(&host_door, sizeof(host_door), "host_door_sym");
 
   /**
@@ -100,11 +97,9 @@ bool montyhall(bool door_switch)
 int main()
 {
   int choice = 0;
-  bool door_switch = false;
+  int door_switch = 0;
+  std::vector<int> door_switch_dist = {0, 1};
 
-  float _distribution[] = {0, 1};
-  float _probabilities[] = {0.5, 0.5};
-
-  klee_make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", _distribution, _probabilities);
+  make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", door_switch_dist);
   return montyhall(door_switch);
 }

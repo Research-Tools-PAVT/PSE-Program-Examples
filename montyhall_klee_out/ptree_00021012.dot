@@ -1,0 +1,49 @@
+digraph G {
+	size="10,7.5";
+	ratio=fill;
+	rotate=90;
+	center = "true";
+	node [style="filled",width=.1,height=.1,fontname="Terminus"]
+	edge [arrowsize=.3]
+	n0x55802237be60 [shape=diamond];
+	n0x55802237be60 -> n0x55802260d720 [label=001];
+	n0x55802237be60 -> n0x55802260d840 [label=001];
+	n0x55802260d840 [shape=diamond];
+	n0x55802260d840 -> n0x55802260d6a0 [label=001];
+	n0x55802260d840 -> n0x55802260dd80 [label=001];
+	n0x55802260dd80 [shape=diamond];
+	n0x55802260dd80 -> n0x558022715ce0 [label=001];
+	n0x55802260dd80 -> n0x5580224139e0 [label=001];
+	n0x5580224139e0 [shape=diamond];
+	n0x5580224139e0 -> n0x558022413520 [label=000];
+	n0x5580224139e0 -> n0x5580225dfee0 [label=001];
+	n0x5580225dfee0 [shape=diamond,fillcolor=green];
+	n0x558022413520 [shape=diamond,fillcolor=green];
+	n0x558022715ce0 [shape=diamond,fillcolor=green];
+	n0x55802260d6a0 [shape=diamond];
+	n0x55802260d6a0 -> n0x5580225341a0 [label=001];
+	n0x55802260d6a0 -> n0x5580224948e0 [label=001];
+	n0x5580224948e0 [shape=diamond,fillcolor=green];
+	n0x5580225341a0 [shape=diamond,fillcolor=green];
+	n0x55802260d720 [shape=diamond];
+	n0x55802260d720 -> n0x5580224e6e00 [label=001];
+	n0x55802260d720 -> n0x55802264dc00 [label=001];
+	n0x55802264dc00 [shape=diamond];
+	n0x55802264dc00 -> n0x558022495620 [label=001];
+	n0x55802264dc00 -> n0x558022495ee0 [label=001];
+	n0x558022495ee0 [shape=diamond];
+	n0x558022495ee0 -> n0x5580224e7dc0 [label=001];
+	n0x558022495ee0 -> n0x558022495a20 [label=001];
+	n0x558022495a20 [shape=diamond,fillcolor=green];
+	n0x5580224e7dc0 [shape=diamond,fillcolor=green];
+	n0x558022495620 [shape=diamond];
+	n0x558022495620 -> n0x5580227156a0 [label=001];
+	n0x558022495620 -> n0x558022451a60 [label=001];
+	n0x558022451a60 [shape=diamond,fillcolor=green];
+	n0x5580227156a0 [shape=diamond,fillcolor=green];
+	n0x5580224e6e00 [shape=diamond];
+	n0x5580224e6e00 -> n0x5580225348c0 [label=001];
+	n0x5580224e6e00 -> n0x5580224e74c0 [label=001];
+	n0x5580224e74c0 [shape=diamond,fillcolor=green];
+	n0x5580225348c0 [shape=diamond,fillcolor=green];
+}

@@ -1,7 +1,0 @@
-Error: ASSERTION FAIL: a > b
-File: example2.cpp
-Line: 32
-assembly.ll line: 148
-State: 5
-Stack: 
-	#000000148 in main () at example2.cpp:32

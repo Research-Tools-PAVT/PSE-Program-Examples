@@ -1,47 +1,63 @@
 [
     {
         "File": "example2.cpp",
-        "Line": "27",
-        "Predicate": "17",
+        "Line": "16",
+        "Predicate": "13",
+        "Branch Predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
+        "Negate Predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
         "Current State Id": "1",
         "True KLEE Id": "1",
         "True Generate ID": "2",
         "trueQuery": [
-            "(Sle 90 (ReadLSB w32 0 a_pse_sym))"
+            "(Slt 0 (ReadLSB w32 0 c_sym))"
         ],
         "False KLEE Id": "2",
-        "False Generate ID": "3"
+        "False Generate ID": "3",
+        "falseQuery": []
     },
     {
         "File": "example2.cpp",
-        "Line": "32",
-        "Predicate": "5",
-        "Current State Id": "1",
-        "True KLEE Id": "1",
-        "True Generate ID": "8",
-        "False KLEE Id": "5",
-        "False Generate ID": "9"
+        "Line": "16",
+        "Predicate": "31",
+        "Branch Predicate": "(Slt (ReadLSB w32 0 c_sym) 2880154539)",
+        "Negate Predicate": "(Eq false (Slt (ReadLSB w32 0 c_sym) 2880154539))"
     },
     {
         "File": "example2.cpp",
-        "Line": "34",
-        "Predicate": "12",
-        "Branch Predicate": "(Slt 800 (ReadLSB w32 0 b_pse_sym))",
-        "Negate Predicate": "(Eq false (Slt 800 (ReadLSB w32 0 b_pse_sym)))",
+        "Line": "25",
+        "Predicate": "7",
+        "Branch Predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
+        "Negate Predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
         "Current State Id": "2",
         "True KLEE Id": "2",
         "True Generate ID": "4",
+        "trueQuery": [
+            "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))"
+        ],
         "False KLEE Id": "3",
-        "False Generate ID": "5"
+        "False Generate ID": "5",
+        "falseQuery": [
+            "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))"
+        ]
     },
     {
         "File": "example2.cpp",
-        "Line": "38",
-        "Predicate": "5",
-        "Current State Id": "2",
-        "True KLEE Id": "2",
+        "Line": "25",
+        "Predicate": "7",
+        "Branch Predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
+        "Negate Predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
         "True Generate ID": "6",
+        "trueQuery": [
+            "(Slt 0 (ReadLSB w32 0 c_sym))",
+            "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))"
+        ],
         "False KLEE Id": "4",
-        "False Generate ID": "7"
+        "False Generate ID": "7",
+        "falseQuery": [
+            "(Slt 0 (ReadLSB w32 0 c_sym))",
+            "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))"
+        ]
     }
 ]

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+
 import re
 import sys
 import json
 import uuid
 from sexpdata import loads, dumps
+from auxiliary import flatten, isFloat, isInt
 
 name = sys.argv[1]
 arithmetic_expr_kind = ["Add", "Sub", "Mul", "UDiv", "URem", "SDiv", "SRem"]
@@ -20,7 +22,8 @@ AllExprTypes = [
     "Add", "Sub", "Mul", "UDiv", "URem", "SDiv", "SRem", "And", "Or", "Xor",
     "Shl", "LShr", "query", "AShr", "Eq", "Ne", "Ult", "Ule", "Ugt", "Uge",
     "Slt", "Sle", "Sgt", "Sge", "Neg", "ReadLSB", "ReadMSB", "Concat",
-    "Extract", "ZExt", "SExt", "Read", "Select", "Undef", "None", "Unsat"
+    "Extract", "ZExt", "SExt", "Read", "Select", "Undef", "None", "Unsat",
+    "UNK"
 ]
 
 BooleanType = ["true", "false"]
@@ -37,14 +40,6 @@ class sExprNode(dict):
                       left=self.first,
                       right=self.second,
                       optype=self.operator)
-
-
-def flatten(arr):
-    if isinstance(arr, list) and len(arr) == 0:
-        return arr
-    if isinstance(arr[0], list):
-        return flatten(arr[0]) + flatten(arr[1:])
-    return arr[:1] + flatten(arr[1:])
 
 
 def getOps(elems):
@@ -64,22 +59,6 @@ def getOps(elems):
         return "QueryAction"
     else:
         pass
-
-
-def isInt(val):
-    try:
-        num = int(val)
-    except ValueError:
-        return False
-    return True
-
-
-def isFloat(val):
-    try:
-        num = float(val)
-    except ValueError:
-        return False
-    return True
 
 
 def getTerminalType(elems):
@@ -165,21 +144,5 @@ def findVars(expr):
         return temp
 
 
-def processExpressionImap(expr):
-    return flatten(findVars(expr))
-
-
 if __name__ == "__main__":
-    # data = {}
-    # with open(f"{name}_processed/{name}_paths.json", 'r',
-    #           encoding='utf-8') as f:
-    #     data = json.load(f)
-
-    # for pathIds, path in data.items():
-    #     for nodes in path:
-    #         sExpr = nodes.get("KLEE-Expr", None)
-    #         print(findVars(loads(sExpr)))
-
-    sampleExpr = "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym)))))"
-    temp = []
-    print(flatten(findVars(loads(sampleExpr))))
+    print("S-Expr Parser")

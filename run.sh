@@ -14,4 +14,4 @@ rm -rf klee* *.bc *.dot *.out
 rm -rf $1_processed/
 mkdir $1_processed/
 
-python3 Reader.py ./$1_klee_out/conds_dump.txt $1
+python3 reader.py ./$1_klee_out/conds_dump.txt $1

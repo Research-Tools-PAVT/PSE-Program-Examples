@@ -3,7 +3,7 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "0392a8c8-efaa-4435-b146-0f781fb51636"
+                "uid": "7c8f5650-bdb2-4cbc-a5dd-51ccca793cee"
             },
             "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
             "parse": {
@@ -43,7 +43,8 @@
                 [
                     "a_sym",
                     "c_sym"
-                ]
+                ], 
+                ["b_sym", "d_sym"]
             ],
             "vars": [
                 "a_sym",
@@ -53,7 +54,7 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "17015e45-b7b2-43c3-8f58-60322b170e5e"
+                "uid": "2a7fb0f3-43f4-4009-bded-ca6218d94322"
             },
             "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
             "parse": {
@@ -104,7 +105,7 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "0392a8c8-efaa-4435-b146-0f781fb51636"
+                "uid": "7c8f5650-bdb2-4cbc-a5dd-51ccca793cee"
             },
             "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
             "parse": {
@@ -154,7 +155,7 @@
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "e4dd4fb0-bd95-4fec-a36f-c5efe3b226d2"
+                "uid": "cfba0b99-6c9d-4bbf-940e-6ea325c59b56"
             },
             "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
             "parse": {
@@ -210,7 +211,7 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "88722f30-37cd-44cf-bcdd-424f7af75792"
+                "uid": "48f3314d-37f9-4807-9bf2-063bd023a155"
             },
             "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
             "parse": {
@@ -255,7 +256,7 @@
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "8655704c-b1be-4696-b489-8bf193992a7f"
+                "uid": "26c9c604-4c40-4747-88b7-cc1aff580c1d"
             },
             "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
             "parse": {
@@ -306,7 +307,7 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "88722f30-37cd-44cf-bcdd-424f7af75792"
+                "uid": "48f3314d-37f9-4807-9bf2-063bd023a155"
             },
             "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
             "parse": {
@@ -351,7 +352,7 @@
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "611c6990-1b9a-4c37-9023-9b7d2bd501fc"
+                "uid": "3f94120c-e112-47f8-8721-8fabe45368b0"
             },
             "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
             "parse": {

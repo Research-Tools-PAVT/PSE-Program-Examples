@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from graphviz import Source, Graph, Digraph
+
 import uuid
+from graphviz import Source, Graph, Digraph
 
 
 def format_stmts(node):
@@ -16,6 +17,8 @@ class ExecutionTreeNode(dict):
         self.added = False
         self.id = None
         self.data = []
+        self.trueQuerySet = []
+        self.falseQuerySet = []
         self.edges = []
         dict.__init__(self, nodeId=nodeId, uid=str(uuid.uuid4()))
         self.data.append(nodeId)
@@ -26,6 +29,7 @@ class ExecutionTreeEdge:
         self.parent = parent
         self.child = child
         child.parent = parent
+        self.imapdata = ""
         self.label = label
         self.data = label
         self.color = color
@@ -59,6 +63,7 @@ class ExecutionTree:
                         format="png")
         for node in self.nodes:
             for edge in node.edges:
+                edge.label += edge.imapdata
                 graph.edge(
                     format_stmts(edge.parent),
                     format_stmts(edge.child),

@@ -13,6 +13,10 @@ array d_prob_sym[4] : w32 -> w8 = symbolic
          (Sle N2 6)
          (Eq false
              (Slt N0
-                  (ReadLSB w32 0 a_sym)))
-         (Eq false (Slt N2 N1))]
+                  N3:(ReadLSB w32 0 a_sym)))
+         (Slt N2 N1)
+         (Eq false
+             (And (Sle 0 N3) (Sle 0 N0)))
+         (Eq false
+             (Slt 0 (Mul w32 3 N3)))]
         false)

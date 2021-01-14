@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
+
 import os
 import sys
 import json
-from PTree import *
-from Parser import *
+from ptree import *
+from parser import collectRecursive, findVars
 from sexpdata import loads, dumps
+from auxiliary import flatten
 import uuid
 
 id = 0
@@ -17,25 +19,52 @@ Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
 
+
+# Find the parent node for a child or vice-versa
+def findNext(node):
+    for edges in Tree.edgeSet:
+        if node.data[0] == edges.child.data[0]:
+            return edges.parent
+
+
+# Find the parent node for a child or vice-versa
+def getLabel(node):
+    for edges in Tree.edgeSet:
+        if node.data[0] == edges.child.data[0]:
+            return edges.data
+
+
+## Process the file dump from KLEE
 with open(file.strip(), "r") as fileptr:
     lines = fileptr.read().replace("\n", " ")
+
+    ## We read all lines here.
+    ## We dont need the original dump after this point.
     for elems in lines.split("}"):
         if len(elems.strip()) != 0:
             ConstraintObj = elems.split("{")[1].strip()
             temp = {}
+
+            ## We seperate into each dump item, array constructed.
             for fields in ConstraintObj.split(","):
                 if len(fields.strip().split(":")) == 2:
                     [key, value] = fields.strip().split(":")
+
+                    ## TrueQuery & FalseQuery need specialized processing.
                     if "Query" in key.strip():
                         temp[key.strip()] = [
                             ' '.join(x.strip().split()) for x in value.strip()
                             [1:len(value.strip()) -
                              1].strip().split(" > ")[1:len(value.strip())]
                         ]
+
+                    ## Add the branch condition.
                     elif "Branch" in key.strip() or "Negate" in key.strip():
                         temp[key.strip()] = ' '.join(value.strip().split())
                     else:
                         temp[key.strip()] = value.strip()
+
+            ## Add to result.
             results.append(temp)
 
 results.sort(key=lambda x: int(x["Line"]), reverse=False)
@@ -48,6 +77,7 @@ for elems in results:
         klee_false = int(elems["False KLEE Id"])
         generate_false = int(elems["False Generate ID"])
 
+        ## Nodes are reused here. Map as a cache.
         node = nodeMap.get(
             f"{aliasMap.get(current, current)}",
             ExecutionTreeNode(f"{aliasMap.get(current, current)}"))
@@ -56,6 +86,7 @@ for elems in results:
         right = nodeMap.get(f"{generate_false}",
                             ExecutionTreeNode(f"{generate_false}"))
 
+        ## Make sure we reuse the Node IDs.
         nodeMap[aliasMap.get(current, current)] = node
         nodeMap[generate_true] = left
         nodeMap[generate_false] = right
@@ -69,9 +100,16 @@ for elems in results:
         else:
             pass
 
-        trueExpr = elems.get("Branch Predicate", "Unsat")
-        falseExpr = elems.get("Negate Predicate", "Unsat")
+        ## Added the branch predicates
+        trueExpr = elems.get("Branch Predicate", "UNK")
+        falseExpr = elems.get("Negate Predicate", "UNK")
 
+        ## Added the queries so for to reach this state in PTree.
+        node.trueQuerySet = elems.get("trueQuery", [])
+        node.falseQuerySet = elems.get("falseQuery", [])
+
+        ## Adding the tree edges to nodes.
+        ## We also maintain a global edgeset to make queries faster.
         node.edges.append(
             ExecutionTreeEdge(node,
                               left,
@@ -103,21 +141,6 @@ for k, v in nodeMap.items():
         id = id + 1
         pathMap[id] = v
 
-
-# Find the parent node for a child or vice-versa
-def findNext(node):
-    for edges in Tree.edgeSet:
-        if node.data[0] == edges.child.data[0]:
-            return edges.parent
-
-
-# Find the parent node for a child or vice-versa
-def getLabel(node):
-    for edges in Tree.edgeSet:
-        if node.data[0] == edges.child.data[0]:
-            return edges.data
-
-
 # Construct the paths.
 for pathIds, nodes in pathMap.items():
     temp = nodes
@@ -129,16 +152,13 @@ for pathIds, nodes in pathMap.items():
         if data is not None:
             parsedData = loads(data)
             collection["predicate"] = data
-            collection["parse"] = collectRecursive(parsedData)
-            collection["imap"] = [processExpressionImap(parsedData)]
-            collection["vars"] = flatten(findVars(parsedData))
-            path.append(collection)
-        else:
-            path.append(collection)
+            collection["nodeTrueQuery"] = temp.trueQuerySet
+            collection["nodeFalseQuery"] = temp.falseQuerySet
+        path.append(collection)
         temp = findNext(temp)
     paths[f"Path {pathIds}"] = path
 
-for pathIds, path in paths.items():
+for _, path in paths.items():
     path.sort(key=lambda x: int(x["treeNode"]["nodeId"]), reverse=False)
 
 Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
@@ -149,3 +169,5 @@ with open(f"{name}_processed/{name}_processed.json", 'w',
 
 with open(f"{name}_processed/{name}_paths.json", 'w', encoding='utf-8') as f:
     json.dump(paths, f, ensure_ascii=False, indent=4)
+
+print(f"Paths Processed : {len(paths)}")

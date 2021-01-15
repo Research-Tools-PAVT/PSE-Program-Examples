@@ -3,50 +3,20 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "7c8f5650-bdb2-4cbc-a5dd-51ccca793cee"
+                "uid": "c4e503de-592a-4452-8253-8799b997abc2"
             },
             "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
-            "parse": {
-                "action": "Eq",
-                "optype": "CompareOp",
-                "bool": "false",
-                "right": {
-                    "action": "And",
-                    "optype": "BitwiseOp",
-                    "left": {
-                        "action": "Slt",
-                        "optype": "CompareOp",
-                        "const": "0",
-                        "right": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        }
-                    },
-                    "right": {
-                        "action": "Slt",
-                        "optype": "CompareOp",
-                        "const": "0",
-                        "right": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "c_sym"
-                        }
-                    }
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "c_sym"
-                ], 
-                ["b_sym", "d_sym"]
+            "nodeTrueQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
+                "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))"
             ],
-            "vars": [
+            "nodeFalseQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
+                "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))"
+            ],
+            "variables": [
                 "a_sym",
                 "c_sym"
             ]
@@ -54,47 +24,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "2a7fb0f3-43f4-4009-bded-ca6218d94322"
+                "uid": "c86b4ad4-e0a1-41c8-83e5-3178d5177635"
             },
             "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
-            "parse": {
-                "action": "Slt",
-                "optype": "CompareOp",
-                "left": {
-                    "action": "Add",
-                    "optype": "BinaryArithOp",
-                    "size": "w32",
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_3": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    }
-                },
-                "right": {
-                    "action": "ReadLSB",
-                    "optype": "MacroOp",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "b_sym",
-                    "c_sym"
-                ]
-            ],
-            "vars": [
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": [],
+            "variables": [
                 "a_sym",
                 "b_sym",
                 "c_sym"
@@ -105,49 +40,20 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "7c8f5650-bdb2-4cbc-a5dd-51ccca793cee"
+                "uid": "c4e503de-592a-4452-8253-8799b997abc2"
             },
             "predicate": "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
-            "parse": {
-                "action": "Eq",
-                "optype": "CompareOp",
-                "bool": "false",
-                "right": {
-                    "action": "And",
-                    "optype": "BitwiseOp",
-                    "left": {
-                        "action": "Slt",
-                        "optype": "CompareOp",
-                        "const": "0",
-                        "right": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        }
-                    },
-                    "right": {
-                        "action": "Slt",
-                        "optype": "CompareOp",
-                        "const": "0",
-                        "right": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "c_sym"
-                        }
-                    }
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "c_sym"
-                ]
+            "nodeTrueQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
+                "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))"
             ],
-            "vars": [
+            "nodeFalseQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Eq false (And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym))))",
+                "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))"
+            ],
+            "variables": [
                 "a_sym",
                 "c_sym"
             ]
@@ -155,52 +61,12 @@
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "cfba0b99-6c9d-4bbf-940e-6ea325c59b56"
+                "uid": "d7974d32-e083-4f0b-b6fe-c1ebff2c4ae9"
             },
             "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
-            "parse": {
-                "action": "Eq",
-                "optype": "CompareOp",
-                "bool": "false",
-                "right": {
-                    "action": "Slt",
-                    "optype": "CompareOp",
-                    "left": {
-                        "action": "Add",
-                        "optype": "BinaryArithOp",
-                        "size": "w32",
-                        "right": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        },
-                        "arg_3": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "b_sym"
-                        }
-                    },
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "b_sym",
-                    "c_sym"
-                ]
-            ],
-            "vars": [
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": [],
+            "variables": [
                 "a_sym",
                 "b_sym",
                 "c_sym"
@@ -211,44 +77,22 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "48f3314d-37f9-4807-9bf2-063bd023a155"
+                "uid": "2faed741-4fd0-46c6-ac9a-862e346ced44"
             },
             "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "parse": {
-                "action": "And",
-                "optype": "BitwiseOp",
-                "left": {
-                    "action": "Slt",
-                    "optype": "CompareOp",
-                    "const": "0",
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "right": {
-                    "action": "Slt",
-                    "optype": "CompareOp",
-                    "const": "0",
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "c_sym"
-                ]
+            "nodeTrueQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Slt 0 (ReadLSB w32 0 a_sym))",
+                "(Slt 0 (ReadLSB w32 0 c_sym))",
+                "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))"
             ],
-            "vars": [
+            "nodeFalseQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Slt 0 (ReadLSB w32 0 a_sym))",
+                "(Slt 0 (ReadLSB w32 0 c_sym))",
+                "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))"
+            ],
+            "variables": [
                 "a_sym",
                 "c_sym"
             ]
@@ -256,47 +100,12 @@
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "26c9c604-4c40-4747-88b7-cc1aff580c1d"
+                "uid": "3a17ea5d-12a5-4596-8e40-76db5523abf0"
             },
             "predicate": "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))",
-            "parse": {
-                "action": "Slt",
-                "optype": "CompareOp",
-                "left": {
-                    "action": "Add",
-                    "optype": "BinaryArithOp",
-                    "size": "w32",
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    },
-                    "arg_3": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "b_sym"
-                    }
-                },
-                "right": {
-                    "action": "ReadLSB",
-                    "optype": "MacroOp",
-                    "size": "w32",
-                    "const": "0",
-                    "var": "c_sym"
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "b_sym",
-                    "c_sym"
-                ]
-            ],
-            "vars": [
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": [],
+            "variables": [
                 "a_sym",
                 "b_sym",
                 "c_sym"
@@ -307,44 +116,22 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "48f3314d-37f9-4807-9bf2-063bd023a155"
+                "uid": "2faed741-4fd0-46c6-ac9a-862e346ced44"
             },
             "predicate": "(And (Slt 0 (ReadLSB w32 0 a_sym)) (Slt 0 (ReadLSB w32 0 c_sym)))",
-            "parse": {
-                "action": "And",
-                "optype": "BitwiseOp",
-                "left": {
-                    "action": "Slt",
-                    "optype": "CompareOp",
-                    "const": "0",
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "a_sym"
-                    }
-                },
-                "right": {
-                    "action": "Slt",
-                    "optype": "CompareOp",
-                    "const": "0",
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "c_sym"
-                ]
+            "nodeTrueQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Slt 0 (ReadLSB w32 0 a_sym))",
+                "(Slt 0 (ReadLSB w32 0 c_sym))",
+                "(Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym))"
             ],
-            "vars": [
+            "nodeFalseQuery": [
+                "(Sle (ReadLSB w32 0 c_sym) 1200)",
+                "(Slt 0 (ReadLSB w32 0 a_sym))",
+                "(Slt 0 (ReadLSB w32 0 c_sym))",
+                "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))"
+            ],
+            "variables": [
                 "a_sym",
                 "c_sym"
             ]
@@ -352,52 +139,12 @@
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "3f94120c-e112-47f8-8721-8fabe45368b0"
+                "uid": "c1e13664-8789-4fc8-b0c1-995c6544910e"
             },
             "predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 a_sym) (ReadLSB w32 0 b_sym)) (ReadLSB w32 0 c_sym)))",
-            "parse": {
-                "action": "Eq",
-                "optype": "CompareOp",
-                "bool": "false",
-                "right": {
-                    "action": "Slt",
-                    "optype": "CompareOp",
-                    "left": {
-                        "action": "Add",
-                        "optype": "BinaryArithOp",
-                        "size": "w32",
-                        "right": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "a_sym"
-                        },
-                        "arg_3": {
-                            "action": "ReadLSB",
-                            "optype": "MacroOp",
-                            "size": "w32",
-                            "const": "0",
-                            "var": "b_sym"
-                        }
-                    },
-                    "right": {
-                        "action": "ReadLSB",
-                        "optype": "MacroOp",
-                        "size": "w32",
-                        "const": "0",
-                        "var": "c_sym"
-                    }
-                }
-            },
-            "imap": [
-                [
-                    "a_sym",
-                    "b_sym",
-                    "c_sym"
-                ]
-            ],
-            "vars": [
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": [],
+            "variables": [
                 "a_sym",
                 "b_sym",
                 "c_sym"

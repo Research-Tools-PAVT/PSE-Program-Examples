@@ -1,6 +1,6 @@
 {
 	File : example2.cpp,
-	Line : 16,
+	Line : 15,
 	Predicate : 13,
 	Branch Predicate : (And (Slt 0
            (ReadLSB w32 0 a_sym))
@@ -16,14 +16,18 @@
 	True Generate ID : 2,
 	trueQuery : 
 		[
- > (Slt 0
+ > (Sle 90
+      (ReadLSB w32 0 c_sym)) > (Sle (ReadLSB w32 0 c_sym)
+      1200) > (Slt 0
       (ReadLSB w32 0 a_sym)) > (Slt 0
       (ReadLSB w32 0 c_sym))],
 	False KLEE Id : 2,
 	False Generate ID : 3,
 	falseQuery : 
 		[
- > (Eq false
+ > (Sle 90
+      (ReadLSB w32 0 c_sym)) > (Sle (ReadLSB w32 0 c_sym)
+      1200) > (Eq false
      (And (Slt 0
                (ReadLSB w32 0 a_sym))
           (Slt 0
@@ -31,7 +35,17 @@
 }
 {
 	File : example2.cpp,
-	Line : 25,
+	Line : 15,
+	Predicate : 31,
+	Branch Predicate : (Slt (ReadLSB w32 0 c_sym)
+      2880154539),
+	Negate Predicate : (Eq false
+     (Slt (ReadLSB w32 0 c_sym)
+          2880154539)),
+}
+{
+	File : example2.cpp,
+	Line : 24,
 	Predicate : 7,
 	Branch Predicate : (Slt (Add w32 (ReadLSB w32 0 a_sym)
                (ReadLSB w32 0 b_sym))
@@ -45,7 +59,9 @@
 	True Generate ID : 4,
 	trueQuery : 
 		[
- > (Eq false
+ > (Sle 90
+      (ReadLSB w32 0 c_sym)) > (Sle (ReadLSB w32 0 c_sym)
+      1200) > (Eq false
      (And (Slt 0
                (ReadLSB w32 0 a_sym))
           (Slt 0
@@ -56,7 +72,9 @@
 	False Generate ID : 5,
 	falseQuery : 
 		[
- > (Eq false
+ > (Sle 90
+      (ReadLSB w32 0 c_sym)) > (Sle (ReadLSB w32 0 c_sym)
+      1200) > (Eq false
      (And (Slt 0
                (ReadLSB w32 0 a_sym))
           (Slt 0
@@ -67,17 +85,7 @@
 }
 {
 	File : example2.cpp,
-	Line : 16,
-	Predicate : 31,
-	Branch Predicate : (Slt (ReadLSB w32 0 c_sym)
-      2880154539),
-	Negate Predicate : (Eq false
-     (Slt (ReadLSB w32 0 c_sym)
-          2880154539)),
-}
-{
-	File : example2.cpp,
-	Line : 25,
+	Line : 24,
 	Predicate : 7,
 	Branch Predicate : (Slt (Add w32 (ReadLSB w32 0 a_sym)
                (ReadLSB w32 0 b_sym))
@@ -91,7 +99,9 @@
 	True Generate ID : 6,
 	trueQuery : 
 		[
- > (Slt 0
+ > (Sle 90
+      (ReadLSB w32 0 c_sym)) > (Sle (ReadLSB w32 0 c_sym)
+      1200) > (Slt 0
       (ReadLSB w32 0 a_sym)) > (Slt 0
       (ReadLSB w32 0 c_sym)) > (Slt (Add w32 (ReadLSB w32 0 a_sym)
                (ReadLSB w32 0 b_sym))
@@ -100,7 +110,9 @@
 	False Generate ID : 7,
 	falseQuery : 
 		[
- > (Slt 0
+ > (Sle 90
+      (ReadLSB w32 0 c_sym)) > (Sle (ReadLSB w32 0 c_sym)
+      1200) > (Slt 0
       (ReadLSB w32 0 a_sym)) > (Slt 0
       (ReadLSB w32 0 c_sym)) > (Eq false
      (Slt (Add w32 (ReadLSB w32 0 a_sym)

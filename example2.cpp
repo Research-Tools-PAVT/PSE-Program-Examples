@@ -2,8 +2,7 @@
 // RUN: rm -rf %t.klee-out
 // RUN: %klee --output-dir=%t.klee-out --libc=klee --max-forks=25 --write-no-tests --exit-on-error --optimize --disable-inlining --search=nurs:depth --use-cex-cache %t1.bc
 
-#include <klee/klee.h>
-#include <stdio.h>
+#include "PSE.h"
 
 int main(void)
 {
@@ -11,7 +10,7 @@ int main(void)
 
   klee_make_symbolic(&a, sizeof(a), "a_sym");
   klee_make_symbolic(&b, sizeof(b), "b_sym");
-  klee_make_symbolic(&c, sizeof(c), "c_sym");
+  make_pse_symbolic(&c, sizeof(c), "c_sym", 90, 1200);
 
   if (a > 0 && c > 0 && c < d && d > a && d > b)
   {

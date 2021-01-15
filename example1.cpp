@@ -2,11 +2,6 @@
 // RUN: rm -rf %t.klee-out
 // RUN: %klee --output-dir=%t.klee-out --libc=klee --max-forks=25 --write-no-tests --exit-on-error --optimize --disable-inlining --search=nurs:depth --use-cex-cache %t1.bc
 
-#include <klee/klee.h>
-#include <algorithm>
-#include <string>
-#include <vector>
-#include <stdio.h>
 #include "PSE.h"
 
 int getmax(int a, int b)
@@ -16,16 +11,12 @@ int getmax(int a, int b)
 
 int main(void)
 {
-    int c, a, b, d;
-    std::vector<int> dist1 = {5, 6, 7, 8, 9};
-    std::vector<int> dist2 = {1, 2, 3, 4, 5, 6};
-    std::vector<int> dist3 = {300, 301, 302, 303, 304, 305, 306};
+    int a, b, c, d;
 
     klee_make_symbolic(&a, sizeof(a), "a_sym");
-
-    make_pse_symbolic(&b, sizeof(b), "b_sym", dist3);
-    make_pse_symbolic(&c, sizeof(c), "c_prob_sym", dist1);
-    make_pse_symbolic(&d, sizeof(d), "d_prob_sym", dist2);
+    make_pse_symbolic<int>(&b, sizeof(b), "b_sym", 0, 20);
+    make_pse_symbolic<int>(&c, sizeof(c), "c_prob_sym", 0, 800);
+    make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
 
     if (a > b)
     {

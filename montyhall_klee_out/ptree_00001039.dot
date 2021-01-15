@@ -1,0 +1,21 @@
+digraph G {
+	size="10,7.5";
+	ratio=fill;
+	rotate=90;
+	center = "true";
+	node [style="filled",width=.1,height=.1,fontname="Terminus"]
+	edge [arrowsize=.3]
+	n0x565177dbfca0 [shape=diamond];
+	n0x565177dbfca0 -> n0x565177e91120 [label=001];
+	n0x565177dbfca0 -> n0x565178044820 [label=001];
+	n0x565178044820 [shape=diamond];
+	n0x565178044820 -> n0x565177e54b60 [label=001];
+	n0x565178044820 -> n0x565178044ec0 [label=001];
+	n0x565178044ec0 [shape=diamond,fillcolor=green];
+	n0x565177e54b60 [shape=diamond,fillcolor=green];
+	n0x565177e91120 [shape=diamond];
+	n0x565177e91120 -> n0x565177df7580 [label=000];
+	n0x565177e91120 -> n0x56517807a120 [label=001];
+	n0x56517807a120 [shape=diamond,fillcolor=green];
+	n0x565177df7580 [shape=diamond,fillcolor=green];
+}

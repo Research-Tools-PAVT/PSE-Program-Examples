@@ -1,0 +1,53 @@
+digraph G {
+	size="10,7.5";
+	ratio=fill;
+	rotate=90;
+	center = "true";
+	node [style="filled",width=.1,height=.1,fontname="Terminus"]
+	edge [arrowsize=.3]
+	n0x565177dbfca0 [shape=diamond];
+	n0x565177dbfca0 -> n0x565177e91120 [label=001];
+	n0x565177dbfca0 -> n0x565178044820 [label=001];
+	n0x565178044820 [shape=diamond];
+	n0x565178044820 -> n0x565177e54b60 [label=001];
+	n0x565178044820 -> n0x565178044ec0 [label=001];
+	n0x565178044ec0 [shape=diamond];
+	n0x565178044ec0 -> n0x565177ed4000 [label=001];
+	n0x565178044ec0 -> n0x565177e91e00 [label=001];
+	n0x565177e91e00 [shape=diamond];
+	n0x565177e91e00 -> n0x56517807ac00 [label=001];
+	n0x565177e91e00 -> n0x565177fd3240 [label=001];
+	n0x565177fd3240 [shape=diamond,fillcolor=green];
+	n0x56517807ac00 [shape=diamond,fillcolor=green];
+	n0x565177ed4000 [shape=diamond];
+	n0x565177ed4000 -> n0x565177e55080 [label=001];
+	n0x565177ed4000 -> n0x565178017460 [label=001];
+	n0x565178017460 [shape=diamond,fillcolor=green];
+	n0x565177e55080 [shape=diamond,fillcolor=green];
+	n0x565177e54b60 [shape=diamond];
+	n0x565177e54b60 -> n0x565177ed46e0 [label=001];
+	n0x565177e54b60 -> n0x565178154ce0 [label=001];
+	n0x565178154ce0 [shape=diamond,fillcolor=green];
+	n0x565177ed46e0 [shape=diamond,fillcolor=green];
+	n0x565177e91120 [shape=diamond];
+	n0x565177e91120 -> n0x565177df7580 [label=001];
+	n0x565177e91120 -> n0x56517807a120 [label=001];
+	n0x56517807a120 [shape=diamond];
+	n0x56517807a120 -> n0x565177e91900 [label=001];
+	n0x56517807a120 -> n0x565178154780 [label=001];
+	n0x565178154780 [shape=diamond,fillcolor=green];
+	n0x565177e91900 [shape=diamond];
+	n0x565177e91900 -> n0x5651780164c0 [label=001];
+	n0x565177e91900 -> n0x565177fd3e60 [label=001];
+	n0x565177fd3e60 [shape=diamond,fillcolor=green];
+	n0x5651780164c0 [shape=diamond,fillcolor=green];
+	n0x565177df7580 [shape=diamond];
+	n0x565177df7580 -> n0x565177ed5a20 [label=001];
+	n0x565177df7580 -> n0x565177df6660 [label=001];
+	n0x565177df6660 [shape=diamond];
+	n0x565177df6660 -> n0x565177e54ee0 [label=000];
+	n0x565177df6660 -> n0x565178017880 [label=001];
+	n0x565178017880 [shape=diamond,fillcolor=green];
+	n0x565177e54ee0 [shape=diamond,fillcolor=green];
+	n0x565177ed5a20 [shape=diamond,fillcolor=green];
+}

@@ -109,19 +109,19 @@ for elems in results:
         node.falseQuerySet = elems.get("falseQuery", [])
 
         ## Adding the tree edges to nodes.
+        node.edges.append(
+            ExecutionTreeEdge(node,
+                              left,
+                              label='\n('.join(trueExpr.strip().split(' (')),
+                              color="green"))
+
+        node.edges.append(
+            ExecutionTreeEdge(node,
+                              right,
+                              label='\n('.join(falseExpr.strip().split(' (')),
+                              color="red"))
+
         ## We also maintain a global edgeset to make queries faster.
-        node.edges.append(
-            ExecutionTreeEdge(node,
-                              left,
-                              label='\n('.join(trueExpr.strip().split(' (')),
-                              color="green"))
-
-        node.edges.append(
-            ExecutionTreeEdge(node,
-                              right,
-                              label='\n('.join(falseExpr.strip().split(' (')),
-                              color="red"))
-
         Tree.edgeSet.append(
             ExecutionTreeEdge(node,
                               left,
@@ -134,26 +134,38 @@ for elems in results:
                               label='\n('.join(falseExpr.strip().split(' (')),
                               color="red"))
 
-# Add Nodes & Get Leaves
+# Add Nodes & update Path IDs for PathMap
 for k, v in nodeMap.items():
     Tree.add_node(v)
     if len(v.edges) == 0:
         id = id + 1
         pathMap[id] = v
 
-# Construct the paths.
+# Construct the paths from PathMaps
 for pathIds, nodes in pathMap.items():
     temp = nodes
     path = []
+    variableListing = []
+
+    ## Recurse up from leaves to root,
+    ## collecting each edge information.
     while findNext(temp) is not None:
         collection = {}
         data = ' '.join(getLabel(temp).strip().split("\n"))
         collection["treeNode"] = temp
+
+        ## If the label/edge has an associated "predicate" with it.
         if data is not None:
             parsedData = loads(data)
+            variables = flatten(findVars(parsedData))
+            variableListing.append(variables)
             collection["predicate"] = data
+
+            ## All query lead to this particular node.
+            ## KLEE Assumes also come-in at this point.
             collection["nodeTrueQuery"] = temp.trueQuerySet
             collection["nodeFalseQuery"] = temp.falseQuerySet
+            collection["variables"] = variables
         path.append(collection)
         temp = findNext(temp)
     paths[f"Path {pathIds}"] = path

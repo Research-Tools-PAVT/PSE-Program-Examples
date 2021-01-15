@@ -3,7 +3,6 @@
 // RUN: %klee --output-dir=%t.klee-out --libc=klee --max-forks=25 --write-no-tests --exit-on-error --optimize --disable-inlining --search=nurs:depth --use-cex-cache %t1.bc
 
 #include <assert.h>
-#include <klee/klee.h>
 #include <stdio.h>
 #include <vector>
 #include "PSE.h"
@@ -14,14 +13,11 @@
 bool montyhall(bool door_switch)
 {
 
-  std::vector<int> car_door_dist = {0, 1, 2, 3};
-  std::vector<int> choice_dist = {0, 1, 2, 3};
-
   int host_door = 0;
   int car_door, choice;
 
-  make_pse_symbolic(&choice, sizeof(choice), "choice_pse_var_sym", choice_dist);
-  make_pse_symbolic(&car_door, sizeof(car_door), "car_door_sym", car_door_dist);
+  make_pse_symbolic(&choice, sizeof(choice), "choice_pse_var_sym", 0, 3);
+  make_pse_symbolic(&car_door, sizeof(car_door), "car_door_sym", 0, 3);
   klee_make_symbolic(&host_door, sizeof(host_door), "host_door_sym");
 
   /**
@@ -100,6 +96,6 @@ int main()
   int door_switch = 0;
   std::vector<int> door_switch_dist = {0, 1};
 
-  make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", door_switch_dist);
+  make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", 0, 1);
   return montyhall(door_switch);
 }

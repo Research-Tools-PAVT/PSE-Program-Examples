@@ -2,17 +2,19 @@ array a_sym[4] : w32 -> w8 = symbolic
 array b_sym[4] : w32 -> w8 = symbolic
 array c_prob_sym[4] : w32 -> w8 = symbolic
 array d_prob_sym[4] : w32 -> w8 = symbolic
-(query [(Sle 300
+(query [(Sle 0
               N0:(ReadLSB w32 0 b_sym))
-         (Sle N0 306)
-         (Sle 5
+         (Sle N0 20)
+         (Sle 0
               N1:(ReadLSB w32 0 c_prob_sym))
-         (Sle N1 9)
-         (Sle 1
+         (Sle N1 800)
+         (Sle 0
               N2:(ReadLSB w32 0 d_prob_sym))
-         (Sle N2 6)
+         (Sle N2 650)
          (Eq false
              (Slt N0
-                  (ReadLSB w32 0 a_sym)))
-         (Eq false (Slt N2 N1))]
+                  N3:(ReadLSB w32 0 a_sym)))
+         (Slt N2 N1)
+         (Eq false (Sle 0 N3))
+         (Slt 0 (Mul w32 3 N3))]
         false)

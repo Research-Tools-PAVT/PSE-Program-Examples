@@ -5,6 +5,7 @@ import sys
 import json
 from ptree import *
 from parser import collectRecursive, findVars
+from unionfind import processExpressionImap
 from sexpdata import loads, dumps
 from auxiliary import flatten
 import uuid
@@ -143,8 +144,9 @@ for k, v in nodeMap.items():
 
 # Construct the paths from PathMaps
 for pathIds, nodes in pathMap.items():
-    temp = nodes
     path = []
+    temp = nodes
+    imapsData = {}
     variableListing = []
 
     ## Recurse up from leaves to root,
@@ -160,12 +162,14 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = data
+            processExpressionImap(imapsData, variables)
 
             ## All query lead to this particular node.
             ## KLEE Assumes also come-in at this point.
             collection["nodeTrueQuery"] = temp.trueQuerySet
             collection["nodeFalseQuery"] = temp.falseQuerySet
             collection["variables"] = variables
+            collection["IMap"] = imapsData
         path.append(collection)
         temp = findNext(temp)
     paths[f"Path {pathIds}"] = path

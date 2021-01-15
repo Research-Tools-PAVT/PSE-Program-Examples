@@ -3,7 +3,7 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -28,12 +28,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "door_switch_pse_var_sym": "0fb5624e-c931-4e5c-8969-425a924c9586",
+                "car_door_sym": "8c09088d-e0a3-4a84-8284-dea8e9fd93e0",
+                "choice_pse_var_sym": "8c09088d-e0a3-4a84-8284-dea8e9fd93e0"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "8f8cefd0-601b-48f5-b093-48b24ec174f5"
+                "uid": "8c1e7f40-dfe3-4fd8-8bc1-941f9e7e9e5b"
             },
             "predicate": "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -59,26 +64,36 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "door_switch_pse_var_sym": "0fb5624e-c931-4e5c-8969-425a924c9586",
+                "car_door_sym": "8c09088d-e0a3-4a84-8284-dea8e9fd93e0",
+                "choice_pse_var_sym": "8c09088d-e0a3-4a84-8284-dea8e9fd93e0"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "15",
-                "uid": "6e4ef152-3a0d-4921-83ae-cfb99a39824d"
+                "uid": "4b1d2a3f-c321-426b-af81-60583d180779"
             },
             "predicate": "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym))))))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "door_switch_pse_var_sym": "0fb5624e-c931-4e5c-8969-425a924c9586",
+                "car_door_sym": "8c09088d-e0a3-4a84-8284-dea8e9fd93e0",
+                "choice_pse_var_sym": "8c09088d-e0a3-4a84-8284-dea8e9fd93e0"
+            }
         }
     ],
     "Path 2": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -103,12 +118,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303",
+                "door_switch_pse_var_sym": "bcfc9973-9865-4179-b1cb-6ac00418bb07",
+                "car_door_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "a4f367cf-7dce-4520-af41-d29e635efd19"
+                "uid": "8cd9c9ee-d915-41a0-a8a4-823b8d4316c5"
             },
             "predicate": "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -136,12 +156,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303",
+                "door_switch_pse_var_sym": "bcfc9973-9865-4179-b1cb-6ac00418bb07",
+                "car_door_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "10",
-                "uid": "81828712-f95e-4b4d-a778-64b17bee785f"
+                "uid": "89f7375a-79b2-4289-a947-0b0d9eaf9327"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -164,26 +189,36 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303",
+                "door_switch_pse_var_sym": "bcfc9973-9865-4179-b1cb-6ac00418bb07",
+                "car_door_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "25",
-                "uid": "d359dfbb-cb03-4203-b174-3155f1503874"
+                "uid": "7fc97bb8-324b-4fba-aabb-a04b9c375e49"
             },
             "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303",
+                "door_switch_pse_var_sym": "bcfc9973-9865-4179-b1cb-6ac00418bb07",
+                "car_door_sym": "078cbbea-d13c-4f31-84e0-2d81b36ef303"
+            }
         }
     ],
     "Path 3": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -208,12 +243,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "21bff7bb-2399-4d67-978e-c19346bacb80",
+                "door_switch_pse_var_sym": "e2ca53b3-9e0e-4e4c-94e9-963b1fccafb9",
+                "car_door_sym": "21bff7bb-2399-4d67-978e-c19346bacb80"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "8f8cefd0-601b-48f5-b093-48b24ec174f5"
+                "uid": "8c1e7f40-dfe3-4fd8-8bc1-941f9e7e9e5b"
             },
             "predicate": "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -239,12 +279,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "21bff7bb-2399-4d67-978e-c19346bacb80",
+                "door_switch_pse_var_sym": "e2ca53b3-9e0e-4e4c-94e9-963b1fccafb9",
+                "car_door_sym": "21bff7bb-2399-4d67-978e-c19346bacb80"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "14",
-                "uid": "dbcc0033-fef3-4e2d-afa7-479e218fa7cf"
+                "uid": "97159c8a-5104-4032-968f-e574ba541770"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -264,26 +309,36 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "21bff7bb-2399-4d67-978e-c19346bacb80",
+                "door_switch_pse_var_sym": "e2ca53b3-9e0e-4e4c-94e9-963b1fccafb9",
+                "car_door_sym": "21bff7bb-2399-4d67-978e-c19346bacb80"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "22",
-                "uid": "8dca9aa9-46a2-4083-ac90-91cb1f4f46f6"
+                "uid": "13282826-c86d-4fda-88f0-e68ade379fc9"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 choice_pse_var_sym))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "21bff7bb-2399-4d67-978e-c19346bacb80",
+                "door_switch_pse_var_sym": "e2ca53b3-9e0e-4e4c-94e9-963b1fccafb9",
+                "car_door_sym": "21bff7bb-2399-4d67-978e-c19346bacb80"
+            }
         }
     ],
     "Path 4": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -308,12 +363,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b",
+                "door_switch_pse_var_sym": "dcd84a76-cda4-49ae-b44a-4dbf8066041c",
+                "car_door_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "8f8cefd0-601b-48f5-b093-48b24ec174f5"
+                "uid": "8c1e7f40-dfe3-4fd8-8bc1-941f9e7e9e5b"
             },
             "predicate": "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -339,12 +399,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b",
+                "door_switch_pse_var_sym": "dcd84a76-cda4-49ae-b44a-4dbf8066041c",
+                "car_door_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "14",
-                "uid": "dbcc0033-fef3-4e2d-afa7-479e218fa7cf"
+                "uid": "97159c8a-5104-4032-968f-e574ba541770"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -364,26 +429,36 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b",
+                "door_switch_pse_var_sym": "dcd84a76-cda4-49ae-b44a-4dbf8066041c",
+                "car_door_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "23",
-                "uid": "cc8d9602-f888-4e36-8991-02422fdd490e"
+                "uid": "e65e6533-0262-4305-a78e-20835b37e794"
             },
             "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b",
+                "door_switch_pse_var_sym": "dcd84a76-cda4-49ae-b44a-4dbf8066041c",
+                "car_door_sym": "fc6232f0-e52e-4c7a-bc0c-7bfc6ec66f3b"
+            }
         }
     ],
     "Path 5": [
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "3eb12634-8b2b-463a-99b1-ea85037417f1"
+                "uid": "711ce24a-dd74-4418-93a4-1026fbe4fe97"
             },
             "predicate": "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -409,12 +484,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "321f328d-ff53-426e-8831-b783980af8ac",
+                "car_door_sym": "321f328d-ff53-426e-8831-b783980af8ac",
+                "door_switch_pse_var_sym": "c88d37c5-0263-48ac-ae79-93d765b08eb3"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "def73daa-1aee-4ee6-a5c0-71f7163350e6"
+                "uid": "f232f9f2-13e6-48a1-9a18-adae80670995"
             },
             "predicate": "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym))))))",
             "nodeTrueQuery": [
@@ -441,12 +521,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "321f328d-ff53-426e-8831-b783980af8ac",
+                "car_door_sym": "321f328d-ff53-426e-8831-b783980af8ac",
+                "door_switch_pse_var_sym": "c88d37c5-0263-48ac-ae79-93d765b08eb3"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "8",
-                "uid": "67137c7a-f861-484b-9190-c7fadc00102e"
+                "uid": "e4b70420-9800-4089-8863-9f1594f8336a"
             },
             "predicate": "(Eq (ReadLSB w32 0 choice_pse_var_sym) (ReadLSB w32 0 car_door_sym))",
             "nodeTrueQuery": [],
@@ -454,14 +539,19 @@
             "variables": [
                 "choice_pse_var_sym",
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "321f328d-ff53-426e-8831-b783980af8ac",
+                "car_door_sym": "321f328d-ff53-426e-8831-b783980af8ac",
+                "door_switch_pse_var_sym": "c88d37c5-0263-48ac-ae79-93d765b08eb3"
+            }
         }
     ],
     "Path 6": [
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "3eb12634-8b2b-463a-99b1-ea85037417f1"
+                "uid": "711ce24a-dd74-4418-93a4-1026fbe4fe97"
             },
             "predicate": "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -487,12 +577,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "e485cd53-0878-4196-a55a-035278ee3b45",
+                "car_door_sym": "e485cd53-0878-4196-a55a-035278ee3b45",
+                "door_switch_pse_var_sym": "ec51902e-3c15-44ca-ace2-bb6f0550230a"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "def73daa-1aee-4ee6-a5c0-71f7163350e6"
+                "uid": "f232f9f2-13e6-48a1-9a18-adae80670995"
             },
             "predicate": "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym))))))",
             "nodeTrueQuery": [
@@ -519,12 +614,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "e485cd53-0878-4196-a55a-035278ee3b45",
+                "car_door_sym": "e485cd53-0878-4196-a55a-035278ee3b45",
+                "door_switch_pse_var_sym": "ec51902e-3c15-44ca-ace2-bb6f0550230a"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "9",
-                "uid": "4a28ebd8-307d-4a04-b440-02312a540c7c"
+                "uid": "0e685fbf-6f57-4b32-b616-c1cb4de2983d"
             },
             "predicate": "(Eq false (Eq (ReadLSB w32 0 choice_pse_var_sym) (ReadLSB w32 0 car_door_sym)))",
             "nodeTrueQuery": [],
@@ -532,14 +632,19 @@
             "variables": [
                 "choice_pse_var_sym",
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "e485cd53-0878-4196-a55a-035278ee3b45",
+                "car_door_sym": "e485cd53-0878-4196-a55a-035278ee3b45",
+                "door_switch_pse_var_sym": "ec51902e-3c15-44ca-ace2-bb6f0550230a"
+            }
         }
     ],
     "Path 7": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -564,12 +669,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "car_door_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "door_switch_pse_var_sym": "2438d60d-9e12-4f9f-8a52-1673cbe2815c"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "a4f367cf-7dce-4520-af41-d29e635efd19"
+                "uid": "8cd9c9ee-d915-41a0-a8a4-823b8d4316c5"
             },
             "predicate": "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -597,12 +707,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "car_door_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "door_switch_pse_var_sym": "2438d60d-9e12-4f9f-8a52-1673cbe2815c"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "11",
-                "uid": "4252e8cd-691a-4e6b-8db7-69eaf2a06b4b"
+                "uid": "b6eab8ac-65d1-4983-a66f-6d707065cfaf"
             },
             "predicate": "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym))))))",
             "nodeTrueQuery": [
@@ -631,12 +746,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "car_door_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "door_switch_pse_var_sym": "2438d60d-9e12-4f9f-8a52-1673cbe2815c"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "16",
-                "uid": "29c45214-1efa-4e7e-a948-2ad9c9e7f79f"
+                "uid": "fe2b2594-f24c-4893-b033-56eea1bb430f"
             },
             "predicate": "(Eq (ReadLSB w32 0 choice_pse_var_sym) (ReadLSB w32 0 car_door_sym))",
             "nodeTrueQuery": [],
@@ -644,14 +764,19 @@
             "variables": [
                 "choice_pse_var_sym",
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "car_door_sym": "1ba1556c-2e0d-4c6b-ad16-6f2b98632f06",
+                "door_switch_pse_var_sym": "2438d60d-9e12-4f9f-8a52-1673cbe2815c"
+            }
         }
     ],
     "Path 8": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -676,12 +801,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "car_door_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "door_switch_pse_var_sym": "4391ee12-d9d9-4253-962e-1d721583d0e4"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "a4f367cf-7dce-4520-af41-d29e635efd19"
+                "uid": "8cd9c9ee-d915-41a0-a8a4-823b8d4316c5"
             },
             "predicate": "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -709,12 +839,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "car_door_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "door_switch_pse_var_sym": "4391ee12-d9d9-4253-962e-1d721583d0e4"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "11",
-                "uid": "4252e8cd-691a-4e6b-8db7-69eaf2a06b4b"
+                "uid": "b6eab8ac-65d1-4983-a66f-6d707065cfaf"
             },
             "predicate": "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym))))))",
             "nodeTrueQuery": [
@@ -743,12 +878,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "car_door_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "door_switch_pse_var_sym": "4391ee12-d9d9-4253-962e-1d721583d0e4"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "17",
-                "uid": "f1d29b5b-ac08-4d5e-a89d-bf016a34686a"
+                "uid": "dbafd45d-72a4-4f44-ae48-7e494aea14ab"
             },
             "predicate": "(Eq false (Eq (ReadLSB w32 0 choice_pse_var_sym) (ReadLSB w32 0 car_door_sym)))",
             "nodeTrueQuery": [],
@@ -756,14 +896,19 @@
             "variables": [
                 "choice_pse_var_sym",
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "choice_pse_var_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "car_door_sym": "7fc57eef-42ee-4073-b053-e5373beccf01",
+                "door_switch_pse_var_sym": "4391ee12-d9d9-4253-962e-1d721583d0e4"
+            }
         }
     ],
     "Path 9": [
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "3eb12634-8b2b-463a-99b1-ea85037417f1"
+                "uid": "711ce24a-dd74-4418-93a4-1026fbe4fe97"
             },
             "predicate": "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -789,12 +934,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "choice_pse_var_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "door_switch_pse_var_sym": "32232a17-6a41-41be-adbc-aac5dc9aa701"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "942b9f6b-39ea-4e5c-98b4-739298f751bc"
+                "uid": "16371ec8-2f67-45e8-a2a2-8a0d94afddf4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -818,12 +968,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "choice_pse_var_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "door_switch_pse_var_sym": "32232a17-6a41-41be-adbc-aac5dc9aa701"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "13",
-                "uid": "5b5e6844-5c52-4fa8-aa5b-110bcc569ece"
+                "uid": "8e13a408-f8a7-418e-9f11-9acaf5789dbb"
             },
             "predicate": "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym)))",
             "nodeTrueQuery": [
@@ -849,26 +1004,36 @@
             ],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "choice_pse_var_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "door_switch_pse_var_sym": "32232a17-6a41-41be-adbc-aac5dc9aa701"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "18",
-                "uid": "52126636-c28d-41c0-bb46-3c78eb8ea8aa"
+                "uid": "617e56d1-feb4-4382-b64a-7ac663a476fb"
             },
             "predicate": "(Eq 2 (ReadLSB w32 0 car_door_sym))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "choice_pse_var_sym": "1fa02fb7-b827-4c30-9b6a-de2a82427457",
+                "door_switch_pse_var_sym": "32232a17-6a41-41be-adbc-aac5dc9aa701"
+            }
         }
     ],
     "Path 10": [
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "3eb12634-8b2b-463a-99b1-ea85037417f1"
+                "uid": "711ce24a-dd74-4418-93a4-1026fbe4fe97"
             },
             "predicate": "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -894,12 +1059,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "choice_pse_var_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "door_switch_pse_var_sym": "d29c1597-3e31-4fc2-b410-9467e7760f81"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "942b9f6b-39ea-4e5c-98b4-739298f751bc"
+                "uid": "16371ec8-2f67-45e8-a2a2-8a0d94afddf4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -923,12 +1093,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "choice_pse_var_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "door_switch_pse_var_sym": "d29c1597-3e31-4fc2-b410-9467e7760f81"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "13",
-                "uid": "5b5e6844-5c52-4fa8-aa5b-110bcc569ece"
+                "uid": "8e13a408-f8a7-418e-9f11-9acaf5789dbb"
             },
             "predicate": "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym)))",
             "nodeTrueQuery": [
@@ -954,26 +1129,36 @@
             ],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "choice_pse_var_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "door_switch_pse_var_sym": "d29c1597-3e31-4fc2-b410-9467e7760f81"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "19",
-                "uid": "a2651806-2253-4e6d-8af4-f47176d28a9a"
+                "uid": "d3038c1d-1016-47de-88a4-8c5e0f618c42"
             },
             "predicate": "(Eq false (Eq 2 (ReadLSB w32 0 car_door_sym)))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "choice_pse_var_sym": "8eac1138-f0f2-4661-b06a-ecbabee01ba0",
+                "door_switch_pse_var_sym": "d29c1597-3e31-4fc2-b410-9467e7760f81"
+            }
         }
     ],
     "Path 11": [
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "3eb12634-8b2b-463a-99b1-ea85037417f1"
+                "uid": "711ce24a-dd74-4418-93a4-1026fbe4fe97"
             },
             "predicate": "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -999,12 +1184,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "choice_pse_var_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "door_switch_pse_var_sym": "5202f0da-d3a9-4860-85b5-c1a58bbb246e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "942b9f6b-39ea-4e5c-98b4-739298f751bc"
+                "uid": "16371ec8-2f67-45e8-a2a2-8a0d94afddf4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -1028,12 +1218,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "choice_pse_var_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "door_switch_pse_var_sym": "5202f0da-d3a9-4860-85b5-c1a58bbb246e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "12",
-                "uid": "ec09c94c-1b9e-497a-984a-fe538cc7e055"
+                "uid": "5aaff3a8-13a9-4973-ae37-5928b16572a9"
             },
             "predicate": "(Eq 2 (ReadLSB w32 0 choice_pse_var_sym))",
             "nodeTrueQuery": [
@@ -1053,26 +1248,36 @@
             ],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "choice_pse_var_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "door_switch_pse_var_sym": "5202f0da-d3a9-4860-85b5-c1a58bbb246e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "20",
-                "uid": "90a9a182-fd80-4146-9a0d-c64187fa1ba8"
+                "uid": "b501ae79-f367-4aa0-9d4d-f4463609bb58"
             },
             "predicate": "(Eq 3 (ReadLSB w32 0 car_door_sym))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "choice_pse_var_sym": "799fc580-9f6e-412f-ad10-87fc8ee4ae87",
+                "door_switch_pse_var_sym": "5202f0da-d3a9-4860-85b5-c1a58bbb246e"
+            }
         }
     ],
     "Path 12": [
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "3eb12634-8b2b-463a-99b1-ea85037417f1"
+                "uid": "711ce24a-dd74-4418-93a4-1026fbe4fe97"
             },
             "predicate": "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -1098,12 +1303,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "choice_pse_var_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "door_switch_pse_var_sym": "78872286-0a90-458f-bd59-37e993cc8b02"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "942b9f6b-39ea-4e5c-98b4-739298f751bc"
+                "uid": "16371ec8-2f67-45e8-a2a2-8a0d94afddf4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -1127,12 +1337,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "choice_pse_var_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "door_switch_pse_var_sym": "78872286-0a90-458f-bd59-37e993cc8b02"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "12",
-                "uid": "ec09c94c-1b9e-497a-984a-fe538cc7e055"
+                "uid": "5aaff3a8-13a9-4973-ae37-5928b16572a9"
             },
             "predicate": "(Eq 2 (ReadLSB w32 0 choice_pse_var_sym))",
             "nodeTrueQuery": [
@@ -1152,26 +1367,36 @@
             ],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "choice_pse_var_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "door_switch_pse_var_sym": "78872286-0a90-458f-bd59-37e993cc8b02"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "21",
-                "uid": "acab9775-4fe2-4c27-b4bc-7419b68aaa23"
+                "uid": "7ab24fe4-bc9c-4c97-a52b-8853be35124f"
             },
             "predicate": "(Eq false (Eq 3 (ReadLSB w32 0 car_door_sym)))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "choice_pse_var_sym": "deab69c0-f15c-4cc6-8c0f-16bc29765a2a",
+                "door_switch_pse_var_sym": "78872286-0a90-458f-bd59-37e993cc8b02"
+            }
         }
     ],
     "Path 13": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -1196,12 +1421,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "choice_pse_var_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "door_switch_pse_var_sym": "ca3d82f3-5ee3-40f0-800c-15070f347d0e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "a4f367cf-7dce-4520-af41-d29e635efd19"
+                "uid": "8cd9c9ee-d915-41a0-a8a4-823b8d4316c5"
             },
             "predicate": "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -1229,12 +1459,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "choice_pse_var_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "door_switch_pse_var_sym": "ca3d82f3-5ee3-40f0-800c-15070f347d0e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "10",
-                "uid": "81828712-f95e-4b4d-a778-64b17bee785f"
+                "uid": "89f7375a-79b2-4289-a947-0b0d9eaf9327"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -1257,12 +1492,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "choice_pse_var_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "door_switch_pse_var_sym": "ca3d82f3-5ee3-40f0-800c-15070f347d0e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "24",
-                "uid": "09ccf12b-2118-4ecf-a7c0-911aba161abb"
+                "uid": "76e6ea9e-25f6-496c-be05-fde45f12cada"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 choice_pse_var_sym))",
             "nodeTrueQuery": [
@@ -1282,26 +1522,36 @@
             ],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "choice_pse_var_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "door_switch_pse_var_sym": "ca3d82f3-5ee3-40f0-800c-15070f347d0e"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "26",
-                "uid": "b49e35cc-dd3b-4e2d-b1f7-fd55f980511b"
+                "uid": "89340fb3-e4bd-4734-b4b1-257057585bf1"
             },
             "predicate": "(Eq 3 (ReadLSB w32 0 car_door_sym))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "choice_pse_var_sym": "ac90e867-ac11-4b5b-941f-4fb7c1156026",
+                "door_switch_pse_var_sym": "ca3d82f3-5ee3-40f0-800c-15070f347d0e"
+            }
         }
     ],
     "Path 14": [
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6277a39b-8879-44aa-843c-f879e0e8f847"
+                "uid": "b8b0fe3c-2358-4d8c-b117-0165f8418fb6"
             },
             "predicate": "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -1326,12 +1576,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "choice_pse_var_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "door_switch_pse_var_sym": "6d902624-5af6-47ac-a9da-cff153cc25a7"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "a4f367cf-7dce-4520-af41-d29e635efd19"
+                "uid": "8cd9c9ee-d915-41a0-a8a4-823b8d4316c5"
             },
             "predicate": "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_var_sym))))",
             "nodeTrueQuery": [
@@ -1359,12 +1614,17 @@
             "variables": [
                 "car_door_sym",
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "choice_pse_var_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "door_switch_pse_var_sym": "6d902624-5af6-47ac-a9da-cff153cc25a7"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "10",
-                "uid": "81828712-f95e-4b4d-a778-64b17bee785f"
+                "uid": "89f7375a-79b2-4289-a947-0b0d9eaf9327"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_var_sym)))))",
             "nodeTrueQuery": [
@@ -1387,12 +1647,17 @@
             ],
             "variables": [
                 "door_switch_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "choice_pse_var_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "door_switch_pse_var_sym": "6d902624-5af6-47ac-a9da-cff153cc25a7"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "24",
-                "uid": "09ccf12b-2118-4ecf-a7c0-911aba161abb"
+                "uid": "76e6ea9e-25f6-496c-be05-fde45f12cada"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 choice_pse_var_sym))",
             "nodeTrueQuery": [
@@ -1412,19 +1677,29 @@
             ],
             "variables": [
                 "choice_pse_var_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "choice_pse_var_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "door_switch_pse_var_sym": "6d902624-5af6-47ac-a9da-cff153cc25a7"
+            }
         },
         {
             "treeNode": {
                 "nodeId": "27",
-                "uid": "d0bf1988-aca4-46d6-9c3b-18368aa2c324"
+                "uid": "17556b9f-24be-4c72-b787-5648825bf475"
             },
             "predicate": "(Eq false (Eq 3 (ReadLSB w32 0 car_door_sym)))",
             "nodeTrueQuery": [],
             "nodeFalseQuery": [],
             "variables": [
                 "car_door_sym"
-            ]
+            ],
+            "IMap": {
+                "car_door_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "choice_pse_var_sym": "aac0629e-7805-4ec0-9446-2ff1455949b8",
+                "door_switch_pse_var_sym": "6d902624-5af6-47ac-a9da-cff153cc25a7"
+            }
         }
     ]
 }

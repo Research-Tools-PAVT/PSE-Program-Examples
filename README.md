@@ -25,10 +25,17 @@ Clone & Build [KLEE](http://klee.github.io/build-llvm9/).
 
 - Install [`python3`](https://www.python.org/downloads/release/python-387/) & [`pip3`](https://www.educative.io/edpresso/installing-pip3-in-ubuntu). 
 - Standard Packages : ```re```, ```sys```, ```os```.
+
+Some other essential packages include the following 
+
 - ```graphviz``` (https://pypi.org/project/graphviz/).
 - ```sexpdata``` (https://sexpdata.readthedocs.io/en/latest/).
 - ```json``` (https://docs.python.org/3/library/json.html).
 - ```uuid``` (https://docs.python.org/3/library/uuid.html#example).
+
+```
+$ pip3 install graphviz sexpdata
+```
 
 ## Run Command 
 

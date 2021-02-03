@@ -30,28 +30,33 @@ def findNext(node):
 
 # Find the parent node for a child or vice-versa
 def getLabel(node):
+    # Return Empty string if nothing matches.
     for edges in Tree.edgeSet:
         if node.data[0] == edges.child.data[0]:
-            return edges.data
+            if not edges.data:
+                return ""
+            else:
+                return edges.data
+    return ""
 
 
-## Process the file dump from KLEE
+# Process the file dump from KLEE
 with open(file.strip(), "r") as fileptr:
     lines = fileptr.read().replace("\n", " ")
 
-    ## We read all lines here.
-    ## We dont need the original dump after this point.
+    # We read all lines here.
+    # We dont need the original dump after this point.
     for elems in lines.split("}"):
         if len(elems.strip()) != 0:
             ConstraintObj = elems.split("{")[1].strip()
             temp = {}
 
-            ## We seperate into each dump item, array constructed.
+            # We seperate into each dump item, array constructed.
             for fields in ConstraintObj.split(","):
                 if len(fields.strip().split(":")) == 2:
                     [key, value] = fields.strip().split(":")
 
-                    ## TrueQuery & FalseQuery need specialized processing.
+                    # TrueQuery & FalseQuery need specialized processing.
                     if "Query" in key.strip():
                         temp[key.strip()] = [
                             ' '.join(x.strip().split()) for x in value.strip()
@@ -59,13 +64,13 @@ with open(file.strip(), "r") as fileptr:
                              1].strip().split(" > ")[1:len(value.strip())]
                         ]
 
-                    ## Add the branch condition.
+                    # Add the branch condition.
                     elif "Branch" in key.strip() or "Negate" in key.strip():
                         temp[key.strip()] = ' '.join(value.strip().split())
                     else:
                         temp[key.strip()] = value.strip()
 
-            ## Add to result.
+            # Add to result.
             results.append(temp)
 
 results.sort(key=lambda x: int(x["Line"]), reverse=False)
@@ -78,7 +83,7 @@ for elems in results:
         klee_false = int(elems["False KLEE Id"])
         generate_false = int(elems["False Generate ID"])
 
-        ## Nodes are reused here. Map as a cache.
+        # Nodes are reused here. Map as a cache.
         node = nodeMap.get(
             f"{aliasMap.get(current, current)}",
             ExecutionTreeNode(f"{aliasMap.get(current, current)}"))
@@ -87,7 +92,7 @@ for elems in results:
         right = nodeMap.get(f"{generate_false}",
                             ExecutionTreeNode(f"{generate_false}"))
 
-        ## Make sure we reuse the Node IDs.
+        # Make sure we reuse the Node IDs.
         nodeMap[aliasMap.get(current, current)] = node
         nodeMap[generate_true] = left
         nodeMap[generate_false] = right
@@ -101,15 +106,15 @@ for elems in results:
         else:
             pass
 
-        ## Added the branch predicates
+        # Added the branch predicates
         trueExpr = elems.get("Branch Predicate", "UNK")
         falseExpr = elems.get("Negate Predicate", "UNK")
 
-        ## Added the queries so for to reach this state in PTree.
+        # Added the queries so for to reach this state in PTree.
         node.trueQuerySet = elems.get("trueQuery", [])
         node.falseQuerySet = elems.get("falseQuery", [])
 
-        ## Adding the tree edges to nodes.
+        # Adding the tree edges to nodes.
         node.edges.append(
             ExecutionTreeEdge(node,
                               left,
@@ -122,7 +127,7 @@ for elems in results:
                               label='\n('.join(falseExpr.strip().split(' (')),
                               color="red"))
 
-        ## We also maintain a global edgeset to make queries faster.
+        # We also maintain a global edgeset to make queries faster.
         Tree.edgeSet.append(
             ExecutionTreeEdge(node,
                               left,
@@ -138,6 +143,8 @@ for elems in results:
 # Add Nodes & update Path IDs for PathMap
 for k, v in nodeMap.items():
     Tree.add_node(v)
+    # Leaf nodes are path ends.
+    # Update Path ID by Leaf node.
     if len(v.edges) == 0:
         id = id + 1
         pathMap[id] = v
@@ -149,27 +156,31 @@ for pathIds, nodes in pathMap.items():
     imapsData = {}
     variableListing = []
 
-    ## Recurse up from leaves to root,
-    ## collecting each edge information.
-    while findNext(temp) is not None:
+    # Recurse up from leaves to root,
+    # collecting each edge information.
+    while temp is not None:
         collection = {}
         data = ' '.join(getLabel(temp).strip().split("\n"))
         collection["treeNode"] = temp
 
-        ## If the label/edge has an associated "predicate" with it.
-        if data is not None:
+        # If the label/edge has an associated "predicate" with it.
+        if data:
             parsedData = loads(data)
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = data
             processExpressionImap(imapsData, variables)
-
-            ## All query lead to this particular node.
-            ## KLEE Assumes also come-in at this point.
-            collection["nodeTrueQuery"] = temp.trueQuerySet
-            collection["nodeFalseQuery"] = temp.falseQuerySet
+            # All query lead to this particular node.
+            # KLEE Assumes also come-in at this point.
             collection["variables"] = variables
             collection["IMap"] = imapsData
+
+        # Print the full query even for the first Node.
+        # whatever the case be
+        collection["nodeTrueQuery"] = temp.trueQuerySet
+        collection["nodeFalseQuery"] = temp.falseQuerySet
+
+        # Append to path the collection so far
         path.append(collection)
         temp = findNext(temp)
     paths[f"Path {pathIds}"] = path

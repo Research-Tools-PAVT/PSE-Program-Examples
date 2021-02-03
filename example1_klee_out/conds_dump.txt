@@ -1,6 +1,6 @@
 {
 	File : example1.cpp,
-	Line : 21,
+	Line : 22,
 	Predicate : 9,
 	Branch Predicate : (Slt (ReadLSB w32 0 b_sym)
       (ReadLSB w32 0 a_sym)),
@@ -36,7 +36,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 26,
+	Line : 30,
 	Predicate : 14,
 	Branch Predicate : (Slt (ReadLSB w32 0 d_prob_sym)
       (ReadLSB w32 0 c_prob_sym)),
@@ -76,7 +76,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 37,
+	Line : 41,
 	Predicate : 16,
 	Branch Predicate : (And (Sle 0
            (Mul w32 2
@@ -94,7 +94,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 37,
+	Line : 41,
 	Predicate : 16,
 	Branch Predicate : (And (Sle 0
            (ReadLSB w32 0 a_sym))
@@ -140,7 +140,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 43,
+	Line : 47,
 	Predicate : 9,
 	Branch Predicate : (Slt 0
       (Mul w32 3
@@ -190,7 +190,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 43,
+	Line : 47,
 	Predicate : 9,
 	Branch Predicate : (Slt 0
       (Add w32 1
@@ -202,7 +202,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 43,
+	Line : 47,
 	Predicate : 9,
 	Branch Predicate : (Slt 0
       (Add w32 1
@@ -216,7 +216,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 37,
+	Line : 41,
 	Predicate : 16,
 	Branch Predicate : (And (Sle 0
            (Select w32 (Slt N0:(ReadLSB w32 0 d_prob_sym)
@@ -242,7 +242,7 @@
 }
 {
 	File : example1.cpp,
-	Line : 43,
+	Line : 47,
 	Predicate : 9,
 	Branch Predicate : (Slt 0
       (Add w32 1

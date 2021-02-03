@@ -15,14 +15,18 @@ int main(void)
 
     klee_make_symbolic(&a, sizeof(a), "a_sym");
     make_pse_symbolic<int>(&b, sizeof(b), "b_sym", 0, 20);
+    // b_sym >= 0 (this is missing) && b_sym <= 20 (gets generated)
     make_pse_symbolic<int>(&c, sizeof(c), "c_prob_sym", 0, 800);
     make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
 
     if (a > b)
+    // b < a (Not hitting line 41 after this) => No forking needed.
+    // a > b /\ b_sym >= 0 && b_sym <= 20 /\ c >= 0 && c <= 800 ..
     {
         a = c * 2;
         b = d * 2;
     }
+    // Neg(a > b) /\ b_sym >= 0 && b_sym <= 20 /\ c >= 0 && c <= 800 ..
     else if (c > d)
     {
         c = a * 3;

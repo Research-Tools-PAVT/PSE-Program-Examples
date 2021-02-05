@@ -58,11 +58,12 @@ with open(file.strip(), "r") as fileptr:
 
                     # TrueQuery & FalseQuery need specialized processing.
                     if "Query" in key.strip():
-                        temp[key.strip()] = [
+                        key_splits = [
                             ' '.join(x.strip().split()) for x in value.strip()
-                            [1:len(value.strip()) -
-                             1].strip().split(" > ")[1:len(value.strip())]
+                            [1:len(value.strip()) - 1].strip().split("|")[0:len(value.strip())]
                         ]
+                        temp[key.strip()] = [
+                            x for x in key_splits[0:len(key_splits) - 1]]
 
                     # Add the branch condition.
                     elif "Branch" in key.strip() or "Negate" in key.strip():

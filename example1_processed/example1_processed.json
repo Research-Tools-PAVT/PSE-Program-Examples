@@ -9,6 +9,7 @@
         "True KLEE Id": "1",
         "True Generate ID": "2",
         "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -19,6 +20,7 @@
         "False KLEE Id": "2",
         "False Generate ID": "3",
         "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -37,6 +39,7 @@
         "True KLEE Id": "2",
         "True Generate ID": "4",
         "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -48,6 +51,7 @@
         "False KLEE Id": "3",
         "False Generate ID": "5",
         "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -74,6 +78,7 @@
         "True KLEE Id": "2",
         "True Generate ID": "6",
         "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -86,6 +91,7 @@
         "False KLEE Id": "4",
         "False Generate ID": "7",
         "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -111,6 +117,7 @@
         "True KLEE Id": "4",
         "True Generate ID": "8",
         "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",
@@ -124,6 +131,7 @@
         "False KLEE Id": "5",
         "False Generate ID": "9",
         "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 b_sym))",
             "(Sle (ReadLSB w32 0 b_sym) 20)",
             "(Sle 0 (ReadLSB w32 0 c_prob_sym))",
             "(Sle (ReadLSB w32 0 c_prob_sym) 800)",

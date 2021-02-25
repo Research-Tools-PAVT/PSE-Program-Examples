@@ -1,66 +1,65 @@
 \documentclass{article}
 
-\usepackage{algorithm,algpseudocode}
+\usepackage{algorithm, algpseudocode}
 
 \algnewcommand{\algorithmicforeach}{\textbf{for each}}
 \algdef{SE}[FOR]{ForEach}{EndForEach}[1]
 {\algorithmicforeach\ #1\ \algorithmicdo}% \ForEach{#1}
 {\algorithmicend\ \algorithmicforeach}% \EndForEach
-\usepackage{listings}
-\usepackage{xcolor} % for setting colors
+\usepackage{minted} 
 
-% set the default code style
-\lstset{
-	frame=tb, % draw a frame at the top and bottom of the code block
-	tabsize=4, % tab space width
-	showstringspaces=false, % don't mark spaces in strings
-	numbers=left, % display line numbers on the left
-	commentstyle=\color{red}, % comment color
-	keywordstyle=\color{blue}, % keyword color
-	stringstyle=\color{gray} % string color
-}
+\title{PSE Quant Sampling Algorithm}
+\author{Sumit Lahiri}
 
 \begin{document}
-\begin{lstlisting}[language=C++, caption={C++ code using listings}]
+	\maketitle
+	
+We try to formulate a way to compute path probabilities using \texttt{symbolic execution} and \texttt{testing} based technique.  
+\begin{minted}{c} 
 int main(void)
 {
-	int a, d;
-	// forall variable
+	int a; // unintialized
+	int d = std::uniform_distribution<rd_seed>(0, 650);
+	
+	// forall variable : (INT_MIN to INT_MAX)
 	klee_make_symbolic(&a, sizeof(a), "a_sym");
+	
 	// PSE variable : Uniformly distributed [0 to 650]
 	make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
+	
 	int c = a + 100;
 	
-	// case 1 -> Pure Forall Predicate
-	if (a > 50)	{
-		c = a + 75;
-	}	else	{
-		c = a - 75;
+	// case 1 : Pure Forall Predicate
+	if (a > 50) {
+	  c = a + 75;
+	} else {
+	  c = a - 75;
 	}
 	
-	// case 2 -> Pure PSE Predicate
-	if (d > 60)
-		d = 250;
+	// case 2 : Pure PSE Predicate
+	if (d > 60) d = 250;
 	
-	// case 3 -> Complex Case
-	if (c > d)
-		c = d;
-	
+	// case 3 : Dependence Case
+	if (c > d) c = d;
+
+	// Probabilistic query : assert(P(c != d) < 0.5)
+	// Opitimize here : 
+	//	Optimal value of forall (a) such that P(c != d) is close to 0.5 	
 	return 0;
 }
-\end{lstlisting}
+\end{minted}
 
 \begin{algorithm}[H]
-    \caption{Complex Case : (Testing Based Estimation)}
+    \caption{Dependence Case : (Testing Based Estimation)}
     \begin{algorithmic}[1]
         \ForEach{$p \in Paths$}%
-        \State c := ConstraintSet(p) \algorithmiccomment{Path Constraints for p}
-        \State m := Solve(c) \algorithmiccomment{solution for the path constraints}
-        \State forallConcreteSet = \{ \}
-        	\ForEach{$v \in ForallVars(p)$}%
-        	\State concreteSet.append(\{key : v, val : m[v]\}) \algorithmiccomment{forall values}
+        \State $c := ConstraintSet(p)$ \algorithmiccomment{Path Constraints for p}
+        \State $m := Optimize(query,  c)$ \algorithmiccomment{solution for the path constraints}
+        \State $concreteSet = \{ \}$
+        	\ForEach{$v \in ForallVars(p)$} \algorithmiccomment{ForallVars p $\rightarrow $ forall} %
+        	\State $concreteSet.append(\{key : v, val : m[v]\})$ \algorithmiccomment{Candidate Values}
         	\EndForEach
-        \State executeCV(program, concreteSet)
+        \State $executeCV(program, concreteSet)$
         \EndForEach
     \end{algorithmic}
 \end{algorithm}

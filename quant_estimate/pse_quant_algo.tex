@@ -31,14 +31,14 @@ int main(void)
 	make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
 	int c = a + 100;
 	
-	// case 1
+	// case 1 -> Pure Forall Predicate
 	if (a > 50)	{
 		c = a + 75;
 	}	else	{
 		c = a - 75;
 	}
 	
-	// case 2
+	// case 2 -> Pure PSE Predicate
 	if (d > 60)
 		d = 250;
 	
@@ -49,14 +49,47 @@ int main(void)
 	return 0;
 }
 \end{lstlisting}
+
 \begin{algorithm}
     \caption{Complex Case : (Testing Based Estimation)}
     \begin{algorithmic}[1]
-        \ForEach{$a \in A$}%
-        \State command \algorithmiccomment{This is a comment}
-        \State another command \algorithmiccomment{This is another comment}
+        \ForEach{$p \in Paths$}%
+        \State c := ConstraintSet(p) \algorithmiccomment{Path Constraints for p}
+        \State m := Solve(c) \algorithmiccomment{solution for the path constraints}
+        \State forallConcreteSet = \{ \}
+        	\ForEach{$v \in ForallVars(p)$}%
+        	\State concreteSet.append(\{key : v, val : m[v]\}) \algorithmiccomment{forall values}
+        	\EndForEach
+        \State executeCV(program, concreteSet, c)
         \EndForEach
     \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{Complex Case : (k-samples)}
+	\begin{algorithmic}[1]
+		\ForEach{$p \in Paths$}%
+		\State c := ConstraintSet(p) \algorithmiccomment{Path Constraints for p}
+		\State m := Solve(c) \algorithmiccomment{solution for the path constraints}
+		\State forallConcreteSet = \{ \}
+			\ForEach{$v \in ForallVars(p)$}%
+			\State concreteSet.append(\{key : v, val : m[v]\}) \algorithmiccomment{forall values}
+			\EndForEach
+		\EndForEach
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+	\caption{PSE Sampling Algorithm}
+	\begin{algorithmic}[1]
+		\Function{PSESample}{$\mathtt{x}, de, \varphi, \sigma, P, I$}
+		\Let{$\delta$}{Generate an unused name for a probabilistic symbolic variable}
+		\State{$P[\delta] = de$}
+		\State{$I[\delta] = \{\delta\}$}
+		\State{$\sigma[\mathtt{x}] = \delta$}
+		\State\Return{$(\varphi,\sigma,P,I)$}
+		\EndFunction
+	\end{algorithmic}
 \end{algorithm}
 
 \end{document}

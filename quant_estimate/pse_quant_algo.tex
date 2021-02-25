@@ -50,7 +50,7 @@ int main(void)
 }
 \end{lstlisting}
 
-\begin{algorithm}
+\begin{algorithm}[H]
     \caption{Complex Case : (Testing Based Estimation)}
     \begin{algorithmic}[1]
         \ForEach{$p \in Paths$}%
@@ -60,36 +60,22 @@ int main(void)
         	\ForEach{$v \in ForallVars(p)$}%
         	\State concreteSet.append(\{key : v, val : m[v]\}) \algorithmiccomment{forall values}
         	\EndForEach
-        \State executeCV(program, concreteSet, c)
+        \State executeCV(program, concreteSet)
         \EndForEach
     \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}
-	\caption{Complex Case : (k-samples)}
-	\begin{algorithmic}[1]
-		\ForEach{$p \in Paths$}%
-		\State c := ConstraintSet(p) \algorithmiccomment{Path Constraints for p}
-		\State m := Solve(c) \algorithmiccomment{solution for the path constraints}
-		\State forallConcreteSet = \{ \}
-			\ForEach{$v \in ForallVars(p)$}%
-			\State concreteSet.append(\{key : v, val : m[v]\}) \algorithmiccomment{forall values}
-			\EndForEach
-		\EndForEach
-	\end{algorithmic}
-\end{algorithm}
-
 \begin{algorithm}[H]
-	\caption{PSE Sampling Algorithm}
+	\caption{executeCV : PSE Sampled Normal Execution}
 	\begin{algorithmic}[1]
-		\Function{PSESample}{$\mathtt{x}, de, \varphi, \sigma, P, I$}
-		\Let{$\delta$}{Generate an unused name for a probabilistic symbolic variable}
-		\State{$P[\delta] = de$}
-		\State{$I[\delta] = \{\delta\}$}
-		\State{$\sigma[\mathtt{x}] = \delta$}
-		\State\Return{$(\varphi,\sigma,P,I)$}
+		\Function{executeCV}{$P : program, C : concreteSet$}
+			\ForEach{$v \in ForallVars(p)$}%
+			\State value(v) := concreteSet(v) \algorithmiccomment{Use values from ConcreteSet}
+			\EndForEach
+			\State ... \algorithmiccomment{proceed with normal execution}
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
+
 
 \end{document}

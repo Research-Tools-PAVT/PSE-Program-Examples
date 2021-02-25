@@ -1,0 +1,62 @@
+\documentclass{article}
+
+\usepackage{algorithm,algpseudocode}
+
+\algnewcommand{\algorithmicforeach}{\textbf{for each}}
+\algdef{SE}[FOR]{ForEach}{EndForEach}[1]
+{\algorithmicforeach\ #1\ \algorithmicdo}% \ForEach{#1}
+{\algorithmicend\ \algorithmicforeach}% \EndForEach
+\usepackage{listings}
+\usepackage{xcolor} % for setting colors
+
+% set the default code style
+\lstset{
+	frame=tb, % draw a frame at the top and bottom of the code block
+	tabsize=4, % tab space width
+	showstringspaces=false, % don't mark spaces in strings
+	numbers=left, % display line numbers on the left
+	commentstyle=\color{red}, % comment color
+	keywordstyle=\color{blue}, % keyword color
+	stringstyle=\color{gray} % string color
+}
+
+\begin{document}
+\begin{lstlisting}[language=C++, caption={C++ code using listings}]
+int main(void)
+{
+	int a, d;
+	// forall variable
+	klee_make_symbolic(&a, sizeof(a), "a_sym");
+	// PSE variable : Uniformly distributed [0 to 650]
+	make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
+	int c = a + 100;
+	
+	// case 1
+	if (a > 50)	{
+		c = a + 75;
+	}	else	{
+		c = a - 75;
+	}
+	
+	// case 2
+	if (d > 60)
+		d = 250;
+	
+	// case 3 -> Complex Case
+	if (c > d)
+		c = d;
+	
+	return 0;
+}
+\end{lstlisting}
+\begin{algorithm}
+    \caption{Complex Case : (Testing Based Estimation)}
+    \begin{algorithmic}[1]
+        \ForEach{$a \in A$}%
+        \State command \algorithmiccomment{This is a comment}
+        \State another command \algorithmiccomment{This is another comment}
+        \EndForEach
+    \end{algorithmic}
+\end{algorithm}
+
+\end{document}

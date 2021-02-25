@@ -4,50 +4,35 @@
 
 #include "PSE.h"
 
-int getmax(int a, int b)
-{
-    return a > b ? a : b;
-}
-
 int main(void)
 {
-    int a, b, c, d;
+    int a, d;
 
+    // forall variable
     klee_make_symbolic(&a, sizeof(a), "a_sym");
-    make_pse_symbolic<int>(&b, sizeof(b), "b_sym", 0, 20);
-    // b_sym >= 0 (this is missing) && b_sym <= 20 (gets generated)
-    make_pse_symbolic<int>(&c, sizeof(c), "c_prob_sym", 0, 800);
+
+    // PSE variable
     make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
 
-    if (a > b)
-    // b < a (Not hitting line 41 after this) => No forking needed.
-    // a > b /\ b_sym >= 0 && b_sym <= 20 /\ c >= 0 && c <= 800 ..
+    int c = a + 100;
+
+    // case 1
+    if (a > 50)
     {
-        a = c * 2;
-        b = d * 2;
-    }
-    // Neg(a > b) /\ b_sym >= 0 && b_sym <= 20 /\ c >= 0 && c <= 800 ..
-    else if (c > d)
-    {
-        c = a * 3;
-        d = b * 3;
+        c = a + 75;
     }
     else
     {
-        a = getmax(c, d);
-        b = getmax(c, b);
+        c = a - 75;
     }
 
-    if (a >= 0 && b >= 0)
-    {
-        c = c + 1;
-        d = getmax(a, b);
-    }
+    // case 2
+    if (d > 60)
+        d = 250;
 
-    if (c > 0)
-    {
-        b = 0;
-    }
+    // case 3 -> Complex Case
+    if (c > d)
+        c = d;
 
     return 0;
 }

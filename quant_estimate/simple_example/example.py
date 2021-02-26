@@ -10,28 +10,28 @@ Trying a manual example here.
 """
 
 
-def generateConstraints():
+def generateCandidates(k: int):
     opt = z3.Optimize()
     a = z3.Int("a_sym")
     d = z3.Int("d_prob_sym")
 
     opt.add(d >= 0)
     opt.add(d <= 650)
-
     opt.add(a > 50)
     opt.add(z3.Not(d > 60))
     opt.add(a + 75 > d)
 
-    ## Need to Check this.
-    opt.minimize(a - d - 75)
+    # Need to Check this.
+    opt.maximize(a - d - 75)
 
-    while opt.check() == z3.sat:
+    n = 0
+    while opt.check() == z3.sat and n != k:
         m = opt.model()
-        for d in m.decls():
-            print("%s = %s" % (d.name(), m[d]))
-        opt.add(z3.Not(a == m[a]))
-        opt.add(z3.Not(d == m[d]))
+        n += 1
+        print("%s = %s" % (a, m[a]))
+        print("%s = %s" % (d, m[d]))
+        opt.add(z3.Or(a != m[a]))
 
 
 if __name__ == "__main__":
-    generateConstraints()
+    generateCandidates(15)

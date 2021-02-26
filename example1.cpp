@@ -6,7 +6,7 @@
 
 int main(void)
 {
-    int a, d;
+    int a = 53, d;
 
     // forall variable
     klee_make_symbolic(&a, sizeof(a), "a_sym");

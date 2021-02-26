@@ -43,7 +43,7 @@ int main(void)
 	if (c > d) c = d;
 
 	// Probabilistic query : assert(P(c != d) < 0.5)
-	// Opitimize here : 
+	// Optimize here : 
 	//	Optimal value of forall (a) such that P(c != d) is close to 0.5 	
 	return 0;
 }
@@ -76,5 +76,28 @@ int main(void)
 	\end{algorithmic}
 \end{algorithm}
 
+For the sample program given above, we first resort to using \texttt{symbolic execution} to generate \texttt{path constraints} for all the feasible paths that this program can take and then convert the \texttt{path constraints} into an \texttt{formal logic} optimization problem that gives an \texttt{assignment} to \texttt{forall} variables such that it leads to optimum violation of the $query$.
+
+\begin{minted}{python}
+def generateCandidates(k: int):
+	opt = z3.Optimize()
+	a = z3.Int("a_sym")
+	d = z3.Int("d_prob_sym")
+	
+	opt.add(d >= 0)
+	opt.add(d <= 650)
+	opt.add(a > 50)
+	opt.add(z3.Not(d > 60))
+	opt.add(a + 75 > d)
+
+	opt.maximize(a - d - 75) 	# Query to optimize
+	n = 0
+	while opt.check() == z3.sat and n != k:
+		m = opt.model()
+		n += 1
+		print("%s = %s" % (a, m[a]))
+		print("%s = %s" % (d, m[d]))
+		opt.add(a != m[a])
+\end{minted}
 
 \end{document}

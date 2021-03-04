@@ -1,22 +1,22 @@
 klee --write-kqueries --set-ptree-dump example1.bc --set-ptree-dump
-PID: 618045
+PID: 526176
 Using monotonic steady clock with 1/1000000000s resolution
-Started: 2021-02-25 11:37:39
+Started: 2021-03-04 13:53:22
 BEGIN searcher description
 <InterleavedSearcher> containing 2 searchers:
 RandomPathSearcher
 WeightedRandomSearcher::CoveringNew
 </InterleavedSearcher>
 END searcher description
-Finished: 2021-02-25 11:37:39
+Finished: 2021-03-04 13:53:22
 Elapsed: 00:00:00
-KLEE: done: explored paths = 8
-KLEE: done: avg. constructs per query = 20
-KLEE: done: total queries = 8
+KLEE: done: explored paths = 6
+KLEE: done: avg. constructs per query = 49
+KLEE: done: total queries = 6
 KLEE: done: valid queries = 0
-KLEE: done: invalid queries = 8
-KLEE: done: query cex = 8
+KLEE: done: invalid queries = 6
+KLEE: done: query cex = 6
 
-KLEE: done: total instructions = 151
-KLEE: done: completed paths = 8
-KLEE: done: generated tests = 8
+KLEE: done: total instructions = 1152
+KLEE: done: completed paths = 6
+KLEE: done: generated tests = 6

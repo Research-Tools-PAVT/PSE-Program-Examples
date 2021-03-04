@@ -12,9 +12,9 @@
 \author{Sumit Lahiri}
 
 \begin{document}
-	\maketitle
-	
-We try to formulate a way to compute path probabilities using \texttt{symbolic execution} and \texttt{testing} based technique.  
+\maketitle
+
+We try to formulate a way to compute path probabilities using \texttt{symbolic execution} and \texttt{testing} based technique.
 \begin{minted}{c} 
 int main(void)
 {
@@ -50,28 +50,28 @@ int main(void)
 \end{minted}
 
 \begin{algorithm}[H]
-    \caption{Dependence Case : (Testing Based Estimation)}
-    \begin{algorithmic}[1]
-        \ForEach{$p \in Paths$}%
-        \State $c := ConstraintSet(p)$ \algorithmiccomment{Path Constraints for p}
-        \State $m := Optimize(query,  c)$ \algorithmiccomment{solution for the path constraints}
-        \State $concreteSet = \{ \}$
-        	\ForEach{$v \in ForallVars(p)$} \algorithmiccomment{ForallVars p $\rightarrow $ forall} %
-        	\State $concreteSet.append(\{key : v, val : m[v]\})$ \algorithmiccomment{Candidate Values}
-        	\EndForEach
-        \State $executeCV(program, concreteSet)$
-        \EndForEach
-    \end{algorithmic}
+	\caption{Candidates : (Testing Based Estimation)}
+	\begin{algorithmic}[1]
+		\ForEach{$p \in Paths$}%
+		\State $c := ConstraintSet(p)$ \algorithmiccomment{Path Constraints for p}
+		\State $m := Optimize(query,  c)$ \algorithmiccomment{solution for the path constraints}
+		\State $concreteSet = \{ \}$
+		\ForEach{$v \in ForallVars(p)$} \algorithmiccomment{ForallVars p $\rightarrow $ forall} %
+		\State $concreteSet.append(\{key : v, val : m[v]\})$ \algorithmiccomment{Candidate Values}
+		\EndForEach
+		\State $executeCV(program, concreteSet)$
+		\EndForEach
+	\end{algorithmic}
 \end{algorithm}
 
 \begin{algorithm}[H]
 	\caption{executeCV : PSE Sampled Normal Execution}
 	\begin{algorithmic}[1]
 		\Function{executeCV}{$P : program, C : concreteSet$}
-			\ForEach{$v \in ForallVars(p)$}%
-			\State value(v) := concreteSet(v) \algorithmiccomment{Use values from ConcreteSet}
-			\EndForEach
-			\State ... \algorithmiccomment{proceed with normal execution}
+		\ForEach{$v \in ForallVars(p)$}%
+		\State value(v) := concreteSet(v) \algorithmiccomment{Use values from ConcreteSet}
+		\EndForEach
+		\State ... \algorithmiccomment{proceed with normal execution}
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
@@ -79,7 +79,7 @@ int main(void)
 For the sample program given above, we first resort to using \texttt{symbolic execution} to generate \texttt{path constraints} for all the feasible paths that this program can take and then convert the \texttt{path constraints} into an \texttt{formal logic} optimization problem that gives an \texttt{assignment} to \texttt{forall} variables such that it leads to optimum violation of the $query$.
 
 \begin{minted}{python}
-def generateCandidates(k: int):
+def generateCandidates(k: int): # Candidates Algorithm
 	opt = z3.Optimize()
 	a = z3.Int("a_sym")
 	d = z3.Int("d_prob_sym")
@@ -98,6 +98,142 @@ def generateCandidates(k: int):
 		print("%s = %s" % (a, m[a]))
 		print("%s = %s" % (d, m[d]))
 		opt.add(a != m[a])
+\end{minted}
+
+We now explore a slightly different example which is more involved in terms of the constraints and query that the user can pose at the end of the \texttt{symbolic execution}.
+
+\begin{minted}{c}
+	int a, b, c, d;
+	
+	// forall variables : (INT_MIN to INT_MAX)
+	klee_make_symbolic(&a, sizeof(a), "a_sym");
+	klee_make_symbolic(&b, sizeof(b), "b_sym");
+	klee_make_symbolic(&c, sizeof(c), "c_sym");
+	
+	// PSE variables
+	make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 500);
+	// PSE variable : Random Sampling
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> distribution(0, 500);
+	
+	if (a + b > c + d)
+	{
+		if (a > b) {
+			a = 100;
+			b = 500;
+		} else {
+			a = 500;
+			b = 100;
+		}
+	} else {
+		if (c > d) {
+			a = 100;
+			c = 100;
+			b = 600;
+			d = distribution(generator);
+		} else {
+			a = 600;
+			c = 600;
+			b = 100;
+			d = distribution(generator);
+		}
+	}
+	if (a + c > b + d)
+	{
+		a = 200;
+		b = -150;
+		c = -20;
+		d = distribution(generator);
+	}
+\end{minted}
+
+Below we show a sample of the type of the \texttt{queries} that a user can make in the context of the example shown above. 
+
+\begin{minted}{c}
+	assert(a + b + c + d <= 1100);
+	
+	Case : 1
+	[Query Parse] : P(a + b + c + d <= 1100) >= 0.5
+	Query : assert fails atleast half of the times.
+	
+	Case : 2
+	[Query Parse] : P(a + b + c + d <= 1100) <= 0.5
+	Query : assert fails atmost half of the times.
+	
+	Case : 3
+	[Query Parse] : P(a + b + c + d <= 1100) == 0.5
+	Query : assert fails exactly half of the times.
+\end{minted}
+
+Based on the query posed, we get \texttt{candidate} models by converting the code into a \texttt{optimization} query and solve this optimization problem using any off-the-shelf 
+\texttt{SMT Solver} to get model values for the forall variables that contribute to maximum 
+violation of the \texttt{query} constraint.
+
+\begin{minted}{c}
+	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
+	a_sym + b_sym > c_sym + d_prob_sym, 
+	a_sym > b_sym, 500 + d_prob_sym < 100 + c_sym]
+		Model : 1
+			a_sym = 402
+			b_sym = 0
+			c_sym = 401
+		Model : 2
+			a_sym = 404
+			b_sym = -1
+			c_sym = 402
+	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
+	a_sym + b_sym > c_sym + d_prob_sym, 
+	a_sym > b_sym, Not(500 + d_prob_sym < 100 + c_sym)]
+		Model : 1
+			a_sym = 1
+			b_sym = 0
+			c_sym = 0
+		Model : 2
+			a_sym = 0
+			b_sym = -1
+			c_sym = -2
+	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
+	a_sym + b_sym > c_sym + d_prob_sym, 
+	Not(a_sym > b_sym), 100 + d_prob_sym < 500 + c_sym]
+		Model : 1
+			a_sym = -199
+			b_sym = -199
+			c_sym = -399
+		Model : 2
+			a_sym = -200
+			b_sym = -197
+			c_sym = -398
+	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
+	a_sym + b_sym > c_sym + d_prob_sym, 
+	Not(a_sym > b_sym), Not(100 + d_prob_sym < 500 + c_sym)]
+		...
+\end{minted}
+
+Here \texttt{P(condition)} represents the sum path \texttt{probabilities} for a given \texttt{condition} to hold with some deterministic value as posed in the queries shown above.  
+
+We now do a \texttt{transformation} pass over the program and instrument the count of the given \texttt{condition} failing. In the \texttt{transforamtion} pass, we make the \texttt{program} take values that we find as \texttt{candidate} models upon following \texttt{Algorithm 1}
+
+\begin{minted}{c}
+	int a, b, c, d, assert_satisfy = 0, termCount = 35000;
+	
+	// forall variables take values from stdin.
+	// pass values that conform to a candidate model
+	scanf("%d", &a); // (INT_MIN to INT_MAX)
+	scanf("%d", &b); // (INT_MIN to INT_MAX)
+	scanf("%d", &c); // (INT_MIN to INT_MAX)
+	
+	while(termCount--) {
+		...
+		(code remains same)
+		(run the code in a while loop)
+		...
+		// Added by transformation pass
+		// We take a count of how many times the 
+		// posed query is satisfied.
+		if (a + b + c + d - 1100 <= 0) {
+			assert_satisfy++;
+		}
+	}
 \end{minted}
 
 \end{document}

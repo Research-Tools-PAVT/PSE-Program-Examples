@@ -1,49 +1,53 @@
 digraph ExecutionTree {
-	1 -> 2 [label="(Slt 50
-(ReadLSB w32 0 a_sym))" color=green]
+	1 -> 2 [label="(Slt
+(Add w32
+(ReadLSB w32 0 c_sym)
+(ReadLSB w32 0 d_prob_sym))
+(Add w32
+(ReadLSB w32 0 a_sym)
+(ReadLSB w32 0 b_sym)))" color=green]
 	1 -> 3 [label="(Eq false
-(Slt 50
+(Slt
+(Add w32
+(ReadLSB w32 0 c_sym)
+(ReadLSB w32 0 d_prob_sym))
+(Add w32
+(ReadLSB w32 0 a_sym)
+(ReadLSB w32 0 b_sym))))" color=red]
+	2 -> 6 [label="(Slt
+(ReadLSB w32 0 b_sym)
+(ReadLSB w32 0 a_sym))" color=green]
+	2 -> 7 [label="(Eq false
+(Slt
+(ReadLSB w32 0 b_sym)
 (ReadLSB w32 0 a_sym)))" color=red]
-	2 -> 4 [label="(Slt 60
-(ReadLSB w32 0 d_prob_sym))" color=green]
-	2 -> 5 [label="(Eq false
-(Slt 60
-(ReadLSB w32 0 d_prob_sym)))" color=red]
-	3 -> 8 [label="(Slt 60
-(ReadLSB w32 0 d_prob_sym))" color=green]
-	3 -> 9 [label="(Eq false
-(Slt 60
-(ReadLSB w32 0 d_prob_sym)))" color=red]
-	4 -> 6 [label="(Slt 250
-(Add w32 75
-(ReadLSB w32 0 a_sym)))" color=green]
-	4 -> 7 [label="(Eq false
-(Slt 250
-(Add w32 75
-(ReadLSB w32 0 a_sym))))" color=red]
-	5 -> 10 [label="(Slt
+	3 -> 4 [label="(Slt
 (ReadLSB w32 0 d_prob_sym)
-(Add w32 75
-(ReadLSB w32 0 a_sym)))" color=green]
-	5 -> 11 [label="(Eq false
+(ReadLSB w32 0 c_sym))" color=green]
+	3 -> 5 [label="(Eq false
 (Slt
 (ReadLSB w32 0 d_prob_sym)
-(Add w32 75
-(ReadLSB w32 0 a_sym))))" color=red]
-	8 -> 14 [label="(Slt 250
-(Add w32 4294967221
-(ReadLSB w32 0 a_sym)))" color=green]
-	8 -> 15 [label="(Eq false
-(Slt 250
-(Add w32 4294967221
-(ReadLSB w32 0 a_sym))))" color=red]
-	9 -> 12 [label="(Slt
-(ReadLSB w32 0 d_prob_sym)
-(Add w32 4294967221
-(ReadLSB w32 0 a_sym)))" color=green]
-	9 -> 13 [label="(Eq false
+(ReadLSB w32 0 c_sym)))" color=red]
+	6 -> 10 [label="(Slt
+(Add w32 500
+(ReadLSB w32 0 d_prob_sym))
+(Add w32 100
+(ReadLSB w32 0 c_sym)))" color=green]
+	6 -> 11 [label="(Eq false
 (Slt
-(ReadLSB w32 0 d_prob_sym)
-(Add w32 4294967221
-(ReadLSB w32 0 a_sym))))" color=red]
+(Add w32 500
+(ReadLSB w32 0 d_prob_sym))
+(Add w32 100
+(ReadLSB w32 0 c_sym))))" color=red]
+	7 -> 8 [label="(Slt
+(Add w32 100
+(ReadLSB w32 0 d_prob_sym))
+(Add w32 500
+(ReadLSB w32 0 c_sym)))" color=green]
+	7 -> 9 [label="(Eq false
+(Slt
+(Add w32 100
+(ReadLSB w32 0 d_prob_sym))
+(Add w32 500
+(ReadLSB w32 0 c_sym))))" color=red]
 }

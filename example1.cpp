@@ -3,36 +3,73 @@
 // RUN: %klee --output-dir=%t.klee-out --libc=klee --max-forks=25 --write-no-tests --exit-on-error --optimize --disable-inlining --search=nurs:depth --use-cex-cache %t1.bc
 
 #include "PSE.h"
+#include <assert.h>
+#include <random>
 
 int main(void)
 {
-    int a = 53, d;
+    int a, b, c, d;
 
     // forall variable
     klee_make_symbolic(&a, sizeof(a), "a_sym");
+    klee_make_symbolic(&b, sizeof(b), "b_sym");
+    klee_make_symbolic(&c, sizeof(c), "c_sym");
 
     // PSE variable
-    make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 650);
+    make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 500);
 
-    int c = a + 100;
+    // PSE variable : Random Sampling
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(0, 500);
 
-    // case 1
-    if (a > 50)
+    if (a + b > c + d)
     {
-        c = a + 75;
+        if (a > b)
+        {
+            a = 100;
+            b = 500;
+        }
+        else
+        {
+            a = 500;
+            b = 100;
+        }
     }
     else
     {
-        c = a - 75;
+        if (c > d)
+        {
+            a = 100;
+            c = 100;
+            b = 600;
+            d = distribution(generator);
+        }
+        else
+        {
+            a = 600;
+            c = 600;
+            b = 100;
+            d = distribution(generator);
+        }
     }
 
-    // case 2
-    if (d > 60)
-        d = 250;
+    if (a + c > b + d)
+    {
+        a = 200;
+        b = -150;
+        c = -20;
+        d = distribution(generator);
+    }
 
-    // case 3 -> Complex Case
-    if (c > d)
-        c = d;
+    // assert(a + b + c + d <= 1100);
 
+    // Query Parse : P(a + b + c + d <= 1100) >= 0.5
+    // Query : assert fails atleast half of the times.
+
+    // Query Parse : P(a + b + c + d <= 1100) <= 0.5
+    // Query : assert fails atmost half of the times.
+
+    // Query Parse : P(a + b + c + d <= 1100) == 0.5
+    // Query : assert fails exactly half of the times.
     return 0;
 }

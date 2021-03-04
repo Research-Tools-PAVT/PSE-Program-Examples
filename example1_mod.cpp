@@ -1,9 +1,12 @@
 #include <iostream>
 #include <random>
 
+/**
+ * Processed by transforamtion pass
+*/
 int main(void)
 {
-    int a, b, c, d;
+    int a, b, c, d, assert_false = 0, termCount = 35000;
 
     // forall variable
     scanf("%d", &a);
@@ -14,44 +17,57 @@ int main(void)
     std::default_random_engine generator;
     std::uniform_int_distribution<int> distribution(0, 500);
 
-    if (a + b > c + d)
+    std::cout << "\nExecs : " << termCount
+              << "\n";
+
+    while (termCount--)
     {
-        if (a > b)
+        if (a + b > c + d)
         {
-            a = 100;
-            b = 500;
+            if (a > b)
+            {
+                a = 100;
+                b = 500;
+            }
+            else
+            {
+                a = 500;
+                b = 100;
+            }
         }
         else
         {
-            a = 500;
-            b = 100;
+            if (c > d)
+            {
+                a = 100;
+                c = 100;
+                b = 600;
+                d = distribution(generator);
+            }
+            else
+            {
+                a = 600;
+                c = 600;
+                b = 100;
+                d = distribution(generator);
+            }
         }
-    }
-    else
-    {
-        if (c > d)
+
+        if (a + c > b + d)
         {
-            a = 100;
-            c = 100;
-            b = 600;
+            a = 200;
+            b = -150;
+            c = -20;
             d = distribution(generator);
         }
-        else
-        {
-            a = 600;
-            c = 600;
-            b = 100;
-            d = distribution(generator);
-        }
+
+        std::cout << "\nd : " << d;
+        if (a + b + c + d - 1100 <= 0)
+            assert_false++;
     }
 
-    if (a + c > b + d)
-    {
-        a = 200;
-        b = -150;
-        c = -20;
-        d = distribution(generator);
-    }
+    std::cout << "\n\nHit : " << assert_false
+              << "\n";
 
     return 0;
 }

@@ -18,8 +18,11 @@ def build():
     try:
         # print(f"Building Binary Example {example}.c")
         output = run(
-            f'g++ {codeFile} -o {executable}',
-            shell=True, capture_output=True, text=True)
+            f"g++ {codeFile} -o {executable}",
+            shell=True,
+            capture_output=True,
+            text=True,
+        )
     except CalledProcessError as err:
         print(f"Build Error : {err}")
     else:
@@ -31,8 +34,11 @@ def executeCV(index, executable, inFile, outfile, errFile):
     try:
         # print(f"Running Binary Example {example}.c")
         output = run(
-            f'{executable} < {inFile} > {outfile} 2> {errFile}',
-            shell=True, capture_output=True, text=True)
+            f"{executable} < {inFile} > {outfile} 2> {errFile}",
+            shell=True,
+            capture_output=True,
+            text=True,
+        )
     except CalledProcessError as err:
         print(f"Execute Error : {err}")
     else:
@@ -47,13 +53,16 @@ if __name__ == "__main__":
     executeThreads = []
     with alive_bar(len(os.listdir(inputFilePath))) as executeBar:
         for index, inputFile in enumerate(os.listdir(inputFilePath)):
-            worker_thread = threading.Thread(target=executeCV, args=(
-                index,
-                executable,
-                os.path.join(inputFilePath, inputFile),
-                os.path.join(outputFilePath, f"output_{index}.txt"),
-                os.path.join(outputFilePath, f"output_err_{index}.txt")
-            ))
+            worker_thread = threading.Thread(
+                target=executeCV,
+                args=(
+                    index,
+                    executable,
+                    os.path.join(inputFilePath, inputFile),
+                    os.path.join(outputFilePath, f"output_{index}.txt"),
+                    os.path.join(outputFilePath, f"output_err_{index}.txt"),
+                ),
+            )
             executeThreads.append(worker_thread)
             time.sleep(0.3)
             worker_thread.start()

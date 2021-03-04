@@ -55,9 +55,6 @@ int main(void)
 
         if (a + c > b + d)
         {
-            a = 200;
-            b = -150;
-            c = -20;
             d = distribution(generator);
         }
 

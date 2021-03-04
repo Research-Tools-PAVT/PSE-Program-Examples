@@ -112,6 +112,7 @@ We now explore a slightly different example which is more involved in terms of t
 	
 	// PSE variables
 	make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 500);
+	
 	// PSE variable : Random Sampling
 	std::default_random_engine generator;
 	std::uniform_int_distribution<int> distribution(0, 500);
@@ -138,11 +139,9 @@ We now explore a slightly different example which is more involved in terms of t
 			d = distribution(generator);
 		}
 	}
+
 	if (a + c > b + d)
 	{
-		a = 200;
-		b = -150;
-		c = -20;
 		d = distribution(generator);
 	}
 \end{minted}

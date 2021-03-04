@@ -1,24 +1,25 @@
-import io
 import os
-import sys
+import threading
+import logging
 import time
-
+from alive_progress import alive_bar
 from subprocess import run, CalledProcessError
 
 pwd = os.path.dirname(__file__)
-executable = os.path.join(pwd, os.pardir, f"bin/example")
-inputFile = os.path.join(pwd, os.pardir, f"inputs/model")
-codeFile = os.path.join(pwd, os.pardir, f"example1_mod.cpp")
-outputFile = os.path.join(pwd, os.pardir, f"inputs/outputs")
+
+executable = os.path.join(pwd, os.pardir, "bin/example")
+codeFile = os.path.join(pwd, os.pardir, "example1_mod.cpp")
+
+inputFilePath = os.path.join(pwd, "inputs")
+outputFilePath = os.path.join(pwd, "outputs")
 
 
 def build():
-    # TODO : Compile and execute program
     try:
-        # print(f"Running Binary Example {example}.c")
+        # print(f"Building Binary Example {example}.c")
         output = run(
             f'g++ {codeFile} -o {executable}',
-            shell=True, capture_output=False, text=True)
+            shell=True, capture_output=True, text=True)
     except CalledProcessError as err:
         print(f"Build Error : {err}")
     else:
@@ -26,20 +27,37 @@ def build():
     return output.returncode
 
 
-def executeCV():
-    # TODO : Compile and execute program
+def executeCV(index, executable, inFile, outfile, errFile):
     try:
         # print(f"Running Binary Example {example}.c")
         output = run(
-            f'{executable} < {inputFile} > {outputFile}',
+            f'{executable} < {inFile} > {outfile} 2> {errFile}',
             shell=True, capture_output=True, text=True)
     except CalledProcessError as err:
         print(f"Execute Error : {err}")
     else:
-        print(f"Return : {output.returncode}")
+        pass
     return output.returncode
 
 
+logging.basicConfig(level=logging.DEBUG)
+
 if __name__ == "__main__":
     build()
-    executeCV()
+    executeThreads = []
+    with alive_bar(len(os.listdir(inputFilePath))) as executeBar:
+        for index, inputFile in enumerate(os.listdir(inputFilePath)):
+            worker_thread = threading.Thread(target=executeCV, args=(
+                index,
+                executable,
+                os.path.join(inputFilePath, inputFile),
+                os.path.join(outputFilePath, f"output_{index}.txt"),
+                os.path.join(outputFilePath, f"output_err_{index}.txt")
+            ))
+            executeThreads.append(worker_thread)
+            time.sleep(0.3)
+            worker_thread.start()
+            executeBar()
+
+    for index, worker in enumerate(executeThreads):
+        worker.join()

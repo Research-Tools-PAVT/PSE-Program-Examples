@@ -6,7 +6,7 @@
 */
 int main(void)
 {
-    int a, b, c, d, assert_false = 0, termCount = 35000;
+    int a, b, c, d, assert_false = 0, termCount = 500;
 
     // forall variable
     scanf("%d", &a);
@@ -17,7 +17,7 @@ int main(void)
     std::default_random_engine generator;
     std::uniform_int_distribution<int> distribution(0, 500);
 
-    std::cout << "\nExecs : " << termCount
+    std::cout << "Execs : " << termCount
               << "\n";
 
     while (termCount--)
@@ -61,12 +61,12 @@ int main(void)
             d = distribution(generator);
         }
 
-        std::cout << "\nd : " << d;
+        std::cerr << "\nd : " << d;
         if (a + b + c + d - 1100 <= 0)
             assert_false++;
     }
 
-    std::cout << "\n\nHit : " << assert_false
+    std::cout << "Hit : " << assert_false
               << "\n";
 
     return 0;

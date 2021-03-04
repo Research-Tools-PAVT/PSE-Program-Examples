@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import z3
+import sys
+import os
 
 """
 Below are a list of constraints that dictate which 
@@ -110,22 +112,29 @@ class Optimizer:
         return self.optimizerObj.check()
 
 
+pwd = os.path.dirname(__file__)
+inputFilePath = os.path.join(pwd, "inputs")
+
+
 def generateCandidates(k: int):
     for index, path in enumerate(paths):
 
-        print(f"Path : {path}")
+        print(f"Path {index + 1} : {path}")
         optpath = z3.Optimize()
         queryObj = ProbQueryObject("a + b + c + d - 100 <= 0", ">=")
 
         # This will get automated later to parse query
         # and retrieve directly from ProbQueryObject
 
+        # COMMENT : Need to discuss the query constraints for this program.
         optpath.add(a + b + c + d - 1100 <= 0)
         objective = (a + b + c + d - 1100)
+        foralls = z3.Sum(a, b, c)
 
         # Add the constraints and get candidate model from z3.
         for conds in path:
             optpath.add(conds)
+            optpath.maximize(foralls)
             if queryObj.type == ">=" or queryObj.type == ">":
                 optpath.minimize(objective)
             elif queryObj.type == "<=" or queryObj.type == "<":
@@ -143,10 +152,15 @@ def generateCandidates(k: int):
 
             # TODO : Automate it later.
             # See Model Values
-            print(f"  Model : {n}")
-            print("     %s = %s" % (a, m[a]))
-            print("     %s = %s" % (b, m[b]))
-            print("     %s = %s" % (c, m[c]))
+            with open(os.path.join(inputFilePath, f"model_{index}_{n}.txt"), mode="w") as fileptr:
+                fileptr.write(f"{m[a]}\n")
+                fileptr.write(f"{m[b]}\n")
+                fileptr.write(f"{m[c]}\n")
+
+            print(f"\tModel : {n}")
+            print("\t\t%s = %s" % (a, m[a]))
+            print("\t\t%s = %s" % (b, m[b]))
+            print("\t\t%s = %s" % (c, m[c]))
 
             # TODO : Automate it later.
             # Added blocking clauses.

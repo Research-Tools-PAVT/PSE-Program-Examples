@@ -7,7 +7,6 @@ import uuid
 from sexpdata import loads, dumps
 from auxiliary import flatten, isFloat, isInt
 
-name = sys.argv[1]
 arithmetic_expr_kind = ["Add", "Sub", "Mul", "UDiv", "URem", "SDiv", "SRem"]
 bitwise_expr_kind = ["And", "Or", "Xor", "Shl", "LShr", "AShr"]
 comparison_expr_kind = [

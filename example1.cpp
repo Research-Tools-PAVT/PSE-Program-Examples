@@ -8,68 +8,51 @@
 
 int main(void)
 {
-    int a, b, c, d;
+    int a, b, c, d, e, win, win_ones = 0, win_zeros = 0;
 
     // forall variable
-    klee_make_symbolic(&a, sizeof(a), "a_sym");
-    klee_make_symbolic(&b, sizeof(b), "b_sym");
-    klee_make_symbolic(&c, sizeof(c), "c_sym");
+    klee_make_symbolic(&a, sizeof(a), "a_sym"); // [0, 1]
+    klee_make_symbolic(&c, sizeof(b), "c_sym"); // [1, 10]
+    klee_make_symbolic(&d, sizeof(c), "d_sym"); // [-5, 5]
 
     // PSE variable
-    make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 500);
+    make_pse_symbolic<int>(&b, sizeof(b), "b_prob_sym", 0, 1);
+    make_pse_symbolic<int>(&e, sizeof(e), "e_prob_sym", 1, 6);
 
-    // PSE variable : Random Sampling
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(0, 500);
+    // // PSE variable : Random Sampling
+    // std::default_random_engine generator;
+    // std::uniform_int_distribution<int> distribution1(0, 1);
+    // std::uniform_int_distribution<int> distribution1(1, 6);
 
-    if (a + b > c + d)
+    if (a > b)
     {
-        if (a > b)
+        if (c + e > 14) // 14 may need tweaking to discover Bug
         {
-            a = 100;
-            b = 500;
+            win = 1;
+            win_ones++;
         }
         else
         {
-            a = 500;
-            b = 100;
+            win = 0;
+            win_zeros++;
         }
     }
     else
     {
-        if (c > d)
+        if (d + e < 0) // 0 may need tweaking to discover Bug
         {
-            a = 100;
-            c = 100;
-            b = 600;
-            d = distribution(generator);
+            win = 1;
+            win_ones++;
         }
         else
         {
-            a = 600;
-            c = 600;
-            b = 100;
-            d = distribution(generator);
+            win = 0;
+            win_zeros++;
         }
     }
 
-    if (a + c > b + d)
-    {
-        a = 200;
-        b = -150;
-        c = -20;
-        d = distribution(generator);
-    }
-
-    // assert(a + b + c + d <= 1100);
-
-    // Query Parse : P(a + b + c + d <= 1100) >= 0.5
-    // Query : assert fails atleast half of the times.
-
-    // Query Parse : P(a + b + c + d <= 1100) <= 0.5
-    // Query : assert fails atmost half of the times.
-
-    // Query Parse : P(a + b + c + d <= 1100) == 0.5
-    // Query : assert fails exactly half of the times.
+    assert(win == 1);
+    // COMMENT : assert(P(win == 1) > 0.5);
+    // COMMENT : Bug only when c >= 9 and d == 5
     return 0;
 }

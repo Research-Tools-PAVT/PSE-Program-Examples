@@ -64,7 +64,7 @@ if __name__ == "__main__":
                 ),
             )
             executeThreads.append(worker_thread)
-            time.sleep(0.3)
+            time.sleep(0.2)
             worker_thread.start()
             executeBar()
 

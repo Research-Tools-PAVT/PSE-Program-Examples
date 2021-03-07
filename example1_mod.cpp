@@ -1,70 +1,66 @@
 #include <iostream>
+#include <assert.h>
 #include <random>
 
-/**
- * Processed by transforamtion pass
-*/
 int main(void)
 {
-    int a, b, c, d, assert_false = 0, termCount = 500;
+    int a, b, c, d, e, win, win_ones = 0, win_zeros = 0, run = 0, term_count = 15000;
 
-    // forall variable
-    scanf("%d", &a);
-    scanf("%d", &b);
-    scanf("%d", &c);
-
-    // PSE variable : Random Sampling
+    // // PSE variable : Random Sampling
     std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(0, 500);
+    std::uniform_int_distribution<int> distribution1(0, 1); // b
+    std::uniform_int_distribution<int> distribution2(1, 6); // e
 
-    std::cout << "Execs : " << termCount
-              << "\n";
+    scanf("%d", &a); // [0, 1]
+    scanf("%d", &c); // [1, 10]
+    scanf("%d", &d); // [-5, 5]
 
-    while (termCount--)
+    int alpha, delta;
+    scanf("%d", &alpha); // COMMENT : Just for tweaking
+    scanf("%d", &delta); // COMMENT : Just for tweaking
+
+    while (term_count--)
     {
-        if (a + b > c + d)
+        b = distribution1(generator);
+        e = distribution2(generator);
+
+        if (a > b) // Coin Toss bug if a == 0 and rest ...
         {
-            if (a > b)
+            // Half the times we land here
+            if (c + e > alpha) // [11, 16] for c == 10
             {
-                a = 100;
-                b = 500;
+                win = 1;
+                win_ones++;
             }
             else
             {
-                a = 500;
-                b = 100;
+                win = 0;
+                win_zeros++;
             }
         }
         else
         {
-            if (c > d)
+            // Or we land here on this path half the times.
+            if (d + e < delta) // [-4, 1] for d == -5
             {
-                a = 100;
-                c = 100;
-                b = 600;
-                d = distribution(generator);
+                win = 1;
+                win_ones++;
             }
             else
             {
-                a = 600;
-                c = 600;
-                b = 100;
-                d = distribution(generator);
+                win = 0;
+                win_zeros++;
             }
         }
-
-        if (a + c > b + d)
-        {
-            d = distribution(generator);
-        }
-
-        std::cerr << "\nd : " << d;
-        if (a + b + c + d - 1100 <= 0)
-            assert_false++;
+        run++;
     }
 
-    std::cout << "Hit : " << assert_false
-              << "\n";
+    fprintf(stderr, "a : %d, b : %d\n", a, b);
+    fprintf(stderr, "win : %d, win_ones : %d\n", win, win_ones);
+    printf("P(win == 1) : %f : %d\n", (double)win_ones / run, win_ones);
+    printf("P(win == 0) : %f : %d\n", (double)win_zeros / run, win_zeros);
 
+    // COMMENT : assert(P(win == 1) > 0.5);
+    // COMMENT : Assert fails only when c >= 9 and d == -5 [a:0, c:9, d:-5] or [a:0, c:10, d:-5]
     return 0;
 }

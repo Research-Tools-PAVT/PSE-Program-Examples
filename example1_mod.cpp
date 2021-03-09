@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    int a, b, c, d, e, win, win_ones = 0, win_zeros = 0, run = 0, term_count = 15000;
+    int a, b, c, d, e, win, win_ones = 0, win_zeros = 0, run = 0, term_count = 500000;
 
     // // PSE variable : Random Sampling
     std::default_random_engine generator;
@@ -27,7 +27,7 @@ int main(void)
         if (a > b) // Coin Toss bug if a == 0 and rest ...
         {
             // Half the times we land here
-            if (c + e > alpha) // [11, 16] for c == 10
+            if (c + e > 16) // [11, 16] for c == 10
             {
                 win = 1;
                 win_ones++;
@@ -41,7 +41,7 @@ int main(void)
         else
         {
             // Or we land here on this path half the times.
-            if (d + e < delta) // [-4, 1] for d == -5
+            if (d + e < 2) // [-4, 1] for d == -5
             {
                 win = 1;
                 win_ones++;

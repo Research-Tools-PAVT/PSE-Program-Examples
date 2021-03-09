@@ -8,7 +8,7 @@
 
 int main(void)
 {
-    int a, b, c, d, e, win, win_ones = 0, win_zeros = 0;
+    int a, b, c, d, e, alpha, delta, win, win_ones = 0, win_zeros = 0;
 
     // forall variable
     klee_make_symbolic(&a, sizeof(a), "a_sym"); // [0, 1]
@@ -23,6 +23,10 @@ int main(void)
     // std::default_random_engine generator;
     // std::uniform_int_distribution<int> distribution1(0, 1);
     // std::uniform_int_distribution<int> distribution1(1, 6);
+
+    klee_assume(a >= 0 && a <= 1);
+    klee_assume(c >= 1 && c <= 10);
+    klee_assume(d >= -5 && d <= 5);
 
     if (a > b)
     {

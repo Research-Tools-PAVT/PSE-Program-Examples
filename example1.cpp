@@ -11,9 +11,10 @@ int main(void)
     int a, b, c, d, e, alpha, delta, win, win_ones = 0, win_zeros = 0;
 
     // forall variable
-    klee_make_symbolic(&a, sizeof(a), "a_sym"); // [0, 1]
-    klee_make_symbolic(&c, sizeof(b), "c_sym"); // [1, 10]
-    klee_make_symbolic(&d, sizeof(c), "d_sym"); // [-5, 5]
+    klee_make_symbolic(&a, sizeof(a), "a_sym");       // [0, 1]
+    klee_make_symbolic(&c, sizeof(b), "c_sym");       // [1, 10]
+    klee_make_symbolic(&d, sizeof(c), "d_sym");       // [0, 5]
+    klee_make_symbolic(&win, sizeof(win), "win_sym"); // win == 1
 
     // PSE variable
     make_pse_symbolic<int>(&b, sizeof(b), "b_prob_sym", 0, 1);
@@ -26,13 +27,13 @@ int main(void)
 
     klee_assume(a >= 0 && a <= 1);
     klee_assume(c >= 1 && c <= 10);
-    klee_assume(d >= -5 && d <= 5);
+    klee_assume(d >= 0 && d <= 5);
 
     if (a > b)
     {
-        if (c + e > 14) // 14 may need tweaking to discover Bug
+        if (c + e < 15) // COMMENT : Tweak
         {
-            win = 1;
+            klee_assume(win = 1);
             win_ones++;
         }
         else
@@ -43,9 +44,9 @@ int main(void)
     }
     else
     {
-        if (d + e < 0) // 0 may need tweaking to discover Bug
+        if (d + e > 1) // COMMENT : Tweak
         {
-            win = 1;
+            klee_assume(win = 1);
             win_ones++;
         }
         else
@@ -55,8 +56,7 @@ int main(void)
         }
     }
 
-    assert(win == 1);
+    // assert(win == 1);
     // COMMENT : assert(P(win == 1) > 0.5);
-    // COMMENT : Bug only when c >= 9 and d == 5
     return 0;
 }

@@ -1,7 +1,0 @@
-Error: ASSERTION FAIL: win == 1
-File: example1.cpp
-Line: 58
-assembly.ll line: 139
-State: 4
-Stack: 
-	#000000139 in main () at example1.cpp:58

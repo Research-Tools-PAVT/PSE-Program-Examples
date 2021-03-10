@@ -3,7 +3,7 @@
 import os
 
 pwd = os.path.dirname(__file__)
-inputFilePath = os.path.join(pwd, "inputs")
+inputFilePath = os.path.join(pwd, "foralls")
 
 a, c, d = 0, 0, 0
 
@@ -15,4 +15,4 @@ for a in range(2):
             ) as fileptr:
                 fileptr.write(f"{a}\n")
                 fileptr.write(f"{c + 1}\n")
-                fileptr.write(f"{d - 5}\n")
+                fileptr.write(f"{d}\n")

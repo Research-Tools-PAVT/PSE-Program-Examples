@@ -1,4 +1,5 @@
 import os
+import sys
 import threading
 import logging
 import time
@@ -10,7 +11,7 @@ pwd = os.path.dirname(__file__)
 executable = os.path.join(pwd, os.pardir, "bin/example")
 codeFile = os.path.join(pwd, os.pardir, "example1_mod.cpp")
 
-inputFilePath = os.path.join(pwd, "inputs")
+inputFilePath = os.path.join(pwd, sys.argv[1])
 outputFilePath = os.path.join(pwd, "outputs")
 
 
@@ -30,7 +31,7 @@ def build():
     return output.returncode
 
 
-def executeCV(index, executable, inFile, outfile, errFile):
+def executeCV(executable, inFile, outfile, errFile):
     try:
         # print(f"Running Binary Example {example}.c")
         output = run(
@@ -56,7 +57,6 @@ if __name__ == "__main__":
             worker_thread = threading.Thread(
                 target=executeCV,
                 args=(
-                    index,
                     executable,
                     os.path.join(inputFilePath, inputFile),
                     os.path.join(outputFilePath, f"output_{index}.txt"),
@@ -64,8 +64,8 @@ if __name__ == "__main__":
                 ),
             )
             executeThreads.append(worker_thread)
-            time.sleep(0.)
             worker_thread.start()
+            time.sleep(0.2)
             executeBar()
 
     for index, worker in enumerate(executeThreads):
@@ -87,10 +87,11 @@ if __name__ == "__main__":
                     with open(os.path.join(pwd, "pathprobs.txt"), mode="a") as pathprobs:
                         pathprobs.write(
                             f'{assertQuery} : {value} : {line[-1].strip()}\n')
-                    if float(value) < 0.2:
+                    if float(value) < 0.8:
                         with open(os.path.join(pwd, "results.txt"), mode="a") as resultFile:
                             resultFile.write(
                                 f'Fail : {assertQuery} : {value} : {line[-1].strip()}\n')
+            time.sleep(0.1)
             executeBar()
 
     prob = sumtotal/count

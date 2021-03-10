@@ -1,3 +1,1 @@
 KLEE: Using Z3 solver backend
-KLEE: ERROR: example1.cpp:58: ASSERTION FAIL: win == 1
-KLEE: NOTE: now ignoring this error at this location

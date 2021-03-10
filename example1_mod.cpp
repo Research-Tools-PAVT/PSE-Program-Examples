@@ -9,7 +9,7 @@ int main(void)
 
     scanf("%d", &a); // [0, 1]
     scanf("%d", &c); // [1, 10]
-    scanf("%d", &d); // [-5, 5]
+    scanf("%d", &d); // [0, 5]
 
     int alpha, delta;
     scanf("%d", &alpha); // COMMENT : Just for tweaking
@@ -32,7 +32,7 @@ int main(void)
         {
             // Half the times we land here
             // hits for a == 1, b == 0
-            if (c + e < 11) // [11, 16] for c == 10
+            if (c + e < 15) // [11, 16] for c == 10
             {
                 win = 1;
                 win_ones++;
@@ -48,7 +48,7 @@ int main(void)
         {
             // Or we land here on this path half the times.
             // hits this branch (a == 0)
-            if (d + e > -1) // [-4, 1] for d == -5
+            if (d + e > 1) // [-4, 1] for d == -5
             {
                 win = 1;
                 win_ones++;

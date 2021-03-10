@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import z3
-import sys
 import os
 
 """
@@ -23,10 +22,10 @@ klee_assume5 = z3.And(e >= 1, e <= 6)
 cond1 = b < a
 notcond1 = z3.Not(b < a)
 
-cond2 = 14 < c + e
+cond2 = 7 < c + e
 notcond2 = z3.Not(14 < c + e)
 
-cond3 = 0 < d + e
+cond3 = 6 < d + e
 notcond3 = z3.Not(0 < d + e)
 
 """
@@ -127,21 +126,21 @@ def generateCandidates(k: int):
         # This will get automated later to parse query
         # and retrieve directly from ProbQueryObject
         # COMMENT : Need to discuss the query constraints for this program.
-        objective = c + d
+        objective = c / d
 
         # Add the constraints and get candidate model from z3.
         for conds in path:
             optpath.add(conds)
             if queryObj.type == ">=" or queryObj.type == ">":
-                optpath.maximize(objective)
+                optpath.minimize(objective)
             elif queryObj.type == "<=" or queryObj.type == "<":
-                optpath.minmize(objective)
+                optpath.maximize(objective)
             else:
                 # Check what happens in the equality case.
-                optpath.minimize(objective)
+                optpath.check()
 
         n = 0
-        # TODO : Automate it later get MODELS.
+        # TODO : Automate it later get MODELs.
         while optpath.check() == z3.sat and n != k:
 
             m = optpath.model()
@@ -158,8 +157,8 @@ def generateCandidates(k: int):
 
             print(f"\tModel : {n}")
             print("\t\t%s = %s" % (a, m[a]))
-            print("\t\t%s = %s" % (b, m[c]))
-            print("\t\t%s = %s" % (c, m[d]))
+            print("\t\t%s = %s" % (c, m[c]))
+            print("\t\t%s = %s" % (d, m[d]))
 
             # TODO : Automate it later.
             # Added blocking clauses.

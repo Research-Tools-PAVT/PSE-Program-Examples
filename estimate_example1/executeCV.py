@@ -64,9 +64,34 @@ if __name__ == "__main__":
                 ),
             )
             executeThreads.append(worker_thread)
-            time.sleep(0.2)
+            time.sleep(0.)
             worker_thread.start()
             executeBar()
 
     for index, worker in enumerate(executeThreads):
         worker.join()
+
+    num_outs = len(os.listdir(outputFilePath))
+    sumtotal = 0.0
+    count = 0
+
+    with alive_bar(num_outs) as executeBar:
+        for index, outputFile in enumerate(os.listdir(outputFilePath)):
+            if "err" not in outputFile:
+                with open(os.path.join(outputFilePath, outputFile), mode="r") as fileptr:
+                    line = fileptr.readlines()
+                    assertQuery = line[0].strip().split(':')[0]
+                    value = line[0].strip().split(':')[1]
+                    sumtotal += float(value)
+                    count += 1
+                    with open(os.path.join(pwd, "pathprobs.txt"), mode="a") as pathprobs:
+                        pathprobs.write(
+                            f'{assertQuery} : {value} : {line[-1].strip()}\n')
+                    if float(value) < 0.2:
+                        with open(os.path.join(pwd, "results.txt"), mode="a") as resultFile:
+                            resultFile.write(
+                                f'Fail : {assertQuery} : {value} : {line[-1].strip()}\n')
+            executeBar()
+
+    prob = sumtotal/count
+    print(f'{assertQuery} : {prob}')

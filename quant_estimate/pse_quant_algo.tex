@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{algorithm, algpseudocode}
+\usepackage{graphicx}
 
 \algnewcommand{\algorithmicforeach}{\textbf{for each}}
 \algdef{SE}[FOR]{ForEach}{EndForEach}[1]
@@ -100,139 +101,189 @@ def generateCandidates(k: int): # Candidates Algorithm
 		opt.add(a != m[a])
 \end{minted}
 
-We now explore a slightly different example which is more involved in terms of the constraints and query that the user can pose at the end of the \texttt{symbolic execution}.
+We now explore a slightly different example which is more involved in terms of the constraints and query that the user can pose at the end of the \texttt{symbolic execution}. In the below example we bound the values for \texttt{foralls} for example sake. 
 
 \begin{minted}{c}
-	int a, b, c, d;
-	
-	// forall variables : (INT_MIN to INT_MAX)
-	klee_make_symbolic(&a, sizeof(a), "a_sym");
-	klee_make_symbolic(&b, sizeof(b), "b_sym");
-	klee_make_symbolic(&c, sizeof(c), "c_sym");
-	
-	// PSE variables
-	make_pse_symbolic<int>(&d, sizeof(d), "d_prob_sym", 0, 500);
-	
-	// PSE variable : Random Sampling
-	std::default_random_engine generator;
-	std::uniform_int_distribution<int> distribution(0, 500);
-	
-	if (a + b > c + d)
-	{
-		if (a > b) {
-			a = 100;
-			b = 500;
-		} else {
-			a = 500;
-			b = 100;
-		}
-	} else {
-		if (c > d) {
-			a = 100;
-			c = 100;
-			b = 600;
-			d = distribution(generator);
-		} else {
-			a = 600;
-			c = 600;
-			b = 100;
-			d = distribution(generator);
-		}
-	}
+// forall variable
+klee_make_symbolic(&a, sizeof(a), "a_sym");       // [0, 1]
+klee_make_symbolic(&c, sizeof(b), "c_sym");       // [1, 10]
+klee_make_symbolic(&d, sizeof(c), "d_sym");       // [0, 5]
+klee_make_symbolic(&win, sizeof(win), "win_sym"); // win == 1
 
-	if (a + c > b + d)
+// PSE variable
+make_pse_symbolic<int>(&b, sizeof(b), "b_prob_sym", 0, 1);
+make_pse_symbolic<int>(&e, sizeof(e), "e_prob_sym", 1, 6);
+
+klee_assume(a >= 0 && a <= 1);
+klee_assume(c >= 1 && c <= 10);
+klee_assume(d >= 0 && d <= 5);
+
+if (a > b)				     // maximize a
+{
+	if (c + e < 15)			// minimize c
 	{
-		d = distribution(generator);
+		win = 1;			
+		win_ones++;
 	}
+	else
+	{
+		win = 0;
+		win_zeros++;
+	}
+}
+else
+{
+	if (d + e > 1)			// maximize d
+	{
+		win = 1;
+		win_ones++;
+	}
+	else
+	{
+		win = 0;
+		win_zeros++;
+	}
+}
 \end{minted}
 
 Below we show a sample of the type of the \texttt{queries} that a user can make in the context of the example shown above. 
 
 \begin{minted}{c}
-	assert(a + b + c + d <= 1100);
-	
-	Case : 1
-	[Query Parse] : P(a + b + c + d <= 1100) >= 0.5
-	Query : assert fails atleast half of the times.
-	
-	Case : 2
-	[Query Parse] : P(a + b + c + d <= 1100) <= 0.5
-	Query : assert fails atmost half of the times.
-	
-	Case : 3
-	[Query Parse] : P(a + b + c + d <= 1100) == 0.5
-	Query : assert fails exactly half of the times.
+	assert(P(win == 1) > 0.8);
 \end{minted}
 
 Based on the query posed, we get \texttt{candidate} models by converting the code into a \texttt{optimization} query and solve this optimization problem using any off-the-shelf 
 \texttt{SMT Solver} to get model values for the forall variables that contribute to maximum 
-violation of the \texttt{query} constraint.
+violation of the \texttt{query} constraint. 
+
+Based on the example we do the following \texttt{optimizations}. one on \texttt{Path 1} and the other on \texttt{Path 3} where \texttt{win == 1} 
 
 \begin{minted}{c}
-	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
-	a_sym + b_sym > c_sym + d_prob_sym, 
-	a_sym > b_sym, 500 + d_prob_sym < 100 + c_sym]
-		Model : 1
-			a_sym = 402
-			b_sym = 0
-			c_sym = 401
-		Model : 2
-			a_sym = 404
-			b_sym = -1
-			c_sym = 402
-	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
-	a_sym + b_sym > c_sym + d_prob_sym, 
-	a_sym > b_sym, Not(500 + d_prob_sym < 100 + c_sym)]
-		Model : 1
-			a_sym = 1
-			b_sym = 0
-			c_sym = 0
-		Model : 2
-			a_sym = 0
-			b_sym = -1
-			c_sym = -2
-	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
-	a_sym + b_sym > c_sym + d_prob_sym, 
-	Not(a_sym > b_sym), 100 + d_prob_sym < 500 + c_sym]
-		Model : 1
-			a_sym = -199
-			b_sym = -199
-			c_sym = -399
-		Model : 2
-			a_sym = -200
-			b_sym = -197
-			c_sym = -398
-	Path : [And(d_prob_sym >= 0, d_prob_sym <= 500), 
-	a_sym + b_sym > c_sym + d_prob_sym, 
-	Not(a_sym > b_sym), Not(100 + d_prob_sym < 500 + c_sym)]
+	Path 1 : maximize((a - b) + 11 - (c + e))
+\end{minted}
+
+\begin{minted}{c}
+	Path 3 : maximize((b - a) + (d + e) - 1)
+\end{minted}
+
+On the other two paths, we \texttt{minimize} the same. \texttt{win == 1} on the \texttt{green} edged paths. \\
+
+\includegraphics[scale=0.35]{exectree1.png} 
+
+\begin{minted}{c}
+Path 1 : [And(a_sym >= 0, a_sym <= 1), And(c_sym >= 1, c_sym <= 10),
+ And(d_sym >= 0, d_sym <= 5), And(b_prob_sym >= 0, b_prob_sym <= 1), 
+ And(e_prob_sym >= 1, e_prob_sym <= 6), win_sym == 1, b_prob_sym < 
+ a_sym, c_sym + e_prob_sym < 15]
+	Model : 1
+		a_sym = 1
+		c_sym = 1
+		d_sym = 0
+	Model : 2
+		a_sym = 1
+		c_sym = 2
+		d_sym = 0
+	Model : 3
+		a_sym = 1
+		c_sym = 3
+		d_sym = 0
+Path 2 : [And(a_sym >= 0, a_sym <= 1), And(c_sym >= 1, c_sym <= 10), 
+And(d_sym >= 0, d_sym <= 5), And(b_prob_sym >= 0, b_prob_sym <= 1), 
+And(e_prob_sym >= 1, e_prob_sym <= 6), b_prob_sym < a_sym, Not(c_sym 
++ e_prob_sym < 15)]
+	Model : 1
+		a_sym = 1
+		c_sym = 9
+		d_sym = 0
+	Model : 2
+		a_sym = 1
+		c_sym = 10
+		d_sym = 0
+Path 3 : [And(a_sym >= 0, a_sym <= 1), And(c_sym >= 1, c_sym <= 10), 
+And(d_sym >= 0, d_sym <= 5), And(b_prob_sym >= 0, b_prob_sym <= 1), 
+And(e_prob_sym >= 1, e_prob_sym <= 6), win_sym == 1, Not(b_prob_sym 
+< a_sym), d_sym + e_prob_sym > 1]
+	Model : 1
+		a_sym = 0
+		c_sym = 1
+		d_sym = 0
+	Model : 2
+		a_sym = 0
+		c_sym = 2
+		d_sym = 0
+	Model : 3
+		a_sym = 0
+		c_sym = 3
+		d_sym = 1
+
 		...
 \end{minted}
 
-Here \texttt{P(condition)} represents the sum path \texttt{probabilities} for a given \texttt{condition} to hold with some deterministic value as posed in the queries shown above.  
+Here \texttt{P(win == 1)} is the query of interest to us so we optimize along those paths where this condition holds. \\   
 
 We now do a \texttt{transformation} pass over the program and instrument the count of the given \texttt{condition} failing. In the \texttt{transforamtion} pass, we make the \texttt{program} take values that we find as \texttt{candidate} models upon following \texttt{Algorithm 1}
 
 \begin{minted}{c}
-	int a, b, c, d, assert_satisfy = 0, termCount = 35000;
+// Take in candidate vector for [foralls]
+scanf("%d", &a); // [0, 1]
+scanf("%d", &c); // [1, 10]
+scanf("%d", &d); // [0, 5]
+
+// // PSE variable : Random Sampling
+std::default_random_engine generator;
+std::uniform_int_distribution<int> distribution1(0, 1); // b
+std::uniform_int_distribution<int> distribution2(1, 6); // e
+
+while (term_count--) // term_count > 500000 (large sample)
+{
+	b = distribution1(generator);
+	e = distribution2(generator);
 	
-	// forall variables take values from stdin.
-	// pass values that conform to a candidate model
-	scanf("%d", &a); // (INT_MIN to INT_MAX)
-	scanf("%d", &b); // (INT_MIN to INT_MAX)
-	scanf("%d", &c); // (INT_MIN to INT_MAX)
-	
-	while(termCount--) {
-		...
-		(code remains same)
-		(run the code in a while loop)
-		...
-		// Added by transformation pass
-		// We take a count of how many times the 
-		// posed query is satisfied.
-		if (a + b + c + d - 1100 <= 0) {
-			assert_satisfy++;
+	if (a > b) { // 
+		if (c + e < 15) {
+			win = 1;
+			win_ones++;
+		} else {
+			...
+		}
+	} else {
+		if (d + e > 1) {
+			win = 1;
+			win_ones++;
+		} else {
+			...
 		}
 	}
+	run++;
+} // P(win==1) is win_ones/run;
 \end{minted}
 
+We tweaked the values in such a way that for a very small number of candidate vectors the \texttt(probabilistic) assert fails and our algorithm must now catch that. Indeed we find that for the following assignments to \texttt{forall} variables, the assert fails.
+
+\begin{minted}{c}
+	Fail : P(win == 1)  :  0.754100
+		Vals -> a : 1, c : 10, d : 0
+\end{minted}
+
+For other \texttt{candidate} vectors, we find that the \texttt{probabilistic} asserts actually hold and will not cause a violation during execution under normal condiditons. 
+
+\begin{minted}{c}
+	Pass : P(win == 1)  :  1.000000
+		Vals -> a : 0, c : 7, d : 4
+	Pass : P(win == 1)  :  1.000000
+		Vals -> a : 1, c : 4, d : 4
+	Pass : P(win == 1)  :  1.000000
+		Vals -> a : 1, c : 1, d : 3
+	Pass : P(win == 1)  :  1.000000
+		Vals -> a : 0, c : 6, d : 4
+	Pass : P(win == 1)  :  0.834900
+		Vals -> a : 0, c : 7, d : 0
+	Pass : P(win == 1)  :  0.834900
+		Vals -> a : 0, c : 2, d : 0
+	Pass : P(win == 1)  :  1.000000
+		Vals -> a : 0, c : 10, d : 2
+	Pass : P(win == 1)  :  0.917800
+		Vals -> a : 1, c : 3, d : 0
+			...
+\end{minted}
 \end{document}

@@ -5,7 +5,7 @@
 int main(void)
 {
     int a, b, c, d, e, win;
-    int win_ones = 0, a_more_b = 0, win_zeros = 0, run = 0, term_count = 10000;
+    int win_ones = 0, a_more_b = 0, win_zeros = 0, run = 0, term_count = 50000;
 
     scanf("%d", &a); // [0, 1]
     scanf("%d", &c); // [1, 10]
@@ -70,8 +70,8 @@ int main(void)
     printf("P(a > b) : %f\n", (double)a_more_b / run);
     printf("Vals -> a : %d, c : %d, d : %d\n", a, c, d);
 
-    // assert(pwin >= 0.5f);
-    // COMMENT : assert(P(win == 1) > 0.5);
+    // assert(pwin >= 0.8f);
+    // COMMENT : assert(P(win == 1) > 0.8);
     // COMMENT : Assert fails only when c >= 9 and d == -5 [a:0, c:9, d:-5] or [a:0, c:10, d:-5]
     return 0;
 }

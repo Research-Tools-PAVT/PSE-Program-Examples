@@ -9,4 +9,4 @@ rm -rf estimate_example1/results.txt
 
 python3 estimate_example1/genCandidateM.py
 python3 estimate_example1/candidates.py  
-python3 estimate_example1/executeCV.py foralls
+python3 estimate_example1/executeCV.py inputs

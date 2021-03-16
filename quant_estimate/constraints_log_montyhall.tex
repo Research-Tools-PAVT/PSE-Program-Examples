@@ -1,0 +1,186 @@
+\documentclass{article}
+
+\usepackage{algorithm, algpseudocode}
+\usepackage{graphicx}
+
+\algnewcommand{\algorithmicforeach}{\textbf{for each}}
+\algdef{SE}[FOR]{ForEach}{EndForEach}[1]
+{\algorithmicforeach\ #1\ \algorithmicdo}% \ForEach{#1}
+{\algorithmicend\ \algorithmicforeach}% \EndForEach
+\usepackage{minted} 
+
+\title{Monty Hall Constraints}
+\author{Sumit Lahiri}
+
+\begin{document}
+	\maketitle
+	Parse results after processing \texttt{KLEE} dump for \texttt{Monty Hall} Example.
+	\begin{minted}{c}
+Path : 1
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	!((!(car_door_sym == 2) && !(choice_pse_var_sym == 2)))
+	!(!(door_switch_pse_var_sym == 0))
+	
+Path : 2
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	(!(car_door_sym == 2) && !(choice_pse_var_sym == 2))
+	!(door_switch_pse_var_sym == 0)
+	!(choice_pse_var_sym == 1)
+	
+Path : 3
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	!((!(car_door_sym == 2) && !(choice_pse_var_sym == 2)))
+	!(door_switch_pse_var_sym == 0)
+	choice_pse_var_sym == 1
+	
+Path : 4
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	!((!(car_door_sym == 2) && !(choice_pse_var_sym == 2)))
+	!(door_switch_pse_var_sym == 0)
+	!(choice_pse_var_sym == 1)
+	
+Path : 5
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	(!(car_door_sym == 1) && !(choice_pse_var_sym == 1))
+	!(!(door_switch_pse_var_sym == 0))
+	choice_pse_var_sym == car_door_sym
+	
+Path : 6
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	(!(car_door_sym == 1) && !(choice_pse_var_sym == 1))
+	!(!(door_switch_pse_var_sym == 0))
+	!(choice_pse_var_sym == car_door_sym)
+	
+Path : 7
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	(!(car_door_sym == 2) && !(choice_pse_var_sym == 2))
+	!(!(door_switch_pse_var_sym == 0))
+	choice_pse_var_sym == car_door_sym
+	
+Path : 8
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	(!(car_door_sym == 2) && !(choice_pse_var_sym == 2))
+	!(!(door_switch_pse_var_sym == 0))
+	!(choice_pse_var_sym == car_door_sym)
+	
+Path : 9
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	(!(car_door_sym == 1) && !(choice_pse_var_sym == 1))
+	!(door_switch_pse_var_sym == 0)
+	!(choice_pse_var_sym == 2)
+	car_door_sym == 2
+	
+Path : 10
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	(!(car_door_sym == 1) && !(choice_pse_var_sym == 1))
+	!(door_switch_pse_var_sym == 0)
+	!(choice_pse_var_sym == 2)
+	!(car_door_sym == 2)
+	
+Path : 11
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	(!(car_door_sym == 1) && !(choice_pse_var_sym == 1))
+	!(door_switch_pse_var_sym == 0)
+	choice_pse_var_sym == 2
+	car_door_sym == 3
+	
+Path : 12
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	(!(car_door_sym == 1) && !(choice_pse_var_sym == 1))
+	!(door_switch_pse_var_sym == 0)
+	choice_pse_var_sym == 2
+	!(car_door_sym == 3)
+	
+Path : 13
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	(!(car_door_sym == 2) && !(choice_pse_var_sym == 2))
+	!(door_switch_pse_var_sym == 0)
+	choice_pse_var_sym == 1
+	car_door_sym == 3
+	
+Path : 14
+	0 <= door_switch_pse_var_sym
+	door_switch_pse_var_sym <= 1
+	0 <= choice_pse_var_sym
+	choice_pse_var_sym <= 3
+	0 <= car_door_sym
+	car_door_sym <= 3
+	!((!(car_door_sym == 1) && !(choice_pse_var_sym == 1)))
+	(!(car_door_sym == 2) && !(choice_pse_var_sym == 2))
+	!(door_switch_pse_var_sym == 0)
+	choice_pse_var_sym == 1
+	!(car_door_sym == 3)
+	\end{minted}
+\end{document}

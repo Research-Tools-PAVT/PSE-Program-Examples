@@ -16,14 +16,15 @@ def genericParse(expr):
         return
     if expr.get("action") == "Eq":
         right = expr.get("right", None)
+        left = expr.get("left", None)
         const = expr.get("const", None)
         boolean = expr.get("bool", None)
         if right is not None:
             parsedRight = genericParse(right)
-            variable = right.get("var", None)
+            rvariable = right.get("var", None)
             if const is not None:
                 # print(f'{variable} == {const}')
-                return f'{variable} == {const}'
+                return f'{rvariable} == {const}'
             if boolean is not None:
                 if boolean == "true":
                     # print(f'{parsedRight}')
@@ -31,6 +32,23 @@ def genericParse(expr):
                 if boolean == "false":
                     # print(f'!({parsedRight})')
                     return f'!({parsedRight})'
+
+        if left is not None:
+            parsedLeft = genericParse(left)
+            lvariable = left.get("var", None)
+            if const is not None:
+                # print(f'{variable} == {const}')
+                return f'{lvariable} == {const}'
+            if boolean is not None:
+                if boolean == "true":
+                    # print(f'{parsedRight}')
+                    return parsedLeft
+                if boolean == "false":
+                    # print(f'!({parsedRight})')
+                    return f'!({parsedLeft})'
+
+        # print(f'{lvariable} == {rvariable}')
+        return(f'{lvariable} == {rvariable}')
 
     if expr.get("action") == "And":
         right = expr.get("right", None)

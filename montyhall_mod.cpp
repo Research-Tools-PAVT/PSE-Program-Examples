@@ -5,20 +5,24 @@
 #include <assert.h>
 #include <stdio.h>
 #include <vector>
-#include "PSE.h"
+#include <random>
+std::default_random_engine generator;
 
 /**
  * switch => door_switch
 */
 bool montyhall(bool door_switch)
 {
-
 	int host_door = 0;
 	int car_door, choice;
 
-	make_pse_symbolic(&choice, sizeof(choice), "choice_pse_var_sym", 0, 3);
-	make_pse_symbolic(&car_door, sizeof(car_door), "car_door_sym", 0, 3);
-	klee_make_symbolic(&host_door, sizeof(host_door), "host_door_sym");
+	std::default_random_engine generator1;
+	std::uniform_int_distribution<int> distribution1(0, 3);
+	std::uniform_int_distribution<int> distribution2(0, 3);
+
+	choice = distribution1(generator1);
+	car_door = distribution2(generator1);
+	// scanf("%d", &host_door);
 
 	/**
 	 * Based on car door and choice, choose a host door. 
@@ -84,16 +88,25 @@ bool montyhall(bool door_switch)
 	{
 		return false;
 	}
-
-	return true;
 }
 
 int main()
 {
-	int choice = 0;
-	int door_switch = 0;
-	std::vector<int> door_switch_dist = {0, 1};
+	int door_switch;
+	std::uniform_int_distribution<int> distribution1(0, 1);
 
-	make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_var_sym", 0, 1);
-	return montyhall(door_switch);
+	int termCount = 1000001, run = 0, win = 0;
+	while (--termCount)
+	{
+		// scanf("%d", &door_switch);
+		door_switch = 1;
+		if (montyhall(door_switch))
+			win++;
+		run++;
+	}
+
+	// COMMENT : assert(pwin >= 0.5f);
+	auto pwin = (double)win / run;
+	printf("P(choice == car_door) : %f : %d\n", pwin, run);
+	return 0;
 }

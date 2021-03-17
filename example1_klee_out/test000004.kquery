@@ -19,5 +19,5 @@ array e_prob_sym[4] : w32 -> w8 = symbolic
               N4:(ReadLSB w32 0 d_sym))
          (Sle N4 5)
          (Eq false (Slt N0 N2))
-         (Slt 3 (Add w32 N4 N1))]
+         (Slt 1 (Add w32 N4 N1))]
         false)

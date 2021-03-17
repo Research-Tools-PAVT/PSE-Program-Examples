@@ -109,7 +109,7 @@ def collectRecursive(arr):
             elif index == 2:
                 key = "right"
             else:
-                key = f"arg_{index}"
+                key = f"left"
             if isinstance(elems, list):
                 ExprContainer.update({f"{key}": collectRecursive(elems)})
             else:

@@ -22,7 +22,8 @@ bool montyhall(bool door_switch)
 
 	choice = distribution1(generator1);
 	car_door = distribution2(generator1);
-	// scanf("%d", &host_door);
+	car_door = 3;
+	choice = 3;
 
 	/**
 	 * Based on car door and choice, choose a host door. 
@@ -98,14 +99,14 @@ int main()
 	int termCount = 1000001, run = 0, win = 0;
 	while (--termCount)
 	{
-		// scanf("%d", &door_switch);
-		door_switch = 1;
+		scanf("%d", &door_switch);
 		if (montyhall(door_switch))
 			win++;
 		run++;
 	}
 
-	// COMMENT : assert(pwin >= 0.5f);
+	// COMMENT : Q1 -> assert(pwin <= 0.5f);
+	// COMMENT : Q2 -> assert(pwin >= 0.5f);
 	auto pwin = (double)win / run;
 	printf("P(choice == car_door) : %f : %d\n", pwin, run);
 	return 0;

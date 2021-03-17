@@ -92,7 +92,7 @@ define dso_local i32 @main() #0 !dbg !1175 {
   %44 = load i32, i32* %4, align 4, !dbg !1229
   %45 = load i32, i32* %6, align 4, !dbg !1232
   %46 = add nsw i32 %44, %45, !dbg !1233
-  %47 = icmp slt i32 %46, 11, !dbg !1234
+  %47 = icmp slt i32 %46, 15, !dbg !1234
   br i1 %47, label %48, label %51, !dbg !1235
 
 48:                                               ; preds = %43
@@ -114,7 +114,7 @@ define dso_local i32 @main() #0 !dbg !1175 {
   %55 = load i32, i32* %5, align 4, !dbg !1244
   %56 = load i32, i32* %6, align 4, !dbg !1247
   %57 = add nsw i32 %55, %56, !dbg !1248
-  %58 = icmp sgt i32 %57, 3, !dbg !1249
+  %58 = icmp sgt i32 %57, 1, !dbg !1249
   br i1 %58, label %59, label %62, !dbg !1250
 
 59:                                               ; preds = %54

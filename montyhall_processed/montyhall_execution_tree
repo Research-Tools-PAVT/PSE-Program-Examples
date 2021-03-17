@@ -2,108 +2,108 @@ digraph ExecutionTree {
 	1 -> 2 [label="(And
 (Eq false
 (Eq 1
-(ReadLSB w32 0 car_door_sym)))
+(ReadLSB w32 0 car_door_pse_sym)))
 (Eq false
 (Eq 1
-(ReadLSB w32 0 choice_pse_var_sym))))" color=green]
+(ReadLSB w32 0 choice_pse_sym))))" color=green]
 	1 -> 3 [label="(Eq false
 (And
 (Eq false
 (Eq 1
-(ReadLSB w32 0 car_door_sym)))
+(ReadLSB w32 0 car_door_pse_sym)))
 (Eq false
 (Eq 1
-(ReadLSB w32 0 choice_pse_var_sym)))))" color=red]
+(ReadLSB w32 0 choice_pse_sym)))))" color=red]
 	2 -> 4 [label="(Extract 0
 (ZExt w8
 (Eq false
 (Eq 0
-(ReadLSB w32 0 door_switch_pse_var_sym)))))" color=green]
+(ReadLSB w32 0 door_switch_pse_sym)))))" color=green]
 	2 -> 5 [label="(Eq false
 (Extract 0
 (ZExt w8
 (Eq false
 (Eq 0
-(ReadLSB w32 0 door_switch_pse_var_sym))))))" color=red]
+(ReadLSB w32 0 door_switch_pse_sym))))))" color=red]
 	3 -> 6 [label="(And
 (Eq false
 (Eq 2
-(ReadLSB w32 0 car_door_sym)))
+(ReadLSB w32 0 car_door_pse_sym)))
 (Eq false
 (Eq 2
-(ReadLSB w32 0 choice_pse_var_sym))))" color=green]
+(ReadLSB w32 0 choice_pse_sym))))" color=green]
 	3 -> 7 [label="(Eq false
 (And
 (Eq false
 (Eq 2
-(ReadLSB w32 0 car_door_sym)))
+(ReadLSB w32 0 car_door_pse_sym)))
 (Eq false
 (Eq 2
-(ReadLSB w32 0 choice_pse_var_sym)))))" color=red]
+(ReadLSB w32 0 choice_pse_sym)))))" color=red]
 	6 -> 10 [label="(Extract 0
 (ZExt w8
 (Eq false
 (Eq 0
-(ReadLSB w32 0 door_switch_pse_var_sym)))))" color=green]
+(ReadLSB w32 0 door_switch_pse_sym)))))" color=green]
 	6 -> 11 [label="(Eq false
 (Extract 0
 (ZExt w8
 (Eq false
 (Eq 0
-(ReadLSB w32 0 door_switch_pse_var_sym))))))" color=red]
+(ReadLSB w32 0 door_switch_pse_sym))))))" color=red]
 	7 -> 14 [label="(Extract 0
 (ZExt w8
 (Eq false
 (Eq 0
-(ReadLSB w32 0 door_switch_pse_var_sym)))))" color=green]
+(ReadLSB w32 0 door_switch_pse_sym)))))" color=green]
 	7 -> 15 [label="(Eq false
 (Extract 0
 (ZExt w8
 (Eq false
 (Eq 0
-(ReadLSB w32 0 door_switch_pse_var_sym))))))" color=red]
+(ReadLSB w32 0 door_switch_pse_sym))))))" color=red]
 	4 -> 12 [label="(Eq 2
-(ReadLSB w32 0 choice_pse_var_sym))" color=green]
+(ReadLSB w32 0 choice_pse_sym))" color=green]
 	4 -> 13 [label="(Eq false
 (Eq 2
-(ReadLSB w32 0 choice_pse_var_sym)))" color=red]
+(ReadLSB w32 0 choice_pse_sym)))" color=red]
 	5 -> 8 [label="(Eq
-(ReadLSB w32 0 choice_pse_var_sym)
-(ReadLSB w32 0 car_door_sym))" color=green]
+(ReadLSB w32 0 choice_pse_sym)
+(ReadLSB w32 0 car_door_pse_sym))" color=green]
 	5 -> 9 [label="(Eq false
 (Eq
-(ReadLSB w32 0 choice_pse_var_sym)
-(ReadLSB w32 0 car_door_sym)))" color=red]
+(ReadLSB w32 0 choice_pse_sym)
+(ReadLSB w32 0 car_door_pse_sym)))" color=red]
 	10 -> 24 [label="(Eq 1
-(ReadLSB w32 0 choice_pse_var_sym))" color=green]
+(ReadLSB w32 0 choice_pse_sym))" color=green]
 	10 -> 25 [label="(Eq false
 (Eq 1
-(ReadLSB w32 0 choice_pse_var_sym)))" color=red]
+(ReadLSB w32 0 choice_pse_sym)))" color=red]
 	11 -> 16 [label="(Eq
-(ReadLSB w32 0 choice_pse_var_sym)
-(ReadLSB w32 0 car_door_sym))" color=green]
+(ReadLSB w32 0 choice_pse_sym)
+(ReadLSB w32 0 car_door_pse_sym))" color=green]
 	11 -> 17 [label="(Eq false
 (Eq
-(ReadLSB w32 0 choice_pse_var_sym)
-(ReadLSB w32 0 car_door_sym)))" color=red]
+(ReadLSB w32 0 choice_pse_sym)
+(ReadLSB w32 0 car_door_pse_sym)))" color=red]
 	14 -> 22 [label="(Eq 1
-(ReadLSB w32 0 choice_pse_var_sym))" color=green]
+(ReadLSB w32 0 choice_pse_sym))" color=green]
 	14 -> 23 [label="(Eq false
 (Eq 1
-(ReadLSB w32 0 choice_pse_var_sym)))" color=red]
-	12 -> 20 [label="(Eq 3
-(ReadLSB w32 0 car_door_sym))" color=green]
-	12 -> 21 [label="(Eq false
+(ReadLSB w32 0 choice_pse_sym)))" color=red]
+	12 -> 18 [label="(Eq 3
+(ReadLSB w32 0 car_door_pse_sym))" color=green]
+	12 -> 19 [label="(Eq false
 (Eq 3
-(ReadLSB w32 0 car_door_sym)))" color=red]
-	13 -> 18 [label="(Eq 2
-(ReadLSB w32 0 car_door_sym))" color=green]
-	13 -> 19 [label="(Eq false
+(ReadLSB w32 0 car_door_pse_sym)))" color=red]
+	13 -> 20 [label="(Eq 2
+(ReadLSB w32 0 car_door_pse_sym))" color=green]
+	13 -> 21 [label="(Eq false
 (Eq 2
-(ReadLSB w32 0 car_door_sym)))" color=red]
+(ReadLSB w32 0 car_door_pse_sym)))" color=red]
 	24 -> 26 [label="(Eq 3
-(ReadLSB w32 0 car_door_sym))" color=green]
+(ReadLSB w32 0 car_door_pse_sym))" color=green]
 	24 -> 27 [label="(Eq false
 (Eq 3
-(ReadLSB w32 0 car_door_sym)))" color=red]
+(ReadLSB w32 0 car_door_pse_sym)))" color=red]
 }

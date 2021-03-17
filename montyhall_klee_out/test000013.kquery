@@ -1,15 +1,12 @@
-array car_door_sym[4] : w32 -> w8 = symbolic
-array choice_pse_var_sym[4] : w32 -> w8 = symbolic
-array door_switch_pse_var_sym[4] : w32 -> w8 = symbolic
+array car_door_pse_sym[4] : w32 -> w8 = symbolic
+array choice_pse_sym[4] : w32 -> w8 = symbolic
+array door_switch_pse_sym[4] : w32 -> w8 = symbolic
 (query [(Sle 0
-              N0:(ReadLSB w32 0 door_switch_pse_var_sym))
+              N0:(ReadLSB w32 0 door_switch_pse_sym))
          (Sle N0 1)
-         (Sle 0
-              N1:(ReadLSB w32 0 car_door_sym))
-         (Sle N1 3)
-         (Eq false (Eq 2 N1))
          (Extract 0 (ZExt w8 (Eq false (Eq 0 N0))))
          (Eq 1
-             (ReadLSB w32 0 choice_pse_var_sym))
-         (Eq false (Eq 3 N1))]
+             (ReadLSB w32 0 choice_pse_sym))
+         (Eq 3
+             (ReadLSB w32 0 car_door_pse_sym))]
         false)

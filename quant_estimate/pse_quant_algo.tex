@@ -9,13 +9,14 @@
 {\algorithmicend\ \algorithmicforeach}% \EndForEach
 \usepackage{minted} 
 
-\title{PSE Quant Sampling Algorithm}
-\author{Sumit Lahiri}
+\title{Quantitative Sampling for \\ \texttt{Probabilistic Assert Failures}}
+\author{Sumit Lahiri \\ \texttt{IIT Kanpur}}
 
 \begin{document}
 \maketitle
 
-We try to formulate a way to compute path probabilities using \texttt{symbolic execution} and \texttt{testing} based technique.
+We try to formulate a way to compute path probabilities using \texttt{symbolic execution} and \texttt{testing} based technique. 
+
 \begin{minted}{c} 
 int main(void)
 {
@@ -45,7 +46,8 @@ int main(void)
 
 	// Probabilistic query : assert(P(c != d) < 0.5)
 	// Optimize here : 
-	//	Optimal value of forall (a) such that P(c != d) is close to 0.5 	
+	//	Optimal value of forall variable 'a' 
+	//        such that P(c != d) is close to 0.5 	
 	return 0;
 }
 \end{minted}
@@ -255,7 +257,11 @@ while (term_count--) // term_count > 500000 (large sample)
 		}
 	}
 	run++;
-} // P(win==1) is win_ones/run;
+} 
+
+// The probabilistic assert is the following
+// assert(P(win == 1) >= 0.8), where P(win == 1) win_ones/run;
+
 \end{minted}
 
 We tweaked the values in such a way that for a very small number of candidate vectors the \texttt(probabilistic) assert fails and our algorithm must now catch that. Indeed we find that for the following assignments to \texttt{forall} variables, the assert fails.
@@ -265,7 +271,7 @@ We tweaked the values in such a way that for a very small number of candidate ve
 		Vals -> a : 1, c : 10, d : 0
 \end{minted}
 
-For other \texttt{candidate} vectors, we find that the \texttt{probabilistic} asserts actually hold and will not cause a violation during execution under normal condiditons. 
+For other \texttt{candidate} vectors, we find that the \texttt{probabilistic} asserts actually hold and will not cause a violation during execution under normal condiditons. We show the results of some of the winning cases here. 
 
 \begin{minted}{c}
 	Pass : P(win == 1)  :  1.000000

@@ -1,0 +1,14 @@
+P(choice == car_door)  :  1.000000  : P(choice == car_door) : 1.000000 : 1000000
+P(choice == car_door)  :  1.000000  : P(choice == car_door) : 1.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  1.000000  : P(choice == car_door) : 1.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  1.000000  : P(choice == car_door) : 1.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  1.000000  : P(choice == car_door) : 1.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000
+P(choice == car_door)  :  0.000000  : P(choice == car_door) : 0.000000 : 1000000

@@ -87,7 +87,7 @@ if __name__ == "__main__":
                     with open(os.path.join(pwd, "pathprobs.txt"), mode="a") as pathprobs:
                         pathprobs.write(
                             f'{assertQuery} : {value} : {line[-1].strip()}\n')
-                    if float(value) > 0.50:
+                    if float(value) < 0.5:
                         with open(os.path.join(pwd, "results.txt"), mode="a") as resultFile:
                             resultFile.write(
                                 f'Fail : {assertQuery} : {value} : {line[-1].strip()}\n')

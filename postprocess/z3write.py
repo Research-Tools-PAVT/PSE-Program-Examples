@@ -10,6 +10,73 @@ as of now, will work on the rest of the cases
 later as examples evolve.
 '''
 
+operationsMap = {
+    "Ult": "<",
+    "Ule": "<=",
+    "Ugt": ">",
+    "Uge": ">=",
+    "Slt": "<",
+    "Sle": "<=",
+    "Sgt": ">",
+    "Sge": ">=",
+    "Add": "+",
+    "Sub": "-",
+    "Mul": "*",
+    "SDiv": "/",
+    "UDiv": "/",
+}
+
+z3Defs = {
+    "And": "z3.And",
+    "Or": "z3.Or",
+    "Xor": "z3.Xor"
+}
+
+bitvector_expr_kind = ["Extract", "ZExt", "SExt"]
+
+
+def getInfixExpression(expr, operator):
+
+    if operator == "ReadLSB":
+        variable = expr.get("var", None)
+        # print(variable)
+        return variable
+
+    const = expr.get("const", None)
+    right = expr.get("right", None)
+    if right is not None:
+        rexpr = genericParse(right)
+    left = expr.get("left", None)
+    if left is not None:
+        lexpr = genericParse(left)
+
+    if operator in bitvector_expr_kind:
+        right = expr.get("right", None)
+        r = genericParse(right)
+        return(r)
+
+    z3Op = z3Defs.get(operator, None)
+    if z3Op is not None:
+        if const is not None and right is not None:
+            return f'{z3Defs[operator]}({const}, {rexpr})'
+
+        if const is not None and left is not None:
+            return f'{z3Defs[operator]}({lexpr}, {const})'
+
+        if left is not None and right is not None:
+            return f'{z3Defs[operator]}({lexpr}, {rexpr})'
+
+    ArithOps = operationsMap.get(operator, None)
+    if ArithOps is not None:
+        if const is not None and right is not None:
+            return f'({const} {operationsMap.get(operator, ",")} {rexpr})'
+
+        if const is not None and left is not None:
+            return f'({lexpr} {operationsMap.get(operator, ",")} {const})'
+
+        if left is not None and right is not None:
+            return f'({lexpr} {operationsMap.get(operator, ",")} {rexpr})'
+
 
 def genericParse(expr):
     if expr is None:
@@ -53,169 +120,38 @@ def genericParse(expr):
         # print(f'{lvariable} == {rvariable}')
         return(f'{lvariable} == {rvariable}')
 
-    if expr.get("action") in "Slt":
-        const = expr.get("const", None)
-        right = expr.get("right", None)
-        if right is not None:
-            rexpr = genericParse(right)
-        left = expr.get("left", None)
-        if left is not None:
-            lexpr = genericParse(left)
-
-        if const is not None and right is not None:
-            return f'({const} < {rexpr})'
-
-        if const is not None and left is not None:
-            return f'({lexpr} < {const})'
-
-        if left is not None and right is not None:
-            return f'({lexpr} < {rexpr})'
-
-    if expr.get("action") in "Sle":
-        const = expr.get("const", None)
-        right = expr.get("right", None)
-        if right is not None:
-            rexpr = genericParse(right)
-        left = expr.get("left", None)
-        if left is not None:
-            lexpr = genericParse(left)
-
-        if const is not None and right is not None:
-            return f'({const} <= {rexpr})'
-
-        if const is not None and left is not None:
-            return f'({lexpr} <= {const})'
-
-        if left is not None and right is not None:
-            return f'({lexpr} <= {rexpr})'
-
-    if expr.get("action") in "Sgt":
-        const = expr.get("const", None)
-        right = expr.get("right", None)
-        if right is not None:
-            rexpr = genericParse(right)
-        left = expr.get("left", None)
-        if left is not None:
-            lexpr = genericParse(left)
-
-        if const is not None and right is not None:
-            return f'({const} > {rexpr})'
-
-        if const is not None and left is not None:
-            return f'({lexpr} > {const})'
-
-        if left is not None and right is not None:
-            return f'({lexpr} > {rexpr})'
-
-    if expr.get("action") in "Sge":
-        const = expr.get("const", None)
-        right = expr.get("right", None)
-        if right is not None:
-            rexpr = genericParse(right)
-        left = expr.get("left", None)
-        if left is not None:
-            lexpr = genericParse(left)
-
-        if const is not None and right is not None:
-            return f'({const} >= {rexpr})'
-
-        if const is not None and left is not None:
-            return f'({lexpr} >= {const})'
-
-        if left is not None and right is not None:
-            return f'({lexpr} >= {rexpr})'
-
-    if expr.get("action") == "ReadLSB":
-        variable = expr.get("var", None)
-        # print(variable)
-        return variable
-
-    if expr.get("action") == "And":
-        right = expr.get("right", None)
-        left = expr.get("left", None)
-        r = genericParse(right)
-        l = genericParse(left)
-        # print(f'({l} && {r})')
-        return f'z3.And({l}, {r})'
-
-    if expr.get("action") == "Or":
-        right = expr.get("right", None)
-        left = expr.get("left", None)
-        r = genericParse(right)
-        l = genericParse(left)
-        # print(f'({l} || {r})')
-        return f'z3.Or({l}, {r})'
-
-    if expr.get("action") == "Add":
-        right = expr.get("right", None)
-        left = expr.get("left", None)
-        r = genericParse(right)
-        l = genericParse(left)
-        # print(f'({l} + {r})')
-        return f'({l} + {r})'
-
-    if expr.get("action") == "Sub":
-        right = expr.get("right", None)
-        left = expr.get("left", None)
-        r = genericParse(right)
-        l = genericParse(left)
-        # print(f'({l} - {r})')
-        return f'({l} - {r})'
-
-    if expr.get("action") == "Mul":
-        right = expr.get("right", None)
-        left = expr.get("left", None)
-        r = genericParse(right)
-        l = genericParse(left)
-        # print(f'({l} * {r})')
-        return f'({l} * {r})'
-
-    if expr.get("action") == "Xor":
-        right = expr.get("right", None)
-        left = expr.get("left", None)
-        r = genericParse(right)
-        l = genericParse(left)
-        # print(f'({l} && {r})')
-        return f'z3.Xor({l}, {r})'
-
-    if expr.get("action") == "Extract":
-        right = expr.get("right", None)
-        r = genericParse(right)
-        return(r)
-
-    if expr.get("action") == "ZExt":
-        right = expr.get("right", None)
-        r = genericParse(right)
-        return(r)
+    return getInfixExpression(expr, expr.get("action"))
 
 
-if __name__ == "__main__":
+def z3write(file):
     '''
     Parsing works for monty hall constraint cases
     as of now, will work on the rest of the cases
     later as examples evolve.
     '''
     data = {}
-    with open(sys.argv[1], mode="r") as f:
+    with open(file, mode="r") as f:
         data = json.load(f)
 
     count = 0
-    predicateList = []
-
+    pathConditions = dict()
+    variables = set()
     for elems, paths in data.items():
-        variables = set()
+        predicateList = []
         count += 1
-        print(f'Path : {count}')
+        # print(f'Path : {count}')
         klee_assumes = paths[0].get('nodeTrueQuery', None)
 
-        print("Assumes : ")
+        # print("Assumes : ")
         for preds in klee_assumes:
-            if preds is not None and any(["Slt" in preds, "Sle" in preds, "Sgt" in preds, "Sge" in preds]):
+            # COMMENT : This is not generic for Assumes.
+            # May have other types of expressions as well. BUG !
+            if preds is not None and any(["Sle" in preds]):
                 parsed = collectRecursive(loads(preds))
-                print(genericParse(parsed))
-                predicateList.append(preds)
+                # print(genericParse(parsed))
+                predicateList.append(genericParse(parsed))
 
-        print("\nPaths : ")
+        # print("\nPaths : ")
         for nodes in paths:
             extractVars = nodes.get('variables', None)
             if extractVars is not None:
@@ -226,8 +162,29 @@ if __name__ == "__main__":
                 # print(predicate)
                 parsed = collectRecursive(loads(predicate))
                 # print(parsed)
-                print(genericParse(parsed))
-                predicateList.append(predicate)
-        print("\nVariables : ")
-        print(variables)
-        print(f'\n')
+                # print(genericParse(parsed))
+                predicateList.append(genericParse(parsed))
+        # print(f"Variables : {variables}")
+        # for v in predicateList:
+        #     print(v)
+        pathConditions[count] = predicateList
+
+    fmtv = ' '.join(x for x in variables)
+    varsList = ', '.join(x for x in variables)
+
+    p = ""
+    for x in range(count):
+        p += f'path{x+1}, '
+
+    print(f'import z3\n\n{varsList} = z3.Ints("{fmtv}")')
+    for k, v in pathConditions.items():
+        print(f"\npath{k} = [")
+        constraints = ',\n'.join(c for c in v)
+        print(constraints)
+        print("]")
+    print(f'\n\npaths = [{p[:-2]}]')
+    return variables, pathConditions
+
+
+if __name__ == "__main__":
+    z3write(sys.argv[1])

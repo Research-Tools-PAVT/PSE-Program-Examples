@@ -10,7 +10,11 @@ int main(void)
 
   klee_make_symbolic(&a, sizeof(a), "a_sym");
   klee_make_symbolic(&b, sizeof(b), "b_sym");
-  make_pse_symbolic(&c, sizeof(c), "c_sym", 90, 1200);
+  make_pse_symbolic(&c, sizeof(c), "c_sym", 90, 120);
+
+  // for sane boundary case
+  klee_assume(a >= 0 && a <= 10000);
+  klee_assume(b >= 0 && b <= 10000);
 
   if (a > 0 && c > 0 && c < d && d > a && d > b)
   {

@@ -19,5 +19,5 @@ def transformPass(code_file):
                 code.append(f"scanf(%d, &{forallVar});")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     transformPass(sys.argv[1])

@@ -1,0 +1,18 @@
+Error: concretized symbolic size
+File: /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h
+Line: 115
+assembly.ll line: 1653
+State: 2
+Stack: 
+	#000001653 in _ZN9__gnu_cxx13new_allocatorIiE8allocateEmPKv (=94033809096928, , =0) at /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h:115
+	#100001625 in _ZNSt16allocator_traitsISaIiEE8allocateERS0_m (=94033809096928, ) at /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/alloc_traits.h:460
+	#200001606 in _ZNSt12_Vector_baseIiSaIiEE11_M_allocateEm (=94033809096928, ) at /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_vector.h:346
+	#300001537 in _ZNSt12_Vector_baseIiSaIiEE17_M_create_storageEm (=94033809096928, ) at /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_vector.h:361
+	#400001296 in _ZNSt12_Vector_baseIiSaIiEEC2EmRKS0_ (=94033809096928, , =94033809039592) at /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_vector.h:305
+	#500000793 in _ZNSt6vectorIiSaIiEEC2EmRKS0_ (=94033809096928, , =94033809039592) at /usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_vector.h:511
+	#600000669 in main () at example3.cpp:55
+Info: 
+  size expr: (Mul w64 4
+                       (SExt w64 (ReadLSB w32 0 k_sym)))
+  concretization : 4
+  unbound example: 16

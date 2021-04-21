@@ -1,0 +1,7 @@
+digraph ExecutionTree {
+	1 -> 2 [label="(Eq 0
+(ReadLSB w32 0 flip_pse_sym))" color=green]
+	1 -> 3 [label="(Eq false
+(Eq 0
+(ReadLSB w32 0 flip_pse_sym)))" color=red]
+}

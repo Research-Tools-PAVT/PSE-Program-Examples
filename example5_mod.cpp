@@ -15,9 +15,7 @@ int main()
     double prob = 0.6;
     int d, z = 0, flip = 0;
 
-    make_pse_symbolic(&flip, sizeof(flip), "flip_pse_sym", 0, 1);
-    make_pse_symbolic(&d, sizeof(d), "d_pse_sym", 0, 1);
-    klee_make_symbolic(&z, sizeof(z), "z_sym");
+    scanf("%f", &prob);
 
     std::random_device rd{};
     std::mt19937 rng{rd()};

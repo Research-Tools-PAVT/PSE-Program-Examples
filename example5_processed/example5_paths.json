@@ -1,0 +1,76 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "6ce7f0c1-ffe7-4bf0-ad96-02cc38e7af1d"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 prob_sym))",
+                "(Sle (ReadLSB w32 0 prob_sym) 1)",
+                "(Sle 0 (ReadLSB w32 0 z_sym))",
+                "(Eq 0 (ReadLSB w32 0 flip_pse_sym))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 flip_pse_sym))",
+                "(Sle (ReadLSB w32 0 flip_pse_sym) 1)",
+                "(Sle 0 (ReadLSB w32 0 prob_sym))",
+                "(Sle (ReadLSB w32 0 prob_sym) 1)",
+                "(Sle 0 (ReadLSB w32 0 z_sym))",
+                "(Eq false (Eq 0 (ReadLSB w32 0 flip_pse_sym)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "8b58d90a-a242-47e6-ad0e-4cc8a7080b77"
+            },
+            "predicate": "(Eq 0 (ReadLSB w32 0 flip_pse_sym))",
+            "variables": [
+                "flip_pse_sym"
+            ],
+            "IMap": {
+                "flip_pse_sym": "bbe7ce8c-df26-479a-bbf0-6953f685f48b"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "6ce7f0c1-ffe7-4bf0-ad96-02cc38e7af1d"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 prob_sym))",
+                "(Sle (ReadLSB w32 0 prob_sym) 1)",
+                "(Sle 0 (ReadLSB w32 0 z_sym))",
+                "(Eq 0 (ReadLSB w32 0 flip_pse_sym))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 flip_pse_sym))",
+                "(Sle (ReadLSB w32 0 flip_pse_sym) 1)",
+                "(Sle 0 (ReadLSB w32 0 prob_sym))",
+                "(Sle (ReadLSB w32 0 prob_sym) 1)",
+                "(Sle 0 (ReadLSB w32 0 z_sym))",
+                "(Eq false (Eq 0 (ReadLSB w32 0 flip_pse_sym)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "701ad8ed-7818-4399-9665-083f92bf9f55"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 flip_pse_sym)))",
+            "variables": [
+                "flip_pse_sym"
+            ],
+            "IMap": {
+                "flip_pse_sym": "7698e292-347a-4bf2-863f-b356fb7b2405"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

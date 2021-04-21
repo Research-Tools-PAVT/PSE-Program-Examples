@@ -138,9 +138,16 @@ def z3write(file):
     variables = set()
     for elems, paths in data.items():
         predicateList = []
+        klee_assumes = set()
         count += 1
+
         # print(f'Path : {count}')
-        klee_assumes = paths[0].get('nodeTrueQuery', None)
+        true0 = paths[0].get('nodeTrueQuery', None)
+        false0 = paths[0].get('nodeFalseQuery', None)
+        for elems in true0:
+            klee_assumes.add(elems)
+        for elems in false0:
+            klee_assumes.add(elems)
 
         # print("Assumes : ")
         for preds in klee_assumes:

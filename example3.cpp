@@ -7,54 +7,13 @@
 #include <vector>
 #include "PSE.h"
 
-int vector_to_int(std::vector<int> v)
-{
-    reverse(v.begin(), v.end());
-    int decimal = 1;
-    int total = 0;
-    for (auto &it : v)
-    {
-        total += it * decimal;
-        decimal *= 10;
-    }
-    return total;
-}
-
-void reservoir_sample(std::vector<int> &input, std::vector<int> &sample, int n, int k)
-{
-    for (int i = 0; i < k; i++)
-    {
-        sample[i] = input[i];
-    }
-
-    for (int i = k; i < n; i++)
-    {
-        int j;
-
-        make_pse_symbolic(&j, sizeof(j), "j_sym", 0, (int)i);
-
-        if (j < k)
-        {
-            sample[j] = input[i];
-        }
-    }
-}
-
 int main()
 {
-    int n = 10;
-    std::vector<int> arr(n);
-    for (size_t i = 0; i < n; i++)
+    int a, x, i;
+    klee_make_symbolic(&a, sizeof(a), "a_sym");
+    klee_make_symbolic(&x, sizeof(x), "x_sym");
+    for (i = 1; i <= 5; i++)
     {
-        arr[i] = i + 1;
+        x = (a > i) ? x + 1 : x + 2;
     }
-    int k;
-    klee_make_symbolic(&k, sizeof(k), "k_sym");
-    klee_assume(k >= 1 && k <= 10);
-
-    std::vector<int> sample(k);
-    reservoir_sample(arr, sample, n, k);
-
-    std::sort(sample.begin(), sample.end());
-    return vector_to_int(sample);
 }

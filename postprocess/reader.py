@@ -47,7 +47,7 @@ with open(file.strip(), "r") as fileptr:
     # We read all lines here.
     # We dont need the original dump after this point.
     for elems in lines.split("}"):
-        if len(elems.strip()) != 0:
+        if len(elems.strip()) != 0 and len(elems.split("{")) > 1:
             ConstraintObj = elems.split("{")[1].strip()
             temp = {}
 
@@ -156,6 +156,7 @@ for pathIds, nodes in pathMap.items():
     temp = nodes
     imapsData = {}
     variableListing = []
+    variables_extra = set()
 
     # Recurse up from leaves to root,
     # collecting each edge information.
@@ -164,7 +165,20 @@ for pathIds, nodes in pathMap.items():
         data = ' '.join(getLabel(temp).strip().split("\n"))
         collection["treeNode"] = temp
 
-        # If the label/edge has an associated "predicate" with it.
+        # COMMENT : Must collect all the variables in the expression.
+        if len(nodes.trueQuerySet) > 0:
+            for e in nodes.trueQuerySet:
+                parse_e = loads(e)
+                for v in flatten(findVars(parse_e)):
+                    variables_extra.add(v)
+
+        if len(nodes.falseQuerySet) > 0:
+            for e in nodes.falseQuerySet:
+                parse_e = loads(e)
+                for v in flatten(findVars(parse_e)):
+                    variables_extra.add(v)
+
+        # COMMENT : If the label/edge has an associated "predicate" with it.
         if data:
             parsedData = loads(data)
             variables = flatten(findVars(parsedData))

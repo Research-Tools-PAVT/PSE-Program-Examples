@@ -22,10 +22,9 @@ int main()
 
     std::random_device rd{};
     std::mt19937 rng{rd()};
-
     std::bernoulli_distribution rvs(prob);
 
-    while (flip == 0 && unroll--)
+    while (flip == 0)
     {
         int d = rvs(rng);
         if (d)

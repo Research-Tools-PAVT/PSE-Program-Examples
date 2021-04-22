@@ -58,8 +58,8 @@ def generateCandidates(k: int):
             optpath.add(conds)
 
         # COMMENT : Need to frame this optimization properly
-        optpath.add(z_sym * prob_sym - (1 - prob_sym) >= 0)
-        # optpath.maximize(prob_sym)
+        optpath.add(z_sym * prob_sym - (1 - prob_sym) <= 0)
+        optpath.maximize(prob_sym)
 
         n = 0
         # TODO : Automate it later get MODEL.

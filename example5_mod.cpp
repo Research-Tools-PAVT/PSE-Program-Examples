@@ -8,17 +8,19 @@
 #include <vector>
 #include "PSE.h"
 
-int unroll = 50000;
+int unroll = 2500;
 long long int termCount = 50000;
 
 int main()
 {
     long double prob = 0.00000000001;
-    int d, flip = 0, win = 0, run = 0;
-    long long unsigned int z = 0;
+    int d, flip = 0, win = 0;
+    long long unsigned int z = 0, run = 0, prob_runs = 0;
 
     while (termCount--)
     {
+        flip = 0;
+        z = 0;
         scanf("%Lf", &prob);
 
         std::random_device rd{};
@@ -27,7 +29,7 @@ int main()
         std::bernoulli_distribution rvs(prob);
 
         // fprintf(stderr, "prob : %Lf\n", prob);
-        while (flip == 0)
+        while (flip == 0 && unroll--)
         {
             int d = rvs(rng);
             if (d)
@@ -42,6 +44,7 @@ int main()
                 win++;
             run++;
         }
+        prob_runs++;
     }
 
     auto pwin = (double)win / run;
@@ -50,7 +53,7 @@ int main()
     // fprintf(stdout, "z : %lld\n(1-p)/p : %Lf\n", z, (double)(1 - prob) / (prob));
     // if ((pwin > 0.00))
     // {
-    printf("%f & %d", pwin, run);
+    printf("%f & %lld & %lld", pwin, run, prob_runs);
     fprintf(stdout, " & %0.10Lf", prob);
     fprintf(stdout, " & %lld & %0.10Lf \\\\ \\hline \n", z, (double)(1 - prob) / (prob));
     // }

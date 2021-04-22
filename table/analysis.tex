@@ -1,0 +1,182 @@
+\documentclass[usenames,dvipsnames,acmsmall]{acmart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[nounderscore]{syntax}
+\usepackage{bussproofs}
+\usepackage{mathtools}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{minted}
+
+\begin{document}
+	\begin{figure}
+		\begin{minted}{python}
+	def progam1(inpt):
+		prob, _ = inpt
+		z = 0
+		flip = 0
+		while (flip == 0):
+			d = bernoulli.rvs(size=1, p=prob)[0]
+			if d:
+				flip = 1
+			else:
+				z = z + 1
+		return z
+		
+	assert(z > (1 - prob)/prob)
+		\end{minted}
+		\caption{Program listing for finding probabilistic \texttt{assert} violation.}
+	\end{figure}
+	\begin{figure}
+		\begin{minted}{c}
+	int main()
+	{
+		double prob;
+		int d, z = 0, flip = 0;
+		
+		make_pse_symbolic(&flip, sizeof(flip), "flip_pse_sym", 0, 1);
+		make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
+		klee_make_symbolic(&z, sizeof(z), "z_sym");
+		klee_assume(z >= 0);
+		
+		std::random_device rd{};
+		std::mt19937 rng{rd()};
+		std::bernoulli_distribution rvs(prob);
+		
+		while (flip == 0) {
+			int d = rvs(rng);
+			if (d) {
+				flip = 1;
+			} else {
+				// must be executed more 
+				// for the assert to pass. 
+				z += 1; 
+			}
+		}
+		
+		return 0;
+	}
+		\end{minted}
+		\caption{\texttt{Translate()} of the program for testing the \texttt{assert}. }
+	\end{figure}
+	\begin{figure}
+		\begin{minted}{c}
+		long long int termCount = 50000, unroll = 2500;
+		while (termCount--)
+		{
+			flip = 0;
+			z = 0;
+			scanf("%Lf", &prob);
+			
+			...
+			
+			while (flip == 0 && unroll--) {
+				int d = rvs(rng);
+				if (d) {
+					flip = 1;
+				} else { 
+					z += 1; 
+				}
+				if (z > ((double)(1 - prob) / (prob)))
+					win++;
+				flip_runs++;
+			}
+			program_runs++;
+		}
+		\end{minted}
+		\caption{\texttt{Translate()} of the program for testing the \texttt{assert}. }
+	\end{figure}
+	\begin{figure}
+			\begin{minted}{python}
+		(flip_pse_sym <= 1),
+		(0 <= flip_pse_sym),
+		(prob_sym <= 1),
+		(0.000001 < prob_sym),
+		(0 <= z_sym),
+		
+		FAIL : (z_sym * prob_sym - (1 - prob_sym) <= 0)
+		\end{minted}
+		\caption{Constraints without optimization step.}
+	\end{figure}
+	\begin{figure}
+		\begin{minted}{python}
+		(flip_pse_sym <= 1),
+		(0 <= flip_pse_sym),
+		(prob_sym <= 1),
+		(0.000001 < prob_sym),
+		(0 <= z_sym),
+		
+		FAIL : (z_sym * prob_sym - (1 - prob_sym) <= 0)
+		optimize : maximize(prob_sym)
+		\end{minted}
+		\caption{Constraints with optimization step.}
+	\end{figure}
+	\begin{table}
+		\centering
+		\caption{Comparing \texttt{prob(p)} value to cases Vs \texttt{assert} status for \texttt{optimization} over \texttt{prob} value}
+		\label{}
+		\begin{tabular}{ c | c | c | c | c } 
+			\toprule
+			\texttt{Flip Runs} & \texttt{Program Runs}& \texttt{prob(p)} & \texttt{z (Last)} & \texttt{(1-p)/p} \\ 
+			\hline\hline
+			49999 & 50000 & 0.9999990463 & 0 & 0.0000009537 \\ \hline 
+			49999 & 50000 & 0.9999995232 & 0 & 0.0000004768 \\ \hline 
+			49999 & 50000 & 0.9999998808 & 0 & 0.0000001192 \\ \hline 
+			49999 & 50000 & 0.9999999991 & 0 & 0.0000000009 \\ \hline 
+			49999 & 50000 & 1.0000000000 & 0 & 0.0000000000 \\ \hline 
+			50000 & 50000 & 0.9999847412 & 0 & 0.0000152590 \\ \hline 
+			50001 & 50000 & 0.9999694825 & 0 & 0.0000305184 \\ \hline 
+			50003 & 50000 & 0.9998779298 & 0 & 0.0001220851 \\ \hline 
+			50008 & 50000 & 0.9997558596 & 0 & 0.0002442000 \\ \hline 
+			50016 & 50000 & 0.9995117192 & 0 & 0.0004885193 \\ \hline 
+			50045 & 50000 & 0.9990234385 & 0 & 0.0009775161 \\ \hline 
+			50822 & 50000 & 0.9843750156 & 0 & 0.0158729998 \\ \hline 
+			53303 & 50000 & 0.9375000625 & 0 & 0.0666665956 \\ \hline 
+			57237 & 50000 & 0.8750001250 & 0 & 0.1428569796 \\ \hline 
+			99385 & 50000 & 0.5000005000 & 0 & 0.9999980000 \\ \hline 
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{table}
+		\centering
+		\caption{Comparing \texttt{prob(p)} value to cases where assert \texttt{\color[HTML]{CB0000} failure} occurs for \texttt{no optimization} case}
+		\label{}
+		\begin{tabular}{ c | c | c | c | c } 
+			\toprule
+			\texttt{Flip Runs} & \texttt{Program Runs}& \texttt{prob(p)} & \texttt{z (Last)} & \texttt{(1-p)/p} \\ 
+			\hline\hline
+			49999 & 50000 & 1.0000000000 & 0 & 0.0000000000 \\ \hline 
+			12798121 & 50000 & 0.0039072461 & 121 & 254.9347362328 \\ \hline 
+			2118330 & 50000 & 0.0234384766 & 3 & 41.6648888947 \\ \hline 
+			3191133 & 50000 & 0.0156259844 & 27 & 62.9959681516 \\ \hline 
+			1592312 & 50000 & 0.0312509687 & 85 & 30.9990080819 \\ \hline 
+			802573 & 50000 & 0.0625009375 & 6 & 14.9997600036 \\ \hline  
+			404577 & 50000 & 0.1250008750 & 3 & 6.9999440004 \\ \hline 
+			199379 & 50000 & 0.2500007500 & 2 & 2.9999880000 \\ \hline 
+			133424 & 50000 & 0.3750006250 & 1 & 1.6666622222 \\ \hline 
+			99661 & 50000 & 0.5000005000 & 0 & 0.9999980000 \\ \hline 
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{table}
+		\centering
+		\caption{Comparing \texttt{prob(p)} value to cases where assert \texttt{\color[HTML]{036400} passed} without \texttt{optimization} step.}
+		\label{}
+		\begin{tabular}{ c | c | c | c | c } 
+			\toprule
+			\texttt{Flip Runs} & \texttt{Program Runs}& \texttt{prob(p)} & \texttt{z (Last)} & \texttt{(1-p)/p} \\ 
+			\hline\hline
+			2551264 & 50000 & 0.0195322305 & 60 & 50.1974298071 \\ \hline 
+			6371788 & 50000 & 0.0078134922 & 169 & 126.9837458595 \\ \hline 
+			4280156 & 50000 & 0.0117197383 & 303 & 84.3261373592 \\ \hline 
+			1592312 & 50000 & 0.0312509687 & 85 & 30.9990080819 \\ \hline
+			266112 & 50000 & 0.1875008125 & 7 & 4.3333102223 \\ \hline 
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{document} 

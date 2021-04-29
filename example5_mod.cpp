@@ -8,54 +8,63 @@
 #include <vector>
 #include "PSE.h"
 
-int unroll = 2500;
-long long int termCount = 50000;
+// int unroll = 2500;
+long long int termCount = 100000;
 
 int main()
 {
-    long double prob = 0.00000000001;
-    int d, flip = 0, win = 0;
-    long long unsigned int z = 0, run = 0, prob_runs = 0;
+    long double prob = 0.500;
+    int x = 0, n = 10, y = 10, n_start, y_start;
+    long long unsigned int win = 0, loop_run = 0, prob_runs = 0;
+
+    scanf("%d", &n);
+    scanf("%d", &y);
+    scanf("%Lf", &prob);
+
+    n_start = n;
+    y_start = y;
 
     while (termCount--)
     {
-        flip = 0;
-        z = 0;
-        scanf("%Lf", &prob);
+        x = 0;
+        int n_loop = n;
 
-        std::random_device rd{};
-        std::mt19937 rng{rd()};
+        // program execution
+        std::default_random_engine generator;
+        std::bernoulli_distribution bernoulli_rvs(prob);
 
-        std::bernoulli_distribution rvs(prob);
-
-        // fprintf(stderr, "prob : %Lf\n", prob);
-        while (flip == 0 && unroll--)
+        while (n_loop > 0)
         {
-            int d = rvs(rng);
+            int d = bernoulli_rvs(generator);
             if (d)
             {
-                flip = 1;
+                // This doesn't favours the "win" condition.
+                x = x + y;
             }
-            else
-            {
-                z += 1;
-            }
-            if (z > ((double)(1 - prob) / (prob)))
-                win++;
-            run++;
+            n_loop -= 1;
+
+            // Iterations of the loop.
+            prob_runs++;
         }
-        prob_runs++;
+
+        // Sample for probability. This is the assert condition.
+        if ((double)x - (prob * n * y) <= 0)
+            win++;
+
+        // No. of times the program gets executed.
+        loop_run++;
     }
 
-    auto pwin = (double)win / run;
-    // printf("P(z > (1-p)/p) : %f\nRuns : %d\n", pwin, run);
-    // fprintf(stdout, "prob(p) : %Lf\n", prob);
-    // fprintf(stdout, "z : %lld\n(1-p)/p : %Lf\n", z, (double)(1 - prob) / (prob));
-    // if ((pwin > 0.00))
-    // {
-    printf("%f & %lld & %lld", pwin, run, prob_runs);
-    fprintf(stdout, " & %0.10Lf", prob);
-    fprintf(stdout, " & %lld & %0.10Lf \\\\ \\hline \n", z, (double)(1 - prob) / (prob));
-    // }
+    auto pwin = (double)win / loop_run;
+    fprintf(stdout, "P(x - (prob * n * y) <= 0) : %.6lf\n\n", pwin);
+    if (n_start != 0)
+        fprintf(stderr, "%.10Lf & %lld & %lld & %lld & %.6lf & %d & %d \\\\ \\hline\n", prob, loop_run, prob_runs, win, pwin, n_start, y_start);
     return 0;
 }
+
+/**
+ * assert(Prob(x - prob * n * y <= 0) <= 0.6)
+ * E(x) <= prob * n * y 
+ * prob, n & y are foralls
+ * x is not a forall. 
+*/

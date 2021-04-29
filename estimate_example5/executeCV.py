@@ -12,6 +12,8 @@ executable = os.path.join(pwd, os.pardir, "bin/example5")
 codeFile = os.path.join(pwd, os.pardir, "example5_mod.cpp")
 
 inputFilePath = os.path.join(pwd, sys.argv[1])
+if not os.path.isdir("outputs"):
+    os.mkdir("outputs")
 outputFilePath = os.path.join(pwd, "outputs")
 
 
@@ -80,19 +82,27 @@ if __name__ == "__main__":
             if "err" not in outputFile:
                 with open(os.path.join(outputFilePath, outputFile), mode="r") as fileptr:
                     line = fileptr.readlines()
+
+                    # COMMENT : Output format -> P(expression) : value in first line.
                     assertQuery = line[0].strip().split(':')[0]
                     value = line[0].strip().split(':')[1]
                     sumtotal += float(value)
                     count += 1
+
+                    # COMMENT : What is the probability of the assert holding?
                     with open(os.path.join(pwd, "pathprobs.txt"), mode="a") as pathprobs:
                         pathprobs.write(
                             f'{assertQuery} : {value} : {line[-1].strip()}\n')
-                    if float(value) < 0.5:
-                        with open(os.path.join(pwd, "results.txt"), mode="a") as resultFile:
+
+                    # COMMENT : Print when the condition fails.
+                    # COMMENT : When does the assert fail? Mention that condition here.
+                    if float(value) >= 0.6:
+                        with open(os.path.join(pwd, "assert_failures.txt"), mode="a") as resultFile:
                             resultFile.write(
                                 f'Fail : {assertQuery} : {value} : {line[-1].strip()}\n')
             time.sleep(0.1)
             executeBar()
 
+    # COMMENT : Final probability across all paths
     prob = sumtotal/count
-    print(f'{assertQuery} : {prob}')
+    print(f'Combining all program paths : {assertQuery} : {prob}')

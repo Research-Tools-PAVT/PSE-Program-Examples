@@ -8,34 +8,40 @@
 #include <vector>
 #include "PSE.h"
 
-int unroll = 10000;
-
 int main()
 {
-    double prob = 0.6;
-    int d, z = 0, flip = 0;
+    double prob = 0.5;
+    int x, n, y;
 
-    make_pse_symbolic(&flip, sizeof(flip), "flip_pse_sym", 0, 1);
+    // forall variables
+    klee_make_symbolic(&y, sizeof(y), "y_sym");
+    klee_make_symbolic(&n, sizeof(n), "n_sym");
     make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
-    klee_make_symbolic(&z, sizeof(z), "z_sym");
-    klee_assume(z >= 0);
+    klee_assume(y >= 0);
+    klee_assume(1 <= n && n <= 10);
 
-    std::random_device rd{};
-    std::mt19937 rng{rd()};
-    std::bernoulli_distribution rvs(prob);
+    // Work around for silent concretization of prob.
+    prob = 0.5;
 
-    while (flip == 0)
+    // Prob Sym Variables.
+    make_pse_symbolic(&x, sizeof(x), "x_pse_sym", 0, 2147483647);
+
+    std::default_random_engine generator;
+    std::bernoulli_distribution bernoulli_rvs(prob);
+
+    while (n > 0)
     {
-        int d = rvs(rng);
+        int d = bernoulli_rvs(generator);
         if (d)
-        {
-            flip = 1;
-        }
-        else
-        {
-            z += 1;
-        }
+            x = x + y;
+        n = n - 1;
     }
-
     return 0;
 }
+
+/**
+ * assert(Prob(x - prob * n * y <= 0) <= 0.6)
+ * E(x) <= prob * n * y 
+ * prob, n & y are foralls
+ * x is not a forall. 
+*/

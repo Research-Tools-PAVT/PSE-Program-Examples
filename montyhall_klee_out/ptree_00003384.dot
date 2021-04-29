@@ -1,9 +1,0 @@
-digraph G {
-	size="10,7.5";
-	ratio=fill;
-	rotate=90;
-	center = "true";
-	node [style="filled",width=.1,height=.1,fontname="Terminus"]
-	edge [arrowsize=.3]
-	n0x55c080737a00 [shape=diamond];
-}

@@ -1,0 +1,81 @@
+
+Location : example5.cpp:39 13
+Given Name : d_loop
+Variable Type : Not Symbolic
+1
+
+Location : example5.cpp:40 13
+Given Name : x_loop
+Variable Type : x_pse_sym (Symbolic)
+(Add w32 (ReadLSB w32 0 x_pse_sym)
+          (ReadLSB w32 0 y_sym))
+
+Location : example5.cpp:39 13
+Given Name : d_loop
+Variable Type : Not Symbolic
+1
+
+Location : example5.cpp:40 13
+Given Name : x_loop
+Variable Type : x_pse_sym (Symbolic)
+(Add w32 (Add w32 (ReadLSB w32 0 x_pse_sym)
+                   N0:(ReadLSB w32 0 y_sym))
+          N0)
+
+Location : example5.cpp:39 13
+Given Name : d_loop
+Variable Type : Not Symbolic
+1
+
+Location : example5.cpp:40 13
+Given Name : x_loop
+Variable Type : x_pse_sym (Symbolic)
+(Add w32 (Add w32 (Add w32 (ReadLSB w32 0 x_pse_sym)
+                            N0:(ReadLSB w32 0 y_sym))
+                   N0)
+          N0)
+
+Location : example5.cpp:39 13
+Given Name : d_loop
+Variable Type : Not Symbolic
+1
+
+Location : example5.cpp:40 13
+Given Name : x_loop
+Variable Type : x_pse_sym (Symbolic)
+(Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 x_pse_sym)
+                                     N0:(ReadLSB w32 0 y_sym))
+                            N0)
+                   N0)
+          N0)
+
+Location : example5.cpp:39 13
+Given Name : d_loop
+Variable Type : Not Symbolic
+1
+
+Location : example5.cpp:40 13
+Given Name : x_loop
+Variable Type : x_pse_sym (Symbolic)
+(Add w32 (Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 x_pse_sym)
+                                              N0:(ReadLSB w32 0 y_sym))
+                                     N0)
+                            N0)
+                   N0)
+          N0)
+
+Location : example5.cpp:39 13
+Given Name : d_loop
+Variable Type : Not Symbolic
+1
+
+Location : example5.cpp:40 13
+Given Name : x_loop
+Variable Type : x_pse_sym (Symbolic)
+(Add w32 (Add w32 (Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 x_pse_sym)
+                                                       N0:(ReadLSB w32 0 y_sym))
+                                              N0)
+                                     N0)
+                            N0)
+                   N0)
+          N0)

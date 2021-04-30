@@ -33,7 +33,12 @@ int main()
     {
         int d = bernoulli_rvs(generator);
         if (d)
+        {
+            klee_assume(d == 1);
             x = x + y;
+            klee_dump_symbolic_details(&d, "d_loop");
+            klee_dump_symbolic_details(&x, "x_loop");
+        }
         n = n - 1;
     }
     return 0;

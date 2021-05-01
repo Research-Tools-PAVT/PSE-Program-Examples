@@ -11,7 +11,7 @@
 int main()
 {
     double prob = 0.5;
-    int d, x, n, y;
+    int d, x, n, y, k = 0;
 
     // forall variables
     klee_make_symbolic(&y, sizeof(y), "y_sym");
@@ -25,24 +25,23 @@ int main()
 
     // Prob Sym Variables.
     klee_make_symbolic(&x, sizeof(x), "x_pse_sym");
-    make_pse_symbolic(&d, sizeof(d), "d_pse_sym", 0, 1);
 
     x = 0;
     std::default_random_engine generator;
     std::bernoulli_distribution bernoulli_rvs(prob);
 
-    while (n > 0)
+    while (k < n)
     {
         d = bernoulli_rvs(generator);
+        klee_dump_symbolic_details(&k, "k_loop");
         klee_dump_symbolic_details(&d, "d_loop");
         if (d)
         {
-            // klee_assume(d == 1);
             // klee_dump_kquery_state();
             x = x + y;
         }
         klee_dump_symbolic_details(&x, "x_loop");
-        n = n - 1;
+        k = k + 1;
     }
     return 0;
 }

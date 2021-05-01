@@ -80,29 +80,37 @@ if __name__ == "__main__":
     with alive_bar(num_outs) as executeBar:
         for index, outputFile in enumerate(os.listdir(outputFilePath)):
             if "err" not in outputFile:
-                with open(os.path.join(outputFilePath, outputFile), mode="r") as fileptr:
+                with open(
+                    os.path.join(outputFilePath, outputFile), mode="r"
+                ) as fileptr:
                     line = fileptr.readlines()
 
                     # COMMENT : Output format -> P(expression) : value in first line.
-                    assertQuery = line[0].strip().split(':')[0]
-                    value = line[0].strip().split(':')[1]
+                    assertQuery = line[0].strip().split(":")[0]
+                    value = line[0].strip().split(":")[1]
                     sumtotal += float(value)
                     count += 1
 
                     # COMMENT : What is the probability of the assert holding?
-                    with open(os.path.join(pwd, "pathprobs.txt"), mode="a") as pathprobs:
+                    with open(
+                        os.path.join(pwd, "pathprobs.txt"), mode="a"
+                    ) as pathprobs:
                         pathprobs.write(
-                            f'{assertQuery} : {value} : {line[-1].strip()}\n')
+                            f"{assertQuery} : {value} : {line[-1].strip()}\n"
+                        )
 
                     # COMMENT : Print when the condition fails.
                     # COMMENT : When does the assert fail? Mention that condition here.
                     if float(value) >= 0.6:
-                        with open(os.path.join(pwd, "assert_failures.txt"), mode="a") as resultFile:
+                        with open(
+                            os.path.join(pwd, "assert_failures.txt"), mode="a"
+                        ) as resultFile:
                             resultFile.write(
-                                f'Fail : {assertQuery} : {value} : {line[-1].strip()}\n')
+                                f"Fail : {assertQuery} : {value} : {line[-1].strip()}\n"
+                            )
             time.sleep(0.1)
             executeBar()
 
     # COMMENT : Final probability across all paths
-    prob = sumtotal/count
-    print(f'Combining all program paths : {assertQuery} : {prob}')
+    prob = sumtotal / count
+    print(f"Combining all program paths : {assertQuery} : {prob}")

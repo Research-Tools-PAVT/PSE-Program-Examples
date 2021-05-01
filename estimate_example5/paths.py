@@ -1,138 +1,141 @@
 import z3
 
-n_sym, y_sym, prob_sym = z3.Ints("n_sym y_sym prob_sym")
+n_sym, y_sym = z3.Ints("n_sym y_sym")
+prob_sym = z3.Real("prob_sym")
 
 path1 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    (1 <= n_sym)
+    (n_sym <= 10),
+    z3.Not((1 < n_sym)),
 ]
 
 path2 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    z3.Not((0 < (n_sym + 4294967295)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    z3.Not((2 < n_sym)),
 ]
 
 path3 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    z3.Not((0 < (n_sym + 4294967294)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    z3.Not((3 < n_sym)),
 ]
 
 path4 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    z3.Not((0 < (n_sym + 4294967293)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    z3.Not((4 < n_sym)),
 ]
 
 path5 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    z3.Not((0 < (n_sym + 4294967292)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    (4 < n_sym),
+    z3.Not((5 < n_sym)),
 ]
 
 path6 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    (0 < (n_sym + 4294967292)),
-    z3.Not((0 < (n_sym + 4294967291)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    (4 < n_sym),
+    (5 < n_sym),
+    z3.Not((6 < n_sym)),
 ]
 
 path7 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    (0 < (n_sym + 4294967292)),
-    (0 < (n_sym + 4294967291)),
-    z3.Not((0 < (n_sym + 4294967290)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    (4 < n_sym),
+    (5 < n_sym),
+    (6 < n_sym),
+    z3.Not((7 < n_sym)),
 ]
 
 path8 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    (0 < (n_sym + 4294967292)),
-    (0 < (n_sym + 4294967291)),
-    (0 < (n_sym + 4294967290)),
-    z3.Not((0 < (n_sym + 4294967289)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    (4 < n_sym),
+    (5 < n_sym),
+    (6 < n_sym),
+    (7 < n_sym),
+    z3.Not((8 < n_sym)),
 ]
 
 path9 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
+    (0 <= prob_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    (0 < (n_sym + 4294967292)),
-    (0 < (n_sym + 4294967291)),
-    (0 < (n_sym + 4294967290)),
-    (0 < (n_sym + 4294967289)),
-    z3.Not((0 < (n_sym + 4294967288)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    (4 < n_sym),
+    (5 < n_sym),
+    (6 < n_sym),
+    (7 < n_sym),
+    (8 < n_sym),
+    (9 < n_sym),
 ]
 
 path10 = [
-    (0 <= prob_sym),
+    (1 <= n_sym),
     (0 <= y_sym),
-    (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    (0 < (n_sym + 4294967292)),
-    (0 < (n_sym + 4294967291)),
-    (0 < (n_sym + 4294967290)),
-    (0 < (n_sym + 4294967289)),
-    (0 < (n_sym + 4294967288)),
-    (0 < (n_sym + 4294967287))
-]
-
-path11 = [
     (0 <= prob_sym),
-    (0 <= y_sym),
     (prob_sym <= 1),
-    z3.Not((1 <= n_sym)),
-    (0 < (n_sym + 4294967295)),
-    (0 < (n_sym + 4294967294)),
-    (0 < (n_sym + 4294967293)),
-    (0 < (n_sym + 4294967292)),
-    (0 < (n_sym + 4294967291)),
-    (0 < (n_sym + 4294967290)),
-    (0 < (n_sym + 4294967289)),
-    (0 < (n_sym + 4294967288)),
-    z3.Not((0 < (n_sym + 4294967287)))
+    (n_sym <= 10),
+    (1 < n_sym),
+    (2 < n_sym),
+    (3 < n_sym),
+    (4 < n_sym),
+    (5 < n_sym),
+    (6 < n_sym),
+    (7 < n_sym),
+    (8 < n_sym),
+    z3.Not((9 < n_sym)),
 ]
 
 
-paths = [path1, path2, path3, path4, path5,
-         path6, path7, path8, path9, path10, path11]
+paths = [path1, path2, path3, path4, path5, path6, path7, path8, path9, path10]

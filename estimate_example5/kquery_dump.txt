@@ -1,124 +1,264 @@
 
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+0
+]]
+---$---
+
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 1
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (ReadLSB w32 0 y_sym)
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+1
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 1
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (ReadLSB w32 0 y_sym)
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+2
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 1
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+3
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 0
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+4
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 0
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+5
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 0
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+6
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 1
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                             (ReadLSB w32 0 y_sym))
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+7
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 0
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                             (ReadLSB w32 0 y_sym))
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+8
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 1
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                                      (ReadLSB w32 0 y_sym))
                             (ReadLSB w32 0 y_sym))
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---
+
+Location : example5.cpp:36 9
+Given Name : k_loop
+Variable Type : (Not Symbolic)
+Value : [[
+9
+]]
+---$---
 
 Location : example5.cpp:37 9
 Given Name : d_loop
-Variable Type : d_pse_sym (Symbolic)
+Variable Type : (Not Symbolic)
+Value : [[
 1
+]]
+---$---
 
-Location : example5.cpp:44 9
+Location : example5.cpp:43 9
 Given Name : x_loop
 Variable Type : x_pse_sym (Symbolic)
+Value : [[
 (Add w32 (Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
                                               (ReadLSB w32 0 y_sym))
                                      (ReadLSB w32 0 y_sym))
                             (ReadLSB w32 0 y_sym))
                    (ReadLSB w32 0 y_sym))
           (ReadLSB w32 0 y_sym))
+]]
+---$---

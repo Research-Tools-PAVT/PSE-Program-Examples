@@ -191,6 +191,11 @@ def z3write(file):
 
 if __name__ == "__main__":
     z3write(sys.argv[1])
-    # expression = "(Add w32 (Add w32 (ReadLSB w32 0 y_sym) (ReadLSB w32 0 y_sym)) (ReadLSB w32 0 y_sym))"
+    # expression = """(Add w32 (Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
+    #                                           (ReadLSB w32 0 y_sym))
+    #                                  (ReadLSB w32 0 y_sym))
+    #                         (ReadLSB w32 0 y_sym))
+    #                (ReadLSB w32 0 y_sym))
+    #       (ReadLSB w32 0 y_sym))"""
     # parsed = collectRecursive(loads(expression))
     # print(genericParse(parsed))

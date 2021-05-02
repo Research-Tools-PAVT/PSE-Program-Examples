@@ -241,7 +241,7 @@ def generateCandidates(k: int):
         n = 0
         # TODO : Automate it later get MODELs.
         # (optpath.check() == z3.sat or optpath.check == z3.unknown)
-        while n != k:
+        while optpath.check() != z3.unsat and n != k:
 
             print(optpath.check())
             m = optpath.model()
@@ -263,7 +263,7 @@ def generateCandidates(k: int):
             # TODO : Automate it later.
             # Added blocking clauses.
             # optpath.add(n_sym != m[n_sym])
-            optpath.add(y_sym > m[y_sym] + 1)
+            optpath.add(y_sym > m[y_sym] + 2)
             optpath.add(prob_sym != m[prob_sym])
 
 

@@ -10,7 +10,16 @@ from auxiliary import flatten, isFloat, isInt
 arithmetic_expr_kind = ["Add", "Sub", "Mul", "UDiv", "URem", "SDiv", "SRem"]
 bitwise_expr_kind = ["And", "Or", "Xor", "Shl", "LShr", "AShr"]
 comparison_expr_kind = [
-    "Eq", "Ne", "Ult", "Ule", "Ugt", "Uge", "Slt", "Sle", "Sgt", "Sge"
+    "Eq",
+    "Ne",
+    "Ult",
+    "Ule",
+    "Ugt",
+    "Uge",
+    "Slt",
+    "Sle",
+    "Sgt",
+    "Sge",
 ]
 macro_expr_kind = ["Neg", "ReadLSB", "ReadMSB"]
 bitvector_expr_kind = ["Concat", "Extract", "ZExt", "SExt"]
@@ -18,11 +27,43 @@ special_expr = ["Read", "Select"]
 query_command = ["query"]
 
 AllExprTypes = [
-    "Add", "Sub", "Mul", "UDiv", "URem", "SDiv", "SRem", "And", "Or", "Xor",
-    "Shl", "LShr", "query", "AShr", "Eq", "Ne", "Ult", "Ule", "Ugt", "Uge",
-    "Slt", "Sle", "Sgt", "Sge", "Neg", "ReadLSB", "ReadMSB", "Concat",
-    "Extract", "ZExt", "SExt", "Read", "Select", "Undef", "None", "Unsat",
-    "UNK"
+    "Add",
+    "Sub",
+    "Mul",
+    "UDiv",
+    "URem",
+    "SDiv",
+    "SRem",
+    "And",
+    "Or",
+    "Xor",
+    "Shl",
+    "LShr",
+    "query",
+    "AShr",
+    "Eq",
+    "Ne",
+    "Ult",
+    "Ule",
+    "Ugt",
+    "Uge",
+    "Slt",
+    "Sle",
+    "Sgt",
+    "Sge",
+    "Neg",
+    "ReadLSB",
+    "ReadMSB",
+    "Concat",
+    "Extract",
+    "ZExt",
+    "SExt",
+    "Read",
+    "Select",
+    "Undef",
+    "None",
+    "Unsat",
+    "UNK",
 ]
 
 BooleanType = ["true", "false"]
@@ -34,11 +75,13 @@ class sExprNode(dict):
         self.first = None
         self.second = None
         self.operator = None
-        dict.__init__(self,
-                      exprId=str(uuid.uuid4()),
-                      left=self.first,
-                      right=self.second,
-                      optype=self.operator)
+        dict.__init__(
+            self,
+            exprId=str(uuid.uuid4()),
+            left=self.first,
+            right=self.second,
+            optype=self.operator,
+        )
 
 
 def getOps(elems):

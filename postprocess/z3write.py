@@ -9,6 +9,7 @@ Parsing works for monty hall constraint cases
 as of now, will work on the rest of the cases
 later as examples evolve.
 """
+variables = set()
 
 operationsMap = {
     "Ult": "<",
@@ -35,6 +36,7 @@ def getInfixExpression(expr, operator):
 
     if operator == "ReadLSB":
         variable = expr.get("var", None)
+        variables.add(variable)
         # print(variable)
         return variable
 
@@ -73,6 +75,16 @@ def getInfixExpression(expr, operator):
         if left is not None and right is not None:
             return f'({lexpr} {operationsMap.get(operator, ",")} {rexpr})'
 
+    if operator == "SRem":
+        if const is not None and right is not None:
+            return f"({rexpr} % {const})"
+
+        if const is not None and left is not None:
+            return f"({const} % {lexpr})"
+
+        if left is not None and right is not None:
+            return f"({rexpr} % {lexpr})"
+
 
 def genericParse(expr):
     if expr is None:
@@ -88,9 +100,13 @@ def genericParse(expr):
         if right is not None:
             parsedRight = genericParse(right)
             rvariable = right.get("var", None)
-            if const is not None:
+            if const is not None and rvariable is not None:
                 # print(f'{variable} == {const}')
+                variables.add(rvariable)
                 return f"{rvariable} == {const}"
+            else:
+                if const is not None and parsedRight is not None:
+                    return f"{parsedRight} == {const}"
             if boolean is not None:
                 if boolean == "true":
                     # print(f'{parsedRight}')
@@ -102,9 +118,13 @@ def genericParse(expr):
         if left is not None:
             parsedLeft = genericParse(left)
             lvariable = left.get("var", None)
-            if const is not None:
+            if const is not None and lvariable is not None:
                 # print(f'{variable} == {const}')
+                variables.add(lvariable)
                 return f"{lvariable} == {const}"
+            else:
+                if const is not None and parsedLeft is not None:
+                    return f"{parsedLeft} == {const}"
             if boolean is not None:
                 if boolean == "true":
                     # print(f'{parsedRight}')
@@ -114,7 +134,8 @@ def genericParse(expr):
                     return f"z3.Not({parsedLeft})"
 
         # print(f'{lvariable} == {rvariable}')
-        return f"{lvariable} == {rvariable}"
+        if lvariable is not None and rvariable is not None:
+            return f"{lvariable} == {rvariable}"
 
     return getInfixExpression(expr, expr.get("action"))
 
@@ -131,7 +152,6 @@ def z3write(file):
 
     count = 0
     pathConditions = dict()
-    variables = set()
     for elems, paths in data.items():
         predicateList = []
         klee_assumes = set()
@@ -191,11 +211,6 @@ def z3write(file):
 
 if __name__ == "__main__":
     z3write(sys.argv[1])
-    # expression = """(Add w32 (Add w32 (Add w32 (Add w32 (Add w32 (ReadLSB w32 0 y_sym)
-    #                                           (ReadLSB w32 0 y_sym))
-    #                                  (ReadLSB w32 0 y_sym))
-    #                         (ReadLSB w32 0 y_sym))
-    #                (ReadLSB w32 0 y_sym))
-    #       (ReadLSB w32 0 y_sym))"""
+    # expression = """(Eq false (Eq 0 (SRem w32 (ReadLSB w32 0 i_sym) 2)))"""
     # parsed = collectRecursive(loads(expression))
     # print(genericParse(parsed))

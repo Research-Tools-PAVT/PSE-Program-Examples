@@ -17,7 +17,7 @@ int main()
     klee_make_symbolic(&i, sizeof(i), "i_sym");
     klee_assume(1 <= i && i <= 20);
 
-    prob = 0.35;
+    prob = 0.5;
     mean = 75;
     stddev = 25;
 

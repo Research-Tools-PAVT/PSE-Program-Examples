@@ -15,28 +15,28 @@ int main()
 
     make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
     klee_make_symbolic(&i, sizeof(i), "i_sym");
+    klee_assume(1 <= i && i <= 20);
 
     prob = 0.35;
     mean = 75;
     stddev = 25;
-    i = 0;
 
     std::default_random_engine generator;
     std::normal_distribution<double> gaussian_distribution(mean, stddev);
-    std::uniform_int_distribution<int> int_distribution(100, 1000);
+    std::uniform_int_distribution<int> int_distribution(500, 1000);
 
-    for (i = 0; i < 100; i++)
+    for (; i < 20; i++)
     {
-        if (i % 2)
+        if (i % 2) // This must not fork.
         {
             int d, trials;
 
             std::string name("d_binom_");
-            name += std::to_string(i);
+            // name += i;
             name += "_sym";
 
             std::string trial_sym("trial_");
-            trial_sym += std::to_string(i);
+            // trial_sym += i;
             trial_sym += "_sym";
 
             klee_make_symbolic(&d, sizeof(d), name.c_str());
@@ -45,6 +45,7 @@ int main()
             std::binomial_distribution<int> binom_distribution(trials, prob);
             d = binom_distribution(generator);
 
+            klee_dump_symbolic_details(&i, "i_loop");
             klee_dump_symbolic_details(&d, name.c_str());
             klee_dump_symbolic_details(&trials, trial_sym.c_str());
         }
@@ -52,12 +53,13 @@ int main()
         {
             int d;
             std::string name("d_gauss_");
-            name += std::to_string(i);
+            // name += i;
             name += "_sym";
 
             klee_make_symbolic(&d, sizeof(d), name.c_str());
             d = gaussian_distribution(generator);
 
+            klee_dump_symbolic_details(&i, "i_loop");
             klee_dump_symbolic_details(&d, name.c_str());
         }
     }

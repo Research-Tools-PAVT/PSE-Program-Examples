@@ -67,7 +67,7 @@ if __name__ == "__main__":
             )
             executeThreads.append(worker_thread)
             worker_thread.start()
-            time.sleep(0.2)
+            time.sleep(0.1)
             executeBar()
 
     for index, worker in enumerate(executeThreads):
@@ -85,7 +85,8 @@ if __name__ == "__main__":
                 ) as fileptr:
                     line = fileptr.readlines()
 
-                    # COMMENT : Output format -> P(expression) : value in first line.
+                    # COMMENT : Output format -> P(expression) : value must
+                    # first line of the print to std stream.
                     assertQuery = line[0].strip().split(":")[0]
                     value = line[0].strip().split(":")[1]
                     sumtotal += float(value)
@@ -98,17 +99,6 @@ if __name__ == "__main__":
                         pathprobs.write(
                             f"{assertQuery} : {value} : {line[-1].strip()}\n"
                         )
-
-                    # COMMENT : Print when the condition fails.
-                    # COMMENT : When does the assert fail? Mention that condition here.
-                    if float(value) >= 0.6:
-                        with open(
-                            os.path.join(pwd, "assert_failures.txt"), mode="a"
-                        ) as resultFile:
-                            resultFile.write(
-                                f"Fail : {assertQuery} : {value} : {line[-1].strip()}\n"
-                            )
-            time.sleep(0.1)
             executeBar()
 
     # COMMENT : Final probability across all paths

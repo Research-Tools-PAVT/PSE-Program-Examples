@@ -8,6 +8,7 @@ from parser import collectRecursive, findVars
 from unionfind import processExpressionImap
 from sexpdata import loads, dumps
 from auxiliary import flatten
+from z3write import genericParse
 import uuid
 
 id = 0
@@ -59,15 +60,18 @@ with open(file.strip(), "r") as fileptr:
                     # TrueQuery & FalseQuery need specialized processing.
                     if "Query" in key.strip():
                         key_splits = [
-                            ' '.join(x.strip().split()) for x in value.strip()
-                            [1:len(value.strip()) - 1].strip().split("|")[0:len(value.strip())]
+                            " ".join(x.strip().split())
+                            for x in value.strip()[1 : len(value.strip()) - 1]
+                            .strip()
+                            .split("|")[0 : len(value.strip())]
                         ]
                         temp[key.strip()] = [
-                            x for x in key_splits[0:len(key_splits) - 1]]
+                            x for x in key_splits[0 : len(key_splits) - 1]
+                        ]
 
                     # Add the branch condition.
                     elif "Branch" in key.strip() or "Negate" in key.strip():
-                        temp[key.strip()] = ' '.join(value.strip().split())
+                        temp[key.strip()] = " ".join(value.strip().split())
                     else:
                         temp[key.strip()] = value.strip()
 
@@ -87,21 +91,20 @@ for elems in results:
         # Nodes are reused here. Map as a cache.
         node = nodeMap.get(
             f"{aliasMap.get(current, current)}",
-            ExecutionTreeNode(f"{aliasMap.get(current, current)}"))
-        left = nodeMap.get(f"{generate_true}",
-                           ExecutionTreeNode(f"{generate_true}"))
-        right = nodeMap.get(f"{generate_false}",
-                            ExecutionTreeNode(f"{generate_false}"))
+            ExecutionTreeNode(f"{aliasMap.get(current, current)}"),
+        )
+        left = nodeMap.get(f"{generate_true}", ExecutionTreeNode(f"{generate_true}"))
+        right = nodeMap.get(f"{generate_false}", ExecutionTreeNode(f"{generate_false}"))
 
         # Make sure we reuse the Node IDs.
         nodeMap[aliasMap.get(current, current)] = node
         nodeMap[generate_true] = left
         nodeMap[generate_false] = right
 
-        if (klee_true == current):
+        if klee_true == current:
             aliasMap[current] = generate_true
             aliasMap[klee_false] = generate_false
-        elif (klee_false == current):
+        elif klee_false == current:
             aliasMap[current] = generate_false
             aliasMap[klee_true] = generate_true
         else:
@@ -115,31 +118,58 @@ for elems in results:
         node.trueQuerySet = elems.get("trueQuery", [])
         node.falseQuerySet = elems.get("falseQuery", [])
 
+        # Convert to readable form.
+        trueEdgeLabel = [
+            genericParse(collectRecursive(loads(trueExpr)))
+            # for x in trueExpr.strip().split(" (")
+        ]
+
+        falseEdgeLabel = [
+            genericParse(collectRecursive(falseExpr))
+            # for x in falseExpr.strip().split(" (")
+        ]
+
         # Adding the tree edges to nodes.
         node.edges.append(
-            ExecutionTreeEdge(node,
-                              left,
-                              label='\n('.join(trueExpr.strip().split(' (')),
-                              color="green"))
+            ExecutionTreeEdge(
+                node,
+                left,
+                label="\n(".join(trueExpr.strip().split(" (")),
+                edgeLabel=trueEdgeLabel[0],
+                color="green",
+            )
+        )
 
         node.edges.append(
-            ExecutionTreeEdge(node,
-                              right,
-                              label='\n('.join(falseExpr.strip().split(' (')),
-                              color="red"))
+            ExecutionTreeEdge(
+                node,
+                right,
+                label="\n(".join(falseExpr.strip().split(" (")),
+                edgeLabel=falseEdgeLabel[0],
+                color="red",
+            )
+        )
 
         # We also maintain a global edgeset to make queries faster.
         Tree.edgeSet.append(
-            ExecutionTreeEdge(node,
-                              left,
-                              label='\n('.join(trueExpr.strip().split(' (')),
-                              color="green"))
+            ExecutionTreeEdge(
+                node,
+                left,
+                label="\n(".join(trueExpr.strip().split(" (")),
+                edgeLabel=trueEdgeLabel[0],
+                color="green",
+            )
+        )
 
         Tree.edgeSet.append(
-            ExecutionTreeEdge(node,
-                              right,
-                              label='\n('.join(falseExpr.strip().split(' (')),
-                              color="red"))
+            ExecutionTreeEdge(
+                node,
+                right,
+                label="\n(".join(falseExpr.strip().split(" (")),
+                edgeLabel=falseEdgeLabel[0],
+                color="red",
+            )
+        )
 
 # Add Nodes & update Path IDs for PathMap
 for k, v in nodeMap.items():
@@ -162,7 +192,7 @@ for pathIds, nodes in pathMap.items():
     # collecting each edge information.
     while temp is not None:
         collection = {}
-        data = ' '.join(getLabel(temp).strip().split("\n"))
+        data = " ".join(getLabel(temp).strip().split("\n"))
         collection["treeNode"] = temp
 
         # COMMENT : Must collect all the variables in the expression.
@@ -205,11 +235,10 @@ for _, path in paths.items():
 
 Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
 
-with open(f"{name}_processed/{name}_processed.json", 'w',
-          encoding='utf-8') as f:
+with open(f"{name}_processed/{name}_processed.json", "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=4)
 
-with open(f"{name}_processed/{name}_paths.json", 'w', encoding='utf-8') as f:
+with open(f"{name}_processed/{name}_paths.json", "w", encoding="utf-8") as f:
     json.dump(paths, f, ensure_ascii=False, indent=4)
 
 print(f"Paths Processed : {len(paths)}")

@@ -11,7 +11,7 @@
 int main()
 {
     double prob;
-    int i, mean, stddev;
+    int i, d, trials, k, mean, stddev;
 
     make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
     klee_make_symbolic(&i, sizeof(i), "i_sym");
@@ -25,18 +25,18 @@ int main()
     std::normal_distribution<double> gaussian_distribution(mean, stddev);
     std::uniform_int_distribution<int> int_distribution(500, 1000);
 
-    for (; i < 20; i++)
+    k = 0;
+    while (i < 20)
     {
         if (i % 2) // This must not fork.
         {
-            int d, trials;
-
+            // int d, trials;
             std::string name("d_binom_");
-            // name += i;
+            name += std::to_string(k);
             name += "_sym";
 
             std::string trial_sym("trial_");
-            // trial_sym += i;
+            trial_sym += std::to_string(k);
             trial_sym += "_sym";
 
             klee_make_symbolic(&d, sizeof(d), name.c_str());
@@ -51,9 +51,9 @@ int main()
         }
         else
         {
-            int d;
+            // int d;
             std::string name("d_gauss_");
-            // name += i;
+            name += std::to_string(k);
             name += "_sym";
 
             klee_make_symbolic(&d, sizeof(d), name.c_str());
@@ -62,6 +62,8 @@ int main()
             klee_dump_symbolic_details(&i, "i_loop");
             klee_dump_symbolic_details(&d, name.c_str());
         }
+        i = i + 1;
+        k = k + 1;
     }
     return 0;
 }

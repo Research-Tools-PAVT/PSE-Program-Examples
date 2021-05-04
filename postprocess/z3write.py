@@ -210,7 +210,7 @@ def z3write(file):
 
 
 if __name__ == "__main__":
-    z3write(sys.argv[1])
-    # expression = """(Eq false (Eq 0 (SRem w32 (ReadLSB w32 0 i_sym) 2)))"""
-    # parsed = collectRecursive(loads(expression))
-    # print(genericParse(parsed))
+    #    z3write(sys.argv[1])
+    expression = """(Eq false (Slt (ReadLSB w32 0 i_sym) 20))"""
+    parsed = collectRecursive(loads(expression))
+    print(genericParse(parsed))

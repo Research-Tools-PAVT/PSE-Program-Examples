@@ -25,12 +25,15 @@ class ExecutionTreeNode(dict):
 
 
 class ExecutionTreeEdge:
-    def __init__(self, parent, child, label="execution", color="black"):
+    def __init__(
+        self, parent, child, label="execution", edgeLabel="(Null)", color="black"
+    ):
         self.parent = parent
         self.child = child
         child.parent = parent
         self.imapdata = ""
         self.label = label
+        self.edgeLabel = edgeLabel
         self.data = label
         self.color = color
         self.graph = Digraph(comment="Execution Edge", format="png")
@@ -57,10 +60,7 @@ class ExecutionTree:
         self.root = None
 
     def save_cfg(self, name="ExecutionTree", filename="sample", directory="."):
-        graph = Digraph(name=name,
-                        filename=filename,
-                        directory=directory,
-                        format="png")
+        graph = Digraph(name=name, filename=filename, directory=directory, format="png")
         for node in self.nodes:
             for edge in node.edges:
                 edge.label += edge.imapdata
@@ -68,6 +68,7 @@ class ExecutionTree:
                     format_stmts(edge.parent),
                     format_stmts(edge.child),
                     color=edge.color,
+                    # Show the information in readable format.
                     label=edge.label,
                 )
         graph.render()
@@ -85,7 +86,7 @@ if __name__ == "__main__":
     print("Building Execution Tree")
     Tree = ExecutionTree()
     root = ExecutionTreeNode("Root", 0)
-    arr = [1, 2, 3, 4]
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     for index, elems in enumerate(arr):
         if index < len(arr) / 2:
             node = ExecutionTreeNode(index)
@@ -97,15 +98,15 @@ if __name__ == "__main__":
             trueExpr = "True"
             falseExpr = "False"
             node.edges.append(
-                ExecutionTreeEdge(node,
-                                  left,
-                                  label=' '.join(trueExpr.split()),
-                                  color="green"))
+                ExecutionTreeEdge(
+                    node, left, label=" ".join(trueExpr.split()), color="green"
+                )
+            )
             node.edges.append(
-                ExecutionTreeEdge(node,
-                                  right,
-                                  label=' '.join(falseExpr.split()),
-                                  color="Red"))
+                ExecutionTreeEdge(
+                    node, right, label=" ".join(falseExpr.split()), color="Red"
+                )
+            )
         else:
             pass
 

@@ -11,11 +11,11 @@
 int main()
 {
     double prob;
-    int i, d, trials, k, mean, stddev;
+    int n, d, trials, k, mean, stddev;
 
     make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
-    klee_make_symbolic(&i, sizeof(i), "i_sym");
-    klee_assume(1 <= i && i <= 20);
+    klee_make_symbolic(&n, sizeof(n), "n_sym");
+    klee_assume(1 <= n && n <= 20);
 
     prob = 0.5;
     mean = 75;
@@ -26,9 +26,9 @@ int main()
     std::uniform_int_distribution<int> int_distribution(500, 1000);
 
     k = 0;
-    while (i < 20)
+    while (k < n)
     {
-        if (i % 2) // This must not fork.
+        if (k % 2) // This must not fork.
         {
             // int d, trials;
             std::string name("d_binom_");
@@ -45,7 +45,6 @@ int main()
             std::binomial_distribution<int> binom_distribution(trials, prob);
             d = binom_distribution(generator);
 
-            klee_dump_symbolic_details(&i, "i_loop");
             klee_dump_symbolic_details(&d, name.c_str());
             klee_dump_symbolic_details(&trials, trial_sym.c_str());
         }
@@ -59,10 +58,8 @@ int main()
             klee_make_symbolic(&d, sizeof(d), name.c_str());
             d = gaussian_distribution(generator);
 
-            klee_dump_symbolic_details(&i, "i_loop");
             klee_dump_symbolic_details(&d, name.c_str());
         }
-        i = i + 1;
         k = k + 1;
     }
     return 0;

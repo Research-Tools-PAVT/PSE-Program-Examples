@@ -11,11 +11,12 @@
 int main()
 {
     double prob;
-    int n, d, trials, k, mean, stddev;
+    int i, d, trials, k, mean, stddev;
 
     make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
-    klee_make_symbolic(&n, sizeof(n), "n_sym");
-    klee_assume(1 <= n && n <= 20);
+    klee_make_symbolic(&i, sizeof(i), "i_sym");
+    klee_make_symbolic(&k, sizeof(k), "k_sym");
+    klee_assume(1 <= i && i <= 20);
 
     prob = 0.5;
     mean = 75;
@@ -26,11 +27,11 @@ int main()
     std::uniform_int_distribution<int> int_distribution(500, 1000);
 
     k = 0;
-    while (k < n)
+    while (k < i)
     {
         if (k % 2) // This must not fork.
         {
-            // int d, trials;
+            // int d;
             std::string name("d_binom_");
             name += std::to_string(k);
             name += "_sym";
@@ -39,6 +40,10 @@ int main()
             trial_sym += std::to_string(k);
             trial_sym += "_sym";
 
+            std::string k_symbolic("k_even_");
+            k_symbolic += std::to_string(k);
+            k_symbolic += "_sym";
+
             klee_make_symbolic(&d, sizeof(d), name.c_str());
 
             trials = int_distribution(generator);
@@ -46,7 +51,9 @@ int main()
             d = binom_distribution(generator);
 
             klee_dump_symbolic_details(&d, name.c_str());
+            klee_dump_symbolic_details(&k, k_symbolic.c_str());
             klee_dump_symbolic_details(&trials, trial_sym.c_str());
+            klee_dump_symbolic_details(&prob, "prob_sym");
         }
         else
         {
@@ -55,10 +62,15 @@ int main()
             name += std::to_string(k);
             name += "_sym";
 
+            std::string k_symbolic("k_odd_");
+            k_symbolic += std::to_string(k);
+            k_symbolic += "_sym";
+
             klee_make_symbolic(&d, sizeof(d), name.c_str());
             d = gaussian_distribution(generator);
 
             klee_dump_symbolic_details(&d, name.c_str());
+            klee_dump_symbolic_details(&k, k_symbolic.c_str());
         }
         k = k + 1;
     }

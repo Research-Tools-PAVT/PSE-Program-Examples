@@ -1,0 +1,23 @@
+[
+    {
+        "File": "newsampling.cpp",
+        "Line": "22",
+        "Predicate": "9",
+        "Branch Predicate": "(Eq 0 (ReadLSB w32 0 d_pse_sym))",
+        "Negate Predicate": "(Eq false (Eq 0 (ReadLSB w32 0 d_pse_sym)))",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "2",
+        "trueQuery": [
+            "(Eq 0 (ReadLSB w32 0 d_pse_sym))"
+        ],
+        "False KLEE Id": "2",
+        "False Generate ID": "3",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 d_pse_sym))",
+            "(Sle (ReadLSB w32 0 d_pse_sym) 2)",
+            "(Eq false (Eq 0 (ReadLSB w32 0 d_pse_sym)))"
+        ]
+    }
+]

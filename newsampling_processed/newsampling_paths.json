@@ -1,0 +1,64 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "910bc1fb-d3c3-4814-82fc-07c901943a2a"
+            },
+            "nodeTrueQuery": [
+                "(Eq 0 (ReadLSB w32 0 d_pse_sym))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 d_pse_sym))",
+                "(Sle (ReadLSB w32 0 d_pse_sym) 2)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 d_pse_sym)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "148461ea-07fd-4d7b-8590-a127c1223009"
+            },
+            "predicate": "(Eq 0 (ReadLSB w32 0 d_pse_sym))",
+            "variables": [
+                "d_pse_sym"
+            ],
+            "IMap": {
+                "d_pse_sym": "6f4a9d8d-85f3-499c-afbc-91774731a2ac"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "910bc1fb-d3c3-4814-82fc-07c901943a2a"
+            },
+            "nodeTrueQuery": [
+                "(Eq 0 (ReadLSB w32 0 d_pse_sym))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 d_pse_sym))",
+                "(Sle (ReadLSB w32 0 d_pse_sym) 2)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 d_pse_sym)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "b48b5acf-5845-477d-8663-c8cac91608cf"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 d_pse_sym)))",
+            "variables": [
+                "d_pse_sym"
+            ],
+            "IMap": {
+                "d_pse_sym": "66055cb0-7a2b-495c-8365-27206cdf3a27"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

@@ -19,9 +19,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))"
         ],
         "False KLEE Id": "2",
@@ -29,9 +28,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Eq false (Slt 1 (ReadLSB w32 0 n_sym)))"
         ]
     },
@@ -48,9 +46,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))"
         ],
@@ -59,9 +56,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Eq false (Slt 2 (ReadLSB w32 0 n_sym)))"
         ]
@@ -79,9 +75,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))"
@@ -91,9 +86,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Eq false (Slt 3 (ReadLSB w32 0 n_sym)))"
@@ -112,9 +106,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -125,9 +118,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -147,9 +139,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -161,9 +152,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -184,9 +174,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -199,9 +188,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -223,9 +211,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -239,9 +226,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -264,9 +250,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -281,9 +266,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -307,9 +291,8 @@
         "trueQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -325,9 +308,8 @@
         "falseQuery": [
             "(Sle 0 (ReadLSB w32 0 prob_sym))",
             "(Sle (ReadLSB w32 0 prob_sym) 1)",
-            "(Sle 0 (ReadLSB w32 0 y_sym))",
-            "(Sle 1 (ReadLSB w32 0 n_sym))",
-            "(Sle (ReadLSB w32 0 n_sym) 10)",
+            "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 y_sym) 31))))",
+            "(Ult (Add w32 4294967295 (ReadLSB w32 0 n_sym)) 10)",
             "(Slt 1 (ReadLSB w32 0 n_sym))",
             "(Slt 2 (ReadLSB w32 0 n_sym))",
             "(Slt 3 (ReadLSB w32 0 n_sym))",
@@ -350,27 +332,6 @@
         "File": "example5.cpp",
         "Line": "38",
         "Predicate": "13",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "example5.cpp",
-        "Line": "38",
-        "Predicate": "13",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "example5.cpp",
-        "Line": "38",
-        "Predicate": "13",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "example5.cpp",
-        "Line": "38",
-        "Predicate": "13",
         "Branch Predicate": "false",
         "Negate Predicate": "true"
     },
@@ -399,6 +360,20 @@
         "File": "example5.cpp",
         "Line": "38",
         "Predicate": "13",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "example5.cpp",
+        "Line": "38",
+        "Predicate": "13",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "example5.cpp",
+        "Line": "38",
+        "Predicate": "13",
         "Branch Predicate": "false",
         "Negate Predicate": "true"
     },
@@ -413,7 +388,14 @@
         "File": "example5.cpp",
         "Line": "38",
         "Predicate": "13",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "example5.cpp",
+        "Line": "38",
+        "Predicate": "13",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
     }
 ]

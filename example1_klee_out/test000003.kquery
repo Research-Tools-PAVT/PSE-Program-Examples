@@ -9,15 +9,14 @@ array e_prob_sym[4] : w32 -> w8 = symbolic
          (Sle 1
               N1:(ReadLSB w32 0 e_prob_sym))
          (Sle N1 6)
-         (Sle 0
-              N2:(ReadLSB w32 0 a_sym))
-         (Sle N2 1)
-         (Sle 1
-              N3:(ReadLSB w32 0 c_sym))
-         (Sle N3 10)
-         (Sle 0
-              N4:(ReadLSB w32 0 d_sym))
-         (Sle N4 5)
+         (Ult N2:(ReadLSB w32 0 a_sym)
+              2)
+         (Ult (Add w32 4294967295
+                       N3:(ReadLSB w32 0 c_sym))
+              10)
+         (Ult (ReadLSB w32 0 d_sym)
+              6)
          (Slt N0 N2)
-         (Slt (Add w32 N3 N1) 15)]
+         (Eq false
+             (Slt (Add w32 N1 N3) 15))]
         false)

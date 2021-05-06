@@ -1,5 +1,7 @@
 #include <klee/klee.h>
 #include <algorithm>
+#include <vector>
+#include <string>
 #include <stdio.h>
 
 /**
@@ -39,7 +41,7 @@ void setFractionValue(void *addr, int numerator, int denominator, int index)
 
 template <class T>
 /**
- * @brief Creates a probabilistic symbolic variable.  Specify start and end of uniform distribution range. [Any order works]
+ * @brief Creates a probabilistic symbolic variable. Specify start and end of uniform distribution range. [Any order works]
  * 
  * @param addr (pointer)
  * @param bytes (size)

@@ -19,7 +19,7 @@ int main()
 
     std::default_random_engine generator;
     std::uniform_int_distribution<int> int_distribution(1, 6);
-    // d = int_distribution(generator);
+    d = int_distribution(generator);
     klee_dump_kquery_state();
 
     value_d = d;
@@ -28,8 +28,6 @@ int main()
     klee_dump_symbolic_details(&d, "d_sym");
 
     (d == 1) ? setFractionValue(&choice, 1, 6, 1) : ((d == 2) ? setFractionValue(&choice, 1, 6, 2) : ((d == 3) ? setFractionValue(&choice, 1, 6, 3) : ((d == 4) ? setFractionValue(&choice, 1, 6, 4) : ((d == 5) ? setFractionValue(&choice, 1, 6, 5) : ((d == 6) ? setFractionValue(&choice, 1, 6, 6) : setFractionValue(&choice, 1, 6, 0))))));
-
-    klee_dump_kquery_state();
 }
 
 // (d == 1) ?

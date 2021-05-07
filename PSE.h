@@ -24,7 +24,7 @@ void setFractionValue(void *addr, int numerator, int denominator, int index)
     denom_str += index_str;
     denom_str += "_sym";
 
-    std::string setFractionPlaceholder("setFraction");
+    std::string setFractionPlaceholder("setFraction_");
     setFractionPlaceholder += index_str;
 
     klee_make_symbolic(&choice_num, sizeof(choice_num), numerator_str.c_str());
@@ -37,6 +37,7 @@ void setFractionValue(void *addr, int numerator, int denominator, int index)
     klee_dump_symbolic_details(&choice_num, numerator_str.c_str());
     klee_dump_symbolic_details(&choice_denom, denom_str.c_str());
     klee_dump_symbolic_details(addr, setFractionPlaceholder.c_str());
+    klee_dump_kquery_state();
 }
 
 template <class T>

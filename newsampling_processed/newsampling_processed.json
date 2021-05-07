@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "File": "newsampling.cpp",
+        "Line": "30",
+        "Predicate": "5",
+        "Expression": "ite (true (1)(0))"
+    }
+]

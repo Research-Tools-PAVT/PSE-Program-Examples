@@ -16,201 +16,84 @@
 \begin{document}
 	\begin{figure}
 		\begin{minted}{python}
-	def ex7(inpt):
-		x = 0
-		n = 10  # N This is a forall.
-		y = 10  # N This is a forall.
-		prob = inpt[0] # This is a forall. 
-		while(n > 0):
-			d = bernoulli.rvs(size=1, p=prob)[0]
-			if(d): 
-				x = x + y # x is probabilistic here
-			n = n-1
-		return x
 	
-	# Expected Value of "x"
-	# E[x] = prob * n * y
-	assert((P(x - (prob * n * y)) <= 0) <= 0.6)
+	double prob, path_prob = 1, choice_prob = 1;
+	int sum = 0;
+	
+	klee_make_symbolic(&prob, f"prob_sym_{i}");
+	for i in range(10):
+		int d;
+		klee_make_symbolic(&d, f"d_sym_{i}");
+	
+		d = bernoulli(prob);
+		(d == 1) ? choice_prob = prob : choice_prob = (1 - prob);
+		path_prob = path_prob * choice_prob;
+		
+		sum = sum + d;
+		
+	klee_dump(path_prob)
+	klee_dump(sum) // E[heads in "n" runs] 
 		\end{minted}
-		\caption{Program listing for finding probabilistic \texttt{assert} violation.}
+		\caption{Program listing for $n$ bernoulli trails experiment.}
 	\end{figure}
-	\begin{figure}
-	\begin{minted}{python}
-		(0.0000001 < prob_sym),
-		(1 <= y_sym),
-		(prob_sym <= 1),
-		(10 <= n_sym)
-	\end{minted}
-	\caption{Constraints on \texttt{Path-1} where control flow is in the \texttt{while} loop.}
-	\end{figure}
-	\begin{figure}
-		\begin{minted}{python}
-		(0.0000001 < prob_sym),
-		(1 <= y_sym),
-		(prob_sym <= 1),
-		n_sym == 0 # Exit from Loop
-		\end{minted}
-		\caption{Constraints on \texttt{Path-2} where control flow exits the \texttt{while} loop.}
-	\end{figure}
+
+We consider a independent $bernoulli$ trials here of flipping a fair coin "$n$" times. 
+\[ 
+{choice\_prob} = 
+\begin{cases} 
+	p & \textrm{if $d$ value is 1 corresponding to getting a "heads"} \\
+	1-p & \textrm{if $d$ value is 0 corresponding to getting a "tails"}
+\end{cases}
+\]
+
+for example, on the $i^{th}$ run \texttt{$\vec{d}$} can have a value.
+\[
+\vec{d}_{i} = encode(<0,0,0,1,1,0,1,1,1,0>)
+\]
+
+Based on the value of the $\vec{d}_{i}$, we get $w_{i}$ value using $choice\_prob$. 
+\begin{equation}
+	w_{i} = {(p)^{x_i} * (1-p)^{n-x_i}}
+\end{equation}
+where $x_i$ denotes the number of $heads$ in the $i^{th}$ randomized run and for $n$ runs. \texttt{n = 10} for the case in the above example. \\
+
+We consider top "$k$" randomized runs now for the optimization query. The expression for \texttt{optimization} thus becomes 
+\[	
+	maximize(\sum_{i=1}^{k}{w_i})
+\]
+On substituting the value of $w_i$ from (1).
+\begin{equation}	
+	maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}})
+\end{equation}
+
 \begin{figure}
-	\begin{minted}{c}
-	double prob;
-	int x, n, y;
-	
-	// forall variables
-	klee_make_symbolic(&y, sizeof(y), "y_sym");
-	klee_make_symbolic(&n, sizeof(n), "n_sym");
-	make_pse_symbolic(&prob, sizeof(prob), "prob_sym", 0, 1);
-	
-	// Some restrictions on the values.
-	klee_assume(y >= 0);
-	klee_assume(10 <= n);
-	
-	// Work around for silent concretization of prob.
-	prob = 0.5;
-	
-	// Prob Sym Variables.
-	make_pse_symbolic(&x, sizeof(x), "x_pse_sym", 0, 2147483647);
-	
-	std::default_random_engine generator;
-	std::bernoulli_distribution bernoulli_rvs(prob);
-	
-	// This is the "inner" loop which affects the final value of "x".
-	while (n > 0)
-	{
-		int d = bernoulli_rvs(generator);
-		if (d)
-			x = x + y;
-		n = n - 1;
-	}
-
-	return 0;
-	\end{minted}
-	\caption{\texttt{KLEE Transformation} of the program for testing the \texttt{assert}. }
+	\begin{equation}	
+		Objective = maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}}) \mid \forall (i, j) [{x_i} \neq {x_j}]
+	\end{equation}
+	\caption{Optimization Expression for $k$ randomized paths}
+	\label{eq:optimization-1}
 \end{figure}
 
-	\begin{figure}
-		\begin{minted}{c}
-	long double prob;
-	int x, n, y, n_start, y_start;
-	long long unsigned int win = 0, loop_run = 0, prob_runs = 0;
-	
-	scanf("%d", &n);
-	scanf("%d", &y);
-	scanf("%Lf", &prob);
-	
-	n_start = n;
-	y_start = y;
-	
-	while (termCount--)
-	{
-		x = 0;
-		int n_loop = n; // maintain "n" for re-runs of loop. 
-		
-		// program execution
-		std::default_random_engine generator;
-		std::bernoulli_distribution bernoulli_rvs(prob);
-		
-		// "n" gets changed, we need to maintain the loop. 
-		while (n_loop > 0)
-		{
-			int d = bernoulli_rvs(generator);
-			if (d)
-			{
-				// This doesn't favours the "win" condition.
-				x = x + y;
-			}
-			n_loop -= 1;
-			
-			// Iterations of the inner loop.
-			// How many times the probabilistic loop gets executed?
-			prob_runs++;
-		}
-		
-		// Sample for probability. This is the assert condition.
-		if ((double)x - (prob * n * y) <= 0)
-			win++;
-		
-		// No. of times the program gets executed.
-		loop_run++;
-	}
-		\end{minted}
-		\caption{Testing \texttt{Translate()} of the program for testing the \texttt{assert}. }
-	\end{figure}
-	\begin{table}
-		\centering
-		\caption{Comparing \texttt{prob(p)} value Vs \texttt{assert} status for low values of \texttt{prob(p)} shown for limited iterations.}
-		\label{}
-		\begin{tabular}{ c | c | c | c | c | c | c } 
-			\toprule
-			\texttt{prob-value} & \texttt{Program Runs}& \texttt{Loop Runs} & \texttt{Wins} & \texttt{P((x - (prob * n * y)) <= 0)}  & \texttt{n} & \texttt{y} \\ 
-			\hline\hline
-			0.0000001298 & 100000 & 5600000 & 100000 & 1.000000 & 56 & 21 \\ \hline
-			0.0000001596 & 100000 & 4000000 & 100000 & 1.000000 & 40 & 17 \\ \hline
-			0.0000003384 & 100000 & 3600000 & 100000 & 1.000000 & 36 & 28 \\ \hline
-			0.0000039147 & 100000 & 2800000 & 100000 & 1.000000 & 28 & 18 \\ \hline
-			0.0000077294 & 100000 & 2300000 & 100000 & 1.000000 & 23 & 24 \\ \hline
-			0.0000153588 & 100000 & 2700000 & 100000 & 1.000000 & 27 & 16 \\ \hline
-			0.0000306176 & 100000 & 2100000 & 100000 & 1.000000 & 21 & 15 \\ \hline
-			0.0000611352 & 100000 & 2200000 & 100000 & 1.000000 & 22 & 14 \\ \hline
-			0.0001221703 & 100000 & 2000000 & 100000 & 1.000000 & 20 & 11 \\ \hline
-			0.0002442406 & 100000 & 2600000 & 100000 & 1.000000 & 26 & 10 \\ \hline
-			0.0004883812 & 100000 & 1900000 & 100000 & 1.000000 & 19 & 13 \\ \hline
-			0.0009766624 & 100000 & 1800000 & 100000 & 1.000000 & 18 & 9 \\ \hline
-			0.0019532248 & 100000 & 2500000 & 100000 & 1.000000 & 25 & 12 \\ \hline
-			0.0039063496 & 100000 & 2400000 & 100000 & 1.000000 & 24 & 8 \\ \hline
-			{\textbf{ \color[HTML]{036400} 0.0078125992}} & {\textbf{\color[HTML]{036400} 100000}} & {\textbf{\color[HTML]{036400} 1700000}} & {\textbf{\color[HTML]{036400} 0}} & {\textbf{\color[HTML]{036400} 0.000000}} & {\textbf{\color[HTML]{036400} 17}} & {\textbf{\color[HTML]{036400} 7}} \\ \hline
-			0.0156250984 & 100000 & 1600000 & 0 & 0.000000 & 16 & 5 \\ \hline
-			0.0312500969 & 100000 & 1400000 & 0 & 0.000000 & 14 & 6 \\ \hline
-			0.0625000937 & 100000 & 1300000 & 0 & 0.000000 & 13 & 4 \\ \hline
-			0.2500000750 & 100000 & 1100000 & 0 & 0.000000 & 11 & 2 \\ \hline
-			0.5000000500 & 100000 & 1000000 & 0 & 0.000000 & 10 & 1 \\ \hline
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	\begin{figure}
-\begin{minted}{python}
-	(0.0075243180 < prob_sym),
-	(1 <= y_sym),
-	(prob_sym <= 0.0078125992),
-	(10 <= n_sym)
-	\end{minted}
-	\caption{Narrowing constraints on \texttt{Path-1} where control flow is in the \texttt{while} loop.}
-\end{figure}
-\begin{table}
-	\centering
-	\caption{Comparing \texttt{prob(p)} value to cases Vs \texttt{assert} status for low values of \texttt{prob(p)} on narrowing}
-	\label{}
-	\begin{tabular}{ c | c | c | c | c | c | c } 
-		\toprule
-		\texttt{prob-value} & \texttt{Program Runs}& \texttt{Loop Runs} & \texttt{Wins} & \texttt{P((x - (prob * n * y)) <= 0)}  & \texttt{n} & \texttt{y} \\ 
-		\hline\hline
-		0.0068589250 & 100000 & 2500000 & 100000 & 1.000000 & 25 & 12 \\ \hline
-		0.0068665544 & 100000 & 1600000 & 100000 & 1.000000 & 16 & 5 \\ \hline
-		0.0068970719 & 100000 & 1400000 & 100000 & 1.000000 & 14 & 6 \\ \hline
-		0.0069581071 & 100000 & 1300000 & 100000 & 1.000000 & 13 & 4 \\ \hline
-		0.0070801774 & 100000 & 1200000 & 100000 & 1.000000 & 12 & 3 \\ \hline
-		0.0073243180 & 100000 & 1100000 & 100000 & 1.000000 & 11 & 2 \\ \hline
-		{\textbf{ \color[HTML]{036400} 0.0078125992}} & {\textbf{\color[HTML]{036400} 100000}} & {\textbf{\color[HTML]{036400} 1700000}} & {\textbf{\color[HTML]{036400} 0}} & {\textbf{\color[HTML]{036400} 0.000000}} & {\textbf{\color[HTML]{036400} 17}} & {\textbf{\color[HTML]{036400} 7}} \\ \hline
-		0.0156250984 & 100000 & 1600000 & 0 & 0.000000 & 16 & 5 \\ \hline
-		\bottomrule
-	\end{tabular}
-\end{table}
-\begin{table}
-	\centering
-	\caption{Comparing \texttt{prob(p)} value to cases Vs \texttt{assert} status for low values of \texttt{prob(p)} on further narrowing}
-	\label{}
-	\begin{tabular}{ c | c | c | c | c | c | c } 
-		\toprule
-		\texttt{prob-value} & \texttt{Program Runs}& \texttt{Loop Runs} & \texttt{Wins} & \texttt{P((x - (prob * n * y)) <= 0)}  & \texttt{n} & \texttt{y} \\ 
-		\hline\hline
-		0.0075603531 & 100000 & 1300000 & 100000 & 1.000000 & 13 & 4 \\ \hline
-		0.0075963883 & 100000 & 1200000 & 100000 & 1.000000 & 12 & 3 \\ \hline
-		0.0076684586 & 100000 & 1100000 & 100000 & 1.000000 & 11 & 2 \\ \hline
-		0.0077243207 & 100000 & 2100000 & 0 & 0.000000 & 21 & 24 \\ \hline
-		0.0077243234 & 100000 & 2800000 & 0 & 0.000000 & 28 & 16 \\ \hline
-	{\textbf{ \color[HTML]{036400} 0.0078125992}} & {\textbf{\color[HTML]{036400} 100000}} & {\textbf{\color[HTML]{036400} 1700000}} & {\textbf{\color[HTML]{036400} 0}} & {\textbf{\color[HTML]{036400} 0.000000}} & {\textbf{\color[HTML]{036400} 17}} & {\textbf{\color[HTML]{036400} 7}} \\ \hline
-		\bottomrule
-	\end{tabular}
-\end{table}
+After performing the optimization above, we get different values of $\vec{d_i}$. For $i^{th}$ randomized run. we get a \texttt{single} one hot encoded \texttt{$\vec{d}$} vector. We show below the encoding for a few $i$ values. 
+\[
+\vec{d}_{1} = encode(<0,0,0,1,1,0,1,1,1,0>)
+\]
+\[
+\vec{d}_{3} = encode(<0,1,0,1,1,0,0,0,1,0>)
+\]
+\[
+\vec{d}_{4} = encode(<1,0,1,0,1,0,1,1,0,1>)
+\]
+\[
+...
+\]
+
+We run the optimization by renaming the $k$ \texttt{pse} variables set appropriately and then impose the $distinct$ clause so that we don't run the optimization on the same $randomized$ runs again. \\
+
+For best approximation of the expected value of heads in $n$ trials,
+\begin{equation}	
+	EV(heads) = (\sum_{i=1}^{k}{w_i * sum_i})
+\end{equation}
+where both $w_i$ and $sum_i$ can both be computed from the corresponding $\vec{d_i}$ expression we get from the $model$  of the $optimization$ query Eq~\ref{eq:optimization-1}
+  
 \end{document} 

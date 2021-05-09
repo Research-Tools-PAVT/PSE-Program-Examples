@@ -1,0 +1,150 @@
+
+Location : newsampling.cpp:46 9
+Given Name : choice_0_sym
+Variable Type : choice_0_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_0_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_1_sym
+Variable Type : choice_1_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_1_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_2_sym
+Variable Type : choice_2_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_2_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_3_sym
+Variable Type : choice_3_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_3_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_4_sym
+Variable Type : choice_4_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_4_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_5_sym
+Variable Type : choice_5_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_5_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_6_sym
+Variable Type : choice_6_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_6_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_7_sym
+Variable Type : choice_7_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_7_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_8_sym
+Variable Type : choice_8_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_8_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:46 9
+Given Name : choice_9_sym
+Variable Type : choice_9_sym (Symbolic)
+Value : [[ (Select w32 (Eq 1
+                 (ReadLSB w32 0 d_pse_9_sym))
+             (ReadLSB w32 0 prob_value)
+             (Sub w32 1 (ReadLSB w32 0 prob_value))) ]]
+---$---
+
+Location : newsampling.cpp:53 5
+Given Name : weight_path_prob
+Variable Type : path_prob_pse_sym (Symbolic)
+Value : [[ (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Mul w32 (Select w32 (Eq 1
+                                                                                                  (ReadLSB w32 0 d_pse_0_sym))
+                                                                                              (ReadLSB w32 0 prob_value)
+                                                                                              (Sub w32 1 (ReadLSB w32 0 prob_value)))
+                                                                                  (Select w32 (Eq 1
+                                                                                                  (ReadLSB w32 0 d_pse_1_sym))
+                                                                                              (ReadLSB w32 0 prob_value)
+                                                                                              (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                                                                         (Select w32 (Eq 1
+                                                                                         (ReadLSB w32 0 d_pse_2_sym))
+                                                                                     (ReadLSB w32 0 prob_value)
+                                                                                     (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                                                                (Select w32 (Eq 1
+                                                                                (ReadLSB w32 0 d_pse_3_sym))
+                                                                            (ReadLSB w32 0 prob_value)
+                                                                            (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                                                       (Select w32 (Eq 1
+                                                                       (ReadLSB w32 0 d_pse_4_sym))
+                                                                   (ReadLSB w32 0 prob_value)
+                                                                   (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                                              (Select w32 (Eq 1
+                                                              (ReadLSB w32 0 d_pse_5_sym))
+                                                          (ReadLSB w32 0 prob_value)
+                                                          (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                                     (Select w32 (Eq 1
+                                                     (ReadLSB w32 0 d_pse_6_sym))
+                                                 (ReadLSB w32 0 prob_value)
+                                                 (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                            (Select w32 (Eq 1
+                                            (ReadLSB w32 0 d_pse_7_sym))
+                                        (ReadLSB w32 0 prob_value)
+                                        (Sub w32 1 (ReadLSB w32 0 prob_value))))
+                   (Select w32 (Eq 1
+                                   (ReadLSB w32 0 d_pse_8_sym))
+                               (ReadLSB w32 0 prob_value)
+                               (Sub w32 1 (ReadLSB w32 0 prob_value))))
+          (Select w32 (Eq 1
+                          (ReadLSB w32 0 d_pse_9_sym))
+                      (ReadLSB w32 0 prob_value)
+                      (Sub w32 1 (ReadLSB w32 0 prob_value)))) ]]
+---$---
+
+Location : newsampling.cpp:54 5
+Given Name : expected_heads
+Variable Type : (Not Symbolic)
+Value : [[ (Add w32 (ReadLSB w32 0 d_pse_9_sym)
+          (Add w32 (ReadLSB w32 0 d_pse_8_sym)
+                   (Add w32 (ReadLSB w32 0 d_pse_7_sym)
+                            (Add w32 (ReadLSB w32 0 d_pse_6_sym)
+                                     (Add w32 (ReadLSB w32 0 d_pse_5_sym)
+                                              (Add w32 (ReadLSB w32 0 d_pse_4_sym)
+                                                       (Add w32 (ReadLSB w32 0 d_pse_3_sym)
+                                                                (Add w32 (ReadLSB w32 0 d_pse_2_sym)
+                                                                         (Add w32 (ReadLSB w32 0 d_pse_1_sym)
+                                                                                  (ReadLSB w32 0 d_pse_0_sym)))))))))) ]]
+---$---

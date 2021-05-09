@@ -73,11 +73,11 @@ int main()
 
         klee_make_symbolic(&d, sizeof(d), d_symbolic.c_str());
 
-        d = bernoulli_rvs(generator);
+        // d = bernoulli_rvs(generator);
 
         if (d)
         {
-            x = x + n;
+            x = x + k;
         }
         else
         {

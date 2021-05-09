@@ -10,35 +10,46 @@
 
 int main()
 {
-    int d, value_d;
-    double choice;
 
-    make_pse_symbolic(&d, sizeof(d), "d_sym", 0, 6);
-    klee_make_symbolic(&value_d, sizeof(value_d), "value_d");
-    klee_make_symbolic(&choice, sizeof(choice), "choice_sym");
+    double prob;
+    int n, path_prob;
+    klee_make_symbolic(&path_prob, sizeof(path_prob), "path_prob_pse_sym");
+    klee_make_symbolic(&prob, sizeof(prob), "prob_sym");
 
+    n = 10;
+    path_prob = 1;
+    int sum = 0, k = 0;
     std::default_random_engine generator;
-    std::uniform_int_distribution<int> int_distribution(1, 6);
-    d = int_distribution(generator);
-    klee_dump_kquery_state();
+    std::bernoulli_distribution bernoulli_rvs(prob);
 
-    value_d = d;
-    // COMMENT : Evaluates to true so can't get symbolic expression.
-    klee_assume(value_d == d);
-    klee_dump_symbolic_details(&d, "d_sym");
+    int prob_value;
+    klee_make_symbolic(&prob_value, sizeof(prob_value), "prob_value");
 
-    (d == 1) ? setFractionValue(&choice, 1, 6, 1) : ((d == 2) ? setFractionValue(&choice, 1, 6, 2) : ((d == 3) ? setFractionValue(&choice, 1, 6, 3) : ((d == 4) ? setFractionValue(&choice, 1, 6, 4) : ((d == 5) ? setFractionValue(&choice, 1, 6, 5) : ((d == 6) ? setFractionValue(&choice, 1, 6, 6) : setFractionValue(&choice, 1, 6, 0))))));
+    while (n > 0)
+    {
+        int d, choice;
+
+        std::string c_symbolic("choice_");
+        c_symbolic += std::to_string(k);
+        c_symbolic += "_sym";
+
+        std::string d_symbolic("d_pse_");
+        d_symbolic += std::to_string(k);
+        d_symbolic += "_sym";
+
+        klee_make_symbolic(&d, sizeof(d), d_symbolic.c_str());
+        klee_make_symbolic(&choice, sizeof(choice), c_symbolic.c_str());
+
+        (d == 1) ? choice = prob_value : choice = (1 - prob_value);
+        path_prob = path_prob * choice;
+
+        klee_dump_symbolic_details(&choice, c_symbolic.c_str());
+
+        sum = sum + d;
+        n = n - 1;
+        k = k + 1;
+    }
+
+    klee_dump_symbolic_details(&path_prob, "weight_path_prob");
+    klee_dump_symbolic_details(&sum, "expected_heads");
 }
-
-// (d == 1) ?
-//     setFractionValue(&choice, 1, 6) :
-//     ((d == 2) ?
-//         setFractionValue(&choice, 1, 6) :
-//             ((d == 3) ?
-//                 setFractionValue(&choice, 1, 6) :
-//                     ((d == 4) ?
-//                         setFractionValue(&choice, 1, 6) :
-//                         ((d == 5) ?
-//                             setFractionValue(&choice, 1, 6) :
-//                             ((d == 6) ?
-//                                 setFractionValue(&choice, 1, 6) : setFractionValue(&choice, 1, 6))))));

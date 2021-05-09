@@ -37,7 +37,7 @@ int main()
             int d = bernoulli_rvs(generator);
             if (d)
             {
-                x = x + n;
+                x = x + n_loop;
             }
             else
             {

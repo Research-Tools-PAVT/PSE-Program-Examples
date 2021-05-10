@@ -143,11 +143,31 @@ def generateCandidates(k: int, n: int, prob: float):
 
     # TODO : "d"-vector distinct clause.
     # Distinct (d_vec[i], d_vec[i+1])
-    for j in range(candidatePaths - 1):
-        for iters in range(n_iters):
-            optpath.add(z3.Distinct(d_sym_vars[j][iters], d_sym_vars[j + 1][iters]))
+    # for j in range(candidatePaths - 1):
+    #     for iters in range(n_iters):
+    #         optpath.add(z3.Distinct(d_sym_vars[j][iters], d_sym_vars[j + 1][iters]))
+
+    # Two vectors d1 & d2 must be distinct
+    # ForAll([i, j], vec(d[i]) != vec(d[j])))
+    # COMMENT : Is there a better way to do it using uninterpreted functions?
+    for i in range(candidatePaths):
+        for j in range(candidatePaths):
+            if i != j:
+                optpath.add(
+                    z3.Not(
+                        z3.And(
+                            [
+                                (d_sym_vars[i][k] == d_sym_vars[j][k])
+                                for k in range(n_iters)
+                            ]
+                        )
+                    )
+                )
+            else:
+                break
 
     optpath.maximize(sum_of_k)
+
     # for k in range(candidatePaths):
     #     optpath.maximize(path_prob_sym_vars[k])
 

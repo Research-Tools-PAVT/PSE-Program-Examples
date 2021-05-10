@@ -58,6 +58,7 @@ def generateCandidates(k: int, n: int, prob: float):
     n_iters = n  # "n" bernoulli trails (independent fair coin flips)
 
     sum_of_k = z3.Real("sum_of_k")
+    sigma_w_i = z3.Real("sigma_w_i")
 
     choice_sym_vars = [
         [z3.Real(f"choice_{k}_{i}") for i in range(n_iters)]
@@ -75,7 +76,9 @@ def generateCandidates(k: int, n: int, prob: float):
     sum_d_heads = [z3.Real(f"sum_heads_{k}") for k in range(candidatePaths)]
 
     optpath = z3.Optimize()
-    optpath.set("timeout", 20000)
+
+    # COMMENT : Supply the timeout in minute value.
+    optpath.set("timeout", 60000 * int(sys.argv[4]))
 
     # "k" models. One model for each randomized run.
     for k in range(candidatePaths):
@@ -120,7 +123,7 @@ def generateCandidates(k: int, n: int, prob: float):
             # Path probs is multiplication of choice probs. w(i) term
             path_prob *= choice_sym_vars[k][i]
 
-        # path_prob = path_prob * choice_prob
+        # path_prob = path_prob * choice_prob, array of w(i) terms
         optpath.add(path_prob_sym_vars[k] == path_prob)
 
         # Sum heads is a count of the number of "heads" in a "n"-flip experiment.
@@ -133,6 +136,10 @@ def generateCandidates(k: int, n: int, prob: float):
     # E[heads] for all "k" terms = sum(expected_heads) = sum(w(i) * x(i))
     # Sum over the "k" expected heads terms.
     optpath.add(sum_of_k == z3.Sum(expected_heads))
+
+    # Sigma(w(i)) value
+    optpath.add(sigma_w_i == z3.Sum(path_prob_sym_vars))
+    optpath.add(sigma_w_i <= 1)
 
     # TODO : "d"-vector distinct clause.
     # Distinct (d_vec[i], d_vec[i+1])
@@ -149,12 +156,6 @@ def generateCandidates(k: int, n: int, prob: float):
     m = optpath.model()
 
     print(m)
-
-    sigma_w_i = 0
-    for j in range(candidatePaths):
-        sigma_w_i += float(get_value(m[path_prob_sym_vars[j]]))
-
-    print(sigma_w_i)
 
     # TODO : Heat Map -> x : different "k" values, y : different "prob" values.
     # TODO : value(x, y) : | n * prob - (value from model i.e sum(expected_heads[k])) |

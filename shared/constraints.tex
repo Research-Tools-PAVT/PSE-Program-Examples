@@ -1,0 +1,143 @@
+\documentclass[usenames,dvipsnames,acmsmall]{acmart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[nounderscore]{syntax}
+\usepackage{bussproofs}
+\usepackage{mathtools}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{minted}
+
+\begin{document}
+
+\begin{figure}
+	We consider a independent $bernoulli$ trials here of flipping a fair coin "$n$" times. 
+	\[ 
+	{choice\_prob} = 
+	\begin{cases} 
+		p & \textrm{if $d$ value is 1 corresponding to getting a "heads"} \\
+		1-p & \textrm{if $d$ value is 0 corresponding to getting a "tails"}
+	\end{cases}
+	\]
+	\begin{minted}{python}
+	probability_0 >= 0.0000001,
+	probability_0 <= 0.99999999999999,
+	
+	d_0_0 >= 0,		d_0_0 <= 1,
+	choice_0_0 ==
+		If(d_0_0 == 1, probability_0, 1 - probability_0),
+	
+	d_1_0 >= 0,		d_1_0 <= 1,
+	choice_1_0 ==
+		If(d_1_0 == 1, probability_0, 1 - probability_0),
+	
+	d_2_0 >= 0,		d_2_0 <= 1,
+	choice_2_0 ==
+		If(d_2_0 == 1, probability_0, 1 - probability_0),
+	
+	d_3_0 >= 0,		d_3_0 <= 1,
+	choice_3_0 ==
+		If(d_3_0 == 1, probability_0, 1 - probability_0),
+	
+	d_4_0 >= 0,		d_4_0 <= 1,
+	choice_4_0 ==
+		If(d_4_0 == 1, probability_0, 1 - probability_0),
+	
+	d_5_0 >= 0,		d_5_0 <= 1,
+	choice_5_0 ==
+		If(d_5_0 == 1, probability_0, 1 - probability_0),
+	
+	d_6_0 >= 0,		d_6_0 <= 1,
+	choice_6_0 ==
+		If(d_6_0 == 1, probability_0, 1 - probability_0),
+	
+	d_7_0 >= 0,		d_7_0 <= 1,
+	choice_7_0 ==
+		If(d_7_0 == 1, probability_0, 1 - probability_0),
+	
+	d_8_0 >= 0,		d_8_0 <= 1,
+	choice_8_0 ==
+		If(d_8_0 == 1, probability_0, 1 - probability_0),
+	
+	d_9_0 >= 0,		d_9_0 <= 1,
+	choice_9_0 ==
+		If(d_9_0 == 1, probability_0, 1 - probability_0),
+	\end{minted}
+	\caption{Constraints over \texttt{choice} variables.}
+\end{figure}
+
+\begin{figure}
+	Path weight is the product of the choice probabilitiy values.
+	\begin{equation}
+		w_{i} = {(p)^{x_i} * (1-p)^{10-x_i}}
+	\end{equation}
+	\begin{minted}{python}
+	path_prob_0 == 1 *choice_0_0 * choice_1_0*
+	choice_2_0 * choice_3_0 * choice_4_0 * choice_5_0 *
+	choice_6_0 * choice_7_0 * choice_8_0 * choice_9_0
+	\end{minted}
+	\caption{Expression for \texttt{path\_prob} variable.}
+\end{figure}
+
+\begin{figure}
+	For approximation of the expected value of heads in $n$ trials,
+	\begin{equation}	
+		EV(heads) = (\sum_{i=1}^{k}{w_i * sum_i})
+	\end{equation}
+	\begin{minted}{python}
+	ToReal(sum_d_heads_0) ==
+		ToReal(0 + d_0_0 + d_1_0 + d_2_0 + d_3_0 +
+		d_4_0 + d_5_0 + d_6_0 + d_7_0 + d_8_0 + d_9_0) * 1 * 
+		(choice_0_0 * choice_1_0 * choice_2_0 * choice_3_0 *
+		choice_4_0 * choice_5_0 * choice_6_0 * choice_7_0 * 
+		choice_8_0 * choice_9_0)
+	\end{minted}
+	\caption{Expression for \texttt{expected heads} value.}
+\end{figure}
+
+\begin{figure}
+	We want to maximize the value of path prob here.
+	\begin{equation}	
+		maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}})
+	\end{equation}
+\end{figure}
+
+\begin{figure}
+	\begin{minted}{python}
+	d_9_0 = 0,
+	d_3_0 = 0,
+	d_7_0 = 0,
+	d_5_0 = 0,
+	d_1_0 = 0,
+	d_8_0 = 0,
+	d_2_0 = 0,
+	sum_d_heads_0 = 0,
+	d_0_0 = 0,
+	d_6_0 = 0,
+	d_4_0 = 0,
+	\end{minted}
+\caption{One possible model given by z3 after computing for $2$ hours}
+\end{figure}
+\begin{figure}
+	\begin{minted}{python}
+	path_prob_0 = 0.951110130465771,
+	choice_9_0 = 0.995,
+	choice_8_0 = 0.995,
+	choice_7_0 = 0.995,
+	choice_6_0 = 0.995,
+	choice_5_0 = 0.995,
+	choice_4_0 = 0.995,
+	choice_3_0 = 0.995,
+	choice_2_0 = 0.995,
+	choice_1_0 = 0.995,
+	choice_0_0 = 0.995,
+	probability_0 = 0.005
+	\end{minted}
+	\caption{One possible model given by z3 after computing for $2$ hours}
+\end{figure}
+\end{document} 

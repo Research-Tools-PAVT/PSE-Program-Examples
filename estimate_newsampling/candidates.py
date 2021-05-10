@@ -97,21 +97,28 @@ def generateCandidates(k: int, n: int):
     probability_vars = [z3.Real(f"probability_{k}") for k in range(candidatePaths)]
     expected_heads = [z3.Int(f"sum_d_heads_{k}") for k in range(candidatePaths)]
 
+    optpath = z3.Optimize()
+
+    # "k" models. One model for each randomized run.
     for k in range(candidatePaths):
 
-        optpath = z3.Optimize()
-
+        # initalization
         choice_probs = 1
         sum_heads = 0
 
-        optpath.add(0.0001 <= probability_vars[k])
-        optpath.add(probability_vars[k] < 1.0)
+        # optpath.add(0.0001 <= probability_vars[k])
+        # optpath.add(probability_vars[k] < 1.0)
 
+        # Prob value is not concrete, so we get a single number at the end.
+        optpath.add(probability_vars[k] == 0.75)
+
+        # "n_iters" coin toss.
         for i in range(n_iters):
 
             optpath.add(0 <= d_sym_vars[k][i])
             optpath.add(d_sym_vars[k][i] <= 1)
 
+            # Choice Prob ITE.
             optpath.add(
                 choice_sym_vars[k][i]
                 == z3.If(
@@ -119,21 +126,41 @@ def generateCandidates(k: int, n: int):
                 )
             )
 
+            # Path probs is multiplication of choice probs.
             choice_probs = choice_probs * choice_sym_vars[k][i]
+
+            # Heads in this current "n" flips of the iteration.
+            # We get one "sum_heads" value of each model in "k" models.
             sum_heads = sum_heads + d_sym_vars[k][i]
 
+        # path_prob = path_prob * choice_prob
         optpath.add(path_prob_sym_vars[k] == choice_probs)
-        optpath.add(expected_heads[k] == sum_heads * choice_probs)
 
-        print(optpath.assertions())
+        # E[heads for this run] = path_prob * (sum over "1" in d-vector)
+        optpath.add(expected_heads[k] == sum_heads * path_prob_sym_vars[k])
 
         # Optimization Call.
-        optpath.maximize(expected_heads[k])
+        # optpath.maximize(expected_heads[k])
 
-    optpath.add(z3.Distinct(x for x in probability_vars))
+    # "d"-vector distinct clause.
+    # for i in k-1 : Distinct (d_vec[i], d_vec[i+1])
+    # TODO
+
+    # for j in range(candidatePaths - 1):
+    #     for iters in range(n_iters):
+    #         optpath.add(z3.Distinct(d_sym_vars[j][iters], d_sym_vars[j + 1][iters]))
+
+    # E[heads] = sum(expected_heads[k])
+    # Sum over the "k" expected heads terms.
+    # TODO
+
+    print(optpath.assertions())
 
     print(optpath.check())
     print(optpath.model())
+
+    # TODO : Heat Map -> x : different "k" values, y : different "prob" values.
+    # TODO : value(x, y) : | n * prob - (value from model i.e sum(expected_heads[k])) |
 
 
 if __name__ == "__main__":

@@ -6,7 +6,8 @@ import sys
 import json
 import time
 from alive_progress import alive_bar
-from scipy.stats import bernoulli
+
+# from scipy.stats import bernoulli
 
 # https://z3prover.github.io/api/html/classz3py_1_1_rat_num_ref.html#a1012d6314d35530c58f9c018269ec867
 def num(r):
@@ -50,25 +51,27 @@ constraints.
 
 # inputFilePath = os.path.join(pwd, "inputs")
 
+z3.set_option(
+    precision=10,
+    rational_to_decimal=True,
+    max_args=100000,
+    max_lines=100000,
+    max_depth=100000,
+    max_visited=100000,
+)
+
+error_mass = z3.Real("error_mass_expectation")
+sum_of_k = z3.Real("sum_of_k")
+sigma_w_i = z3.Real("sigma_w_i")
+assert_violated = z3.Int("assert_violated")
+
 
 def generateCandidates(k: int, n: int, prob: float):
-
-    z3.set_option(
-        precision=10,
-        rational_to_decimal=True,
-        max_args=100000,
-        max_lines=100000,
-        max_depth=100000,
-        max_visited=100000,
-    )
 
     candidatePaths = k  # Top "k" paths.
     n_iters = n  # "n" bernoulli trails (independent fair coin flips)
 
-    error_mass = z3.Real("error_mass_expectation")
-    sum_of_k = z3.Real("sum_of_k")
-    sigma_w_i = z3.Real("sigma_w_i")
-    assert_violated = z3.Bool("assert_violated")
+    probability_factor = z3.Real("probability_factor")
 
     choice_sym_vars = [
         [z3.Real(f"choice_{k}_{i}") for i in range(n_iters)]
@@ -90,6 +93,8 @@ def generateCandidates(k: int, n: int, prob: float):
     # COMMENT : Supply the timeout in minute value.
     optpath.set("timeout", 60000 * int(sys.argv[4]))
 
+    optpath.add(probability_factor == float(prob))
+
     with alive_bar(candidatePaths) as executeBar:
 
         # "k" models. One model for each randomized run.
@@ -104,7 +109,7 @@ def generateCandidates(k: int, n: int, prob: float):
             # optpath.add(probability_vars[k] < 1.0)
 
             # Prob value is now concrete, so we get a single number at the end.
-            optpath.add(probability_vars[k] == float(prob))
+            optpath.add(probability_vars[k] == probability_factor)
 
             # "n_iters" coin toss.
             for i in range(n_iters):
@@ -163,22 +168,23 @@ def generateCandidates(k: int, n: int, prob: float):
     # COMMENT : for n-coin flips case,
     # check if the above program violates the assertion :
     # COMMENT : if (prob <= 0.5) E(x) < 0.4 * n else E(x) >= 0.6 * n
-    # 'False' indicates, assert Violation.
+    # '1' indicates, assert Violation.
     optpath.add(
         assert_violated
         == z3.If(
-            prob <= 0.50,
-            z3.If(sum_of_k < 0.40 * n_iters, False, True),
-            z3.If(sum_of_k >= 0.60 * n_iters, False, True),
+            probability_factor <= 0.50,
+            z3.If(sum_of_k < 0.40 * n_iters, 0, 1),
+            z3.If(sum_of_k >= 0.60 * n_iters, 0, 1),
         )
     )
 
     # Two vectors d1 & d2 must be distinct
     # ForAll([i, j], vec(d[i]) != vec(d[j])))
     # COMMENT : Is there a better way to do it using uninterpreted functions?
+    # COMMENT : Extremely Expensive
     for i in range(candidatePaths):
         for j in range(candidatePaths):
-            if i != j:
+            if i > j:
                 optpath.add(
                     z3.Not(
                         z3.And(
@@ -192,7 +198,15 @@ def generateCandidates(k: int, n: int, prob: float):
             else:
                 break
 
-    optpath.maximize(sum_of_k)
+    print("[Opt] Solving for Optimal Solution.")
+
+    # COMMENT : Assert Violation Case
+    # COMMENT : Set some probability limits
+    # optpath.add(probability_factor > 0)
+    # optpath.add(probability_factor <= 0.50)
+    # optpath.add(z3.Not(sum_of_k < 0.40 * n_iters))
+
+    optpath.maximize(sigma_w_i)
 
     # for k in range(candidatePaths):
     #     optpath.maximize(path_prob_sym_vars[k])
@@ -211,10 +225,6 @@ def generateCandidates(k: int, n: int, prob: float):
     # TODO : Heat Map -> x : different "k" values, y : different "prob" values.
     # TODO : value(x, y) : | n * prob - (value from model i.e sum(expected_heads[k])) |
 
-
-# COMMENT : for n-coin flips case,
-# check if the above program violates the assertion :
-# TODO : if (prob <= 0.5) E(x) < 0.4 * n else E(x) >= 0.6 * n (Add as ITE over ITEs)
 
 if __name__ == "__main__":
     # k : models needed in sum term, n : iterations (n-coin flips), prob : probability value.

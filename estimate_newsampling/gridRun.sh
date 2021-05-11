@@ -1,11 +1,15 @@
 #!/usr/bin/bash
 
-for k in 5 10 20 40 80 100;
+timeout=$1
+for n in 8 9 10 11;
 do 
-    for prob in 0.0 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1;
+    for prob in 0.435 0.455 0.515 0.565 0.606 0.616 0.666;
     do
-        echo  "[Z3] Running for prob : ${prob}, k (sum-terms) : ${k} [Saving to models/prob_${prob}_dir/z3models_${k}_${prob}_n10.log]"
-        mkdir -p models/prob_${prob}_dir
-        python3 candidates.py $k 10 $prob 3 > models/prob_${prob}_dir/z3models_${k}_${prob}_n10.log
+        for k in 250 500 1000 2000;
+        do
+            echo  "[Z3] Running for prob : ${prob}, n-flips : ${n}, k (sum-terms) : ${k} [Saving to models/prob_${prob}_${n}_dir/z3models_${k}_${prob}_${n}.json]"
+            mkdir -p models/prob_${prob}_${n}_dir
+            python3 candidates.py $k $n $prob $timeout models/prob_${prob}_${n}_dir/z3models_${k}_${prob}_${n}.json
+        done
     done
 done

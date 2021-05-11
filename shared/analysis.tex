@@ -70,7 +70,7 @@ On substituting the value of $w_i$ from (1).
 
 \begin{figure}
 	\begin{equation}	
-		Objective = maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}}) \mid \forall (i, j) [{x_i} \neq {x_j}]
+		Objective = maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}}) \quad \mid \forall (i, j) [{x_i} \neq {x_j}]
 	\end{equation}
 	\caption{Optimization Expression for $k$ randomized paths}
 	\label{eq:optimization-1}
@@ -94,13 +94,55 @@ We run the optimization by renaming the $k$ \texttt{pse} variables set appropria
 
 For best approximation of the expected value of heads in $n$ trials,
 \begin{equation}	
-	EV(heads) = (\sum_{i=1}^{k}{w_i * sum_i})
+	w_i = \prod_{j=1}^n choice\_prob_{i}(j) ,
+	\quad
+	sum_i = \sum_{j=1}^n components(\vec{d_i}) ,
+\end{equation}
+\begin{equation}
+	EV(heads) = (\sum_{i=1}^{k}{w_i * sum_i}),
+	\quad
+	Error = n * prob - EV(heads)
 \end{equation}
 where both $w_i$ and $sum_i$ can both be computed from the corresponding $\vec{d_i}$ expression we get from the $model$  of the $optimization$ query Eq~\ref{eq:optimization-1}
 
 \section{Expression for $k$-paths}
 
-Specify the \texttt{renaming} and \texttt{constraint} solving over the \texttt{optimization} expression. Write out this algorithm formally. \\ 
+For $k = 5$ \& $n = 10$ the two \texttt{constraint} sets and \texttt{optimization} expressions are as follows : 
 
-For $k = 5$, the five \texttt{constraint} sets and \texttt{optimization} expressions are : ...
+\begin{equation}	
+	w_1 = \prod_{j=1}^{10} choice\_prob_{1}(j) ,
+	\quad
+	sum_1 = \sum_{j=1}^{10} components(\vec{d_1}) ,
+\end{equation}
+\begin{equation}	
+	w_2 = \prod_{j=1}^{10} choice\_prob_{2}(j) ,
+	\quad
+	sum_2 = \sum_{j=1}^{10} components(\vec{d_2}) ,
+\end{equation}
+\begin{equation}	
+	w_3 = \prod_{j=1}^{10} choice\_prob_{3}(j) ,
+	\quad
+	sum_3 = \sum_{j=1}^{10} components(\vec{d_3}) ,
+\end{equation}
+\begin{equation}	
+	w_4 = \prod_{j=1}^{10} choice\_prob_{4}(j) ,
+	\quad
+	sum_4 = \sum_{j=1}^{10} components(\vec{d_4}) ,
+\end{equation}
+\begin{equation}	
+	w_5 = \prod_{j=1}^{10} choice\_prob_{5}(j) ,
+	\quad
+	sum_5 = \sum_{j=1}^{10} components(\vec{d_5}) ,
+\end{equation}
+\begin{equation}
+	EV(heads) = (\sum_{i=1}^{k}{w_i * sum_i}),
+\end{equation}
+\begin{equation}
+	\enspace
+	EV(heads) = (w_1 * sum_1 \enspace + \enspace w_2 * sum_2 \enspace + \enspace w_3 * sum_3 \enspace + \enspace w_4 * sum_4 \enspace + \enspace w_5 * sum_5)
+\end{equation}
+\begin{equation}
+	\enspace
+	Objective = maximize(w_1 * sum_1 \enspace + \enspace w_2 * sum_2 \enspace + \enspace w_3 * sum_3 \enspace + \enspace w_4 * sum_4 \enspace + \enspace w_5 * sum_5)
+\end{equation}
 \end{document} 

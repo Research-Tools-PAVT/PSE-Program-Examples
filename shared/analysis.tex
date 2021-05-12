@@ -18,10 +18,11 @@
 		\begin{minted}{python}
 	
 	double prob, path_prob = 1, choice_prob = 1;
-	int sum = 0;
+	int sum = 0, n = 0;
 	
 	klee_make_symbolic(&prob, f"prob_sym_{i}");
-	for i in range(10):
+	klee_make_symbolic(&n, f"n_symbolic");
+	for i in range(n):
 		int d;
 		klee_make_symbolic(&d, f"d_sym_{i}");
 	
@@ -70,7 +71,7 @@ On substituting the value of $w_i$ from (1).
 
 \begin{figure}
 	\begin{equation}	
-		Objective = maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}}) \quad \mid \forall (i, j) [{x_i} \neq {x_j}]
+		Objective_1 = maximize(\sum_{i=1}^{k}{(p)^{x_i} * (1-p)^{n-x_i}}) \quad \mid \forall (i, j) \enspace [{x_i} \neq {x_j}]
 	\end{equation}
 	\caption{Optimization Expression for $k$ randomized paths}
 	\label{eq:optimization-1}
@@ -87,12 +88,13 @@ After performing the optimization above, we get different values of $\vec{d_i}$.
 \vec{d}_{4} = encode(<1,0,1,0,1,0,1,1,0,1>)
 \]
 \[
-...
+	....
 \]
-
 We run the optimization by renaming the $k$ \texttt{pse} variables set appropriately and then impose the $distinct$ clause so that we don't run the optimization on the same $randomized$ runs again. \\
-
-For best approximation of the expected value of heads in $n$ trials,
+\begin{equation}	
+	\forall (i, j) \enspace [\vec{d_i} \neq \vec{d_j}]
+\end{equation} \\
+We approximate the value of $expected$ heads in the above program, with the following equations.
 \begin{equation}	
 	w_i = \prod_{j=1}^n choice\_prob_{i}(j) ,
 	\quad
@@ -104,8 +106,6 @@ For best approximation of the expected value of heads in $n$ trials,
 	Error = n * prob - EV(heads)
 \end{equation}
 where both $w_i$ and $sum_i$ can both be computed from the corresponding $\vec{d_i}$ expression we get from the $model$  of the $optimization$ query Eq~\ref{eq:optimization-1}
-
-\section{Expression for $k$-paths}
 
 For $k = 5$ \& $n = 10$ the two \texttt{constraint} sets and \texttt{optimization} expressions are as follows : 
 
@@ -135,6 +135,9 @@ For $k = 5$ \& $n = 10$ the two \texttt{constraint} sets and \texttt{optimizatio
 	sum_5 = \sum_{j=1}^{10} components(\vec{d_5}) ,
 \end{equation}
 \begin{equation}
+	\vec{d_1} \neq \vec{d_2} \neq \vec{d_3} \neq \vec{d_4} \neq \vec{d_5}
+\end{equation}
+\begin{equation}
 	EV(heads) = (\sum_{i=1}^{k}{w_i * sum_i}),
 \end{equation}
 \begin{equation}
@@ -143,6 +146,7 @@ For $k = 5$ \& $n = 10$ the two \texttt{constraint} sets and \texttt{optimizatio
 \end{equation}
 \begin{equation}
 	\enspace
-	Objective = maximize(w_1 * sum_1 \enspace + \enspace w_2 * sum_2 \enspace + \enspace w_3 * sum_3 \enspace + \enspace w_4 * sum_4 \enspace + \enspace w_5 * sum_5)
+	Objective_2 = maximize(w_1 * sum_1 \enspace + \enspace w_2 * sum_2 \enspace + \enspace w_3 * sum_3 \enspace + \enspace w_4 * sum_4 \enspace + \enspace w_5 * sum_5)
 \end{equation}
+Statistically, maximizing $Objective_1$ must also maximize $Objective_2$ and thus we make the query $maximize(\sum_{i=1}^{k}{w_i})$ to the optimizing solver finally.
 \end{document} 

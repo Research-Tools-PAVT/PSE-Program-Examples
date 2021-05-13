@@ -17,19 +17,19 @@
 \begin{document}
 	\begin{figure}
 		\begin{minted}{python}
-		def count_heads(prob : float, n : int):
-			x = 0
-			while(n > 0):
-				d = bernoulli.rvs(size=1, p=prob)[0]
-				x = x + d
-				n = n - 1
-			return x
+	def count_heads(prob : float, n : int):
+		x = 0
+		while(n > 0):
+			d = bernoulli.rvs(size=1, p=prob)[0]
+			x = x + d
+			n = n - 1
+		return x
 		\end{minted}
 	\caption{Program to $count$ heads over $n$ bernoulli trials.}
 	\end{figure}
 	\begin{figure}
 		\begin{minted}{python}
-		if (prob <= 0.5) E(x) < 0.4 * n else E(x) >= 0.6 * n
+	if (prob <= 0.5) E(x) < 0.4 * n else E(x) >= 0.6 * n
 		\end{minted}
 	\caption{\texttt{Assert} we want to check for failure.}
 	\end{figure}
@@ -167,11 +167,16 @@ For $k = 5$ \& $n = 10$ the two \texttt{constraint} sets and \texttt{optimizatio
 	\enspace
 	Objective_2 = maximize(w_1 * sum_1 \enspace + \enspace w_2 * sum_2 \enspace + \enspace w_3 * sum_3 \enspace + \enspace w_4 * sum_4 \enspace + \enspace w_5 * sum_5)
 \end{equation}
-Statistically, maximizing $Objective_1$ must also maximize $Objective_2$ and thus we make the query $maximize(\sum_{i=1}^{k}{w_i})$ to the optimizing solver finally.
+We can make multiple optimization $objectives$ be fulfilled in one query, but the best results are produced for the $Objective_2$ since it minimizes the $error$ most.
+
+\begin{equation}
+	Obj_{1} = maximize(\sum_{i=1}^{k}{w_i * x _i}) \quad \mid \quad
+	Obj_{2} = minimize(n * prob - \sum_{i=1}^{k}{w_i * x_i})
+\end{equation}
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.15]{abstract.pdf}
+	\includegraphics[scale=0.16]{abstract.pdf}
 	\caption{Multiple $random$ paths corresponding to different $\vec{d}$'s but a single $abstract$ path.}
 \end{figure}
 
@@ -182,4 +187,6 @@ Statistically, maximizing $Objective_1$ must also maximize $Objective_2$ and thu
 	\end{minted}
 	\caption{Values for \texttt{Assert} failure.}
 \end{figure}
+
+
 \end{document} 

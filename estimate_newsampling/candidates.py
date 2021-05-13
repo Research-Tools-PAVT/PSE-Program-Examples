@@ -95,6 +95,9 @@ def generateCandidates(k: int, n: int, prob: float):
 
     optpath.add(probability_factor == float(prob))
 
+    # COMMENT : General Case where the we are finding an optimal prob.
+    # optpath.add(z3.And(probability_factor <= 1, probability_factor > 0))
+
     with alive_bar(candidatePaths) as executeBar:
 
         # "k" models. One model for each randomized run.
@@ -105,9 +108,6 @@ def generateCandidates(k: int, n: int, prob: float):
             path_prob = 1
             expected_heads_run = 0
 
-            # optpath.add(0.0001 <= probability_vars[k])
-            # optpath.add(probability_vars[k] < 1.0)
-
             # Prob value is now concrete, so we get a single number at the end.
             optpath.add(probability_vars[k] == probability_factor)
 
@@ -116,11 +116,6 @@ def generateCandidates(k: int, n: int, prob: float):
 
                 optpath.add(0 <= d_sym_vars[k][i])
                 optpath.add(d_sym_vars[k][i] <= 1)
-
-                # COMMENT : Value of "d" must come from a distribution?
-                # optpath.add(
-                #     d_sym_vars[k][i] == int(bernoulli.rvs(size=1, p=float(prob))[0])
-                # )
 
                 # Choice Prob ITE.
                 optpath.add(
@@ -161,7 +156,7 @@ def generateCandidates(k: int, n: int, prob: float):
 
     # Sigma(w(i)) value
     optpath.add(sigma_w_i == z3.Sum(path_prob_sym_vars))
-    # optpath.add(z3.And(sigma_w_i >= 0, sigma_w_i <= n_iters * prob))
+    # optpath.add(z3.And(sigma_w_i >= 0, sigma_w_i <= 1))
 
     optpath.add(error_mass == (n_iters * prob - sum_of_k))
 
@@ -208,10 +203,10 @@ def generateCandidates(k: int, n: int, prob: float):
 
     optpath.maximize(sigma_w_i)
     # optpath.maximize(sum_of_k)
-    # optpath.minimize(error_mass)
 
-    # for k in range(candidatePaths):
-    #     optpath.maximize(path_prob_sym_vars[k])
+    # COMMENT : This is not be done in general case.
+    # Only for this example it works.
+    # optpath.minimize(error_mass)
 
     # print(optpath.assertions())
     print(optpath.check())
@@ -223,9 +218,6 @@ def generateCandidates(k: int, n: int, prob: float):
 
     with open(sys.argv[5], mode="w") as file:
         json.dump(model_dict, file, indent=2)
-
-    # TODO : Heat Map -> x : different "k" values, y : different "prob" values.
-    # TODO : value(x, y) : | n * prob - (value from model i.e sum(expected_heads[k])) |
 
 
 if __name__ == "__main__":

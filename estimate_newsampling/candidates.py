@@ -156,7 +156,7 @@ def generateCandidates(k: int, n: int, prob: float):
 
     # Sigma(w(i)) value
     optpath.add(sigma_w_i == z3.Sum(path_prob_sym_vars))
-    # optpath.add(z3.And(sigma_w_i >= 0, sigma_w_i <= 1))
+    optpath.add(z3.And(sigma_w_i >= 0, sigma_w_i <= 1))
 
     optpath.add(error_mass == (n_iters * prob - sum_of_k))
 

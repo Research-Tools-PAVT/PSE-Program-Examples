@@ -207,6 +207,8 @@ def generateCandidates(k: int, n: int, prob: float):
     # optpath.add(z3.Not(sum_of_k < 0.40 * n_iters))
 
     optpath.maximize(sigma_w_i)
+    # optpath.maximize(sum_of_k)
+    # optpath.minimize(error_mass)
 
     # for k in range(candidatePaths):
     #     optpath.maximize(path_prob_sym_vars[k])

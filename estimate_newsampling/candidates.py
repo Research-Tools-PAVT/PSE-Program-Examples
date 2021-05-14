@@ -54,10 +54,10 @@ constraints.
 z3.set_option(
     precision=10,
     rational_to_decimal=True,
-    max_args=100000,
-    max_lines=100000,
-    max_depth=100000,
-    max_visited=100000,
+    max_args=10000000,
+    max_lines=10000000,
+    max_depth=10000000,
+    max_visited=10000000,
 )
 
 error_mass = z3.Real("error_mass_expectation")
@@ -66,15 +66,22 @@ sigma_w_i = z3.Real("sigma_w_i")
 assert_violated = z3.Int("assert_violated")
 
 
-def generateCandidates(k: int, n: int, prob: float):
+def generateCandidates(k: int, n: int, prob: float, y=90):
 
     candidatePaths = k  # Top "k" paths.
     n_iters = n  # "n" bernoulli trails (independent fair coin flips)
 
     probability_factor = z3.Real("probability_factor")
 
+    y_addendum = z3.Int("y_addendum")
+
     choice_sym_vars = [
         [z3.Real(f"choice_{k}_{i}") for i in range(n_iters)]
+        for k in range(candidatePaths)
+    ]
+
+    add_n_y = [
+        [z3.Real(f"add_n_y_{k}_{i}") for i in range(n_iters)]
         for k in range(candidatePaths)
     ]
 
@@ -93,6 +100,8 @@ def generateCandidates(k: int, n: int, prob: float):
     # COMMENT : Supply the timeout in minute value.
     optpath.set("timeout", 60000 * int(sys.argv[4]))
 
+    # COMMENT : y for x = x + y
+    optpath.add(y_addendum == int(y))
     optpath.add(probability_factor == float(prob))
 
     # COMMENT : General Case where the we are finding an optimal prob.
@@ -117,6 +126,7 @@ def generateCandidates(k: int, n: int, prob: float):
                 optpath.add(0 <= d_sym_vars[k][i])
                 optpath.add(d_sym_vars[k][i] <= 1)
 
+                # COMMENT : Benchmark - 1
                 # Choice Prob ITE.
                 optpath.add(
                     choice_sym_vars[k][i]
@@ -127,12 +137,38 @@ def generateCandidates(k: int, n: int, prob: float):
                     )
                 )
 
+                # COMMENT : Benchmark - 2
+                # Addendum ITE
+                # if (d) x = x + y else x = x + n
+                # optpath.add(
+                #     add_n_y[k][i]
+                #     == z3.If(
+                #         d_sym_vars[k][i] == 1,
+                #         y_addendum,
+                #         i,
+                #     )
+                # )
+
+                # COMMENT: Benchmark -  3
+                # Addendum ITE
+                # x = x + y
+                optpath.add(
+                    add_n_y[k][i]
+                    == z3.If(
+                        d_sym_vars[k][i] == 1,
+                        y_addendum,
+                        0,
+                    )
+                )
+
                 # E[heads for "i-th" run] = sum (choice_prob * d_value) for i-th run.
                 # expected_heads_run += choice_sym_vars[k][i] * d_sym_vars[k][i] # max_value => n_iters * prob
 
                 # Heads in this current "n" flips of the iteration. x(i) term
                 # We get one "sum_heads" value of each model in "k" models.
-                sum_heads += d_sym_vars[k][i]
+                # sum_heads += d_sym_vars[k][i]
+
+                sum_heads += add_n_y[k][i]
 
                 # Path probs is multiplication of choice probs. w(i) term
                 path_prob *= choice_sym_vars[k][i]
@@ -158,18 +194,18 @@ def generateCandidates(k: int, n: int, prob: float):
     optpath.add(sigma_w_i == z3.Sum(path_prob_sym_vars))
     optpath.add(z3.And(sigma_w_i >= 0, sigma_w_i <= 1))
 
-    optpath.add(error_mass == (n_iters * prob - sum_of_k))
+    optpath.add(error_mass == (n_iters * prob * y - sum_of_k))
 
     # COMMENT : for n-coin flips case,
     # check if the above program violates the assertion :
     # COMMENT : if (prob <= 0.5) E(x) < 0.4 * n else E(x) >= 0.6 * n
-    # '1' indicates, assert Violation.
+    # COMMENT : if (prob <= 0.5) E(x) < 0.4 * n * y else E(x) >= 0.6 * n * y
     optpath.add(
         assert_violated
         == z3.If(
             probability_factor <= 0.50,
-            z3.If(sum_of_k < 0.40 * n_iters, 0, 1),
-            z3.If(sum_of_k >= 0.60 * n_iters, 0, 1),
+            z3.If(sum_of_k < 0.40 * n_iters * y, 0, 1),
+            z3.If(sum_of_k >= 0.60 * n_iters * y, 0, 1),
         )
     )
 

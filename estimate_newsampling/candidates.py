@@ -60,6 +60,8 @@ z3.set_option(
     max_visited=10000000,
 )
 
+z3.set_param("smt.random_seed", int(time.time()))
+
 error_mass = z3.Real("error_mass_expectation")
 sum_of_k = z3.Real("sum_of_k")
 sigma_w_i = z3.Real("sigma_w_i")
@@ -152,23 +154,23 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
                 # COMMENT: Benchmark -  3
                 # Addendum ITE
                 # x = x + y
-                optpath.add(
-                    add_n_y[k][i]
-                    == z3.If(
-                        d_sym_vars[k][i] == 1,
-                        y_addendum,
-                        0,
-                    )
-                )
+                # optpath.add(
+                #     add_n_y[k][i]
+                #     == z3.If(
+                #         d_sym_vars[k][i] == 1,
+                #         y_addendum,
+                #         0,
+                #     )
+                # )
 
                 # E[heads for "i-th" run] = sum (choice_prob * d_value) for i-th run.
                 # expected_heads_run += choice_sym_vars[k][i] * d_sym_vars[k][i] # max_value => n_iters * prob
 
                 # Heads in this current "n" flips of the iteration. x(i) term
                 # We get one "sum_heads" value of each model in "k" models.
-                # sum_heads += d_sym_vars[k][i]
 
-                sum_heads += add_n_y[k][i]
+                sum_heads += d_sym_vars[k][i]
+                # sum_heads += add_n_y[k][i]
 
                 # Path probs is multiplication of choice probs. w(i) term
                 path_prob *= choice_sym_vars[k][i]
@@ -194,7 +196,7 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
     optpath.add(sigma_w_i == z3.Sum(path_prob_sym_vars))
     optpath.add(z3.And(sigma_w_i >= 0, sigma_w_i <= 1))
 
-    optpath.add(error_mass == (n_iters * prob * y - sum_of_k))
+    optpath.add(error_mass == (n_iters * prob - sum_of_k))
 
     # COMMENT : for n-coin flips case,
     # check if the above program violates the assertion :
@@ -204,8 +206,8 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
         assert_violated
         == z3.If(
             probability_factor <= 0.50,
-            z3.If(sum_of_k < 0.40 * n_iters * y, 0, 1),
-            z3.If(sum_of_k >= 0.60 * n_iters * y, 0, 1),
+            z3.If(sum_of_k < 0.40 * n_iters, 0, 1),
+            z3.If(sum_of_k >= 0.60 * n_iters, 0, 1),
         )
     )
 
@@ -229,6 +231,8 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
             else:
                 break
 
+    # optpath.add(z3.Exists(x, vect[1][x] != vect[2][x]))
+
     print("[Opt] Solving for Optimal Solution.")
 
     # COMMENT : Assert Violation Case
@@ -237,8 +241,8 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
     # optpath.add(probability_factor <= 0.50)
     # optpath.add(z3.Not(sum_of_k < 0.40 * n_iters))
 
-    optpath.maximize(sigma_w_i)
-    # optpath.maximize(sum_of_k)
+    # optpath.maximize(sigma_w_i)
+    optpath.maximize(sum_of_k)
 
     # COMMENT : This is not be done in general case.
     # Only for this example it works.

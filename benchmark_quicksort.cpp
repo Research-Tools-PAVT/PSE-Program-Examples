@@ -17,6 +17,9 @@
  * Create an array of static size, say 5 elements. 
  * The elements of the array will be forall symbolic variables. 
  * The pivot will be a probabilistic symbolic variable.
+ * 
+ * Must not branch on the SWAP operation after PIVOT selection. 
+ * Convert to ITEs.
  */
 
 int main()

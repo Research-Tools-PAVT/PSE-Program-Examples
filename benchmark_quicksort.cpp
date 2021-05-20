@@ -45,7 +45,37 @@ int partition(int arr[], int left, int right)
 
     int r = 0;
 
-    for (int j = left; j <= right - 1; j++)
+    auto klm = std::to_string(counter);
+
+    // COMMENT : Symbolic Expression for compare count.
+    std::string c_symbolic("count_");
+    c_symbolic += klm;
+    c_symbolic += "_sym";
+    klee_make_symbolic(&count, sizeof(count), c_symbolic.c_str());
+
+    // COMMENT : Symbolic Expression for swap count.
+    std::string swap_symbolic("swap_");
+    swap_symbolic += klm;
+    swap_symbolic += "_sym";
+    klee_make_symbolic(&swap_count, sizeof(swap_count), swap_symbolic.c_str());
+
+    // COMMENT : Symbolic Expression for pivot.
+    std::string pivot_symbolic("pivot_");
+    pivot_symbolic += std::to_string(counter);
+    pivot_symbolic += "_sym";
+    klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
+
+    // COMMENT : Symbolic Expression for "r".
+    std::string r_symbolic("r_");
+    r_symbolic += klm;
+    r_symbolic += "_sym";
+    klee_make_symbolic(&r, sizeof(r), r_symbolic.c_str());
+
+    klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
+    klee_dump_symbolic_details(&count, c_symbolic.c_str());
+    klee_dump_symbolic_details(&r, r_symbolic.c_str());
+
+    for (int j = left; j <= right - 1; j++) // --> Fork Place !
     {
         /**
          * @brief 
@@ -56,50 +86,47 @@ int partition(int arr[], int left, int right)
          */
 
         counter += 1;
-        auto klm = std::to_string(counter);
 
-        // COMMENT : Symbolic Expression for compare count.
-        std::string c_symbolic("count_");
-        c_symbolic += std::to_string(counter);
-        c_symbolic += "_sym";
-        klee_make_symbolic(&count, sizeof(count), c_symbolic.c_str());
-
-        // COMMENT : Symbolic Expression for swap count.
-        std::string swap_symbolic("swap_");
-        swap_symbolic += std::to_string(counter);
-        swap_symbolic += "_sym";
-        klee_make_symbolic(&swap_count, sizeof(swap_count), swap_symbolic.c_str());
-
-        // COMMENT : Symbolic Expression for count.
-        std::string pivot_symbolic("pivot_");
-        pivot_symbolic += std::to_string(counter);
-        pivot_symbolic += "_sym";
-        klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
-
-        swap_count += (arr[j] <= pivot) ? 1 : 0;
-
-        // COMMENT : Symbolic Expression for "r".
-        std::string r_str("right_partition");
-        klee_make_symbolic(&r, sizeof(r), r_str.c_str());
-
-        pivot = arr[right];
-        count += (j <= (r - 1)) ? 1 : 0;
+        (arr[j] <= pivot) ? swap_count += 1 : swap_count += 0;
+        (j + 1 <= r) ? count += 1 : count += 0;
 
         r = right;
+        pivot = arr[r];
 
         if (arr[j] <= pivot)
         {
             i += 1;
             swap(arr[i], arr[j]);
         }
-
-        klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
-        klee_dump_symbolic_details(&count, c_symbolic.c_str());
-        klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
-        klee_dump_symbolic_details(&r, r_str.c_str());
     }
 
     swap(arr[i + 1], arr[right]);
+    swap_count += 1;
+
+    // COMMENT : Symbolic Expression for compare count.
+    c_symbolic = "count_";
+    c_symbolic += klm;
+    c_symbolic += "_sym";
+
+    // COMMENT : Symbolic Expression for swap count.
+    swap_symbolic = "swap_";
+    swap_symbolic += klm;
+    swap_symbolic += "_sym";
+
+    // COMMENT : Symbolic Expression for pivot.
+    pivot_symbolic = "pivot_";
+    pivot_symbolic += std::to_string(counter);
+    pivot_symbolic += "_sym";
+
+    // COMMENT : Symbolic Expression for "r".
+    r_symbolic = "r_";
+    r_symbolic += klm;
+    r_symbolic += "_sym";
+
+    klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
+    klee_dump_symbolic_details(&count, c_symbolic.c_str());
+    klee_dump_symbolic_details(&r, r_symbolic.c_str());
+
     return (i + 1);
 }
 
@@ -116,6 +143,7 @@ int partition_random(int arr[], int left, int right)
 
     // Just a choice? Hoare Partition Scheme?
     swap(arr[random], arr[right]);
+    swap_count += 1;
     return partition(arr, left, right);
 }
 
@@ -127,7 +155,18 @@ void quicksort_arr(int arr[], int left, int right)
          * @brief Generate a pivot and return the
          * array with pivot placed in the correct position.
          */
-        int pivot = partition_random(arr, left, right);
+        // COMMENT : Symbolic Expression for pivot.
+        int pivot;
+
+        std::string pivot_symbolic("pivot_");
+        pivot_symbolic += std::to_string(counter);
+        pivot_symbolic += "_sym";
+        klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
+
+        pivot = partition_random(arr, left, right);
+
+        klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
+
         quicksort_arr(arr, left, pivot - 1);
         quicksort_arr(arr, pivot + 1, right);
     }
@@ -138,6 +177,8 @@ int main()
     int arr[SIZE];
 
     klee_make_symbolic(arr, sizeof(arr), "arr_symbolic");
+    klee_make_symbolic(&swap_count, sizeof(swap_count), "swap_final_count");
+
     srand(time(NULL));
 
     // COMMENT : case : Concretized Array.
@@ -151,5 +192,6 @@ int main()
 
     quicksort_arr(arr, 0, SIZE - 1);
 
+    klee_dump_symbolic_details(&swap_count, "swap_final_count");
     return 0;
 }

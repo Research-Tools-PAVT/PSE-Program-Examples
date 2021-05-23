@@ -4,6 +4,7 @@
 \usepackage[nounderscore]{syntax}
 \usepackage{bussproofs}
 \usepackage{mathtools}
+
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -187,5 +188,92 @@ We can make multiple optimization $objectives$ be fulfilled in one query, but th
 	\caption{Values for \texttt{Assert} failure.}
 \end{figure}
 
+\section{QuickSort Example}
+
+Consider a pivot vector $\vec{p_{abs}}$ that \texttt{KLEE} produces over a single abstract path. We consider a $10$ element array as shown above. The $pivot$ indices for $\vec{p_{abs}}$ as choosen from a $random$ distribution.
+
+\begin{equation}
+	arr[10] = \begin{tabular}{||c|c|c|c|c|c|c|c|c|c||}
+		\hline
+		$a_0$ & $a_1$ & $a_2$ & $a_3$ & $a_4$ & $a_5$ & $a_6$ & $a_7$ & $a_8$ & $a_9$ \\
+		\hline
+	\end{tabular}
+\end{equation} \\
+
+A possible assignment of the indexes choosen as $pivot$ indices along this $abstract$ path can be as shown below.
+
+\begin{equation}
+	\vec{p_{abs}} = \begin{tabular}{||c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_8$ & $a_2$ & $a_3$ & $a_8$ & $a_8$ \\
+		\hline
+	\end{tabular}
+\end{equation} \\
+
+For same \texttt{forall} values in $arr[10]$, we can have different random runs and on each run, the $\vec{pivot}$ vector will have a different assignment of values as indices. We are showing 5 different $\vec{pvot_{r_{j}}}$ vectors, each corresponding to a valid random run $j$.
+
+\begin{equation}
+	\vec{pvot_{r_{1}}} = \begin{tabular}{||c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_4$ & $a_4$ & $a_2$ & $a_9$ & $a_9$ \\
+		\hline
+	\end{tabular}
+\end{equation} 
+
+\begin{equation}
+	\vec{pvot_{r_{2}}} = \begin{tabular}{||c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_9$ & $a_7$ & $a_7$ & $a_7$ \\
+		\hline
+	\end{tabular}
+\end{equation} 
+
+\begin{equation}
+	\vec{pvot_{r_{3}}} = \begin{tabular}{||c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_4$ & $a_1$ & $a_4$ & $a_9$ & $a_9$ \\
+		\hline
+	\end{tabular}
+\end{equation} 
+
+\begin{equation}
+	\vec{pvot_{r_{4}}} = \begin{tabular}{||c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_3$ & $a_1$ & $a_9$ & $a_6$ & $a_9$ \\
+		\hline
+	\end{tabular}
+\end{equation} 
+
+\begin{equation}
+	\vec{pvot_{r_{5}}} = \begin{tabular}{||c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_5$ & $a_3$ & $a_1$ & $a_9$ & $a_8$ \\
+		\hline
+	\end{tabular}
+\end{equation}  
+
+\begin{equation}
+	\vec{pvot_{r_{6}}} = \begin{tabular}{||c|c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_2$ & $a_1$ & $a_9$ & $a_6$ & $a_6$ & $a_9$ \\
+		\hline
+	\end{tabular}
+\end{equation} 
+
+\begin{equation}
+	\vec{pvot_{r_{7}}} = \begin{tabular}{||c|c|c|c|c|c|c||}
+		\hline
+		$a_9$ & $a_9$ & $a_9$ & $a_5$ & $a_5$ & $a_9$ & $a_8$ \\
+		\hline
+	\end{tabular}
+\end{equation} \\
+
+For each of the random run we maintain a variable $count_j$ that tells us the total number of comparision that happened in a particular random run $j$.
+
+We want to $assert$ the following. 
+
+\begin{equation}
+	E[count_j] = n * log(n) \enspace \mid \enspace \forall j \in random \enspace runs.
+\end{equation} 
 
 \end{document} 

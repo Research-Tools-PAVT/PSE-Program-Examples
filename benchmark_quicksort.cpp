@@ -6,15 +6,6 @@
 #include <assert.h>
 #include <random>
 
-#define SIZE 4
-int count = 0, counter = 0, swap_count = 0;
-
-/**
- * @brief Quick Sort Example
- * analyze the expected number of comparisons in Randomized Quicksort
- * optimize on getting the maximum expected number of comparisons
- */
-
 /**
  * @brief Initial Specs
  * Create an array of static size, say 5 elements. 
@@ -23,63 +14,61 @@ int count = 0, counter = 0, swap_count = 0;
  * 
  * Must not branch on the SWAP operation after PIVOT selection. 
  * Convert to ITEs.
+ * 
+ * analyze the expected number of comparisons in Randomized Quicksort
+ * optimize on getting the maximum expected number of comparisons
+ * E[count] = n * log(n) for any given random run. 
  */
+
+#define SIZE 10
+int count = 0, counter = 0, swap_count = 0;
 
 void swap(int &a, int &b)
 {
     int temp = a;
-    klee_dump_symbolic_details(&temp, "temp_str_a");
-
     a = b;
-    int temp2 = b;
     b = temp;
-
-    klee_dump_symbolic_details(&temp2, "temp_str_b");
 }
 
 int partition(int arr[], int left, int right)
 {
     // pivot element
-    int pivot = arr[right];
-    int i = (left - 1);
+    int pivot, r, i = (left - 1);
 
     /**
      * @brief We need to extract count as a 
      * symbolic expression in the comparision.
      */
 
-    int r = 0;
-    counter += 1;
-
-    auto klm = std::to_string(counter);
+    auto __counter = std::to_string(counter++);
 
     // COMMENT : Symbolic Expression for compare count.
     std::string c_symbolic("count_");
-    c_symbolic += klm;
+    c_symbolic += __counter;
     c_symbolic += "_sym";
     klee_make_symbolic(&count, sizeof(count), c_symbolic.c_str());
 
     // COMMENT : Symbolic Expression for swap count.
     std::string swap_symbolic("swap_");
-    swap_symbolic += klm;
+    swap_symbolic += __counter;
     swap_symbolic += "_sym";
     klee_make_symbolic(&swap_count, sizeof(swap_count), swap_symbolic.c_str());
 
-    // COMMENT : Symbolic Expression for pivot.
-    std::string pivot_symbolic("pivot_");
-    pivot_symbolic += std::to_string(counter);
-    pivot_symbolic += "_sym";
-    klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
-
     // COMMENT : Symbolic Expression for "r".
     std::string r_symbolic("r_");
-    r_symbolic += klm;
+    r_symbolic += __counter;
     r_symbolic += "_sym";
     klee_make_symbolic(&r, sizeof(r), r_symbolic.c_str());
 
-    // klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
-    // klee_dump_symbolic_details(&count, c_symbolic.c_str());
-    // klee_dump_symbolic_details(&r, r_symbolic.c_str());
+    std::string pivot_symbolic("pivot_");
+    pivot_symbolic += __counter;
+    pivot_symbolic += "_sym";
+    klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
+
+    r = right;
+    pivot = arr[right];
+
+    klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
 
     for (int j = left; j <= right - 1; j++)
     {
@@ -89,14 +78,11 @@ int partition(int arr[], int left, int right)
          * we need to increase the count so 
          * that the expression matches the 
          * E[comparisions] for later computation.
+         * E[count] ~ n * log(n) ;
          */
 
         (arr[j] <= pivot) ? swap_count += 1 : swap_count += 0;
         (j + 1 <= r) ? count += 1 : count += 0;
-
-        r = right;
-        pivot = arr[r];
-
         // COMMENT : Fork Location.
         (arr[j] <= pivot) ? swap(arr[++i], arr[j]) : void(1);
     }
@@ -104,29 +90,10 @@ int partition(int arr[], int left, int right)
     swap_count += 1;
     swap(arr[i + 1], arr[right]);
 
-    // COMMENT : Symbolic Expression for compare count.
-    c_symbolic = "count_";
-    c_symbolic += klm;
-    c_symbolic += "_sym";
-
-    // COMMENT : Symbolic Expression for swap count.
-    swap_symbolic = "swap_";
-    swap_symbolic += klm;
-    swap_symbolic += "_sym";
-
-    // COMMENT : Symbolic Expression for pivot.
-    pivot_symbolic = "pivot_";
-    pivot_symbolic += std::to_string(counter);
-    pivot_symbolic += "_sym";
-
-    // COMMENT : Symbolic Expression for "r".
-    r_symbolic = "r_";
-    r_symbolic += klm;
-    r_symbolic += "_sym";
-
     klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
     klee_dump_symbolic_details(&count, c_symbolic.c_str());
     klee_dump_symbolic_details(&r, r_symbolic.c_str());
+    klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
 
     return (i + 1);
 }
@@ -157,43 +124,25 @@ void quicksort_arr(int arr[], int left, int right)
          * array with pivot placed in the correct position.
          */
         // COMMENT : Symbolic Expression for pivot.
-        int pivot;
-
-        counter += 1;
-        std::string pivot_symbolic("pivot_");
-        pivot_symbolic += std::to_string(counter);
-        pivot_symbolic += "_sym";
-        klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
-
-        pivot = partition_random(arr, left, right);
-
-        klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
-
+        int pivot = partition_random(arr, left, right);
         quicksort_arr(arr, left, pivot - 1);
         quicksort_arr(arr, pivot + 1, right);
     }
 }
 
+int concrete[] = {2, 28, 95, 96, 47, 10, 12, 3, 36, 58};
+
 int main()
 {
-    int arr[SIZE];
-
-    klee_make_symbolic(arr, sizeof(arr), "arr_symbolic");
-
     srand(time(NULL));
 
-    // COMMENT : case : Concretized Array.
-    // Static Array else blow-up n!.
-    // for (auto i = 0; i < SIZE; i++)
-    //     arr[i] = 0 + rand() % (100);
+    int arr[SIZE];
+    klee_make_symbolic(arr, sizeof(arr), "arr_symbolic");
 
-    // COMMENT : case : Symbolic Array with range.
-    // for (auto i = 0; i < SIZE; i++)
-    //     klee_assume(arr[i] <= 10 && arr[i] >= 0);
+    for (auto i = 0; i < SIZE; i++)
+        arr[i] = concrete[i];
 
     quicksort_arr(arr, 0, SIZE - 1);
-
-    klee_dump_symbolic_details(&swap_count, "swap_final_count");
 
     return 0;
 }

@@ -20,7 +20,7 @@
  * E[count] = n * log(n) for any given random run. 
  */
 
-#define SIZE 10
+#define SIZE 3
 int count = 0, counter = 0, swap_count = 0;
 
 void swap(int &a, int &b)
@@ -139,8 +139,8 @@ int main()
     int arr[SIZE];
     klee_make_symbolic(arr, sizeof(arr), "arr_symbolic");
 
-    for (auto i = 0; i < SIZE; i++)
-        arr[i] = concrete[i];
+    // for (auto i = 0; i < SIZE; i++)
+    //     arr[i] = concrete[i];
 
     quicksort_arr(arr, 0, SIZE - 1);
 

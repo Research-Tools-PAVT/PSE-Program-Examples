@@ -10,6 +10,8 @@ from alive_progress import alive_bar
 # from scipy.stats import bernoulli
 
 # https://z3prover.github.io/api/html/classz3py_1_1_rat_num_ref.html#a1012d6314d35530c58f9c018269ec867
+
+
 def num(r):
     """
     Convert from Z3 to python float values.
@@ -91,10 +93,13 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
         [z3.Int(f"d_{k}_{i}") for i in range(n_iters)] for k in range(candidatePaths)
     ]
 
-    path_prob_sym_vars = [z3.Real(f"path_prob_{i}") for i in range(candidatePaths)]
-    probability_vars = [z3.Real(f"probability_{k}") for k in range(candidatePaths)]
+    path_prob_sym_vars = [
+        z3.Real(f"path_prob_{i}") for i in range(candidatePaths)]
+    probability_vars = [z3.Real(f"probability_{k}")
+                        for k in range(candidatePaths)]
 
-    expected_heads = [z3.Real(f"expected_heads_{k}") for k in range(candidatePaths)]
+    expected_heads = [z3.Real(f"expected_heads_{k}")
+                      for k in range(candidatePaths)]
     sum_d_heads = [z3.Real(f"sum_heads_{k}") for k in range(candidatePaths)]
 
     optpath = z3.Optimize()
@@ -182,7 +187,8 @@ def generateCandidates(k: int, n: int, prob: float, y=90):
             optpath.add(sum_d_heads[k] == sum_heads)
 
             # w(i) * x(i) term for expectataion.
-            optpath.add(expected_heads[k] == path_prob_sym_vars[k] * sum_d_heads[k])
+            optpath.add(expected_heads[k] ==
+                        path_prob_sym_vars[k] * sum_d_heads[k])
             # optpath.add(expected_heads[k] == expected_heads_run)
 
             # Display progress bar

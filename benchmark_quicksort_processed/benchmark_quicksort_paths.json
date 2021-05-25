@@ -1,1 +1,410 @@
-{}
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "88cb8c7d-ae20-4c87-89e2-58f866eaa861"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "1ba9c35d-8cd1-4e22-9248-3cac5be5ecaf"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "f6d03782-613b-49c7-82d0-728332ba4768"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "e1742cd0-71e8-4ed1-9ca1-8e2439166dab"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "f6d03782-613b-49c7-82d0-728332ba4768"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "88cb8c7d-ae20-4c87-89e2-58f866eaa861"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "1ba9c35d-8cd1-4e22-9248-3cac5be5ecaf"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "b1472163-3f9c-4df0-b45e-0712c15a8f69"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "d8be83de-1018-4af7-8bee-87b83c98037f"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "b1472163-3f9c-4df0-b45e-0712c15a8f69"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+                "(Slt (ReadLSB w32 0 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 0 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "6972ebf7-e264-483b-a699-1115f62cf283"
+            },
+            "predicate": "(Slt (ReadLSB w32 0 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "b1472163-3f9c-4df0-b45e-0712c15a8f69"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 3": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "88cb8c7d-ae20-4c87-89e2-58f866eaa861"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "1ba9c35d-8cd1-4e22-9248-3cac5be5ecaf"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "5535cc49-a290-4dff-9029-f012aac57d84"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "d8be83de-1018-4af7-8bee-87b83c98037f"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "5535cc49-a290-4dff-9029-f012aac57d84"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+                "(Slt (ReadLSB w32 0 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+                "(Eq false (Slt (ReadLSB w32 0 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "6d2d6ef7-7ea9-47cf-a9f8-5d8ffe22e595"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 0 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "5535cc49-a290-4dff-9029-f012aac57d84"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 4": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "88cb8c7d-ae20-4c87-89e2-58f866eaa861"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "61e141ba-2d1e-435b-b9ed-ab1bd3be8f0d"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "c526cce5-d9db-4e40-a8c1-7497c5ed6d85"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "9",
+                "uid": "a36a122d-6d14-4431-bcb8-2028de848a83"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "c526cce5-d9db-4e40-a8c1-7497c5ed6d85"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 5": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "88cb8c7d-ae20-4c87-89e2-58f866eaa861"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "61e141ba-2d1e-435b-b9ed-ab1bd3be8f0d"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "43e1db54-7395-4709-932a-702a9cf2560e"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "uid": "7efb4ce8-b45d-4b5a-95f9-787348c087b8"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "43e1db54-7395-4709-932a-702a9cf2560e"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+                "(Slt (ReadLSB w32 8 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+                "(Eq false (Slt (ReadLSB w32 8 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "c806520c-053c-4f29-8d6b-ad10bb17bf6e"
+            },
+            "predicate": "(Slt (ReadLSB w32 8 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "43e1db54-7395-4709-932a-702a9cf2560e"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 6": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "88cb8c7d-ae20-4c87-89e2-58f866eaa861"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "61e141ba-2d1e-435b-b9ed-ab1bd3be8f0d"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "2486d7ed-584c-41ed-a4d5-74a43e8dd4ca"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Eq false (Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "uid": "7efb4ce8-b45d-4b5a-95f9-787348c087b8"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "2486d7ed-584c-41ed-a4d5-74a43e8dd4ca"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+                "(Slt (ReadLSB w32 8 arr_symbolic) (ReadLSB w32 0 arr_symbolic))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 0 arr_symbolic))",
+                "(Slt (ReadLSB w32 4 arr_symbolic) (ReadLSB w32 8 arr_symbolic))",
+                "(Eq false (Slt (ReadLSB w32 8 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "c6be3a55-d3a4-4565-9f54-188918c80288"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 8 arr_symbolic) (ReadLSB w32 0 arr_symbolic)))",
+            "variables": [
+                "arr_symbolic",
+                "arr_symbolic"
+            ],
+            "IMap": {
+                "arr_symbolic": "2486d7ed-584c-41ed-a4d5-74a43e8dd4ca"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

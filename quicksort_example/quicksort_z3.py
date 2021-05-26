@@ -8,6 +8,9 @@ import random
 import json
 import z3
 
+list_arr = []
+counter = 0
+
 
 def num(r):
     """
@@ -48,30 +51,86 @@ def find_index_pivot(arr, elem):
             return index
 
 
-def partition_routine(solver, arr, left, right, pivot):
+def partition_quicksort(solver, arr, temp_arr, start, end):
 
-    print(left)
-    print(right)
+    range_iter = (end - start) + 1
 
-    if left == right:
-        pass
+    arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
 
-    range_iter = right - left
-
-    if range_iter < 0:
-        return
+    pivot = z3.Int('pivot')
+    solver.add(z3.Or([pivot == arr[i + start] for i in range(range_iter)]))
 
     left_sum = z3.Int("left_sum")
     right_sum = z3.Int("right_sum")
     left_count = [z3.Int(f"left_{i}") for i in range(range_iter)]
     right_count = [z3.Int(f"right_{i}") for i in range(range_iter)]
 
-    solver.add(z3.Or([pivot == arr[i + left] for i in range(range_iter)]))
+    for i in range(range_iter):
+        solver.add(z3.If(arr[i + start] < pivot, left_count[i]
+                         == 1, left_count[i] == 0))
+        solver.add(z3.If(arr[i + start] >= pivot, right_count[i]
+                         == 1, right_count[i] == 0))
+
+    solver.add(left_sum == z3.Sum(left_count))
+    solver.add(right_sum == z3.Sum(right_count))
+
+    solver.add(z3.And([arr[i] == temp_arr[i]
+                       for i in range(len(temp_arr))]))
+
+    print(solver.check())
+    model = solver.model()
+    print(find_index_pivot(
+        temp_arr, get_value(model[pivot])))
+
+    # index_pivot = random.randint(start, end)
+
+    index_pivot = find_index_pivot(
+        temp_arr, get_value(model[pivot]))
+    pivot_value = temp_arr[index_pivot]
+    temp_arr = swap(temp_arr, -1, index_pivot)
+
+    i = start - 1
+    j = start
+    while(j <= end - 1):
+        if (temp_arr[j] <= pivot_value):
+            i += 1
+            temp_arr = swap(temp_arr, i, j)
+        j += 1
+
+    temp_arr = swap(temp_arr, i + 1, -1)
+
+    print(temp_arr[start:end])
+
+    return index_pivot
+
+
+def partition_routine(solver, arr, temp_arr, start, end, pivot):
+
+    solver.add(z3.And([arr[i] == temp_arr[i]
+                       for i in range(len(temp_arr))]))
+
+    range_iter = (end - start) + 1
+
+    if range_iter <= 0:
+        return None, None, None
+
+    left_sum = z3.Int("left_sum")
+    right_sum = z3.Int("right_sum")
+    left_count = [z3.Int(f"left_{i}") for i in range(range_iter)]
+    right_count = [z3.Int(f"right_{i}") for i in range(range_iter)]
+
+    # solver.check()
+    # model = solver.model()
+
+    # solver.add(z3.And([arr[i + start] == model[arr[i + start]]
+    #            for i in range(range_iter)]))
+
+    solver.add(z3.Or([pivot == arr[i + start] for i in range(range_iter)]))
 
     for i in range(range_iter):
-        solver.add(z3.If(arr[i + left] < pivot, left_count[i]
+        solver.add(z3.If(arr[i + start] < pivot, left_count[i]
                          == 1, left_count[i] == 0))
-        solver.add(z3.If(arr[i + left] >= pivot, right_count[i]
+        solver.add(z3.If(arr[i + start] >= pivot, right_count[i]
                          == 1, right_count[i] == 0))
 
     solver.add(left_sum == z3.Sum(left_count))
@@ -79,64 +138,77 @@ def partition_routine(solver, arr, left, right, pivot):
 
     if (solver.check() == z3.sat):
         model_before_pop = solver.model()
-        temp_arr = [get_value(model_before_pop[arr[i + left]])
-                    for i in range(range_iter)]
 
         index_pivot = find_index_pivot(
             temp_arr, get_value(model_before_pop[pivot]))
+
+        pivot_value = get_value(model_before_pop[pivot])
+        print(f"Temp Arr : {temp_arr}")
+
         temp_arr = swap(temp_arr, -1, index_pivot)
 
-        i = left - 1
-        for j in range(range_iter - 1):
-            if (temp_arr[j + left] <= temp_arr[-1]):
+        i = start - 1
+        j = start
+        print(start)
+        while(j <= end - 1):
+            print(j)
+            if (temp_arr[j] <= pivot_value):
                 i += 1
-                temp_arr = swap(temp_arr, i, j + left)
+                temp_arr = swap(temp_arr, i, j)
+            j += 1
 
-    return temp_arr, model_before_pop, left_sum, right_sum
-
-
-def quicksort_z3(solver, arr, start, end):
-
-    if start == end:
-        return
-
-    if end - start < 0:
-        return
-
-    solver.push()
-    pivot = z3.Int('pivot')
-    temp_arr, model_before_pop, left_sum, right_sum = partition_routine(
-        solver, arr, start, end, pivot)
-    solver.pop()
-
-    solver.push()
-    solver.add(z3.And([arr[i] == temp_arr[i] for i in range(len(temp_arr))]))
-
-    if (solver.check() == z3.sat):
-        m = solver.model()
-        print(f"Arr : {[m[arr[i]] for i in range(forall_elems)]}")
-        print(f"left : {model_before_pop[left_sum]}")
-        print(f"right : {model_before_pop[right_sum]}")
-        print(f"pivot : {model_before_pop[pivot]}")
-    solver.pop()
-
-    pivot_index_sort = get_value(model_before_pop[left_sum])
-    print(pivot_index_sort)
-    print(end)
-
-    quicksort_z3(solver, arr, start, pivot_index_sort)
-    quicksort_z3(solver, arr, pivot_index_sort + 1, end)
+        temp_arr = swap(temp_arr, i + 1, -1)
+        return model_before_pop, left_sum, right_sum
+    else:
+        print("unsat")
+        return None, None, None
 
 
-forall_elems = 3
-if __name__ == "__main__":
+def quicksort_z3(solver, arr, temp_arr, start, end):
 
     z3.set_param("smt.random_seed", int(time.time()))
+
+    if end - start <= 0:
+        return
+
+    solver.push()
+    pivot_index_sort = partition_quicksort(solver, arr, temp_arr, start, end)
+    solver.pop()
+
+    print(
+        f"Start: {start}, End: {end}, Pivot Index: {pivot_index_sort}")
+
+    quicksort_z3(solver, arr, temp_arr, start, pivot_index_sort - 1)
+    quicksort_z3(solver, arr, temp_arr, pivot_index_sort + 1, end)
+
+
+forall_elems = 7
+
+if __name__ == "__main__":
     solver = z3.Solver()
 
     arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
-    solver.add(z3.Distinct(arr))
-    solver.add(z3.And([arr[i] >= 3 for i in range(forall_elems)]))
-    solver.add(z3.And([arr[i] <= 100 for i in range(forall_elems)]))
 
-    quicksort_z3(solver, arr, 0, len(arr) - 1)
+    # solver.add(z3.And([arr[i] >= 3 for i in range(forall_elems)]))
+    # solver.add(z3.And([arr[i] <= 100 for i in range(forall_elems)]))
+
+    # solver.add(z3.Distinct(arr))
+
+    solver.push()
+    solver.add(arr[0] == 4)
+    solver.add(arr[1] == 12)
+    solver.add(arr[2] == 5)
+    solver.add(arr[3] == 11)
+    solver.add(arr[4] == 16)
+    solver.add(arr[5] == 3)
+    solver.add(arr[6] == 0)
+
+    solver.check()
+    init_model = solver.model()
+    temp_arr = [get_value(init_model[arr[i]])
+                for i in range(len(arr))]
+    solver.pop()
+
+    print(temp_arr)
+    quicksort_z3(solver, arr, temp_arr, 0, len(arr) - 1)
+    print(temp_arr)

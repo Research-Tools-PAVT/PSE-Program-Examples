@@ -33,7 +33,7 @@ void swap(int &a, int &b)
 int partition(int arr[], int left, int right)
 {
     // pivot element
-    int pivot, r, i = (left - 1);
+    int pivot, r, i = left - 1;
 
     /**
      * @brief We need to extract count as a 

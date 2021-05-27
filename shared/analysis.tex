@@ -271,11 +271,11 @@ For same \texttt{forall} values in $arr[10]$, we can have different random runs 
 The probability mass associated with the $i_{th}$ random run as is given below considering each $pivot$ selection being an independent selection. The variable $count_i$ denotes the number of comparisions made in $t^{th}$ random run.
 
 \begin{equation}
-	w_i = (1 / n) * \prod_{j=1}^{k} 1 / (\#size_j) \quad \mid \quad for \enspace k-partitons
+	w_i = (1 / n) * \prod_{j=1}^{k} 1 / (\#size_{partition_{j}}) \quad \mid \quad for \enspace k-partitons
 \end{equation}
 
 \begin{equation}
-	E[comparisions] = \sum_{i=1}^{r} (w_i * count_i) \quad \mid \quad for \enspace r \enspace runs
+	E[comparisions] = \sum_{i=1}^{r} (w_i * count_i) \quad \mid \quad for \enspace r-runs
 \end{equation}
 
 \end{document} 

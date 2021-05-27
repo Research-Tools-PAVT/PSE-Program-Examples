@@ -268,12 +268,14 @@ For same \texttt{forall} values in $arr[10]$, we can have different random runs 
 	\end{tabular}
 \end{equation} \\
 
-For each of the random run we maintain a variable $count_j$ that tells us the total number of comparision that happened in a particular random run $j$.
-
-We want to $assert$ the following. 
+The probability mass associated with the $i_{th}$ random run as is given below considering each $pivot$ selection being an independent selection.
 
 \begin{equation}
-	E[count_j] = n * log(n) \enspace \mid \enspace \forall j \in random \enspace runs.
-\end{equation} 
+	w_i = (1 / n) * \prod_{j=1}^{k} 1 / l_j  * \prod_{j=1}^{k} 1 / r_j \quad \mid \quad for \enspace k-partitons
+\end{equation}
+
+\begin{equation}
+	where \enspace l_j = count(l_{terms}), \enspace r_j = count(r_{terms}) \quad \mid \quad in \enspace j^{th} \enspace partition. 
+\end{equation}
 
 \end{document} 

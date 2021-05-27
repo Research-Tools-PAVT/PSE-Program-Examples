@@ -10,6 +10,7 @@ import json
 import z3
 
 pivot_vector_choices = []
+prob_vector = []
 
 
 def num(r):
@@ -55,10 +56,18 @@ def partition_quicksort(solver, arr, temp_arr, start, end, pivot_vector, compare
 
     compare = 0
     range_iter = (end - start) + 1
+    prob_value = 1 / range_iter
+
+    prob_vector.append(prob_value)
 
     pivot = z3.Int("pivot")
     solver.add(z3.Or([pivot == temp_arr[i + start]
                for i in range(range_iter)]))
+
+    if len(pivot_vector_choices) >= 1:
+        pivot_choices = pivot_vector_choices[-1]
+        solver.add(z3.Or([pivot != pivot_choices[i]
+                   for i in range(len(pivot_choices))]))
 
     solver.check()
     model = solver.model()
@@ -122,10 +131,10 @@ def run_sort_concrete(solver, arr):
     # solver.add(arr[8] == 18)
     # solver.add(arr[9] == 1)
 
-    range_constraint = [z3.And(arr[i] > 1, arr[i] < 1000000)
-                        for i in range(forall_elems)]
+    # range_constraint = [z3.And(arr[i] > 1, arr[i] < 1000000)
+    #                     for i in range(forall_elems)]
 
-    solver.add(range_constraint)
+    # solver.add(range_constraint)
     solver.add(z3.Distinct(arr))
 
     solver.check()
@@ -133,14 +142,17 @@ def run_sort_concrete(solver, arr):
     temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
     solver.pop()
 
-    print(temp_arr)
     quicksort_z3(solver, arr, temp_arr, 0, len(
         arr) - 1, pivot_vector, compare_vector)
 
+    print(temp_arr)
     return temp_arr, pivot_vector, compare_vector
 
 
+model_count = 5000
 forall_elems = 10
+sigma_w_i = []
+compare_vector_run = []
 
 if __name__ == "__main__":
 
@@ -148,15 +160,28 @@ if __name__ == "__main__":
     solver = z3.Solver()
     arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
 
-    models = 3
+    models = model_count
     while(models > 0):
-        temp_arr, pivot_vector, compare_vector = run_sort_concrete(solver, arr)
+        temp_arr, pivot_vector, compare_vector = run_sort_concrete(
+            solver, arr)
 
-        print(temp_arr)
-        print(f"pvot_v : {pivot_vector}")
-        print(f"compare_v : {compare_vector}")
+        w_i = math.prod(prob_vector)
+        print(f"# Random Run : {model_count - models}")
+        print(f"\tpvot_v : {pivot_vector}")
+        print(f"\tcompare_v : {compare_vector}")
         print(
-            f"Compare Error : {forall_elems * math.log2(forall_elems) - sum(compare_vector)}")
+            f"\tcomparisions : {sum(compare_vector)}")
+        print(
+            f"\tw_i : {w_i}")
 
+        sigma_w_i.append(w_i)
+
+        prob_vector = []
         pivot_vector_choices.append(pivot_vector)
+        compare_vector_run.append(compare_vector)
+
         models -= 1
+
+    print(f"sigma_w_i = {sum(sigma_w_i)}")
+    print(
+        f"E[compare] = {sum([sigma_w_i[i] * sum(compare_vector_run[i]) for i in range(model_count - 1)])}")

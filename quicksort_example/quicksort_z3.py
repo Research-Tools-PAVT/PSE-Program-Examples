@@ -52,7 +52,9 @@ def find_index_pivot(arr, elem):
             return index
 
 
-def partition_quicksort(solver, arr, temp_arr, start, end, pivot_vector, compare_vector):
+def partition_quicksort(
+    solver, arr, temp_arr, start, end, pivot_vector, compare_vector
+):
 
     compare = 0
     range_iter = (end - start) + 1
@@ -61,13 +63,13 @@ def partition_quicksort(solver, arr, temp_arr, start, end, pivot_vector, compare
     prob_vector.append(prob_value)
 
     pivot = z3.Int("pivot")
-    solver.add(z3.Or([pivot == temp_arr[i + start]
-               for i in range(range_iter)]))
+    solver.add(z3.Or([pivot == temp_arr[i + start] for i in range(range_iter)]))
 
     if len(pivot_vector_choices) >= 1:
         pivot_choices = pivot_vector_choices[-1]
-        solver.add(z3.Or([pivot != pivot_choices[i]
-                   for i in range(len(pivot_choices))]))
+        solver.add(
+            z3.Or([pivot != pivot_choices[i] for i in range(len(pivot_choices))])
+        )
 
     solver.check()
     model = solver.model()
@@ -104,13 +106,28 @@ def quicksort_z3(solver, arr, temp_arr, start, end, pivot_vector, compare_vector
     if start < end:
         solver.push()
         pivot_index_sort = partition_quicksort(
-            solver, arr, temp_arr, start, end, pivot_vector, compare_vector)
+            solver, arr, temp_arr, start, end, pivot_vector, compare_vector
+        )
         solver.pop()
         # print(f"Start: {start}, End: {end}, Pivot Index: {pivot_index_sort}")
-        quicksort_z3(solver, arr, temp_arr, start,
-                     pivot_index_sort - 1, pivot_vector, compare_vector)
-        quicksort_z3(solver, arr, temp_arr, pivot_index_sort +
-                     1, end, pivot_vector, compare_vector)
+        quicksort_z3(
+            solver,
+            arr,
+            temp_arr,
+            start,
+            pivot_index_sort - 1,
+            pivot_vector,
+            compare_vector,
+        )
+        quicksort_z3(
+            solver,
+            arr,
+            temp_arr,
+            pivot_index_sort + 1,
+            end,
+            pivot_vector,
+            compare_vector,
+        )
 
 
 def run_sort_concrete(solver, arr):
@@ -142,14 +159,13 @@ def run_sort_concrete(solver, arr):
     temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
     solver.pop()
 
-    quicksort_z3(solver, arr, temp_arr, 0, len(
-        arr) - 1, pivot_vector, compare_vector)
+    quicksort_z3(solver, arr, temp_arr, 0, len(arr) - 1, pivot_vector, compare_vector)
 
     print(temp_arr)
     return temp_arr, pivot_vector, compare_vector
 
 
-model_count = 5000
+model_count = 10000
 forall_elems = 10
 sigma_w_i = []
 compare_vector_run = []
@@ -161,18 +177,15 @@ if __name__ == "__main__":
     arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
 
     models = model_count
-    while(models > 0):
-        temp_arr, pivot_vector, compare_vector = run_sort_concrete(
-            solver, arr)
+    while models > 0:
+        temp_arr, pivot_vector, compare_vector = run_sort_concrete(solver, arr)
 
         w_i = math.prod(prob_vector)
         print(f"# Random Run : {model_count - models}")
         print(f"\tpvot_v : {pivot_vector}")
         print(f"\tcompare_v : {compare_vector}")
-        print(
-            f"\tcomparisions : {sum(compare_vector)}")
-        print(
-            f"\tw_i : {w_i}")
+        print(f"\tcomparisions : {sum(compare_vector)}")
+        print(f"\tw_i : {w_i}")
 
         sigma_w_i.append(w_i)
 
@@ -184,4 +197,5 @@ if __name__ == "__main__":
 
     print(f"sigma_w_i = {sum(sigma_w_i)}")
     print(
-        f"E[compare] = {sum([sigma_w_i[i] * sum(compare_vector_run[i]) for i in range(model_count - 1)])}")
+        f"E[compare] = {sum([sigma_w_i[i] * sum(compare_vector_run[i]) for i in range(model_count - 1)])}"
+    )

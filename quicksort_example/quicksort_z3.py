@@ -9,10 +9,7 @@ import math
 import json
 import z3
 
-compare_vector = []
-list_arr = []
-pivot_vector = []
-counter = 0
+pivot_vector_choices = []
 
 
 def num(r):
@@ -54,13 +51,14 @@ def find_index_pivot(arr, elem):
             return index
 
 
-def partition_quicksort(solver, arr, temp_arr, start, end):
+def partition_quicksort(solver, arr, temp_arr, start, end, pivot_vector, compare_vector):
 
     compare = 0
     range_iter = (end - start) + 1
 
     pivot = z3.Int("pivot")
-    solver.add(z3.Or([pivot == temp_arr[i + start] for i in range(range_iter)]))
+    solver.add(z3.Or([pivot == temp_arr[i + start]
+               for i in range(range_iter)]))
 
     solver.check()
     model = solver.model()
@@ -73,82 +71,73 @@ def partition_quicksort(solver, arr, temp_arr, start, end):
     pivot_value = temp_arr[end]
 
     j = start
+    iterator = 0
     while j <= end - 1:
         compare += 1
         if temp_arr[j] <= pivot_value:
             i += 1
             temp_arr = swap(temp_arr, i, j)
         j += 1
+        iterator += 1
 
     temp_arr = swap(temp_arr, i + 1, end)
     ypvot = i + 1
 
-    solver.push()
+    pivot_choice = index_pivot
 
-    arr = [z3.Int(f"arr_{i}") for i in range(len(temp_arr))]
-
-    solver.add(
-        z3.And(
-            [arr[iterator] == temp_arr[iterator] for iterator in range(len(temp_arr))]
-        )
-    )
-
-    # left_sum = z3.Int("left_sum")
-    # right_sum = z3.Int("right_sum")
-    # left_count = [z3.Int(f"left_{iterator}") for iterator in range(len(temp_arr))]
-    # right_count = [z3.Int(f"right_{iterator}") for iterator in range(len(temp_arr))]
-
-    # iterator = start
-    # while iterator <= end - 1:
-    #     solver.add(
-    #         z3.If(
-    #             arr[iterator] <= pivot_value,
-    #             left_count[iterator - start] == 1,
-    #             left_count[iterator - start] == 0,
-    #         )
-    #     )
-    #     solver.add(
-    #         z3.If(
-    #             arr[iterator] > pivot_value,
-    #             right_count[iterator - start] == 1,
-    #             right_count[iterator - start] == 0,
-    #         )
-    #     )
-    #     iterator += 1
-
-    # solver.add(left_sum == z3.Sum(left_count))
-    # solver.add(right_sum == z3.Sum(right_count))
-
-    solver.check()
-    model = solver.model()
-
-    solver.pop()
-
-    left_side = 0
-    right_side = 0
-    for h in range(len(temp_arr)):
-        if get_value(model[arr[h]]) <= pivot_value:
-            left_side += 1
-        else:
-            right_side += 1
-
-    # COMMENT : Why are the values not matching here ?
-    # print(temp_arr[start:end])
-    pivot_vector.append((ypvot, left_side - 1, right_side))
+    pivot_vector.append(pivot_choice)
     compare_vector.append(compare)
 
     return ypvot
 
 
-def quicksort_z3(solver, arr, temp_arr, start, end):
-
+def quicksort_z3(solver, arr, temp_arr, start, end, pivot_vector, compare_vector):
     if start < end:
         solver.push()
-        pivot_index_sort = partition_quicksort(solver, arr, temp_arr, start, end)
+        pivot_index_sort = partition_quicksort(
+            solver, arr, temp_arr, start, end, pivot_vector, compare_vector)
         solver.pop()
         # print(f"Start: {start}, End: {end}, Pivot Index: {pivot_index_sort}")
-        quicksort_z3(solver, arr, temp_arr, start, pivot_index_sort - 1)
-        quicksort_z3(solver, arr, temp_arr, pivot_index_sort + 1, end)
+        quicksort_z3(solver, arr, temp_arr, start,
+                     pivot_index_sort - 1, pivot_vector, compare_vector)
+        quicksort_z3(solver, arr, temp_arr, pivot_index_sort +
+                     1, end, pivot_vector, compare_vector)
+
+
+def run_sort_concrete(solver, arr):
+    pivot_vector = []
+    compare_vector = []
+
+    solver.push()
+    z3.set_param("smt.random_seed", int(time.time()))
+
+    # solver.add(arr[0] == 4)
+    # solver.add(arr[1] == 12)
+    # solver.add(arr[2] == 5)
+    # solver.add(arr[3] == 11)
+    # solver.add(arr[4] == 16)
+    # solver.add(arr[5] == 3)
+    # solver.add(arr[6] == 0)
+    # solver.add(arr[7] == 5)
+    # solver.add(arr[8] == 18)
+    # solver.add(arr[9] == 1)
+
+    range_constraint = [z3.And(arr[i] > 1, arr[i] < 1000000)
+                        for i in range(forall_elems)]
+
+    solver.add(range_constraint)
+    solver.add(z3.Distinct(arr))
+
+    solver.check()
+    init_model = solver.model()
+    temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
+    solver.pop()
+
+    print(temp_arr)
+    quicksort_z3(solver, arr, temp_arr, 0, len(
+        arr) - 1, pivot_vector, compare_vector)
+
+    return temp_arr, pivot_vector, compare_vector
 
 
 forall_elems = 10
@@ -159,33 +148,15 @@ if __name__ == "__main__":
     solver = z3.Solver()
     arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
 
-    # solver.push()
-    # solver.add(z3.And([arr[i] >= 3 for i in range(forall_elems)]))
-    # solver.add(z3.And([arr[i] <= 100 for i in range(forall_elems)]))
-    # solver.check()
-    # init_model = solver.model()
-    # temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
-    # solver.add(z3.Distinct(arr))
-    # solver.pop()
+    models = 3
+    while(models > 0):
+        temp_arr, pivot_vector, compare_vector = run_sort_concrete(solver, arr)
 
-    solver.push()
-    solver.add(arr[0] == 4)
-    solver.add(arr[1] == 12)
-    solver.add(arr[2] == 5)
-    solver.add(arr[3] == 11)
-    solver.add(arr[4] == 16)
-    solver.add(arr[5] == 3)
-    solver.add(arr[6] == 0)
-    solver.add(arr[7] == 5)
-    solver.add(arr[8] == 18)
-    solver.add(arr[9] == 1)
-    solver.check()
-    init_model = solver.model()
-    temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
-    solver.pop()
+        print(temp_arr)
+        print(f"pvot_v : {pivot_vector}")
+        print(f"compare_v : {compare_vector}")
+        print(
+            f"Compare Error : {forall_elems * math.log2(forall_elems) - sum(compare_vector)}")
 
-    print(temp_arr)
-    quicksort_z3(solver, arr, temp_arr, 0, len(arr) - 1)
-    print(temp_arr)
-    print(pivot_vector)
-    print(forall_elems * math.log2(forall_elems) - sum(compare_vector))
+        pivot_vector_choices.append(pivot_vector)
+        models -= 1

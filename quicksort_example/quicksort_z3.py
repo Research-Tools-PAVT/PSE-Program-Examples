@@ -63,12 +63,14 @@ def partition_quicksort(
     prob_vector.append(prob_value)
 
     pivot = z3.Int("pivot")
-    solver.add(z3.Or([pivot == temp_arr[i + start] for i in range(range_iter)]))
+    solver.add(z3.Or([pivot == temp_arr[i + start]
+               for i in range(range_iter)]))
 
     if len(pivot_vector_choices) >= 1:
         pivot_choices = pivot_vector_choices[-1]
         solver.add(
-            z3.Or([pivot != pivot_choices[i] for i in range(len(pivot_choices))])
+            z3.Or([pivot != pivot_choices[i]
+                  for i in range(len(pivot_choices))])
         )
 
     solver.check()
@@ -159,16 +161,23 @@ def run_sort_concrete(solver, arr):
     temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
     solver.pop()
 
-    quicksort_z3(solver, arr, temp_arr, 0, len(arr) - 1, pivot_vector, compare_vector)
+    quicksort_z3(solver, arr, temp_arr, 0, len(
+        arr) - 1, pivot_vector, compare_vector)
 
-    print(temp_arr)
+    # print(temp_arr)
     return temp_arr, pivot_vector, compare_vector
 
 
-model_count = 10000
+model_count = 1000
 forall_elems = 10
-sigma_w_i = []
+expvalues = []
+runs_w_i = []
+
 compare_vector_run = []
+sigma_w_i = []
+
+model_count_values = [100, 500, 1000, 2000, 3000, 4000, 5000,
+                      6000, 7000, 8000, 9000, 10000, 11000, 12000, 13500, 15000]
 
 if __name__ == "__main__":
 
@@ -176,26 +185,32 @@ if __name__ == "__main__":
     solver = z3.Solver()
     arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
 
-    models = model_count
-    while models > 0:
-        temp_arr, pivot_vector, compare_vector = run_sort_concrete(solver, arr)
+    for values in model_count_values:
+        models = values
+        while models > 0:
+            temp_arr, pivot_vector, compare_vector = run_sort_concrete(
+                solver, arr)
 
-        w_i = math.prod(prob_vector)
-        print(f"# Random Run : {model_count - models}")
-        print(f"\tpvot_v : {pivot_vector}")
-        print(f"\tcompare_v : {compare_vector}")
-        print(f"\tcomparisions : {sum(compare_vector)}")
-        print(f"\tw_i : {w_i}")
+            w_i = math.prod(prob_vector)
+            sigma_w_i.append(w_i)
 
-        sigma_w_i.append(w_i)
+            prob_vector = []
+            pivot_vector_choices.append(pivot_vector)
+            compare_vector_run.append(compare_vector)
 
-        prob_vector = []
-        pivot_vector_choices.append(pivot_vector)
-        compare_vector_run.append(compare_vector)
+            models -= 1
 
-        models -= 1
+        print(f"sigma_w_i = {sum(sigma_w_i)}")
+        print(
+            f"E[compare] = {sum([sigma_w_i[i] * sum(compare_vector_run[i]) for i in range(values)])}"
+        )
 
-    print(f"sigma_w_i = {sum(sigma_w_i)}")
-    print(
-        f"E[compare] = {sum([sigma_w_i[i] * sum(compare_vector_run[i]) for i in range(model_count - 1)])}"
-    )
+        runs_w_i.append(sum(sigma_w_i))
+        expvalues.append(sum([sigma_w_i[i] * sum(compare_vector_run[i])
+                              for i in range(values)]))
+
+        compare_vector_run = []
+        sigma_w_i = []
+
+    print(runs_w_i)
+    print(expvalues)

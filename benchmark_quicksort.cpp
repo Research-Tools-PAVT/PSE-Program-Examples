@@ -20,20 +20,29 @@
  * E[count] = n * log(n) for any given random run. 
  */
 
-#define SIZE 3
+#define SIZE 4
 int count = 0, counter = 0, swap_count = 0;
 
-void swap(int &a, int &b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-}
+// void swap(int &a, int &b)
+// {
+//     int temp = a;
+//     a = b;
+//     b = temp;
+// }
 
 int partition(int arr[], int left, int right)
 {
     // pivot element
     int pivot, r, i = left - 1;
+
+    int beta[SIZE];
+    klee_make_symbolic(beta, sizeof(beta), "beta_sym");
+
+    srand(time(NULL));
+    int random = left + rand() % abs(right - left);
+
+    beta[right] = arr[random];
+    swap_count += 1;
 
     /**
      * @brief We need to extract count as a 
@@ -65,10 +74,8 @@ int partition(int arr[], int left, int right)
     pivot_symbolic += "_sym";
     klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
 
-    r = right;
-    pivot = arr[right];
-
-    klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
+    klee_assume(pivot == beta[right]);
+    klee_assume(r == right);
 
     for (int j = left; j <= right - 1; j++)
     {
@@ -81,14 +88,18 @@ int partition(int arr[], int left, int right)
          * E[count] ~ n * log(n) ;
          */
 
-        (arr[j] <= pivot) ? swap_count += 1 : swap_count += 0;
-        (j + 1 <= r) ? count += 1 : count += 0;
+        count += 1;
+
         // COMMENT : Fork Location.
-        (arr[j] <= pivot) ? swap(arr[++i], arr[j]) : void(1);
+        if (arr[j] <= pivot)
+        {
+            klee_assume(beta[++i] == arr[j]);
+            swap_count += 1;
+        }
     }
 
+    beta[i + 1] = arr[right];
     swap_count += 1;
-    swap(arr[i + 1], arr[right]);
 
     klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
     klee_dump_symbolic_details(&count, c_symbolic.c_str());
@@ -96,23 +107,6 @@ int partition(int arr[], int left, int right)
     klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
 
     return (i + 1);
-}
-
-int partition_random(int arr[], int left, int right)
-{
-    /**
-     * @brief Construct a new srand object
-     * for random. Choose pivot and 
-     * continue to partition sub-routine.
-     */
-
-    srand(time(NULL));
-    int random = left + rand() % abs(right - left);
-
-    // Just a choice? Hoare Partition Scheme?
-    swap(arr[random], arr[right]);
-    swap_count += 1;
-    return partition(arr, left, right);
 }
 
 void quicksort_arr(int arr[], int left, int right)
@@ -124,7 +118,7 @@ void quicksort_arr(int arr[], int left, int right)
          * array with pivot placed in the correct position.
          */
         // COMMENT : Symbolic Expression for pivot.
-        int pivot = partition_random(arr, left, right);
+        int pivot = partition(arr, left, right);
         quicksort_arr(arr, left, pivot - 1);
         quicksort_arr(arr, pivot + 1, right);
     }
@@ -137,7 +131,7 @@ int main()
     srand(time(NULL));
 
     int arr[SIZE];
-    klee_make_symbolic(arr, sizeof(arr), "arr_symbolic");
+    klee_make_symbolic(arr, sizeof(arr), "alpha_sym");
 
     // for (auto i = 0; i < SIZE; i++)
     //     arr[i] = concrete[i];

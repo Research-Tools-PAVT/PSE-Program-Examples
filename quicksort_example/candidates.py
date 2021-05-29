@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import z3
+import time
 import os
 import sys
+import random
+import math
 import json
-import time
-from alive_progress import alive_bar
+import z3
 
-# from scipy.stats import bernoulli
-
-# https://z3prover.github.io/api/html/classz3py_1_1_rat_num_ref.html#a1012d6314d35530c58f9c018269ec867
+pivot_vector_choices = []
+prob_vector = []
 
 
 def num(r):
@@ -41,146 +41,176 @@ def get_value(r):
         return num(r)
 
 
-"""
-Below are a list of constraints that dictate which
-path is taken during actual program execution.
-We process KLEE constraints and simplify them to get these
-constraints.
-"""
-
-# pwd = os.path.dirname(__file__)
-# if not os.path.isdir(os.path.join(pwd, "inputs")):
-#     os.mkdir(os.path.join(pwd, "inputs"))
-
-# inputFilePath = os.path.join(pwd, "inputs")
-
-z3.set_option(
-    precision=10,
-    rational_to_decimal=True,
-    max_args=10000000,
-    max_lines=10000000,
-    max_depth=10000000,
-    max_visited=10000000,
-)
-
-z3.set_param("smt.random_seed", int(time.time()))
+def swap(arr, x1, x2):
+    arr[x1], arr[x2] = arr[x2], arr[x1]
+    return arr
 
 
-def genConstraintsOverRange(model, pivot_trace, arr, start, end):
+def find_index_pivot(arr, elem):
+    for index, item in enumerate(arr):
+        if elem == item:
+            return index
 
-    z3.set_param("smt.random_seed", int(time.time()))
 
-    solver = z3.Solver()
+def partition_quicksort(
+    solver, arr, temp_arr, start, end, pivot_vector, compare_vector
+):
 
-    for i in range(len(arr)):
-        solver.add(arr[i] == model[arr[i]])
+    compare = 0
+    range_iter = (end - start) + 1
+    prob_value = 1 / range_iter
+
+    prob_vector.append(prob_value)
 
     pivot = z3.Int("pivot")
-    pivot_index = z3.Int("pivot_index")
+    solver.add(z3.Or([pivot == temp_arr[i + start]
+               for i in range(range_iter)]))
 
-    left_sum = z3.Int("left_sum")
-    right_sum = z3.Int("right_sum")
+    if len(pivot_vector_choices) >= 1:
+        pivot_choices = pivot_vector_choices[-1]
+        solver.add(
+            z3.Or([pivot != pivot_choices[i]
+                  for i in range(len(pivot_choices))])
+        )
 
-    k = end - start
-    left_count = [z3.Int(f"left_{i}") for i in range(len(arr))]
-    right_count = [z3.Int(f"right_{i}") for i in range(len(arr))]
-    pivot_select = z3.Or([pivot == arr[start + i] for i in range(k)])
+    solver.check()
+    model = solver.model()
+    index_pivot = find_index_pivot(temp_arr, get_value(model[pivot]))
 
-    for i in range(k):
-        solver.add(z3.If(arr[i + start] < pivot, left_count[i]
-                   == 1, left_count[i] == 0))
-        solver.add(z3.If(arr[i + start] >= pivot, right_count[i]
-                   == 1, right_count[i] == 0))
+    # index_pivot = random.randint(start, end)
+    temp_arr = swap(temp_arr, index_pivot, end)
 
-    solver.add(left_sum == z3.Sum(left_count))
-    solver.add(right_sum == z3.Sum(right_count))
+    i = start - 1
+    pivot_value = temp_arr[end]
 
-    solver.add(pivot_select)
-    solver.add(pivot_index == left_sum + 1)
-    # solver.add(left_sum == right_sum)
+    j = start
+    iterator = 0
+    while j <= end - 1:
+        compare += 1
+        if temp_arr[j] <= pivot_value:
+            i += 1
+            temp_arr = swap(temp_arr, i, j)
+        j += 1
+        iterator += 1
 
-    print(solver.check())
-    mode_new = solver.model()
+    temp_arr = swap(temp_arr, i + 1, end)
+    ypvot = i + 1
 
-    print(f"Arr : {[mode_new[arr[start + i]] for i in range(k)]}")
-    print(f"Pivot Index: {mode_new[pivot_index]}")
-    print(f"Pivot : {mode_new[pivot]}")
-    print(f"Left : {mode_new[left_sum]}")
-    print(f"Right : {mode_new[right_sum]}")
-    return mode_new[pivot_index]
+    pivot_choice = index_pivot
+
+    pivot_vector.append(pivot_choice)
+    compare_vector.append(compare)
+
+    return ypvot
 
 
-def generateCandidates(k=20):
-    optpath = z3.Optimize()
-    # COMMENT : Supply the timeout in minute value.
-    # optpath.set("timeout", 60000 * int(sys.argv[4]))
+def quicksort_z3(solver, arr, temp_arr, start, end, pivot_vector, compare_vector):
+    if start < end:
+        solver.push()
+        pivot_index_sort = partition_quicksort(
+            solver, arr, temp_arr, start, end, pivot_vector, compare_vector
+        )
+        solver.pop()
+        # print(f"Start: {start}, End: {end}, Pivot Index: {pivot_index_sort}")
+        quicksort_z3(
+            solver,
+            arr,
+            temp_arr,
+            start,
+            pivot_index_sort - 1,
+            pivot_vector,
+            compare_vector,
+        )
+        quicksort_z3(
+            solver,
+            arr,
+            temp_arr,
+            pivot_index_sort + 1,
+            end,
+            pivot_vector,
+            compare_vector,
+        )
+
+
+def run_sort_concrete(solver, arr):
+    pivot_vector = []
+    compare_vector = []
+
+    solver.push()
     z3.set_param("smt.random_seed", int(time.time()))
 
-    pivot = z3.Int("pivot")
-    pivot_index = z3.Int("pivot_index")
-    pivot_trace = [z3.Int(f"pvot_{i}") for i in range(k)]
-    left_sum = z3.Int("left_sum")
-    right_sum = z3.Int("right_sum")
+    # solver.add(arr[0] == 4)
+    # solver.add(arr[1] == 12)
+    # solver.add(arr[2] == 5)
+    # solver.add(arr[3] == 11)
+    # solver.add(arr[4] == 16)
+    # solver.add(arr[5] == 3)
+    # solver.add(arr[6] == 0)
+    # solver.add(arr[7] == 5)
+    # solver.add(arr[8] == 18)
+    # solver.add(arr[9] == 1)
 
-    left_count = [z3.Int(f"left_{i}") for i in range(k)]
-    right_count = [z3.Int(f"right_{i}") for i in range(k)]
+    # range_constraint = [z3.And(arr[i] > 1, arr[i] < 1000000)
+    #                     for i in range(forall_elems)]
 
-    arr = [z3.Int(f"arr_{i}") for i in range(k)]
-    pivot_select = z3.Or([pivot == arr[i] for i in range(k)])
-    range_constraint = [z3.And(arr[i] > 0, arr[i] < 100000) for i in range(k)]
+    # solver.add(range_constraint)
+    solver.add(z3.Distinct(arr))
 
-    optpath.add(z3.Distinct(arr))
-    optpath.add(pivot_select)
-    optpath.add(range_constraint)
+    solver.check()
+    init_model = solver.model()
+    temp_arr = [get_value(init_model[arr[i]]) for i in range(len(arr))]
+    solver.pop()
 
-    for i in range(k):
-        optpath.add(z3.If(arr[i] < pivot, left_count[i]
-                    == 1, left_count[i] == 0))
-        optpath.add(z3.If(arr[i] >= pivot, right_count[i]
-                    == 1, right_count[i] == 0))
-        optpath.add(
-            z3.If(pivot_index == i, pivot_trace[i] == 1, pivot_trace[i] == 0))
+    quicksort_z3(solver, arr, temp_arr, 0, len(
+        arr) - 1, pivot_vector, compare_vector)
 
-    optpath.add(left_sum == z3.Sum(left_count))
-    optpath.add(right_sum == z3.Sum(right_count))
+    # print(temp_arr)
+    return temp_arr, pivot_vector, compare_vector
 
-    optpath.add(pivot_index == left_sum + 1)
 
-    optpath.add(left_sum == right_sum)
+model_count = 1000
+forall_elems = 10
+expvalues = []
+runs_w_i = []
 
-    print(optpath.check())
-    m = optpath.model()
+compare_vector_run = []
+sigma_w_i = []
 
-    print(f"Arr : {[m[arr[i]] for i in range(k)]}")
-    print(f"Pivot : {m[pivot_index]}")
-
-    index = get_value(m[pivot_index])
-
-    # for elem in model_dict.items():
-    #     print(elem)
-
-    # with open(sys.argv[5], mode="w") as file:
-    #     json.dump(model_dict, file, indent=2)
-
-    genConstraintsOverRange(m, pivot_trace, arr,
-                            0, index)
-
-    genConstraintsOverRange(m, pivot_trace, arr,
-                            index, len(arr))
-
-    genConstraintsOverRange(m, pivot_trace, arr,
-                            0, round(index/2))
-
-    genConstraintsOverRange(m, pivot_trace, arr,
-                            round(index/2), index)
-
-    genConstraintsOverRange(m, pivot_trace, arr,
-                            index, index + round(index/2))
-
-    genConstraintsOverRange(m, pivot_trace, arr,
-                            index + round(index/2), len(arr))
-
+model_count_values = [100, 500, 1000, 2000, 3000, 4000, 5000,
+                      6000, 7000, 8000, 9000, 10000, 11000, 12000, 13500, 15000]
 
 if __name__ == "__main__":
-    # k : models needed in sum term, n : iterations (n-coin flips), prob : probability value.
-    generateCandidates()
+
+    z3.set_param("smt.random_seed", int(time.time()))
+    solver = z3.Solver()
+    arr = [z3.Int(f"arr_{i}") for i in range(forall_elems)]
+
+    for values in model_count_values:
+        models = values
+        while models > 0:
+            temp_arr, pivot_vector, compare_vector = run_sort_concrete(
+                solver, arr)
+
+            w_i = math.prod(prob_vector)
+            sigma_w_i.append(w_i)
+
+            prob_vector = []
+            pivot_vector_choices.append(pivot_vector)
+            compare_vector_run.append(compare_vector)
+
+            models -= 1
+
+        print(f"sigma_w_i = {sum(sigma_w_i)}")
+        print(
+            f"E[compare] = {sum([sigma_w_i[i] * sum(compare_vector_run[i]) for i in range(values)])}"
+        )
+
+        runs_w_i.append(sum(sigma_w_i))
+        expvalues.append(sum([sigma_w_i[i] * sum(compare_vector_run[i])
+                              for i in range(values)]))
+
+        compare_vector_run = []
+        sigma_w_i = []
+
+    print(runs_w_i)
+    print(expvalues)

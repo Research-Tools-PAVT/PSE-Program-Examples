@@ -8,27 +8,20 @@
 
 /**
  * @brief Initial Specs
- * Create an array of static size, say 5 elements. 
- * The elements of the array will be forall symbolic variables. 
+ * Create an array of static size, say 5 elements.
+ * The elements of the array will be forall symbolic variables.
  * The pivot will be a probabilistic symbolic variable.
- * 
- * Must not branch on the SWAP operation after PIVOT selection. 
+ *
+ * Must not branch on the SWAP operation after PIVOT selection.
  * Convert to ITEs.
- * 
+ *
  * analyze the expected number of comparisons in Randomized Quicksort
  * optimize on getting the maximum expected number of comparisons
- * E[count] = n * log(n) for any given random run. 
+ * E[count] = n * log(n) for any given random run.
  */
 
-#define SIZE 4
+#define SIZE 5
 int count = 0, counter = 0, swap_count = 0;
-
-// void swap(int &a, int &b)
-// {
-//     int temp = a;
-//     a = b;
-//     b = temp;
-// }
 
 int partition(int arr[], int left, int right)
 {
@@ -38,6 +31,9 @@ int partition(int arr[], int left, int right)
     int beta[SIZE];
     klee_make_symbolic(beta, sizeof(beta), "beta_sym");
 
+    int gamma[SIZE];
+    klee_make_symbolic(gamma, sizeof(gamma), "gamma_sym");
+
     srand(time(NULL));
     int random = left + rand() % abs(right - left);
 
@@ -45,7 +41,7 @@ int partition(int arr[], int left, int right)
     swap_count += 1;
 
     /**
-     * @brief We need to extract count as a 
+     * @brief We need to extract count as a
      * symbolic expression in the comparision.
      */
 
@@ -80,10 +76,10 @@ int partition(int arr[], int left, int right)
     for (int j = left; j <= right - 1; j++)
     {
         /**
-         * @brief 
+         * @brief
          * When we compare with the pivot
-         * we need to increase the count so 
-         * that the expression matches the 
+         * we need to increase the count so
+         * that the expression matches the
          * E[comparisions] for later computation.
          * E[count] ~ n * log(n) ;
          */
@@ -95,6 +91,9 @@ int partition(int arr[], int left, int right)
         {
             klee_assume(beta[++i] == arr[j]);
             swap_count += 1;
+        } else {
+            klee_assume(gamma[j] == arr[j]);
+            swap_count += 0;
         }
     }
 

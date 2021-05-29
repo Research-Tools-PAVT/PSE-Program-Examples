@@ -1,4 +1,5 @@
-clang++ -I $HOME/klee/include -c -emit-llvm -std=c++17 -g -O0 -Xclang -disable-O0-optnone $1.cpp
+export RUNFILE=$1.cpp
+clang++-10 -I $HOME/klee/include -c -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone $1.cpp
 klee --libc=klee --exit-on-error --optimize --disable-inlining --search=nurs:depth --use-cex-cache --write-kqueries $1.bc --set-ptree-dump 
 
 ktest-tool klee-last/test000001.ktest

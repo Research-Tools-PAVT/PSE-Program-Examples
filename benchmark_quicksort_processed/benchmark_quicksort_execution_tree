@@ -6,10 +6,10 @@ digraph ExecutionTree {
 (Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 0 alpha_sym)))" color=red]
-	2 -> 14 [label="(Slt
+	2 -> 18 [label="(Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 4 alpha_sym))" color=green]
-	2 -> 15 [label="(Eq false
+	2 -> 19 [label="(Eq false
 (Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 4 alpha_sym)))" color=red]
@@ -34,31 +34,45 @@ digraph ExecutionTree {
 (Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 12 alpha_sym)))" color=red]
-	6 -> 10 [label="(Slt
+	6 -> 14 [label="(Slt
 (ReadLSB w32 0 pivot_1_sym)
 (ReadLSB w32 4 alpha_sym))" color=green]
-	6 -> 11 [label="(Eq false
+	6 -> 15 [label="(Eq false
 (Slt
 (ReadLSB w32 0 pivot_1_sym)
 (ReadLSB w32 4 alpha_sym)))" color=red]
-	7 -> 12 [label="(Slt
+	7 -> 10 [label="(Slt
+(ReadLSB w32 0 pivot_1_sym)
+(ReadLSB w32 0 alpha_sym))" color=green]
+	7 -> 11 [label="(Eq false
+(Slt
+(ReadLSB w32 0 pivot_1_sym)
+(ReadLSB w32 0 alpha_sym)))" color=red]
+	11 -> 12 [label="(Slt
+(ReadLSB w32 0 pivot_1_sym)
+(ReadLSB w32 8 alpha_sym))" color=green]
+	11 -> 13 [label="(Eq false
+(Slt
+(ReadLSB w32 0 pivot_1_sym)
+(ReadLSB w32 8 alpha_sym)))" color=red]
+	13 -> 16 [label="(Slt
 (ReadLSB w32 0 pivot_2_sym)
 (ReadLSB w32 4 alpha_sym))" color=green]
-	7 -> 13 [label="(Eq false
+	13 -> 17 [label="(Eq false
 (Slt
 (ReadLSB w32 0 pivot_2_sym)
 (ReadLSB w32 4 alpha_sym)))" color=red]
-	14 -> 18 [label="(Slt
+	18 -> 22 [label="(Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 12 alpha_sym))" color=green]
-	14 -> 19 [label="(Eq false
+	18 -> 23 [label="(Eq false
 (Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 12 alpha_sym)))" color=red]
-	15 -> 16 [label="(Slt
+	19 -> 20 [label="(Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 12 alpha_sym))" color=green]
-	15 -> 17 [label="(Eq false
+	19 -> 21 [label="(Eq false
 (Slt
 (ReadLSB w32 0 pivot_0_sym)
 (ReadLSB w32 12 alpha_sym)))" color=red]

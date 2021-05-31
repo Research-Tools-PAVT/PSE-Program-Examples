@@ -50,41 +50,46 @@ def find_index_pivot(arr, elem):
 
 
 def quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, left_counter, start, end, takeNextPivot):
+                pivot_vector, left_counter, start, end, nextPivot):
 
-    if takeNextPivot >= arr_size:
+    if start >= end or nextPivot > arr_size - 1:
         return
 
-    print(f"quicksort{start, end}, {takeNextPivot}")
+    print(f"quicksort{start, end}, {nextPivot}")
 
-    optimizer.add(z3.Or([pivot_vector[takeNextPivot] == arr[i]
-                         for i in range(arr_size)]))
+    pivot_sum = z3.Int('pivot_sum')
+
+    optimizer.add(z3.Or([pivot_vector[nextPivot] == arr[i + start]
+                         for i in range(end - start)]))
 
     i = start
     while(i <= end):
         optimizer.add(
-            z3.If(arr[i] <= pivot_vector[takeNextPivot], left_counter[takeNextPivot][i] == 1, left_counter[takeNextPivot][i] == 0))
+            z3.If(arr[i] <= pivot_vector[nextPivot],
+                  left_counter[nextPivot][i] == 1,
+                  left_counter[nextPivot][i] == 0))
         i += 1
 
-    takeNextPivot += 1
+    optimizer.add(pivot_sum == z3.Sum(left_counter[nextPivot]))
+
+    optimizer.check()
+    model = optimizer.model()
+
+    optimizer.add([arr[i] == model[arr[i]] for i in range(arr_size)])
+    index = get_value(model[pivot_sum])
+
+    nextPivot += 1
 
     quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, left_counter, start, end - takeNextPivot, takeNextPivot)
+                pivot_vector, left_counter, start, index - 1, nextPivot)
 
-    # optimizer.add(pvot_point == z3.Sum(pivot_counter))
+    nextPivot += 1
 
-    # takeNextPivot += 1
-    # quickSortZ3(optimizer, arr, arr_size, pivot_vector,
-    #             left_counter, right_counter, start, pvot_point - 1,
-    #             takeNextPivot)
-
-    # takeNextPivot += 1
-    # quickSortZ3(optimizer, arr, arr_size, pivot_vector,
-    #             left_counter, right_counter, pvot_point + 1, end,
-    #             takeNextPivot)
+    quickSortZ3(optimizer, arr, arr_size,
+                pivot_vector, left_counter, index + 1, end, nextPivot)
 
 
-def generateRandomRuns(models=50, arr_size=10):
+def generateRandomRuns(models, arr_size):
     z3.set_param("smt.random_seed", int(time.time()))
     optimizer = z3.Optimize()
 
@@ -98,10 +103,10 @@ def generateRandomRuns(models=50, arr_size=10):
     left_counters = [[[z3.Int(f'left_{k}_{i}_{j}')
                       for k in range(arr_size)] for i in range(arr_size)] for j in range(models)]
 
-    # for k in range(models):
-    #     for i in range(arr_size):
-    #         optimizer.add(
-    #             z3.And(pivot_vectors[k][i] >= 0, pivot_vectors[k][i] <= arr_size - 1))
+    for k in range(models):
+        for j in range(arr_size):
+            for i in range(arr_size):
+                optimizer.add_soft(left_counters[k][i][j] == 0)
 
     for i in range(models):
         for j in range(models):
@@ -125,6 +130,7 @@ def generateRandomRuns(models=50, arr_size=10):
 
     optimizer.check()
     model_found = optimizer.model()
+    # print(model_found)
 
     print(f"Arr : {[model_found[arr[i]] for i in range(arr_size)]}")
 
@@ -146,4 +152,11 @@ if __name__ == "__main__":
         max_visited=10000000,
     )
     z3.set_param("smt.random_seed", int(time.time()))
-    generateRandomRuns()
+
+    if len(sys.argv) >= 3:
+        models_parameter = sys.argv[1]
+        arr_size_parameter = sys.argv[2]
+        generateRandomRuns(models=int(models_parameter),
+                           arr_size=int(arr_size_parameter))
+    else:
+        generateRandomRuns(models=3, arr_size=5)

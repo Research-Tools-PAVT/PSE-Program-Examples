@@ -50,63 +50,47 @@ def find_index_pivot(arr, elem):
 
 
 def quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, left_counter, start, end, nextPivot):
+                pivot_vector, start, end, nextPivot):
 
-    if start >= end or nextPivot > arr_size - 1:
-        return
+    if nextPivot < arr_size - 1:
+        nextPivot += 1
 
-    print(f"quicksort{start, end}, {nextPivot}")
+        print(f"quicksort{start, end}, {nextPivot}")
 
-    pivot_sum = z3.Int('pivot_sum')
+        pivot_sum = z3.Int(f'pivot_sum_{nextPivot}')
+        left_counter = z3.Array(
+            f'left_counter_{nextPivot}', z3.IntSort(), z3.IntSort())
 
-    optimizer.add(z3.Or([pivot_vector[nextPivot] == arr[i + start]
-                         for i in range(end - start)]))
+        x = z3.Int(f'x_{nextPivot}')
+        i = z3.Int(f'i_{nextPivot}')
 
-    i = start
-    while(i <= end):
-        optimizer.add(
-            z3.If(arr[i] <= pivot_vector[nextPivot],
-                  left_counter[nextPivot][i] == 1,
-                  left_counter[nextPivot][i] == 0))
-        i += 1
+        optimizer.add(z3.Exists([x], pivot_vector[nextPivot] == arr[x]))
+        optimizer.add(z3.And(x >= start, x <= end))
 
-    optimizer.add(pivot_sum == z3.Sum(left_counter[nextPivot]))
+        optimizer.add(z3.And(i >= start, i <= end))
+        optimizer.add(z3.ForAll([i], z3.If(arr[i] <= pivot_vector[nextPivot],
+                                           left_counter[i] == 1,
+                                           left_counter[i] == 0)))
 
-    optimizer.check()
-    model = optimizer.model()
+        optimizer.add(pivot_sum == z3.Sum(left_counter[nextPivot]))
 
-    optimizer.add([arr[i] == model[arr[i]] for i in range(arr_size)])
-    index = get_value(model[pivot_sum])
+        quickSortZ3(optimizer, arr, arr_size,
+                    pivot_vector, start, pivot_sum - 1, nextPivot)
 
-    nextPivot += 1
-
-    quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, left_counter, start, index - 1, nextPivot)
-
-    nextPivot += 1
-
-    quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, left_counter, index + 1, end, nextPivot)
+        quickSortZ3(optimizer, arr, arr_size,
+                    pivot_vector, pivot_sum + 1, end, nextPivot)
 
 
 def generateRandomRuns(models, arr_size):
     z3.set_param("smt.random_seed", int(time.time()))
-    optimizer = z3.Optimize()
+    optimizer = z3.Solver()
 
-    arr = [z3.Int(f'arr_{i}') for i in range(arr_size)]
-    optimizer.add(z3.And([arr[i] > 1 for i in range(arr_size)]))
-    optimizer.add(z3.Distinct(arr))
+    y = z3.Int('y')
+    arr = z3.Array('arr', z3.IntSort(), z3.IntSort())
+    optimizer.add(z3.ForAll([y], z3.And(arr[y] > 0, arr[y] < 25000)))
 
-    pivot_vectors = [[z3.Int(f'pvot_{i}_{j}')
+    pivot_vectors = [[z3.Int(f'pvot_{j}_{i}')
                       for i in range(arr_size)] for j in range(models)]
-
-    left_counters = [[[z3.Int(f'left_{k}_{i}_{j}')
-                      for k in range(arr_size)] for i in range(arr_size)] for j in range(models)]
-
-    for k in range(models):
-        for j in range(arr_size):
-            for i in range(arr_size):
-                optimizer.add_soft(left_counters[k][i][j] == 0)
 
     for i in range(models):
         for j in range(models):
@@ -125,21 +109,14 @@ def generateRandomRuns(models, arr_size):
                 break
 
     for k in range(models):
+        print(f"\t\tCandidate : {k}")
         quickSortZ3(optimizer, arr, arr_size,
-                    pivot_vectors[k], left_counters[k], 0, arr_size - 1, 0)
+                    pivot_vectors[k], 0, arr_size - 1, -1)
 
-    optimizer.check()
-    model_found = optimizer.model()
+    print(optimizer.assertions())
+    print(optimizer.check())
+    # model_found = optimizer.model()
     # print(model_found)
-
-    print(f"Arr : {[model_found[arr[i]] for i in range(arr_size)]}")
-
-    for k in range(models):
-        print(
-            f"PVOT_{k} : {[model_found[pivot_vectors[k][i]] for i in range(arr_size)]}")
-        for j in range(arr_size):
-            print(
-                f"\tLEFT_{k} : {[model_found[left_counters[k][j][i]] for i in range(arr_size)]}")
 
 
 if __name__ == "__main__":

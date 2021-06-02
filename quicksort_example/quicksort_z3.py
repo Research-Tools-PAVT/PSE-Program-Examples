@@ -9,6 +9,8 @@ import math
 import json
 import z3
 
+recusion_depth = 1
+
 
 def num(r):
     """
@@ -52,33 +54,51 @@ def find_index_pivot(arr, elem):
 def quickSortZ3(optimizer, arr, arr_size,
                 pivot_vector, start, end, nextPivot):
 
-    if nextPivot < arr_size - 1:
-        nextPivot += 1
+    if nextPivot >= arr_size - 1:
+        return
 
-        print(f"quicksort{start, end}, {nextPivot}")
+    print(f"quicksort{start, end}, {nextPivot}")
+    nextPivot += 1
 
-        pivot_sum = z3.Int(f'pivot_sum_{nextPivot}')
-        left_counter = z3.Array(
-            f'left_counter_{nextPivot}', z3.IntSort(), z3.IntSort())
+    optimizer.add(start >= end)
 
-        x = z3.Int(f'x_{nextPivot}')
-        i = z3.Int(f'i_{nextPivot}')
+    z = z3.Int(f'z_{nextPivot}')
+    x = z3.Int(f'x_{nextPivot}')
 
-        optimizer.add(z3.Exists([x], pivot_vector[nextPivot] == arr[x]))
-        optimizer.add(z3.And(x >= start, x <= end))
+    # x = random.randint(start, end)
 
-        optimizer.add(z3.And(i >= start, i <= end))
-        optimizer.add(z3.ForAll([i], z3.If(arr[i] <= pivot_vector[nextPivot],
-                                           left_counter[i] == 1,
-                                           left_counter[i] == 0)))
+    optimizer.add(z3.And(x >= start, x <= end))
+    optimizer.add(z3.Exists([x], pivot_vector[nextPivot] == arr[x]))
 
-        optimizer.add(pivot_sum == z3.Sum(left_counter[nextPivot]))
+    # pivot_sum = z3.Int(f"pivot_sum_{nextPivot}")
+    # i = z3.Int(f'i_{nextPivot}')
+    # s = z3.Int(f's_{nextPivot}')
 
-        quickSortZ3(optimizer, arr, arr_size,
-                    pivot_vector, start, pivot_sum - 1, nextPivot)
+    # UFsumfunction = z3.Function(
+    #     f'sum_function', z3.IntSort(), z3.IntSort())
 
-        quickSortZ3(optimizer, arr, arr_size,
-                    pivot_vector, pivot_sum + 1, end, nextPivot)
+    # left_counter = z3.Array(
+    #     f'left_counter_{nextPivot}', z3.IntSort(), z3.IntSort())
+
+    # optimizer.add(z3.And(s >= start, s <= end))
+    # optimizer.add(z3.ForAll([s], z3.And(
+    #     left_counter[s] >= 0, left_counter[s] <= 1)))
+
+    # optimizer.add(z3.And(i >= start, i <= end))
+    # optimizer.add(z3.ForAll([i], z3.If(arr[i] <= pivot_vector[nextPivot],
+    #                                    left_counter[i] == 1,
+    #                                    left_counter[i] == 0)))
+
+    # optimizer.add(z3.And(z >= start, z <= end))
+    # optimizer.add(z3.ForAll([z], z3.If(z <= x,
+    #                                    arr[z] <= pivot_vector[nextPivot],
+    #                                    arr[z] > pivot_vector[nextPivot])))
+
+    quickSortZ3(optimizer, arr, arr_size,
+                pivot_vector, start, x - 1, nextPivot)
+
+    quickSortZ3(optimizer, arr, arr_size,
+                pivot_vector, x + 1, end, nextPivot)
 
 
 def generateRandomRuns(models, arr_size):
@@ -87,7 +107,7 @@ def generateRandomRuns(models, arr_size):
 
     y = z3.Int('y')
     arr = z3.Array('arr', z3.IntSort(), z3.IntSort())
-    optimizer.add(z3.ForAll([y], z3.And(arr[y] > 0, arr[y] < 25000)))
+    optimizer.add(z3.ForAll([y], z3.And(arr[y] > 0, arr[y] < 10000000)))
 
     pivot_vectors = [[z3.Int(f'pvot_{j}_{i}')
                       for i in range(arr_size)] for j in range(models)]
@@ -115,8 +135,10 @@ def generateRandomRuns(models, arr_size):
 
     print(optimizer.assertions())
     print(optimizer.check())
-    # model_found = optimizer.model()
-    # print(model_found)
+    model_found = optimizer.model()
+
+    for x in model_found.decls():
+        print(x, model_found[x])
 
 
 if __name__ == "__main__":

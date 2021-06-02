@@ -73,7 +73,7 @@ int partition(int arr[], int left, int right)
     klee_assume(pivot == beta[right]);
     klee_assume(r == right);
 
-    for (int j = left; j <= right - 1; j++)
+    for (int j = left; j <= right; j++)
     {
         /**
          * @brief
@@ -91,7 +91,9 @@ int partition(int arr[], int left, int right)
         {
             klee_assume(beta[++i] == arr[j]);
             swap_count += 1;
-        } else {
+        }
+        else
+        {
             klee_assume(gamma[j] == arr[j]);
             swap_count += 0;
         }
@@ -110,6 +112,7 @@ int partition(int arr[], int left, int right)
 
 void quicksort_arr(int arr[], int left, int right)
 {
+    /* one path */
     if (left < right)
     {
         /**
@@ -132,8 +135,8 @@ int main()
     int arr[SIZE];
     klee_make_symbolic(arr, sizeof(arr), "alpha_sym");
 
-    // for (auto i = 0; i < SIZE; i++)
-    //     arr[i] = concrete[i];
+    for (auto i = 0; i < SIZE; i++)
+        arr[i] = concrete[i];
 
     quicksort_arr(arr, 0, SIZE - 1);
 

@@ -1,0 +1,52 @@
+// RUN: %clangxx -I../../../include -g -DMAX_ELEMENTS=4 -fno-exceptions -emit-llvm -c -o %t1.bc %s
+// RUN: rm -rf %t.klee-out
+// RUN: %klee --output-dir=%t.klee-out --libc=klee --max-forks=25 --write-no-tests --exit-on-error --optimize --disable-inlining --search=nurs:depth --use-cex-cache %t1.bc
+
+#include "PSE.h"
+#include <assert.h>
+#include <random>
+
+#define SIZE 4
+
+int partition(int arr[], int left, int right)
+{
+    srand(time(NULL));
+
+    int random, pivot, outcome, left_count = 0, right_count = 0;
+
+    make_pse_symbolic(&random, sizeof(random), "random_prob_sym", (int)left, (int)right);
+    klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
+    klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
+    klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
+
+    // pivot element
+    pivot = arr[random];
+
+    for (int j = left; j <= right; j++)
+    {
+        // COMMENT : Fork Location.
+        arr[j] <= pivot
+            ? left_count++
+            : right_count++;
+    }
+
+    outcome = left_count < right_count ? right_count : left_count;
+    // klee_dump_symbolic_details(&left_count, "left_count_sym");
+    klee_dump_symbolic_details(&outcome, "outcome_sym");
+    return outcome;
+}
+
+int concrete[] = {2, 28, 95, 96, 47, 10, 12, 3, 36, 58};
+
+int main()
+{
+    int arr[SIZE];
+    klee_make_symbolic(arr, sizeof(arr), "forall_array");
+
+    for (auto i = 0; i < SIZE; i++)
+        arr[i] = concrete[i];
+
+    partition(arr, 0, SIZE - 1);
+
+    return 0;
+}

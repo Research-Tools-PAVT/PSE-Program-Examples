@@ -152,7 +152,7 @@ def collectRecursive(arr):
             elif index == 2:
                 key = "right"
             else:
-                key = f"left"
+                key = "left"
             if isinstance(elems, list):
                 ExprContainer.update({f"{key}": collectRecursive(elems)})
             else:
@@ -187,4 +187,11 @@ def findVars(expr):
 
 
 if __name__ == "__main__":
-    print("S-Expr Parser")
+    string = '''
+(Select w32 (Slt N0:(Add w32 5
+                              (ReadLSB w32 0 left_count_sym))
+                  N1:(Add w32 4
+                              (ReadLSB w32 0 right_count_sym)))
+             N1
+             N0)            '''
+    print(json.dumps(collectRecursive(loads(string)), indent=4, sort_keys=True))

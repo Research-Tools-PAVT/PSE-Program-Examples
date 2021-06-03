@@ -51,94 +51,53 @@ def find_index_pivot(arr, elem):
             return index
 
 
-def quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, start, end, nextPivot):
-
-    if nextPivot >= arr_size - 1:
-        return
-
-    print(f"quicksort{start, end}, {nextPivot}")
-    nextPivot += 1
-
-    optimizer.add(start >= end)
-
-    z = z3.Int(f'z_{nextPivot}')
-    x = z3.Int(f'x_{nextPivot}')
-
-    # x = random.randint(start, end)
-
-    optimizer.add(z3.And(x >= start, x <= end))
-    optimizer.add(z3.Exists([x], pivot_vector[nextPivot] == arr[x]))
-
-    # pivot_sum = z3.Int(f"pivot_sum_{nextPivot}")
-    # i = z3.Int(f'i_{nextPivot}')
-    # s = z3.Int(f's_{nextPivot}')
-
-    # UFsumfunction = z3.Function(
-    #     f'sum_function', z3.IntSort(), z3.IntSort())
-
-    # left_counter = z3.Array(
-    #     f'left_counter_{nextPivot}', z3.IntSort(), z3.IntSort())
-
-    # optimizer.add(z3.And(s >= start, s <= end))
-    # optimizer.add(z3.ForAll([s], z3.And(
-    #     left_counter[s] >= 0, left_counter[s] <= 1)))
-
-    # optimizer.add(z3.And(i >= start, i <= end))
-    # optimizer.add(z3.ForAll([i], z3.If(arr[i] <= pivot_vector[nextPivot],
-    #                                    left_counter[i] == 1,
-    #                                    left_counter[i] == 0)))
-
-    # optimizer.add(z3.And(z >= start, z <= end))
-    # optimizer.add(z3.ForAll([z], z3.If(z <= x,
-    #                                    arr[z] <= pivot_vector[nextPivot],
-    #                                    arr[z] > pivot_vector[nextPivot])))
-
-    quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, start, x - 1, nextPivot)
-
-    quickSortZ3(optimizer, arr, arr_size,
-                pivot_vector, x + 1, end, nextPivot)
-
-
 def generateRandomRuns(models, arr_size):
     z3.set_param("smt.random_seed", int(time.time()))
     optimizer = z3.Solver()
 
     y = z3.Int('y')
     arr = z3.Array('arr', z3.IntSort(), z3.IntSort())
+
+    optimizer.add(z3.And(y >= 0, y <= arr_size))
     optimizer.add(z3.ForAll([y], z3.And(arr[y] > 0, arr[y] < 10000000)))
 
-    pivot_vectors = [[z3.Int(f'pvot_{j}_{i}')
-                      for i in range(arr_size)] for j in range(models)]
+    pivot_vector = [z3.Int(f'pvot_{i}')
+                    for i in range(arr_size)]
 
-    for i in range(models):
-        for j in range(models):
-            if i > j:
-                optimizer.add(
-                    z3.Not(
-                        z3.And(
-                            [
-                                (pivot_vectors[i][k] == pivot_vectors[j][k])
-                                for k in range(arr_size)
-                            ]
-                        )
-                    )
-                )
-            else:
-                break
+    # sum_array = [z3.Int(f'sums_{i}')
+    #              for i in range(arr_size)]
 
-    for k in range(models):
-        print(f"\t\tCandidate : {k}")
-        quickSortZ3(optimizer, arr, arr_size,
-                    pivot_vectors[k], 0, arr_size - 1, -1)
+    left_counter = [[z3.Int(f'leftcounts_{i}_{j}')
+                    for i in range(arr_size)] for j in range(arr_size)]
 
-    print(optimizer.assertions())
+    optimizer.add(z3.Distinct(pivot_vector))
+
+    for k in range(arr_size):
+        x = z3.Int(f'x_sym_{k}')
+        outcome = z3.Int(f'outcome_{k}')
+        sums = z3.Int(f'left_sums_{k}')
+
+        optimizer.add(z3.And(x >= k, x <= arr_size))
+        optimizer.add(z3.Exists([x], pivot_vector[k] == arr[x]))
+
+        for i in range(arr_size):
+            optimizer.add(z3.If(arr[i] <= pivot_vector[k],
+                                left_counter[k][i] == 1,
+                                left_counter[k][i] == 0))
+
+        optimizer.add(z3.If(sums > arr_size - x, outcome ==
+                            sums, outcome == arr_size - x))
+
+        optimizer.add(sums == z3.Sum(left_counter[k]))
+
+    # print(optimizer.assertions())
     print(optimizer.check())
     model_found = optimizer.model()
 
-    for x in model_found.decls():
-        print(x, model_found[x])
+    print(model_found)
+
+    print(
+        f'pvot_vec = {[model_found[pivot_vector[i]] for i in range(arr_size)]}')
 
 
 if __name__ == "__main__":

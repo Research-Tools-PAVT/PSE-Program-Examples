@@ -61,12 +61,12 @@ with open(file.strip(), "r") as fileptr:
                     if "Query" in key.strip():
                         key_splits = [
                             " ".join(x.strip().split())
-                            for x in value.strip()[1 : len(value.strip()) - 1]
+                            for x in value.strip()[1: len(value.strip()) - 1]
                             .strip()
-                            .split("|")[0 : len(value.strip())]
+                            .split("|")[0: len(value.strip())]
                         ]
                         temp[key.strip()] = [
-                            x for x in key_splits[0 : len(key_splits) - 1]
+                            x for x in key_splits[0: len(key_splits) - 1]
                         ]
 
                     # Add the branch condition.
@@ -93,8 +93,10 @@ for elems in results:
             f"{aliasMap.get(current, current)}",
             ExecutionTreeNode(f"{aliasMap.get(current, current)}"),
         )
-        left = nodeMap.get(f"{generate_true}", ExecutionTreeNode(f"{generate_true}"))
-        right = nodeMap.get(f"{generate_false}", ExecutionTreeNode(f"{generate_false}"))
+        left = nodeMap.get(f"{generate_true}",
+                           ExecutionTreeNode(f"{generate_true}"))
+        right = nodeMap.get(f"{generate_false}",
+                            ExecutionTreeNode(f"{generate_false}"))
 
         # Make sure we reuse the Node IDs.
         nodeMap[aliasMap.get(current, current)] = node

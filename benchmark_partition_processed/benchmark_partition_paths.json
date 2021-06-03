@@ -1,0 +1,610 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "cabf23d9-2112-43c5-8ab8-e8116492f67f"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "93937770-ad2b-4d32-9712-19d8caf57194"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "521d385d-54da-436b-b9b4-59d6912f4957"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "93937770-ad2b-4d32-9712-19d8caf57194"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "da26a5b7-d623-45fc-a62a-18343a934188"
+            },
+            "predicate": "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "93937770-ad2b-4d32-9712-19d8caf57194"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "cabf23d9-2112-43c5-8ab8-e8116492f67f"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "dadc13d0-7234-4984-8cde-f7b72cc6fd28"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "521d385d-54da-436b-b9b4-59d6912f4957"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "dadc13d0-7234-4984-8cde-f7b72cc6fd28"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "5a98e954-066d-44eb-9bba-b6dcc3fbc2fe"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "dadc13d0-7234-4984-8cde-f7b72cc6fd28"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 3": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "cabf23d9-2112-43c5-8ab8-e8116492f67f"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "a4b7034f-6d0e-4035-93e4-5034046248f2"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "f89239eb-fdef-44c4-9d82-a17439e2d402"
+            },
+            "predicate": "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "a4b7034f-6d0e-4035-93e4-5034046248f2"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "uid": "70add54c-8072-4449-a1fe-0883b2b87196"
+            },
+            "predicate": "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "a4b7034f-6d0e-4035-93e4-5034046248f2"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 4": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "cabf23d9-2112-43c5-8ab8-e8116492f67f"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "b67918ca-cc23-4ff2-b51a-d188c2437732"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "f89239eb-fdef-44c4-9d82-a17439e2d402"
+            },
+            "predicate": "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "b67918ca-cc23-4ff2-b51a-d188c2437732"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "9",
+                "uid": "c87fd29d-e49b-46ee-b5b3-4c8599d4cb00"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "b67918ca-cc23-4ff2-b51a-d188c2437732"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 5": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "b928fc53-7448-416b-9354-321a62bafba3"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "6f25c1f6-b468-46ff-85fc-efc1995e5709"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "b3a8e2ee-142e-4c50-a8b1-0dee1e446881"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "6f25c1f6-b468-46ff-85fc-efc1995e5709"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "12",
+                "uid": "e296c3cf-0656-4385-9826-15f651707a0e"
+            },
+            "predicate": "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "6f25c1f6-b468-46ff-85fc-efc1995e5709"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 6": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "b928fc53-7448-416b-9354-321a62bafba3"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "54b59c93-945c-42d7-bd36-2b2ff34c0a8b"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "b3a8e2ee-142e-4c50-a8b1-0dee1e446881"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "54b59c93-945c-42d7-bd36-2b2ff34c0a8b"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "13",
+                "uid": "6330dc36-98e4-4511-8b2e-e0437917a699"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "54b59c93-945c-42d7-bd36-2b2ff34c0a8b"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 7": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "b928fc53-7448-416b-9354-321a62bafba3"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "363e2e63-8b64-412a-a836-aea1a4f8d76b"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "bfdad84a-88df-4045-b5a5-05f518970538"
+            },
+            "predicate": "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "363e2e63-8b64-412a-a836-aea1a4f8d76b"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "14",
+                "uid": "9a87a9a4-ad08-4a06-a7ec-ac166ff2b661"
+            },
+            "predicate": "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "363e2e63-8b64-412a-a836-aea1a4f8d76b"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 8": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c0f86105-0959-4ae3-b705-77c8ae36a178"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "b928fc53-7448-416b-9354-321a62bafba3"
+            },
+            "predicate": "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "f2348b4c-7c0b-4c1a-b5d9-25f24c740d93"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "bfdad84a-88df-4045-b5a5-05f518970538"
+            },
+            "predicate": "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "f2348b4c-7c0b-4c1a-b5d9-25f24c740d93"
+            },
+            "nodeTrueQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array))"
+            ],
+            "nodeFalseQuery": [
+                "(Slt (ReadLSB w32 4 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Slt (ReadLSB w32 8 forall_array) (ReadLSB w32 0 forall_array))",
+                "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "15",
+                "uid": "5944b71a-948c-46ab-b8c3-d6ccd35387ce"
+            },
+            "predicate": "(Eq false (Slt (ReadLSB w32 12 forall_array) (ReadLSB w32 0 forall_array)))",
+            "variables": [
+                "forall_array",
+                "forall_array"
+            ],
+            "IMap": {
+                "forall_array": "f2348b4c-7c0b-4c1a-b5d9-25f24c740d93"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

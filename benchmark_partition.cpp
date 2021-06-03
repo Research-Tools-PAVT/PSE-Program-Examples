@@ -14,25 +14,27 @@ int partition(int arr[], int left, int right)
 
     int random, pivot, outcome, left_count = 0, right_count = 0;
 
-    make_pse_symbolic(&random, sizeof(random), "random_prob_sym", (int)left, (int)right);
     klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
     klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
     klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
+    klee_make_symbolic(&pivot, sizeof(pivot), "pivot_prob_sym");
 
     // pivot element
+    random = left + rand() % abs(right - left);
     pivot = arr[random];
 
     for (int j = left; j <= right; j++)
     {
         // COMMENT : Fork Location.
-        arr[j] <= pivot
+        arr[j] < pivot
             ? left_count++
             : right_count++;
     }
 
-    outcome = left_count < right_count ? right_count : left_count;
-    // klee_dump_symbolic_details(&left_count, "left_count_sym");
+    outcome = left_count < (right_count - 1) ? (right_count - 1) : left_count;
+
     klee_dump_symbolic_details(&outcome, "outcome_sym");
+
     return outcome;
 }
 
@@ -43,8 +45,8 @@ int main()
     int arr[SIZE];
     klee_make_symbolic(arr, sizeof(arr), "forall_array");
 
-    for (auto i = 0; i < SIZE; i++)
-        arr[i] = concrete[i];
+    // for (auto i = 0; i < SIZE; i++)
+    //     arr[i] = concrete[i];
 
     partition(arr, 0, SIZE - 1);
 

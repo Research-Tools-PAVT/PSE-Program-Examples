@@ -43,7 +43,7 @@ int main() {
   klee_make_symbolic(arr, sizeof(arr), "forall_array");
 
   // for (auto i = 0; i < SIZE; i++)
-  //     arr[i] = concrete[i];
+  //   arr[i] = concrete[i];
 
   partition(arr, 0, SIZE - 1);
 

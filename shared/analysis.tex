@@ -4,8 +4,7 @@
 \usepackage[nounderscore]{syntax}
 \usepackage{bussproofs}
 \usepackage{mathtools}
-
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage[ruled,lined,linesnumbered]{algorithm2e}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{graphicx}
@@ -277,5 +276,22 @@ The probability mass associated with the $i_{th}$ random run as is given below c
 \begin{equation}
 	E[comparisions] = \sum_{i=1}^{r} (w_i * count_i) \quad \mid \quad for \enspace r-runs
 \end{equation}
+
+\section{PSE Approach}
+\begin{itemize}
+	\item Get the path contraints from KLEE, encoding each one into a \textsc{SMT} formula.
+	\item \ A single \textit{abstract} path may have multiple \textit{randomized} runs, each corresponding to a different \textit{setting} of the \textit{probabilistic} variables.
+	\item For each of the path $\in$ \textit{abstract program paths}, 
+	\begin{itemize}
+		\item We treat the \textit{probabilistic} variables as \textit{nondet} vars.
+		\item Find the estimated \textsc{Expected} value of the \textit{probabilistic} variable.
+		\item For each of the \textit{probabilistic} run record the setting of for the \textit{forall} variable. 
+		\item We use these as \textit{forall} inputs later for the \textit{concrete} runs.
+		\item The constraints for each run is encoded into a \textit{smt} formula. We make one call to \textsc{Z3} at the end to get the value for all the randomized runs. 
+		\item The \textsc{Expected} value will be an estimation here, we choose say the top \textit{k} candidates only, reposnsible for  \textit{maximizing} $\sum_{1}^{k} w_{i}$ (Total Mass Probability).
+	\end{itemize}
+	\item Now we do concrete runs of the program multiple times using the \textit{forall} variable values from \textit{randomized} runs.
+	\item We use a \textit{path} selection heuristic using a \textit{maximizing} value of the \textsc{forall} setting that leads to a \textit{violation}.	
+\end{itemize}
 
 \end{document} 

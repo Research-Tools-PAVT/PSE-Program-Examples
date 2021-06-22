@@ -1,0 +1,540 @@
+%% For double-blind review submission, w/o CCS and ACM Reference (max submission space)
+%%\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For double-blind review submission, w/ CCS and ACM Reference
+%\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true}
+%% For single-blind review submission, w/o CCS and ACM Reference (max submission space)
+%\documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For single-blind review submission, w/ CCS and ACM Reference
+%\documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true}
+%% For final camera-ready submission, w/ required CCS and ACM Reference
+\documentclass[acmsmall]{acmart}\settopmatter{}
+
+
+%% Journal information
+%% Supplied to authors by publisher for camera-ready submission;
+%% use defaults for review submission.
+\acmJournal{PACMPL}
+\acmVolume{1}
+\acmNumber{POPL} % CONF = POPL or ICFP or OOPSLA
+\acmArticle{1}
+\acmYear{2022}
+\acmMonth{1}
+\acmDOI{} % \acmDOI{10.1145/nnnnnnn.nnnnnnn}
+\startPage{1}
+
+%% Copyright information
+%% Supplied to authors (based on authors' rights management selection;
+%% see authors.acm.org) by publisher for camera-ready submission;
+%% use 'none' for review submission.
+\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\copyrightyear{2018}           %% If different from \acmYear
+
+%% Bibliography style
+\bibliographystyle{ACM-Reference-Format}
+%% Citation style
+%% Note: author/year citations are required for papers published as an
+%% issue of PACMPL.
+\citestyle{acmauthoryear}   %% For author/year citations
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Note: Authors migrating a paper from PACMPL format to traditional
+%% SIGPLAN proceedings format must update the '\documentclass' and
+%% topmatter commands above; see 'acmart-sigplanproc-template.tex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Some recommended packages.
+\usepackage{booktabs}   %% For formal tables:
+%% http://ctan.org/pkg/booktabs
+\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+%% http://ctan.org/pkg/subcaption
+\usepackage{mathtools}
+\usepackage{algpseudocode,algorithm,algorithmicx}
+%\usepackage{amsmath, amssymb,amsthm, stmaryrd}
+
+%%% Macros %%%
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\DeclareAutoPairedDelimiter}[3]{%
+	\expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
+	\begingroup\edef\x{\endgroup
+		\noexpand\DeclareRobustCommand{\noexpand#1}{%
+			\expandafter\noexpand\csname Auto\string#1\endcsname*}}%
+	\x}
+\DeclareAutoPairedDelimiter{\deno}{\llbracket}{\rrbracket}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\newcommand*\dom[1]{\mathrm{dom}\left( #1 \right)}
+
+% Switch Statement Commands
+% New definitions
+\algnewcommand\algorithmicswitch{\textbf{switch}}
+\algnewcommand\algorithmiccase{\textbf{case}}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+% New "environments"
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}{\algorithmicend\ \algorithmiccase}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+
+
+\begin{document}
+	
+	%% Title information
+	\title[PSE]{Probabilistic Symbolic Execution}         %% [Short Title] is optional;
+	%% when present, will be used in
+	%% header instead of Full Title.
+	%\titlenote{with title note}             %% \titlenote is optional;
+	%% can be repeated if necessary;
+	%% contents suppressed with 'anonymous'
+	%\subtitle{Subtitle}                     %% \subtitle is optional
+	%\subtitlenote{with subtitle note}       %% \subtitlenote is optional;
+	%% can be repeated if necessary;
+	%% contents suppressed with 'anonymous'
+	
+	
+	%% Author information
+	%% Contents and number of authors suppressed with 'anonymous'.
+	%% Each author should be introduced by \author, followed by
+	%% \authornote (optional), \orcid (optional), \affiliation, and
+	%% \email.
+	%% An author may have multiple affiliations and/or emails; repeat the
+	%% appropriate command.
+	%% Many elements are not rendered, but should be provided for metadata
+	%% extraction tools.
+	
+	%% Author with single affiliation.
+	\author{First1 Last1}
+	\authornote{with author1 note}          %% \authornote is optional;
+	%% can be repeated if necessary
+	\orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+	\affiliation{
+		\position{Position1}
+		\department{Department1}              %% \department is recommended
+		\institution{Institution1}            %% \institution is required
+		\streetaddress{Street1 Address1}
+		\city{City1}
+		\state{State1}
+		\postcode{Post-Code1}
+		\country{Country1}                    %% \country is recommended
+	}
+	\email{first1.last1@inst1.edu}          %% \email is recommended
+	
+	%% Author with two affiliations and emails.
+	\author{First2 Last2}
+	\authornote{with author2 note}          %% \authornote is optional;
+	%% can be repeated if necessary
+	\orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+	\affiliation{
+		\position{Position2a}
+		\department{Department2a}             %% \department is recommended
+		\institution{Institution2a}           %% \institution is required
+		\streetaddress{Street2a Address2a}
+		\city{City2a}
+		\state{State2a}
+		\postcode{Post-Code2a}
+		\country{Country2a}                   %% \country is recommended
+	}
+	\email{first2.last2@inst2a.com}         %% \email is recommended
+	\affiliation{
+		\position{Position2b}
+		\department{Department2b}             %% \department is recommended
+		\institution{Institution2b}           %% \institution is required
+		\streetaddress{Street3b Address2b}
+		\city{City2b}
+		\state{State2b}
+		\postcode{Post-Code2b}
+		\country{Country2b}                   %% \country is recommended
+	}
+	\email{first2.last2@inst2b.org}         %% \email is recommended
+	
+	
+	%% Abstract
+	%% Note: \begin{abstract}...\end{abstract} environment must come
+	%% before \maketitle command
+	\begin{abstract}
+		TODO: Write Abstract
+	\end{abstract}
+	
+	
+	%% 2012 ACM Computing Classification System (CSS) concepts
+	%% Generate at 'http://dl.acm.org/ccs/ccs.cfm'.
+	%% TODO: Get CSS Concepts
+	\begin{CCSXML}
+		<ccs2012>
+		<concept>
+		<concept_id>10011007.10011006.10011008</concept_id>
+		<concept_desc>Software and its engineering~General programming languages</concept_desc>
+		<concept_significance>500</concept_significance>
+		</concept>
+		<concept>
+		<concept_id>10003456.10003457.10003521.10003525</concept_id>
+		<concept_desc>Social and professional topics~History of programming languages</concept_desc>
+		<concept_significance>300</concept_significance>
+		</concept>
+		</ccs2012>
+	\end{CCSXML}
+	
+	\ccsdesc[500]{Software and its engineering~General programming languages}
+	\ccsdesc[300]{Social and professional topics~History of programming languages}
+	%% End of generated code
+	
+	
+	%% Keywords
+	%% comma separated list
+	\keywords{keyword1, keyword2, keyword3}  %% \keywords are mandatory in final camera-ready submission
+	
+	
+	%% \maketitle
+	%% Note: \maketitle command must come after title commands, author
+	%% commands, abstract environment, Computing Classification System
+	%% environment and commands, and keywords command.
+	\maketitle
+	
+	
+	\section{Introduction}
+	\label{sec:intro}
+	
+	
+	\subsection{Contributions}
+	\label{sec:contrib}
+	
+	\section{Motivating Example}
+	\label{sec:example}
+	
+	\section{Probabilistic Symbolic Execution Algorithm}
+	\label{sec:pse}
+	In this section, we present our technique for augmenting traditional symbolic execution to support probabilistic programs with discrete sampling instructions. 
+	%
+	We begin with a short review of a traditional symbolic execution algorithm and then discuss how we calculate exact path probabilities.
+	
+	\subsection{Background}
+	\label{sec:trad_sym_exec}
+	{\color{red} Subhajit \& Sumit: If you could add a high-level description of symb. exec., maybe an algorithm, that would be great!\\}
+	\textit{Symbolic execution} is a program analysis technique where a program is run on \textit{symbolic} inputs and all program operations are replaced with those which manipulate these symbolic variables.
+	%
+	During execution, program state is encoded symbolically in two parts: a path condition which is a conjunctive formula, $\varphi$, which records the branch conditions which are true for that particular path, and a mapping from program variables to symbolic expressions containing constants and \textit{symbolic variables}, $\sigma$.
+	%
+	When execution reaches an assignment of the form $\mathtt{x} = e$, where $e$ is a constant or program variable, $\sigma[\mathtt{x}] = \sigma[e]$.
+	%
+	Similarly, if $e = e_1 \oplus e_2$, where $\oplus$ is an arbitrary binary operation, $\sigma[\mathtt{x}] = \sigma[e_1] \oplus \sigma[e_2]$. 
+	%
+	When execution reaches a branch guarded by the condition $c$, execution proceeds down both branches, one where $\varphi = \varphi \wedge \sigma[c]$, and the other where $\varphi = \varphi \wedge \neg \sigma[c]$. 
+	
+	\subsection{Adding Probabilistic Sampling}
+	We now consider the problem of performing symbolic execution on a simple imperative probabilistic programming language, \textbf{pWhile}:
+	%
+	\[
+	P := \mathbf{skip} \mid \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid P ; P \mid \mathbf{if}~e~\mathbf{then}~P~\mathbf{else}~P \mid \mathbf{while}~e~\mathbf{do}~P 
+	\]
+	
+	Above, $\mathtt{x}$ is a program variable, $e$ is an expression, and $d$ is a \textit{discrete} distribution expression. 
+	%
+	In order to support sampling instructions we make the following additions to traditional symbolic execution:
+	%
+	\begin{itemize}
+		\item \textit{Probabilistic symbolic variables.} We distiguish two types of symbolic variables: \textit{universally quantified} symbolic variables (identical to those in traditional symbolic execution), and \textit{probabilistic} symbolic variables.
+		% 
+		For each unique sampling instruction a new probabilistic symbolic variable is created to denote the result of sample.
+		\item \textit{Distribution map.} We add a new mapping from probabilistic symbolic variables to distribution expressions, $P$, which tracks the distribution from which a probabilistic symbolic variable was originally sampled from.
+		\item \textit{Path probability.} For each path, we adjoin a path probability expression, $p$, which is parameterized by universally quantified symbolic variables.
+	\end{itemize}
+	
+	\begin{algorithm}[H]
+		\caption{PSE Assignment Algorithm}
+		\begin{algorithmic}[1]
+			\Function{PSEAssignment}{$\mathtt{x}, e, \varphi, \sigma, P, I$}
+			\Let{$e_{sym}$}{Convert $v$ into a symbolic expression using $\sigma$}
+			\State{$\sigma[\mathtt{x}] = e_{sym}$}
+			\State\Return{$(\varphi,\sigma, P, I)$}
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}
+	
+	
+	\begin{algorithm}
+		\caption{PSE Sampling Algorithm}
+		\label{alg:sample}
+		\begin{algorithmic}[1]
+			\Function{PSESample}{$\mathtt{x}, d, \varphi, \sigma, P$}
+			\Let{$\delta$}{Generate a fresh probabilistic symbolic variable}
+			\State{$\sigma[\mathtt{x}] = \delta$}
+			\State{$P[\delta] = d$}
+			\State\Return{$(\varphi,\sigma,P)$}
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\caption{PSE Branch Algorithm}
+		\label{alg:branch}
+		\begin{algorithmic}[1]
+			\Function{PSEBranch}{$c, \varphi, \sigma, P$}
+			\Let{$c_{sym}$}{$\sigma[c]$}
+			\Let{$(\delta_1,\ldots,\delta_n)$}{$\dom{P}$}
+			\Let{$(d_1,\ldots,d_n)$}{$(P[\delta_1],\ldots,P[\delta_n])$}
+			\Let{$p_c$}{$\frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}$}\\
+			\Return{$((\varphi \wedge c_{sym}, \sigma,P,p_c), (\varphi \wedge \neg c_{sym}, \sigma,P,1-p_c))$}
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\caption{Getting Path Constraints : Symbolic Execution}
+		\label{alg:symbex}
+		\begin{algorithmic}[1]
+			\Function{SymbEx}{$P_{prog} : Program$}
+				\Let{$\varphi_{paths}$}{[]}, {$Ex_{stack}$} $\leftarrow$ {[]} \algorithmiccomment{List to store all the path conditions.}
+				\Let{$I_{0}$}{\textsc{getStartInstruction}($P_{prog}$)}
+				\Let{$S_{0}$}{[$I_{0}$, $\phi_{path}$, $\Delta$]} \algorithmiccomment{Empty Initial State}
+				\State {$Ex_{stack}$.\textsc{Push}({$S_{0}$})} \algorithmiccomment{Start with $S_{cur}$ in Execution Stack}
+				\While{$Ex_{stack}$ != $\phi$}
+					\Let{$S_{cur}$}{$Ex_{stack}$.\textsc{Pop}( )}, $I_{cur} \leftarrow S_{cur}[1]$ \algorithmiccomment{Start State, [$I_{0}$, $\phi_{path}$, $\Delta$]}
+					\Switch{\textsc{instType}($I_{cur}$)}
+					\Case{v := e} \algorithmiccomment{Assignment Instruction}
+						\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}
+						\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path}$, $\Delta$[v $\rightarrow$ \textsc{Eval($e$, $\Delta$)}]]}
+						\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+					\EndCase
+					\Case{\textbf{if} $(c_{sym})$ \textbf{then} $P_{1}$ \textbf{else} $P_{2}$} \algorithmiccomment{Branch Instruction}
+						\If{(\textsc{isSat}($c_{sym}$) $\wedge$ \textsc{isSat}($\neg c_{sym}$))} \algorithmiccomment{Both cases SAT}
+							\Let{$S_{true}$, $S_{false}$}{\textsc{Fork}({$S_{cur}$, $\Delta$})}		
+							\Let{$I_{1}$}{\textsc{getStartInstruction}($P_{1}$)}, {$I_{2}$} $\leftarrow$ {\textsc{getStartInstruction}($P_{2}$)}	
+							\Let{$S_{true}$}{[$I_{1}$, $\phi_{path} \wedge c_{sym}$, $\Delta$]},
+							{$S_{false}$} $\leftarrow$ {[$I_{2}$, $\phi_{path} \wedge (\neg c_{sym})$, $\Delta$]}
+							\State {$Ex_{stack}$.\textsc{Push}({$S_{false}$})}
+							\State {$Ex_{stack}$.\textsc{Push}({$S_{true}$})} \algorithmiccomment{Start with True State}
+						\ElsIf{\textsc{isSat}($c_{sym}$)} \algorithmiccomment{True case SAT}
+							\Let{$I_{cur}$}{\textsc{getStartInstruction}($P_{1}$)}
+							\Let {$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge c_{sym}$, $\Delta$]}
+							\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+						\ElsIf{\textsc{isSat}($\neg c_{sym}$)} \algorithmiccomment{False case SAT}
+							\Let{$I_{cur}$}{\textsc{getStartInstruction}($P_{2}$)}
+							\Let{$S_{cur}$}{[$I_{2}$, $\phi_{path} \wedge (\neg c_{sym})$, $\Delta$]}
+							\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+						\Else \algorithmiccomment{$c_{sym}$ UNSAT}
+							\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}
+							\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path}$, $\Delta$]}
+							\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+						\EndIf
+					\EndCase
+					\Case{\textbf{assume}$(v == expr)$} \algorithmiccomment{Assume Instruction}
+						\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}	
+						\If{\textsc{isSat}($v == expr$)}
+							\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge (v == expr)$, $\Delta$]}
+						\Else 
+							\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge $(\textsc{false}), $\Delta$]}
+						\EndIf
+						\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+					\EndCase
+					\Case{\textbf{HALT}} \algorithmiccomment{Terminate Instruction}
+						\Let{$\phi_{path}^{'}$}$S_{cur}$[2] \algorithmiccomment{End of a Path}
+						\Let{$\varphi_{paths}$}{$\varphi_{paths}$.\textsc{Append}($\phi_{path}^{'}$)}		
+					\EndCase
+					\EndSwitch
+				\EndWhile \\
+				\Return{$\varphi_{paths}$}
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}
+
+	When a sampling statement, $\mathtt{x} \xleftarrow{\$} d$, is reached, a fresh probabilistic symbolic variable, $\delta$, is created, $\sigma$ is updated to be $\sigma[\mathtt{x}] = \delta$, and the original distribution $d$ is recorded in $P$ by setting $P[\delta] = d$.
+	%
+	Note that with the inclusion of probabilistic symbolic variables we can now either branch on universally quantified or probabilistic symbolic variables (or both).
+	%
+	For guards whose symbolic version does not contain any probabilistic symbolic variables, probabilstic symbolic execution works nearly identically to traditional symbolic execution, save one detail: the probability of taking the branch. 
+	%
+	If $c_{sym}$ is a symbolic expression which represents the guard to a branch, and $c_{sym}$ does not contain any probabilistic symbolic variables, then we define the probability of taking the ``true'' branch is $[c_{sym}]$, and the probability of taking the ``false'' branch is $[\neg c_{sym}]$, where $[\cdot]$ are Iverson brackets.
+	
+	
+	For probabilistic branches, i.e. guards which branch on probabilistic symbolic variables, Alg.~\ref{alg:branch} is used instead of the traditional symbolic execution branch algorithm.
+	%
+	Without loss of generality, consider a branch of the form $\mathbf{if}~c~\mathbf{then}~P_1~\mathbf{else}~P_2$ where $c$ is a probabilistic branch.
+	%
+	As before, we define $c_{sym} = \sigma[c]$.
+	%
+	The core of Alg.~\ref{alg:branch} is computing the probability of taking each branch.
+	%
+	We interpret probabilistic branches as a conditioning operation on the distributions which are mentioned in the guard of the branch.
+	%
+	Under this interpretation, we aim to compute $\Pr[c_{sym} \mid \varphi]$ where $\varphi$ is the current path condition formula.  
+	
+	% Add small example 
+	We use a form of model counting in order to compute $p_c$, the probability of $c$ being true.
+	%
+	Note that each probabilistic symbolic variable, $\delta$, is mapped to exactly one distribution, $d$, and therefore, $\delta \in \dom{d}$.
+	%
+	So, assuming there are $n$ probabilistic symbolic variables, $\delta_1,\ldots,\delta_n$, and so $n$ distributions, $d_1,\ldots,d_n$, the set of all possible values $\delta_1,\ldots,\delta_n$ be is $\mathcal{D} = \dom{d_1} \times \cdots \times \dom{d_n}$.
+	%
+	We then count the number of \textit{assignments} from $\mathcal{D}$ which satisfy $c_{sym} \wedge \varphi$ and $\varphi$, and divide these two quantities as shown on line 5 of Alg.~\ref{alg:branch}.
+	%
+	In Section~\ref{sec:formalization} we have a proof of correctness for this quantity, but the intuition is by applying the definition of conditional probability.
+	%
+	Note that $p_c$ is not necessarily a value, but rather a symbolic expression containing constants and universally quantified symbolic variables.
+	%
+	We exploit the fact that the sum of the conditional probabilities of the branch outcomes is 1, which allows us to avoid computing the probability of taking the ``false'' branch directly.
+	
+	\subsection{Formalization}
+	\label{sec:formalization}
+	
+	In this section we present the formalization of our method. First, we will present our notation and definitions, and then provide proofs of correctness and soundness of our technique.
+	
+	\subsubsection{Notation \& Definitions}
+	\label{sec:notation}
+	
+	The goal of this section is to describe how $R=(\varphi,\sigma,P)$, the inputs to Alg.~\ref{alg:branch} is an abstraction of a \textit{distribution of program memories} before a branch guarded by a program expression $c$.
+	% 
+	To begin, we will define some notation:
+	\begin{itemize}
+		\item Let $Vars$ be the set of all program variables, $ForallSymVars$ be the set of all universally quantified symbolic variables, $ProbSymVars$ be the set of all probabilistic symbolic variables, $SymVars = ForallSymVars \cup ProbSymVars$ be the combined set of all symbolic variables, and $Vals$ be the set of all values. 
+		\item Let $a_f: ForallSymVars \rightarrow Vals$ be an assignment of universally quantified symbolic variables to values and let $ForallAssign$ be the set of all such assignments.
+		\item Similarly, let $a_p : ProbSymVars \rightarrow Vals$ be an assignment of probabilistic symbolic variables to values and let $ProbAssign$ be the set of all such assignments.
+		\item Let $m : Vars \rightarrow Vals$ be a program memory which translates program variables into values, and let $Mems$ be the set of all program memories.
+		\item Let $de : Mems \rightarrow (Vals \rightarrow [0,1])$ be a distribution expression parameterized by program memories, and let $DistExprs$ be the set of all distribution expressions.
+		\item Let $d : ForallAssign \times Mems \rightarrow [0,1]$ be a distribution of program memories parameterized by assignments to universally quantified symbolic variables and let $MemDists$ be the set of all parameterized distributions of program memories.
+	\end{itemize}
+	
+	Additionally, we will use emphatic brackets for two purposes:
+	\begin{itemize}
+		\item If $e \in ProgExprs$ is a \textit{program} expression containing the program variables $\mathtt{x}_1,\ldots,\mathtt{x}_n \in Vars$, and $m \in Mems$, then
+		\[
+		\deno{e}m = \text{eval}(e[\mathtt{x}_1 \mapsto m(\mathtt{x}_1),\ldots,\mathtt{x}_n \mapsto m(\mathtt{x}_n)])
+		\]
+		\item If $e \in SymExprs$ is a \textit{symbolic} expression containing the symbolic variables $\alpha_1,\ldots,\alpha_n \in ForallSymVars$ and $\delta_1,\ldots,\delta_m \in ProbSymVars$, and $a_f \in ForallAssign$ and $a_p \in ProbAssign$, then
+		\[
+		\deno{e}a_fa_p = \text{eval}(e[\alpha_1\mapsto a_f(\alpha_1),\ldots,\alpha_n \mapsto a_f(\alpha_n), \delta_1 \mapsto a_p(\delta_1), \ldots, \delta_m \mapsto a_p(\delta_m)])
+		\]
+	\end{itemize}
+	
+	With this notation in hand, we can now define what it means for $R$ to be an abstraction of a distribution of programs memories.
+	
+	\begin{definition}
+		\label{def:combined}
+		Let $R = (\varphi, \sigma, P)$ be the abstraction generated by the symbolic execution algorithm where $\varphi: ForallAssign \times ProbAssign \rightarrow \{0,1\}$ denotes whether the path condition is true or false under the given assignments, $\sigma : Vars \rightarrow SymExprs$ is the mapping from program variables to symbolic expressions generated through symbolic execution, and $P : ForallAssign \rightarrow ProbSymVars \rightharpoonup (Vals \rightarrow [0,1])$  is the mapping from probabilistic symbolic variables to the distribution it is sampled from parameterized by assignments of forall symbolic variables.
+		% 
+		Additionally, for every assignment of forall symbolic variables, $a_f \in ForallAssign$, $\mathrm{domain}(P(a_f)) = \{\delta_1,\ldots,\delta_k\}$.
+		% 
+		Let $\alpha_1,\ldots,\alpha_l \in ForallSymVars$ be the forall symbolic variables which correspond to the $l$ parameters to the program.
+		% 
+		For every assignment of probabilistic and forall symbolic variables, $a_f \in ForallAssign, a_p \in ProbAssign$, let $\nu : ForallAssign \rightarrow (ProbAssign \rightarrow [0,1])$ be a distribution of assignments of probabilistic symbolic variables parameterized by assignments of forall symbolic variables, defined as
+		\[
+		\nu(a_f,a_p) \triangleq \prod_{i=1}^k \Pr_{v \sim P(a_f,\delta_i)}[v = a_p(\delta_i)].
+		\]
+		% 
+		We say that a distribution $d$ satisfies our abstraction $R$ if, for all assignments of forall symbolic variables, $a_f \in ForallAssign$, $\displaystyle\Pr_{a_p' \sim \nu(a_f)}[\varphi(a_f,a_p') = 1] > 0$, and if $\mu : ForallAssign \rightarrow (ProbAssign \rightarrow [0,1])$ is defined as 
+		\[
+		\mu(a_f,a_p) = \cfrac{\Pr_{a_p' \sim \nu(a_f)}[a_p' = a_p \land \varphi(a_f,a_p') = 1]}{\Pr_{a_p' \sim \nu(a_f)}[\varphi(a_f,a_p')=1]}.
+		\]
+		Additionally, define $\text{convertToMem} : (Vars \rightarrow SymExprs) \rightarrow ForallAssign \rightarrow ProbAssign \rightarrow Mem$ as
+		\begin{equation*}
+			\text{convertToMem}(\sigma,a_f,a_p) \triangleq \lambda (\mathtt{x}: Vars)~.~\deno{\sigma(\mathtt{x})}a_fa_p,
+		\end{equation*}
+		and let $\text{convertFromMem}(\sigma,a_f,m) = (\text{convertToMem}(\sigma,a_f))^{-1}(m)$.
+		% 
+		Then,
+		\[
+		d(a_f,m) = \sum_{a_p \in \text{convertFromMem}(\sigma,a_f,m)} \mu(a_f,a_p).
+		\]
+	\end{definition}
+	
+	We additionally define the semantics for the three main types of statements which concerns probabilistic symbolic execution: assignments, probabilistic samples, and branches.
+	
+	\begin{definition}[Assignment Semantics]
+		Let $d \in MemDists$ be a distribution of program memories parameterized by assignments to forall symbolic variables. Let $\mathtt{x} = e$ be an arbitrary assignment of the program variable $\mathtt{x} \in Vars$ to the program expression $e \in ProgExprs$. Let $\text{assign}_{\mathtt{x}=e} : Mems \rightarrow Mems$ is defined as
+		\[
+		\text{assign}_{\mathtt{x}=e}(m) = \lambda(\mathtt{y} : Vars)
+		\begin{cases}
+			\deno{e}m & \text{if $\mathtt{x} = \mathtt{y}$}\\
+			m(\mathtt{y}) & \text{otherwise}
+		\end{cases}
+		\]
+		and let $\text{unassign}_{\mathtt{x}=e} = \text{assign}_{\mathtt{x}=e}^{-1}$. Then we define $d_{\mathtt{x}=e}$ to be the distribution over program memories parameterized by assignments to forall symbolic variables after executing the assignment statement $\mathtt{x}=e$ to be
+		\[
+		d_{\mathtt{x}=e}(a_f,m) = \sum_{m' \in \text{unassign}_{\mathtt{x}=e}(m)} d(a_f,m').
+		\]
+	\end{definition}
+	
+	\begin{definition}[Sampling Semantics]
+		Let $d \in MemDists$ be a distribution of program memories parameterized by assignments to forall symbolic variables. Let $\mathtt{x} \sim de$ be an arbitrary sampling instruction which assigns the program variable $\mathtt{x} \in Vars$ to a random element from the distribution of values parameterized by a memory, represented as a distribution expression $de \in DistExprs$. Let $\text{desample} : Vars \times Mems \rightarrow \mathcal{P}(Mems)$ be defined as
+		\[
+		\text{desample}(\mathtt{x},m) = \{ m'\in Mems \mid \forall (\mathtt{y} \in Vars)~.~(\mathtt{y} \neq \mathtt{x} \wedge m'(\mathtt{y}) = m(\mathtt{y}))\}.
+		\]
+		Then, we define $d_{\mathtt{x} \sim de}$ to be the distribution over program memories parameterized by assignments to forall symbolic variables after executing the sampling statement $\mathtt{x} \sim de$ to be
+		\[
+		d_{\mathtt{x} \sim de}(a_f,m) = \sum_{m' \in \text{desample}(m)} (\deno{de}a_f)(m(\mathtt{x})) \cdot d(a_f,m').
+		\]
+	\end{definition}
+	
+	\begin{definition}[Conditional Distribution of Program Memories]
+		\label{def:cond}
+		Let $a_f \in ForallAssign$ be an arbitrary assignment of forall symbolic variables, $c$ be a guard of an \texttt{if} condition, $d \in MemDists$ be a distribution of program memories parameterized by assignments to forall symbolic variables, and $\mathtt{x}_1,\ldots,\mathtt{x}_n \in Vars$ be all of the program variables in $c$. Then for all program memories $m \in Mems$, $d$ conditioned on a guard $c$ being true, represented as $d_c$ is defined as
+		\[
+		d_c(a_f,m) = \frac{\Pr_{m' \sim d(a_f)}\left[ m' = m \land \deno{c}m' = \mathtt{true} \right]}{\Pr_{m' \sim d(a_f)}\left[ \deno{c}m' = \mathtt{true} \right]}
+		\]
+		Similarly, for all program memories $m \in Mems$, $d$ conditioned on a guard $c$ being false, represented as $d_{\neg c}$ is defined as
+		\[
+		d_{\neg c}(a_f,m) = \frac{\Pr_{m' \sim d(a_f)}\left[ m' = m \land \deno{c}m' = \mathtt{false} \right]}{\Pr_{m' \sim d(a_f)}\left[ \deno{c}m' = \mathtt{false} \right]}
+		\]
+	\end{definition}
+	
+	\subsubsection{Proofs}
+	\label{sec:proofs}
+	
+	\section{Implementation}
+	\label{sec:implementation}
+	
+	{\color{red} Subhajit \& Sumit: Write something about KLEE and the implementation here!} 
+	
+	We use a robust symbolic execution engine, \textsc{KLEE} to generate the \textit{path constraints} corresponding to each path that our tool explores. \textsc{KLEE} starts by running the program under an enviroment where all \textit{program inputs} are replaced with \textit{symbolic} variables that can be assigned any value from it's domain. For the purpose of our implementation, we modify \textsc{KLEE} to support creation of \textit{probabilistic symbolic} variables whose values can be sampled from a distribution and dump the whole set of \textit{path} constraints that is stored in the \textit{state} corresponding to the current execution of the program at each of (1) \textit{assignment}, (2) \textit{branch}, \& (3) \textit{assume} statements. These dumps are later refined and used by the tool for further processing.
+	\section{Case Studies}
+	\label{sec:case_studies}
+	
+	\section{Evaluation}
+	\label{sec:eval}
+	
+	\section{Related Work}
+	\label{sec:related}
+	{\color{red} Subhajit \& Sumit: If you could both start looking into related work (Mayhap, original PSE paper, Axprof, P4WN, PSI), that would be great!}
+	\begin{itemize}
+		\item Compare and Contrast with Mayhap, PSE, AxProf, P4WN \& PSI.
+		\item Explain how we differ by not using a Model Counting but a Constraint Solving approach.
+		\item Support for \textsc{ForAll} variables along with \textit{probabilistic} variables. 
+	\end{itemize}
+	\section{Conclusion \& Future Work}
+	\label{sec:conclusion}
+	
+	
+	%% Acknowledgments
+	\begin{acks}                            %% acks environment is optional
+		%% contents suppressed with 'anonymous'
+		%% Commands \grantsponsor{<sponsorID>}{<name>}{<url>} and
+		%% \grantnum[<url>]{<sponsorID>}{<number>} should be used to
+		%% acknowledge financial support and will be used by metadata
+		%% extraction tools.
+		% This material is based upon work supported by the
+		% \grantsponsor{GS100000001}{National Science
+		%   Foundation}{http://dx.doi.org/10.13039/100000001} under Grant
+		% No.~\grantnum{GS100000001}{nnnnnnn} and Grant
+		% No.~\grantnum{GS100000001}{mmmmmmm}.  Any opinions, findings, and
+		% conclusions or recommendations expressed in this material are those
+		% of the author and do not necessarily reflect the views of the
+		% National Science Foundation.
+	\end{acks}
+	
+	
+	%% Bibliography
+	%\bibliography{bibfile}
+	
+	
+	%% Appendix
+	\appendix
+	\section{Appendix}
+	
+	Text of appendix \ldots
+	
+\end{document}

@@ -16,7 +16,7 @@ outputFilePath = os.path.join(pwd, "output")
 def build():
     try:
         output = run(
-            f"./runner.sh {executable}",
+            f"./run.sh {executable}",
             shell=True,
             capture_output=False,
             text=True,
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     with alive_bar(len(os.listdir(inputFilePath))) as executeBar:
         for index, inputFile in enumerate(os.listdir(inputFilePath)):
             executeBar.text(
-                f"Running : {inputFile}, Benchmark : {sys.argv[1]}")
+                f" Running : {inputFile}, Benchmark : {sys.argv[1]} ")
             executeBar()
             worker_thread = threading.Thread(
                 target=executeCV,

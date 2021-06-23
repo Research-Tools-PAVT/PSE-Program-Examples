@@ -398,6 +398,8 @@ TSWLatexianTemp*
 bin/
 inputs/
 outputs/
+output/
+tests/
 foralls/
 paper/
 

@@ -289,7 +289,7 @@
 		\label{alg:symbex}
 		\begin{algorithmic}[1]
 			\Function{SymbEx}{$P_{prog} : Program$}
-				\Let{$\varphi_{paths}$}{[]}, {$Ex_{stack}$} $\leftarrow$ {[]} \algorithmiccomment{List to store all the path conditions.}
+				\Let{$\varphi_{paths}$}{[]}, {$Ex_{stack}$} $\leftarrow$ {[]}, $\Delta \leftarrow$ {[]}, $\phi_{paths} \leftarrow \phi$  \algorithmiccomment{Initialization}
 				\Let{$I_{0}$}{\textsc{getStartInstruction}($P_{prog}$)}
 				\Let{$S_{0}$}{[$I_{0}$, $\phi_{path}$, $\Delta$]} \algorithmiccomment{Empty Initial State}
 				\State {$Ex_{stack}$.\textsc{Push}({$S_{0}$})} \algorithmiccomment{Start with $S_{cur}$ in Execution Stack}

@@ -19,7 +19,7 @@ rm -rf tests/*
 # head -c 32 /dev/zero > tests/input06.txt
 
 cd bin/
-CC=$CC CXX=$CXX cmake -DCMAKE_CXX_FLAGS="-w" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../
+CC=$CC CXX=$CXX cmake -DCMAKE_CXX_FLAGS="-w -fsanitize=address -fsanitize=leak" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../
 clang-tidy -checks=* -p bin/ ../src/${RUNNER}.cpp
 make -j 12
 cd ../

@@ -11,17 +11,22 @@ rm -rf bin/*
 rm -rf output/*
 rm -rf tests/*
 
-# dd if=/dev/random of=tests/input01.txt bs=32 count=1
-# dd if=/dev/random of=tests/input02.txt bs=32 count=1
-# dd if=/dev/random of=tests/input03.txt bs=32 count=1
-# head -c 32 /dev/zero > tests/input04.txt
-# dd if=/dev/random of=tests/input05.txt bs=32 count=1
-# head -c 32 /dev/zero > tests/input06.txt
+# TODO : Replace with custom test generator (dummy-baseline) 
+# These are inputs for the ForAll variables.
+echo "Generating Inputs"
+for index in 1 2 3 4 5 6 7 8 9 10; 
+do 
+    dd if=/dev/random of=tests/input_${index}.txt bs=64 count=1
+done
 
+echo "Building Binary"
 cd bin/
-CC=$CC CXX=$CXX cmake -DCMAKE_CXX_FLAGS="-w -fsanitize=address -fsanitize=leak" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../
+CC=$CC CXX=$CXX cmake \
+    -DCMAKE_CXX_FLAGS="-w -fsanitize=address -fsanitize=leak" \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../
+    
 clang-tidy -checks=* -p bin/ ../src/${RUNNER}.cpp
 make -j 12
 cd ../
 
-bin/${RUNNER}
+# bin/${RUNNER}

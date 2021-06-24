@@ -5,6 +5,7 @@
 #include <iostream>
 #include <limits>
 #include <prob_hash_int.h>
+#include <random>
 using namespace std;
 
 /**
@@ -23,7 +24,9 @@ unsigned int my_hash(struct prob_hash *prob_hash, int key, unsigned int max) {
 
   // If the key is not in the map, get a random element and rehash
   if (found == prob_hash->map.end()) {
-    unsigned int x;
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> range_dist(0, (int)max);
+    unsigned int x = range_dist(generator);
     // make_pse_symbolic(&x, sizeof(x), "x_sym", 0, (int)max);
     prob_hash->map[key] = x;
     return x;
@@ -141,15 +144,38 @@ unsigned int CountMinSketch::hashstr(const char *str) {
 }
 
 int main() {
-  CountMinSketch c(0.01, 0.1);
 
-  c.update("hello", 1);
-  c.update(20, 2);
-  c.update("hello", 1);
+  std::default_random_engine generator;
+  std::uniform_int_distribution<int> dataRange(-15000, 15000);
+  std::uniform_real_distribution<float> ep_range(0.01, 1);
+  std::uniform_real_distribution<float> gamm_range(0, 1);
 
-  if (c.estimate("hello") != 2) {
-    // klee_dump_kquery_state();
-    std::cout << "c.estimate(\"hello\") != 2 \n";
+  // float ep = ep_range(generator);
+  // float gamm = gamm_range(generator);
+  int termCount = 500, win = 0, loop_count = 0;
+  std::vector<std::string> dataSet = {"hello", "World"};
+
+  while (termCount--) {
+    // CountMinSketch c(0.01, 0.1);
+    float ep = ep_range(generator);
+    float gamm = gamm_range(generator);
+    CountMinSketch c(ep, gamm);
+
+    c.update(dataSet[0].c_str(), 1);
+    c.update(dataRange(generator), 2);
+    c.update(dataSet[0].c_str(), 1);
+
+    auto ret = c.estimate(dataSet[0].c_str());
+    if (ret != 2) {
+      // klee_dump_kquery_state();
+      std::cout << "Estimate : " << ret << ", ep : " << ep
+                << ", gamma : " << gamm << "\n";
+      win++;
+    }
+    loop_count++;
   }
+
+  auto pwin = (double)win / loop_count;
+  std::cout << "Prob Assert : " << pwin << "\n";
   return 0;
 }

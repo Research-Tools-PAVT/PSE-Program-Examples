@@ -25,7 +25,7 @@ unsigned int hash(struct prob_hash *prob_hash, std::string key,
   if (found == prob_hash->map.end()) {
     // Randomly sample PSE Variable from a given distribution.
     std::default_random_engine generator;
-    std::uniform_int_distribution<int> int_dist(0, INT32_MAX);
+    std::uniform_int_distribution<int> int_dist(0, (int)max);
     unsigned int x = int_dist(generator);
     // make_pse_symbolic(&x, sizeof(x), "x_sym", 0, (int)max);
     prob_hash->map[key] = x;
@@ -182,17 +182,25 @@ int main() {
 
     // For each setting of the forAlls,
     // We run the program termCount number of times.
-    struct bloom bloom;
-    bloom_init(&bloom, entries, error);
-    bloom_add(&bloom, inputs[add_item]);
+    // struct bloom bloom;
+    // bloom_init(&bloom, entries, error);
+    // bloom_add(&bloom, inputs[add_item]);
 
-    if (bloom_check(&bloom, inputs[search_item])) {
-      // klee_dump_kquery_state();
+    // if (bloom_check(&bloom, inputs[search_item])) {
+    //   // klee_dump_kquery_state();
+    //   win++;
+    // }
+
+    // bloom_free(&bloom);
+    // loop_count++;
+    struct bloom bloom;
+    bloom_init(&bloom, 1, 0.1);
+    bloom_add(&bloom, "Zach1");
+    if (bloom_check(&bloom, "Justin")) {
       win++;
     }
-
-    bloom_free(&bloom);
     loop_count++;
+    bloom_free(&bloom);
   }
 
   std::cout << "Prob Assert : " << (double)(win) / loop_count << "\n";

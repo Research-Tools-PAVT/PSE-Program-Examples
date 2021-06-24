@@ -295,8 +295,8 @@
 				\State {$Ex_{stack}$.\textsc{Push}({$S_{0}$})} \algorithmiccomment{Start with $S_{cur}$ in Execution Stack}
 				\While{$Ex_{stack}$ != $\phi$}
 					\Let{$S_{cur}$}{$Ex_{stack}$.\textsc{Pop}( )}, $I_{cur} \leftarrow S_{cur}[1]$ \algorithmiccomment{Start State, [$I_{0}$, $\phi_{path}$, $\Delta$]}
-					\Switch{\textsc{instType}($I_{cur}$)}
-					\Case{v := e} \algorithmiccomment{Assignment Instruction}
+					\Switch{\textsc{instType}($I_{cur}$)} \label{line:inst_case}
+					\Case{v := e} \algorithmiccomment{Assignment Instruction} \label{line:assign}
 						\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}
 						\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path}$, $\Delta$[v $\rightarrow$ \textsc{Eval($e$, $\Delta$)}]]}
 						\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
@@ -304,8 +304,8 @@
 					\Case{\textbf{if} $(c_{sym})$ \textbf{then} $P_{1}$ \textbf{else} $P_{2}$} \algorithmiccomment{Branch Instruction} \label{line:branch}
 						\If{(\textsc{isSat}($c_{sym}$) $\wedge$ \textsc{isSat}($\neg c_{sym}$))} \algorithmiccomment{Both cases SAT}
 							\Let{$I_{1}$}{\textsc{getStartInstruction}($P_{1}$)} \Let{$I_{2}$} {\textsc{getStartInstruction}($P_{2}$)}	
-							\Let{$S_{true}$}{[$I_{1}$, $\phi_{path} \wedge c_{sym}$, $\Delta$]}
-							\Let{$S_{false}$}{[$I_{2}$, $\phi_{path} \wedge (\neg c_{sym})$, $\Delta$]}
+							\Let{$S_{true}$}{[$I_{1}$, $\phi_{path} \wedge c_{sym}$, $\Delta$]} \label{line:true_state}
+							\Let{$S_{false}$}{[$I_{2}$, $\phi_{path} \wedge (\neg c_{sym})$, $\Delta$]} \label{line:false_state}
 							\State {$Ex_{stack}$.\textsc{Push}({$S_{false}$})}
 							\State {$Ex_{stack}$.\textsc{Push}({$S_{true}$})} \algorithmiccomment{Start with True State}
 						\ElsIf{\textsc{isSat}($c_{sym}$)} \algorithmiccomment{True case SAT}
@@ -322,7 +322,7 @@
 							\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
 						\EndIf
 					\EndCase
-					\Case{\textbf{assume}$(v == expr)$} \algorithmiccomment{Assume Instruction}
+					\Case{\textbf{assume}$(v == expr)$} \algorithmiccomment{Assume Instruction} \label{line:assume}
 						\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}	
 						\If{\textsc{isSat}($v == expr$)}
 							\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge (v == expr)$, $\Delta$]}
@@ -488,11 +488,14 @@
 	
 	{\color{red} Subhajit \& Sumit: Write something about KLEE and the implementation here!} 
 	
-	We use a robust dynamic symbolic execution engine, \textsc{KLEE} to generate the \textit{path constraints} corresponding to each path that our tool explores. For each path in the program, \textsc{KLEE} stores a list of \textit{constraints} that encodes the whole path. These constraints are over \textit{program} variables that have been marked \texttt{make\_symbolic()} by the user and are stored in \textsc{KLEE} as \textit{metadata} in the \textit{state} data structure during the \textit{dynamic} symbolic execution of the program.
+	We use a robust dynamic symbolic execution engine, \textsc{KLEE} to generate the \textit{path constraints} corresponding to each path that our tool explores. For each path in the program, \textsc{KLEE} stores a list of \textit{constraints} that encodes the whole path. These constraints are over \textit{program} variables that have been marked \texttt{make\_symbolic()} by the user and are stored in \textsc{KLEE} as \textit{metadata} in the \textit{state} data structure during the \textit{dynamic} symbolic execution of the program. Apart from \textit{path constraints}, the \textit{state} also contains a mapping of \textit{symbolic} variables to expressions that are either  \textit{symbolic} or \textit{concrete} (in the case of concrete execution of the program) and a list of \textit{instructions} currently getting executed as a part of the \textit{state}.	
 	
-	\textsc{KLEE} assigns values to these \textit{symbolic} variables by employing an \textsc{SMT Solver} for solving the current set of \textit{constraints} seen so far in the program path as described in Algorithm~\ref{alg:symbex} and also by concretizing some of the values that get evaluated as a result of \textit{concrete} execution (Eg. return value from external function calls). Upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Algorithm~\ref{alg:symbex}, \textsc{KLEE} forks the current \textit{state} by making two identical copies of it and then appending to each of \textit{new} states one additional constraint encoding the \textit{true} and \textit{false} side of the branch and adds it to the \textit{execution} stack containing \textit{states} that need to be explored next. The process continues untill all the \textit{states} in the \textit{execution} stack are explored. Apart from \textit{path constraints}, the \textit{state} also contains a mapping of \textit{symbolic} variables to expressions that are either  \textit{symbolic} or \textit{concrete} (in the case of concrete execution of the program) and a list of \textit{instructions} currently getting executed as a part of the \textit{state}.	
+	During \textit{dynamic} execution, \textsc{KLEE} executes each \textit{instruction} in the program and updates the \textit{state} along with the \textit{symbolic} variables mapping ($\Delta$) depending upon \textit{type} of the \textit{instruction} it executes as described in Algorithm~\ref{alg:symbex}. 
+	\textsc{KLEE} assigns values to \textit{symbolic} variables by employing an \textsc{SMT Solver} (\textsc{Z3} as in our case) for solving the current set of \textit{constraints} seen so far in the program path and also by concretizing some of the values that get evaluated as a result of \textit{concrete} execution (Eg. return value from external function calls). 
 	
-	For the purpose of our implementation, we modify \textsc{KLEE} to support creation of \textit{probabilistic symbolic} variables whose values can be sampled from a distribution and dump the whole set of \textit{path} constraints that is stored in the \textit{state} corresponding to the current execution of the program at each of (1) \textit{assignment}, (2) \textit{branch}, \& (3) \textit{assume} statements. These dumps are later refined and used by the tool for further processing.
+	%Upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Algorithm~\ref{alg:symbex}, based on whether the \textit{path constraints} are solvable upon adding the \textit{branch} [Line~\ref{line:branch}] condition, \textsc{KLEE} forks the current \textit{state} by making two identical copies of it and then appending to each of \textit{new} states one additional constraint encoding the \textit{true} [Line~\ref{line:true_state}] and \textit{false} [Line~\ref{line:false_state}] side of the branch and adds it to the \textit{execution} stack containing \textit{states} that need to be explored next. The process continues untill all the \textit{states} in the \textit{execution} stack are explored.
+	
+	For the purpose of our implementation, we modify \textsc{KLEE} to support creation of \textit{probabilistic symbolic} variables whose values can be sampled from a distribution and dump the whole set of \textit{path} constraints that is stored in the \textit{state} corresponding to the current execution of the program at each of (1) \textbf{\textit{assignment}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:assign}], (2) \textbf{\textit{branch}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:branch}], \& (3) \textbf{\textit{assume}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:assume}] statements. These dumps are later refined and used by the tool for further processing.
 	\section{Case Studies}
 	\label{sec:case_studies}
 	

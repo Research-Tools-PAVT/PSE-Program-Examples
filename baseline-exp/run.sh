@@ -18,7 +18,7 @@ echo "  ---- Generating Inputs for ${RUNNER} ----  "
 # do 
 #     dd if=/dev/random of=tests/input_${index}.txt bs=64 count=1
 # done
-python3 generateInputs.py 10 -500 500
+python3 generateInputs.py 250
 
 echo "  ---- Building Binary : ${RUNNER} ----  "
 cd bin/
@@ -27,9 +27,9 @@ CC=$CC CXX=$CXX cmake \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../
     
 # clang-tidy -checks=* -p bin/ ../src/${RUNNER}.cpp
-make -j 12
+make -j 2
 cd ../
 
-# echo "  ---- Running Binary : ${RUNNER} ----  "
-# bin/${RUNNER} < tests/input_1.txt
-# echo "  ---- ${RUNNER} ----  "
+echo "  ---- Running Binary : ${RUNNER} ----  "
+bin/${RUNNER} < tests/input_1.txt
+echo "  ---- ${RUNNER} ----  "

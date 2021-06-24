@@ -5,6 +5,7 @@
 #include <iostream>
 #include <math.h>
 #include <prob_hash.h>
+#include <random>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,7 +23,10 @@ unsigned int hash(struct prob_hash *prob_hash, std::string key,
 
   // If the key is not in the map, get a random element and rehash
   if (found == prob_hash->map.end()) {
-    unsigned int x;
+    // Randomly sample PSE Variable from a given distribution.
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> int_dist(0, INT32_MAX);
+    unsigned int x = int_dist(generator);
     // make_pse_symbolic(&x, sizeof(x), "x_sym", 0, (int)max);
     prob_hash->map[key] = x;
     return x;
@@ -152,13 +156,70 @@ int bloom_reset(struct bloom *bloom) {
 const char *bloom_version() { return MAKESTRING(BLOOM_VERSION); }
 
 int main() {
-  struct bloom bloom;
-  bloom_init(&bloom, 1, 0.1);
-  bloom_add(&bloom, "Zach1");
-  if (bloom_check(&bloom, "Justin")) {
-    // klee_dump_kquery_state();
-    std::cout << "Found !\n";
+
+  /**
+   * @brief We randomly supply a set of forall values.
+   * We run the program multiple times, each time with a
+   * different setting of the ForAll variables.
+   */
+  int entries = 0, add_item = 0, search_item = 1, win = 0, loop_count = 0,
+      termCount = 0;
+  double error = 0.0454;
+  std::vector<std::string> inputs = {"Zach1",  "Zach2",     "Justin1",
+                                     "Sumit1", "Subhajit1", "Justin2"};
+
+  std::default_random_engine generator;
+  std::uniform_int_distribution<int> range_dist(0, 5);
+  std::uniform_real_distribution<double> error_dist(0.01, 0.99);
+
+  entries = 1;
+  error = error_dist(generator);
+  add_item = range_dist(generator);
+  search_item = range_dist(generator);
+  scanf("%d", &termCount);
+
+  while (termCount--) {
+
+    // For each setting of the forAlls,
+    // We run the program termCount number of times.
+    struct bloom bloom;
+    bloom_init(&bloom, entries, error);
+    bloom_add(&bloom, inputs[add_item]);
+
+    if (bloom_check(&bloom, inputs[search_item])) {
+      // klee_dump_kquery_state();
+      win++;
+    }
+
+    bloom_free(&bloom);
+    loop_count++;
   }
-  bloom_free(&bloom);
+
+  std::cout << "Prob Assert : " << (double)(win) / loop_count << "\n";
   return 0;
 }
+
+// @brief Error
+// AddressSanitizer:DEADLYSIGNAL
+// =================================================================
+// ==295351==ERROR: AddressSanitizer: SEGV on unknown address 0x6020021ac76e (pc
+// 0x000000507d0e bp 0x7ffc1f7eb450 sp 0x7ffc1f7eb400 T0)
+// ==295351==The signal is caused by a READ memory access.
+//     #0 0x507d0e in test_bit_set_bit(unsigned char*, unsigned int, int)
+//     bloomfilter.cpp #1 0x506616 in bloom_check_add(bloom*,
+//     std::__cxx11::basic_string<char, std::char_traits<char>,
+//     std::allocator<char> >, int) bloomfilter.cpp #2 0x506906 in
+//     bloom_add(bloom*, std::__cxx11::basic_string<char,
+//     std::char_traits<char>, std::allocator<char> >)
+//     (/home/zcluster55/Documents/Research/PSE-Program-Examples/baseline-exp/bin/bloomfilter+0x506906)
+//     #3 0x50772f in main
+//     (/home/zcluster55/Documents/Research/PSE-Program-Examples/baseline-exp/bin/bloomfilter+0x50772f)
+//     #4 0x7ff0c452c0b2 in __libc_start_main
+//     /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:308:16 #5 0x42556d
+//     in _start
+//     (/home/zcluster55/Documents/Research/PSE-Program-Examples/baseline-exp/bin/bloomfilter+0x42556d)
+
+// AddressSanitizer can not provide additional info.
+// SUMMARY: AddressSanitizer: SEGV bloomfilter.cpp in test_bit_set_bit(unsigned
+// char*, unsigned int, int)
+// ==295351==ABORTING

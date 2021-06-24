@@ -324,12 +324,13 @@
 					\EndCase
 					\Case{\textbf{assume}$(v == expr)$} \algorithmiccomment{Assume Instruction} \label{line:assume}
 						\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}	
-						\If{\textsc{isSat}($v == expr$)}
+						\If{\textsc{isSat}($v == expr$)} \algorithmiccomment{Check Satisfiablilty}
 							\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge (v == expr)$, $\Delta$]}
+							\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
 						\Else 
-							\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge $(\textsc{false}), $\Delta$]}
+							%\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path} \wedge $(\textsc{false}), $\Delta$]}
+							\Let {$\phi_{path}$}{$\phi$} \algorithmiccomment{Infeasible Path}
 						\EndIf
-						\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
 					\EndCase
 					\Case{\textbf{HALT}} \algorithmiccomment{Terminate Instruction}
 						\Let{$\varphi_{paths}$}{$\varphi_{paths}$.\textsc{Append}($\phi_{path}$)}		
@@ -493,9 +494,10 @@
 	During \textit{dynamic} execution, \textsc{KLEE} executes each \textit{instruction} in the program and updates the \textit{state} along with the \textit{symbolic} variables mapping ($\Delta$) depending upon \textit{type} of the \textit{instruction} it executes as described in Algorithm~\ref{alg:symbex}. 
 	\textsc{KLEE} assigns values to \textit{symbolic} variables by employing an \textsc{SMT Solver} (\textsc{Z3} as in our case) for solving the current set of \textit{constraints} seen so far in the program path and also by concretizing some of the values that get evaluated as a result of \textit{concrete} execution (Eg. return value from external function calls). 
 	
-	%Upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Algorithm~\ref{alg:symbex}, based on whether the \textit{path constraints} are solvable upon adding the \textit{branch} [Line~\ref{line:branch}] condition, \textsc{KLEE} forks the current \textit{state} by making two identical copies of it and then appending to each of \textit{new} states one additional constraint encoding the \textit{true} [Line~\ref{line:true_state}] and \textit{false} [Line~\ref{line:false_state}] side of the branch and adds it to the \textit{execution} stack containing \textit{states} that need to be explored next. The process continues untill all the \textit{states} in the \textit{execution} stack are explored.
-	
 	For the purpose of our implementation, we modify \textsc{KLEE} to support creation of \textit{probabilistic symbolic} variables whose values can be sampled from a distribution and dump the whole set of \textit{path} constraints that is stored in the \textit{state} corresponding to the current execution of the program at each of (1) \textbf{\textit{assignment}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:assign}], (2) \textbf{\textit{branch}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:branch}], \& (3) \textbf{\textit{assume}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:assume}] statements. These dumps are later refined and used by the tool for further processing.
+	
+	{\color{blue} Upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Algorithm~\ref{alg:symbex}, based on whether the \textit{path constraints} are solvable upon adding the \textit{branch} [Line~\ref{line:branch}] condition, \textsc{KLEE} forks the current \textit{state} by making two identical copies of it and then appending to each of \textit{new} states one additional constraint encoding the \textit{true} [Line~\ref{line:true_state}] and \textit{false} [Line~\ref{line:false_state}] side of the branch and adds it to the \textit{execution} stack containing \textit{states} that need to be explored next. The process continues untill all the \textit{states} in the \textit{execution} stack are explored.}
+	
 	\section{Case Studies}
 	\label{sec:case_studies}
 	

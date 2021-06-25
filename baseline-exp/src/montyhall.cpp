@@ -1,10 +1,15 @@
 #include <assert.h>
 #include <cstdio>
 #include <iostream>
+#include <random>
+#include <time.h>
 #include <vector>
 
 int montyhall(int choice, int door_switch) {
   int car_door;
+  std::default_random_engine generator;
+  std::uniform_int_distribution<int> value_dist(1, 3);
+  car_door = value_dist(generator);
   // make_pse_symbolic(&car_door, sizeof(car_door), "car_door_sym", 1, 3);
 
   if (choice == car_door) {
@@ -45,21 +50,35 @@ int montyhall(int choice, int door_switch) {
 }
 
 int main() {
-  int choice;
-  int door_switch;
+  int termCount = 0, win = 0, loop_count = 0;
+  scanf("%d", &termCount);
 
-  // klee_make_symbolic(&choice, sizeof(choice), "choice_sym");
-  // klee_assume(1 <= choice);
-  // klee_assume(choice <= 3);
-  // klee_make_symbolic(&door_switch, sizeof(door_switch), "door_switch_sym");
-  // klee_assume(0 <= door_switch);
-  // klee_assume(door_switch <= 1);
+  while (termCount--) {
+    int choice;
+    int door_switch;
 
-  auto ret = montyhall(choice, door_switch);
-  if (ret) {
-    // klee_dump_kquery_state();
-    std::cout << "ret : " << ret << "\n";
+    srand(time(0));
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> value_dist(1, 3);
+    choice = value_dist(generator);
+    // klee_make_symbolic(&choice, sizeof(choice), "choice_sym");
+    // klee_assume(1 <= choice);
+    // klee_assume(choice <= 3);
+
+    door_switch = rand() > 1500 ? 0 : 1;
+    // klee_make_symbolic(&door_switch, sizeof(door_switch), "door_switch_sym");
+    // klee_assume(0 <= door_switch);
+    // klee_assume(door_switch <= 1);
+
+    auto ret = montyhall(choice, door_switch);
+    if (ret) {
+      // klee_dump_kquery_state();
+      win++;
+    }
+    loop_count++;
   }
 
+  auto pwin = (double)win / loop_count;
+  std::cout << "Prob Assert : " << pwin << "\n";
   return 0;
 }

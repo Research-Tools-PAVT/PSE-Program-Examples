@@ -23,7 +23,7 @@ python3 generateInputs.py 250
 echo "  ---- Building Binary : ${RUNNER} ----  "
 cd bin/
 CC=$CC CXX=$CXX cmake \
-    -DCMAKE_CXX_FLAGS="-w -fsanitize=address -fsanitize=leak" \
+    -DCMAKE_CXX_FLAGS="-w -g -fsanitize=address -fsanitize=leak" \
     -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ../
     
 # clang-tidy -checks=* -p bin/ ../src/${RUNNER}.cpp

@@ -1,3 +1,14 @@
+/*
+ *  Copyright (c) 2012-2019, Jyri J. Virkki
+ *  All rights reserved.
+ *
+ *  This file is under BSD license. See LICENSE file.
+ */
+
+/*
+ * Refer to bloom.h for documentation on the public interfaces.
+ */
+
 #include <assert.h>
 #include <bloom.h>
 #include <cstdio>
@@ -110,7 +121,7 @@ int bloom_init(struct bloom *bloom, int entries, double error) {
   printf("Hashes = %d\n", bloom->hashes);
   printf("Bits = %d\n", bloom->bits);
 
-  bloom->bf = (unsigned char *)calloc(bloom->bytes, sizeof(unsigned char));
+  bloom->bf = (unsigned char *)malloc(bloom->bytes * sizeof(unsigned char));
   if (bloom->bf == NULL) { // LCOV_EXCL_START
     return 1;
   } // LCOV_EXCL_STOP
@@ -130,18 +141,22 @@ int bloom_add(struct bloom *bloom, std::string key) {
 
 void bloom_print(struct bloom *bloom) {
   printf("bloom at %p\n", (void *)bloom);
-  printf(" ->entries = %d\n", bloom->entries);
-  printf(" ->error = %f\n", bloom->error);
-  printf(" ->bits = %d\n", bloom->bits);
-  printf(" ->bits per elem = %f\n", bloom->bpe);
-  printf(" ->bytes = %d\n", bloom->bytes);
-  printf(" ->hash functions = %d\n", bloom->hashes);
+  printf(" -> entries = %d\n", bloom->entries);
+  printf(" -> error = %f\n", bloom->error);
+  printf(" -> bits = %d\n", bloom->bits);
+  printf(" -> bits per elem = %f\n", bloom->bpe);
+  printf(" -> bytes = %d\n", bloom->bytes);
+  printf(" -> hash functions = %d\n", bloom->hashes);
 }
 
 void bloom_free(struct bloom *bloom) {
   if (bloom->ready) {
     free(bloom->bf);
-    free(bloom->hash_fns);
+    delete[] bloom->hash_fns;
+
+    // Re-use
+    bloom->bf = nullptr;
+    bloom->hash_fns = nullptr;
   }
   bloom->ready = 0;
 }
@@ -159,12 +174,13 @@ int main() {
 
   /**
    * @brief We randomly supply a set of forall values.
+   *
    * We run the program multiple times, each time with a
    * different setting of the ForAll variables.
    */
   int entries = 0, add_item = 0, search_item = 1, win = 0, loop_count = 0,
       termCount = 0;
-  double error = 0.0454;
+  double error = 0.00;
   std::vector<std::string> inputs = {"Zach1",  "Zach2",     "Justin1",
                                      "Sumit1", "Subhajit1", "Justin2"};
 
@@ -182,28 +198,21 @@ int main() {
 
     // For each setting of the forAlls,
     // We run the program termCount number of times.
-    // struct bloom bloom;
-    // bloom_init(&bloom, entries, error);
-    // bloom_add(&bloom, inputs[add_item]);
-
-    // if (bloom_check(&bloom, inputs[search_item])) {
-    //   // klee_dump_kquery_state();
-    //   win++;
-    // }
-
-    // bloom_free(&bloom);
-    // loop_count++;
     struct bloom bloom;
-    bloom_init(&bloom, 1, 0.1);
-    bloom_add(&bloom, "Zach1");
-    if (bloom_check(&bloom, "Justin")) {
+    bloom_init(&bloom, entries, error);
+    bloom_add(&bloom, inputs[add_item]);
+
+    if (bloom_check(&bloom, inputs[search_item])) {
+      // klee_dump_kquery_state();
       win++;
     }
-    loop_count++;
+
     bloom_free(&bloom);
+    loop_count++;
   }
 
-  std::cout << "Prob Assert : " << (double)(win) / loop_count << "\n";
+  auto pwin = (double)win / loop_count;
+  std::cout << "Prob Assert : " << pwin << "\n";
   return 0;
 }
 

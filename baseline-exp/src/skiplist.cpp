@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 #include <skiplist.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -167,35 +168,49 @@ void sl_unset(sl_entry *head, int key) {
 }
 
 int main() {
-  // Create a list
-  sl_entry *list = sl_init();
+  int termCount = 0, win = 0, loop_count = 0;
+  scanf("%d", &termCount);
 
-  int cost;
-  // klee_make_symbolic(&cost, sizeof(cost), "cost");
-  cost = 0;
+  while (termCount--) { // Create a list
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> random_range(INT32_MIN, INT32_MAX);
 
-  int search_key, search_val;
-  // klee_make_symbolic(&search_key, sizeof(search_key), "search_key");
-  // klee_make_symbolic(&search_val, sizeof(search_val), "search_val");
+    sl_entry *list = sl_init();
 
-  for (int i = 0; i < N - 1; i++) {
-    int key, val;
-    // klee_make_symbolic(&key, sizeof(key), "key");
-    // klee_make_symbolic(&val, sizeof(val), "val");
-    sl_set(list, key, val);
+    int cost = 0;
+    // klee_make_symbolic(&cost, sizeof(cost), "cost");
+
+    int search_key = random_range(generator),
+        search_val = random_range(generator);
+    // klee_make_symbolic(&search_key, sizeof(search_key), "search_key");
+    // klee_make_symbolic(&search_val, sizeof(search_val), "search_val");
+
+    for (int i = 0; i < N - 1; i++) {
+      int key = random_range(generator), val = random_range(generator);
+      // klee_make_symbolic(&key, sizeof(key), "key");
+      // klee_make_symbolic(&val, sizeof(val), "val");
+      sl_set(list, key, val);
+    }
+
+    sl_set(list, search_key, search_val);
+
+    // Perform a lookup
+    sl_get(list, search_key, &cost);
+
+    // Free the list and all its nodes
+    sl_destroy(list);
+
+    // klee_dump_kquery_state();
+    // klee_dump_symbolic_details(&cost, "cost");
+
+    if (cost > 0) {
+      win++;
+      std::cout << "cost : " << cost << "\n";
+    }
+    loop_count++;
   }
 
-  sl_set(list, search_key, search_val);
-
-  // Perform a lookup
-  sl_get(list, search_key, &cost);
-
-  // Free the list and all its nodes
-  sl_destroy(list);
-
-  // klee_dump_kquery_state();
-  // klee_dump_symbolic_details(&cost, "cost");
-
-  std::cout << "cost : " << cost << "\n";
+  auto pwin = (double)win / loop_count;
+  std::cout << "Prob Assert : " << pwin << "\n";
   return 0;
 }

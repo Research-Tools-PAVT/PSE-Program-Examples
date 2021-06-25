@@ -11,15 +11,15 @@ void fisher_yates_sample(int *input, int *sample, int n, int k) {
   }
 
   for (int i = 0; i < k; i++) {
-    int upper_bound = n - i;
+    int upper_bound = n - i - 1;
     std::default_random_engine generator;
     std::uniform_int_distribution<int> int_dist(0, (int)upper_bound);
-    // int r = int_dist(generator);
+    int r = int_dist(generator);
     // make_pse_symbolic(&r, sizeof(r), "r_sym", 0, (int)upper_bound);
 
-    int r = 0;
-    int temp = x[n - i];
-    x[n - i] = x[r];
+    // is this modified semantics correct?
+    int temp = x[n - i - 1];
+    x[n - i - 1] = x[r];
     x[r] = temp;
   }
 
@@ -29,13 +29,15 @@ void fisher_yates_sample(int *input, int *sample, int n, int k) {
 }
 
 int main() {
-  int termCount = 10, win = 0, loop_count = 0;
+  int termCount = 0, win = 0, loop_count = 0;
+  scanf("%d", &termCount);
+
   while (termCount--) {
     int n = 3;
     int arr[n];
 
     std::default_random_engine generator;
-    std::uniform_int_distribution<int> intDataGen(-15000, 15000);
+    std::uniform_int_distribution<int> intDataGen(INT32_MIN, INT32_MAX);
 
     //   klee_make_symbolic(&k, sizeof(k), "k_sym");
     //   klee_assume(k >= 1 && k <= 2);

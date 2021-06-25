@@ -152,8 +152,9 @@ int main() {
 
   // float ep = ep_range(generator);
   // float gamm = gamm_range(generator);
-  int termCount = 500, win = 0, loop_count = 0;
+  int termCount = 0, win = 0, loop_count = 0;
   std::vector<std::string> dataSet = {"hello", "World"};
+  scanf("%d", &termCount);
 
   while (termCount--) {
     // CountMinSketch c(0.01, 0.1);

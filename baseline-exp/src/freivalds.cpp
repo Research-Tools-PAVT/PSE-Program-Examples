@@ -64,7 +64,9 @@ void matmul(unsigned char *A, unsigned char *B, size_t n, unsigned char *C) {
 }
 
 int main() {
-  int termCount = 10, win = 0, loop_count = 0;
+  int termCount = 0, win = 0, loop_count = 0;
+  scanf("%d", &termCount);
+
   while (termCount--) {
     size_t n = 3;
     unsigned char A[n * n];
@@ -96,6 +98,7 @@ int main() {
       orAssume = orAssume || (C[i] != realC[i]);
     }
 
+    // TODO : How to encode this assume?
     // klee_assume(orAssume);
     // klee_assume(C[0] != realC[0]);
 

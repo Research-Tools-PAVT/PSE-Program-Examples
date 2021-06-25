@@ -93,12 +93,15 @@ int main() {
     unsigned char realC[n * n];
     matmul(A, B, n, realC);
 
+    // realC[] & C[] must not be
+    // identiaclly same.
     bool orAssume = false;
     for (size_t i = 0; i < n * n; i++) {
       orAssume = orAssume || (C[i] != realC[i]);
     }
 
-    // TODO : How to encode this assume?
+    // This is a condition that must hold.
+    // Need to check which ones hold.
     // klee_assume(orAssume);
     // klee_assume(C[0] != realC[0]);
 

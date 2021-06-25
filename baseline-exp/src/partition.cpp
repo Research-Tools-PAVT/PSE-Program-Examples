@@ -31,6 +31,7 @@ int partition(unsigned int arr[], int left, int right) {
     }
   }
 
+  // E[outcome]
   outcome = left_count < (right_count - 1) ? (right_count - 1) : left_count;
 
   // klee_dump_kquery_state();

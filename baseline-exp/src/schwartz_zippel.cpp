@@ -24,6 +24,8 @@ int main() {
   scanf("%d", &termCount);
 
   while (termCount--) {
+
+    // Could also be a forall.
     size_t n = 3;
     unsigned char poly[n];
 
@@ -51,7 +53,7 @@ int main() {
 
     unsigned char d[] = {1, 1, 1};
     auto ret = schwartz_zippel(poly, r, d, n);
-    if (ret) {
+    if (ret != 0) {
       // klee_dump_kquery_state();
       win++;
     }

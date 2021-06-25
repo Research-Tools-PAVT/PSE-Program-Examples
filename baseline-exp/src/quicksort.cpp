@@ -29,11 +29,18 @@ int partition(unsigned char arr[], int p, int r, size_t *num_comps) {
 }
 
 int randomized_partition(unsigned char arr[], int p, int r, size_t *num_comps) {
-  int i;
-  auto name = "i" + to_string(p) + to_string(r);
   // printf("%s\n", name.c_str());
   // uniform_int_sample(&i, sizeof(i), name.c_str(), (int) p, (int) r, fp);
   // make_pse_symbolic(&i, sizeof(i), name.c_str(), (int)p, (int)r);
+
+  // PSE Symbolic Variable.
+  std::default_random_engine generator;
+  std::uniform_int_distribution<int> dataRange(INT32_MIN, INT32_MAX);
+  int i = dataRange(generator);
+
+  auto name = "i" + to_string(p) + to_string(r);
+  // Choose between p and r.
+
   swap(&arr[i], &arr[r]);
   return partition(arr, p, r, num_comps);
 }
@@ -56,7 +63,7 @@ int main() {
     unsigned char arr[N];
     // klee_make_symbolic(&arr, sizeof(arr), "arr");
     std::default_random_engine generator;
-    std::uniform_int_distribution<char> char_dist(0, 255);
+    std::uniform_int_distribution<int> char_dist(0, 255);
 
     for (auto i = 0; i < N; i++)
       arr[i] = char_dist(generator);

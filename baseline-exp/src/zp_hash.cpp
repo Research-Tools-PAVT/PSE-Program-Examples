@@ -8,6 +8,8 @@ int main() {
   scanf("%d", &termCount);
 
   while (termCount--) {
+
+    // Could be a forall. Must be a large prime.
     int prime = 3;
 
     std::default_random_engine generator;

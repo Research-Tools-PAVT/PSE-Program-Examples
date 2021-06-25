@@ -202,6 +202,7 @@ int main() {
     bloom_init(&bloom, entries, error);
     bloom_add(&bloom, inputs[add_item]);
 
+    // Different Elem.
     if (bloom_check(&bloom, inputs[search_item])) {
       // klee_dump_kquery_state();
       win++;

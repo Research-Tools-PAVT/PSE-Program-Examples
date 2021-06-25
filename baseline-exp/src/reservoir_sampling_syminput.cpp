@@ -24,6 +24,8 @@ int main() {
   scanf("%d", &termCount);
 
   while (termCount--) {
+
+    // Could also be a forall.
     int n = 4;
     int arr[n];
 

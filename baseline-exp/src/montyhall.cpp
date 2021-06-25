@@ -6,10 +6,10 @@
 #include <vector>
 
 int montyhall(int choice, int door_switch) {
-  int car_door;
+  // PSE Symbolic Variable.
   std::default_random_engine generator;
   std::uniform_int_distribution<int> value_dist(1, 3);
-  car_door = value_dist(generator);
+  int car_door = value_dist(generator);
   // make_pse_symbolic(&car_door, sizeof(car_door), "car_door_sym", 1, 3);
 
   if (choice == car_door) {
@@ -60,11 +60,14 @@ int main() {
     srand(time(0));
     std::default_random_engine generator;
     std::uniform_int_distribution<int> value_dist(1, 3);
+
+    // Forall
     choice = value_dist(generator);
     // klee_make_symbolic(&choice, sizeof(choice), "choice_sym");
     // klee_assume(1 <= choice);
     // klee_assume(choice <= 3);
 
+    // Forall
     door_switch = rand() > 1500 ? 0 : 1;
     // klee_make_symbolic(&door_switch, sizeof(door_switch), "door_switch_sym");
     // klee_assume(0 <= door_switch);

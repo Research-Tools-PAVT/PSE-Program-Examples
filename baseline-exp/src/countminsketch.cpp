@@ -146,7 +146,7 @@ unsigned int CountMinSketch::hashstr(const char *str) {
 int main() {
 
   std::default_random_engine generator;
-  std::uniform_int_distribution<int> dataRange(-15000, 15000);
+  std::uniform_int_distribution<int> dataRange(INT32_MIN, INT32_MAX);
   std::uniform_real_distribution<float> ep_range(0.01, 1);
   std::uniform_real_distribution<float> gamm_range(0, 1);
 
@@ -157,20 +157,21 @@ int main() {
   scanf("%d", &termCount);
 
   while (termCount--) {
-    // CountMinSketch c(0.01, 0.1);
-    float ep = ep_range(generator);
-    float gamm = gamm_range(generator);
-    CountMinSketch c(ep, gamm);
 
-    c.update(dataSet[0].c_str(), 1);
+    // Try with concrete values as of now.
+    // We can try with Foralls later.
+    CountMinSketch c(0.01, 0.1);
+    // float ep = ep_range(generator);
+    // float gamm = gamm_range(generator);
+    // CountMinSketch c(ep, gamm);
+
+    c.update(dataSet[0].c_str(), 1); // Update number Could be foralls.
     c.update(dataRange(generator), 2);
     c.update(dataSet[0].c_str(), 1);
 
     auto ret = c.estimate(dataSet[0].c_str());
     if (ret != 2) {
       // klee_dump_kquery_state();
-      std::cout << "Estimate : " << ret << ", ep : " << ep
-                << ", gamma : " << gamm << "\n";
       win++;
     }
     loop_count++;

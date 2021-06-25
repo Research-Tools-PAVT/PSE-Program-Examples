@@ -167,11 +167,19 @@ void sl_unset(sl_entry *head, int key) {
   }
 }
 
+/**
+ * @brief Try this example out.
+ * Could add to paper.
+ *
+ * @return int
+ */
 int main() {
   int termCount = 0, win = 0, loop_count = 0;
   scanf("%d", &termCount);
 
-  while (termCount--) { // Create a list
+  while (termCount--) {
+
+    // Create a list
     std::default_random_engine generator;
     std::uniform_int_distribution<int> random_range(INT32_MIN, INT32_MAX);
 
@@ -203,6 +211,7 @@ int main() {
     // klee_dump_kquery_state();
     // klee_dump_symbolic_details(&cost, "cost");
 
+    // E[cost]
     if (cost > 0) {
       win++;
       std::cout << "cost : " << cost << "\n";

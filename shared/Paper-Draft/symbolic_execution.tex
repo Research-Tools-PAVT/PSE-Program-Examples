@@ -1,6 +1,3 @@
-		\subsection{Background}
-\label{sec:trad_sym_exec}
-
 \label{sec:pse}
 In this section, we present our technique for augmenting traditional symbolic execution to support probabilistic programs with discrete sampling instructions. 
 % 
@@ -11,35 +8,52 @@ We begin with a short review of a traditional symbolic execution algorithm and t
 	\caption{Probabilistic Symbolic Execution Algorithm}
 	\label{alg:symbex}
 	\begin{algorithmic}[1]
-		\Function{SymbEx}{$S : Program$}
-		\Let{$\varphi_{paths}$}{[]}, {$E_{s}$} $\leftarrow$ {[]}, $\sigma \leftarrow$ {[]}, $\varphi \leftarrow \emptyset$, $P \leftarrow \{ \}$  \algorithmiccomment{Initialization}
-		\Let{$I_{0}$}{\textsc{getStartInstruction}($S$)}
-		\State {$E_{s} \leftarrow$  \{[$I_{0}$, $\varphi$, $\sigma$, $P$]\}} \algorithmiccomment{Start State [$I_{0}$, $\varphi$, $\sigma$, $P$]}
-		\While{$E_{s} \neq \emptyset$}
-		\Let{$\Delta_{c}$}{\textsc{GetNext}($E_{s}$)}, $\Delta_{c}$ $\rightarrow$ [$I_{c}$, $\varphi$, $\sigma$, $P$]  \algorithmiccomment{Get Next state from $E_{s}$}
-		\Switch{\textsc{instType}($I_{c}$)} \label{line:inst_case}
-		\Case{$\mathtt{x} \xleftarrow{\$} d$} \algorithmiccomment{Create \texttt{fresh} Symbolic Variable} \label{line:make_pse}
-		\Let{$I_{s}$}{\textsc{getNextInstruction}($I_{c}$)}
-		\Let{$\varphi, \sigma, P$}{{\textbf{PSESample}}({$x,  d$, $\varphi$, $\sigma$, $P$})}
-		\State {$E_{s} \leftarrow E_{s} \cup$ \{[$I_{c}$, $\varphi$, $\sigma$, $P$]\} }
+		\Function{SymbEx}{Prog : Program}
+		\Let{$\varphi_{paths}$}{[]}, {$L$} $\leftarrow$ {[]}, $Enc_t \gets \bot, Enc_a \gets \bot$  \algorithmiccomment{Initialization}
+		\Let{$I_{0}$}{\textsc{getStartInstruction}($Prog$)}
+		\Let{$S_{0}$}{($I_{0}$, $\phi$, $\phi$, $\phi$, 1.0)} \algorithmiccomment{Empty Initial State}
+		\State {$L$.\textsc{Append}({$S_{0}$})} \algorithmiccomment{Start with $S_{cur}$ in Execution Stack}
+		\While{$L \neq \phi$}
+		\Let{($I_{cur}, \varphi, \sigma, P, p)$}{$L$.\textsc{Remove}( )}
+		\If{\textsc{UNSAT}($\varphi$) $\lor p = 0.0$}
+		\State \textbf{continue}
+		\EndIf
+		\Switch{\textsc{instType}($I_{cur}$)} \label{line:inst_case}
+		\Case{$x \gets d$} \algorithmiccomment{Create \texttt{fresh} Symbolic Variable} \label{line:make_pse}
+		\Let{$I_1$}{\textsc{getNextInstruction}($I_{cur}$)}
+		\Let{$P_1$}{{\textbf{PSESample}}({$x,  d, P$})}
+		\Let{$S_1$}{($I_{cur}, \varphi, \sigma, P_1, p$)}
+		\State {$L$.\textsc{Append}({$S_1$})}
 		\EndCase
-		\Case{$\mathtt{x} \leftarrow e$} \algorithmiccomment{Assignment Instruction} \label{line:assign}
-		\Let{$I_{s}$}{\textsc{getNextInstruction}($I_{c}$)}
-		\Let{$\varphi, \sigma, P$}{{\textbf{PSEAssignment}}({v, e, $\varphi$, $\sigma$, $P$})}
-		\State {$E_{s} \leftarrow E_{s} \cup$ \{[$I_{c}$, $\varphi$, $\sigma$, $P$]\} }
+		\Case{$v \gets e$} \algorithmiccomment{Assignment Instruction} \label{line:assign}
+		\Let{$I_1$}{\textsc{getNextInstruction}($I_{cur}$)}
+		%\Let{$e_{sym}$}{$\sigma[e]$}
+		%\Let{$\varphi, \sigma, P$}{{\textbf{PSEAssignment}}({v, e, $\varphi$, $\sigma$, $P$})}
+		\Let{$\sigma[x]$}{$\sigma[e]$}
+		\Let{$S_{cur}$}{($I_{cur}$, $\varphi$, $\sigma$, $P$)}
+		\State {$L$.\textsc{Append}({$S_{cur}$})}
 		\EndCase
-		\Case{\textbf{if} $(c_{sym})$ \textbf{then} $S_{1}$ \textbf{else} $S_{2}$} \algorithmiccomment{Branch Instruction}
-		\Let{$((\varphi \wedge c_{sym}, \sigma,P,p_c), (\varphi \wedge \neg c_{sym}, \sigma,P,1-p_c))$}{{\textbf{PSEBranch}}({$c_{sym}$, $\varphi$, $\sigma$, $P$})} \label{line:branch}
-		\Let{$I_{t}$}{\textsc{getStartInstruction}($P_{1}$)} \Let{$I_{f}$} {\textsc{getStartInstruction}($P_{2}$)}	
-		\State {$E_{s} \leftarrow E_{s} \cup$ \{[$I_{t}$, $\varphi \wedge c_{sym}$, $\sigma$, $P$]\} }
-		\State {$E_{s} \leftarrow E_{s} \cup$ \{[$I_{f}$, $\varphi \wedge \neg c_{sym}$, $\sigma$, $P$]\} }
+		\Case{\textbf{if} $(c)$ \textbf{then goto} $T_{1}$} \algorithmiccomment{Branch Instruction}
+		\Let{$c_{sym}$}{$\sigma[c]$}
+		\Let{$p_t, p_f$}{{\textbf{PSEBranch}}({$c_{sym}$, $\sigma$, $P$})} \label{line:branch}
+		\Let{$I_{1}$}{\textsc{getInstruction}($T_{1}$)} 
+		\Let{$I_{2}$} {\textsc{getNextInstruction}(I)}	
+		\Let{$S_{true}$}{($I_{1}$, $\varphi \wedge c_{sym}$, $\sigma$, $p_t$)} \label{line:true_state}
+		\Let{$S_{false}$}{($I_{2}$, $\varphi \wedge \neg c_{sym}$, $\sigma$, $p_f$)} \label{line:false_state}
+		\State {$L$.\textsc{Append}({$S_{false}$})}
+		\State {$L$.\textsc{Append}({$S_{true}$})} \algorithmiccomment{Start with True State}
 		\EndCase
-		\Case{\textbf{HALT}} \algorithmiccomment{Terminate Instruction}
-		\Let{$\varphi_{paths}$}{$\varphi_{paths}$.\textsc{Append}($\varphi$)}		
+		\Case{\textbf{halt(c)}} \algorithmiccomment{Terminate Instruction}
+		\Let{$c_{sym}$}{$\sigma[c]$}
+		\If{\textsc{SAT}($c_{sym}$)}
+		\State {$Enc_t$.\textsc{AddEncoding}($\varphi, p$)}		
+		\EndIf
+		\State {$Enc_a$.\textsc{AddEncoding}($\varphi, p$)}		
 		\EndCase
 		\EndSwitch
-		\EndWhile \\
-		\Return{$\varphi_{paths}$}
+		\EndWhile 
+		\Let{$r$}{\textsc{Solve}($Enc_t, Enc_a$)} \\
+		\Return{$r$}
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
@@ -72,7 +86,8 @@ When execution reaches a branch guarded by the condition $c$, execution proceeds
 We present the formalism of our approach on \textbf{pWhile}, a core imperative probabilistic programming language, as a model for more general languages:
 % 
 \[
-S := \mathbf{skip} \mid \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid \Delta_1 ; \Delta_2 \mid \mathbf{if}~e~\mathbf{then}~\Delta_1~\mathbf{else}~\Delta_2 \mid \mathbf{while}~e~\mathbf{do}~S 
+%S := \mathbf{skip} \mid \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid S_1 ; S_2 \mid \mathbf{if}~e~\mathbf{then}~S_1~\mathbf{else}~S_2 \mid \mathbf{while}~e~\mathbf{do}~S 
+S := \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid S_1 ; S_2 \mid \mathbf{if}~e~\textbf{then goto} T \mid \textbf{halt}(e)
 \]
 
 Above, $\mathtt{x}$ is a program variable, $e$ is an expression, and $d$ is a \textit{discrete} distribution expression which denotes which distribution the sample should be drawn from.
@@ -118,9 +133,9 @@ In order to support sampling instructions we make the following additions to tra
 	\label{alg:sample}
 	\begin{algorithmic}[1]
 		\Function{PSESample}{$\mathtt{x}, d, \varphi, \sigma, P$}
-		\Let{$\sigma$}{Generate a fresh probabilistic symbolic variable}
-		\State{$\sigma[\mathtt{x}] = \sigma$}
-		\State{$P[\sigma] = d$}
+		\Let{$\delta$}{Generate a fresh probabilistic symbolic variable}
+		\State{$\sigma[\mathtt{x}] = \delta$}
+		\State{$P[\delta] = d$}
 		\State\Return{$(\varphi,\sigma,P)$}
 		\EndFunction
 	\end{algorithmic}
@@ -129,7 +144,7 @@ In order to support sampling instructions we make the following additions to tra
 \begin{paragraph}{Sampling}
 	For sampling statements, $\mathtt{x} \xleftarrow{\$} d$, where $\mathtt{x}$ is a \textit{program} variable and $d$ is a distribution expression, Alg.~\ref{alg:sample} is used.
 	% 
-	A fresh probabilistic symbolic variable, $\sigma$, is created, $\sigma$ is updated to be $\sigma[\mathtt{x}] = \sigma$, and the original distribution $d$ is recorded in $P$ by setting $P[\sigma] = d$.
+	A fresh probabilistic symbolic variable, $\delta$, is created, $\sigma$ is updated to be $\sigma[\mathtt{x}] = \delta$, and the original distribution $d$ is recorded in $P$ by setting $P[\delta] = d$.
 	%
 	On the \textit{symbolic execution} side, the updated \textit{Distribution Map} ($P$) with the result of sampling operation is stored back in the current \textit{state} for further execution as shown in Line~\ref{line:make_pse} of Alg~\ref{alg:symbex}.  
 \end{paragraph}
@@ -139,10 +154,9 @@ In order to support sampling instructions we make the following additions to tra
 	\label{alg:branch}
 	\begin{algorithmic}[1]
 		\Function{PSEBranch}{$c, \varphi, \sigma, P$}
-		\Let{$c_{sym}$}{$\sigma[c]$}
-		\Let{$(\sigma_1,\ldots,\sigma_n)$}{$\dom{P}$}
-		\Let{$(d_1,\ldots,d_n)$}{$(P[\sigma_1],\ldots,P[\sigma_n])$}
-		\Let{$p_c$}{$\frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}} [(c_{sym} \wedge \varphi)\{\sigma_1 \mapsto v_1,\ldots,\sigma_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}}[\varphi\{\sigma_1 \mapsto v_1,\ldots,\sigma_n \mapsto v_n\}]}$}
+		\Let{$(\delta_1,\ldots,\delta_n)$}{$\dom{P}$}
+		\Let{$(d_1,\ldots,d_n)$}{$(P[\delta_1],\ldots,P[\delta_n])$}
+		\Let{$p_c$}{$\frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}$}
 		\State\Return{$((\varphi \wedge c_{sym}, \sigma,P,p_c), (\varphi \wedge \neg c_{sym}, \sigma,P,1-p_c))$}
 		\EndFunction
 	\end{algorithmic}
@@ -169,7 +183,7 @@ In order to support sampling instructions we make the following additions to tra
 	
 	For probabilistic branches, i.e. guards which branch on probabilistic symbolic variables, computing the branch probability is trickier as given a fixed setting of the universal symbolic variables, it is unclear which branch execution will follow as this is dependent upon the sampling results.
 	% 
-	Without loss of generality, consider a branch of the form $\mathbf{if}~c~\mathbf{then}~\Delta_1~\mathbf{else}~\Delta_2$.
+	Without loss of generality, consider a branch of the form $\mathbf{if}~c~\mathbf{then}~S_1~\mathbf{else}~S_2$.
 	% 
 	As before, we define $c_{sym} = \sigma[c]$, or the symbolic expression representation of the guard expression, $c$, and we want to compute the probability of taking the ``true'' branch and the ``false'' branch, assuming execution has reached the start of the \texttt{if} condition.
 	% 
@@ -180,9 +194,9 @@ In order to support sampling instructions we make the following additions to tra
 	
 	For now we restrict our view to uniform distributions, although we can support weighted distributions without further problems.
 	% 
-	Note that each probabilistic symbolic variable, $\sigma$, is mapped to exactly one distribution, $d$, and therefore, $\sigma \in \dom{d}$.
+	Note that each probabilistic symbolic variable, $\delta$, is mapped to exactly one distribution, $d$, and therefore, $\delta \in \dom{d}$.
 	% 
-	So, assuming there are $n$ probabilistic symbolic variables, $\sigma_1,\ldots,\sigma_n$, and so $n$ distributions, $d_1,\ldots,d_n$, the set of all possible values $\sigma_1,\ldots,\sigma_n$ be is $\mathcal{D} = \dom{d_1} \times \cdots \times \dom{d_n}$.
+	So, assuming there are $n$ probabilistic symbolic variables, $\delta_1,\ldots,\delta_n$, and so $n$ distributions, $d_1,\ldots,d_n$, the set of all possible values $\delta_1,\ldots,\delta_n$ be is $\mathcal{D} = \dom{d_1} \times \cdots \times \dom{d_n}$.
 	% 
 	We then count the number of elements (or \textit{assignments}) from $\mathcal{D}$ which satisfy $c_{sym} \wedge \varphi$ and $\varphi$, and divide these two quantities as shown on line 5 of Alg.~\ref{alg:branch}.
 	% 
@@ -190,7 +204,7 @@ In order to support sampling instructions we make the following additions to tra
 	% 
 	Additionally, we exploit the fact that the sum of the conditional probabilities of the branch outcomes is 1, which allows us to avoid computing the probability of taking the ``false'' branch directly. \\
 	% 
-	On the \textit{symbolic execution} side, upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Alg~\ref{alg:symbex}, two new \textit{states} are created ($\Delta_{true}$ \& $\Delta_{false}$) and the constraint encoding the actual \textit{branch condition} ($c_{sym}$) [Line~\ref{line:true_state}] and it's negation ($\neg c_{sym}$)  [Line~\ref{line:false_state}] are appended to them representing the \textit{true} \& \textit{false} side of the \textit{branch}. 
+	On the \textit{symbolic execution} side, upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Alg~\ref{alg:symbex}, two new \textit{states} are created ($S_{true}$ \& $S_{false}$) and the constraint encoding the actual \textit{branch condition} ($c_{sym}$) [Line~\ref{line:true_state}] and it's negation ($\neg c_{sym}$)  [Line~\ref{line:false_state}] are appended to them representing the \textit{true} \& \textit{false} side of the \textit{branch}. 
 	%
 	These states are then added to the \textit{execution} stack containing \textit{states} that need to be explored next. The process continues untill all the \textit{states} in the \textit{execution} stack are explored.
 \end{paragraph}
@@ -220,12 +234,12 @@ In order to support sampling instructions we make the following additions to tra
 		{\small
 			\begin{forest}baseline,for tree=draw,
 				[{$\varphi=\top$},align=center, base=bottom
-				[{$\varphi = \sigma_1 > 1$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{2}{3}$} }
-				[{$\varphi = (\sigma_1 > 1) \wedge (\sigma_1 < \sigma_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{6}$} }
+				[{$\varphi = \delta_1 > 1$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{2}{3}$} }
+				[{$\varphi = (\delta_1 > 1) \wedge (\delta_1 < \delta_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{6}$} }
 				[{\texttt{True}}]]
-				[{$\varphi = (\sigma_1 > 1) \wedge \neg(\sigma_1 < \sigma_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{5}{6}$} }
+				[{$\varphi = (\delta_1 > 1) \wedge \neg(\delta_1 < \delta_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{5}{6}$} }
 				[{\texttt{False}}]]]
-				[{$\varphi = \neg(\sigma_1 > 1)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{3}$} }
+				[{$\varphi = \neg(\delta_1 > 1)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{3}$} }
 				[{\texttt{False}}]]]
 			\end{forest}
 		}
@@ -240,17 +254,17 @@ In order to support sampling instructions we make the following additions to tra
 \begin{paragraph}{Example}
 	Consider the code in Fig.~\ref{fig:exam_program} and suppose we wish to calculate the probability of the program returning \texttt{True}.
 	% 
-	Following Alg.~\ref{alg:sample} for lines 1,2, we generate fresh probabilistic symbolic variables for $\mathtt{x}$ and $\mathtt{y}$, $\sigma_1$ and $\sigma_2$, respectively.
+	Following Alg.~\ref{alg:sample} for lines 1,2, we generate fresh probabilistic symbolic variables for $\mathtt{x}$ and $\mathtt{y}$, $\delta_1$ and $\delta_2$, respectively.
 	% 
-	We also store the distributions which $\sigma_1$ and $\sigma_2$ are samples from, namely the discrete uniform distribution $\mathcal{U}\{1,3\}$.
+	We also store the distributions which $\delta_1$ and $\delta_2$ are samples from, namely the discrete uniform distribution $\mathcal{U}\{1,3\}$.
 	% 
-	In our notation, we say that $\sigma = \{ \mathtt{x} \mapsto \sigma_1, \mathtt{y} \mapsto \sigma_2 \}$ and $P = \{ \sigma_1,\sigma_2 \mapsto \mathcal{U}\{1,3\} \}$.
+	In our notation, we say that $\sigma = \{ \mathtt{x} \mapsto \delta_1, \mathtt{y} \mapsto \delta_2 \}$ and $P = \{ \delta_1,\delta_2 \mapsto \mathcal{U}\{1,3\} \}$.
 	% 
 	Now following Alg.~\ref{alg:branch} to process line 4 of Fig.~\ref{fig:exam_program}, note that $\mathcal{D} = \{1,2,3\} \times \{1,2,3\}$ and 
 	
 	\begin{align*}
-		p_c = \Pr[\sigma_1 < \sigma_2 \mid \sigma_1 > 1] &= \frac{\Pr[(\sigma_1 < \sigma_2) \wedge (\sigma_1 > 1)]}{\Pr[\sigma_1 > 1]}\\
-		&= \frac{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\sigma_1 < \sigma_2) \wedge (\sigma_1 > 1)\{\sigma_1 \mapsto v_1, \sigma_2 \mapsto v_2\}]}{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\sigma_1 > 1)\{\sigma_1 \mapsto v_1\}]}\\
+		p_c = \Pr[\delta_1 < \delta_2 \mid \delta_1 > 1] &= \frac{\Pr[(\delta_1 < \delta_2) \wedge (\delta_1 > 1)]}{\Pr[\delta_1 > 1]}\\
+		&= \frac{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\delta_1 < \delta_2) \wedge (\delta_1 > 1)\{\delta_1 \mapsto v_1, \delta_2 \mapsto v_2\}]}{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\delta_1 > 1)\{\delta_1 \mapsto v_1\}]}\\
 		&= \frac{1}{6}
 	\end{align*}
 	

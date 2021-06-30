@@ -14,6 +14,7 @@
 #include <cstdio>
 #include <fcntl.h>
 #include <iostream>
+#include <limits>
 #include <math.h>
 #include <prob_hash.h>
 #include <random>
@@ -118,8 +119,8 @@ int bloom_init(struct bloom *bloom, int entries, double error) {
   }
 
   bloom->hashes = (int)ceil(0.693147180559945 * bloom->bpe); // ln(2)
-  printf("Hashes = %d\n", bloom->hashes);
-  printf("Bits = %d\n", bloom->bits);
+  // printf("Hashes = %d\n", bloom->hashes);
+  // printf("Bits = %d\n", bloom->bits);
 
   bloom->bf = (unsigned char *)malloc(bloom->bytes * sizeof(unsigned char));
   if (bloom->bf == NULL) { // LCOV_EXCL_START
@@ -178,66 +179,44 @@ int main() {
    * We run the program multiple times, each time with a
    * different setting of the ForAll variables.
    */
-  int entries = 0, add_item = 0, search_item = 1, win = 0, loop_count = 0,
-      termCount = 0;
-  double error = 0.00;
-  std::vector<std::string> inputs = {"Zach1",  "Zach2",     "Justin1",
-                                     "Sumit1", "Subhajit1", "Justin2"};
+  int entries = 0, add_item = 0, search_item = 0, N = 0;
+  long double error = 0.00;
 
-  std::default_random_engine generator;
-  std::uniform_int_distribution<int> range_dist(0, 5);
-  std::uniform_real_distribution<double> error_dist(0.01, 0.99);
+  // For each setting of the forAlls,
+  // We run the program termCount number of times.
 
-  entries = 1;
-  error = error_dist(generator);
-  add_item = range_dist(generator);
-  search_item = range_dist(generator);
-  scanf("%d", &termCount);
+  scanf("%d", &N);
+  scanf("%d", &entries);
+  scanf("%Lf", &error);
+  scanf("%d", &add_item);
+  scanf("%d", &search_item);
 
-  while (termCount--) {
+  std::vector<std::string> inputs;
 
-    // For each setting of the forAlls,
-    // We run the program termCount number of times.
-    struct bloom bloom;
-    bloom_init(&bloom, entries, error);
-    bloom_add(&bloom, inputs[add_item]);
+  assert(add_item < N && add_item >= 0);
+  assert(search_item < N && search_item >= 0);
 
-    // Different Elem.
-    if (bloom_check(&bloom, inputs[search_item])) {
-      // klee_dump_kquery_state();
-      win++;
-    }
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    bloom_free(&bloom);
-    loop_count++;
+  while (N--) {
+    std::string temp = "";
+    std::getline(std::cin, temp);
+    inputs.emplace_back(temp);
   }
 
-  auto pwin = (double)win / loop_count;
-  std::cout << "Prob Assert : " << pwin << "\n";
-  return 0;
+  struct bloom bloom;
+  bloom_init(&bloom, entries, error);
+  bloom_add(&bloom, inputs[add_item]);
+
+  // Different Elem.
+  if (bloom_check(&bloom, inputs[search_item])) {
+    // klee_dump_kquery_state();
+    std::cout << "1"
+              << "\n";
+  } else {
+    std::cout << "-1"
+              << "\n";
+  }
+
+  bloom_free(&bloom);
 }
-
-// @brief Error
-// AddressSanitizer:DEADLYSIGNAL
-// =================================================================
-// ==295351==ERROR: AddressSanitizer: SEGV on unknown address 0x6020021ac76e (pc
-// 0x000000507d0e bp 0x7ffc1f7eb450 sp 0x7ffc1f7eb400 T0)
-// ==295351==The signal is caused by a READ memory access.
-//     #0 0x507d0e in test_bit_set_bit(unsigned char*, unsigned int, int)
-//     bloomfilter.cpp #1 0x506616 in bloom_check_add(bloom*,
-//     std::__cxx11::basic_string<char, std::char_traits<char>,
-//     std::allocator<char> >, int) bloomfilter.cpp #2 0x506906 in
-//     bloom_add(bloom*, std::__cxx11::basic_string<char,
-//     std::char_traits<char>, std::allocator<char> >)
-//     (/home/zcluster55/Documents/Research/PSE-Program-Examples/baseline-exp/bin/bloomfilter+0x506906)
-//     #3 0x50772f in main
-//     (/home/zcluster55/Documents/Research/PSE-Program-Examples/baseline-exp/bin/bloomfilter+0x50772f)
-//     #4 0x7ff0c452c0b2 in __libc_start_main
-//     /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:308:16 #5 0x42556d
-//     in _start
-//     (/home/zcluster55/Documents/Research/PSE-Program-Examples/baseline-exp/bin/bloomfilter+0x42556d)
-
-// AddressSanitizer can not provide additional info.
-// SUMMARY: AddressSanitizer: SEGV bloomfilter.cpp in test_bit_set_bit(unsigned
-// char*, unsigned int, int)
-// ==295351==ABORTING

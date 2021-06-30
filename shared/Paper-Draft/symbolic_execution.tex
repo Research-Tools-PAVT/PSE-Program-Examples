@@ -1,0 +1,265 @@
+		\subsection{Background}
+\label{sec:trad_sym_exec}
+
+\label{sec:pse}
+In this section, we present our technique for augmenting traditional symbolic execution to support probabilistic programs with discrete sampling instructions. 
+% 
+We begin with a short review of a traditional symbolic execution algorithm and then discuss how we calculate exact path probabilities.
+
+% Symbolic Execution Algorithm.
+\begin{algorithm}
+	\caption{Probabilistic Symbolic Execution Algorithm}
+	\label{alg:symbex}
+	\begin{algorithmic}[1]
+		\Function{SymbEx}{$Prog : Program$}
+		\Let{$\varphi_{paths}$}{[]}, {$Ex_{stack}$} $\leftarrow$ {[]}, $\Delta \leftarrow$ {[]}, $\phi_{paths} \leftarrow \phi$, $P \leftarrow \phi$  \algorithmiccomment{Initialization}
+		\Let{$I_{0}$}{\textsc{getStartInstruction}($Prog$)}
+		\Let{$S_{0}$}{[$I_{0}$, $\phi_{path}$, $\Delta$, $\phi$]} \algorithmiccomment{Empty Initial State}
+		\State {$Ex_{stack}$.\textsc{Push}({$S_{0}$})} \algorithmiccomment{Start with $S_{cur}$ in Execution Stack}
+		\While{$Ex_{stack}$ != $\phi$}
+		\Let{$S_{cur}$}{$Ex_{stack}$.\textsc{Pop}( )}, $I_{cur} \leftarrow S_{cur}[1]$ \algorithmiccomment{Start State, [$I_{0}$, $\phi_{path}$, $\Delta$]}
+		\Switch{\textsc{instType}($I_{cur}$)} \label{line:inst_case}
+		\Case{\texttt{make\_pse\_sym}} ($x_{var},  d_{dist}$) \algorithmiccomment{Create \texttt{fresh} Symbolic Variable} \label{line:make_pse}
+		\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}
+		\Let{$\phi_{path}, \Delta, P$}{{\textbf{PSESample}}({$x_{var},  d_{dist}$, $\phi_{path}$, $\Delta$, $P$})}
+		\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path}$, $\Delta$, $P$]}
+		\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+		\EndCase
+		\Case{v := e} \algorithmiccomment{Assignment Instruction} \label{line:assign}
+		\Let{$I_{cur}$}{\textsc{getNextInstruction}($I_{cur}$)}
+		\Let{$\phi_{path}, \Delta, P$}{{\textbf{PSEAssignment}}({v, e, $\phi_{path}$, $\Delta$, $P$})}
+		\Let{$S_{cur}$}{[$I_{cur}$, $\phi_{path}$, $\Delta$, $P$]}
+		\State {$Ex_{stack}$.\textsc{Push}({$S_{cur}$})}
+		\EndCase
+		\Case{\textbf{if} $(c_{sym})$ \textbf{then} $P_{1}$ \textbf{else} $P_{2}$} \algorithmiccomment{Branch Instruction}
+		\Let{$Branch_{expr}$}{{\textbf{PSEBranch}}({$c_{sym}$, $\phi_{path}$, $\Delta$, $P$})} \label{line:branch}
+		\Let{$I_{1}$}{\textsc{getStartInstruction}($P_{1}$)} \Let{$I_{2}$} {\textsc{getStartInstruction}($P_{2}$)}	
+		\Let{$S_{true}$}{[$I_{1}$, $\phi_{path} \wedge c_{sym}$, $\Delta$, $Branch_{expr}[0]$]} \label{line:true_state}
+		\Let{$S_{false}$}{[$I_{2}$, $\phi_{path} \wedge (\neg c_{sym})$, $\Delta$, $Branch_{expr}[1]$]} \label{line:false_state}
+		\State {$Ex_{stack}$.\textsc{Push}({$S_{false}$})}
+		\State {$Ex_{stack}$.\textsc{Push}({$S_{true}$})} \algorithmiccomment{Start with True State}
+		\EndCase
+		\Case{\textbf{HALT}} \algorithmiccomment{Terminate Instruction}
+		\Let{$\varphi_{paths}$}{$\varphi_{paths}$.\textsc{Append}($\phi_{path}$)}		
+		\EndCase
+		\EndSwitch
+		\EndWhile \\
+		\Return{$\varphi_{paths}$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\textit{Symbolic execution} is a program analysis technique where a program is run on \textit{symbolic} inputs and all program operations are replaced with those which manipulate these symbolic variables.
+%
+We present a high-level description of how \textit{symbolic execution} works in Alg~\ref{alg:symbex}. 
+% 
+For each path in the program, a list of \textit{constraints} are stored that encodes the whole path as a \textit{logical}
+formula.
+% 
+These constraints are over \textit{program} variables that have been marked \textit{symbolic} by the user and are stored in the \textit{state} data structure as \textit{metadata} during the \textit{dynamic} symbolic execution of the program.
+% 
+Apart from \textit{path constraints}, the \textit{state} also contains a mapping of \textit{symbolic} variables to expressions that are either  \textit{symbolic} or \textit{concrete} (in the case of concrete execution of the program) and a list of \textit{instructions} currently getting executed as a part of the \textit{state}.	
+% 
+During symbolic execution, program state is encoded symbolically in two parts: a conjunctive formula, $\varphi$, consisting of the branch conditions which are true for that particular path, called a \textit{path condition}, and a mapping from program variables to symbolic expressions containing constants and \textit{symbolic variables}, $\sigma$.
+% 
+Each \textit{instruction} in the program is executed and depending upon the \textit{type} of the \textit{instruction} the \textit{state} along with the \textit{symbolic variables} mapping, ($\Delta$ in Alg~\ref{alg:symbex}) are updated as described in Algorithm~\ref{alg:symbex}.
+% 
+\textit{Symbolic variables} are assigned values by employing an \textsc{SMT Solver} for solving the current set of \textit{constraints} collected so far in the \textit{program path} and also by \textit{concretizing} some of the values that get evaluated as a result of \textit{concrete} execution (e.g. return value from external function calls).
+%
+When execution reaches an assignment of the form $\mathtt{x} = e$, where $e$ is a constant or program variable, $\sigma[\mathtt{x}]$ is either just the constant, $e$, or the symbolic representation of $e$, namely $\sigma[e]$.
+% 
+If $e$ is an expression, we recursively convert each program variable in $e$ to its corresponding symbolic expression found in $\sigma$ to construct a new symbolic execution, $e_{sym}$, and set $\sigma[\mathtt{x}] = e_{sym}$.
+% 
+When execution reaches a branch guarded by the condition $c$, execution proceeds down both branches, one where $\varphi = \varphi \wedge \sigma[c]$, and the other where $\varphi = \varphi \wedge \neg \sigma[c]$. 
+
+
+\subsection{Adding Probabilistic Sampling}
+We present the formalism of our approach on \textbf{pWhile}, a core imperative probabilistic programming language, as a model for more general languages:
+% 
+\[
+S := \mathbf{skip} \mid \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid S_1 ; S_2 \mid \mathbf{if}~e~\mathbf{then}~S_1~\mathbf{else}~S_2 \mid \mathbf{while}~e~\mathbf{do}~S 
+\]
+
+Above, $\mathtt{x}$ is a program variable, $e$ is an expression, and $d$ is a \textit{discrete} distribution expression which denotes which distribution the sample should be drawn from.
+% 
+We permit distribution expressions to be (optionally) parameterized by program variables.
+% 
+For example, $\mathsf{UniformInt}(1,\mathtt{x})$ is a uniform distribution which selects at random a value between 1 and $\mathtt{x}$ (inclusive), where $\mathtt{x} \geq 1$.
+% 
+In order to support sampling instructions we make the following additions to traditional symbolic execution:
+% 
+\begin{itemize}
+	\item \textit{Probabilistic symbolic variables.} We distinguish two types of symbolic variables: \textit{universal} symbolic variables (identical to those in traditional symbolic execution), and \textit{probabilistic} symbolic variables.
+	% 
+	For each sampling instruction a new probabilistic symbolic variable is created to denote the result of sample.
+	\item \textit{Distribution map.} We add a new mapping from probabilistic symbolic variables to distribution expressions, $P$, which tracks the distribution from which a probabilistic symbolic variable was originally sampled from.
+	% 
+	This is analogous to the symbolic variable map, $\sigma$, except for mapping probabilistic symbolic variables to distributions instead from program variables to symbolic expressions.
+	\item \textit{Path probability.} For each path, we adjoin a path probability expression, $p$, which is parameterized by universal symbolic variables.
+	% 
+	Now each path can be identified by both its path condition and its probability.
+\end{itemize}
+
+\begin{algorithm}[H]
+	\caption{PSE Assignment Algorithm}
+	\label{alg:assign}
+	\begin{algorithmic}[1]
+		\Function{PSEAssignment}{$\mathtt{x}, e, \varphi, \sigma, P$}
+		\Let{$e_{sym}$}{$\sigma[e]$}
+		\State{$\sigma[\mathtt{x}] = e_{sym}$}
+		\State\Return{$(\varphi,\sigma,P)$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{paragraph}{Assignment}
+	For assignment statements of the form $\mathtt{x} \leftarrow e$, where $\mathtt{x}$ is a \textit{program} variable and $e$ is an expression, probabilistic symbolic execution proceeds identically to traditional symbolic execution, as detailed in Alg.~\ref{alg:assign}.
+	%
+	On the \textit{symbolic execution} side, the \textit{symbolic variable} mapping ($\Delta$) is updated with the result of the assignment operation is stored back in the current \textit{state} for further execution as shown in Line~\ref{line:assign} of Alg~\ref{alg:symbex}.
+\end{paragraph}
+
+\begin{algorithm}
+	\caption{PSE Sampling Algorithm}
+	\label{alg:sample}
+	\begin{algorithmic}[1]
+		\Function{PSESample}{$\mathtt{x}, d, \varphi, \sigma, P$}
+		\Let{$\delta$}{Generate a fresh probabilistic symbolic variable}
+		\State{$\sigma[\mathtt{x}] = \delta$}
+		\State{$P[\delta] = d$}
+		\State\Return{$(\varphi,\sigma,P)$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{paragraph}{Sampling}
+	For sampling statements, $\mathtt{x} \xleftarrow{\$} d$, where $\mathtt{x}$ is a \textit{program} variable and $d$ is a distribution expression, Alg.~\ref{alg:sample} is used.
+	% 
+	A fresh probabilistic symbolic variable, $\delta$, is created, $\sigma$ is updated to be $\sigma[\mathtt{x}] = \delta$, and the original distribution $d$ is recorded in $P$ by setting $P[\delta] = d$.
+	%
+	On the \textit{symbolic execution} side, the updated \textit{Distribution Map} ($P$) with the result of sampling operation is stored back in the current \textit{state} for further execution as shown in Line~\ref{line:make_pse} of Alg~\ref{alg:symbex}.  
+\end{paragraph}
+
+\begin{algorithm}
+	\caption{PSE Branch Algorithm}
+	\label{alg:branch}
+	\begin{algorithmic}[1]
+		\Function{PSEBranch}{$c, \varphi, \sigma, P$}
+		\Let{$c_{sym}$}{$\sigma[c]$}
+		\Let{$(\delta_1,\ldots,\delta_n)$}{$\dom{P}$}
+		\Let{$(d_1,\ldots,d_n)$}{$(P[\delta_1],\ldots,P[\delta_n])$}
+		\Let{$p_c$}{$\frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}$}
+		\State\Return{$((\varphi \wedge c_{sym}, \sigma,P,p_c), (\varphi \wedge \neg c_{sym}, \sigma,P,1-p_c))$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{paragraph}{Branches (Alg.~\ref{alg:branch})}
+	Note that with the inclusion of probabilistic symbolic variables we can now either branch on universal or probabilistic symbolic variables (or both).
+	% 
+	Intuitively, branches are handled much the same in probabilistic symbolic execution as they are in traditional symbolic execution save for one detail: now branches have a probability associated with them.
+	% 
+	Given a guard expression $c$, how do we compute the probability of $c$ being true?
+	
+	
+	To gain intuition, for now just consider the special case where the guard condition only references universal symbolic variables.
+	% 
+	Let $c_{sym}$ be the equivalent symbolic expression for the guard $c$ and assume that $c_{sym}$ does not reference any probabilistic symbolic variables.
+	% 
+	Note that which side of the branch is taken is solely determined by the setting of the univeral symbolic variables.
+	% 
+	Therefore, one side of the branch must have a probability of 1, and the other side, 0.
+	% 
+	We use Iverson brackets to formalize this idea; the probability of taking the ``true'' branch is $[c_{sym}]$, and the probability of taking the ``false'' branch is $[\neg c_{sym}]$.
+	
+	
+	For probabilistic branches, i.e. guards which branch on probabilistic symbolic variables, computing the branch probability is trickier as given a fixed setting of the universal symbolic variables, it is unclear which branch execution will follow as this is dependent upon the sampling results.
+	% 
+	Without loss of generality, consider a branch of the form $\mathbf{if}~c~\mathbf{then}~S_1~\mathbf{else}~S_2$.
+	% 
+	As before, we define $c_{sym} = \sigma[c]$, or the symbolic expression representation of the guard expression, $c$, and we want to compute the probability of taking the ``true'' branch and the ``false'' branch, assuming execution has reached the start of the \texttt{if} condition.
+	% 
+	Since the path condition $\varphi$ records the necessary constraints on the universal and probabilistic symbolic variables which must hold in order to reach this \texttt{if} condition, we can view this probability a \textit{conditional probability}, or the probability that $c_{sym}$ holds given that $\varphi$ is satisfied.
+	% 
+	In formal notation, we aim to compute $\Pr[c_{sym} \mid \varphi] = \frac{\Pr[c_{sym}\wedge \varphi]}{\Pr[\varphi]}$.
+	
+	
+	For now we restrict our view to uniform distributions, although we can support weighted distributions without further problems.
+	% 
+	Note that each probabilistic symbolic variable, $\delta$, is mapped to exactly one distribution, $d$, and therefore, $\delta \in \dom{d}$.
+	% 
+	So, assuming there are $n$ probabilistic symbolic variables, $\delta_1,\ldots,\delta_n$, and so $n$ distributions, $d_1,\ldots,d_n$, the set of all possible values $\delta_1,\ldots,\delta_n$ be is $\mathcal{D} = \dom{d_1} \times \cdots \times \dom{d_n}$.
+	% 
+	We then count the number of elements (or \textit{assignments}) from $\mathcal{D}$ which satisfy $c_{sym} \wedge \varphi$ and $\varphi$, and divide these two quantities as shown on line 5 of Alg.~\ref{alg:branch}.
+	% 
+	Note that $p_c$ is not necessarily a value, but rather a symbolic expression containing constants and universal symbolic variables.
+	% 
+	Additionally, we exploit the fact that the sum of the conditional probabilities of the branch outcomes is 1, which allows us to avoid computing the probability of taking the ``false'' branch directly. \\
+	% 
+	On the \textit{symbolic execution} side, upon reaching the \textit{branch} instruction at Line~\ref{line:branch} in Alg~\ref{alg:symbex}, two new \textit{states} are created ($S_{true}$ \& $S_{false}$) and the constraint encoding the actual \textit{branch condition} ($c_{sym}$) [Line~\ref{line:true_state}] and it's negation ($\neg c_{sym}$)  [Line~\ref{line:false_state}] are appended to them representing the \textit{true} \& \textit{false} side of the \textit{branch}. 
+	%
+	These states are then added to the \textit{execution} stack containing \textit{states} that need to be explored next. The process continues untill all the \textit{states} in the \textit{execution} stack are explored.
+\end{paragraph}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		{\small
+			\begin{algorithmic}[1]
+				\State{$\mathtt{x}\xleftarrow{\$}\mathrm{UniformInt}(1,3)$}
+				\State{$\mathtt{y}\xleftarrow{\$}\mathrm{UniformInt}(1,3)$}
+				\If{$\mathtt{x} > 1$}
+				\If{$\mathtt{x} < \mathtt{y}$}
+				\State\Return{$\mathtt{True}$}
+				\EndIf
+				\Else
+				\State\Return{$\mathtt{False}$}
+				\EndIf
+			\end{algorithmic}
+		}
+		\caption{Program}
+		\label{fig:exam_program}
+	\end{subfigure}
+	\begin{subfigure}{.69\textwidth}
+		\centering
+		{\small
+			\begin{forest}baseline,for tree=draw,
+				[{$\varphi=\top$},align=center, base=bottom
+				[{$\varphi = \delta_1 > 1$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{2}{3}$} }
+				[{$\varphi = (\delta_1 > 1) \wedge (\delta_1 < \delta_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{6}$} }
+				[{\texttt{True}}]]
+				[{$\varphi = (\delta_1 > 1) \wedge \neg(\delta_1 < \delta_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{5}{6}$} }
+				[{\texttt{False}}]]]
+				[{$\varphi = \neg(\delta_1 > 1)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{3}$} }
+				[{\texttt{False}}]]]
+			\end{forest}
+		}
+		\caption{Execution Tree}
+		\label{fig:exam_tree}
+		
+	\end{subfigure}
+	\caption{An example program and its symbolic execution tree}
+	\label{fig:example}
+\end{figure}
+
+\begin{paragraph}{Example}
+	Consider the code in Fig.~\ref{fig:exam_program} and suppose we wish to calculate the probability of the program returning \texttt{True}.
+	% 
+	Following Alg.~\ref{alg:sample} for lines 1,2, we generate fresh probabilistic symbolic variables for $\mathtt{x}$ and $\mathtt{y}$, $\delta_1$ and $\delta_2$, respectively.
+	% 
+	We also store the distributions which $\delta_1$ and $\delta_2$ are samples from, namely the discrete uniform distribution $\mathcal{U}\{1,3\}$.
+	% 
+	In our notation, we say that $\sigma = \{ \mathtt{x} \mapsto \delta_1, \mathtt{y} \mapsto \delta_2 \}$ and $P = \{ \delta_1,\delta_2 \mapsto \mathcal{U}\{1,3\} \}$.
+	% 
+	Now following Alg.~\ref{alg:branch} to process line 4 of Fig.~\ref{fig:exam_program}, note that $\mathcal{D} = \{1,2,3\} \times \{1,2,3\}$ and 
+	
+	\begin{align*}
+		p_c = \Pr[\delta_1 < \delta_2 \mid \delta_1 > 1] &= \frac{\Pr[(\delta_1 < \delta_2) \wedge (\delta_1 > 1)]}{\Pr[\delta_1 > 1]}\\
+		&= \frac{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\delta_1 < \delta_2) \wedge (\delta_1 > 1)\{\delta_1 \mapsto v_1, \delta_2 \mapsto v_2\}]}{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\delta_1 > 1)\{\delta_1 \mapsto v_1\}]}\\
+		&= \frac{1}{6}
+	\end{align*}
+	
+	This probability means that the probability of taking the ``true'' branch of the inner \texttt{if} condition is only $\frac{1}{6}$, which makes sense as \texttt{x} is restricted to be either $2$ or $3$, but \texttt{y} can be either 1,2, or 3; however, only one combination of \texttt{x} and \texttt{y} will satisfy $\mathtt{x} < \mathtt{y}$, namely $\mathtt{x} = 2$ and $\mathtt{y} = 3$.
+\end{paragraph}
+
+We use a robust dynamic symbolic execution engine, \textsc{KLEE} to generate the \textit{path constraints} corresponding to each path that our tool explores. For the purpose of our implementation, we modify \textsc{KLEE} to support creation of \textit{probabilistic symbolic} variables whose values can be sampled from a distribution and process the \textit{path} constraints that are stored in the \textit{state} corresponding to the current execution of the program at each of \textbf{\textit{assignment}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:assign}], \textbf{\textit{branch}} [Algorithm~\ref{alg:symbex}, Line~\ref{line:branch}] \& \textbf{\textit{sampling}} (\texttt{make\_pse\_symbolic()}) statements. [Algorithm~\ref{alg:symbex}, Line~\ref{line:make_pse}].

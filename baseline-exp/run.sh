@@ -9,7 +9,7 @@ export RUNNER=$1
 
 rm -rf bin/* 
 rm -rf output/*
-rm -rf tests/*
+# rm -rf tests/*
 
 # TODO : Replace with custom test generator (dummy-baseline) 
 # These are inputs for the ForAll variables.
@@ -18,7 +18,7 @@ echo "  ---- Generating Inputs for ${RUNNER} ----  "
 # do 
 #     dd if=/dev/random of=tests/input_${index}.txt bs=64 count=1
 # done
-python3 generateInputs.py 250
+# python3 generateInputs.py 250
 
 echo "  ---- Building Binary : ${RUNNER} ----  "
 cd bin/

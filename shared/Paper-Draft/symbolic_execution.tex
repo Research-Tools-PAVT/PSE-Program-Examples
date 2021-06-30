@@ -6,54 +6,54 @@ We begin with a short review of a traditional symbolic execution algorithm and t
 % Symbolic Execution Algorithm.
 \begin{algorithm}
 	\caption{Probabilistic Symbolic Execution Algorithm}
-	\label{alg:symbex}
+	\label{alg:symb_ex}
 	\begin{algorithmic}[1]
 		\Function{SymbEx}{Prog : Program}
-		\Let{$\varphi_{paths}$}{[]}, {$L$} $\leftarrow$ {[]}, $Enc_t \gets \bot, Enc_a \gets \bot$  \algorithmiccomment{Initialization}
+		\Let{$\varphi_{paths}$}{[]}, {$E_s$} $\leftarrow$ {[]}, $Enc_t \gets \bot, Enc_a \gets \bot$  \algorithmiccomment{Initialization}
 		\Let{$I_{0}$}{\textsc{getStartInstruction}($Prog$)}
 		\Let{$S_{0}$}{($I_{0}$, $\phi$, $\phi$, $\phi$, 1.0)} \algorithmiccomment{Empty Initial State}
-		\State {$L$.\textsc{Append}({$S_{0}$})} \algorithmiccomment{Start with $S_{cur}$ in Execution Stack}
+		\State {$E_s$.\textsc{Append}({$S_{0}$})} \algorithmiccomment{Start with $S_{0}$ in Execution Stack}
 		\While{$L \neq \phi$}
-		\Let{($I_{cur}, \varphi, \sigma, P, p)$}{$L$.\textsc{Remove}( )}
-		\If{\textsc{UNSAT}($\varphi$) $\lor p = 0.0$}
+		\Let{($I_{c}, \varphi, \sigma, P, p)$}{$E_s$.\textsc{Remove}( )}
+		\If{\textsc{UNSAT}($\varphi$) $\lor (p = 0.0)$}
 		\State \textbf{continue}
 		\EndIf
-		\Switch{\textsc{instType}($I_{cur}$)} \label{line:inst_case}
-		\Case{$x \gets d$} \algorithmiccomment{Create \texttt{fresh} Symbolic Variable} \label{line:make_pse}
-		\Let{$I_1$}{\textsc{getNextInstruction}($I_{cur}$)}
-		\Let{$P_1$}{{\textbf{PSESample}}({$x,  d, P$})}
-		\Let{$S_1$}{($I_{cur}, \varphi, \sigma, P_1, p$)}
-		\State {$L$.\textsc{Append}({$S_1$})}
+		\Switch{\textsc{instType}($I_{c}$)} \label{line:inst_type}
+		\Case{\fbox{$\mathtt{x} \xleftarrow{\$} d$}} \algorithmiccomment{Create \texttt{New} Symbolic Variable} \label{line:pse_sampling}
+		\Let{$I_1$}{\textsc{getNextInstruction}($I_{c}$)}
+		\State{\colorbox[RGB]{200, 200, 200}{$\sigma,~P_1 \leftarrow~${\textbf{PSESample}}~({$x,~d,~P$})}}
+		\Let{$S_1$}{($I_{c}, \varphi, \sigma, P_1, p$)}
+		\State {$E_s$.\textsc{Append}({$S_1$})}
 		\EndCase
-		\Case{$v \gets e$} \algorithmiccomment{Assignment Instruction} \label{line:assign}
-		\Let{$I_1$}{\textsc{getNextInstruction}($I_{cur}$)}
+		\Case{\fbox{$x \gets e$}} \algorithmiccomment{Assignment Instruction} \label{line:symbex_assign}
+		\Let{$I_1$}{\textsc{getNextInstruction}($I_{c}$)}
 		%\Let{$e_{sym}$}{$\sigma[e]$}
 		%\Let{$\varphi, \sigma, P$}{{\textbf{PSEAssignment}}({v, e, $\varphi$, $\sigma$, $P$})}
 		\Let{$\sigma[x]$}{$\sigma[e]$}
-		\Let{$S_{cur}$}{($I_{cur}$, $\varphi$, $\sigma$, $P$)}
-		\State {$L$.\textsc{Append}({$S_{cur}$})}
+		\Let{$S_{1}$}{($I_{1}$, $\varphi$, $\sigma$, $P$, $p$)}
+		\State {$E_s$.\textsc{Append}({$S_{1}$})}
 		\EndCase
-		\Case{\textbf{if} $(c)$ \textbf{then goto} $T_{1}$} \algorithmiccomment{Branch Instruction}
+		\Case{\fbox{\textbf{if} $(c)$ \textbf{then goto} $T_{1}$}} \algorithmiccomment{Branch Instruction}
 		\Let{$c_{sym}$}{$\sigma[c]$}
-		\Let{$p_t, p_f$}{{\textbf{PSEBranch}}({$c_{sym}$, $\sigma$, $P$})} \label{line:branch}
+		\State{\colorbox[RGB]{200, 200, 200}{$p_t,~p_f \leftarrow~${\textbf{PSEBranch}}~({$c_{sym},~\sigma,~P$})}}
 		\Let{$I_{1}$}{\textsc{getInstruction}($T_{1}$)} 
 		\Let{$I_{2}$} {\textsc{getNextInstruction}(I)}	
-		\Let{$S_{true}$}{($I_{1}$, $\varphi \wedge c_{sym}$, $\sigma$, $p_t$)} \label{line:true_state}
-		\Let{$S_{false}$}{($I_{2}$, $\varphi \wedge \neg c_{sym}$, $\sigma$, $p_f$)} \label{line:false_state}
-		\State {$L$.\textsc{Append}({$S_{false}$})}
-		\State {$L$.\textsc{Append}({$S_{true}$})} \algorithmiccomment{Start with True State}
+		\Let{$S_{t}$}{($I_{1}$, $\varphi \wedge c_{sym}$, $\sigma$, $P$, $p * p_t$)} \label{line:symbex_true_state} \algorithmiccomment{Multiply with previous \textit{probability} value.}
+		\Let{$S_{f}$}{($I_{2}$, $\varphi \wedge \neg c_{sym}$, $\sigma$, $P$, $p * p_f$)} \label{line:symbex_false_state}
+		\State {$E_s$.\textsc{Append}({$S_{f}$})}
+		\State {$E_s$.\textsc{Append}({$S_{t}$})} \algorithmiccomment{Start with True State}
 		\EndCase
-		\Case{\textbf{halt(c)}} \algorithmiccomment{Terminate Instruction}
+		\Case{\fbox{\textbf{halt(c)}}} \algorithmiccomment{Terminate Instruction}
 		\Let{$c_{sym}$}{$\sigma[c]$}
 		\If{\textsc{SAT}($c_{sym}$)}
-		\State {$Enc_t$.\textsc{AddEncoding}($\varphi, p$)}		
+		\State {\colorbox[RGB]{200, 200, 200}{$Enc_t$.\textsc{AddEncoding}~($\varphi,~p$)}}		
 		\EndIf
-		\State {$Enc_a$.\textsc{AddEncoding}($\varphi, p$)}		
+		\State {\colorbox[RGB]{200, 200, 200}{$Enc_a$.\textsc{AddEncoding}~($\varphi,~p$)}}		
 		\EndCase
 		\EndSwitch
 		\EndWhile 
-		\Let{$r$}{\textsc{Solve}($Enc_t, Enc_a$)} \\
-		\Return{$r$}
+		\Let{$r$}{\colorbox[RGB]{200, 200, 200}{\textsc{Solve}~($Enc_t,~Enc_a$)}} \\
+		\Return{$r$} 
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
@@ -87,7 +87,7 @@ We present the formalism of our approach on \textbf{pWhile}, a core imperative p
 % 
 \[
 %S := \mathbf{skip} \mid \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid S_1 ; S_2 \mid \mathbf{if}~e~\mathbf{then}~S_1~\mathbf{else}~S_2 \mid \mathbf{while}~e~\mathbf{do}~S 
-S := \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid S_1 ; S_2 \mid \mathbf{if}~e~\textbf{then goto} T \mid \textbf{halt}(e)
+S := \mathtt{x} \leftarrow e \mid \mathtt{x} \xleftarrow{\$} d \mid S_1 ; S_2 \mid \mathbf{if}~e~\textbf{then goto}~T \mid \textbf{halt}(e)
 \]
 
 Above, $\mathtt{x}$ is a program variable, $e$ is an expression, and $d$ is a \textit{discrete} distribution expression which denotes which distribution the sample should be drawn from.
@@ -110,18 +110,6 @@ In order to support sampling instructions we make the following additions to tra
 	Now each path can be identified by both its path condition and its probability.
 \end{itemize}
 
-\begin{algorithm}[H]
-	\caption{PSE Assignment Algorithm}
-	\label{alg:assign}
-	\begin{algorithmic}[1]
-		\Function{PSEAssignment}{$\mathtt{x}, e, \varphi, \sigma, P$}
-		\Let{$e_{sym}$}{$\sigma[e]$}
-		\State{$\sigma[\mathtt{x}] = e_{sym}$}
-		\State\Return{$(\varphi,\sigma,P)$}
-		\EndFunction
-	\end{algorithmic}
-\end{algorithm}
-
 \begin{paragraph}{Assignment}
 	For assignment statements of the form $\mathtt{x} \leftarrow e$, where $\mathtt{x}$ is a \textit{program} variable and $e$ is an expression, probabilistic symbolic execution proceeds identically to traditional symbolic execution, as detailed in Alg.~\ref{alg:assign}.
 	%
@@ -132,11 +120,11 @@ In order to support sampling instructions we make the following additions to tra
 	\caption{PSE Sampling Algorithm}
 	\label{alg:sample}
 	\begin{algorithmic}[1]
-		\Function{PSESample}{$\mathtt{x}, d, \varphi, \sigma, P$}
+		\Function{PSESample}{$\mathtt{x}, d, \sigma, P$}
 		\Let{$\delta$}{Generate a fresh probabilistic symbolic variable}
 		\State{$\sigma[\mathtt{x}] = \delta$}
 		\State{$P[\delta] = d$}
-		\State\Return{$(\varphi,\sigma,P)$}
+		\State\Return{$(\sigma, P)$}
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}
@@ -153,11 +141,11 @@ In order to support sampling instructions we make the following additions to tra
 	\caption{PSE Branch Algorithm}
 	\label{alg:branch}
 	\begin{algorithmic}[1]
-		\Function{PSEBranch}{$c, \varphi, \sigma, P$}
+		\Function{PSEBranch}{$c, \sigma, P$}
 		\Let{$(\delta_1,\ldots,\delta_n)$}{$\dom{P}$}
 		\Let{$(d_1,\ldots,d_n)$}{$(P[\delta_1],\ldots,P[\delta_n])$}
 		\Let{$p_c$}{$\frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}$}
-		\State\Return{$((\varphi \wedge c_{sym}, \sigma,P,p_c), (\varphi \wedge \neg c_{sym}, \sigma,P,1-p_c))$}
+		\State\Return{$(p_c, 1 - p_c)$}
 		\EndFunction
 	\end{algorithmic}
 \end{algorithm}

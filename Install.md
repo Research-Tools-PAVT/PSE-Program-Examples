@@ -1,6 +1,7 @@
 # KLEE
 
-After installing `prerequisites`, this follows.
+Install `klee-ulibc`, `klee-deps` & `z3` binaries.
+After installing `prerequisites`, this follows. Run from the `$HOME` directory.
 
 ```bash
 mkdir libcxx-build

@@ -405,3 +405,7 @@ paper/
 
 *_klee_out/
 *.pdf
+*.logs
+PSE-Papers/
+PSEPapers/
+

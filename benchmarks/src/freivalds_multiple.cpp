@@ -1,10 +1,6 @@
-#include <cstdio>
-#include <init.h>
-#include <iostream>
 #include <random>
-#include <string>
-#include <unordered_map>
-#include <vector>
+#include <stdio.h>
+#include <stdlib.h>
 
 void matrix_vector_prod(unsigned char *m, unsigned char *v, size_t n,
                         unsigned char *out) {
@@ -64,64 +60,46 @@ void matmul(unsigned char *A, unsigned char *B, size_t n, unsigned char *C) {
 }
 
 int main() {
-  int termCount = 0, win = 0, loop_count = 0;
-  scanf("%d", &termCount);
+  size_t n = 3;
+  size_t k = 1;
+  unsigned char A[n * n];
+  unsigned char B[n * n];
+  unsigned char C[n * n];
 
-  while (termCount--) {
-    size_t n = 3;
-    unsigned char A[n * n];
-    unsigned char B[n * n];
-    unsigned char C[n * n];
+  std::default_random_engine generator;
+  std::uniform_int_distribution<int> int_dist(0, 255);
 
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> int_dist(0, 255);
-    // klee_make_symbolic(&A, sizeof(int)*n*n, "A");
-    // klee_make_symbolic(&B, sizeof(int)*n*n, "B");
-    // klee_make_symbolic(&C, sizeof(int)*n*n, "C");
+  // klee_make_symbolic(&A, sizeof(int)*n*n, "A");
+  // klee_make_symbolic(&B, sizeof(int)*n*n, "B");
+  // klee_make_symbolic(&C, sizeof(int)*n*n, "C");
 
-    for (size_t i = 0; i < n * n; i++) {
-      unsigned char tempA = int_dist(generator), tempB = int_dist(generator),
-                    tempC = int_dist(generator);
-      // klee_make_symbolic(&tempA, sizeof(tempA), "A");
-      // klee_make_symbolic(&tempB, sizeof(tempB), "B");
-      // klee_make_symbolic(&tempC, sizeof(tempC), "C");
-      A[i] = tempA;
-      B[i] = tempB;
-      C[i] = tempC;
-    }
+  for (size_t i = 0; i < n * n; i++) {
+    unsigned char tempA = int_dist(generator), tempB = int_dist(generator),
+                  tempC = int_dist(generator);
+    A[i] = tempA;
+    B[i] = tempB;
+    C[i] = tempC;
+  }
 
-    unsigned char realC[n * n];
-    matmul(A, B, n, realC);
+  unsigned char realC[n * n];
+  matmul(A, B, n, realC);
 
-    // realC[] & C[] must not be
-    // identiaclly same.
-    bool orAssume = false;
-    for (size_t i = 0; i < n * n; i++) {
-      orAssume = orAssume || (C[i] != realC[i]);
-    }
+  // bool orAssume = false;
+  // for(size_t i = 0; i < n*n; i++) {
+  //   orAssume = orAssume || (C[i] != realC[i]);
+  // }
 
-    // This is a condition that must hold.
-    // Need to check which ones hold.
-    // klee_assume(orAssume);
-    // klee_assume(C[0] != realC[0]);
-
+  bool ret = true;
+  for (size_t i = 0; i < k; i++) {
     unsigned char r[n];
     for (size_t i = 0; i < n; i++) {
       unsigned char temp = int_dist(generator) > 128 ? 0 : 1;
-      // make_pse_symbolic(&temp, sizeof(temp), "r_sym", (unsigned char)0,
-      //                   (unsigned char)1);
       r[i] = temp;
     }
-
-    if (freivalds(A, B, C, r, n) == 1) {
-      // klee_dump_kquery_state();
-      std::cout << "Win!\n";
-      win++;
-    }
-    loop_count++;
+    ret = ret && freivalds(A, B, C, r, n) == 1;
   }
-
-  auto pwin = (double)win / loop_count;
-  std::cout << "Prob Assert : " << pwin << "\n";
+  if (ret) {
+    // klee_dump_kquery_state();
+  }
   return 0;
 }

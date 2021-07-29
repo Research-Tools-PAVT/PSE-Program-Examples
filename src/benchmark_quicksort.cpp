@@ -22,7 +22,7 @@
  * E[count] = n * log(n) for any given random run.
  */
 
-#define SIZE 5
+int SIZE = 5;
 int count = 0, counter = 0, swap_count = 0;
 
 int partition(int arr[], int left, int right) {

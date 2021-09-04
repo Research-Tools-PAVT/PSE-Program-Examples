@@ -1,0 +1,83 @@
+\section{Related Work}
+\label{sec:related}
+
+% In this section, we present our work in light of other closely related
+% techniques that have been proposed for Probabilistic Symbolic Execution and also
+% contrast on where our work differs.
+
+\paragraph*{Probabilistic Symbolic Execution.}
+\citet{geldenhuys_2012} was the first to propose a method for probabilistic
+symbolic execution. Given a standard, non-probabilistic program, their
+technique treats all inputs as drawn from a uniform distribution, and then
+computes the probabilities of taking particular program paths by using model
+counting. Later works build on this idea for different applications: analyzing
+software reliability~\citep{filieri_2013, borges_2014}, quantifying software
+changes~\citep{filieri_2015}, generating performance
+distribution~\citep{bihuan_2016}, and evaluating worst-case input distributions
+in network programs~\citep{p4wn_2021}. More sophisticated schemes apply
+volume-bound computations instead of model counting, which is a performance
+bottleneck~\citep{sankaranarayanan_2013,DBLP:journals/pacmpl/AlbarghouthiDDN17}.
+
+These methods all focus on probabilistic programs where all the program inputs
+are either known constants, or sampled from a known distribution (often the
+uniform distribution). In contrast, our technique works for inputs that are
+unknown values, and not drawn from a known distribution. Applying existing
+methods for probabilistic symbolic execution to our setting would be
+prohibitively expensive, since each possible input would need to be considered,
+and input may range over a very large domain (e.g., integers ranging from
+$-2^{63}$ to $2^{63}-1$).
+
+\paragraph*{Symbolic inference in probabilistic programs.}
+\emph{Probabilistic programming languages} are languages enriched with both
+\emph{sampling} and \emph{conditioning} operations. The combination of these two
+features allows a probabilistic program to encode a complex distribution; many
+models of interest in machine learning can be implemented in this way. A recent
+line of research considers how to perform \emph{inference} on such programs:
+given an assertion $P$, what is the probability that $P$ holds in the
+distribution described by the program? Researchers have considered a variety of
+approaches, from weighted model counting~\citep{holtzen_2020}, to analyzing
+Bayesian networks~\citep{sampson_2014}, to applying computer algebra
+systems~\citep{claret_2013, psi_2016, lambda_psi_2020}.
+
+Most existing work on probabilistic programming languages assumes that all
+quantities in the program are drawn from known distributions---while we consider
+a family of output distributions, probabilistic programming languages typically
+consider a single distribution. It would be interesting to extend our work to
+handle conditioning, but it would likely be quite challenging since conditioning
+can transform our symbolic branch probabilities in highly complex ways.
+
+\paragraph*{Other automated techniques for probabilistic programs.}
+Automated verification of probabilistic programs is an active area of research.
+We briefly survey some of the most relevant lines of work.
+
+\textsc{AxProf}~\citep{axprof_2019} is a \emph{statistical testing} approach to
+analyzing probabilistic programs, which runs the target program multiple times
+on concrete inputs in order to estimate probabilities and expected values in the
+output distribution. \textsc{AxProf} is highly efficient, and supports programs
+with unknown inputs. However, it can only explore a small subset of the input
+space and cannot provide logical guarantees over all possible inputs.
+
+\emph{Probabilistic model checking} is a well-studied method for checking
+logical formulas on probabilistic transition
+systems~\citep{DBLP:conf/icalp/BaierCHKR97, DBLP:reference/mc/BaierAFK18,
+kwiatkowska2011prism, dehnert_2017}. However, probabilistic model checking
+targets finite state systems, and performance degrades rapidly as the number of
+states grows. Our technique applies to infinite state systems; our examples,
+which are finite state, are far too large to encode in existing model checking
+tools.
+
+\emph{Abstract interpretation} and \emph{algebraic program analysis} methods
+have been developed for probabilistic programs~\citep{CousotM12,
+DBLP:conf/pldi/WangHR18}. These methods abstract the probabilistic state, losing
+information in exchange for better performance.  In contrast, our method
+computes path probabilities exactly, in symbolic form.
+
+Finally, there are many \emph{domain-specific} automated analysis for specific
+probabilistic properties: termination and resource
+analysis~\citep{Chatterjee:2016:AAQ:2837614.2837639, wang_2021,
+DBLP:conf/esop/MoosbruggerBKK21}, accuracy~\citep{Chakarov-martingale, SHA18},
+reliability~\citep{DBLP:conf/pldi/CarbinKMR12}, differential
+privacy~\citep{DBLP:journals/pacmpl/BartheCKS021} and other relational
+properties~\citep{AH17, AH18, DBLP:conf/esop/FarinaCG21}, and long-run
+properties of probabilistic loops~\citep{DBLP:conf/atva/BartocciKS19,
+DBLP:conf/tacas/BartocciKS20}. Our approach aims at a general-purpose analysis.

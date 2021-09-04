@@ -1,0 +1,245 @@
+%% For double-blind review submission, w/o CCS and ACM Reference (max submission space)
+\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For double-blind review submission, w/ CCS and ACM Reference
+% \documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true}
+%% For single-blind review submission, w/o CCS and ACM Reference (max submission space)
+% \documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For single-blind review submission, w/ CCS and ACM Reference
+% \documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true}
+%% For final camera-ready submission, w/ required CCS and ACM Reference
+% \documentclass[acmsmall]{acmart}\settopmatter{}
+
+
+%% Journal information
+%% Supplied to authors by publisher for camera-ready submission;
+%% use defaults for review submission.
+\acmJournal{PACMPL}
+\acmVolume{1}
+\acmNumber{POPL} % CONF = POPL or ICFP or OOPSLA
+\acmArticle{1}
+\acmYear{2022}
+\acmMonth{1}
+\acmDOI{} % \acmDOI{10.1145/nnnnnnn.nnnnnnn}
+\startPage{1}
+
+%% Copyright information
+%% Supplied to authors (based on authors' rights management selection;
+%% see authors.acm.org) by publisher for camera-ready submission;
+%% use 'none' for review submission.
+\setcopyright{none}
+% \setcopyright{acmcopyright}
+% \setcopyright{acmlicensed}
+% \setcopyright{rightsretained}
+% \copyrightyear{2018}           %% If different from \acmYear
+
+%% Bibliography style
+\bibliographystyle{ACM-Reference-Format}
+%% Citation style
+%% Note: author/year citations are required for papers published as an
+%% issue of PACMPL.
+\citestyle{acmauthoryear}   %% For author/year citations
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Note: Authors migrating a paper from PACMPL format to traditional
+%% SIGPLAN proceedings format must update the '\documentclass' and
+%% topmatter commands above; see 'acmart-sigplanproc-template.tex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% Some recommended packages.
+\usepackage{booktabs}   %% For formal tables:
+%% http://ctan.org/pkg/booktabs
+\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+%% http://ctan.org/pkg/subcaption
+\usepackage{mathtools}
+\usepackage{thm-restate}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{forest}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{xcolor, soul}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{cleveref}
+
+%%% cleveref %%%
+% \crefname{section}{§}{§}
+% \Crefname{section}{§}{§}
+\crefname{section}{\S}{\S}
+\Crefname{section}{\S}{\S}
+
+%%% Colors %%%
+\definecolor{darkgreen}{RGB}{0,128,0}
+\definecolor{gray}{RGB}{200,200,200}
+
+%%% Comments %%%
+\newcommand{\zach}[1]{\textcolor{red}{ZS: #1}}
+\newcommand{\sumit}[1]{\textcolor{brown}{SL: #1}}
+\newcommand{\jh}[1]{\textcolor{blue}{JH: #1}}
+\newcommand{\sr}[1]{\textcolor{green}{SR: #1}}
+
+%%% Macros %%%
+\newcommand{\SYSTEM}{\textsc{Plinko}\xspace}
+\newcommand{\Q}[1]{(\textit{\textbf{Q#1}})}
+
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\DeclareAutoPairedDelimiter}[3]{%
+	\expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
+	\begingroup\edef\x{\endgroup
+		\noexpand\DeclareRobustCommand{\noexpand#1}{%
+			\expandafter\noexpand\csname Auto\string#1\endcsname*}}%
+	\x}
+\DeclareAutoPairedDelimiter{\deno}{\llbracket}{\rrbracket}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\newcommand*\cLet[3]{\State\ColorLine{#3} #1 $\gets$ #2}
+\newcommand*\dom[1]{\mathrm{dom}\left( #1 \right)}
+\newcommand*\E[1]{\mathbb{E}\left[ #1 \right]}
+
+% For the Case statements
+% Switch Statement Commands
+% New definitions
+\algnewcommand\algorithmicswitch{\textbf{switch}}
+\algnewcommand\algorithmiccase{\textbf{case}}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+
+% New "environments"
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+\algdef{Se}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+
+% Highlight lines in algorithm environment
+\makeatletter
+% code borrowed from Andrew Stacey; See
+% https://tex.stackexchange.com/a/50054/3954
+\tikzset{%
+	remember picture with id/.style={%
+		remember picture,
+		overlay,
+		save picture id=#1,
+	},
+	save picture id/.code={%
+		\edef\pgf@temp{#1}%
+		\immediate\write\pgfutil@auxout{%
+			\noexpand\savepointas{\pgf@temp}{\pgfpictureid}}%
+	},
+	if picture id/.code args={#1#2#3}{%
+		\@ifundefined{save@pt@#1}{%
+			\pgfkeysalso{#3}%
+		}{
+			\pgfkeysalso{#2}%
+		}
+	}
+}
+
+\def\savepointas#1#2{%
+	\expandafter\gdef\csname save@pt@#1\endcsname{#2}%
+}
+
+\def\tmk@labeldef#1,#2\@nil{%
+	\def\tmk@label{#1}%
+	\def\tmk@def{#2}%
+}
+
+\tikzdeclarecoordinatesystem{pic}{%
+	\pgfutil@in@,{#1}%
+	\ifpgfutil@in@%
+	\tmk@labeldef#1\@nil
+	\else
+	\tmk@labeldef#1,(0pt,0pt)\@nil
+	\fi
+	\@ifundefined{save@pt@\tmk@label}{%
+		\tikz@scan@one@point\pgfutil@firstofone\tmk@def
+	}{%
+		\pgfsys@getposition{\csname save@pt@\tmk@label\endcsname}\save@orig@pic%
+		\pgfsys@getposition{\pgfpictureid}\save@this@pic%
+		\pgf@process{\pgfpointorigin\save@this@pic}%
+		\pgf@xa=\pgf@x
+		\pgf@ya=\pgf@y
+		\pgf@process{\pgfpointorigin\save@orig@pic}%
+		\advance\pgf@x by -\pgf@xa
+		\advance\pgf@y by -\pgf@ya
+	}%
+}
+
+\makeatother
+% end of Andrew's code
+\newlength\AlgIndent
+\setlength\AlgIndent{0pt}
+% main command to draw the colored background
+\newcounter{mymark}
+\newcommand\ColorLine[1]{%
+	\stepcounter{mymark}%
+	\tikz[remember picture with id=mark-\themymark,overlay] {;}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\filldraw[#1]%
+		let \p1=(pic cs:mark-\themymark), 
+		\p2=(current page.east)  in 
+    ([xshift=-0.05em,yshift=-0.75ex]0,\y1)  rectangle ++([xshift=-7.7cm]\x2,\baselineskip);
+    % ([xshift=-\ALG@thistlm-0.3em,yshift=-0.7ex]0,\y1)  rectangle ++(\linewidth+\AlgIndent,\baselineskip);
+	\end{tikzpicture}%
+}%
+
+\makeatletter
+% colored loops and declarations
+\algnewcommand\cRequire[1]{\item[\ColorLine{#1}\algorithmicrequire]}%
+\algnewcommand\cEnsure[1]{\item[\ColorLine{#1}\algorithmicensure]}%
+\algnewcommand\cState[1]{\State\ColorLine{#1}}%
+\algnewcommand\cStatex[1]{\Statex\ColorLine{#1}}%
+\algnewcommand\cComment[1]{\Comment\ColorLine{#1}}%
+
+\algdef{SE}[WHILE]{cWhile}{ENDWHILE}%
+[2]{\ColorLine{#2}\algorithmicwhile\ #1\ \algorithmicdo}%
+{\algorithmicend\ \algorithmicwhile}%
+\algdef{SE}[FOR]{cFor}{ENDFOR}%
+[2]{\ColorLine{#2}\algorithmicfor\ #1\ \algorithmicdo}%
+{\algorithmicend\ \algorithmicfor}%
+\algdef{S}[FOR]{cForAll}%
+[2]{\ColorLine{#2}\algorithmicforall\ #1\ \algorithmicdo}%
+\algdef{SE}[LOOP]{cLoop}{ENDLOOP}%
+[1]{\ColorLine{#1}\algorithmicloop}%
+{\algorithmicend\ \algorithmicloop}%
+\algdef{SE}[REPEAT]{cRepeat}{UNTIL}%
+[1]{\ColorLine{#1}\algorithmicrepeat}%
+[1]{\algorithmicuntil\ #1}%
+\algdef{SE}[IF]{cIf}{cEndIf}%
+[2]{\ColorLine{#2}\algorithmicif\ #1\ \algorithmicthen}%
+[1]{\ColorLine{#1}\algorithmicend\ \algorithmicif}%
+\algdef{C}[IF]{IF}{cElsif}%
+[2]{\ColorLine{#2}\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
+\algdef{Ce}[ELSE]{IF}{cElse}{ENDIF}%
+[1]{\ColorLine{#1}\algorithmicelse}%
+\algdef{SE}[SWITCH]{cSwitch}{cEndSwitch}%
+[2]{\ColorLine{#2}\algorithmicswitch\ #1\ \algorithmicdo}%
+{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{cCase}{cEndCase}%
+[2]{\ColorLine{#2}\algorithmiccase\ #1}%
+[1]{\ColorLine{#1}\algorithmicend\ \algorithmiccase}%
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%% TODO: REMOVE THIS BEFORE SUBMISSION %%%%%%%%%%%%%%%%%%
+% \hypersetup{draft}
+%%%%%%%%%%%%%%%%%%%%%%%%% TODO: REMOVE THIS BEFORE SUBMISSION %%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% Title information
+\title{Rebuttal response for submission \#575}         %% [Short Title] is optional;
+\subtitle{Symbolic Execution for Randomized Programs}
+
+\maketitle
+
+\input{parts/introduction.tex}
+\input{parts/overview.tex}
+\input{parts/detailed_responses.tex}
+\input{parts/conclusion.tex}
+
+%% Bibliography
+\bibliography{header,main}
+\end{document}

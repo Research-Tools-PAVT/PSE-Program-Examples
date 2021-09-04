@@ -1,0 +1,2462 @@
+%% For double-blind review submission, w/o CCS and ACM Reference (max submission space)
+\documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For double-blind review submission, w/ CCS and ACM Reference
+% \documentclass[acmsmall,review,anonymous]{acmart}\settopmatter{printfolios=true}
+%% For single-blind review submission, w/o CCS and ACM Reference (max submission space)
+% \documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true,printccs=false,printacmref=false}
+%% For single-blind review submission, w/ CCS and ACM Reference
+% \documentclass[acmsmall,review]{acmart}\settopmatter{printfolios=true}
+%% For final camera-ready submission, w/ required CCS and ACM Reference
+% \documentclass[acmsmall]{acmart}\settopmatter{}
+
+
+%% Journal information
+%% Supplied to authors by publisher for camera-ready submission;
+%% use defaults for review submission.
+\acmJournal{PACMPL}
+\acmVolume{1}
+\acmNumber{POPL} % CONF = POPL or ICFP or OOPSLA
+\acmArticle{1}
+\acmYear{2022}
+\acmMonth{1}
+\acmDOI{} % \acmDOI{10.1145/nnnnnnn.nnnnnnn}
+\startPage{1}
+
+%% Copyright information
+%% Supplied to authors (based on authors' rights management selection;
+%% see authors.acm.org) by publisher for camera-ready submission;
+%% use 'none' for review submission.
+\setcopyright{none}
+% \setcopyright{acmcopyright}
+% \setcopyright{acmlicensed}
+% \setcopyright{rightsretained}
+% \copyrightyear{2018}           %% If different from \acmYear
+
+%% Bibliography style
+\bibliographystyle{ACM-Reference-Format}
+%% Citation style
+%% Note: author/year citations are required for papers published as an
+%% issue of PACMPL.
+\citestyle{acmauthoryear}   %% For author/year citations
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Note: Authors migrating a paper from PACMPL format to traditional
+%% SIGPLAN proceedings format must update the '\documentclass' and
+%% topmatter commands above; see 'acmart-sigplanproc-template.tex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% Some recommended packages.
+\usepackage{booktabs}   %% For formal tables:
+%% http://ctan.org/pkg/booktabs
+\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+%% http://ctan.org/pkg/subcaption
+\usepackage{mathtools}
+\usepackage{thm-restate}
+\usepackage[noend]{algpseudocode}
+\usepackage{algorithm}
+\usepackage{forest}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{xspace}
+\usepackage{xcolor, soul}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{cleveref}
+
+%%% cleveref %%%
+% \crefname{section}{§}{§}
+% \Crefname{section}{§}{§}
+\crefname{section}{\S}{\S}
+\Crefname{section}{\S}{\S}
+
+%%% Colors %%%
+\definecolor{darkgreen}{RGB}{0,128,0}
+\definecolor{gray}{RGB}{200,200,200}
+
+%%% Comments %%%
+\newcommand{\zach}[1]{\textcolor{red}{ZS: #1}}
+\newcommand{\sumit}[1]{\textcolor{brown}{SL: #1}}
+\newcommand{\jh}[1]{\textcolor{blue}{JH: #1}}
+\newcommand{\sr}[1]{\textcolor{green}{SR: #1}}
+
+%%% Macros %%%
+\newcommand{\SYSTEM}{\textsc{Plinko}\xspace}
+\newcommand{\Q}[1]{(\textit{\textbf{Q#1}})}
+
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\DeclareAutoPairedDelimiter}[3]{%
+	\expandafter\DeclarePairedDelimiter\csname Auto\string#1\endcsname{#2}{#3}%
+	\begingroup\edef\x{\endgroup
+		\noexpand\DeclareRobustCommand{\noexpand#1}{%
+			\expandafter\noexpand\csname Auto\string#1\endcsname*}}%
+	\x}
+\DeclareAutoPairedDelimiter{\deno}{\llbracket}{\rrbracket}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\newcommand*\cLet[3]{\State\ColorLine{#3} #1 $\gets$ #2}
+\newcommand*\dom[1]{\mathrm{dom}\left( #1 \right)}
+\newcommand*\E[1]{\mathbb{E}\left[ #1 \right]}
+
+% For the Case statements
+% Switch Statement Commands
+% New definitions
+\algnewcommand\algorithmicswitch{\textbf{switch}}
+\algnewcommand\algorithmiccase{\textbf{case}}
+\algnewcommand\algorithmicassert{\texttt{assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert(#1)}%
+
+% New "environments"
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]{\algorithmicswitch\ #1\ \algorithmicdo}{\algorithmicend\ \algorithmicswitch}%
+\algdef{Se}[CASE]{Case}{EndCase}[1]{\algorithmiccase\ #1}%
+\algtext*{EndSwitch}%
+\algtext*{EndCase}%
+
+% Highlight lines in algorithm environment
+\makeatletter
+% code borrowed from Andrew Stacey; See
+% https://tex.stackexchange.com/a/50054/3954
+\tikzset{%
+	remember picture with id/.style={%
+		remember picture,
+		overlay,
+		save picture id=#1,
+	},
+	save picture id/.code={%
+		\edef\pgf@temp{#1}%
+		\immediate\write\pgfutil@auxout{%
+			\noexpand\savepointas{\pgf@temp}{\pgfpictureid}}%
+	},
+	if picture id/.code args={#1#2#3}{%
+		\@ifundefined{save@pt@#1}{%
+			\pgfkeysalso{#3}%
+		}{
+			\pgfkeysalso{#2}%
+		}
+	}
+}
+
+\def\savepointas#1#2{%
+	\expandafter\gdef\csname save@pt@#1\endcsname{#2}%
+}
+
+\def\tmk@labeldef#1,#2\@nil{%
+	\def\tmk@label{#1}%
+	\def\tmk@def{#2}%
+}
+
+\tikzdeclarecoordinatesystem{pic}{%
+	\pgfutil@in@,{#1}%
+	\ifpgfutil@in@%
+	\tmk@labeldef#1\@nil
+	\else
+	\tmk@labeldef#1,(0pt,0pt)\@nil
+	\fi
+	\@ifundefined{save@pt@\tmk@label}{%
+		\tikz@scan@one@point\pgfutil@firstofone\tmk@def
+	}{%
+		\pgfsys@getposition{\csname save@pt@\tmk@label\endcsname}\save@orig@pic%
+		\pgfsys@getposition{\pgfpictureid}\save@this@pic%
+		\pgf@process{\pgfpointorigin\save@this@pic}%
+		\pgf@xa=\pgf@x
+		\pgf@ya=\pgf@y
+		\pgf@process{\pgfpointorigin\save@orig@pic}%
+		\advance\pgf@x by -\pgf@xa
+		\advance\pgf@y by -\pgf@ya
+	}%
+}
+
+\makeatother
+% end of Andrew's code
+\newlength\AlgIndent
+\setlength\AlgIndent{0pt}
+% main command to draw the colored background
+\newcounter{mymark}
+\newcommand\ColorLine[1]{%
+	\stepcounter{mymark}%
+	\tikz[remember picture with id=mark-\themymark,overlay] {;}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\filldraw[#1]%
+		let \p1=(pic cs:mark-\themymark), 
+		\p2=(current page.east)  in 
+    ([xshift=-0.05em,yshift=-0.75ex]0,\y1)  rectangle ++([xshift=-7.7cm]\x2,\baselineskip);
+    % ([xshift=-\ALG@thistlm-0.3em,yshift=-0.7ex]0,\y1)  rectangle ++(\linewidth+\AlgIndent,\baselineskip);
+	\end{tikzpicture}%
+}%
+
+\makeatletter
+% colored loops and declarations
+\algnewcommand\cRequire[1]{\item[\ColorLine{#1}\algorithmicrequire]}%
+\algnewcommand\cEnsure[1]{\item[\ColorLine{#1}\algorithmicensure]}%
+\algnewcommand\cState[1]{\State\ColorLine{#1}}%
+\algnewcommand\cStatex[1]{\Statex\ColorLine{#1}}%
+\algnewcommand\cComment[1]{\Comment\ColorLine{#1}}%
+
+\algdef{SE}[WHILE]{cWhile}{ENDWHILE}%
+[2]{\ColorLine{#2}\algorithmicwhile\ #1\ \algorithmicdo}%
+{\algorithmicend\ \algorithmicwhile}%
+\algdef{SE}[FOR]{cFor}{ENDFOR}%
+[2]{\ColorLine{#2}\algorithmicfor\ #1\ \algorithmicdo}%
+{\algorithmicend\ \algorithmicfor}%
+\algdef{S}[FOR]{cForAll}%
+[2]{\ColorLine{#2}\algorithmicforall\ #1\ \algorithmicdo}%
+\algdef{SE}[LOOP]{cLoop}{ENDLOOP}%
+[1]{\ColorLine{#1}\algorithmicloop}%
+{\algorithmicend\ \algorithmicloop}%
+\algdef{SE}[REPEAT]{cRepeat}{UNTIL}%
+[1]{\ColorLine{#1}\algorithmicrepeat}%
+[1]{\algorithmicuntil\ #1}%
+\algdef{SE}[IF]{cIf}{cEndIf}%
+[2]{\ColorLine{#2}\algorithmicif\ #1\ \algorithmicthen}%
+[1]{\ColorLine{#1}\algorithmicend\ \algorithmicif}%
+\algdef{C}[IF]{IF}{cElsif}%
+[2]{\ColorLine{#2}\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
+\algdef{Ce}[ELSE]{IF}{cElse}{ENDIF}%
+[1]{\ColorLine{#1}\algorithmicelse}%
+\algdef{SE}[SWITCH]{cSwitch}{cEndSwitch}%
+[2]{\ColorLine{#2}\algorithmicswitch\ #1\ \algorithmicdo}%
+{\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[CASE]{cCase}{cEndCase}%
+[2]{\ColorLine{#2}\algorithmiccase\ #1}%
+[1]{\ColorLine{#1}\algorithmicend\ \algorithmiccase}%
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%% TODO: REMOVE THIS BEFORE SUBMISSION %%%%%%%%%%%%%%%%%%
+% \hypersetup{draft}
+%%%%%%%%%%%%%%%%%%%%%%%%% TODO: REMOVE THIS BEFORE SUBMISSION %%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% Title information
+\title{Symbolic Execution for Randomized Programs}         %% [Short Title] is optional;
+% \title[PSE]{Probabilistic Symbolic Execution}         %% [Short Title] is optional;
+%% when present, will be used in
+%% header instead of Full Title.
+% \titlenote{with title note}             %% \titlenote is optional;
+%% can be repeated if necessary;
+%% contents suppressed with 'anonymous'
+% \subtitle{Subtitle}                     %% \subtitle is optional
+% \subtitlenote{with subtitle note}       %% \subtitlenote is optional;
+%% can be repeated if necessary;
+%% contents suppressed with 'anonymous'
+
+
+%% Author information
+%% Contents and number of authors suppressed with 'anonymous'.
+%% Each author should be introduced by \author, followed by
+%% \authornote (optional), \orcid (optional), \affiliation, and
+%% \email.
+%% An author may have multiple affiliations and/or emails; repeat the
+%% appropriate command.
+%% Many elements are not rendered, but should be provided for metadata
+%% extraction tools.
+
+%% Author with single affiliation.
+% \author{First Last}
+% \authornote{with author1 note}          %% \authornote is optional;
+%                                         %% can be repeated if necessary
+% \orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+% \affiliation{
+% \position{Position1}
+% \department{Department1}              %% \department is recommended
+% \institution{Institution1}            %% \institution is required
+% \streetaddress{Street1 Address1}
+% \city{City1}
+% \state{State1}
+% \postcode{Post-Code1}
+% \country{Country1}                    %% \country is recommended
+% }
+%   \email{first1.last1@inst1.edu}          %% \email is recommended
+
+\author{Zachary Susag}
+% \authornote{with author1 note}          %% \authornote is optional;
+%% can be repeated if necessary
+% \orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+\affiliation{
+  % \position{Position1}
+  % \department{Department1}              %% \department is recommended
+  \institution{University of Wisconsin--Madison}            %% \institution is required
+  % \streetaddress{Street1 Address1}
+  % \city{City1}
+  % \state{State1}
+  % \postcode{Post-Code1}
+  \country{USA}                    %% \country is recommended
+}
+% \email{first1.last1@inst1.edu}          %% \email is recommended
+
+\author{Sumit Lahiri}
+% \authornote{with author1 note}          %% \authornote is optional;
+%% can be repeated if necessary
+% \orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+\affiliation{
+  % \position{Position1}
+  % \department{Department1}              %% \department is recommended
+  \institution{IIT Kanpur}            %% \institution is required
+  % \streetaddress{Street1 Address1}
+  % \city{City1}
+  % \state{State1}
+  % \postcode{Post-Code1}
+  \country{India}                    %% \country is recommended
+}
+% \email{first1.last1@inst1.edu}          %% \email is recommended
+
+\author{Justin Hsu}
+% \authornote{with author1 note}          %% \authornote is optional;
+%% can be repeated if necessary
+% \orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+\affiliation{
+  % \position{Position1}
+  % \department{Department1}              %% \department is recommended
+  \institution{University of Wisconsin--Madison}            %% \institution is required
+  % \streetaddress{Street1 Address1}
+  % \city{City1}
+  % \state{State1}
+  % \postcode{Post-Code1}
+  \country{USA}                    %% \country is recommended
+}
+% \email{first1.last1@inst1.edu}          %% \email is recommended
+
+\author{Subhajit Roy}
+% \authornote{with author1 note}          %% \authornote is optional;
+%% can be repeated if necessary
+% \orcid{nnnn-nnnn-nnnn-nnnn}             %% \orcid is optional
+\affiliation{
+  % \position{Position1}
+  % \department{Department1}              %% \department is recommended
+  \institution{IIT Kanpur}            %% \institution is required
+  % \streetaddress{Street1 Address1}
+  % \city{City1}
+  % \state{State1}
+  % \postcode{Post-Code1}
+  \country{India}                    %% \country is recommended
+}
+% \email{first1.last1@inst1.edu}          %% \email is recommended
+
+
+%% Abstract
+%% Note: \begin{abstract}...\end{abstract} environment must come
+%% before \maketitle command
+\begin{abstract}
+  We propose a symbolic execution method for programs that can draw random
+  samples. Crucially, and in contrast to existing work, our method can handle
+  randomized programs with unknown inputs and can prove probabilistic properties
+  that universally quantify over all possible inputs. Our technique augments
+  standard symbolic execution with a new class of \emph{probabilistic symbolic
+    variables}, which represent the results of random draws, and data structures
+  for tracking the distribution of random samples. Our approach computes
+  symbolic expressions representing the probability of taking individual paths.
+  We implement our method on top of the KLEE symbolic execution engine, and use
+  it to prove properties about probabilities and expected values for a range of
+  challenging case studies written in C++, including Freivalds' matrix
+  multiplication verification algorithm, randomized quicksort, and a randomized
+  property-testing algorithm for monotonicity.
+\end{abstract}
+
+
+%% 2012 ACM Computing Classification System (CSS) concepts
+%% Generate at 'http://dl.acm.org/ccs/ccs.cfm'.
+%% TODO: Get CSS Concepts
+% \begin{CCSXML}
+%   <ccs2012>
+%   <concept>
+%   <concept_id>10011007.10011006.10011008</concept_id>
+%   <concept_desc>Software and its engineering~General programming languages</concept_desc>
+%   <concept_significance>500</concept_significance>
+%   </concept>
+%   <concept>
+%   <concept_id>10003456.10003457.10003521.10003525</concept_id>
+%   <concept_desc>Social and professional topics~History of programming languages</concept_desc>
+%   <concept_significance>300</concept_significance>
+%   </concept>
+%   </ccs2012>
+% \end{CCSXML}
+
+% \ccsdesc[500]{Software and its engineering~General programming languages}
+% \ccsdesc[300]{Social and professional topics~History of programming languages}
+%% End of generated code
+
+
+%% Keywords
+%% comma separated list
+\keywords{Probabilistic programs, symbolic execution}  %% \keywords are mandatory in final camera-ready submission
+
+
+%% \maketitle
+%% Note: \maketitle command must come after title commands, author
+%% commands, abstract environment, Computing Classification System
+%% environment and commands, and keywords command.
+\maketitle
+
+
+\section{Introduction}
+\label{sec:intro}
+
+Symbolic execution (SE)~\citep{king1976} is a highly successful method to
+automatically find bugs in programs. In a nutshell, SE iteratively explores the
+space of possible program paths, while treating program states as
+\emph{symbolic functions} of program inputs (symbolic parameters). Whenever SE discovers a path to an error state, SE checks
+to see if there is a setting of the symbolic parameters that can execute along
+this path, thereby triggering an error. This basic bug-finding strategy has
+proved to be a powerful technique, supporting some of the most effective tools
+for analyzing large codebases~\citep{bessey_2010}.
+
+Aiming to expand the reach of SE, researchers have proposed many domain-specific
+extensions of SE~(e.g.,~\citet{geldenhuys_2012, filieri_2013, borges_2014,
+  p4wn_2021, farina_2019, raimondas_2010, raimondas_2011, adam_2012}). In this
+vein, we consider how to perform SE for \emph{randomized} programs, which can
+draw random samples from built-in distributions. These programs play a critical
+role in many leading applications today, from machine learning to security and
+privacy. Randomized programs, like all programs, are susceptible to
+bugs~\citep{axprof_2019}.  Correctness properties are difficult to formally
+verify; existing methods typically require substantial manual effort and target
+highly specific properties. Moreover, these programs are highly difficult to
+test: the desired behavior is not deterministic, and it is hard to tell if a
+program is producing the wrong distribution of outputs just by observing
+executions.
+
+\paragraph*{Challenges and prior work.} 
+Accordingly, randomized programs are an attractive target for general-purpose,
+automated verification methods, like SE. However, there are numerous challenges
+in developing an SE procedure for probabilistic programs:
+% 
+\begin{itemize}
+\item \textbf{Quantitative properties.} In standard SE, the goal is to
+  identify whether a bad program state (e.g., an assertion failure) is
+  reachable or not---if so, the program has a bug. In randomized programs, we
+  are often more interested in whether a bad state is reached \emph{too
+    often}, or whether a good state is reached \emph{often enough}. Accordingly,
+  a useful SE procedure must be able to analyze the quantitative probability
+  of reaching certain program states.
+\item \textbf{Computing branch probabilities.} A concrete execution of a
+  non-probabilistic program takes a single branch at each branching
+  instruction, since the branch condition is either true or false in any
+  program state. When reasoning about probabilistic behavior, it is more
+  useful to model the program as transforming a distribution over program
+  states. Then, a branch condition has some probability of being true, and
+  some probability of being false, in every probabilistic program state. A SE
+  procedure for probabilistic programs should be able to compute probabilities
+  of branches; by combining these probabilities along a path, the SE procedure
+  can then reason about the probabilities of paths.
+\item \textbf{Handling program inputs.} Like standard programs, randomized
+  programs often have input parameters. These unknown values are qualitatively
+  different from the unknown results of random sampling commands: there is
+  often no sensible probability one can assign to different settings of the
+  program inputs, and the target correctness property usually universally
+  quantifies over all possible inputs.
+
+  Prior work has considered SE for probabilistic programs~\citep{geldenhuys_2012,sampson_2014},
+  but unlike traditional SE, these methods do not treat the program inputs as
+  unknown values. Instead, existing methods consider probabilistic programs
+  without inputs~\citep{sampson_2014}, or assume that the inputs are
+  probabilistically drawn from a known distribution~\citep{geldenhuys_2012}. This
+  simplification allows SE to compute probabilities exactly using techniques
+  like model counting, or approximately using statistical sampling. However,
+  it significantly limits the kinds of programs that can be analyzed, and the
+  kinds of properties that can be proved.
+\end{itemize}
+
+\paragraph*{Our work: symbolic execution for randomized programs.}
+We propose a symbolic execution method for randomized programs, where programs
+may have unknown inputs. These programs can be thought of as producing a family
+of output distributions, one for each concrete input, and inputs can range over
+a large, conceptually infinite set. We consider two kinds of properties:
+% 
+\begin{itemize}
+\item \textbf{Probability bounds.} For all inputs, the \emph{probability of
+    reaching a program state} is at most/at least/exactly equal to some
+  quantity, which may depend on the inputs. This class of properties is the
+  probabilistic analogue of the reachability properties typically considered
+  by SE.
+\item \textbf{Expectation bounds.} For all inputs, the \emph{expected value of
+    a program expression} in the output is at most/at least/exactly equal to
+  some quantity, which may depend on the inputs. This class of properties is
+  more general than probability bounds, and is useful for reasoning about
+  quantitative properties like expected resource usage.
+\end{itemize}
+% 
+There are two key technical ingredients in our approach:
+% 
+\begin{itemize}
+\item \textbf{Distinguish between regular and probabilistic symbolic
+    variables.} We model probabilistic sampling statements by introducing a new kind of symbolic variable, referred as \textit{probabilistic symbolic variable}. While regular symbolic variables represent unknown inputs, 
+  probabilistic symbolic variables represent the result from sampling from a
+  known distribution. Prior work only supports one or the other kind of
+  symbolic variable; our method supports both simultaneously.
+\item \textbf{Compute symbolic branch probabilities.} In the presence of
+  program inputs, the probability of taking a branch may depend on unknown
+  values. Accordingly, it is not possible to use approaches like model
+  counting to compute the branch probabilities, since the probabilities are
+  not constant numbers. Instead, we compute the branch probability expressions
+  symbolically.
+\end{itemize}
+
+\paragraph*{Contributions and outline.}
+After illustrating our method on a motivating example (\cref{sec:overview}), we
+present our main contributions:
+% 
+\begin{itemize}
+\item A symbolic execution method for probabilistic programs with unknown
+  input parameters, along with a formal proof of soundness for the extensions
+  to the probabilistic case (\cref{sec:pse}).
+\item A broad collection of case studies drawn from the randomized algorithms
+  literature (\cref{sec:case_studies}). All case studies have unknown input
+  parameters, and none of the examples can be handled using existing automated
+  methods. Some example properties include bounding the soundness probability of
+  Freivalds' algorithm~\citep{freivalds1977}, a randomized algorithm to check
+  matrix multiplication; the expected number of comparisons for randomized
+  quicksort; and the correctness probability of a randomized property-testing
+  algorithm for checking monotonicity~\citep{goldreich_2017}.
+\item An implementation of our approach called \SYSTEM, building on the KLEE
+  execution engine~\citep{cadar2008}, and an evaluation on our case studies
+  (\cref{sec:impl_and_eval}). By building on KLEE,~\SYSTEM is able to
+  perform symbolic execution on real implementations of probabilistic programs
+  with natural code written in a wide variety of mainstream languages (e.g.,
+  anything targeting LLVM), while faithfully models realistic program states
+  (e.g., with overflowing arithmetic, arrays, etc.).
+\end{itemize}
+% 
+We discuss related work in \cref{sec:related}, and future directions in
+\cref{sec:conclusion}.
+
+\section{Overview}
+\label{sec:overview}
+
+The Monty Hall problem~\citep{selvin1975} is a classic probability puzzle based on the American television show, \textit{Let's Make a Deal}, which showcases how subtle probabilistic reasoning can be.
+% 
+\begin{wrapfigure}[27]{r}{0.5\textwidth}
+  \centering
+  \vspace{-1em}
+	\inputminted[numbersep=3pt,xleftmargin=10pt,tabsize=2,fontsize=\footnotesize,linenos,escapeinside=||]{c}{montyhall.c}
+	\caption{C code for the Monty Hall problem.}
+	\label{fig:montyhall}
+\end{wrapfigure}
+The problem itself is simple:
+\begingroup
+\addtolength\leftmargini{-0.21in}
+\begin{quote}
+	You are a contestant on a game show and behind one of three doors there is a car and behind the others, goats.
+	% 
+	You pick a door and the host, who knows what is behind each of the doors, opens a different door, which has a goat.
+	% 
+	The host then offers you the choice to switch to the remaining door.
+	% 
+	Should you?
+\end{quote}
+\endgroup
+\noindent{}While it may seem unintuitive, regardless of the contestant's original door choice, the contestant who always switches doors will win the car $\frac{2}{3}$ of the time, as opposed to a $\frac{1}{3}$ chance if the contestant sticks with their original choice.
+
+We can represent this problem as a probabilistic program, as shown in \Cref{fig:montyhall}, where $\mathtt{choice} \in [1,3]$ is the door which is originally chosen by the contestant and $\mathtt{door\_switch}$ is \texttt{true} if the contestant wants to switch doors when asked, and \texttt{false} otherwise.
+% 
+If $\mathtt{door\_switch} = \mathtt{true}$, regardless of the value of \texttt{choice}, \texttt{monty\_hall} should return \texttt{true} (i.e., the car is won) $\frac{2}{3}$ of the time.
+% 
+In general, the problem we aim to solve is: given a probabilistic program with discrete sampling statements, and a target probability bound, how do we verify that the program satisfies the bound?
+% 
+For this particular program, the property is not so hard to verify with existing
+methods---the input space is tiny, so it
+is feasible to try all possible inputs and verify the probability bound on each
+output distribution. However, we use this example to illustrate our symbolic
+execution technique, which will scale to the more complex examples we will see
+in \cref{sec:case_studies}.
+
+In symbolic execution, program inputs are replaced by \textit{symbolic} variables which can take on any value.
+% 
+The program is then ``run'' on these symbolic variables and when a branch is reached execution proceeds along each of these two branches and the constraint is recorded in that path's, \textit{path condition}, which is represented by $\varphi$.
+% 
+This yields a \textit{symbolic execution tree} that represents the possible paths through the program.
+\begin{figure}
+	\centering
+	{\footnotesize
+		\begin{forest}baseline,for tree=draw,
+			[{$\mathtt{\ref{line:monty_beg}}: c_0=\top$},align=center, base=bottom, line width=1.5pt
+			[{$\mathtt{\ref{line:monty_choice_!=_car}}: c_1 = \alpha = 1$},align=center, base=bottom
+			[{$\mathtt{\ref{line:monty_not_switch}}: c_2 = \beta$},align=center, base=bottom, node options={dotted,thick}, draw=red] %loss
+			[{$\mathtt{\ref{line:monty_not_switch}}: c_2 = \neg\beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen]] %win
+			[{$\mathtt{\ref{line:monty_choice_!=_car}}: c_1 = \alpha \neq 1$},align=center, base=bottom, line width=1.5pt, edge={line width=1.5pt}
+			[{$\mathtt{\ref{line:monty_choice_!=_2}}: c_2 = \alpha \neq 2$},align=center, base=bottom, line width=1.5pt, edge={line width=1.5pt}
+			[{$\mathtt{\ref{line:monty_switch}}: c_3 = \beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen ] % win
+			[{$\mathtt{\ref{line:monty_switch}}: c_3 = \neg\beta$},align=center, base=bottom, edge={line width=1.5pt}, node options={dotted,thick}, draw=red, line width=1.5pt]] % loss
+			[{$\mathtt{\ref{line:monty_choice_!=_2}}: c_2 = \alpha = 2$},align=center, base=bottom
+			[{$\mathtt{\ref{line:monty_switch}}: c_3 = \beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen ] % win
+			[{$\mathtt{\ref{line:monty_switch}}: c_3 = \neg\beta$},align=center, base=bottom, node options={dotted,thick}, draw=red ]]]] % loss
+		\end{forest}
+	}
+	\caption{Execution Tree for the Monty Hall Problem if the car is behind door 1.}
+	\label{fig:montyhall_tree}
+\end{figure}
+Suppose we were to run traditional symbolic execution on the program in \Cref{fig:montyhall} where the car was randomly chosen to be behind door 1.
+% 
+The two inputs, \texttt{choice} and \texttt{door\_switch}, would become the symbolic variables $\alpha$ and $\beta$, respectively.
+% 
+The execution tree is shown in \Cref{fig:montyhall_tree}.
+% 
+Symmetric trees can be made for the cases when the car is behind door 2 and door 3.
+% 
+For each node in the tree the line number of the branch statement and the branch condition is given.
+% 
+Leaves which are surrounded by a dashed (\tikz{\draw[dashed, line width=1pt] (0,0) -- (0.35,0) }), {\color{darkgreen} green} line represent the contestant winning the car (the function returning \texttt{true}), and those leaves which are surrounded by a dotted (\tikz{\draw[dotted, thick, line width=1pt] (0,0) -- (0.35,0) }), {\color{red} red} line represent the contestant losing the contest (the function returning \texttt{false}).
+% 
+Each path condition, $\varphi$, can then be written as a conjunction of the $c_i$s along a path from the root of the tree to a leaf.
+
+
+For example, consider the \textbf{bolded} path through the tree.
+% 
+The execution begins on line~\ref{line:monty_beg} with an empty path condition, $c_0 = \top$.
+% 
+Execution then reaches the first \textbf{if} condition on line~\ref{line:monty_choice_!=_car} and takes false branch which jumps to line~\ref{line:monty_choice_!=_1}; however, the guard, \texttt{choice != 1 \&\& car\_door != 1} is always \texttt{false} as \texttt{car\_door == 1}.
+% 
+We then skip this branch and instead branch again on line~\ref{line:monty_choice_!=_2}, and take the true branch to get to the third node in the bolded path.
+% 
+Lastly, execution jumps to line~\ref{line:monty_switch} where the contestant's choice to switch doors is checked.
+% 
+This branch actually determines whether the car is won along this path as we already have determined that the contestant did not choose the door which hides the car on line~\ref{line:monty_choice_!=_car}.
+% 
+If the contestant doesn't switch, they will lose, and since at this stage the host has revealed a door which has a goat behind it, the remaining door \textit{must} have the car.
+% 
+Therefore, switching will win the contestant the car and so this path ends in a loss.
+% 
+The entire path condition, $\varphi$, can then be written as $\varphi = \bigwedge_i c_i = \alpha \neq 1 \wedge \alpha \neq 2 \wedge \neg\beta$.
+
+
+While this tree can tell us that it is \textit{possible} to win (or lose) the car with any choice of initial door and decision to switch, it does not tell us how \textit{often} a contestant will win for any initial door and decision to switch.
+% 
+In theory, if we knew how likely it was to take one branch over another we could extend this reasoning to determine how often we would hit a winning leaf over a losing leaf.
+% 
+\textbf{Our core idea is to represent probabilistic sampling statements as a new class of symbolic variables.}
+% 
+For the sake of presentation we refer to these as \textit{probabilistic} symbolic variables as opposed to, what we call, \textit{universal} symbolic variables which range over all possible values.
+% 
+So, instead of asking for a random value, we replace the result of the sample with a probabilistic symbolic variable and record the distribution from which the sample is from.
+% 
+Using this information, we can then compute the probabilities of taking branches.
+
+
+Now let us return to the Monty Hall problem from~\Cref{fig:montyhall}.
+% 
+Let \texttt{car\_door} be represented by the probabilistic symbolic variable, $\delta$ and let \texttt{choice} and \texttt{door\_switch} be $\alpha$ and $\beta$, respectively, as before.
+% 
+Instead of branching solely on $\alpha$ and $\beta$, we additionally branch on $\delta$.
+% 
+The execution tree is presented in~\Cref{fig:montyhall_tree_prob}.
+% 
+Note that branches are omitted from the tree if the direction to traverse can be inferred by the current path condition.
+
+
+Since probabilistic symbolic variables originate from a distribution, we can determine the \textit{probability} of taking a certain branch by simply counting how many values from the distribution satisfy the guard condition.
+% 
+For example, to figure out the probability of taking the \texttt{true} branch of the \texttt{if} condition on line 4 (denoted by $p_t$ in~\Cref{fig:montyhall_tree_prob}), it suffices to count how many settings of $\delta$ satisfy $\alpha = \delta$ and divide by the total number of possible assignments to $\delta$ (i.e., 3).
+% 
+However, since $\alpha$ is a symbolic variable we can only obtain a probability expression which is in terms of universal symbolic variables.
+% 
+Let $[\cdot]$ denote Iverson brackets, where $[Q]=1$ if formula $Q$ is true, and 0 otherwise.
+% 
+Then, $p_t = ([\alpha = 1] + [\alpha = 2] + [\alpha = 3])/3 = \frac{1}{3}$ as $\delta \in [1,2,3]$ and each setting is equally likely.
+% 
+Similarly, $p_f = ([\alpha \neq 1] + [\alpha \neq 2] + [\alpha \neq 3])/3 = \frac{2}{3}$.
+% 
+We stress that these probabilities are \emph{symbolic expressions}: they may
+depend on the universal symbolic variables. This feature is one of the key
+advantages of our technique over existing methods for probabilistic symbolic
+execution---it makes reasoning about the probabilities much more complex, but it
+also enables proving properties for programs with unknown inputs. (We defer
+further comparison with related work to \cref{sec:related}.)
+
+
+\begin{figure}
+	\centering
+	{\footnotesize
+		\begin{forest}baseline,for tree=draw,
+			[{$\mathtt{\ref{line:monty_beg}}: c_0=\top$},align=center, base=bottom
+			[{$\mathtt{\ref{line:monty_choice_!=_car}}: c_1 = \alpha = \delta$},align=center, base=bottom, edge label={node [midway,above] {$p_t$} }
+      [{$\mathtt{\ref{line:monty_not_switch}}: c_2 = \beta$},align=center, base=bottom, node options={dotted,thick}, draw=red ] %loss
+      [{$\mathtt{\ref{line:monty_not_switch}}: c_2 =  \neg\beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen ]] %win
+			[{$\mathtt{\ref{line:monty_choice_!=_car}}: c_1 = \alpha \neq \delta$},align=center, base=bottom, edge label={node [midway,above] {$p_f$} }
+			[{$\mathtt{\ref{line:monty_choice_!=_1}}: c_2 = \alpha \neq 1 \wedge \delta \neq 1$},align=center, base=bottom,
+			[{$\mathtt{\ref{line:monty_switch}}: c_3 = \beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen ] %win
+      [{$\mathtt{\ref{line:monty_switch}}: c_3 = \neg\beta$},align=center, base=bottom, node options={dotted,thick}, draw=red ]] %loss
+			[{$\mathtt{\ref{line:monty_choice_!=_1}}: c_2 = \alpha = 1 \vee \delta = 1$},align=center, base=bottom
+			[{$\mathtt{\ref{line:monty_choice_!=_2}}: c_3 = \alpha \neq 2 \vee \delta \neq 2$},align=center, base=bottom
+			[{$\mathtt{\ref{line:monty_switch}}: c_4 = \beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen ] %win
+			[{$\mathtt{\ref{line:monty_switch}}: c_4 = \neg\beta$},align=center, base=bottom, node options={dotted,thick}, draw=red ]] %loss
+			[{$\mathtt{\ref{line:monty_choice_!=_2}}: c_3 = \alpha = 2 \vee \delta = 2$},align=center, base=bottom
+			[{$\mathtt{\ref{line:monty_switch}}: c_4 = \beta$},align=center, base=bottom, node options={dashed}, draw=darkgreen ]%win
+			[{$\mathtt{\ref{line:monty_switch}}: c_4 = \neg\beta$},align=center, base=bottom, node options={dotted,thick}, draw=red ]]]]] %loss
+		\end{forest}
+	}
+	\caption{Execution tree for the Monty Hall Problem with probabilistic symbolic variables.}
+	\label{fig:montyhall_tree_prob}
+\end{figure}
+
+
+With this \textit{probabilistic} execution tree in hand, let's return to the original question we wanted to answer: if the contestant switches doors, does their chances of winning the car exceed $\frac{1}{3}$?
+% 
+Note that each path in the tree has a probability associated with it.
+% 
+If we want to know the probability of winning if the contestant switches versus not, we can look at solely those paths in the tree which lead to a win.
+% 
+To then figure out the probability of winning the car if the contestant switches we then can remove those paths where $\neg\beta$ is true, and then sum up the probabilities of the remaining paths.
+% 
+This results in an expression in terms of $\alpha$ and constants, which we can then evaluate where $\alpha = 1$, $\alpha = 2$, and $\alpha = 3$ and compare the probabilities.
+% 
+In the end, we get that regardless the setting of $\alpha$ (i.e., the program variable, \texttt{choice}) the probability of winning the car if the contestant switches doors is exactly $\frac{2}{3}$.
+% 
+We formalize this intuition in Section~\ref{sec:query_gen} by expressing this query in first order logic, which can then be dispatched to automated solvers.
+
+\section{Probabilistic Symbolic Execution Algorithm}
+\label{sec:pse}
+
+We present the formalism of our approach on \textbf{pWhile}, a core imperative
+probabilistic programming language, as a model for more general probabilistic
+languages. The statements of \textbf{pWhile} are described by the following
+grammar:
+% 
+\[
+  S := \mathtt{x} \gets e \mid \mathtt{x} \sim d \mid S_1 ; S_2 \mid \mathbf{if}~c~\mathbf{then~goto}~T \mid \mathbf{halt} 
+\]
+% 
+Intuitively, the assignment statement $\mathtt{x} \leftarrow e$ assigns the
+result of evaluating the expression $e$ to the program variable \texttt{x},
+while the sampling statement $x \sim d$ draws a random sample from a primitive
+distribution $d$ and assigns the result to the program variable \texttt{x}.
+% 
+Here, $d$ is a \textit{discrete} distribution expression which denotes which distribution the sample should be drawn from.
+% 
+We interpret distributions as functions from values to the range $[0,1]$, which denotes the probability of the value occurring in the distribution.
+% 
+For example, $\mathsf{UniformInt}(\mathtt{1},\mathtt{6})$ is a uniform distribution which selects at random a value between 1 and $6$ (inclusive).
+
+Control flow is implemented by $S_1 ; S_2$, which sequences two statements $S_1$
+and $S_2$, and conditional branching $\mathbf{if}~c~\mathbf{then~goto}~T$, which
+jumps execution to statement $T$ if the guard $c$ holds, otherwise falling
+through to the next instruction. We assume that high-level constructs like loops
+and regular conditionals are compiled down to conditional branches. Finally,
+$\mathbf{halt}$ marks the end of execution.
+
+Our probabilistic symbolic execution algorithm will aim to answer the following question: What is the maximum (or minimum) probability that a program, \textsf{Prog}, terminates in a state where a predicate $\psi$ holds?
+% 
+Formally, we are interested in computing
+\[
+  \text{max}_{\vec{x}}\ \{ \Pr_\mu[\psi] \mid \mu = \mathsf{Prog}(\vec{x}, \psi)\}
+\]
+where $\mu$ is the distribution on outputs obtained by running $\mathsf{Prog}$ on inputs $\vec{x}$.
+% 
+Since this quantity is difficult to compute in general, we will also be interested in computing bounds on this quantity:
+\[
+  \text{max}_{\vec{x}}\ \{ \Pr_\mu[\psi] \mid \mu = \mathsf{Prog}(\vec{x}, \psi)\}
+  \bowtie f(\vec{x})
+\]
+where $\bowtie~\in\{ \leq, \geq, =, \ldots \}$ is a comparison operator and $f$ is some given function of the program inputs.
+
+We begin with an overview of standard symbolic execution for non-probabilistic
+programs~(\Cref{sec:symex}). Then, we present our symbolic execution approach
+for probabilistic programs. Our approach has two steps: first, we augment
+standard symbolic execution to track probabilistic information as paths are
+explored~(\Cref{sec:pse_intro}). Then, we convert program paths into a logical
+query encoding a probabilistic property~(\Cref{sec:query_gen}).
+% 
+Finally, we formalize the semantics of our approach and prove its soundness~(\Cref{sec:formalization}).
+
+\subsection{Symbolic Execution}
+\label{sec:symex}
+
+\begin{algorithm}
+	\caption{Probabilistic Symbolic Execution Algorithm}
+	\label{alg:symb_ex}
+	\begin{algorithmic}[1]
+		\Procedure{SymbEx} {\textsf{Prog} : \textit{Program}, $\vec{x}$ : \textit{Program Inputs}, \colorbox[RGB]{200, 200, 200}{$\psi$ : \textit{Predicate}}}
+		\State{$E_s$} $\leftarrow$ {[]}, $\sigma \gets $ \textsc{BindToSymbolic}($\vec{x}$), \colorbox[RGB]{200, 200, 200}{$Enc_\psi \gets 0.0, Enc_a \gets 0.0$} \label{line:initialization} \algorithmiccomment{Initialization}
+		\Let{$I_{0}$}{\textsc{getStartInstruction}(\textsf{Prog})} \label{line:first_inst}
+		\Let{$S_{0}$}{($I_{0}$, $\top$, $\emptyset$, \colorbox[RGB]{200, 200, 200}{$\emptyset$, 1.0})} \label{line:init_state} \algorithmiccomment{Empty Initial State}
+		\State {$E_s$.\textsc{Append}({$S_{0}$})} \algorithmiccomment{Start with $S_{0}$ in Execution Stack}
+		\While{$E_s \neq \emptyset$} \label{line:execution_loop}
+		\Let{($I_{c}, \varphi, \sigma, P, p)$}{$E_s$.\textsc{Remove}( )} \label{line:select_state}
+		\If{\textsc{UNSAT}($\varphi$)}
+		\State \textbf{continue}
+		\EndIf
+		\Switch{\textsc{instType}($I_{c}$)} \label{line:inst_type}
+		\Case{\fbox{$\mathtt{x} \gets e$}} \label{line:pse_assignment} \algorithmiccomment{Assignment Instruction} \label{line:symbex_assign}
+		\Let{$I_1$}{\textsc{getNextInstruction}($I_{c}$)}
+		\Let{$\sigma[\mathtt{x}]$}{$\sigma[e]$} \label{line:beg_raw_assign}
+		\Let{$S_{1}$}{($I_{1}$, $\varphi$, $\sigma$, \colorbox[RGB]{200, 200, 200}{$P$, $p$})} \label{line:end_raw_assign}
+		\State {$E_s$.\textsc{Append}({$S_{1}$})}
+		\EndCase
+		\cCase{\fbox{$\mathtt{x} \sim d$}}{gray} \algorithmiccomment \colorbox[RGB]{200, 200, 200}{Sampling Instruction} \label{line:pse_sampling}
+		\cState{gray} $I_1$ $\gets$ \textsc{getNextInstruction}($I_{c}$)
+		\cState{gray} {$\sigma_1,~P_1 \leftarrow~${\textbf{PSESample}}~({$\mathtt{x},~d,~\sigma,~P$})} \label{line:pse_sym_sample}
+		\cState{gray} $S_1 \gets (I_{c}, \varphi, \sigma_1, P_1, p)$ \label{line:end_raw_sample}
+		\cState{gray} $E_s$.\textsc{Append}({$S_1$})
+    \cEndCase{gray} \label{line:end_pse_sampling}
+		\Case{\fbox{\textbf{if} $c$ \textbf{then goto} $T$}} \label{line:symbex_branch} \algorithmiccomment{Branch Instruction}
+		\Let{$c_{sym}$}{$\sigma[c]$} \label{line:guard_convert}
+		\State \colorbox[RGB]{200, 200, 200}{$p_t,~p_f \leftarrow~\mathbf{PSEBranch}~(c_{sym},~\varphi,~P)$} \label{line:pse_sym_branch}
+		\Let{$I_{1}$}{\textsc{getInstruction}($T$)} 
+		\Let{$I_{2}$} {\textsc{getNextInstruction}($I_c$)}	
+		\Let{$S_{t}$}{($I_{1}$, $\varphi \wedge c_{sym}$, $\sigma$,\colorbox[RGB]{200, 200, 200}{$P$, $p \cdot p_t$})} \label{line:symbex_true_state} \algorithmiccomment \colorbox[RGB]{200, 200, 200}{Multiply with current \textit{path} probability}
+		\Let{$S_{f}$}{($I_{2}$, $\varphi \wedge \neg c_{sym}$, $\sigma$,\colorbox[RGB]{200, 200, 200}{$P$, $p \cdot p_f$})} \label{line:symbex_false_state}
+		\State {$E_s$.\textsc{Append}({$S_{f}$})}
+		\State {$E_s$.\textsc{Append}({$S_{t}$})}% \algorithmiccomment{Start with True State}
+		\EndCase \label{line:end_symbex_branch}
+		\Case{\fbox{\textbf{halt}}} \algorithmiccomment{Terminate Instruction}
+		\cState{gray} $\psi_{sym}\gets\sigma[\psi]$ \label{line:beg_enc}
+		\cIf {\textsc{SAT}($\psi_{sym}$)}{gray}
+		\cState{gray} $Enc_\psi \gets Enc_\psi + p$	\label{line:encoding_t}	 
+		\cEndIf{gray}
+		\cState{gray} $Enc_a \gets \textsc{AddEncoding}(Enc_a,p,\sigma)$ \label{line:encoding_a}
+		\EndCase
+		\EndSwitch \label{line:end_execution_loop}
+		\EndWhile 
+		\cState{gray} $r \gets\textsc{Solve}~(Enc_\psi,~Enc_a)$ \label{line:solve_encoding}
+		\cState{gray}\Return{$r$}
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
+
+\textit{Symbolic execution}~\citep{king1976} is a program analysis technique that iteratively explores the set of paths through a given program.
+% 
+Since program paths may depend on input variables, which are not known, symbolic execution treats each input as a \emph{symbolic} variable.
+% 
+All program operations are then redefined to manipulate these symbolic variables.
+% 
+We present a high-level description of symbolic execution in \Cref{alg:symb_ex}.
+% 
+The reader should ignore portions in \colorbox{gray}{shaded boxes} for now; these are our extensions to handle probabilistic programs, which we will discuss in the next section.
+
+
+The symbolic execution algorithm tracks information about program states using the following key data-structures: the next instruction to be executed, $I_c$, a conjunctive formula, $\varphi$, consisting of the symbolic branch constraints that are true for a particular path, called a \textit{path condition}, and a mapping from program variables to symbolic expressions over constants and symbolic variables, $\sigma$, called an \textit{expression map}.
+% 
+To begin, \Cref{alg:symb_ex} initializes the execution stack, $E_s$, with an empty list, and the expression map, $\sigma$ with fresh symbolic variables for each \textit{program input} in the input vector, $\vec{x}$ by calling \textsc{BindToSymbolic} as shown in \cref{line:initialization}.
+% 
+$I_0$ is then initialized with the first instruction of the program at \cref{line:first_inst} and the initial state tuple $S_0$ is created on \cref{line:init_state} and appended to $E_s$.
+
+
+The core of \Cref{alg:symb_ex} is presented on \crefrange{line:execution_loop}{line:end_execution_loop} as a loop which iterates through all reachable states until $E_s$ is exhausted.
+% 
+For each iteration we pop a state from $E_s$ (\cref{line:select_state}) and, if the selected path condition $\varphi$ is feasible, the target instruction is analyzed based on the instruction's form: \cref{line:pse_assignment} for assignment statements and \cref{line:symbex_branch} for branch statements.
+
+
+For an assignment statement, $\mathtt{x} \leftarrow e$, where $e$ is a program expression, we first convert $e$ into a \textit{symbolic} expression using the expression map, $\sigma$. %$\sigma[\mathtt{x}]$ is either just the constant, $e$, or the symbolic representation of $e$, namely $\sigma[e]$.
+% 
+We use the notation $\sigma[e]$ to denote the symbolic expression $e_{sym}$ constructed by replacing each program variable in $e$ with its corresponding symbolic expression in $\sigma$.
+% 
+% This symbolic expression is then stored in $\sigma$.
+% 
+For a branch statement, \textbf{if} $e$ \textbf{then goto} $T$, the symbolic execution algorithm \textit{forks} by constructing the corresponding path conditions for both branches, appending the symbolic branch guard $c_{sym}$ in the positive or negative form (for the true and false directions, respectively).
+% 
+Finally, symbolic execution along a path terminates at a \textbf{halt} instruction, and the terminating states may be appended to an encoding for subsequent analysis.
+
+\subsection{Probabilistic Symbolic Execution}
+\label{sec:pse_intro}
+
+Our key idea is to enable symbolic execution over probabilistic constructs using a new category of symbolic variables, which we refer to as \textit{probabilistic symbolic variables}.
+% 
+Accordingly, our algorithm distinguishes between two categories of symbolic variables:
+
+\begin{itemize}
+\item \textit{Universal symbolic variables}: These are identical to those in traditional symbolic execution, and are used to model arbitrary program inputs.
+\item \textit{Probabilistic symbolic variables}: Probabilistic symbolic variables model a known distribution over a set of values.
+  % 
+  In our algorithm, a new probabilistic symbolic variable is created for each sampling statement to denote the sampling operation.
+\end{itemize}
+
+Symbolic execution becomes quite challenging when both universal and probabilistic variables are present, as now program branches are taken with some quantitative probability.
+% 
+To track information about probabilistic states, we add the following data-structures:
+\begin{itemize}
+\item \textit{Distribution map} ($P$). This map from probabilistic symbolic variables to distribution expressions tracks the distribution from which a probabilistic symbolic variable was originally sampled from.
+  % 
+	This is analogous to the symbolic variable map, $\sigma$, except for mapping probabilistic symbolic variables to distributions instead from program variables to symbolic expressions.
+  % 
+\item \textit{Path probability} ($p$). For each path, we adjoin a path probability expression, $p$, which may be parameterized by universal symbolic variables.
+	% 
+	Now each path has an associated path condition and path probability.
+\end{itemize}
+
+With this new infrastructure, we can now define how symbolic execution proceeds when execution reaches a sampling statement, and demonstrate how we compute the probability of taking either side of a branch statement. 
+\begin{algorithm}
+	\caption{PSE Sampling Algorithm}
+	\label{alg:sample}
+	\begin{algorithmic}[1]
+		\Function{PSESample}{$\mathtt{x}, d, \sigma, P$}
+		\Let{$\delta$}{Generate a fresh probabilistic symbolic variable} \label{line:fresh_psv}
+		\State{$\sigma[\mathtt{x}] = \delta$}
+		\State{$P[\delta] = d$} \label{line:update_P}
+		\State\Return{$(\sigma, P)$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+\begin{paragraph}{Sampling (\Crefrange{line:pse_sampling}{line:end_pse_sampling})}
+	On encountering a sampling statement, $\mathtt{x} \sim d$, at \cref{line:pse_sampling} of \Cref{alg:symb_ex}, we call \textsc{PSESample} to get the updated distribution map, $P$, and expression map, $\sigma$.
+	% 
+  The function~\textsc{PSESample} (\Cref{alg:sample}) takes four inputs: a program variable, \texttt{x}, a distribution expression, $d$, which determines the distribution the value of \texttt{x} is sampled from, the current expression map, $\sigma$, and the current distribution map, $P$, and returns updated expression and distribution maps.
+  % 
+  To model the random value returned from the distribution expression $d$, a fresh probabilistic symbolic variable, $\delta$, is created and \texttt{x} is mapped to $\delta$ under $\sigma$.
+  % 
+  Additionally, the distribution map is updated to reflect that $\delta$ is ``drawn'' from $d$.
+\end{paragraph}
+\begin{algorithm}
+	\caption{PSE Branch Algorithm}
+	\label{alg:branch}
+	\begin{algorithmic}[1]
+		\Function{PSEBranch}{$c_{sym}, \varphi, P$}
+		\Let{$(\delta_1,\ldots,\delta_n)$}{$\dom{P}$}
+		\Let{$(d_1,\ldots,d_n)$}{$(P[\delta_1],\ldots,P[\delta_n])$} \Comment{Retrieve all distribution expressions}
+		\Let{$p_c$}{$\frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \dom{d_1} \times \cdots\times \dom{d_n}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}$}\label{line:branch_prob_compute}
+		\State\Return{$(p_c, 1 - p_c)$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+\begin{paragraph}{Branches (\Crefrange{line:symbex_branch}{line:end_symbex_branch})}
+  Since probabilistic programs can branch on random values, each branch has a probability of being taken.
+  % 
+	Note that with the addition of probabilistic symbolic variables we can now either branch on universal or probabilistic symbolic variables (or both).
+
+  
+	Upon reaching a branch statement, similar to traditional symbolic execution, the symbolic states corresponding to the true and false branches are added to $E_s$.
+  % 
+  Then, \textsc{PSEBranch} (\Cref{alg:branch}) computes probability \textit{expressions} for the true and false branches.
+  % 
+  \textsc{PSEBranch} takes as input a symbolic expression, $c_{sym}$, which is equivalent to the guard expression $c$, the current path condition, $\varphi$, and the current distribution map, $P$, and returns two probability expressions: $p_c$, which is denotes the probability of taking the true branch, and $1-p_c$, which denotes taking the false branch.
+  % 
+  For simplicity, we present this subroutine in the simplified setting where all
+  sampling instructions are from the uniform distribution over a finite set;
+  handling general weighted distributions is not much more complicated.
+	
+	To gain intuition on the computation of path probabilities, for now just consider the special case where the guard condition only involves universal symbolic variables.
+	% 
+  Let $c_{sym} = \sigma[c]$ be the equivalent symbolic expression for the guard $c$ and assume that $c_{sym}$ does not mention any probabilistic symbolic variables.
+	% 
+  In this case, the branch that is taken is entirely determined by the universal symbolic variables. 
+	% 
+	Therefore, for a fixed setting of the universal symbolic variables, one side of the branch must have a probability of 1, and the other side, 0.
+  % 
+  Put another way, either $c_{sym}$ can be satisfiable or $\neg c_{sym}$, but never both.
+	% 
+	We use Iverson brackets to formalize this idea; the probability of taking the ``true'' branch is $[c_{sym}]$, and the probability of taking the ``false'' branch is $[\neg c_{sym}]$.
+	
+	
+	For probabilistic branches (i.e., guards which branch on probabilistic symbolic variables), computing the branch probability is more involved.
+  % 
+  We give an intuitive justification here, and defer the formal proof of correctness to \Cref{sec:formalization}.
+	% 
+  When symbolic execution is at the start of a conditional branch statement, the path condition $\varphi$ records the necessary constraints on the universal and probabilistic symbolic variables which must hold in order to reach this conditional branch. 
+  % 
+  Then, we can view the probability of taking either branch as a \textit{conditional probability}: the probability that $c_{sym}$ holds assuming that $\varphi$ is satisfied.
+	% 
+	In more formal notation, we aim to compute $\Pr[c_{sym} \mid \varphi] = {\Pr[c_{sym}\wedge \varphi]}/{\Pr[\varphi]}$.
+	
+
+  \Cref{alg:branch} builds an expression which computes this conditional probability.
+	% 
+	Note that each probabilistic symbolic variable, $\delta$, is mapped to exactly one distribution, $d$, and therefore, $\delta \in \dom{d}$.
+	% 
+	So, assuming there are $n$ probabilistic symbolic variables, $\delta_1,\ldots,\delta_n$, and so $n$ distributions, $d_1,\ldots,d_n$, the set of all possible values for $\delta_1,\ldots,\delta_n$ is $\mathcal{D} = \dom{d_1} \times \cdots \times \dom{d_n}$.
+  % 
+  Using our simplifying assumption that all probabilistic symbolic variables are drawn from a uniform distribution, each assignment $v_1, \dots, v_n$ to $\delta_1, \dots, \delta_n$ has equal probability.
+  % 
+  Thus, instead of computing the conditional probability as a ratio of probabilities, we can compute the ratio of the number of assignments from $\mathcal{D}$ which satisfy $c_{sym} \wedge \varphi$ and $\varphi$, as shown on \cref{line:branch_prob_compute} of \Cref{alg:branch}.
+	% 
+	Note that $p_c$ is not necessarily a value, but rather a symbolic expression containing constants and universal symbolic variables.
+	% 
+	Finally, we use the fact that the sum of the conditional probabilities of the branch outcomes is 1, which allows us to avoid computing the probability of taking the false branch directly.
+
+  Now that we know the probability of taking a branch, we can compute the probability of traversing the entire path, or equivalently, the probability of $\varphi \wedge c_{sym}$ (or $\varphi \wedge \neg c_{sym}$) being satisfied.
+  % 
+  Note that $p_t$ is the \textit{conditional} probability of taking the true branch and $p_f$ is the conditional probability of taking the false branch on \cref{line:pse_sym_branch}, or $p_t = \Pr[c_{sym} \mid \varphi]$ and $p_f = \Pr[\neg c_{sym} \mid \varphi]$.
+  % 
+  Since $p$ is the probability of $\varphi$, to the probability of $\varphi \wedge c_{sym}$, we can simply multiply $p \cdot p_t$ according to the standard rule $\Pr[A \wedge B] = \Pr[A \mid B]\Pr[B]$ where $A$ and $B$ are any two events.
+  % 
+  The same can be done for $\varphi \wedge \neg c_{sym}$, as shown on \cref{line:symbex_true_state,line:symbex_false_state}.
+\end{paragraph}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		{\small
+			\begin{algorithmic}[1]
+				\State{$\mathtt{x}\sim\mathsf{UniformInt}(\mathtt{1},\mathtt{3})$}
+				\State{$\mathtt{y}\sim\mathsf{UniformInt}(\mathtt{1},\mathtt{3})$}
+				\If{$\mathtt{x} > \mathtt{1}$}\label{line:first_cond}
+				\If{$\mathtt{x} < \mathtt{y}$}
+				\State\Return{$\mathtt{True}$}
+				\EndIf
+				\Else
+				\State\Return{$\mathtt{False}$}
+				\EndIf
+			\end{algorithmic}
+		}
+		\caption{Program with random sampling.}
+		\label{fig:exam_program}
+	\end{subfigure}
+	\begin{subfigure}{.69\textwidth}
+		\centering
+		{\small
+			\begin{forest}baseline,for tree=draw,
+				[{$\varphi=\top$},align=center, base=bottom
+				[{$\varphi = \delta_1 > 1$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{2}{3}$} }
+				[{$\varphi = (\delta_1 > 1) \wedge (\delta_1 < \delta_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{6}$} }
+				[{\texttt{True}}]]
+				[{$\varphi = (\delta_1 > 1) \wedge \neg(\delta_1 < \delta_2)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{5}{6}$} }
+				[{\texttt{False}}]]]
+				[{$\varphi = \neg(\delta_1 > 1)$}, align=center, base=bottom, edge label={node [midway,above] {$\frac{1}{3}$} }
+				[{\texttt{False}}]]]
+			\end{forest}
+		}
+		\caption{Symbolic execution tree.}
+		\label{fig:exam_tree}
+		
+	\end{subfigure}
+	\caption{A sample, randomized program and its associated symbolic execution tree annotated with probabilities.}
+	\label{fig:example}
+\end{figure}
+\begin{paragraph}{Example}
+	Consider the code in \Cref{fig:exam_program} and suppose we wish to calculate the probability of the program returning \texttt{True}.
+	% 
+	Following~\Cref{alg:sample}, we generate fresh probabilistic symbolic variables for $\mathtt{x}$ and $\mathtt{y}$, $\delta_1$ and $\delta_2$, respectively.
+	% 
+	We also store the distributions which $\delta_1$ and $\delta_2$ are samples from, namely the discrete uniform distribution $\mathcal{U}\{1,3\}$.
+	% 
+	In our notation, we say that $\sigma = \{ \mathtt{x} \mapsto \delta_1, \mathtt{y} \mapsto \delta_2 \}$ and $P = \{ \delta_1,\delta_2 \mapsto \mathcal{U}\{1,3\} \}$.
+	% 
+	Now following \Cref{alg:branch} to process \cref{line:first_cond} of \Cref{fig:exam_program}, note that $\mathcal{D} = \{1,2,3\} \times \{1,2,3\}$ and 
+	
+	\begin{align*}
+		p_c = \Pr[\delta_1 < \delta_2 \mid \delta_1 > 1] &= \frac{\Pr[(\delta_1 < \delta_2) \wedge (\delta_1 > 1)]}{\Pr[\delta_1 > 1]}\\
+                                   &= \frac{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\delta_1 < \delta_2) \wedge (\delta_1 > 1)\{\delta_1 \mapsto v_1, \delta_2 \mapsto v_2\}]}{\displaystyle\sum_{(v_1,v_2) \in \mathcal{D}} [(\delta_1 > 1)\{\delta_1 \mapsto v_1\}]} = \frac{1}{6}\\
+	\end{align*}
+  This probability means that the probability of taking the true branch of the inner \textbf{if} condition is only $\frac{1}{6}$, which makes sense as \texttt{x} is restricted to be either $2$ or $3$, but \texttt{y} can be either 1,2, or 3; however, only one combination of \texttt{x} and \texttt{y} will satisfy $\mathtt{x} < \mathtt{y}$, namely $\mathtt{x} = 2$ and $\mathtt{y} = 3$.
+\end{paragraph}
+
+
+\subsection{Query Generation}
+\label{sec:query_gen}
+
+Recall that our original goal is to find the maximum (or minimum) probability that a program, \textsf{Prog}, terminates in a state where a predicate $\psi$ holds.
+% 
+We frame this question as a logical query using the symbolic state found in the execution tree.
+% 
+In general, our queries are of the following form:
+% 
+\begin{equation}
+  \label{eq:query}
+	\forall \alpha_1,\ldots,\alpha_n~.~Enc_\psi \bowtie f(\alpha_1,\ldots,\alpha_n)
+\end{equation}
+% 
+where $\alpha_1,\ldots,\alpha_n$ are \textit{all} the universal symbolic variables found in \textsf{Prog}, $Enc_\psi$ is an expression representing the probability that $\psi$ holds in \textsf{Prog}, $\bowtie$ is a binary relation (e.g., $>,<,\geq,\leq$), and $f$ is some function of the universal symbolic variables denoting the desired bound to check.
+% 
+There are three main components to our queries: 1) a universal quantification over the universal symbolic variables, 2) $Enc_\psi$, or the probability that $\psi$ holds in \textsf{Prog}, and 3) a desired upper/lower bound expression, potentially parameterized by universal symbolic variables, $e$
+% 
+\begin{enumerate}
+\item If a program has $n$ universal symbolic variables, $\alpha_1,\ldots,\alpha_n$, we begin the query with a universal quantification, $\forall \alpha_1,\ldots,\alpha_n$, in order to reason over any setting of the non-probabilistic program variables.
+
+
+\item We construct $Enc_\psi$ on~\crefrange{line:beg_enc}{line:encoding_a} of~\Cref{alg:symb_ex}.
+  % 
+  Once a path reaches a \textbf{halt} statement, $\psi$ is converted into a symbolic expression using the expression map, $\sigma$, called $\psi_{sym}$.
+  % 
+  If $\psi_{sym}$ is satisfiable, then we add $p$ to the current $Enc_\psi$ as this path's probability should be included in our query.
+  % 
+  Note that during some settings of $\alpha_1,\ldots,\alpha_n$, the path represented by $\varphi$ might not be reachable, and so we should exclude that probability from the sum.
+  % 
+  However, since we use $\varphi$ in the construction of $p$, if $\varphi$ is unsatisfiable, then $p$ will be 0 as each summand in the numerator of $p_c$, as defined on~\cref{line:branch_prob_compute} of~\Cref{alg:branch} will be 0. 
+  % 
+  For example, recall the Monty Hall program in~\Cref{fig:montyhall} and consider the left-most two paths in~\Cref{fig:montyhall_tree_prob}, namely $\varphi_1 := \alpha = \delta \wedge \beta$ and $\varphi_2 := \alpha = \delta \wedge \neg \beta$. 
+  % 
+  Note that $p_1 = [\alpha = 1 \wedge \beta] + [\alpha = 2 \wedge \beta] + [\alpha = 3 \wedge \beta]/3$ and $p_2 = [\alpha = 1 \wedge \neg\beta] + [\alpha = 2 \wedge \neg\beta] + [\alpha = 3 \wedge \neg\beta]/3$.
+  % 
+  If $\beta$ is true, then $p_2 = 0$ regardless of the setting of $\alpha$, as $\varphi_2$ is unsatisfiable.
+  % 
+  Once we have exhausted all reachable states in $E_s$, $Enc_\psi$ represents the probability that $\psi$ holds for all reachable paths in \textsf{Prog}.
+\item Let $f$ be the lower/upper bound function of universal symbolic variables which we want to prove \textsf{Prog} does not violate.
+  % 
+  Another way of interpreting $f$ is a function which computes the \textit{desired} probability of $\psi$ occurring in \textsf{Prog} (e.g., a maximum acceptable error rate) given a setting of the universal symbolic variables.
+  % 
+  We should note, however, that symbolic execution is not complete, meaning not all possible paths necessarily will be reached.
+  % 
+  Therefore, we can only find violations on upper bounds, but not lower bounds, since it is possible that some missing paths might violate the lower bound, but if we find a violation on an upper bound, more paths will only make that violation more egregious.
+\end{enumerate}
+
+Once probabilistic symbolic execution terminates, \textsc{Solve} is called on \cref{line:solve_encoding} which takes in $Enc_\psi$, constructs formula \ref{eq:query}, and calls an automated decision procedure, such as an SMT solver, to answer the query.
+% 
+The meaning of this query depends on the termination condition of symbolic execution.
+% 
+If all reachable paths are explored, then $Enc_\psi$ represents the true probability that $\psi$ holds in the output distribution, parameterized by the unknown input variables.
+% 
+However, in most realistic settings, symbolic execution will not be able to explore all paths due to resource and time limitations.
+% 
+In this case, $Enc_\psi$ may not be equal to the true probability of $\psi$; however, it is always a sound \emph{lower bound} of this probability.
+% 
+This information is enough for our approach to refute upper bounds on
+probability: if we want to verify that the probability of $\psi$ is at most $f(\alpha_1,\ldots,\alpha_n)$
+for all settings of the input variables, and symbolic execution produces a
+probability mass $Enc_\psi$ that exceeds $f(\alpha_1,\ldots,f_n)$ for some setting of the input
+variables, then the original upper bound cannot hold.
+\begin{paragraph}{Example}
+  In~\Cref{sec:overview} we introduced the Monty Hall problem, and we wanted to prove that if a contestant always switched doors their probability of winning the car is $\frac{2}{3}$.
+  % 
+  With can frame this question as a query of the form defined in~\Cref{eq:query}.
+  % 
+  If $\alpha$ is the universal symbolic variable corresponding to \texttt{choice}, and $\beta$ is the universal symbolic variable corresponding to \texttt{door\_switch}, $\psi := \beta \wedge \mathsf{win}$ where \textsf{win} means the car is won (determined by the return value of \texttt{monty\_hall}), $\bowtie~:=~=$, and $f := \frac{2}{3}$, then our full query is: $\forall \alpha,\beta~.~Enc_\psi = \frac{2}{3}$.
+  % 
+  \Cref{alg:symb_ex} then constructs the tree found in~\Cref{fig:montyhall_tree_prob} and constructs the probability expression for each path.
+  % 
+  If $\varphi_i$ is path condition for the path ending in the $i^{\text{th}}$ left-most leaf of~\Cref{fig:montyhall_tree_prob}, and $p_i$ is the probability expression for $\varphi_i$, as created by~\Cref{alg:symb_ex}, then $Enc_\psi = p_3 + p_5 + p_7$.
+  % 
+  \textsc{Solve} then takes the query $\forall \alpha,\beta~.~p_3 + p_5 + p_7 = \frac{2}{3}$ and uses an external automated decision procedure to prove for each possible setting of $\alpha$ and $\beta$ that $p_3 + p_5 + p_7 = \frac{2}{3}$.
+\end{paragraph}
+
+\subsubsection{Expected Value Queries}
+\label{sec:expected_value}
+
+\begin{algorithm}
+  \caption{\textsc{AddEncoding} for computing $\E{\mathtt{v}}$}
+  \label{alg:expected_val_encoding}
+  \begin{algorithmic}[1]
+    \Function{AddEncoding}{$Enc_a,p,\sigma$}
+    \State\Return $Enc_a + p \cdot \sigma[\mathtt{v}]$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+In addition to normal probability bound queries, our technique can also be used to compute the expected value of any variable with only a slight modification.
+% 
+Suppose that we want to compute the expected value of a program variable \texttt{v}, denoted $\E{\mathtt{v}}$.
+% 
+Since each path has a probability, $p_i$, and an expression map, $\sigma_i$, we can construct a symbolic expression which computes $\E{\mathtt{v}}$, namely $\sum_{i=1}^n p_i \cdot \sigma_i[\mathtt{v}]$, as $\sigma_i[\mathtt{v}]$ is the symbolic expression which is the value of $\mathtt{v}$ along $i^\text{th}$ path.
+% 
+In terms of~\Cref{alg:symb_ex}, we use~\Cref{alg:expected_val_encoding} for \textsc{AddEncoding} on~\cref{line:encoding_a}.
+% 
+Then, for \textsc{Solve}, on~\cref{line:solve_encoding}, we use an automated decision procedure to solve the query
+\[
+	\forall \alpha_1,\ldots,\alpha_n~.~Enc_a \bowtie f(\alpha_1,\ldots,\alpha_n)
+\]
+where, as before, $\alpha_1,\ldots,\alpha_n$ are the universal symbolic variables representing the input variables of \textsf{Prog}.
+
+\subsection{Formalization}
+\label{sec:formalization}
+
+In this section we present the formalization of our method. First, we will present our notation and definitions (\Cref{sec:notation}), and then state a series of soundness theorems for our technique (\Cref{sec:proofs}).
+% 
+The goal of this section is to describe how the symbolic state used by~\Cref{alg:symb_ex}, $R=(\sigma,\varphi,P)$, is an abstraction of a \textit{distribution of program memories}.
+
+\subsubsection{Notation \& Definitions}
+\label{sec:notation}
+
+To begin, we will define some notation: 
+\begin{itemize}
+\item Let $\mathcal{V}$ be the set of all values, $\mathcal{X}$ be the set of all program variables, $\mathcal{Z}_U$ be the set of all universal symbolic variables, $\mathcal{Z}_P$ be the set of all probabilistic symbolic variables, and $\mathcal{Z} = \mathcal{Z}_U \cup \mathcal{Z}_P$ be the combined set of all symbolic variables.
+\item Let $a_{\forall}: \mathcal{Z}_U \rightarrow \mathcal{V}$ be an assignment of universal symbolic variables to values and let $\mathit{A}_{\forall}$ be the set of all such assignments.
+\item Similarly, let $a_p : \mathcal{Z}_P \rightarrow \mathcal{V}$ be an assignment of probabilistic symbolic variables to values and let $\mathit{A}_p$ be the set of all such assignments.
+\item Let $m : \mathcal{X} \rightarrow \mathcal{V}$ be a program memory which translates program variables into values, and let $\mathit{M}$ be the set of all program memories.
+\item Let $d : \mathit{M} \rightarrow (\mathcal{V} \rightarrow [0,1])$ be a distribution expression parameterized by program memories, and let $\mathit{Dists}$ be the set of all distribution expressions.
+\item Let $\mu : \mathit{A}_{\forall} \times \mathit{M} \rightarrow [0,1]$ be a distribution of program memories parameterized by assignments to universal symbolic variables and let $\mathit{Dists_M}$ be the set of all parameterized distributions of program memories.
+\end{itemize}
+
+Additionally, we will use emphatic brackets ($\deno{\cdot}$) for two purposes:
+\begin{itemize}
+\item If $e$ is a \textit{program} expression containing the program variables $\mathtt{x}_1,\ldots,\mathtt{x}_n \in \mathcal{X}$, and $m \in \mathit{M}$, then
+  \[
+    \deno{e}m = \mathsf{eval}(e[\mathtt{x}_1 \mapsto m(\mathtt{x}_1),\ldots,\mathtt{x}_n \mapsto m(\mathtt{x}_n)])
+  \]
+\item If $e$ is a \textit{symbolic} expression containing the symbolic variables $\alpha_1,\ldots,\alpha_n \in \mathcal{Z}_U$ and $\delta_1,\ldots,\delta_m \in \mathcal{Z}_P$, and $a_{\forall} \in \mathit{A}_{\forall}$ and $a_p \in \mathit{A}_p$, then
+  \[
+    \deno{e}a_{\forall}a_p = \mathsf{eval}(e[\alpha_1\mapsto a_{\forall}(\alpha_1),\ldots,\alpha_n \mapsto a_{\forall}(\alpha_n), \delta_1 \mapsto a_p(\delta_1), \ldots, \delta_m \mapsto a_p(\delta_m)])
+  \]
+\end{itemize}
+
+With this notation in hand, we can now define what it means for $R$ to be an abstraction of a distribution of programs memories.
+\begin{definition}
+  \label{def:main}
+  Let $R = (\sigma,\varphi,P)$ be the abstraction generated by~\Cref{alg:symb_ex} where $\varphi: \mathit{A}_{\forall} \times \mathit{A}_p \rightarrow \{0,1\}$ denotes whether a path condition is true or false under the given assignments, $\sigma : \mathcal{X} \rightarrow SymExprs$ is a mapping from program variables to symbolic expressions generated through symbolic execution, and $P : \mathit{A}_{\forall} \rightarrow \mathcal{Z}_P \rightharpoonup (\mathcal{V} \rightarrow [0,1])$ is a mapping from probabilistic symbolic variables to the distribution it is sampled from, parameterized by assignments to universal symbolic variables.
+  % 
+  Additionally, for every assignment of universal symbolic variables, $a_{\forall} \in \mathit{A}_{\forall}$, $\dom{P(a_{\forall})} = \{\delta_1,\ldots,\delta_k\}$.
+  % 
+  Let $\alpha_1,\ldots,\alpha_l \in \mathcal{Z}_U$ be the universal symbolic variables which correspond to the $l$ parameters to the program.
+  % 
+  For every assignment of probabilistic and universal symbolic variables, $a_{\forall} \in \mathit{A}_{\forall}, a_p \in \mathit{A}_p$, let $\nu : \mathit{A}_{\forall} \rightarrow (\mathit{A}_p \rightarrow [0,1])$ be a distribution of assignments to probabilistic symbolic variables parameterized by assignments to universal symbolic variables, defined as
+  \[
+    \nu(a_{\forall},a_p) \triangleq \prod_{i=1}^k \Pr_{v \sim P(a_{\forall},\delta_i)}[v = a_p(\delta_i)].
+  \]
+  % 
+  We say that a distribution $\mu$ satisfies our abstraction $R$ if, for all assignments to universal symbolic variables, $a_{\forall} \in \mathit{A}_{\forall}$, $\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p') = 1] > 0$, and if $\nu_{\varphi} : \mathit{A}_{\forall} \rightarrow (\mathit{A}_p \rightarrow [0,1])$ is defined as
+  \[
+    \nu_\varphi(a_{\forall},a_p) \triangleq \cfrac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \land \varphi(a_{\forall},a_p') = 1]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p')=1]}.
+  \]
+  Additionally, define $\mathsf{toMem} : (\mathcal{X} \rightarrow SymExprs) \rightarrow \mathit{A}_{\forall} \rightarrow \mathit{A}_p \rightarrow M$ as
+  \begin{equation*}
+    \mathsf{toMem}(\sigma,a_{\forall},a_p) \triangleq \lambda (\mathtt{x}: \mathcal{X})~.~\deno{\sigma(\mathtt{x})}a_{\forall}a_p,
+  \end{equation*}
+  and let $\mathsf{fromMem}(\sigma,a_{\forall},m) = (\mathsf{toMem}(\sigma,a_{\forall}))^{-1}(m)$.
+  % 
+  Then,
+  \[
+    \mu(a_{\forall},m) \triangleq \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p).
+  \]
+\end{definition}
+
+\subsubsection{Soundness Theorems}
+\label{sec:proofs}
+
+Note that in \Cref{alg:symb_ex} we represent the symbolic program state as a five-tuple, namely $S = (I, \varphi, \sigma, P, p)$; however, in our abstraction $R$, we omit $I$ and $p$.
+% 
+$I$ represents the current executing instruction which we remove as we prove soundness locally for each type of statement in \textbf{pWhile}, rather than prove soundness for the entirety of \Cref{alg:symb_ex}.
+% 
+Therefore, there is no need to track what the current instruction is.
+% 
+For $p$, we will begin by proving that $p$ can be completely reconstructed using $\varphi$ and $P$ and so there is no need to track it separately.
+\begin{restatable}[Equivalency between $p$ and $(\varphi,P)$]{theorem}{equivpthm}
+  For all program statements, $S$ in \textbf{pWhile}, \Cref{alg:symb_ex} maintains
+  \[
+    p = \frac{\displaystyle\sum_{v_1,\ldots,v_n \in \mathcal{D}} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_n \mapsto v_n\} ]}{\abs{\mathcal{D}}}
+  \]
+  where $\{\delta_1,\ldots,\delta_n\} = \dom{P}$, or all the probabilistic symbolic variables in the program, and $\mathcal{D} = \dom{P[\delta_1]} \times \cdots \times \dom{P[\delta_n]}$, or all the assignments to the probabilistic symbolic variables $\delta_1,\ldots,\delta_n$.
+\end{restatable}
+
+We will now prove soundness for \Cref{alg:symb_ex} by showing that our abstraction $R$ respects the semantics defined in \Cref{sec:semantics} for each of the three main types of statements in \textbf{pWhile}, namely \textit{assignment}, \textit{sampling}, and \textit{branching}. A proof for each theorem can be found in~\Cref{sec:omitted_proofs}.
+
+\begin{restatable}[Correctness of Assignment (\Crefrange{line:beg_raw_assign}{line:end_raw_assign})]{theorem}{soundnessAssignment}
+  If a distribution $\mu$ satisfies $R=(\varphi,\sigma,P)$, and~\Cref{alg:symb_ex} reaches an assignment statement of the form $\mathtt{x} \gets e$, then $\mu_{\mathtt{x}\gets e}$, the distribution of program memories after executing $\mathtt{x} \gets e$, as defined in~\Cref{sec:semantics},  satisfies $R'=(\varphi,\sigma',P)$, which is produced by~\Cref{alg:symb_ex}.
+\end{restatable}
+
+\begin{restatable}[Correctness of Sampling (\Crefrange{line:pse_sym_sample}{line:end_raw_sample})]{theorem}{soundnessSampling}
+  If a distribution $\mu$ satisfies $R = (\varphi,\sigma,P)$ and~\Cref{alg:symb_ex} reaches a sampling statement of the form $\mathtt{x} \sim d$, then $\mu_{\mathtt{x} \sim d}$, the distribution of program memories after executing $\mathtt{x} \sim d$, as defined in~\Cref{sec:semantics}, satisfies $R'=(\varphi,\sigma',P')$, which is produced by~\Cref{alg:symb_ex}.
+\end{restatable}
+
+\begin{restatable}[Correctness of Branching (\Cref{line:pse_sym_branch,line:symbex_true_state,line:symbex_false_state})]{theorem}{soundnessBranching}\label{thm:branch}
+  If a distribution $\mu$ satisfies $R=(\varphi,\sigma,P)$, and~\Cref{alg:symb_ex} encounters a branching statement of the form $\mathbf{if}~c~\mathbf{then~goto}~T$, then $\mu_c$ satisfies $R_{true} = (\varphi \wedge c_{sym}, \sigma, P)$ and $\mu_{\neg c}$, the distribution of program memories after executing $\mathbf{if}~c~\mathbf{then~goto}~T$, as defined in~\Cref{sec:semantics}, satisfies $R_{false} = (\varphi \wedge \neg c_{sym}, \sigma, P)$. Additionally, for all $a_{\forall} \in \mathit{A}_{\forall}$,
+  \[
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}}\mu(a_{\forall},m) = \deno{p_c} a_{\forall}\quad\text{and}\quad\sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 0\}}\mu(a_{\forall},m) = \deno{p_c'} a_{\forall}.
+  \]
+\end{restatable}
+
+
+\section{Case Studies}
+\label{sec:case_studies}
+In this section we will briefly explain each of the case studies that we use in our evaluation (\Cref{sec:impl_and_eval}).
+% 
+For each case study, we will explain, (1) the algorithm, (2) the property we aim to verify using our technique, and (3) any variants to the core algorithm we consider.
+% 
+For the sake of presentation, we present the queries using the program variable names instead of the equivalent symbolic variable representations.
+
+
+\subsection{Freivalds' Algorithm}
+\label{sec:freivalds}
+
+\begin{algorithm}[h]
+  \caption{Freivalds' Algorithm}
+  \label{alg:freivalds}
+  \begin{algorithmic}[1]
+    \Require $A,B$, and $C$ are $n \times n$ matrices
+    \Function{Freivalds}{$A,B,C,n$}
+    \Let{$\vec{r}$}{An empty $n \times 1$ vector}
+    \For{$i\gets1,n$}
+    \State{$\vec{r}[i] \sim \mathsf{UniformInt}(0,1)$} 
+    \EndFor
+    \Let{$\vec{D}$}{$A \times (B\vec{r}) - C\vec{r}$}
+    \State\Return{$\vec{D} = \begin{pmatrix} 0 & \cdots & 0 \end{pmatrix}^{\text{T}}$}
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\paragraph*{Background.}
+Freivalds' algorithm~\citep{freivalds1977} is a randomized algorithm used to verify matrix multiplication in $\mathcal{O}(n^2)$ time.
+% 
+Given three $n \times n$ matrices $A, B$, and $C$, Freivalds' algorithm checks whether $A \times B = C$ by generating a random $n \times 1$ vector containing 0s and 1s, $\vec{r}$ and checks whether $A \times (B\vec{r}) - C\vec{r} = (0,\ldots,0)^T$.
+% 
+If so, the algorithm returns \texttt{true}, and \texttt{false} otherwise.
+% 
+If $A \times B = C$, the algorithm returns \texttt{true} with probability $1$ (always).
+% 
+However, if $A \times B \neq C$, the probability that the algorithm returns \texttt{true} is at most $\frac{1}{2}$.
+% 
+Pseudocode for the algorithm is presented in \Cref{alg:freivalds}.
+
+\paragraph*{Target queries.}
+We want to verify that the false-positive error rate does not exceed $\frac{1}{2}$.
+% 
+Letting $\psi := A \times B \neq C \wedge \textsc{Freivalds}(A,B,C,n) = \texttt{true}$, our query is
+
+\begin{equation}
+	\forall A,B,C,n~.~Enc_\psi \leq \frac{1}{2}.\label{eq:freivalds}
+\end{equation}
+
+\begin{algorithm}[h]
+  \caption{Freivalds' Algorithm (Multiple)}
+  \label{alg:mult_freivalds}
+  \begin{algorithmic}[1]
+    \Function{MultFreivalds}{$A,B,C,n,k$}
+    \For{$i\gets1,k$}
+    \If{\Call{Freivalds}{$A,B,C,n$} $= \mathtt{false}$}
+    \State\Return{\texttt{false}}
+    \EndIf
+    \EndFor
+    \State\Return{\texttt{true}}
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+To reduce the probability of false-positive in~\Cref{alg:freivalds} can be run $k$ times and returns \texttt{true} only if each call to Freivalds' algorithm returns \texttt{true}, and \texttt{false} otherwise.
+% 
+The pseudocode for this variant is presented in~\Cref{alg:mult_freivalds}.
+% 
+Since each trial is independent, the probability of a false-positive given that $A \times B \neq C$ is at most $\left(\frac{1}{2}\right)^k$.
+% 
+Thus, letting $\psi := A \times B \neq C \wedge \textsc{MultFreivalds}(A,B,C,n,k) = \texttt{true}$, our query becomes:
+% 
+\begin{equation*}
+	\forall A,B,C,n,k~.~Enc_\psi \leq \left(\frac{1}{2}\right)^k.
+\end{equation*}
+
+% \subsection{Randomized Response}
+% \label{sec:randomized_response}
+
+% \begin{algorithm}[H]
+%   \caption{Randomized Response (Fair)}
+%   \label{alg:rand_resposne}
+%   \begin{algorithmic}[1]
+%     \Function{RandomizedResponse}{$truth$}
+%     \Let{$flip_1$}{$\mathsf{UniformInt}(0,1)$}
+%     \If{$\neg flip_1$}
+%     \State\Return{$truth$}
+%     \Else
+%     \Let{$flip_2$}{$\mathsf{UniformInt}(0,1)$}
+%     \State\Return{$flip_2$}
+%     \EndIf
+%     \EndFunction
+%   \end{algorithmic}
+% \end{algorithm}
+
+% \paragraph*{Background.}
+% Randomized response is a surveying technique which allows respondents to answer in a way that provides plausible deniability.
+% % 
+% Before answering the query, a coin is flipped.
+% % 
+% If ``tails'', then the respondent answers truthfully, if ``heads'', a second coin is flipped and the respondent answers ``Yes'' if ``heads'' and ``No'' if tails.
+% % 
+% In fact, this method satisfies the $(\ln 3, 0)$-differentially privacy guarantee~\citep{DMNS06}.
+
+% \paragraph*{Target query.}
+% To prove this fact, we have to show that
+% \[
+%   \frac{\Pr[\textsc{RandomizedResponse}(\text{Yes}) = \text{Yes}]}{\Pr[\textsc{RandomizedResponse}(\text{No}) = \text{Yes}]} = \frac{3/4}{1/4} = \frac{\Pr[\textsc{RandomizedResponse}(\text{No}) = \text{No}]}{\Pr[\textsc{RandomizedResponse}(\text{Yes}) = \text{No}]} = 3.
+% \]
+% Using our method, we can make four separate queries to compute the four different quantities.
+% % 
+% For example, to prove that $\Pr[\textsc{RandomizedResponse}(\text{Yes}) = \text{Yes}] = \frac{3}{4}$, let $\psi_1 := \mathit{truth} = \text{Yes} \wedge \textsc{RandomizedResponse}(\mathit{truth}) = \text{Yes}$ and take the following query:
+% % 
+% \begin{equation}
+%   \label{eq:ranomized_response_yes_yes}
+%   \forall \mathit{truth}~.~Enc_{\psi_1} = \frac{3}{4}.
+% \end{equation}
+% % 
+% For the other three (Input, Output) combinations, we ask similar queries.
+% % 
+% We additionally consider variants where the coin flips are weighted.
+
+\subsection{Reservoir Sampling}
+\label{sec:reservoir_sampling}
+
+\begin{algorithm}
+	\caption{Reservoir Sampling}
+	\label{alg:reservoir_sampling}
+	\begin{algorithmic}[1]
+    \Require $1 \leq k \leq n$
+		\Function{ReservoirSampling}{$A[1..n], k$}
+    \Let{$S$}{An empty list of size $k$}
+		\For{$i\gets1,k$}
+		\Let{$S[i]$}{$A[i]$}
+		\EndFor
+		\For{$i\gets k+1,n$}
+		\Let{$j$}{$\mathsf{UniformInt}(1,i)$}
+		\If{$j \leq k$}
+		\Let{$S[j]$}{$A[i]$}
+		\EndIf
+		\EndFor
+		\State\Return{$S$}
+		\EndFunction
+	\end{algorithmic}
+\end{algorithm}
+
+\paragraph*{Background.}
+Reservoir sampling \citep{vitter_1985} is an online, randomized algorithm to get a simple random sample of $k$ elements from a population of $n$ elements.
+% 
+It uses uniform integer samples to constantly maintain a set of $k$ elements drawn from the set of $n$ elements.
+% 
+For the full algorithm, see~\Cref{alg:reservoir_sampling}.
+% 
+We want to verify that each possible sample is returned with equal probability, namely $1/\binom{n}{k}$ or, in other words, the output distribution of samples is uniform.
+% 
+To do this, we instead prove an equivalent property that if all elements of $A$ are distinct then the probability that any element of $A$ appears in $S$ is $k/n$.
+
+\paragraph*{Target query.}
+One way of framing the query is to ask the probability of the first element of $A$ appearing in $S$.
+% 
+If all elements of $A$ are distinct, then this probability will be the same for all elements in $A$.
+% 
+Therefore, let $\psi := A[1] \neq \cdots \neq A[n] \wedge A[1] \in \textsc{ReservoirSampling}(A,k)$. Then we can take the following query:
+\begin{equation*}
+  \forall A,n,k~.~Enc_\psi = \frac{k}{n}.
+\end{equation*}
+
+% \subsection{Schwartz-Zippel Lemma}
+% \label{sec:schwartz-zippel}
+
+% \begin{algorithm}
+%   \caption{Schwartz-Zippel Lemma}
+%   \label{alg:schwartz-zippel}
+%   \begin{algorithmic}[1]
+%     \Function{SchwartzZippel}{$P,D,S,n$}
+%     \Let{$R$}{An empty list of size $n$}
+%     \For{$i\gets1,n$}
+%     \Let{$R[i]$}{$\mathsf{Uniform}(S)$} \Comment{Uniformly sample from a set $S$}
+%     \EndFor
+%     \Let{$\mathit{sum}$}{$0$}
+%     \For{$i\gets1,n$}
+%     \Let{$\mathit{sum}$}{$\mathit{sum} + P[i] \cdot R[i]^{D[i]}$}
+%     \EndFor
+%     \State\Return{$\mathit{sum} = 0$}
+%     \EndFunction
+%   \end{algorithmic}
+% \end{algorithm}
+
+% \paragraph*{Background.}
+% The Schwartz-Zippel lemma is a probabilistic method of polynomial identity
+% testing, that is, the problem of determining whether a given multivariate
+% polynomial is identically equal to 0 or not.
+% % 
+% Given a non-zero polynomial of total degree $d$, $P$, over a field $F$, and $r_1,\ldots,r_n$ selected at random from a subset of $F$, say $S$, the lemma states that
+% \[
+%   \Pr[P(r_1,\ldots,r_n) = 0] \leq \frac{d}{\abs{S}}
+% \]
+% if the polynomial is not identically 0; if the polynomial is identically equal
+% to zero, then the probability is equal to $1$.
+
+% We model this lemma using~\Cref{alg:schwartz-zippel} which takes as input a list of $n$ coefficients from $F$, $P$, a list of $n$ degrees, $D$, a subset $S \subseteq F$, and the number of terms in the polynomial, $n$.
+% % 
+% \Cref{alg:schwartz-zippel} then picks $n$ random elements from $S$ and plugs them into the polynomial represented by $P$ and $D$.
+% % 
+% If the results from evaluating the polynomial are all equal to zero, then the
+% algorithm returns \texttt{true}; otherwise, it returns \texttt{false}.
+
+% \paragraph*{Target query.}
+% To check the property, we let $\psi := (P[1] \neq 0 \vee \cdots \vee P[n] \neq 0) \wedge \textsc{SchwartzZippel}(P,D,S,n) = \texttt{true}$ and take the query be
+% \begin{equation}
+%   \label{eq:schwartz-zippel}
+%   \forall P,D,S,n~.~Enc_\psi \leq \frac{\max(D)}{\abs{S}}.
+% \end{equation}
+
+\subsection{Randomized Monotonicity Testing}
+\label{sec:monotone_testing}
+
+\begin{algorithm}
+  \caption{Randomized Monotonicity Testing~\citep{goldreich_2017}}
+  \label{alg:monotone_testing}
+  \begin{algorithmic}[1]
+    \Function{MonotoneTest}{$f,n$}
+    \State $l \gets \lceil \log_2 n \rceil, a \gets 1, b \gets n$ \label{line:monotone_l}
+    \Let{$i$}{$\mathsf{UniformInt}(1,n)$}
+    \For{$t\gets1,l$}
+    \Let{$p$}{$\lceil a+b/2 \rceil$}
+    \If{$i \leq p$}
+    \If{$f[i] > f[p]$}
+    \State\Return \texttt{false}
+    \EndIf
+    \Let{$b$}{$p$}
+    \Else
+    \If{$f[i] < f[p]$}
+    \State\Return \texttt{false}
+    \EndIf
+    \Let{$a$}{$p+1$}
+    \EndIf
+    \EndFor
+    \State\Return \texttt{true}
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\paragraph*{Background.}
+Property testing is a subfield of computer science which aims to develop algorithms to determine whether a mathematical object has some property.
+% 
+For example, given a function $f: [n] \rightarrow R_n$ where $[n] = \{1,\ldots,n\}$ and $R$ is some ordered set, how can we determine whether $f$ is monotone?
+% 
+That is, can we check that $f(i) \leq f(j)$ whenever $i \leq j$?
+% 
+\Cref{alg:monotone_testing} is a randomized algorithm inspired by the binary
+search algorithm to rapidly determine how ``far'' from monotone $f$ is~\citep{goldreich_2017}.
+
+To get an intuitive understanding of this algorithm suppose that $f$ is an array of size $n$ where each element is distinct.
+% 
+~\Cref{alg:monotone_testing} selects an element $i \in [1,n]$ at random and attempts to find the value $f(i)$ in the array using binary search.
+% 
+If $f$ is actually (strictly) monotone, then it will find $f(i)$ at location $i$, and will accept if and only if $f(i)$ is found during this search at all.
+% 
+However, if $f$ is not monotone, specifically \textit{$\delta$-far} from
+monotone, it will reject with probability greater than $\delta$~\citep{goldreich_2017}, where $\delta$-far means that $\delta\cdot n$ points need to be changed in $f$ in order to make $f$ monotone.
+% 
+This is the property that we want to check.
+
+
+Let $\mathsf{DistToMono}(f)$ be a function which returns the number of elements whose order needs to be changed in order to make $f$ monotone.
+% 
+Letting $\psi := \mathsf{DistToMono}(f) = k \wedge \textsc{MonotoneTest}(f,n) = \texttt{false}$, we take the query
+% 
+\begin{equation*}
+  \forall f,n~.~Enc_\psi > \frac{k}{n}.
+\end{equation*}
+
+\subsection{Randomized Quicksort}
+\label{sec:quicksort}
+
+\begin{algorithm}
+  \caption{QuickSort}
+  \label{alg:quicksort}  
+  \begin{algorithmic}[1]
+    \Function{QuickSort}{$A,p,r$}
+    \If{$p < r$} \label{line:quicksort_comp1}
+    \Let{$q$}{\Call{Partition}{$A,p,r$}}
+    \State\Call{QuickSort}{$A,p,q-1$}
+    \State\Call{QuickSort}{$A,q+1,r$}
+    \EndIf
+    \EndFunction
+    \Statex
+    \Function{Partition}{$A,p,r$}
+    \Let{$i$}{$\mathsf{UniformInt}(p,r)$}
+    \State exchange $A[r]$ with $A[i]$
+    \Let{$x$}{$A[r]$}
+    \Let{$i$}{$p-1$}
+    \For{$j\gets p, r-1$}
+    \If{$A[j] \leq x$} \label{line:quicksort_comp2}
+    \Let{$i$}{$i + 1$}
+    \State exchange $A[i]$ with $A[j]$
+    \EndIf
+    \EndFor
+    \State exchange $A[i+1]$ with $A[r]$
+    \State\Return $i+1$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\paragraph*{Background.}
+Quicksort is a popular sorting algorithm which uses partitioning in order to achieve efficient sorting.
+% 
+While there are many ways of choosing a pivot element, one way is through a uniform random sample.
+% 
+Using this pivot method, the \textit{expected} number of comparisons required is $1.386 n \log_2(n)$ where $n$ is the length of the array.
+
+\paragraph*{Target query.}
+We use the method described in~\Cref{sec:expected_value} to compute $\E{\mathtt{num\_comps}}$, where \texttt{num\_comps} is a program variable which is initially set to 0 and is incremented on~\cref{line:quicksort_comp1,line:quicksort_comp2}.
+% 
+Intuitively, \texttt{num\_comps} counts the number of comparisons performed on a given run of \textsc{QuickSort}.
+
+
+\subsection{Interlude: Hash Functions}
+\label{sec:hash_function}
+
+\begin{algorithm}
+  \caption{Uniform Hash Function}
+  \label{alg:hash_function}
+  \begin{algorithmic}[1]
+    \Function{HashCreate}{$\mathit{min},\mathit{max}$} \label{line:hashfns}
+    \Let{$H$}{An empty, uninitialized hash function}
+    \Let{$H.Map$}{An empty map}
+    \Let{$H.min$}{$\mathit{min}$}
+    \Let{$H.max$}{$\mathit{max}$}
+    \State\Return{$H$}
+    \EndFunction
+    \Statex
+    \Function{Hash}{$H,x$}
+    \If{$x \in H.Map$}
+    \State\Return{$H.Map[x]$}
+    \Else
+    \Let{$i$}{$\mathsf{UniformInt}(H.min,H.max)$}
+    \Let{$H.Map[x]$}{$i$}
+    \State\Return{$i$}
+    \EndIf
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+The remaining case-studies make use of \textit{hash functions} in order to achieve their guarantees.
+% 
+For non-cryptographic purposes, hash functions allow for rapid indexing into data structures and in many cases allow for constant time data retrieval.
+% 
+Formally, hash functions take elements from some universe and map them to a fixed range, often between $[1,n]$ where $n$ is the length of an array.
+% 
+Ideally, these functions distribute elements from the universe \textit{uniformly} across the range, so distinct elements hash to the same target with low probability.
+% 
+If $h$ is a hash function, and $x,y$ are arbitrary elements, we define a \textit{hash collision} to be when $h(x) = h(y)$ where $x \neq y$.
+% 
+In the upcoming examples, the probability of a certain number of hash collisions occurring is directly connected to the error rate of the examples.
+
+
+To properly analyze programs which employ hashing we consider ideal, \textit{uniform} hash functions.
+% 
+Therefore, we model hash functions through uniform random samples.
+% 
+Pseudocode for how we model hash functions is provided in the function \textsc{HashCreate} in~\Cref{alg:hash_function}, Line~\ref{line:hashfns}
+% 
+Essentially, to hash an unseen element, $x$, we randomly sample an integer between $H.min$ and $H.max$.
+% 
+We then record that sample in $H.Map$ in order to maintain determinism.
+% 
+To hash $x$ again in the future, we simply retrieve the sample from the mapping.
+% 
+This ensures that each element is hashed uniformly and independently the first time, while subsequent hashes of an element always return the same result.
+
+
+\subsection{Bloom Filter}
+\label{sec:bloom_filter}
+\begin{algorithm}
+  \caption{Bloom Filter}
+  \label{alg:bloom_filter}
+  \begin{algorithmic}[1]
+    \Function{BloomCreate}{$m,\epsilon$}
+    \Let{$B$}{An empty, uninitialized Bloom Filter}
+    \Let{$B.Arr$}{A bit-array of size $-\frac{m\ln \varepsilon}{(\ln 2)^2}$}
+    \Let{$B.H$}{A list of $-\frac{\ln \epsilon}{\ln 2}$ independent hash functions}
+    \State\Return{$B$}
+    \EndFunction
+    \Statex
+    \Function{BloomInsert}{$B,x$}
+    \ForAll{$h \in B.H$}
+    \Let{$B.Arr[h(x)]$}{$1$}
+    \EndFor
+    \State\Return{$B$}
+    \EndFunction
+    \Statex
+    \Function{BloomCheck}{$B,x$}
+    \ForAll{$h \in B.H$}
+    \If{$\neg B.Arr[h(x)]$}
+    \State\Return{\texttt{false}}
+    \EndIf
+    \EndFor
+    \State\Return{\texttt{true}}
+    \EndFunction
+    \Statex
+    \Require $X[1] \neq \cdots \neq X[m] \neq y$
+    \Function{Main}{$X,y,m,\epsilon$}\label{line:bloom_filter_main}
+    \Let{$B$}{\Call{BloomCreate}{$m,\epsilon$}}
+    \For{$i\gets1,m$}
+    \Let{$B$}{\Call{BloomInsert}{$B,X[i]$}}
+    \EndFor
+    \State\Return{\Call{BloomCheck}{$B,y$}}
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\paragraph*{Background.}
+A Bloom filter~\citep{bloom_1970} is a space-efficient, probabilistic data structure used to rapidly determine whether an element is in a set.
+% 
+Fundamentally, it is a bit-array of $n$ bits and $k$ associated hash functions, each of which maps elements in the set to places in the bit-array.
+% 
+To insert an element, $x$, into the filter, $x$ is hashed using each of the $k$ hash functions to get $k$ array positions.
+% 
+All of the bits at these positions are set to 1.
+% 
+To check whether an element $y$ is in the filter, $y$ is again hashed by each of the hash functions to get $k$ array positions.
+% 
+The bits at each of these positions are checked and the filter reports that $y$ is in the filter if, and only if, each of the bits are set to 1.
+% 
+Note that false-positives are possible due to hash collisions, but false negatives are not.
+% 
+Pseudocode for a Bloom filter is provided in~\Cref{alg:bloom_filter}.
+
+\paragraph*{Target query.}
+In order to bound the false-positive error rate, most implementations of Bloom filters take in the expected number of elements to be inserted as well as the \textit{desired} false-positive error rate.
+% 
+From these two quantities, the optimal size of the bit-array, $n$, as well as the number of hash functions, $k$ can be computed.
+% 
+If $m$ is the expected number of elements and $\varepsilon$ is the desired error rate, then the optimal settings of $n$ and $k$ are
+\begin{equation}
+  n = - \frac{m\ln \varepsilon}{(\ln 2)^2}\quad\text{and}\quad k = - \frac{\ln \varepsilon}{\ln 2}\label{eq:bloom_n_and_k}
+\end{equation}
+% 
+We want to prove that for a given $m$ and $\varepsilon$ that the actual false-positive rate does not exceed $\varepsilon$.
+% 
+In other words, we want to show that the probability that \textsc{Main} (on~\cref{line:bloom_filter_main} of~\Cref{alg:bloom_filter}) returns \texttt{true} does not exceed $\epsilon$.
+
+To capture this property, we let $\psi := X[1] \neq \cdots \neq X[m] \neq y \wedge \textsc{Main}(X,y,m,\epsilon) = \texttt{true}$ and take the query:
+% 
+\begin{equation*}
+  \forall X,y,m,\epsilon~.~Enc_\psi \leq \epsilon
+\end{equation*}
+
+As we show later, setting $n$ and $k$ based on the number of expected elements $m$ and desired false-positive error rate, $\epsilon$, as in~\Cref{eq:bloom_n_and_k} does \textit{not} guarantee that the actual false-positive error rate is $\epsilon$.
+% 
+In actuality, $\epsilon$ will only be a lower bound for the actual false-positive error rate.
+
+\subsection{Count-min Sketch}
+\label{sec:countminsketch}
+
+\begin{algorithm}
+  \caption{Count-min Sketch}
+  \label{alg:countminsketch}
+  \begin{algorithmic}[1]
+    \Function{SketchCreate}{$\epsilon,\gamma$}
+    \Let{$w$}{$\lceil \frac{e}{\epsilon} \rceil$}
+    \Let{$d$}{$\lceil \ln \frac{1}{\gamma} \rceil$}
+    \Let{$C$}{An empty, uninitialized count-min sketch}
+    \Let{$C.\mathit{sketch}$}{An empty $w \times d$ array}
+    \Let{$C.H$}{A list of $d$ independent hash functions}
+    \State\Return $C$
+    \EndFunction
+    \Statex
+    \Function{SketchUpdate}{$C,x$}
+    \For{$j\gets1,d$}
+    \Let{$C.\mathit{sketch}[j,C.H[j](x)]$}{$C.\mathit{sketch}[j,C.H[j](x)] + 1$}
+    \EndFor
+    \State\Return $C$
+    \EndFunction
+    \Statex
+    \Function{SketchEstimate}{$C,x$}
+    \Let{$\hat{a}_x$}{$\infty$}
+    \For{$j\gets1,d$}
+    \Let{$\hat{a}_x$}{$\min(\hat{a}_x,C.\mathit{sketch}[j,C.H[j](x)])$}
+    \EndFor
+    \State\Return $\hat{a}_x$
+    \EndFunction
+    \Statex
+    \Function{Main}{$\epsilon,\gamma,X,n$} \label{line:countminsketch_main}
+    \Let{$C$}{\Call{SketchCreate}{$\epsilon,\gamma$}}
+    \For{$i\gets1,n$}
+    \Let{$C$}{\Call{SketchUpdate}{$C,X[i]$}}
+    \EndFor
+    \State\Return \Call{SketchEstimate}{$C,X[1]$}~$> 1+\epsilon n$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\paragraph*{Background.}
+A Count-min Sketch~\citep{graham_2005} is another space-efficient, probabilistic data structure which is used as a frequency table for a stream of data.
+% 
+It constantly maintains an estimate for the number of times an element $x$ has been seen while using sub-linear space.
+% 
+Behind the scenes, the data structure is a 2D array of $w$ columns and $d$ rows, and $d$ pairwise independent hash functions, one per row.
+% 
+To create a new count-min sketch, $\epsilon$ and $\gamma$ are taken as arguments representing the additive factor for the count to be off and the probability of error occurring, respectively.
+% 
+Most commonly, $w = \lceil \frac{e}{\epsilon} \rceil$ and $d = \lceil \ln \frac{1}{\gamma} \rceil$.
+% 
+To update the count for an element $x$, for each row $j$, $x$ is hashed using $j$'s hash function, $h_j$, to get the column index $k$.
+% 
+That is, $k = h_j(x)$.
+% 
+The value at row $j$ and column $k$ is then updated.
+% 
+Let $\mathit{sketch}$ be the 2D array.
+% 
+Then, to get the count for $x$, $\hat{a}_x$, $x$ is hashed using each row's associated hash function to index into $\mathit{sketch}$ and the minimum element among each of the $d$ counts is chosen as the estimate, or, in other words, $\hat{a}_x = \min_j \mathit{sketch}[j,h_j(x)]$.
+% 
+This count has the property that $\hat{a}_x \leq a_x + \epsilon N$ with probability $1-\gamma$, where $a_x$ is the ``true'' count for $x$ and $N = \sum_x a_x$, or the total number of elements seen by the sketch.
+% 
+This is the property we wish to verify.
+% 
+Pseudocode for count-min sketch is provided in~\Cref{alg:countminsketch}.
+
+\paragraph*{Target query.}
+We want to prove that for all $\epsilon$ and $\gamma$, the probability of \textsc{Main} (\cref{line:countminsketch_main} of~\Cref{alg:countminsketch}) returning \texttt{true} does not exceed $\gamma$.
+% 
+To capture this property, we let $\psi := X[1] \neq \cdots \neq X[n] \wedge \textsc{Main}(\epsilon,\gamma,X,n)$ and take the following query:
+\begin{equation*}
+  \forall \epsilon,\gamma,X,n~.~Enc_\psi \leq \gamma
+\end{equation*}
+
+\section{Implementation and Evaluation}
+\label{sec:impl_and_eval}
+
+\subsection{Implementation}
+\label{sec:implementation}
+
+We have implemented a prototype of our tool, \SYSTEM, on top of \textsc{KLEE}~\citep{cadar2008}, a robust symbolic execution engine.  \SYSTEM implements the \textit{probabilistic symbolic} execution algorithm as described in~\Cref{alg:symb_ex}. For the purpose of our implementation, we modify \textsc{KLEE} to support creation of \textit{probabilistic symbolic} variables as described in~\Cref{sec:pse_intro} whose values can be sampled from a distribution ($\delta$) by invoking \textsc{PSESample} as shown in the \textbf{\textit{sampling}} statement [\Cref{alg:symb_ex},~\Cref{line:pse_sampling}]. We use the  \textit{path constraints} ($\varphi$)  from the \textit{state} data-structure (maintained by \textsc{KLEE}) at each of the \textbf{\textit{assignment}} [\Cref{alg:symb_ex}, \Cref{line:pse_assignment}] and \textbf{\textit{branch}} [\Cref{alg:symb_ex}, \Cref{line:symbex_branch}] statements to get the final encodings $Enc_\psi$ and $Enc_a$.
+
+
+For solving, \SYSTEM uses Z3~\citep{demoura2008}, a popular SMT solver, to either prove or refute our queries.
+% 
+Depending on the type of query, whether it be a probability bound query or an
+expected value computation, we construct the query in the SMTLIB2~\citep{smtlib}.
+% 
+All the universal symbolic variables are then universally quantified in the query and $Enc_\psi$ is converted into the SMTLIB language.
+% 
+We then pass the converted query to Z3 which either verifies the query or generates a counterexample which disproves the claim.
+
+
+\subsection{Evaluation}
+\label{sec:eval}
+
+To evaluate \SYSTEM, we answer the following questions:
+%
+\begin{itemize}
+  \item \Q{1} How efficiently can \SYSTEM prove probabilistic properties on complex programs?
+  \item \Q{2} How does the form of the query affect performance?
+  \item \Q{3} How does the domain of the universal symbolic variables affect performance?
+  \item \Q{4} Can~\SYSTEM find bugs in probabilistic programs?
+\end{itemize}
+%
+To answer \Q{1}, we implement, or collect open-source implementations, for each of the case studies presented in~\Cref{sec:case_studies} in C++, run them on \SYSTEM, and record a variety of performance metrics, such as timing, number of paths explored, etc.
+% 
+We note that we used publicly available implementations for both of the data structures we present, namely Bloom Filter\footnote{\url{https://github.com/jvirkki/libbloom}} and Count-min Sketch\footnote{\url{https://github.com/alabid/countminsketch}} and adapted them to be analyzed by~\SYSTEM and to use our idealized hash functions as presented in~\Cref{sec:hash_function}.
+% 
+In certain cases, we ``concretize'' some input parameters, often the sizes of the input arrays, in order to constrain the paths explored by the symbolic execution engine.
+% 
+It was required in our setting, as contrary to most applications of symbolic execution that attempt to test the program, we attempt to \textit{verify} these examples in our evaluation.
+% 
+This necessitates exhaustive path enumeration within a reasonable time.
+%
+We selected our parameter settings (\cref{tab:q1}, last column) such that a complete path enumeration, and query verification, could be carried out within 10 minutes.
+%
+Note that when an array length is concretized, the array contents still remain symbolic. For example, for Quicksort, if the array length is concretized to 4, {\SYSTEM} searches over all possible arrays of size 4.
+%
+There is no conceptual obstacle to using our method without concretization if we are interested in bug-finding; {\SYSTEM} produces a sound lower-bound on exploring a subset of paths (see \cref{sec:query_gen}). However, implementation difficulties exist; for instance, there is currently limited support for running KLEE without concretizing array lengths.
+
+To answer~\Q{2} and~\Q{3}, we analyze how changes to the query for Freivalds' Algorithm (\Cref{sec:freivalds}) affect performance.
+% 
+In general, these changes narrow the domain of possible assignments to the universal symbolic variables that Z3 must consider, thus allowing Z3 to arrive at a conclusion faster.
+%
+We also discuss how narrowing this space weakens the guarantees that~\SYSTEM can provide.
+% 
+
+For~\Q{4}, we consider two types of bugs: implementation bugs where programmer errors result in the query being falsified, and specification bugs, where the specification is incorrect.
+%
+We find that we can effectively find, and address, both of these bugs using the results~\SYSTEM provides.
+
+
+We conduct our experiments a machine equipped with an Intel Core i7-5820K running at 3.3 GHz and 32 GB of RAM running Arch Linux with kernel 5.12.14.
+% 
+For each experiment, we report the following metrics: the amount of time taken by \SYSTEM to explore the paths of the program and to generate the query, the amount of time Z3 takes to solve the query, the total amount of time taken, the number of lines in the C++ code, the number of paths \SYSTEM  explored, the number of random samples, and the maximum value ``concretized'' universal symbolic variables could take such that the query could be proven (or disproven) in the time allotted.
+
+\paragraph*{\Q{1} Discussion.}
+% \label{sec:eval_q1}
+
+\begin{table}
+  \centering
+  \caption{Performance metrics for each of the case studies presented in~\Cref{sec:case_studies}.}
+  \label{tab:q1}
+  \begin{tabular}{@{}llllllll@{}}
+    \toprule
+    & \multicolumn{3}{c}{Timing (sec.)} &&\\ \cmidrule{2-4}
+    \textbf{Case Study} & \textbf{KLEE} & \textbf{Z3} & \textbf{Total} & \textbf{Lines} & \textbf{Paths} & \textbf{Samples} & \textbf{Concretizations}\\ \midrule
+    Freivalds' & 5 & 70 & \textbf{75} & 97 & 8 & 2 & $n=2$ \\
+    Freivalds' (Multiple) & 44 & 255 & \textbf{299} & 96 & 8 & 21 & $(n, k) = (3, 7)$ \\
+    % Randomized Response (Numer.) & 1.24 & 0.02 & 35 & 3 & 2 & --- \\
+    % Randomized Response (Denom.) & 1.21 & 0.02 & 35 & 3 & 2 & --- \\
+    Reservoir Sampling & 49 & 79 & \textbf{128} & 52 & 63 & 5 & $(n, k) = (10, 5)$ \\
+    Monotone Testing & 4 & 352 & \textbf{356} & 69 & 30 & 1 & $n=23$ \\
+    QuickSort & 95 & 489 & \textbf{584} & 65 & 120 & 10 & $n=5$ \\
+    Bloom Filter & 256 & 231 & \textbf{487} & 386 & 83 & 8 & $(m, \epsilon) = (3, 0.4)$ \\
+    Count-min Sketch & 108 & 206 & \textbf{314} & 245 & 2 & 8 & $(n, \epsilon, \gamma) = (4, 0.5, 0.25)$ \\
+
+    % Freivalds' & 5.04 & 70.26 & \textbf{75.30} & 97 & 8 & 2 & $n=2$ \\
+    % Freivalds' (Multiple) & 44.91 & 255.01 & \textbf{299.92} & 96 & 8 & 21 & $(n, k) = (3, 7)$ \\
+    % % Randomized Response (Numer.) & 1.24 & 0.02 & 35 & 3 & 2 & --- \\
+    % % Randomized Response (Denom.) & 1.21 & 0.02 & 35 & 3 & 2 & --- \\
+    % Reservoir Sampling & 49.36 & 79.74 & \textbf{129.10} & 52 & 63 & 5 & $(n, k) = (10, 5)$ \\
+    % Monotone Testing & 4.77 & 352.46 & \textbf{357.23} & 69 & 30 & 1 & $n=23$ \\
+    % QuickSort & 95.15 & 489.09 & \textbf{584.24} & 65 & 120 & 10 & $n=5$ \\
+    % Bloom Filter & 256.86 & 231.18 & \textbf{488.04} & 386 & 83 & 8 & $(m, \epsilon) = (3, 0.4)$ \\
+    % Count-min Sketch & 108.11 & 206.21 & \textbf{314.32} & 245 & 2 & 8 & $(n, \epsilon, \gamma) = (4, 0.5, 0.25)$ \\
+    % \begin{tabular}{@{}c@{}}$n=4,\epsilon=0.5$,\\$\gamma=0.25$\end{tabular}\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\Cref{tab:q1} summarizes our experimental results from running standard versions for each of the case studies presented in~\Cref{sec:case_studies}.
+% 
+All queries, except for the one for Bloom filter, which we will discuss later, were proven to be true within ten minutes.
+%
+As far as we know, \emph{none} of these examples can be verified by existing
+automated tools; our method is the first to handle these examples fully
+automatically.
+
+We begin by making a few general observations.
+% 
+First, the presented examples showcase a range of path counts and number of random samples.
+% 
+For instance, even when we restricted the array to be of length 5, we still explored and reasoned over 120 paths and 10 probabilistic symbolic variables when analyzine QuickSort.
+% 
+Second, the time~\SYSTEM takes to execute~\Cref{alg:symb_ex} is usually much shorter than the time it takes for Z3 to solve the query; this suggests that constraint solving is the main bottleneck in our approach, not path exploration.
+
+\paragraph*{\Q{2} Discussion.}
+% \label{sec:eval_q2}
+
+\begin{table}
+  \centering
+  \caption{Performance metrics of four different ways of specifying $A \times B \neq C$ in the query for Freivalds' Algorithm (\Cref{sec:freivalds}). Here, $n=2$ and all elements of the matrices are C++ \texttt{int}s.}
+  \label{tab:q2}
+  \begin{tabular}{@{}lllll@{}}
+    \toprule
+    & \multicolumn{3}{c}{Timing (sec.)} &\\ \cmidrule{2-4}
+    \textbf{Spec. for $A \times B \neq C$} & \textbf{KLEE} & \textbf{Z3} & \textbf{Total} & \textbf{Paths}\\ \midrule
+    \textsc{AllOff} & 2 & 1 & \textbf{3} & 2\\
+    \textsc{SomeOff}& 5 & 70 & \textbf{75} & 8\\
+    \textsc{FirstOff}& 1 & 5 & \textbf{6} & 2\\
+    \textsc{OneOff} & 2 & 17 & \textbf{19} & 2\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+To better understand~\SYSTEM's performance we consider how changes to the phrasing of the query for Freivalds' Algorithm affects performance.
+% 
+Recall that Freivalds' Algorithm efficiently determines whether $A \times B = C$, where $A,B$, and $C$ are $n \times n$ matrices; however, it has a false-positive error rate of at most $\frac{1}{2}$.
+% 
+In~\Cref{eq:freivalds} we set $\psi := A \times B \neq C \wedge \textsc{Freivalds}(A,B,C,n) = \mathtt{true}$ but did not state exactly how $A \times B$ must differ from $C$.
+ 
+We consider four different ways of specifying that $A \times B \neq C$:
+\begin{align}
+  \textsc{AllOff} &= \bigwedge_{i=1}^n\bigwedge_{j=1}^n (A\times B)_{i,j} \neq C_{i,j}&
+  \textsc{SomeOff} &= \bigvee_{i=1}^n\bigvee_{j=1}^n (A\times B)_{i,j} \neq C_{i,j}\label{eq:someoff}\\
+  \textsc{FirstOff} &= (A\times B)_{0,0} \neq C_{0,0}\nonumber&
+  \textsc{OneOff} &= \exists i,j~.~(A\times B)_{i,j} \neq C_{i,j}\nonumber
+\end{align}
+\textsc{AllOff} states that \textit{every} element of $A \times B$ must be different from the corresponding element in $C$, whereas \textsc{SomeOff} only states that \textit{at least one} element be deifferent between $A \times B$ and $C$. Similarly, \textsc{FirstOff} states that the first element of each matrix be different and \textsc{OneOff} states that \textit{an} element of $A \times B$ must differ from $C$. For \textsc{OneOff}, we represent $i$ and $j$ as universal symbolic variables and universally quantify them in~\Cref{eq:freivalds}.
+% 
+In all four cases, we only consider $2 \times 2$ matrices which contain C++ \texttt{int}s and present the performance results in~\Cref{tab:q2}.
+%
+We quickly note that~\SYSTEM explored eight paths for the \textsc{SomeOff} specifcation compared to the two paths for each of the other three variants.
+%
+Since specifications are written in the source program itself the complexity of said program can increase or decrease depending on the definition of $\psi$.
+%
+In the case of \textsc{SomeOff},~\SYSTEM explores more paths than the other variants as \textsc{SomeOff} is the only variant which does not provide a concrete number for the number of differing elements between the two matrices.
+
+
+In general, the results in~\Cref{tab:q2} suggest that simpler and more specific settings of $\psi$ result in increased performance.
+%
+The strongest, and best performing specification was \textsc{AllOff}, whereas the most general, and the least performing specification was \textsc{SomeOff}.
+% 
+Additionally, \textsc{FirstOff} performed considerably better than \textsc{OneOff}, while being similar.
+% 
+Intuitively, this makes sense as \textsc{AllOff} drastically limits the amount of possible matrices that Z3 has to consider, whereas \textsc{SomeOff} requires Z3 to reason about \textit{all} matrices $A,B$, and $C$ such that $A \times B \neq C$.
+%
+The same reasoning can be applied to the relationship between \textsc{FirstOff} and \textsc{OneOff}; \textsc{OneOff} already considers whether \textsc{FirstOff} holds.
+% 
+Therefore, while performing the worst, \textsc{SomeOff} provides the strongest guarantee out of all the other variants, followed by \textsc{OneOff}, then \textsc{FirstOff}, and then finally, \textsc{AllOff}.
+
+\paragraph*{\Q{3} Discussion.}
+% \label{sec:eval_q3}
+
+\begin{table}
+  \centering
+  \caption{Performance metrics for four different domains from which the elements of $A,B$, and $C$ are drawn from in the implementation for Freivalds' Algorithm (\Cref{sec:freivalds}). We only consider $2 \times 2$ matrices for each data type and use \textsc{SomeOff} (\Cref{eq:someoff}) to specify that $A \times B \neq C$. In each variant,~\SYSTEM explored 8 paths.}
+  \label{tab:q3}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    & \multicolumn{3}{c}{Timing (sec.)}\\ \cmidrule{2-4}
+    \textbf{Data Type} & \textbf{KLEE} & \textbf{Z3} & \textbf{Total}\\ \midrule
+    \texttt{long int} & 11 & 1,589 & \textbf{1,600}\\
+    \texttt{int} & 5 & 70 & \textbf{75}\\
+    \texttt{short int} & 3 & 7 & \textbf{10}\\
+    \texttt{char} & 2 & 1 & \textbf{3}\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+%
+We additionally consider how the size of the domain that Z3 has to reason over impacts performance.
+%
+This domain is primarily determined by the declared datatype of the C++ variables.
+% 
+We test four variants of Freivalds' Algorithm where we change the data type for the elements of the three matrices.
+% 
+For each data type, we restrict ourselves to $2 \times 2$ matrices and specify that $A \times B \neq C$ using \textsc{SomeOff} (\Cref{eq:someoff}).
+% 
+The performance results are presented in~\Cref{tab:q3}.
+% 
+On the evaluating machine, \texttt{long int}s are eight bytes, \texttt{int}s are four bytes, \texttt{short int}s are two bytes, and \texttt{char}s are a single byte.
+
+
+As suspected, matrices containing \texttt{char}s performed the best, completing the verification in only 3.53 seconds whereas matrices containing \texttt{long int}s took over 26 minutes to complete.
+% 
+On the other hand, using \texttt{char}s provides the weakest guarantee whereas \texttt{long int}s provide the strongest.
+% 
+For many applications, however, analyzing variants of the program with smaller data types might provide sufficient proof of correctness, or already be able to surface bugs.
+
+\paragraph*{\Q{4} Discussion}
+%\label{sec:eval_q4}
+
+We were able to find two bugs: one which we seeded in our implementation of Randomized Monotonicity Testing (\Cref{sec:monotone_testing}), and one which we found in our reference implementation of Bloom Filter (\Cref{sec:bloom_filter}).
+% 
+For randomized monotonicity testing, the source material which provides the
+algorithm and guarantee~\citep{goldreich_2017} presents the algorithm using 1-based indexing.
+% 
+To mimic a common off-by-one error, we did not perform the proper translation during the initialization of $l$ on~\Cref{line:monotone_l} of~\Cref{alg:monotone_testing}.
+% 
+Specifically, we set $l \gets \lceil \log_2 n \rceil$ instead of $l \gets \lceil \log_2 (n-1) \rceil$, which is the proper 0-indexed value.
+% 
+This bug increased the probability that a function $f$ would be rejected by~\Cref{line:monotone_l}, and so made our queries fail.
+% 
+We found this bug setting $n = 4$.
+% 
+While this was a simple (yet common) off-by-one error, it is a prime example of both how subtle probabilistic reasoning can be and how potentially effective~\SYSTEM can be as not only a verification, but also a debugging tool.
+
+The second error we found was in our reference Bloom filter implementation.
+% 
+If we set $m=3$, or the number of expected elements to be inserted into the Bloom filter, and $\epsilon = 0.4$, or the \textit{desired} false-positive rate,~\SYSTEM computes the actual false-positive rate to be $\approx45.03\%$.
+% 
+Upon closer inspection, we were able to conclude that because approximations must be used in order to compute the number of hash functions and the number of bits needed to achieve $\epsilon$, $\epsilon$ can only be a lower bound for the actual false-positive rate.
+% 
+This confirms an observation by~\citet{DBLP:journals/ipl/BoseGKMMMST08}, who showed that the commonly reported false-positive rate for the Bloom filter is slightly incorrect.
+
+
+\input{related_work.tex}
+\section{Conclusion and Future Directions}
+\label{sec:conclusion}
+
+We have presented a symbolic execution method for randomized programs, with
+symbolic variables for modeling unknown inputs and random samples. Going
+forward, we see two promising directions for further investigation.
+
+\paragraph*{Optimizing probabilistic symbolic execution.}
+In this work, we have made little effort to optimize our symbolic execution
+method. One natural direction is to develop heuristics for exploring paths. It
+would be interesting to apply techniques from the literature on path
+prioritization in symbolic execution~\citep{bihuan_2016, p4wn_2021}, but perhaps there are other
+heuristics in the probabilistic setting. For instance, since our method computes
+path probabilities incrementally, perhaps paths with higher probability mass
+should be explored first. Another possibility is to develop methods to simplify
+the path probability expressons; while our method can compute them, the
+expressions are rather complicated.
+
+\paragraph*{Analyzing more complex probabilistic programs.}
+We have evaluated our implementation on relatively standard randomized programs
+so far, and both KLEE and Z3 support richer programs and hardware features. For
+instance, Z3 has support for reasoning about floating-point arithmetic; perhaps
+our symbolic execution method could also be used to validate randomized programs
+that use floating-point computations. In another direction, recent work develops
+an extension of KLEE that works on unbounded integers~\citep{kapus_2019}; it
+could be interesting to see if this technique gives better performance or
+stronger guarantees when verifying randomized algorithms, which often work with
+mathematical integers.
+
+%% Acknowledgments
+\begin{acks}                            %% acks environment is optional
+	%% contents suppressed with 'anonymous'
+	%% Commands \grantsponsor{<sponsorID>}{<name>}{<url>} and
+	%% \grantnum[<url>]{<sponsorID>}{<number>} should be used to
+	%% acknowledge financial support and will be used by metadata
+	%% extraction tools.
+	% This material is based upon work supported by the
+	% \grantsponsor{GS100000001}{National Science
+	% Foundation}{http://dx.doi.org/10.13039/100000001} under Grant
+	% No.~\grantnum{GS100000001}{nnnnnnn} and Grant
+	% No.~\grantnum{GS100000001}{mmmmmmm}.  Any opinions, findings, and
+	% conclusions or recommendations expressed in this material are those
+	% of the author and do not necessarily reflect the views of the
+	% National Science Foundation.
+\end{acks}
+
+
+%% Bibliography
+\bibliography{header,main}
+
+
+%% Appendix
+\appendix
+\allowdisplaybreaks
+
+\section{Program Semantics}
+\label{sec:semantics}
+Here we define the semantics for the three main types of statements which concerns probabilistic symbolic execution: assignments, probabilistic sampling, and branching.
+
+\begin{definition}[Assignment Semantics]
+  \label{def:assignment}
+  Let $\mu \in \mathit{Dists_M}$ be a distribution of program memories parameterized by assignments to universal symbolic variables. Let $\mathtt{x} \gets e$ be an arbitrary assignment statement where $\mathtt{x} \in \mathcal{X}$ is assigned to the program expression $e$. Let $\mathsf{assign}_{\mathtt{x}\gets e} : \mathit{M} \rightarrow \mathit{M}$ is defined as
+  \[
+    \mathsf{assign}_{\mathtt{x}\gets e}(m) = \lambda(\mathtt{y} : \mathcal{X})
+    \begin{cases}
+      \deno{e}m     & \text{if $\mathtt{x} = \mathtt{y}$} \\
+      m(\mathtt{y}) & \text{otherwise}
+    \end{cases}
+  \]
+  and let $\mathsf{unassign}_{\mathtt{x}\gets e} = \mathsf{assign}_{\mathtt{x}\gets e}^{-1}$. Define $\mu_{\mathtt{x}\gets e}$ to be the distribution over program memories parameterized by assignments to universal symbolic variables after executing the assignment statement $\mathtt{x}\gets e$ to be
+  \[
+    \mu_{\mathtt{x}\gets e}(a_{\forall},m) = \sum_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mu(a_{\forall},m').
+  \]
+\end{definition}
+
+\begin{definition}[Sampling Semantics]
+  \label{def:sampling}
+  Let $\mu \in \mathit{Dists_M}$ be a distribution of program memories parameterized by assignments to universal symbolic variables. Let $\mathtt{x} \sim d$ be an arbitrary sampling instruction which assigns the program variable $\mathtt{x} \in \mathcal{X}$ to a random element from the distribution of values parameterized by a memory, represented as a distribution expression $d \in \mathit{Dists}$. Let $\mathsf{desample} : \mathcal{X} \times \mathit{M} \rightarrow \mathcal{P}(\mathit{M})$ be defined as
+  \[
+    \mathsf{desample}(\mathtt{x},m) = \{ m'\in \mathit{M} \mid \forall (\mathtt{y} \in \mathcal{X})~.~(\mathtt{y} \neq \mathtt{x} \wedge m'(\mathtt{y}) = m(\mathtt{y}))\}.
+  \]
+  Define $\mu_{\mathtt{x} \sim d}$ to be the distribution over program memories parameterized by assignments to universal symbolic variables after executing the sampling statement $\mathtt{x} \sim d$ to be
+  \[
+    \mu_{\mathtt{x} \sim d}(a_{\forall},m) = \sum_{m' \in \mathsf{desample}(m)} (\deno{d}a_{\forall})(m(\mathtt{x})) \cdot \mu(a_{\forall},m').
+  \]
+\end{definition}
+
+\begin{definition}[Branching Semantics]
+  \label{def:branching}
+  Let $a_{\forall} \in \mathit{A}_{\forall}$ be an arbitrary assignment of universal symbolic variables, $c$ be a guard of an \textbf{if-goto} statement, $\mu \in \mathit{Dists_M}$ be a distribution of program memories parameterized by assignments to universal symbolic variables, and $\mathtt{x}_1,\ldots,\mathtt{x}_n \in \mathcal{X}$ be all the program variables in $c$. Then for all program memories $m \in \mathit{M}$, $\mu$ conditioned on a guard $c$ being true, represented as $\mu_c$ is defined as
+  \[
+    \mu_c(a_{\forall},m) = \frac{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ m' = m \land \deno{c}m' = \mathtt{true} \right]}{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ \deno{c}m' = \mathtt{true} \right]}
+  \]
+  Similarly, for all program memories $m \in \mathit{M}$, $\mu$ conditioned on a guard $c$ being false, represented as $\mu_{\neg c}$ is defined as
+  \[
+    \mu_{\neg c}(a_{\forall},m) = \frac{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ m' = m \land \deno{c}m' = \mathtt{false} \right]}{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ \deno{c}m' = \mathtt{false} \right]}
+  \]
+\end{definition}
+
+\section{Omitted Proofs}
+\label{sec:omitted_proofs}
+\equivpthm*
+\begin{proof}
+  Let $S$ be an arbitrary \textbf{pWhile} program statement, $\varphi$ be the current path condition, $P$ be the current distribution map, and $p$ be the current path probability before executing $S$.
+  % 
+  Assume that
+  \[
+    p = \frac{\displaystyle\sum_{v_1,\ldots,v_n \in \mathcal{D}} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_n \mapsto v_n\} ]}{\abs{\mathcal{D}}}.
+  \]
+  We will proceed with a case analysis on $S$:
+  \begin{itemize}
+  \item \textit{Assignment (\Crefrange{line:beg_raw_assign}{line:end_raw_assign})}. Suppose $S$ is an assignment statement of the form $\mathtt{x} \gets e$, where \texttt{x} is an arbitrary program variable and $e$ is an arbitrary program expression.
+    % 
+    Note that $\varphi$, $P$, and $p$ do not change after executing $\mathtt{x} \gets e$ and so the statement trivially holds.
+  \item \textit{Sampling (\Crefrange{line:pse_sym_sample}{line:end_raw_sample})}. Suppose $S$ is a sampling statement of the form $\mathtt{x} \sim d$, where \texttt{x} is an arbitrary program variable and $d$ is an arbitrary distribution expression.
+    % 
+    Additionally assume that there are $n$ probabilistic symbolic variables in $P$, namely $\delta_1,\ldots,\delta_n$, and $\delta_{n+1}$ is the fresh probabilistic symbolic variable created on \cref{line:fresh_psv} in \Cref{alg:sample}.
+    % 
+    Then, $P_1 = P \cup \{\delta_{n+1} \mapsto d\}$, according to \cref{line:update_P} where $P_1$ is the updated distribution map returned by \textbf{PSESample} on \cref{line:pse_sym_sample}.
+    % 
+    If $\mathcal{D}_1 = \dom{P_1[\delta_1]} \times \cdots \times \dom{P_1[\delta_{n+1}]}$, then
+    \begin{align*}
+      \frac{\displaystyle\sum_{v_1,\ldots,v_{n+1} \in \mathcal{D}_1} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_{n+1} \mapsto v_{n+1}\}]}{\abs{\mathcal{D}_1}} &= \frac{\abs{\dom{P_1[\delta_{n+1}]}} \cdot \displaystyle\sum_{v_1,\ldots,v_{n} \in \mathcal{D}} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_{n} \mapsto v_{n}\}]}{\abs{\mathcal{D}_1}} \\
+                                                                                                                         &= \frac{\abs{\dom{P_1[\delta_{n+1}]}} \cdot \displaystyle\sum_{v_1,\ldots,v_{n} \in \mathcal{D}} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_{n} \mapsto v_{n}\}]}{\abs{\dom{P_1[\delta_{n+1}]}} \cdot \abs{\mathcal{D}}} \\
+                                                                                                                         &= \frac{\displaystyle\sum_{v_1,\ldots,v_{n} \in \mathcal{D}} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_{n} \mapsto v_{n}\}]}{\abs{\mathcal{D}}} \\
+                                                                                                                         &= p
+    \end{align*}
+    where the first line follows from the fact that $\delta_{n+1}$ cannot appear in $\varphi$ as $\delta_{n+1}$ is a \textit{fresh} probabilistic symbolic variable.
+  \item \textit{Branching (\Cref{line:pse_sym_branch,line:symbex_true_state,line:symbex_false_state})}. Suppose $S$ is a branching statement of the form $\mathbf{if}~c~\mathbf{then~goto}~T$ where $c$ is an arbitrary program guard.
+    % 
+    Additionally assume that there are $n$ probabilistic symbolic variables in $P$, namely $\delta_1,\ldots,\delta_n$.
+    % 
+    Then, according to \cref{line:branch_prob_compute} of \Cref{alg:branch},
+    \[
+      p_c = \frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathcal{D}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathcal{D}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}
+    \]
+    and so $p_t = p_c$ and $p_f = 1-p_c$.
+    % 
+    If $p'_t = p \cdot p_t$ and $p'_f = p \cdot p_f$, as on lines \cref{line:symbex_true_state,line:symbex_false_state}, and $\varphi'_t = \varphi \wedge c_{sym}$ and $\varphi'_f = \varphi \wedge \neg c_{sym}$, then we claim that
+    \[
+      p'_t = \frac{\displaystyle\sum_{v_1,\ldots,v_n \in \mathcal{D}} [ \varphi'_t\{\delta_1 \mapsto v_1, \ldots, \delta_n \mapsto v_n\} ]}{\abs{\mathcal{D}}}
+    \]
+    and similarly
+    \[
+      p'_f = \frac{\displaystyle\sum_{v_1,\ldots,v_n \in \mathcal{D}} [ \varphi'_f\{\delta_1 \mapsto v_1, \ldots, \delta_n \mapsto v_n\} ]}{\abs{\mathcal{D}}}.
+    \]
+
+
+    We will prove the claim for $p'_t$ as the proof for $p'_f$ is symmetric.
+    % 
+    Note that,
+    \begin{align*}
+      p'_t &= p \cdot p_t \\
+           &= \frac{\displaystyle\sum_{v_1,\ldots,v_n \in \mathcal{D}} [ \varphi\{\delta_1 \mapsto v_1, \ldots, \delta_n \mapsto v_n\} ]}{\abs{\mathcal{D}}} \cdot \frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathcal{D}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathcal{D}}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]} \\
+           &= \frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathcal{D}} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\abs{\mathcal{D}}}\\
+           &= \frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathcal{D}} [\varphi'_t\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\abs{\mathcal{D}}}
+    \end{align*}
+  \end{itemize}
+  Since no state changes if $S$ is a \textbf{halt} statement, the theorem is trivially true for this case.
+\end{proof}
+
+\soundnessAssignment*
+\begin{proof}
+  First assume that $\mu$ satisfies the input abstraction $R=(\varphi,\sigma,P)$. Note that by~\Cref{def:assignment},
+  \[
+    \mu_{\mathtt{x}\gets e}(a_{\forall},m) = \displaystyle\sum_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mu(a_{\forall},m')
+  \]
+  for all $a_{\forall} \in \mathit{A}_{\forall}$ and $m \in \mathit{M}$. Also note that by~\Cref{def:main},
+  \[
+    \mu(a_{\forall},m) = \displaystyle\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p).
+  \]
+  So,
+  \begin{align*}
+    \mu_{\mathtt{x}\gets e}(a_{\forall},m) &= \sum_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mu(a_{\forall},m')\\
+                                           &= \sum_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \nu_{\varphi}(a_{\forall},a_p).
+  \end{align*}
+
+  Thus, in order to satisfy~\Cref{def:main} it suffices to show that
+  \[
+    \sum_{a_p \in \mathsf{fromMem}(\sigma',a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p) = \sum_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \nu_{\varphi}(a_{\forall},a_p).
+  \]
+
+  Note that if $m_1,m_2 \in \mathit{M}$ where $m_1 \neq m_2$, then for all $a_{\forall} \in \mathit{A}_{\forall}$ and $\sigma$, $\mathsf{fromMem}(\sigma,a_{\forall},m_1)$ and $\mathsf{fromMem}(\sigma,a_{\forall},m_2)$ are disjoint. Hence, it suffices to show that
+  \[
+    \mathsf{fromMem}(\sigma',a_{\forall},m) = \bigcup_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mathsf{fromMem}(\sigma,a_{\forall},m').
+  \]
+  to prove the theorem. We will show this through double containment.
+
+
+  First, let $a_p \in \bigcup_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mathsf{fromMem}(\sigma,a_{\forall},m')$ be arbitrary. This means that for some $m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)$, $m' = \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma(\mathtt{y})}a_{\forall}a_p$. Furthermore, since $m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)$,
+  \[
+    m = \lambda (\mathtt{y} : \mathcal{X})
+    \begin{cases}
+      \deno{e}m' & \text{if $\mathtt{x}=\mathtt{y}$}\\
+      m'(\mathtt{y}) & \text{otherwise}
+    \end{cases}
+  \]
+  Note that we need to show that $a_p \in \mathsf{fromMem}(\sigma',a_{\forall},m)$. This is equivalent to showing that $m =\mathsf{toMem}(\sigma',a_{\forall},a_p)$. Thus, it is sufficient to prove that
+  \[
+    \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma'(\mathtt{y})}a_{\forall}a_p = \lambda (\mathtt{y} : \mathcal{X})
+    \begin{cases}
+      \deno{e}m' & \text{if $\mathtt{x}=\mathtt{y}$}\\
+      m'(\mathtt{y}) & \text{otherwise}
+    \end{cases}.
+  \]
+  Note that the domains of each of these functions are equal, namely the set of all program variables present within the program. Now we need to show that for every $\mathtt{z} \in \mathcal{X}$, the two functions compute the same result. We have two cases:
+  \begin{enumerate}
+  \item \textbf{Case 1:} Assume that $\mathtt{z} = \mathtt{x}$. Then we have to show that $\deno{e}m' = \deno{\sigma'(\mathtt{x})}a_{\forall}a_p$. However, note that by~\Crefrange{line:beg_raw_assign}{line:end_raw_assign}, $\sigma'(\mathtt{x}) = e_{sym}$. Recall that $m' = \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma(x)}a_{\forall}a_p$. If $\mathtt{x}_1,\ldots,\mathtt{x}_k \in \mathcal{X}$ are all the program variables present, then
+    \begin{align*}
+      \deno{e}m' &= \mathsf{eval}(e[\mathtt{x}_1 \mapsto \deno{\sigma(\mathtt{x}_1)}a_{\forall}a_p, \ldots, \mathtt{x}_k \mapsto \deno{\sigma(\mathtt{x}_k)}a_{\forall}a_p])
+    \end{align*}
+    However, note that $e_{sym} = e[\mathtt{x}_1 \mapsto \sigma(\mathtt{x}_1),\ldots,\mathtt{x}_k \mapsto \sigma(\mathtt{x}_k)]$ and so,
+    \begin{align*}
+      \deno{e_{sym}}a_{\forall}a_p &= \deno{e[\mathtt{x}_1 \mapsto \sigma(\mathtt{x}_1),\ldots,\mathtt{x}_k \mapsto \sigma(\mathtt{x}_k)]}a_{\forall}a_p\\
+                             &= \mathsf{eval}(e[\mathtt{x}_1 \mapsto \deno{\sigma(\mathtt{x}_1)}a_{\forall}a_p, \ldots, \mathtt{x}_k \mapsto \deno{\sigma(\mathtt{x}_k)}a_{\forall}a_p]).
+    \end{align*}
+    Hence, $\deno{e}m' = \deno{\sigma'(\mathtt{x})}a_{\forall}a_p$.
+  \item \textbf{Case 2:} Now assume that $\mathtt{z} \neq \mathtt{x}$. We claim that $m'(\mathtt{z}) = \deno{\sigma'(\mathtt{z})}a_{\forall}a_p$. Note that $m'(\mathtt{z}) = \deno{\sigma(\mathtt{z})}a_{\forall}a_p$. Since $\mathtt{z}\neq\mathtt{x}$, then $\sigma(\mathtt{z}) = \sigma'(\mathtt{z})$ and we are done.
+  \end{enumerate}
+  Therefore,
+  \[
+    \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma'(\mathtt{y})}a_{\forall}a_p = \lambda (\mathtt{y} : \mathcal{X})
+    \begin{cases}
+      \deno{e}m' & \text{if $\mathtt{x}=\mathtt{y}$}\\
+      m'(\mathtt{y}) & \text{otherwise}
+    \end{cases}
+  \] and so $a_p \in \mathsf{fromMem}(\sigma',a_{\forall},m)$.
+  
+  For the forward direction of the double containment, assume that $a_p \in \mathsf{fromMem}(\sigma',a_{\forall},m)$ be arbitrary. This implies that $m = \mathsf{toMem}(\sigma',a_{\forall},a_p) = \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma'(\mathtt{y})}a_{\forall}a_p$. We need to show that $a_p \in  \bigcup_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mathsf{fromMem}(\sigma,a_{\forall},m')$ which is equivalent to showing that for some $m'$, $a_p = \mathsf{fromMem}(\sigma,a_{\forall},m')$. We claim that $m' = \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma(\mathtt{y})}a_{\forall}a_p \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)$. We can prove this by showing that $\mathsf{assign}_{\mathtt{x}\gets e}(m') = m$. Note that
+  \[
+    \mathsf{assign}_{\mathtt{x}\gets e}(m') = \lambda (\mathtt{y} : \mathcal{X}) .
+    \begin{cases}
+      \deno{e}m' & \text{if $\mathtt{x} = \mathtt{y}$}\\
+      m'(\mathtt{y}) & \text{otherwise}
+    \end{cases}
+  \]
+  Both functions have the same domain, namely the program variables present in the program. We will show that both functions give the same output on the arbitrary input $\mathtt{z} \in \mathcal{X}$. There are two cases:
+  \begin{enumerate}
+  \item \textbf{Case 1:} Assume that $\mathtt{z} = \mathtt{x}$. Then, we need to show $\deno{e}m' = \deno{\sigma'(\mathtt{y})}a_{\forall}a_p$.
+    However, note that by~\Crefrange{line:beg_raw_assign}{line:end_raw_assign}, $\sigma'(\mathtt{x}) = e_{sym}$. Recall that $m' = \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma(x)}a_{\forall}a_p$. If $\mathtt{x}_1,\ldots,\mathtt{x}_k \in \mathcal{X}$ are all the program variables present, then $\deno{e}m' = \mathsf{eval}(e[\mathtt{x}_1 \mapsto \deno{\sigma(\mathtt{x}_1)}a_{\forall}a_p, \ldots, \mathtt{x}_k \mapsto \deno{\sigma(\mathtt{x}_k)}a_{\forall}a_p])$.
+    However, note that $e_{sym} = e[\mathtt{x}_1 \mapsto \sigma(\mathtt{x}_1),\ldots,\mathtt{x}_k \mapsto \sigma(\mathtt{x}_k)]$.
+    and so,
+    \begin{align*}
+      \deno{e_{sym}}a_{\forall}a_p &= \deno{e[\mathtt{x}_1 \mapsto \sigma(\mathtt{x}_1),\ldots,\mathtt{x}_k \mapsto \sigma(\mathtt{x}_k)]}a_{\forall}a_p\\
+                             &= \mathsf{eval}(e[\mathtt{x}_1 \mapsto \deno{\sigma(\mathtt{x}_1)}a_{\forall}a_p, \ldots, \mathtt{x}_k \mapsto \deno{\sigma(\mathtt{x}_k)}a_{\forall}a_p]).
+    \end{align*}
+    Hence, $\deno{e}m' = \deno{\sigma'(\mathtt{x})}a_{\forall}a_p$.
+  \item \textbf{Case 2:} Now assume that $\mathtt{z} \neq \mathtt{x}$. Then we have to show that $m'(\mathtt{z}) = \deno{\sigma'(\mathtt{z})}a_{\forall}a_p$. Since $m'(\mathtt{z}) = \deno{\sigma(\mathtt{z})}a_{\forall}a_p$ and $\mathtt{z}\neq\mathtt{x}$, then $\sigma(\mathtt{z}) = \sigma'(\mathtt{z})$ and we are done.
+  \end{enumerate}
+  Therefore, $m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)$. Since $m' = \mathsf{toMem}(\sigma,a_{\forall},a_p)$, we have that $a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')$ which implies that $a_p \in  \bigcup_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mathsf{fromMem}(\sigma,a_{\forall},m')$. By double containment,
+  \[
+    \mathsf{fromMem}(\sigma',a_{\forall},m) = \bigcup_{m' \in \mathsf{unassign}_{\mathtt{x}\gets e}(m)} \mathsf{fromMem}(\sigma,a_{\forall},m')
+  \]
+  and so
+  \[
+    \mu_{\mathtt{x}\gets e}(a_{\forall},m) = \sum_{a_p \in \mathsf{fromMem}(\sigma',a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p).
+  \]
+  Since $\nu_{\varphi}$ is unchanged, $\mu_{\mathtt{x}\gets e}$ satisfies $(\varphi,\sigma',P)$.
+\end{proof}
+
+\soundnessSampling*
+\begin{proof}
+  First assume that $\mu$ satisfies the input abstraction $R = (\varphi,\sigma,P)$. We want to show that $\mu_{\mathtt{x} \sim d}$ satisfies the output abstraction $(\varphi,\sigma',P')$. To do this, we need to define $\nu'$ and $\nu_{\varphi}'$ in terms of $\sigma'$ and $P'$ and show that $\nu_{\varphi}$ satisfies~\Cref{def:main}. Let $\delta_{k+1}$ be the fresh probabilistic symbolic variable allocated on~\cref{line:fresh_psv} of~\Cref{alg:sample}.
+
+  Note according to~\Cref{def:main},
+  \[
+    \nu'(a_{\forall},a_p) = \prod_{i=1}^{k+1} \Pr_{v \sim P'(a_{\forall},\delta_i)}[v = a_p(\delta_i)].
+  \]
+  
+  However, we want
+  \[
+    \nu(a_{\forall},a_p) = \prod_{i=1}^{k} \Pr_{v \sim P(a_{\forall},\delta_i)}[v = a_p(\delta_i)]
+  \]
+  by definition. Since for all $1 \leq i \leq k$, $P(\delta_i) = P'(\delta_i)$,
+  \begin{align*}
+    \nu'(a_{\forall},a_p) &= \prod_{i=1}^{k+1} \Pr_{v \sim P'(a_{\forall},\delta_i)}[v = a_p(\delta_i)]\\
+                  &= \left( \prod_{i=1}^{k} \Pr_{v \sim P'(a_{\forall},\delta_i)}[v = a_p(\delta_i)] \right) \cdot \Pr_{v \sim P'(a_{\forall},\delta_{k+1})}[v = a_p(\delta_{k+1})] \\
+                  &= \left( \prod_{i=1}^{k} \Pr_{v \sim P(a_{\forall},\delta_i)}[v = a_p(\delta_i)] \right) \cdot \Pr_{v \sim P'(a_{\forall},\delta_{k+1})}[v = a_p(\delta_{k+1})] 
+  \end{align*}
+  Note that the domain of $\nu$ is $\{\delta_1,\ldots,\delta_k\}$. So, if we let $a_p = a_p' \cup \{\delta_{k+1} \mapsto v\}$ where $v \in \mathcal{V}$ is arbitrary,
+  \[
+    \left( \prod_{i=1}^{k} \Pr_{v \sim P(a_{\forall},\delta_i)}[v = a_p(\delta_i)] \right) \cdot \Pr_{v \sim P'(a_{\forall},\delta_{k+1})}[v = a_p(\delta_{k+1})] = \nu(a_{\forall},a_p') \cdot \Pr_{v' \sim P'(a_{\forall},\delta_{k+1})}[v' = v]
+  \]
+  By definition
+  \[
+    \Pr_{v' \sim P'(a_{\forall},\delta_{k+1})}[v' = v] = \sum_{v' \in \{v' \in \mathcal{V} \mid v' = v\}} P'(a_{\forall},\delta_{k+1})(v') = P'(a_{\forall},\delta_{k+1})(v).
+  \]
+  According to \textsc{PSESample} on \cref{line:update_P}, $P'(a_{\forall},\delta_{k+1}) = \deno{d} a_{\forall}$, which is a distribution of values. Thus,
+  \[
+    \nu'(a_{\forall},a_p) = (a_p' \cup \{\delta_{k+1} \mapsto v) = \nu(a_{\forall},a_p') \cdot (\deno{d} a_{\forall})(v).
+  \]
+
+  Now, we can define $\nu_{\varphi}'$ as
+  \[
+    \nu_{\varphi}' = \frac{\Pr_{a_p' \sim \nu'(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1]}{\Pr_{a_p' \sim \nu'(a_{\forall})}[\varphi(a_{\forall},a_p') = 1]}.
+  \]
+
+  Before moving onto the main result, we will prove a lemma.
+  \begin{lemma}
+    \label{lem:split}
+    For all $a_{\forall} \in \mathit{A}_{\forall}, a_p \in \mathit{A}_p$ where the domain of $a_p$ is $\{\delta_1,\ldots,\delta_k\}$ and $\delta_{k+1} \in \mathcal{Z}_P$ is a newly allocated probabilistic symbolic variable created by~\Cref{alg:sample}. Also let $v \in \mathcal{V}$ be arbitrary. Then,
+    \[
+      \nu_{\varphi}'(a_{\forall},a_p \cup \{\delta_{k+1} \mapsto v\}) = \nu_{\varphi}(a_{\forall},a_p) \cdot (\deno{d} a_{\forall})(v).
+    \]
+  \end{lemma}
+  \begin{proof}
+    Let $a = a_p \cup \{\delta_{k+1} \mapsto v\}$. By definition,
+    \begin{align*}
+      \nu_{\varphi}'(a_{\forall}, a) = \frac{\Pr_{a_p' \sim \nu'(a_{\forall})}[a_p' = a \wedge \varphi(a_{\forall},a_p') = 1]}{\Pr_{a_p' \sim \nu'(a_{\forall})}[\varphi(a_{\forall},a_p') = 1]}
+      &= \frac{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid a_p' = a \wedge \varphi(a_{\forall},a_p') = 1\}}} \nu'_{\mathtt{x}\sim d}(a_{\forall},a_p')}{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p') = 1\}}} \nu'_{\mathtt{x}\sim d}(a_{\forall},a_p')}\\
+      &= \frac{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid a_p' = a \wedge \varphi(a_{\forall},a_p') = 1\}}} \nu(a_{\forall},a_p)\cdot(\deno{d}a_{\forall})(v)}{\displaystyle \smashoperator[r]{\sum_{a_p' \cup \{\delta_{k+1} \mapsto v'\} \in \{a_p' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p') = 1\}}} \nu(a_{\forall},a_p')\cdot(\deno{d}a_{\forall})(v')}
+    \end{align*}
+    Note that the set being summed over in the numerator is $\{a_p' \in \mathit{A}_p \mid a_p' = a \wedge \varphi(a_{\forall},a_p') = 1\} = \{a\}$ as $\varphi$ does not reference $\delta_{k+1}$ so, as long as $\varphi(a_{\forall},a_p)=1$, $\varphi(a_{\forall},a)=1$. Therefore, we can remove the summation to get:
+    \[
+      \frac{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid a_p' = a \wedge \varphi(a_{\forall},a_p') = 1\}}} \nu(a_{\forall},a_p)\cdot(\deno{d}a_{\forall})(v)}{\displaystyle \smashoperator[r]{\sum_{a_p' \cup \{\delta_{k+1} \mapsto v'\} \in \{a_p' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p') = 1\}}}\nu(a_{\forall},a_p')\cdot(\deno{d}a_{\forall})(v')} = \frac{\nu(a_{\forall},a_p)\cdot(\deno{d}a_{\forall})(v)}{\displaystyle \smashoperator[r]{\sum_{a_p' \cup \{\delta_{k+1} \mapsto v'\} \in \{a_p'' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p'') = 1\}}}\nu(a_{\forall},a_p')\cdot(\deno{d}a_{\forall})(v')}.
+    \]
+    Now, $\{a_p' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p') = 1\}$ is the set of all probabilistic assignments which satisfy the path condition $\varphi$ with the assignment to universal symbolic variables, $a_{\forall}$. Since $\delta_{k+1}$ does not appear in $\varphi$, whatever value $a_p'$ assigns to $\delta_{k+1}$ will not affect whether $\varphi$ is satisfied. Therefore, for each value $v'$ in the domain of $\deno{d}a_{\forall}$, $a_p' \cup \{\delta_{k+1} = v'\} \in \{a_p'' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p'') = 1\}$, where $a_p' \in \mathit{A}_p$ is some probabilistic assignment such that $\varphi(a_{\forall},a_p')=1$. Hence,
+    \[
+      \smashoperator[r]{\sum_{a_p' \cup \{\delta_{k+1} \mapsto v'\} \in \{a_p'' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p'') = 1\}}} \nu(a_{\forall},a_p')\cdot(\deno{d}a_{\forall})(v')= \smashoperator[r]{\sum_{a_p' \cup \{\delta_{k+1} \mapsto v'\} \in \{a_p'' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p'') = 1\}}} \nu(a_{\forall},a_p').
+    \]
+    Combining this all together, we have
+    \begin{align*}
+      \nu_{\varphi}'(a_{\forall}, a) &= \frac{\nu(a_{\forall},a_p)\cdot(\deno{d}a_{\forall})(v)}{\displaystyle \smashoperator[r]{\sum_{a_p' \cup \{\delta_{k+1} \mapsto v'\} \in \{a_p'' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p'') = 1\}}}\nu(a_{\forall},a_p')\cdot(\deno{d}a_{\forall})(v')} = \frac{\nu(a_{\forall},a_p)\cdot(\deno{d}a_{\forall})(v)}{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p') = 1\}}} \nu(a_{\forall},a_p')}\\
+                       &= (\deno{d}a_{\forall})(v) \cdot \frac{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1\}}}\nu(a_{\forall},a_p' )}{\displaystyle \smashoperator[r]{\sum_{a_p' \in \{a_p' \in \mathit{A}_p \mid \varphi(a_{\forall},a_p') = 1\}}} \nu(a_{\forall},a_p')}
+                         = (\deno{d}a_{\forall})(v) \cdot \frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p') = 1]}\\
+                       &= (\deno{d}a_{\forall})(v) \cdot \nu_{\varphi}(a_{\forall},a_p)
+    \end{align*}
+  \end{proof}
+  We can now prove that $R'$ satisfies~\Cref{def:main}. Note that by~\Cref{def:sampling}, 
+  \[
+    \mu_{\mathtt{x} \sim d}(a_{\forall},m) = \sum_{m' \in \mathsf{desample}(m)} (\deno{d}a_{\forall})(m(\mathtt{x})) \cdot \mu(a_{\forall},m').
+  \]
+  for all $a_{\forall} \in \mathit{A}_{\forall}$ and $m \in \mathit{M}$. Also, by~\Cref{def:main},
+  \[
+    \mu(a_{\forall},m) = \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p).
+  \]
+  and so,
+  \begin{align*}
+    \mu_{\mathtt{x} \sim d} &= \sum_{m' \in \mathsf{desample}(m)} (\deno{d}a_{\forall})(m(\mathtt{x})) \cdot \mu(a_{\forall},m')\\
+                            &= \sum_{m' \in \mathsf{desample}(m)} (\deno{d}a_{\forall})(m(\mathtt{x})) \cdot \left( \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \nu_{\varphi}(a_{\forall},a_p) \right)\\
+                            &= \sum_{m' \in \mathsf{desample}(m)} \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} (\deno{d}a_{\forall})(m(\mathtt{x})) \cdot \nu_{\varphi}(a_{\forall},a_p).
+  \end{align*}
+  Now it suffices to show the following:
+  \begin{enumerate}
+  \item For all $a_{\forall}\in \mathit{A}_{\forall}$ and $a_p \in \mathit{A}_p$,
+    \[
+      \nu_{\varphi}''(a_{\forall},a_p) = (\deno{d}a_{\forall})(v) \cdot \nu_{\varphi}(a_{\forall},a_p')
+    \]
+    where $\nu_{\varphi}''$ is defined as in~\Cref{def:main} but with $R'$ and $a_p = a_p' \cup \{\delta_{k+1} \mapsto v\}$. This immediately follows from~\Cref{lem:split}.
+  \item Note that if $m_1,m_2 \in \mathit{M}$ where $m_1\neq m_2$ then for all $a_{\forall} \in \mathit{A}_{\forall}$ and $\sigma$, $\mathsf{fromMem}(\sigma,a_{\forall},m_1)$ and $\mathsf{fromMem}(\sigma,a_{\forall},m_2)$ are disjoint. Thus, it suffices to show that
+    \[
+      \mathsf{fromMem}(\sigma',a_{\forall},m) = \bigcup_{m' \in \mathsf{desample}(m)} \mathsf{fromMem}(\sigma,a_{\forall},m').
+    \]
+  \end{enumerate}
+  For (2), we will show this through double containment. First, let $a_p \in \mathsf{fromMem}(\sigma',a_{\forall},m)$ be arbitrary. By definition,
+  $m = \mathsf{toMem}(\sigma',a_{\forall},a_p) = \lambda (\mathtt{y} : \mathcal{X}) . \deno{\sigma'(\mathtt{y})}a_{\forall}a_p$. Since $\sigma'(\mathtt{x}) = \delta_{k+1}$, where $\delta_{k+1}$ is a fresh probabilistic symbolic variable. Therefore, $a_p(\delta_{k+1}) = m(\mathtt{x})$. We need to show that $a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')$ for some $m' \in \mathsf{desample}(m)$. Note that $m \in \mathsf{desample}(m)$. Furthermore, for every program variable $\mathtt{y} \in \mathcal{X}$, $\delta_{k+1}$ does not appear in $\sigma(\mathtt{y})$. Therefore, $a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)$ as
+  \[
+    \mathsf{fromMem}(\sigma,a_{\forall},m) = \{ a_p' \in \mathit{A}_p \mid \forall (\mathtt{y} : \mathcal{X})~.~(\mathtt{y} \neq \mathtt{x} \wedge a_p'(\mathtt{y}) = a_p(\mathtt{y}))\}.
+  \]
+  Since $a_p$ was arbitrary, we have proven the forward direction of the containment.
+
+  Now, let $a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')$ for some $m' \in \mathsf{desample}(m)$. Since for all $\mathtt{y} \in \mathcal{X}$, $\delta_{k+1}$ does not appear in $\sigma(\mathtt{y})$, $a_p(\delta_{k+1})$ can be any value. To prove the reverse containment, it suffices to show that $m = \mathsf{toMem}(\sigma',a_{\forall},a_p)$. Note that for every $a_p' \in \mathit{A}_p$ where $n = \mathsf{toMem}(\sigma',a_{\forall},a_p')$, $n(\mathtt{x}) = a_p'(\delta_{k+1})$. Furthermore, for every $\mathtt{y} \in \mathcal{X}$ where $\mathtt{y} \neq \mathtt{x}$, $m(\mathtt{y}) = m'(\mathtt{y})$ and $\sigma'(\mathtt{y}) = \sigma(\mathtt{y})$. This implies that $\mathsf{toMem}(\sigma,a_{\forall},a_p)(\mathtt{y}) = m'(\mathtt{y}) = m(\mathtt{y}) = \mathsf{toMem}(\sigma',a_{\forall},a_p)$.
+
+  Without loss of generality, assume that $m(\mathtt{x}) = z$. Since $a_p(\mathtt{x})$ can be any value, let this particular value be $z$. Thus, $m(\mathtt{x}) = a_p(\delta_{k+1})$. Therefore, $m = \mathsf{toMem}(\sigma',a_{\forall},a_p)$ for all program variables. This completes the double containment.
+\end{proof}
+
+\soundnessBranching*
+Before proving~\Cref{thm:branch}, we will prove a lemma.
+\begin{lemma}
+  \label{lem:condition}
+  Let $a_{\forall} \in \mathit{A}_{\forall}$ and $a_p \in \mathit{A}_p$ be arbitrary. Then,
+  \[
+    \nu_{\varphi}(a_{\forall},a_p) = \Pr_{a_p' \sim \nu(a_{\forall})}[ a_p' = a_p \mid \varphi(a_{\forall},a_p') = 1 \mid \deno{c_{sym}} a_{\forall} a_p'= 1 ]
+  \]
+  and
+  \[
+    \nu_{\varphi}^{\neg}(a_{\forall},a_p) = \Pr_{a_p' \sim \nu(a_{\forall})}[ a_p' = a_p \mid \varphi(a_{\forall},a_p') = 1 \mid \deno{c_{sym}} a_{\forall} a_p' = 0 ].
+  \]
+\end{lemma}
+
+\begin{proof}
+  Let $a_{\forall} \in \mathit{A}_{\forall}$ and $a_p \in \mathit{A}_p$ be arbitrary. Consider the quantity
+  \[
+    \Pr_{a_p' \sim \nu(a_{\forall})}[ a_p' = a_p \mid \varphi(a_{\forall},a_p') = 1 \mid \deno{c_{sym}} a_{\forall} a_p'= 1 ].
+  \]
+  By definition of conditional probability,
+  \begin{align*}
+    \Pr_{a_p' \sim \nu(a_{\forall})}[ a_p' = a_p &\mid \varphi(a_{\forall},a_p') = 1 \mid \deno{c_{sym}} a_{\forall} a_p'= 1 ]\\&= \frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1 \mid \deno{c_{sym}} a_{\forall} a_p' = 1 ]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p') = 1 \mid \deno{c_{sym}} a_{\forall} a_p' = 1]} \\
+                                                                                           &= \frac{\frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1 ]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[ \deno{c_{sym}} a_{\forall} a_p' = 1]}}{\frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1 ]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[ \deno{c_{sym}} a_{\forall} a_p' = 1]}} \\
+                                                                                           &= \frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1 ]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1 ]} \\
+                                                                                           &= \nu_{\varphi}(a_{\forall},a_p).
+  \end{align*}
+  The proof of the second quantity, $\nu_{\varphi}^{\neg}$, follows identically as above.
+\end{proof}
+Now we can prove~\Cref{thm:branch}.
+\begin{proof}
+  First assume that $\mu$ satisfies the input abstraction $R=(\varphi,\sigma,P)$. Note that by definition, for all program memories $m \in \mathit{M}$, and assignments to universal symbolic variables $a_{\forall} \in \mathit{A}_{\forall}$,
+  \[
+    \mu_c(a_{\forall},m) = \frac{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ m' = m \land \deno{c}m' = 1 \right]}{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ \deno{c}m' = 1 \right]}\quad\text{and}\quad \mu_{\neg c}(a_{\forall},m) = \frac{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ m' = m \land \deno{c}m' = 0 \right]}{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ \deno{c}m' = 0 \right]}.
+  \]
+  Also note that by definition, $\mu(a_{\forall},m) = \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p)$. Combining together, we get,
+  \begin{align*}
+    \mu_c(a_{\forall},m) &= \frac{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ m' = m \land \deno{c}m' = 1 \right]}{\displaystyle\Pr_{m' \sim \mu(a_{\forall})}\left[ \deno{c}m' = 1 \right]} \\
+                 &= \frac{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid m' = m \wedge \deno{c}m' = 1\}}\mu(a_{\forall},m')}{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid \deno{c}m' = 1\}}\mu(a_{\forall},m')}\\
+                 &= \frac{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid m' = m \wedge \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \nu_{\varphi}(a_{\forall},a_p)}{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \nu_{\varphi}(a_{\forall},a_p)}\\
+                 &= \frac{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid m' = m \wedge \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p')=1]}}{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p')=1]}}\\
+                 &= \frac{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid m' = m \wedge \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1]}{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1]}
+  \end{align*}
+  Now consider the denominator of the above expression. The left-most summation is collecting all the memories which satisfy the guard, $c$. From these memories, an associated assignment to probabilistic variables is created using $\sigma$. Since $c_{sym} = \deno{c} \sigma$, it must be that $\deno{c_{sym}} a_{\forall} a_p = 1$. Therefore, the denominator is simply computing $\Pr_{a_p \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p) = 1 \wedge \deno{c_{sym}} a_{\forall} a_p = 1]$. As for the numerator, we can apply a similar argument to conclude that\begin{multline*}
+    \sum_{m' \in \{m' \in \mathit{M} \mid m' = m \wedge \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1] \\= \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)}\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1].
+  \end{multline*}
+  Thus, we have
+  \begin{equation*}
+    \begin{split}
+      &\frac{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid m' = m \wedge \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1]}{\displaystyle\sum_{m' \in \{m' \in \mathit{M} \mid \deno{c}m' = 1\}}\sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m')} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p')=1]}\\
+      &= \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)}\frac{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \wedge \varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1]}{\displaystyle\Pr_{a_p' \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p') = 1 \wedge \deno{c_{sym}} a_{\forall} a_p' = 1]}\\
+      &= \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p)
+    \end{split}
+  \end{equation*}
+  We have thus proven condition 2 for $\mu_c$. An symmetric argument would apply to $\mu_{\neg c}$. Therefore, $\mu_c$ satisfies $R_{true}$ and $\mu_{\neg c}$ satisfies $R_{false}$.
+
+  We will now prove the added condition that for all $a_{\forall} \in \mathit{A}_{\forall}$, 
+  \[
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}}\mu(a_{\forall},m) = \deno{p_c} a_{\forall}
+  \]
+  and
+  \[
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 0\}}\mu(a_{\forall},m) = \deno{p_c'} a_{\forall}.
+  \]
+
+  Consider the left-hand side of the proposed equality. By~\Cref{def:main},
+  \begin{align*}
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}}\mu(a_{\forall},m) &= \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}} \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \nu_{\varphi}(a_{\forall},a_p)\\
+                                                         &= \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}} \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \mid \varphi(a_{\forall},a_p') = 1] 
+  \end{align*}
+  Note that by~\Cref{line:guard_convert} of~\Cref{alg:symb_ex}, $c_{sym} = \deno{c} \sigma$. Note that for every $a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)$, $m = \lambda(\mathtt{x} : \mathcal{X}) . \deno{\sigma(\mathtt{x})} a_{\forall} a_p$. Therefore, since $\deno{c} m = 1$, and $\deno{c} (\lambda(\mathtt{x} : \mathcal{X}) . \deno{\sigma(\mathtt{x})} a_{\forall} a_p) = \deno{c_{sym}} a_{\forall} a_p$,
+  then $\deno{c_{sym}} a_{\forall} a_p = 1$. Hence,
+  \begin{multline*}
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}} \sum_{a_p \in \mathsf{fromMem}(\sigma,a_{\forall},m)} \Pr_{a_p' \sim \nu(a_{\forall})}[a_p' = a_p \mid \varphi(a_{\forall},a_p') = 1]\\
+    = \Pr_{a_p \sim \nu(a_{\forall})}[\deno{c_{sym}} a_{\forall} a_p \mid \varphi(a_{\forall},a_p') = 1].
+  \end{multline*}
+  Now, using standard transformations, we have
+  \begin{align*}
+    \Pr_{a_p \sim \nu(a_{\forall})}[\deno{c_{sym}} a_{\forall} a_p \mid \varphi(a_{\forall},a_p') = 1] &= \frac{\Pr_{a_p \sim \nu(a_{\forall})}[\deno{c_{sym}} a_{\forall} a_p = 1 \wedge \varphi(a_{\forall},a_p) = 1]}{\Pr_{a_p \sim \nu(a_{\forall})}[\varphi(a_{\forall},a_p) = 1]}\\
+                                                                       &= \frac{\sum_{a_p \in \{a_p \mid \deno{c_{sym}} a_{\forall} a_p = 1 \wedge \varphi(a_{\forall},a_p) = 1\}}\nu(a_{\forall},a_p)}{\sum_{a_p \in \{a_p \mid \varphi(a_{\forall},a_p) = 1\}}\nu(a_{\forall},a_p)}\\
+                                                                       &= \frac{\sum_{a_p \in \{a_p \mid \deno{c_{sym}} a_{\forall} a_p = 1 \wedge \varphi(a_{\forall},a_p) = 1\}}\nu(a_{\forall},a_p)}{\sum_{a_p \in \{a_p \mid \varphi(a_{\forall},a_p) = 1\}}\nu(a_{\forall},a_p)}
+  \end{align*}
+  Now consider the right-hand side of the proposed equality. By Algorithm~\ref{alg:branch},
+  \[
+    p_c = \frac{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathrm{domain}(D_1) \times \cdots\times \mathrm{domain}(D_n)} [(c_{sym} \wedge \varphi)\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}{\displaystyle\sum_{(v_1,\ldots,v_n) \in \mathrm{domain}(D_1) \times \cdots\times \mathrm{domain}(D_n)}[\varphi\{\delta_1 \mapsto v_1,\ldots,\delta_n \mapsto v_n\}]}.
+  \]
+  Note that the substitution of the probabilistic symbolic variables $\delta_1,\ldots,\delta_n$, along with the assignment of universal symbolic variables, $a_{\forall}$, represents an assignment of probabilistic symbolic variables, $a_p$. Therefore,
+  \[
+    \frac{\sum_{a_p \in \{a_p \mid \deno{c_{sym}} a_{\forall} a_p = 1 \wedge \varphi(a_{\forall},a_p) = 1\}}\nu(a_{\forall},a_p)}{\sum_{a_p \in \{a_p \mid \varphi(a_{\forall},a_p) = 1\}}\nu(a_{\forall},a_p)} = \deno{p_c} a_{\forall}.
+  \]
+  Thus,
+  \[
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 1\}}\mu(a_{\forall},m) = \deno{p_c} a_{\forall}.
+  \]
+  A symmetric argument as above can be applied to the equality
+  \[
+    \sum_{m \in \{m \in \mathit{M} \mid \deno{c}m = 0\}}\mu(a_{\forall},m) = \deno{p_{c}'} a_{\forall}.
+  \]
+\end{proof}
+\end{document}

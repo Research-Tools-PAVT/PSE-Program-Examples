@@ -407,3 +407,15 @@ foralls/
 PSE-Papers/
 PSEPapers/
 
+
+benchmark_partition_processed/
+
+benchmark_quicksort_processed/
+
+*.eps
+
+paper/llncsdoc.pdf
+
+paper/readme.txt
+
+paper/samplepaper.pdf

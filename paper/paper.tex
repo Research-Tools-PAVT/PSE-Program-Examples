@@ -12,6 +12,8 @@
 \usepackage{bibnames}
 \usepackage[ruled,vlined,linesnumbered,noend]{algorithm2e}
 \usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{supertabular}
@@ -26,13 +28,17 @@
 
 \newcommand{\sr}[1]{\textcolor{red}{Subhajit: #1}}
 \newcommand{\sumit}[1]{\textcolor{blue}{Sumit: #1}}
-%\newcommand{\tab}[1]{Table~\ref{#1}}
-%\newcommand{\fig}[1]{Figure~\ref{#1}}
-%\newcommand{\code}[1]{Listing~\ref{#1}}
+\newcommand{\tab}[1]{Table~\ref{#1}}
+\newcommand{\fig}[1]{Figure~\ref{#1}}
+\newcommand{\code}[1]{Listing~\ref{#1}}
 
 \definecolor{bg}{RGB}{210, 255, 180}
 \definecolor{aquamarine}{rgb}{0.5, 1.0, 0.83}
+\usepackage{subcaption} %% For complex figures with subfigures/subcaptions
+%% http://ctan.org/pkg/subcaption
+\usepackage{mathtools}
 
+\newcommand*\E[1]{\mathbb{E}\left[ #1 \right]}
 \newcommand{\sem}[1]{\llbracket #1 \rrbracket}
 \definecolor{lg}{gray}{0.82}
 \newcommand{\instantiate}[1]{#1}
@@ -52,7 +58,6 @@
 \setlength{\floatsep}{5pt} % Vertical space below (above) [t] ([b]) floats
 \setlength{\abovecaptionskip}{5pt}
 \setlength{\belowcaptionskip}{5pt}
-
 %\renewcommand{\cite}[1]{\citep{#1}}
 
 \begin{document}

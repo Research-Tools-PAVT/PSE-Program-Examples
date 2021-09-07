@@ -11,5 +11,7 @@
 	\small
 	%\KwResult{result}
 	% \While{true}{
-	set the program state to $\vec{s}$\;
+	set the current state to $\vec{T_{sc}}$\;
+	$\vec{E}$ $\gets$ \textsc{getStateList($\vec{T_{sc}}$)}; \\
+	\For{$\vec{s}$ $\in$ $\vec{E}$}{\textsc{getSolve}({$\vec{s}$})}
 \end{algorithm}

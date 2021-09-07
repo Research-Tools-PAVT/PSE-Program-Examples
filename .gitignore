@@ -401,10 +401,8 @@ outputs/
 output/
 tests/
 foralls/
-paper/
 
 *_klee_out/
-*.pdf
 *.logs
 PSE-Papers/
 PSEPapers/

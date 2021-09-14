@@ -1,11 +1,3 @@
-```smt2
-(set-info :smt-lib-version 2.0)
-(set-option :print-success true)
-(set-option :produce-models true)
-    ...
-(check-sat)
-```
-
 ```bash
 * * *           ESBMC 6.7.0          * * *
 
@@ -208,4 +200,36 @@ DEBUG options:
   --direct-interleavings
   --print-stack-traces
   --interactive-ileaves
+```
+
+```cpp
+void z3_convt::dump_smt()
+{
+  // #include <esbmc/bmc.h>
+  // #include <fstream>
+  const std::string &filename = options.get_option("output");
+  if(!filename.empty())
+  {
+    std::ofstream out(filename.c_str());
+    if(out)
+    {
+      // Add whatever logic is needed.
+      // Add sovler specific declarations as well.
+      out << "(set-info :smt-lib-version 2.0) \n";
+      out << "(set-option :print-success true) \n";
+      out << "(set-option :produce-models true) \n";
+      out << solver; // All VCC conditions in SMTLIB format.
+      out << "(check-sat) \n";
+    }
+  }
+
+  default_message msg;
+  std::ostringstream oss;
+  oss << solver;
+  msg.debug(oss.str());
+}
+```
+
+```bash
+esbmc --input-file code.c --smt-formula-only --z3 --unwindset "3:100" --output file.smt2
 ```

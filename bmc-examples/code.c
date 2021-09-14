@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 #define FLIPS 10
-#define UNROLL 100
 
 int main(void) {
 
@@ -22,8 +21,8 @@ int main(void) {
   // We need to initalize these values.
   long int expected_sum = 0L, path_index = -1, __path_id = 0L;
   float prob_weight = 0.80f, sum_prob = 0.00f;
+  unsigned long long int XOR_ACC;
 
-  unsigned long long int PTIDs[UNROLL];
   // Unrolling 100 times atleast.
   while (sum_prob <= prob_weight * prob) {
 
@@ -40,30 +39,31 @@ int main(void) {
     // For two different probabilistic paths, p1, p2
     // COMMENT vec(d1) != vec(d2) forall pairs(d1, d2)
     // COMMENT : Add it to SMT Formula later.
-    unsigned char flips[FLIPS];
+    // unsigned char flips[FLIPS];
 
     // Unrolling FLIPS times always.
     unsigned long long int __ptid = 0LL;
     for (int i = 0; i < FLIPS; i++) {
 
       double r = (double)(nondet_double() / (RAND_MAX));
-      flips[i] = r >= prob ? 1 : 0;
+      _Bool flip = r >= prob ? 1 : 0;
 
       // Needed in the SMT Formula.
       if (r >= prob) {
-        __ESBMC_assume(flips[i] == 1);
+        __ESBMC_assume(flip == 1);
         __ptid += 1 << (63 - i);
       } else {
-        __ESBMC_assume(flips[i] == 0);
+        __ESBMC_assume(flip == 0);
         __ptid += 0 << (63 - i);
       }
-      product_prob *= flips[i] == 1 ? prob : 1.00f;
-      expected_value += flips[i] == 1 ? y : 0L;
+      product_prob *= flip == 1 ? prob : 1.00f;
+      expected_value += flip == 1 ? y : 0L;
     }
 
-    // COMMENT : assume(distinct(__ptid));
-    PTIDs[path_index] = __ptid;
-    __ESBMC_assume(PTIDs[path_index] == __ptid);
+    if (path_index == 0)
+      XOR_ACC = __ptid;
+    else
+      XOR_ACC ^= __ptid;
 
     // Probability mass accumalated for
     // this run/path.
@@ -71,18 +71,8 @@ int main(void) {
     expected_sum += expected_value;
   }
 
-  /**
-   * @brief
-   * XOR of x ^ x = 0
-   * XOR of x ^ 0 = x
-   */
-  unsigned long long int __XOR_PTIDS = PTIDs[0] ^ PTIDs[1];
-  for (int i = 2; i < UNROLL; i++) {
-    __XOR_PTIDS ^= PTIDs[i];
-  }
-
   // COMMENT : assume(distinct(__ptid));
-  __ESBMC_assume(__XOR_PTIDS != 0);
+  __ESBMC_assume(XOR_ACC != 0);
   __ESBMC_assert(__path_id == path_index, "This must hold : Num Prob paths.");
 
   // ASSERT : This is a dummy assert.

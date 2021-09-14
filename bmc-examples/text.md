@@ -1,3 +1,11 @@
+```smt2
+(set-info :smt-lib-version 2.0)
+(set-option :print-success true)
+(set-option :produce-models true)
+    ...
+(check-sat)
+```
+
 ```bash
 * * *           ESBMC 6.7.0          * * *
 

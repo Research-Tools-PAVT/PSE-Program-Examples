@@ -1,20 +1,26 @@
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#define CALLS 10
 
 int main(void) {
 
   int a = __VERIFIER_nondet_uint() % 100000000,
       b = __VERIFIER_nondet_uint() % 100000000;
+  float prob = __VERIFIER_nondet_float();
+  int c = 0;
 
   while (a <= b) {
-    printf("\nLoop Start : %s : %d, %s, %d", "a", a, "b", b);
-    a = a + 1;
-    b = b - 1;
-    printf("Loop End : %s : %d, %s, %d", "a", a, "b", b);
-    // assert(a > b);
+    for (int i = 0; i < CALLS; i++) {
+      unsigned char flip =
+          ((float)(nondet_double() / (RAND_MAX))) >= prob ? 1 : 0;
+      c += (flip == 1) ? 1 : 0;
+      a = a + c;
+      b = b - c;
+    }
   }
 
-  // This assert must fail
   // /k:700 /recursionBound:700 /timeLimit:50000
-  assert(a < b - 1);
+  assert(a < b);
 }

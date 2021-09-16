@@ -1,27 +1,32 @@
-#include <math.h>
+// Corral Adaptation.
+// smack --no-verify --integer-encoding=bit-vector --float example.c -bpl
+// example.bpl
+#include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-#define FLIPS 10
-#define UNROLL 50
+#define FLIPS 5
+#define UNROLL 25
 
 int main(void) {
 
   // Forall Variables
-  int y = nondet_uint();
-  // float prob = nondet_float();
+  int y = __VERIFIER_nondet_uint();
+  float prob = __VERIFIER_nondet_float();
 
   // ASSUME : Forall Specific Assumes.
-  float prob = 0.450;
+  assume(prob > 0.0001);
+  assume(prob <= 1.0);
 
-  __ESBMC_assume(y > 0);
-  __ESBMC_assume(y <= 1000);
+  assume(y > 0);
+  assume(y <= 1000);
 
   // Program specific variables
   // We need to initalize these values.
-  long long int expected_sum = 0, path_index = -1;
+  long int expected_sum = 0, path_index = -1;
   float weight_acc = 0.80, sum_prob = 0.00;
   unsigned long long int ptids[UNROLL];
-  unsigned long long int UNROLLING = UNROLL;
+  long long int UNROLLING = UNROLL;
 
   // Unrolling UNROLL times atleast.
   while ((sum_prob <= weight_acc * prob) && UNROLLING--) {
@@ -36,13 +41,8 @@ int main(void) {
     // [x] ---- Simulate One Run ----
     // Unrolling FLIPS times always.
     for (int i = 0; i < FLIPS; i++) {
-      double x = nondet_double();
-      __ESBMC_assume(!isnan(x));
-      // __ESBMC_assume(x > 0);
-      // __ESBMC_assume(x <= 2147483647);
-      // printf("__ptid = %lld\n", __ptid);
-      // printf("x : %lf\n", x);
-      unsigned char flip = (((double)(x / 2147483647)) >= prob) ? 1 : 0;
+      unsigned char flip =
+          (((float)(__VERIFIER_nondet_double() / (RAND_MAX))) >= prob) ? 1 : 0;
       __ptid += (flip == 1) ? 1 << (63 - i) : 0 << (63 - i);
       product_prob *= (flip == 1) ? prob : (1 - prob);
       expected_value += (flip == 1) ? y : 0;
@@ -59,19 +59,11 @@ int main(void) {
   for (int i = 0; i < UNROLL; i++) {
     for (int j = 0; j < UNROLL; j++) {
       if (i < j)
-        __ESBMC_assume(ptids[i] != ptids[j]);
+        assume(ptids[i] != ptids[j]);
     }
   }
 
   unsigned long long int optimize_over = expected_sum - FLIPS * prob * y;
-  __ESBMC_assert(optimize_over != 0, "Optimization Maximize");
-  // End Assert must hold with the optimized values.
-  // ASSERT : if (prob <= 0.5) E(x) < 0.4 * n * y
-  //            else E(x) >= 0.6 * n * y
-  // if (prob <= 0.5) {
-  //   __ESBMC_assert(expected_sum < 0.40 * FLIPS * y, "Lesser");
-  // } else {
-  //   __ESBMC_assert(expected_sum >= 0.60 * FLIPS * y, "Greater");
-  // }
+  assert(optimize_over <= 0);
   return 0;
 }

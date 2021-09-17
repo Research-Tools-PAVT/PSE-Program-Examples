@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #define FLIPS 10
-#define UNROLL 50
+#define UNROLL 1000
 
 int main(void) {
 
@@ -20,11 +20,10 @@ int main(void) {
   // We need to initalize these values.
   long long int expected_sum = 0, path_index = -1;
   float weight_acc = 0.80, sum_prob = 0.00;
-  unsigned long long int ptids[UNROLL];
-  unsigned long long int UNROLLING = UNROLL;
+  unsigned long long int ptids[UNROLL], UNROLLING = UNROLL;
 
   // Unrolling UNROLL times atleast.
-  while ((sum_prob <= weight_acc * prob) && UNROLLING--) {
+  while (UNROLLING--) {
 
     // probabilistic paths taken so far.
     // ASSUME : Each "__ptid" must represents a different path.
@@ -36,13 +35,9 @@ int main(void) {
     // [x] ---- Simulate One Run ----
     // Unrolling FLIPS times always.
     for (int i = 0; i < FLIPS; i++) {
-      double x = nondet_double();
-      __ESBMC_assume(!isnan(x));
-      // __ESBMC_assume(x > 0);
-      // __ESBMC_assume(x <= 2147483647);
-      // printf("__ptid = %lld\n", __ptid);
-      // printf("x : %lf\n", x);
-      unsigned char flip = (((double)(x / 2147483647)) >= prob) ? 1 : 0;
+      // float x = nondet_float();
+      // __ESBMC_assume(!isnan(x));
+      unsigned char flip = nondet_bool();
       __ptid += (flip == 1) ? 1 << (63 - i) : 0 << (63 - i);
       product_prob *= (flip == 1) ? prob : (1 - prob);
       expected_value += (flip == 1) ? y : 0;
@@ -60,6 +55,8 @@ int main(void) {
     for (int j = 0; j < UNROLL; j++) {
       if (i < j)
         __ESBMC_assume(ptids[i] != ptids[j]);
+      else
+        break;
     }
   }
 
@@ -75,3 +72,5 @@ int main(void) {
   // }
   return 0;
 }
+
+// grep optimize_over file.smt2 | head -n 1 | cut -f2 -d"|"

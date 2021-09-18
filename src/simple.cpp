@@ -1,4 +1,4 @@
-#include "PSE.h"
+#include <PSE.h>
 #include <iostream>
 #include <klee/klee.h>
 #include <stdio.h>
@@ -12,7 +12,7 @@ int main() {
   if (a > b) {
     a = a + 1;
   } else {
-    if (a > 1000) {
+    if (a < b - 1) {
       b = b - 5;
     } else {
       a = a + 10;

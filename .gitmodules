@@ -1,0 +1,21 @@
+[submodule "Implementations/countminsketch"]
+	path = Implementations/countminsketch
+	url = https://github.com/alabid/countminsketch.git
+[submodule "Implementations/TarsosLSH"]
+	path = Implementations/TarsosLSH
+	url = https://github.com/JorenSix/TarsosLSH.git
+[submodule "Implementations/bloomfilter"]
+	path = Implementations/bloomfilter
+	url = https://github.com/mavam/libbf.git
+[submodule "Implementations/reservoir-sampling"]
+	path = Implementations/reservoir-sampling
+	url = https://github.com/alexpreynolds/sample
+[submodule "Implementations/Randomized-Matrix-Product"]
+	path = Implementations/Randomized-Matrix-Product
+	url = https://github.com/NumericalMax/Randomized-Matrix-Product
+[submodule "Implementations/Rand-MatrixMul-mcsc"]
+	path = Implementations/Rand-MatrixMul-mcsc
+	url = https://github.com/gnu-user/mcsc-6030-project.git
+[submodule "Implementations/ohtamanLSH"]
+	path = Implementations/ohtamanLSH
+	url = https://github.com/ohtaman/LSH

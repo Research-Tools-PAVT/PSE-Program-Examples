@@ -5,13 +5,34 @@
 \sumit{In 4 pages}
 
 \begin{algorithm}
-	\caption{Probabilistic Symbolic Execution Algorithm}
+	\caption{ProbChecker() // Main Algorithm}
+	\label{alg:pse_ext}
+	\SetAlgoLined
+	\small
+	%\KwResult{result}
+	% \While{true}{
+	set the current state to $\vec{T}$\;
+	$\vec{E}$ $\gets$ \textsc{SymbEx($\vec{T}$)}; \\
+    \For{$\vec{s}$ $\in$ $\vec{E}$}{
+    	$O$ $\gets$ \textsc{getMetrics}({$\vec{s}$})
+    }
+\end{algorithm}
+
+\begin{algorithm}
 	\label{alg:symb_ex}
 	\SetAlgoLined
 	\small
 	%\KwResult{result}
 	% \While{true}{
-	set the current state to $\vec{T_{sc}}$\;
-	$\vec{E}$ $\gets$ \textsc{getStateList($\vec{T_{sc}}$)}; \\
-	\For{$\vec{s}$ $\in$ $\vec{E}$}{\textsc{getSolve}({$\vec{s}$})}
+	set the current state to $\vec{T}$\;
+	\caption{\textsc{SymbEx}($\vec{T}$) // Symbolic Execution (\textsc{forall} settings)}
+\end{algorithm}
+
+\begin{algorithm}[t]
+	\SetAlgoLined
+	\small
+	%\KwResult{result}
+	$E \gets \emptyset$\;
+	\caption{\textsc{getMetrics}({$\vec{s}$})}
+	\label{alg:almostverify}
 \end{algorithm}

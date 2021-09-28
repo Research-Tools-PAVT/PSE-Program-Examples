@@ -4,12 +4,12 @@
 // --exit-on-error --optimize --disable-inlining --search=nurs:depth
 // --use-cex-cache %t1.bc
 
-#include "PSE.h"
+#include <PSE.h>
 #include <assert.h>
 #include <random>
 
 // #define SIZE 4
-int SIZE;
+int SIZE = 8;
 
 int partition(int arr[], int left, int right) {
   srand(time(NULL));
@@ -25,7 +25,7 @@ int partition(int arr[], int left, int right) {
   random = left + rand() % abs(right - left);
   pivot = arr[random];
 
-  for (int j = left; j <= right; j++) {
+  for (int j = left; j < right; j++) {
     // COMMENT : Fork Location.
     arr[j] < pivot ? left_count++ : right_count++;
   }
@@ -37,12 +37,12 @@ int partition(int arr[], int left, int right) {
   return outcome;
 }
 
-int concrete[] = {2, 28, 95, 96, 47, 10, 12, 3, 36, 58};
+int concrete[] = {2, 28, 95, 96, 47, 454, 65, -56, 7765, 234};
 
 int main() {
   int arr[SIZE];
-  klee_make_symbolic(&SIZE, sizeof(int), "size_array");
-  klee_assume(SIZE > 10 && SIZE <= 50);
+  // klee_make_symbolic(&SIZE, sizeof(int), "size_array");
+  // klee_assume(SIZE == 5);
   klee_make_symbolic(arr, sizeof(arr), "forall_array");
 
   // for (auto i = 0; i < SIZE; i++)

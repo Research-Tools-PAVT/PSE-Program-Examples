@@ -4,7 +4,7 @@
 // --exit-on-error --optimize --disable-inlining --search=nurs:depth
 // --use-cex-cache %t1.bc
 
-#include "PSE.h"
+#include <PSE.h>
 #include <assert.h>
 #include <random>
 
@@ -22,7 +22,7 @@
  * E[count] = n * log(n) for any given random run.
  */
 
-int SIZE = 5;
+int SIZE = 10;
 int count = 0, counter = 0, swap_count = 0;
 
 int partition(int arr[], int left, int right) {

@@ -116,6 +116,9 @@ for elems in results:
         trueExpr = elems.get("Branch Predicate", "UNK")
         falseExpr = elems.get("Negate Predicate", "UNK")
 
+        if trueExpr == "UNK":
+            print(f"Expr : {elems} \n\n")
+
         # Added the queries so for to reach this state in PTree.
         node.trueQuerySet = elems.get("trueQuery", [])
         node.falseQuerySet = elems.get("falseQuery", [])
@@ -216,11 +219,11 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = data
-            processExpressionImap(imapsData, variables)
+            # processExpressionImap(imapsData, variables)
             # All query lead to this particular node.
             # KLEE Assumes also come-in at this point.
             collection["variables"] = variables
-            collection["IMap"] = imapsData
+            # collection["IMap"] = imapsData
 
         # Print the full query even for the first Node.
         # whatever the case be

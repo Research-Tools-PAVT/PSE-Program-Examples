@@ -6,22 +6,22 @@ clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp
 
-klee --libc=uclibc --exit-on-error \
---optimize --disable-inlining --search=nurs:depth \
---use-cex-cache --set-ptree-dump --write-kqueries ${example}.bc --set-ptree-dump 
+klee --exit-on-error \
+--disable-inlining --search=nurs:depth \
+--set-ptree-dump --write-kqueries ${example}.bc --set-ptree-dump 
 
-for test in klee-last/*.ktest; do
-    echo " ---------------- "
-    echo "   $test" | lolcat -a
-    echo " ---------------- "
-    ktest-tool ${test}
+# for test in klee-last/*.ktest; do
+#     echo " ---------------- "
+#     echo "   $test" | lolcat -a
+#     echo " ---------------- "
+#     ktest-tool ${test}
 
-    clang++-10 -std=c++17 -march=native \
-    -I $HOME/klee/include/ -I include \
-    -L $HOME/klee/lib/ src/${example}.cpp -lkleeRuntest
+#     clang++-10 -std=c++17 -march=native \
+#     -I $HOME/klee/include/ -I include \
+#     -L $HOME/klee/lib/ src/${example}.cpp -lkleeRuntest
 
-    KTEST_FILE=${test} ./a.out 
-done 
+#     KTEST_FILE=${test} ./a.out 
+# done 
 
 rm -rf ${example}_klee_out/
 mkdir ${example}_klee_out/

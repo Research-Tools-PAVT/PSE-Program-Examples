@@ -1,0 +1,42 @@
+BLDFLAGS                  = -Wall -Wextra -pedantic -std=c99
+CFLAGS                    = -D__STDC_CONSTANT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE=1 -O3
+CDFLAGS                   = -D__STDC_CONSTANT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE=1 -DDEBUG=1 -g -O0 -fno-inline
+INCLUDES                 := -iquote./include
+OBJDIR                    = objects
+SAMPLELIB                := $(CURDIR)/sample-library.a
+TEST                     := $(CURDIR)/test
+PROG                      = sample
+SOURCE                    = src/bin/sample.c
+CC 						  = clang-10
+all: mt19937 sample-library build
+
+mt19937:
+	mkdir -p $(OBJDIR) && $(CC) $(BLDFLAGS) $(CFLAGS) -c src/sample-library/mt19937.c -o $(OBJDIR)/mt19937.o $(INCLUDES)
+
+sample-library: mt19937
+	$(AR) rcs $(SAMPLELIB) $(OBJDIR)/mt19937.o
+
+build: sample-library
+	$(CC) $(BLDFLAGS) $(CFLAGS) -c $(SOURCE) -o $(OBJDIR)/$(PROG).o $(INCLUDES)
+	$(CC) $(BLDFLAGS) $(CFLAGS) $(OBJDIR)/$(PROG).o -o $(PROG) $(SAMPLELIB)
+
+debug: sample-library
+	$(CC) $(BLDFLAGS) $(CDFLAGS) -c $(SOURCE) -o $(OBJDIR)/$(PROG).o $(INCLUDES)
+	$(CC) $(BLDFLAGS) $(CDFLAGS) $(OBJDIR)/$(PROG).o -o $(PROG) $(SAMPLELIB)
+
+check: build
+	$(CURDIR)/$(PROG) README.md -d 123 | diff - $(TEST)/README.md.seed123.txt > /dev/null || (echo "check: sample test failed on seed 123" && exit 1)
+	$(CURDIR)/$(PROG) README.md -d 234 | diff - $(TEST)/README.md.seed234.txt > /dev/null || (echo "check: sample test failed on seed 234" && exit 1)
+	$(CURDIR)/$(PROG) README.md -d 987 | diff - $(TEST)/README.md.seed987.txt > /dev/null || (echo "check: sample test failed on seed 987" && exit 1)
+	@echo "sample tests passed"
+
+clean:
+	rm -f $(PROG)
+	rm -rf $(OBJDIR)
+	rm -f $(SAMPLELIB)
+	rm -rf *~
+	rm -rf *.bc klee-*
+
+klee:
+	$(CC) -I $(HOME)/klee/include -I include -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone $(CDFLAGS) -c -emit-llvm $(SOURCE) -o sample.bc
+	klee --exit-on-error --optimize --libc=uclibc --posix-runtime --search=nurs:depth --set-ptree-dump --write-kqueries sample.bc --cstdio testfile.txt

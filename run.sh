@@ -8,7 +8,7 @@ clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 
 klee --exit-on-error \
 --disable-inlining --search=nurs:depth \
---set-ptree-dump --write-kqueries ${example}.bc --set-ptree-dump 
+--set-ptree-dump --write-kqueries ${example}.bc
 
 # for test in klee-last/*.ktest; do
 #     echo " ---------------- "

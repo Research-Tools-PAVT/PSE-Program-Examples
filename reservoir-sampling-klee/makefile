@@ -38,5 +38,6 @@ clean:
 	rm -rf *.bc klee-*
 
 klee:
+	rm -rf *.bc klee-* *~
 	$(CC) -I $(HOME)/klee/include -I include -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone $(CDFLAGS) -c -emit-llvm $(SOURCE) -o sample.bc
-	klee --exit-on-error --optimize --libc=uclibc --posix-runtime --search=nurs:depth --set-ptree-dump --write-kqueries sample.bc --cstdio testfile.txt
+	klee -max-forks=10 --optimize --libc=uclibc --posix-runtime --search=nurs:depth --set-ptree-dump --write-kqueries --write-smt2s sample.bc --cstdio testfile.txt

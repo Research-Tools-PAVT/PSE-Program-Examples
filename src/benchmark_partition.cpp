@@ -8,10 +8,9 @@
 #include <assert.h>
 #include <random>
 
-// #define SIZE 4
-int SIZE = 8;
+#define SIZE 12
 
-int partition(int arr[], int left, int right) {
+int partition(int arr[]) {
   srand(time(NULL));
 
   int random, pivot, outcome, left_count = 0, right_count = 0;
@@ -19,13 +18,15 @@ int partition(int arr[], int left, int right) {
   klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
   klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
   klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
-  klee_make_symbolic(&pivot, sizeof(pivot), "pivot_prob_sym");
+  make_pse_symbolic(&pivot, sizeof(pivot), "pivot_prob_sym", 0, SIZE - 1);
 
   // pivot element
-  random = left + rand() % abs(right - left);
-  pivot = arr[random];
+  if (arr[0] > 1000) {
+    arr[0] = pivot;
+    klee_assume(arr[random] == pivot);
+  }
 
-  for (int j = left; j < right; j++) {
+  for (int j = 0; j < SIZE - 1; j++) {
     // COMMENT : Fork Location.
     arr[j] < pivot ? left_count++ : right_count++;
   }
@@ -33,6 +34,7 @@ int partition(int arr[], int left, int right) {
   outcome = left_count < (right_count - 1) ? (right_count - 1) : left_count;
 
   klee_dump_symbolic_details(&outcome, "outcome_sym");
+  klee_dump_symbolic_details(&pivot, "pivot_sym");
 
   return outcome;
 }
@@ -44,11 +46,8 @@ int main() {
   // klee_make_symbolic(&SIZE, sizeof(int), "size_array");
   // klee_assume(SIZE == 5);
   klee_make_symbolic(arr, sizeof(arr), "forall_array");
-
   // for (auto i = 0; i < SIZE; i++)
   //   arr[i] = concrete[i];
-
-  partition(arr, 0, SIZE - 1);
-
+  partition(arr);
   return 0;
 }

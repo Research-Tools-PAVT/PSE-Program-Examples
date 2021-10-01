@@ -7,7 +7,7 @@ clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 -disable-O0-optnone $SRC_PATH/${example}.cpp
 
 klee --exit-on-error \
---disable-inlining --search=nurs:depth \
+--disable-inlining --max-forks=50 --search=nurs:depth \
 --set-ptree-dump --write-kqueries ${example}.bc
 
 # for test in klee-last/*.ktest; do

@@ -1,0 +1,7 @@
+// Correctness for the case where the master pays
+// (final parity of number of number of "agrees"s matches that of N)
+(pay=0) | P<=0.5 [ F "done" & parity=func(mod, N, 2) ];
+
+// Correctness for the case where a cryptographer pays
+// (final parity of number of number of "agrees"s does not match that of N)
+(pay>0) | Pmax<=0.9 [ F "done" & parity!=func(mod, N, 2) ];

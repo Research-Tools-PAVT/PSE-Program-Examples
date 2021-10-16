@@ -43,9 +43,9 @@ module crypt1
 endmodule
 
 // construct further cryptographers with renaming
-module crypt2 = crypt1 [ coin1=coin2, s1=s2, agree1=agree2, p1=p2, coin2=coin3 ] endmodule
-module crypt3 = crypt1 [ coin1=coin3, s1=s3, agree1=agree3, p1=p3, coin2=coin5 ] endmodule
-module crypt4 = crypt1 [ coin1=coin4, s1=s4, agree1=agree4, p1=p4, coin2=coin4 ] endmodule
+module crypt2 = crypt1 [ coin1=coin2, s1=s2, agree1=agree2, p1=p2, coin2=coin4 ] endmodule
+module crypt3 = crypt1 [ coin1=coin3, s1=s3, agree1=agree3, p1=p3, coin2=coin3 ] endmodule
+module crypt4 = crypt1 [ coin1=coin4, s1=s4, agree1=agree4, p1=p4, coin2=coin5 ] endmodule
 module crypt5 = crypt1 [ coin1=coin5, s1=s5, agree1=agree5, p1=p5, coin2=coin1 ] endmodule
 
 // set of initial states

@@ -1,0 +1,47 @@
+digraph partition_dtmc {
+	subgraph pivot {
+	pivot_s0[ label="l"];
+	pivot_e0[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e1[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e2[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e3[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e4[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e5[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e6[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e7[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e8[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e9[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_e10[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	pivot_s0 -> pivot_e0 [label="end"];
+	pivot_e0 -> pivot_s0;
+	pivot_s0 -> pivot_e1 [label="flip1"];
+	pivot_e1 -> pivot_s0;
+	pivot_s0 -> pivot_e2 [label="flip10"];
+	pivot_e2 -> pivot_s0;
+	pivot_e2 -> pivot_s0;
+	pivot_s0 -> pivot_e3 [label="flip2"];
+	pivot_e3 -> pivot_s0;
+	pivot_e3 -> pivot_s0;
+	pivot_s0 -> pivot_e4 [label="flip3"];
+	pivot_e4 -> pivot_s0;
+	pivot_e4 -> pivot_s0;
+	pivot_s0 -> pivot_e5 [label="flip4"];
+	pivot_e5 -> pivot_s0;
+	pivot_e5 -> pivot_s0;
+	pivot_s0 -> pivot_e6 [label="flip5"];
+	pivot_e6 -> pivot_s0;
+	pivot_e6 -> pivot_s0;
+	pivot_s0 -> pivot_e7 [label="flip6"];
+	pivot_e7 -> pivot_s0;
+	pivot_e7 -> pivot_s0;
+	pivot_s0 -> pivot_e8 [label="flip7"];
+	pivot_e8 -> pivot_s0;
+	pivot_e8 -> pivot_s0;
+	pivot_s0 -> pivot_e9 [label="flip8"];
+	pivot_e9 -> pivot_s0;
+	pivot_e9 -> pivot_s0;
+	pivot_s0 -> pivot_e10 [label="flipP"];
+	pivot_e10 -> pivot_s0;
+	}
+
+}

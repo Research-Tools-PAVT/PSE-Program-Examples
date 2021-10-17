@@ -1,0 +1,837 @@
+{
+    "actions": [
+        {
+            "name": "completed"
+        },
+        {
+            "name": "piv1"
+        },
+        {
+            "name": "piv10"
+        },
+        {
+            "name": "piv2"
+        },
+        {
+            "name": "piv3"
+        },
+        {
+            "name": "piv4"
+        },
+        {
+            "name": "piv5"
+        },
+        {
+            "name": "piv6"
+        },
+        {
+            "name": "piv7"
+        },
+        {
+            "name": "piv8"
+        },
+        {
+            "name": "piv9"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "action": "completed",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "rewardmodel_pivot <- ((pivot > 0) ? 1/2 : 0)",
+                                    "ref": "rewardmodel_pivot",
+                                    "value": {
+                                        "else": 0,
+                                        "if": {
+                                            "left": "pivot",
+                                            "op": ">",
+                                            "right": 0
+                                        },
+                                        "op": "ite",
+                                        "then": 0.5
+                                    }
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(pivot > 0)",
+                        "exp": {
+                            "left": "pivot",
+                            "op": ">",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv1",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 0",
+                                    "ref": "left",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "right <- 9",
+                                    "ref": "right",
+                                    "value": 9
+                                },
+                                {
+                                    "comment": "pivot <- 1",
+                                    "ref": "pivot",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv10",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 9",
+                                    "ref": "left",
+                                    "value": 9
+                                },
+                                {
+                                    "comment": "right <- 0",
+                                    "ref": "right",
+                                    "value": 0
+                                },
+                                {
+                                    "comment": "pivot <- 10",
+                                    "ref": "pivot",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/20",
+                                "exp": 0.05
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv2",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 1",
+                                    "ref": "left",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "right <- 8",
+                                    "ref": "right",
+                                    "value": 8
+                                },
+                                {
+                                    "comment": "pivot <- 2",
+                                    "ref": "pivot",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 2",
+                                    "ref": "left",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "right <- 7",
+                                    "ref": "right",
+                                    "value": 7
+                                },
+                                {
+                                    "comment": "pivot <- 3",
+                                    "ref": "pivot",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv4",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 3",
+                                    "ref": "left",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "right <- 6",
+                                    "ref": "right",
+                                    "value": 6
+                                },
+                                {
+                                    "comment": "pivot <- 4",
+                                    "ref": "pivot",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv5",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 4",
+                                    "ref": "left",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "right <- 5",
+                                    "ref": "right",
+                                    "value": 5
+                                },
+                                {
+                                    "comment": "pivot <- 5",
+                                    "ref": "pivot",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv6",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 5",
+                                    "ref": "left",
+                                    "value": 5
+                                },
+                                {
+                                    "comment": "right <- 4",
+                                    "ref": "right",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "pivot <- 6",
+                                    "ref": "pivot",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv7",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 6",
+                                    "ref": "left",
+                                    "value": 6
+                                },
+                                {
+                                    "comment": "right <- 3",
+                                    "ref": "right",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "pivot <- 7",
+                                    "ref": "pivot",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/10",
+                                "exp": 0.1
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv8",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 7",
+                                    "ref": "left",
+                                    "value": 7
+                                },
+                                {
+                                    "comment": "right <- 2",
+                                    "ref": "right",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "pivot <- 8",
+                                    "ref": "pivot",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/5",
+                                "exp": 0.2
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "piv9",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "left <- 8",
+                                    "ref": "left",
+                                    "value": 8
+                                },
+                                {
+                                    "comment": "right <- 1",
+                                    "ref": "right",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "pivot <- 9",
+                                    "ref": "pivot",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/20",
+                                "exp": 0.05
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(((pivot = 0) & (left = 0)) & (right = 0))",
+                        "exp": {
+                            "left": {
+                                "left": {
+                                    "left": "pivot",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "left",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "state1 <- (pivot = 2)",
+                            "ref": "state1",
+                            "value": {
+                                "left": "pivot",
+                                "op": "=",
+                                "right": 2
+                            }
+                        },
+                        {
+                            "comment": "state2 <- (right = 3)",
+                            "ref": "state2",
+                            "value": {
+                                "left": "right",
+                                "op": "=",
+                                "right": 3
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "main",
+            "variables": []
+        }
+    ],
+    "constants": [
+        {
+            "name": "N",
+            "type": "int",
+            "value": 10
+        },
+        {
+            "name": "choice_prob",
+            "type": "int",
+            "value": {
+                "left": 1,
+                "op": "/",
+                "right": 10
+            }
+        }
+    ],
+    "features": [
+        "derived-operators"
+    ],
+    "jani-version": 1,
+    "name": "partition",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "accumulate": [
+                        "steps"
+                    ],
+                    "exp": "rewardmodel_pivot",
+                    "op": "Emin",
+                    "reach": {
+                        "left": "pivot",
+                        "op": ">",
+                        "right": 0
+                    }
+                }
+            },
+            "name": "1"
+        }
+    ],
+    "restrict-initial": {
+        "exp": {
+            "left": {
+                "left": {
+                    "left": "pivot",
+                    "op": "=",
+                    "right": 0
+                },
+                "op": "∧",
+                "right": {
+                    "left": "left",
+                    "op": "=",
+                    "right": 0
+                }
+            },
+            "op": "∧",
+            "right": {
+                "left": "right",
+                "op": "=",
+                "right": 0
+            }
+        }
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "main"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "completed",
+                "synchronise": [
+                    "completed"
+                ]
+            },
+            {
+                "result": "piv1",
+                "synchronise": [
+                    "piv1"
+                ]
+            },
+            {
+                "result": "piv10",
+                "synchronise": [
+                    "piv10"
+                ]
+            },
+            {
+                "result": "piv2",
+                "synchronise": [
+                    "piv2"
+                ]
+            },
+            {
+                "result": "piv3",
+                "synchronise": [
+                    "piv3"
+                ]
+            },
+            {
+                "result": "piv4",
+                "synchronise": [
+                    "piv4"
+                ]
+            },
+            {
+                "result": "piv5",
+                "synchronise": [
+                    "piv5"
+                ]
+            },
+            {
+                "result": "piv6",
+                "synchronise": [
+                    "piv6"
+                ]
+            },
+            {
+                "result": "piv7",
+                "synchronise": [
+                    "piv7"
+                ]
+            },
+            {
+                "result": "piv8",
+                "synchronise": [
+                    "piv8"
+                ]
+            },
+            {
+                "result": "piv9",
+                "synchronise": [
+                    "piv9"
+                ]
+            }
+        ]
+    },
+    "type": "dtmc",
+    "variables": [
+        {
+            "initial-value": false,
+            "name": "state1",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "state2",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": 0,
+            "name": "rewardmodel_pivot",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "name": "left",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 9
+            }
+        },
+        {
+            "name": "right",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 9
+            }
+        },
+        {
+            "name": "pivot",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 10
+            }
+        }
+    ]
+}

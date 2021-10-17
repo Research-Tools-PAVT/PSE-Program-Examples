@@ -8,3 +8,13 @@ $ storm --jani jobs.15-3.v1.jani --janiproperty --exact --timemem --verbose --pr
 # Dinning Cryptographers.
 $ storm --prism dinning_crypt.prism --prop dinning_crypt.pctl
 ```
+
+## Partiton Example
+
+```bash
+$ storm-conv --prism partition_dtmc.pm --prop partition_dtmc.pctl --tojani partition_dtmc.jani
+$ storm --jani partition_dtmc.jani --janiproperty --exact --timemem --verbose --exportjanidot model.dot
+
+# less verbose
+$ storm --jani partition_dtmc.jani --janiproperty --exact --sound --exportjanidot model.dot
+```

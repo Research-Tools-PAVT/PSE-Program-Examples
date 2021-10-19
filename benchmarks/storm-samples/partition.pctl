@@ -1,1 +1,8 @@
-R{"pivot"}=? [ F pivot>0 ];
+Pmax=? [ F state=7 ];
+Pmax=? [ F state=3&sumvalue=4 ];
+Pmax=? [ F state=6&sumvalue>10 ];
+Pmin=? [ F state=7&sumvalue=5 ];
+Pmin=? [ F state=3&sumvalue=4 ];
+Pmin=? [ F state=10&sumvalue>6 ];
+
+Rmin=? [ F state=16&sumvalue=7 ];

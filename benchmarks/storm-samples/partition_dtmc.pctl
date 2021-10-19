@@ -1,4 +1,5 @@
 R{"pivot_reach"}=? [ F s=11 ];
+R{"maxval_reach"}=? [ F maxval=8 ];
 
 Pmax=? [ F s=11&maxval=5 ];
 Pmax=? [ F s=11&maxval=6 ];
@@ -11,3 +12,4 @@ Pmax=? [ F s=11&maxval>6 ];
 Pmax=? [ F s=11&maxval>7 ];
 Pmax=? [ F s=11&maxval>8 ];
 Pmax=? [ F s=11&maxval>9 ];
+Pmin=? [ F s=11&maxval>8 ];

@@ -31,7 +31,7 @@
             "name": "flip8"
         },
         {
-            "name": "flipP"
+            "name": "flip9"
         }
     ],
     "automata": [
@@ -157,6 +157,34 @@
                         {
                             "assignments": [
                                 {
+                                    "comment": "s <- 2",
+                                    "ref": "s",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(s = 0)",
+                        "exp": {
+                            "left": "s",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "flip3",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
                                     "comment": "s <- 3",
                                     "ref": "s",
                                     "value": 3
@@ -194,7 +222,7 @@
                     "location": "l"
                 },
                 {
-                    "action": "flip3",
+                    "action": "flip4",
                     "destinations": [
                         {
                             "assignments": [
@@ -236,7 +264,7 @@
                     "location": "l"
                 },
                 {
-                    "action": "flip4",
+                    "action": "flip5",
                     "destinations": [
                         {
                             "assignments": [
@@ -273,68 +301,6 @@
                             "left": "s",
                             "op": "=",
                             "right": 3
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "flip5",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "s <- 11",
-                                    "ref": "s",
-                                    "value": 11
-                                },
-                                {
-                                    "comment": "pivot <- 5",
-                                    "ref": "pivot",
-                                    "value": 5
-                                },
-                                {
-                                    "comment": "maxval <- 5",
-                                    "ref": "maxval",
-                                    "value": 5
-                                }
-                            ],
-                            "location": "l",
-                            "probability": {
-                                "comment": "1/2",
-                                "exp": 0.5
-                            }
-                        },
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "s <- 11",
-                                    "ref": "s",
-                                    "value": 11
-                                },
-                                {
-                                    "comment": "pivot <- 6",
-                                    "ref": "pivot",
-                                    "value": 6
-                                },
-                                {
-                                    "comment": "maxval <- 5",
-                                    "ref": "maxval",
-                                    "value": 5
-                                }
-                            ],
-                            "location": "l",
-                            "probability": {
-                                "comment": "1/2",
-                                "exp": 0.5
-                            }
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(s = 4)",
-                        "exp": {
-                            "left": "s",
-                            "op": "=",
-                            "right": 4
                         }
                     },
                     "location": "l"
@@ -474,6 +440,68 @@
                                     "value": 11
                                 },
                                 {
+                                    "comment": "pivot <- 5",
+                                    "ref": "pivot",
+                                    "value": 5
+                                },
+                                {
+                                    "comment": "maxval <- 5",
+                                    "ref": "maxval",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s <- 11",
+                                    "ref": "s",
+                                    "value": 11
+                                },
+                                {
+                                    "comment": "pivot <- 6",
+                                    "ref": "pivot",
+                                    "value": 6
+                                },
+                                {
+                                    "comment": "maxval <- 5",
+                                    "ref": "maxval",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(s = 4)",
+                        "exp": {
+                            "left": "s",
+                            "op": "=",
+                            "right": 4
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "flip9",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "s <- 11",
+                                    "ref": "s",
+                                    "value": 11
+                                },
+                                {
                                     "comment": "pivot <- 7",
                                     "ref": "pivot",
                                     "value": 7
@@ -521,34 +549,6 @@
                             "left": "s",
                             "op": "=",
                             "right": 5
-                        }
-                    },
-                    "location": "l"
-                },
-                {
-                    "action": "flipP",
-                    "destinations": [
-                        {
-                            "assignments": [
-                                {
-                                    "comment": "s <- 2",
-                                    "ref": "s",
-                                    "value": 2
-                                }
-                            ],
-                            "location": "l",
-                            "probability": {
-                                "comment": "1/2",
-                                "exp": 0.5
-                            }
-                        }
-                    ],
-                    "guard": {
-                        "comment": "(s = 0)",
-                        "exp": {
-                            "left": "s",
-                            "op": "=",
-                            "right": 0
                         }
                     },
                     "location": "l"
@@ -612,24 +612,14 @@
                     "op": "initial"
                 },
                 "values": {
-                    "exp": {
-                        "left": true,
-                        "op": "U",
-                        "right": {
-                            "left": {
-                                "left": "s",
-                                "op": "=",
-                                "right": 11
-                            },
-                            "op": "∧",
-                            "right": {
-                                "left": "maxval",
-                                "op": "=",
-                                "right": 5
-                            }
-                        }
-                    },
-                    "op": "Pmax"
+                    "accumulate": [],
+                    "exp": "maxval_reach",
+                    "op": "Emin",
+                    "reach": {
+                        "left": "maxval",
+                        "op": "=",
+                        "right": 8
+                    }
                 }
             },
             "name": "2"
@@ -655,7 +645,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": "=",
-                                "right": 6
+                                "right": 5
                             }
                         }
                     },
@@ -685,7 +675,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": "=",
-                                "right": 7
+                                "right": 6
                             }
                         }
                     },
@@ -715,7 +705,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": "=",
-                                "right": 8
+                                "right": 7
                             }
                         }
                     },
@@ -745,7 +735,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": "=",
-                                "right": 9
+                                "right": 8
                             }
                         }
                     },
@@ -774,8 +764,8 @@
                             "op": "∧",
                             "right": {
                                 "left": "maxval",
-                                "op": ">",
-                                "right": 5
+                                "op": "=",
+                                "right": 9
                             }
                         }
                     },
@@ -805,7 +795,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": ">",
-                                "right": 6
+                                "right": 5
                             }
                         }
                     },
@@ -835,7 +825,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": ">",
-                                "right": 7
+                                "right": 6
                             }
                         }
                     },
@@ -865,7 +855,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": ">",
-                                "right": 8
+                                "right": 7
                             }
                         }
                     },
@@ -895,7 +885,7 @@
                             "right": {
                                 "left": "maxval",
                                 "op": ">",
-                                "right": 9
+                                "right": 8
                             }
                         }
                     },
@@ -903,6 +893,66 @@
                 }
             },
             "name": "11"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 11
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "maxval",
+                                "op": ">",
+                                "right": 9
+                            }
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "12"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "s",
+                                "op": "=",
+                                "right": 11
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "maxval",
+                                "op": ">",
+                                "right": 8
+                            }
+                        }
+                    },
+                    "op": "Pmin"
+                }
+            },
+            "name": "13"
         }
     ],
     "restrict-initial": {
@@ -976,9 +1026,9 @@
                 ]
             },
             {
-                "result": "flipP",
+                "result": "flip9",
                 "synchronise": [
-                    "flipP"
+                    "flip9"
                 ]
             }
         ]
@@ -988,6 +1038,12 @@
         {
             "initial-value": 0,
             "name": "pivot_reach",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0,
+            "name": "maxval_reach",
             "transient": true,
             "type": "real"
         },

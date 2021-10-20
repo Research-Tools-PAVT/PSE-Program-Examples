@@ -1,6 +1,9 @@
+// QuickSort Random Partition.
+// Set upper bound for the elements of the array
+// storm --jani partition.jani --janiproperty --exact --sound --timemem --verbose --progress 3 --exportjanidot model.dot
+// storm-conv --prism partition.pm --prop partition.pctl --tojani partition.jani
 dtmc
 
-// Set upper bound for the elements of the array
 const int N = 10000;
 
 module partiton
@@ -66,6 +69,10 @@ endmodule
 formula sumvalue = 1 * value1 + 2 * value2 + 4 * value3 + 8 * value5;
 formula win_count = max(left, right);
 
-rewards 
-    win_count=4 | win_count=3 : 1;
+rewards "win_count"
+    win_count=4 : 1;
+endrewards
+
+rewards "sumvalue"
+    sumvalue=10 | sumvalue=7 | sumvalue=8 | sumvalue=11 : 2;
 endrewards

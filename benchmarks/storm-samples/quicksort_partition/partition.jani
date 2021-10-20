@@ -914,17 +914,75 @@
                     "name": "l",
                     "transient-values": [
                         {
-                            "comment": "default_reward_model <- ((left > right) ? 1 : 0)",
-                            "ref": "default_reward_model",
+                            "comment": "rewardmodel_win_count <- ((win_count = 4) ? 1 : 0)",
+                            "ref": "rewardmodel_win_count",
                             "value": {
                                 "else": 0,
                                 "if": {
-                                    "left": "left",
-                                    "op": ">",
-                                    "right": "right"
+                                    "left": {
+                                        "args": [],
+                                        "function": "win_count",
+                                        "op": "call"
+                                    },
+                                    "op": "=",
+                                    "right": 4
                                 },
                                 "op": "ite",
                                 "then": 1
+                            }
+                        },
+                        {
+                            "comment": "rewardmodel_sumvalue <- (((((sumvalue = 10) | (sumvalue = 7)) | (sumvalue = 8)) | (sumvalue = 11)) ? 2 : 0)",
+                            "ref": "rewardmodel_sumvalue",
+                            "value": {
+                                "else": 0,
+                                "if": {
+                                    "left": {
+                                        "left": {
+                                            "left": {
+                                                "args": [],
+                                                "function": "sumvalue",
+                                                "op": "call"
+                                            },
+                                            "op": "=",
+                                            "right": 11
+                                        },
+                                        "op": "∨",
+                                        "right": {
+                                            "left": {
+                                                "args": [],
+                                                "function": "sumvalue",
+                                                "op": "call"
+                                            },
+                                            "op": "=",
+                                            "right": 7
+                                        }
+                                    },
+                                    "op": "∨",
+                                    "right": {
+                                        "left": {
+                                            "left": {
+                                                "args": [],
+                                                "function": "sumvalue",
+                                                "op": "call"
+                                            },
+                                            "op": "=",
+                                            "right": 8
+                                        },
+                                        "op": "∨",
+                                        "right": {
+                                            "left": {
+                                                "args": [],
+                                                "function": "sumvalue",
+                                                "op": "call"
+                                            },
+                                            "op": "=",
+                                            "right": 10
+                                        }
+                                    }
+                                },
+                                "op": "ite",
+                                "then": 2
                             }
                         }
                     ]
@@ -1434,7 +1492,13 @@
     "variables": [
         {
             "initial-value": 0,
-            "name": "default_reward_model",
+            "name": "rewardmodel_win_count",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0,
+            "name": "rewardmodel_sumvalue",
             "transient": true,
             "type": "real"
         },

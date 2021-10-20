@@ -1,0 +1,20 @@
+digraph program_graph {
+	subgraph main {
+	main_s0[ label="l2"];
+	main_s1[ label="l1"];
+	main_s2[ label="l0"];
+	main_e0[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	main_e1[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	main_e2[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	main_e3[ label="" , shape=circle, width=.2, style=filled, fillcolor="black"];
+	main_s0 -> main_e0 [label=""];
+	main_e0 -> main_s2;
+	main_s1 -> main_e1 [label=""];
+	main_e1 -> main_s1;
+	main_s2 -> main_e2 [label=""];
+	main_e2 -> main_s0;
+	main_s2 -> main_e3 [label=""];
+	main_e3 -> main_s1;
+	}
+
+}

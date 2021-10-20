@@ -1,0 +1,31 @@
+// QuickSort Random Partition.
+// storm-pgcl --pgclfile partition.pgcl --to-jani partition.pg.jani --prop partition.props 
+
+function binsearch() {
+
+    var {
+        int mid := 0;
+        int left := 0;
+        int right := 10;
+        int val := 0;
+        int arr[] := {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    }
+    
+    mid := unif(left, right);
+
+    if (left < right) {
+        if (arr[mid] < val) {
+            left := min(mid+1, right);
+            call binsearch();
+        } else {
+            if (arr[mid] > val) {
+                right := max(mid-1, left);
+                call binsearch();
+            } else {
+                skip;
+            }
+        }
+    } else {
+        skip;
+    }
+}

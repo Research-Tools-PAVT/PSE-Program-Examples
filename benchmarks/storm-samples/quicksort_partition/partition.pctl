@@ -1,0 +1,8 @@
+Pmax=? [ F state=16 ];
+Pmax=? [ F state=16&sumvalue=4 ];
+Pmax=? [ F state=16&sumvalue>10 ];
+Pmin=? [ F state=16&sumvalue=5 ];
+Pmin=? [ F state=16&sumvalue=4 ];
+Pmin=? [ F state=16&sumvalue>6 ];
+
+Pmin=? [ F state=16&win_count=5 ];

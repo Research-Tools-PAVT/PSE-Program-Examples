@@ -1,0 +1,1512 @@
+{
+    "actions": [
+        {
+            "name": "done"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 16",
+                                    "ref": "state",
+                                    "value": 16
+                                },
+                                {
+                                    "comment": "right <- (right + 1)",
+                                    "ref": "right",
+                                    "value": {
+                                        "left": "right",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 10) & (value5 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 10
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value5",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 1",
+                                    "ref": "state",
+                                    "value": 1
+                                },
+                                {
+                                    "comment": "value1 <- -1",
+                                    "ref": "value1",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((pivot >= 0) & (state = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "pivot",
+                                "op": "≥",
+                                "right": 0
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 2",
+                                    "ref": "state",
+                                    "value": 2
+                                },
+                                {
+                                    "comment": "value1 <- 1",
+                                    "ref": "value1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 3",
+                                    "ref": "state",
+                                    "value": 3
+                                },
+                                {
+                                    "comment": "value1 <- 0",
+                                    "ref": "value1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 1) & (value1 = -(1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 1
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value1",
+                                "op": "=",
+                                "right": -1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 12",
+                                    "ref": "state",
+                                    "value": 12
+                                },
+                                {
+                                    "comment": "left <- (left + 1)",
+                                    "ref": "left",
+                                    "value": {
+                                        "left": "left",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value2 <- -1",
+                                    "ref": "value2",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 2) & (value1 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value1",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 12",
+                                    "ref": "state",
+                                    "value": 12
+                                },
+                                {
+                                    "comment": "right <- (right + 1)",
+                                    "ref": "right",
+                                    "value": {
+                                        "left": "right",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value2 <- -1",
+                                    "ref": "value2",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 3) & (value1 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value1",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 4",
+                                    "ref": "state",
+                                    "value": 4
+                                },
+                                {
+                                    "comment": "value2 <- 1",
+                                    "ref": "value2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 5",
+                                    "ref": "state",
+                                    "value": 5
+                                },
+                                {
+                                    "comment": "value2 <- 0",
+                                    "ref": "value2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 12) & (value2 = -(1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 12
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value2",
+                                "op": "=",
+                                "right": -1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 13",
+                                    "ref": "state",
+                                    "value": 13
+                                },
+                                {
+                                    "comment": "left <- (left + 1)",
+                                    "ref": "left",
+                                    "value": {
+                                        "left": "left",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value3 <- -1",
+                                    "ref": "value3",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 4) & (value2 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value2",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 13",
+                                    "ref": "state",
+                                    "value": 13
+                                },
+                                {
+                                    "comment": "right <- (right + 1)",
+                                    "ref": "right",
+                                    "value": {
+                                        "left": "right",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value3 <- -1",
+                                    "ref": "value3",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 5) & (value2 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value2",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pivot <- arr1",
+                                    "ref": "pivot",
+                                    "value": "arr1"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 5)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pivot <- arr2",
+                                    "ref": "pivot",
+                                    "value": "arr2"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 5)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pivot <- arr3",
+                                    "ref": "pivot",
+                                    "value": "arr3"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 5)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pivot <- arr4",
+                                    "ref": "pivot",
+                                    "value": "arr4"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 5)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "pivot <- arr5",
+                                    "ref": "pivot",
+                                    "value": "arr5"
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "(1 / 5)",
+                                "exp": {
+                                    "left": 1,
+                                    "op": "/",
+                                    "right": 5
+                                }
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(pivot = -(1))",
+                        "exp": {
+                            "left": "pivot",
+                            "op": "=",
+                            "right": -1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 14",
+                                    "ref": "state",
+                                    "value": 14
+                                },
+                                {
+                                    "comment": "left <- (left + 1)",
+                                    "ref": "left",
+                                    "value": {
+                                        "left": "left",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value4 <- -1",
+                                    "ref": "value4",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 6) & (value3 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 6
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value3",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 14",
+                                    "ref": "state",
+                                    "value": 14
+                                },
+                                {
+                                    "comment": "right <- (right + 1)",
+                                    "ref": "right",
+                                    "value": {
+                                        "left": "right",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value4 <- -1",
+                                    "ref": "value4",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 7) & (value3 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 7
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value3",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 8",
+                                    "ref": "state",
+                                    "value": 8
+                                },
+                                {
+                                    "comment": "value4 <- 1",
+                                    "ref": "value4",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 9",
+                                    "ref": "state",
+                                    "value": 9
+                                },
+                                {
+                                    "comment": "value4 <- 0",
+                                    "ref": "value4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 14) & (value4 = -(1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 14
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value4",
+                                "op": "=",
+                                "right": -1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 15",
+                                    "ref": "state",
+                                    "value": 15
+                                },
+                                {
+                                    "comment": "left <- (left + 1)",
+                                    "ref": "left",
+                                    "value": {
+                                        "left": "left",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value5 <- -1",
+                                    "ref": "value5",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 8) & (value4 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 8
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value4",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 15",
+                                    "ref": "state",
+                                    "value": 15
+                                },
+                                {
+                                    "comment": "right <- (right + 1)",
+                                    "ref": "right",
+                                    "value": {
+                                        "left": "right",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                },
+                                {
+                                    "comment": "value5 <- -1",
+                                    "ref": "value5",
+                                    "value": -1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 9) & (value4 = 0))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 9
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value4",
+                                "op": "=",
+                                "right": 0
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 11",
+                                    "ref": "state",
+                                    "value": 11
+                                },
+                                {
+                                    "comment": "value5 <- 1",
+                                    "ref": "value5",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 10",
+                                    "ref": "state",
+                                    "value": 10
+                                },
+                                {
+                                    "comment": "value5 <- 0",
+                                    "ref": "value5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 15) & (value5 = -(1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 15
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value5",
+                                "op": "=",
+                                "right": -1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 16",
+                                    "ref": "state",
+                                    "value": 16
+                                },
+                                {
+                                    "comment": "left <- (left + 1)",
+                                    "ref": "left",
+                                    "value": {
+                                        "left": "left",
+                                        "op": "+",
+                                        "right": 1
+                                    }
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 11) & (value5 = 1))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 11
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value5",
+                                "op": "=",
+                                "right": 1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 6",
+                                    "ref": "state",
+                                    "value": 6
+                                },
+                                {
+                                    "comment": "value3 <- 1",
+                                    "ref": "value3",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 7",
+                                    "ref": "state",
+                                    "value": 7
+                                },
+                                {
+                                    "comment": "value3 <- 0",
+                                    "ref": "value3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((state = 13) & (value3 = -(1)))",
+                        "exp": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 13
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "value3",
+                                "op": "=",
+                                "right": -1
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "done",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "state <- 16",
+                                    "ref": "state",
+                                    "value": 16
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(state = 16)",
+                        "exp": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 16
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "default_reward_model <- ((left > right) ? 1 : 0)",
+                            "ref": "default_reward_model",
+                            "value": {
+                                "else": 0,
+                                "if": {
+                                    "left": "left",
+                                    "op": ">",
+                                    "right": "right"
+                                },
+                                "op": "ite",
+                                "then": 1
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "partiton",
+            "variables": [
+                {
+                    "initial-value": 1,
+                    "name": "arr1",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 1,
+                        "upper-bound": 10000
+                    }
+                },
+                {
+                    "initial-value": 1,
+                    "name": "arr2",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 1,
+                        "upper-bound": 10000
+                    }
+                },
+                {
+                    "initial-value": 1,
+                    "name": "arr3",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 1,
+                        "upper-bound": 10000
+                    }
+                },
+                {
+                    "initial-value": 1,
+                    "name": "arr4",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 1,
+                        "upper-bound": 10000
+                    }
+                },
+                {
+                    "initial-value": 1,
+                    "name": "arr5",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": 1,
+                        "upper-bound": 10000
+                    }
+                },
+                {
+                    "initial-value": -1,
+                    "name": "pivot",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": -1,
+                        "upper-bound": 10000
+                    }
+                },
+                {
+                    "initial-value": -1,
+                    "name": "value4",
+                    "type": {
+                        "base": "int",
+                        "kind": "bounded",
+                        "lower-bound": -1,
+                        "upper-bound": 1
+                    }
+                }
+            ]
+        }
+    ],
+    "constants": [
+        {
+            "name": "N",
+            "type": "int",
+            "value": 10000
+        }
+    ],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": "left",
+                "op": "max",
+                "right": "right"
+            },
+            "name": "win_count",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": {
+                        "left": 8,
+                        "op": "*",
+                        "right": "value5"
+                    },
+                    "op": "+",
+                    "right": {
+                        "left": 2,
+                        "op": "*",
+                        "right": "value2"
+                    }
+                },
+                "op": "+",
+                "right": {
+                    "left": {
+                        "left": 4,
+                        "op": "*",
+                        "right": "value3"
+                    },
+                    "op": "+",
+                    "right": {
+                        "left": 1,
+                        "op": "*",
+                        "right": "value1"
+                    }
+                }
+            },
+            "name": "sumvalue",
+            "parameters": [],
+            "type": "int"
+        }
+    ],
+    "jani-version": 1,
+    "name": "partition",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": "state",
+                            "op": "=",
+                            "right": 16
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "1"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 16
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": 8,
+                                            "op": "*",
+                                            "right": "value5"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 2,
+                                            "op": "*",
+                                            "right": "value2"
+                                        }
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 4,
+                                            "op": "*",
+                                            "right": "value3"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 1,
+                                            "op": "*",
+                                            "right": "value1"
+                                        }
+                                    }
+                                },
+                                "op": "=",
+                                "right": 4
+                            }
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "2"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 16
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": 8,
+                                            "op": "*",
+                                            "right": "value5"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 2,
+                                            "op": "*",
+                                            "right": "value2"
+                                        }
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 4,
+                                            "op": "*",
+                                            "right": "value3"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 1,
+                                            "op": "*",
+                                            "right": "value1"
+                                        }
+                                    }
+                                },
+                                "op": ">",
+                                "right": 10
+                            }
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "3"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 16
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": 8,
+                                            "op": "*",
+                                            "right": "value5"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 2,
+                                            "op": "*",
+                                            "right": "value2"
+                                        }
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 4,
+                                            "op": "*",
+                                            "right": "value3"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 1,
+                                            "op": "*",
+                                            "right": "value1"
+                                        }
+                                    }
+                                },
+                                "op": "=",
+                                "right": 5
+                            }
+                        }
+                    },
+                    "op": "Pmin"
+                }
+            },
+            "name": "4"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 16
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": 8,
+                                            "op": "*",
+                                            "right": "value5"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 2,
+                                            "op": "*",
+                                            "right": "value2"
+                                        }
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 4,
+                                            "op": "*",
+                                            "right": "value3"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 1,
+                                            "op": "*",
+                                            "right": "value1"
+                                        }
+                                    }
+                                },
+                                "op": "=",
+                                "right": 4
+                            }
+                        }
+                    },
+                    "op": "Pmin"
+                }
+            },
+            "name": "5"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 16
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": 8,
+                                            "op": "*",
+                                            "right": "value5"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 2,
+                                            "op": "*",
+                                            "right": "value2"
+                                        }
+                                    },
+                                    "op": "+",
+                                    "right": {
+                                        "left": {
+                                            "left": 4,
+                                            "op": "*",
+                                            "right": "value3"
+                                        },
+                                        "op": "+",
+                                        "right": {
+                                            "left": 1,
+                                            "op": "*",
+                                            "right": "value1"
+                                        }
+                                    }
+                                },
+                                "op": ">",
+                                "right": 6
+                            }
+                        }
+                    },
+                    "op": "Pmin"
+                }
+            },
+            "name": "6"
+        },
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": "state",
+                                "op": "=",
+                                "right": 16
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": {
+                                    "left": "left",
+                                    "op": "max",
+                                    "right": "right"
+                                },
+                                "op": "=",
+                                "right": 5
+                            }
+                        }
+                    },
+                    "op": "Pmin"
+                }
+            },
+            "name": "7"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "partiton"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "done",
+                "synchronise": [
+                    "done"
+                ]
+            }
+        ]
+    },
+    "type": "dtmc",
+    "variables": [
+        {
+            "initial-value": 0,
+            "name": "default_reward_model",
+            "transient": true,
+            "type": "real"
+        },
+        {
+            "initial-value": 0,
+            "name": "state",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 16
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "left",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 5
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "right",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 5
+            }
+        },
+        {
+            "initial-value": -1,
+            "name": "value1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": -1,
+                "upper-bound": 1
+            }
+        },
+        {
+            "initial-value": -1,
+            "name": "value2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": -1,
+                "upper-bound": 1
+            }
+        },
+        {
+            "initial-value": -1,
+            "name": "value3",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": -1,
+                "upper-bound": 1
+            }
+        },
+        {
+            "initial-value": -1,
+            "name": "value5",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": -1,
+                "upper-bound": 1
+            }
+        }
+    ]
+}

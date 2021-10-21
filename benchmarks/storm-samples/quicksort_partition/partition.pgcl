@@ -12,6 +12,7 @@ function partiton() {
         int pivot := 0;
         int left := 0;
         int right := 0;
+        int verdict := 0;
         bool done := false;
     }
     
@@ -76,5 +77,11 @@ function partiton() {
         }
 
         done := true;
+    }
+
+    if (left >= right) {
+        verdict := left; 
+    } else {
+        verdict := right;
     }
 }

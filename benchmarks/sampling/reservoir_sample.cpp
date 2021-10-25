@@ -170,6 +170,7 @@ int main(int argc, char **argv, char **envp) {
         if (j <= k) {
           // Pick an element at random
           // and replace it with elem.
+          // COMMENT : Forks and produces the tree.
           int pick = rand() % (k - 1);
           sample[pick] = arr[i];
         }

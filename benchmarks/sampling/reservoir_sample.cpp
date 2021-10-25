@@ -33,7 +33,7 @@ auto all_sampler = std::bind(random_engine_block1, seed);
 
 int main(int argc, char **argv, char **envp) {
 
-  int forall_samples = 10;
+  int forall_samples = 10, FORALLS = 0;
   int RUNMAIN = 50, n = 10, n_given = 0, k = 5, k_given = 0;
   int opt = 0;
 
@@ -41,6 +41,7 @@ int main(int argc, char **argv, char **envp) {
     switch (opt) {
     case 'f':
       forall_samples = atoi(optarg);
+      FORALLS = forall_samples;
       printf("Forall Samples: %d\n", forall_samples);
       break;
     case 'r':
@@ -79,8 +80,9 @@ int main(int argc, char **argv, char **envp) {
   fs << "\n\tForall Variable : index_picked \n";
   int index = rand() % (n - 1);
   fs << "\t\t" << index << "\n";
-  std::cerr << "| Forall"
-            << " | set1 | set2 |\n | :---: | :---: | :---: |\n";
+  std::cerr
+      << "| Forall"
+      << " | set1(count==1) | set2(count==0) |\n | :---: | :---: | :---: |\n";
   while (forall_samples--) {
 
     std::string filename =
@@ -92,14 +94,14 @@ int main(int argc, char **argv, char **envp) {
     if (!n_given)
       n = 5 + rand() % 1500;
     if (!k_given)
-      k = 5 + rand() % 1200;
+      k = 5 + rand() % 750;
 
     int count = 0, runs = RUNMAIN;
 
     // Sample must be smaller or equal
     // to input size. Can't be greater.
-    while (k > n) {
-      k = 5 + rand() % 500;
+    while (k >= n) {
+      k = 2 + rand() % 750;
     }
 
     pr = (float)(double(k) / n);
@@ -179,8 +181,8 @@ int main(int argc, char **argv, char **envp) {
 
     pt = (float)((double)count / RUNMAIN);
     std::cout << "\n=== COUNT : " << count << " ===\n";
-    std::cerr << "| Setting" << std::setw(4) << forall_samples << " | "
-              << std::setw(10) << count << " | " << std::setw(10)
+    std::cerr << "| Setting" << std::setw(4) << FORALLS - forall_samples
+              << " | " << std::setw(4) << count << " | " << std::setw(4)
               << RUNMAIN - count << "|\n";
 
     fs << "\n\n=== Mass Collected : " << (float)(((float)pt / pr) * 100)

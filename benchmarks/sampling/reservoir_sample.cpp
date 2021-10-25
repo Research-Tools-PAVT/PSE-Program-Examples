@@ -3,6 +3,7 @@
 #include <fstream>
 #include <functional>
 #include <getopt.h> /* getopt */
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include <set>
@@ -78,7 +79,8 @@ int main(int argc, char **argv, char **envp) {
   fs << "\n\tForall Variable : index_picked \n";
   int index = rand() % (n - 1);
   fs << "\t\t" << index << "\n";
-
+  std::cerr << "| Forall"
+            << " | set1 | set2 |\n | :---: | :---: | :---: |\n";
   while (forall_samples--) {
 
     std::string filename =
@@ -88,9 +90,9 @@ int main(int argc, char **argv, char **envp) {
     std::cout << "\n*** ForAll Sample : " << forall_samples << " ***\n";
 
     if (!n_given)
-      n = 5 + rand() % 1000;
+      n = 5 + rand() % 1500;
     if (!k_given)
-      k = 5 + rand() % 500;
+      k = 5 + rand() % 1200;
 
     int count = 0, runs = RUNMAIN;
 
@@ -177,6 +179,9 @@ int main(int argc, char **argv, char **envp) {
 
     pt = (float)((double)count / RUNMAIN);
     std::cout << "\n=== COUNT : " << count << " ===\n";
+    std::cerr << "| Setting" << std::setw(4) << forall_samples << " | "
+              << std::setw(10) << count << " | " << std::setw(10)
+              << RUNMAIN - count << "|\n";
 
     fs << "\n\n=== Mass Collected : " << (float)(((float)pt / pr) * 100)
        << "% ===\nActual Prob : " << pt << ", Expected Prob : " << pr << "\n";

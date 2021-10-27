@@ -5,16 +5,23 @@
 #include <getopt.h> /* getopt */
 #include <iomanip>
 #include <iostream>
+#include <iterator>
+#include <json.hpp>
 #include <random>
 #include <set>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
 #include <vector>
+unsigned int microseconds = 10000000;
+
+// for convenience
+using json = nlohmann::json;
 
 #ifndef MIN_RANGE
 #define MIN_RANGE -2147483646
@@ -23,6 +30,8 @@
 #ifndef MAX_RANGE
 #define MAX_RANGE 2147483646
 #endif
+
+#define BUCKET_SIZE 13
 
 std::random_device rd;
 std::default_random_engine seed(rd());
@@ -35,6 +44,20 @@ auto all_sampler = std::bind(random_engine_block1, seed);
 int main(int argc, char **argv, char **envp) {
 
   std::vector<std::pair<int, int>> setCounts;
+  std::unordered_map<int, int> setMaps, countsRaw;
+  json summaryObj, buckets;
+
+  for (auto i = 0; i < BUCKET_SIZE; i++) {
+    setMaps[i] = 0;
+  }
+
+  enum bucketColors { RED, GREEN, BLUE, YELLOW, CYAN, TEAL };
+  countsRaw[RED] = 0;
+  countsRaw[GREEN] = 0;
+  countsRaw[BLUE] = 0;
+  countsRaw[YELLOW] = 0;
+  countsRaw[CYAN] = 0;
+  countsRaw[TEAL] = 0;
 
   int forall_samples = 10, FORALLS = 0;
   int RUNMAIN = 50, n = 10, n_given = 0, k = 5, k_given = 0,
@@ -81,7 +104,7 @@ int main(int argc, char **argv, char **envp) {
     }
   }
 
-  std::fstream fs;
+  std::fstream fs, summary;
   float pt = 0.00000f, pr = 0.00000f;
   std::set<std::vector<int>> probSamples;
 
@@ -94,12 +117,6 @@ int main(int argc, char **argv, char **envp) {
   while (forall_samples--) {
     srand(time(NULL));
 
-    std::string filename =
-        std::string("tests/test_") + std::to_string(forall_samples);
-    fs.open(filename.c_str(), std::fstream::out);
-    fs << "\n=== ForAll Sample : " << forall_samples << " ===\n";
-    std::cout << "\n*** ForAll Sample : " << forall_samples << " ***\n";
-
     if (!n_given)
       n = 5 + rand() % 32413;
     if (!k_given)
@@ -111,7 +128,6 @@ int main(int argc, char **argv, char **envp) {
     // Over all the runs, the expected hit-count for this element
     // should be (n / k) for "perfect" reservoir sampling, given
     // we do a large number of runs.
-    fs << "\n\tForall Variable : index_picked1 \n\t\t" << index1 << "\n";
     int count = 0, runs = RUNMAIN;
 
     // Sample must be smaller or equal
@@ -121,6 +137,8 @@ int main(int argc, char **argv, char **envp) {
     }
 
     pr = (float)(double(k) / n);
+
+    std::cout << "=== Forall : " << forall_samples << " ===\n";
     std::cout << "\n(reservoir) k : " << k << "\n(input size) n : " << n
               << "\nexpected prob : " << pr << " (k/n)\n";
 
@@ -132,20 +150,6 @@ int main(int argc, char **argv, char **envp) {
     int sample[k];
     memset(sample, 0, sizeof(int) * k);
 
-    fs << "\n\tForall Variable : n \n";
-    fs << "\t\t" << n << "\n";
-    fs << "\n\tForall Variable : k \n";
-    fs << "\t\t" << k << "\n";
-    fs << "\n\tForall Array : arr[n] \n";
-
-    // We populated the input list from which we
-    // want to sample values and fill the reservoir.
-    for (auto elems = 0; elems < n; elems++) {
-      arr[elems] =
-          rand() % 61283 + (307 * (rand() % 4423) - 257 * (rand() % 1571));
-      fs << "\t\t" << arr[elems] << "\n";
-    }
-
     // Fill the reservoir completely.
     for (int i = 0; i < k; i++) {
       sample[i] = arr[i];
@@ -155,15 +159,32 @@ int main(int argc, char **argv, char **envp) {
     std::vector<int> j_samples;
 
     while (runs--) {
+
       j_samples.clear();
+      json printJsonObj;
 
-      fs << "\n=== Run : " << runs << " ===\n";
+      std::string filename = std::string("tests/test_") +
+                             std::to_string(forall_samples) + "_" +
+                             std::to_string(runs) + "_.json";
 
-      fs << "\n\tPSE Variable : j \n";
+      fs.open(filename.c_str(), std::fstream::out);
+      printJsonObj.emplace("forall_setting", forall_samples);
+      printJsonObj.emplace("n", n);
+      printJsonObj.emplace("k", k);
+      printJsonObj.emplace("index_picked1", index1);
+
+      // We populated the input list from which we
+      // want to sample values and fill the reservoir.
+      for (auto elems = 0; elems < n; elems++) {
+        arr[elems] =
+            rand() % 61283 + (307 * (rand() % 4423) - 257 * (rand() % 1571));
+      }
+
+      printJsonObj.emplace("pse_setting", runs);
+
       for (int i = k; i < n; i++) {
         // j is the PSE variable here.
         int j = rand() % i;
-        fs << "\t\t" << j << "\n";
         j_samples.push_back(j);
 
         // Replace the element with [k / (k + i)] prob.
@@ -182,12 +203,21 @@ int main(int argc, char **argv, char **envp) {
         // looking for in the sample.
         if (arr[index1] == sample[i]) {
           // Increment the count since we have seen the element.
+          ret = 1;
           count++;
           break;
         }
       }
 
-      // std::cout << "\n\t\tRun : " << runs << ", Count : " << count;
+      std::vector<int> temp(arr, arr + n);
+
+      printJsonObj.emplace("sample_j", j_samples);
+      printJsonObj.emplace("arr[n]", temp);
+      printJsonObj.emplace("query_win", ret);
+      printJsonObj.emplace("count_so_far", count);
+
+      fs << std::setw(4) << printJsonObj << "\n";
+      fs.close();
     }
 
     probSamples.insert(j_samples);
@@ -207,19 +237,57 @@ int main(int argc, char **argv, char **envp) {
 
     setCounts.emplace_back(std::make_pair(count, RUNMAIN - count));
 
-    fs << "\n\n=== Mass Collected : " << (float)(((float)pt / pr) * 100)
-       << "% ===\nActual Prob : " << pt << ", Expected Prob : " << pr << "\n";
+    setMaps[count % BUCKET_SIZE]++;
 
-    std::cout << "=== Mass Collected : " << (float)(((float)pt / pr) * 100)
-              << "% ===\nActual Prob : " << pt << ", Expected Prob : " << pr
-              << "\n";
-    if (pt >= pr) {
-      fs << "\nThreshold Reached !\n";
-      std::cout << "Threshold Reached !\n";
+    summaryObj["set_" + std::to_string(count % BUCKET_SIZE)]
+              ["forall_" + std::to_string(forall_samples)] = {
+                  {"value", count},
+                  {"bucket_size", setMaps[count % BUCKET_SIZE]}};
+
+    // Strategy 2 for counting.
+    if (count >= RUNMAIN >> 1) {
+      if (count >= (RUNMAIN >> 1) + (RUNMAIN >> 2)) {
+        countsRaw[RED]++;
+      } else {
+        countsRaw[GREEN]++;
+      }
+    } else {
+      if (count >= RUNMAIN >> 2) {
+        if (count >= (RUNMAIN >> 2) + (RUNMAIN >> 3)) {
+          countsRaw[BLUE]++;
+        } else {
+          countsRaw[YELLOW]++;
+        }
+      } else {
+        if (count >= RUNMAIN >> 3) {
+          countsRaw[TEAL]++;
+        } else {
+          countsRaw[CYAN]++;
+        }
+      }
     }
 
-    fs.close();
+    usleep(microseconds);
   }
+
+  std::string filename1 = std::string("summary.json");
+
+  for (const auto elem : setMaps) {
+    summaryObj["dists_" + std::to_string(elem.first)] = {elem.second};
+    buckets["bucket_" + std::to_string(elem.first)] = {elem.second};
+  }
+  std::cout << "Modulo Func:\n" << std::setw(2) << buckets << "\n";
+
+  buckets.clear();
+  for (const auto elem : countsRaw) {
+    buckets["bucket_" + std::to_string(elem.first)] = {elem.second};
+  }
+  std::cout << "Tree Buckets Func:\n" << std::setw(2) << buckets << "\n";
+
+  summaryObj["tree_buckets"] = buckets;
+  summary.open(filename1.c_str(), std::fstream::out);
+  summary << std::setw(4) << summaryObj << "\n";
+  summary.close();
 
   std::cerr << std::endl << "```javascript\n";
   for (const auto &elem : setCounts) {

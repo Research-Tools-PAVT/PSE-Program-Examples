@@ -244,25 +244,40 @@ int main(int argc, char **argv, char **envp) {
                   {"value", count},
                   {"bucket_size", setMaps[count % BUCKET_SIZE]}};
 
+    summaryObj["forall_" + std::to_string(forall_samples)]["modulo_bucket"] = {
+        {"value", count}, {"bucket", count % BUCKET_SIZE}};
+
     // Strategy 2 for counting.
     if (count >= RUNMAIN >> 1) {
       if (count >= (RUNMAIN >> 1) + (RUNMAIN >> 2)) {
         countsRaw[RED]++;
+        summaryObj["forall_" + std::to_string(forall_samples)]["tree_bucket"] =
+            {{"value", count}, {"bucket", "RED"}};
       } else {
         countsRaw[GREEN]++;
+        summaryObj["forall_" + std::to_string(forall_samples)]["tree_bucket"] =
+            {{"value", count}, {"bucket", "GREEN"}};
       }
     } else {
       if (count >= RUNMAIN >> 2) {
         if (count >= (RUNMAIN >> 2) + (RUNMAIN >> 3)) {
           countsRaw[BLUE]++;
+          summaryObj["forall_" + std::to_string(forall_samples)]
+                    ["tree_bucket"] = {{"value", count}, {"bucket", "BLUE"}};
         } else {
           countsRaw[YELLOW]++;
+          summaryObj["forall_" + std::to_string(forall_samples)]
+                    ["tree_bucket"] = {{"value", count}, {"bucket", "YELLOW"}};
         }
       } else {
         if (count >= RUNMAIN >> 3) {
           countsRaw[TEAL]++;
+          summaryObj["forall_" + std::to_string(forall_samples)]
+                    ["tree_bucket"] = {{"value", count}, {"bucket", "TEAL"}};
         } else {
           countsRaw[CYAN]++;
+          summaryObj["forall_" + std::to_string(forall_samples)]
+                    ["tree_bucket"] = {{"value", count}, {"bucket", "CYAN"}};
         }
       }
     }
@@ -277,6 +292,7 @@ int main(int argc, char **argv, char **envp) {
     buckets["bucket_" + std::to_string(elem.first)] = {elem.second};
   }
   std::cout << "Modulo Func:\n" << std::setw(2) << buckets << "\n";
+  summaryObj["modulo_buckets"] = buckets;
 
   buckets.clear();
   for (const auto elem : countsRaw) {

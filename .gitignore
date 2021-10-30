@@ -428,3 +428,7 @@ draft/
 benchmarks/storm-samples/partition.pg.jani
 
 benchmarks/storm-samples/quicksort_partition/partition.pg.jani
+
+build/
+*/build/
+bin/

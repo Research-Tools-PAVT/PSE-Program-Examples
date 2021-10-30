@@ -12,7 +12,7 @@ add_definitions(
     -D__STDC_CONSTANT_MACROS
 )
 
-set(CMAKE_CXX_FLAGS "-Wall -g -O3 -march=native -fsanitize=address -fsanitize=leak" CACHE STRING "" FORCE)
+set(CMAKE_CXX_FLAGS "-Wall -g -O3 -march=native -fsanitize=address -fsanitize=leak -DINSTRUMENT" CACHE STRING "" FORCE)
 add_executable (reservoir reservoir_sample.cpp)
 add_executable (freivalds freivalds_int.cpp)
 add_executable (flips flips.cpp)

@@ -3,9 +3,8 @@ project(problems_project)
 set (CMAKE_CXX_STANDARD 17)
 
 include_directories(include)
-cmake_policy(SET CMP0065 OLD)
+include_directories($HOME/klee/include)
 cmake_policy(SET CMP0083 OLD)
-set(CMAKE_SUPPRESS_REGENERATION 1)
 
 add_definitions(
     -D__STDC_LIMIT_MACROS

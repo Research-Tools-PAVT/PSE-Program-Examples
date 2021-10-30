@@ -6,9 +6,9 @@ clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp
 
-klee --exit-on-error --solver-backend=z3 \
+klee --silent-klee-assume --solver-backend=z3 --use-batching-search \
 --disable-inlining --only-output-states-covering-new \
---search=nurs:depth \
+--search=random-state --search=nurs:md2u \
 --set-ptree-dump --write-kqueries ${example}.bc
 
 # for test in klee-last/*.ktest; do
@@ -21,8 +21,8 @@ klee --exit-on-error --solver-backend=z3 \
 #     -I $HOME/klee/include/ -I include \
 #     -L $HOME/klee/lib/ src/${example}.cpp -lkleeRuntest
 
-#     KTEST_FILE=${test} ./a.out 
-# done 
+#     KTEST_FILE=${test} ./a.out
+# done
 
 rm -rf ${example}_klee_out/
 mkdir ${example}_klee_out/

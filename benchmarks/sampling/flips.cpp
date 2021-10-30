@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-1.
-    if (rand() % 100000 > b1)
+    if (rand() % 100000 >= b1)
       coin1[i] = 1;
     else
       coin1[i] = 0;
@@ -151,8 +151,8 @@ int main(int argc, char *argv[]) {
 
   // generate 3 flips for coin-2
   for (std::size_t i = 0; i < FLIPS; ++i) {
-    // Baised Coin-1
-    if (rand() % 100000 > b2)
+    // Baised Coin-2
+    if (rand() % 100000 >= b2)
       coin2[i] = 1;
     else
       coin2[i] = 0;

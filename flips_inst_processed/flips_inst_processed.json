@@ -2,578 +2,620 @@
     {
         "File": "src/flips_inst.cpp",
         "Line": "44",
-        "Predicate": "35",
-        "Expression": "ite ((Sle 195000       (Add w32 (ReadLSB w32 0 b1_sym)                (ReadLSB w32 0 b2_sym))) (true)((Sle (Add w32 (ReadLSB w32 0 b1_sym)                (ReadLSB w32 0 b2_sym))       20000)))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "47",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "49",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 77740)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 77740))",
+        "Predicate": "28",
+        "Branch Predicate": "(And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000))",
+        "Negate Predicate": "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
         "Fork": "True",
         "Current State Id": "1",
         "True KLEE Id": "1",
         "True Generate ID": "2",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Slt (ReadLSB w32 0 b1_sym) 10000)",
+            "(Slt (ReadLSB w32 0 b2_sym) 10000)"
+        ],
         "False KLEE Id": "2",
-        "False Generate ID": "3"
+        "False Generate ID": "3",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))"
+        ]
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "49",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 64125)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 64125))",
+        "Line": "44",
+        "Predicate": "65",
+        "Branch Predicate": "(Slt 3 (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)))",
+        "Negate Predicate": "(Eq false (Slt 3 (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym))))",
         "Fork": "True",
         "Current State Id": "1",
         "True KLEE Id": "1",
         "True Generate ID": "4",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Slt (ReadLSB w32 0 b1_sym) 10000)",
+            "(Slt (ReadLSB w32 0 b2_sym) 10000)",
+            "(Slt 3 (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)))"
+        ],
         "False KLEE Id": "3",
-        "False Generate ID": "5"
+        "False Generate ID": "5",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Slt (ReadLSB w32 0 b1_sym) 10000)",
+            "(Slt (ReadLSB w32 0 b2_sym) 10000)",
+            "(Eq false (Slt 3 (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym))))"
+        ]
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "49",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 51941)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 51941))",
+        "Line": "45",
+        "Predicate": "28",
+        "Branch Predicate": "(And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym)))",
+        "Negate Predicate": "(Eq false (And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym))))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "45",
+        "Predicate": "28",
+        "Branch Predicate": "(And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym)))",
+        "Negate Predicate": "(Eq false (And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym))))",
         "Fork": "True",
-        "Current State Id": "1",
-        "True KLEE Id": "1",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
         "True Generate ID": "6",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))"
+        ],
         "False KLEE Id": "4",
-        "False Generate ID": "7"
+        "False Generate ID": "7",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Eq false (And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym))))"
+        ]
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "49",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 26947)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 26947))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "49",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 26086)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 26086))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "49",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 23781)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 23781))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "true",
-        "Negate Predicate": "false"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "57",
-        "Predicate": "3",
-        "Branch Predicate": "false",
-        "Negate Predicate": "true"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 95156)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 95156))",
+        "Line": "45",
+        "Predicate": "65",
+        "Branch Predicate": "(Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6)",
+        "Negate Predicate": "(Eq false (Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6))",
         "Fork": "True",
-        "Current State Id": "1",
-        "True KLEE Id": "1",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
         "True Generate ID": "8",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))",
+            "(Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6)"
+        ],
         "False KLEE Id": "5",
-        "False Generate ID": "9"
+        "False Generate ID": "9",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))",
+            "(Eq false (Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6))"
+        ]
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 46414)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 46414))",
-        "Fork": "True",
-        "Current State Id": "1",
-        "True KLEE Id": "1",
-        "True Generate ID": "10",
-        "False KLEE Id": "6",
-        "False Generate ID": "11"
+        "Line": "46",
+        "Predicate": "28",
+        "Branch Predicate": "(And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000))",
+        "Negate Predicate": "(Eq false (And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000)))"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 22902)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 22902))",
-        "Fork": "True",
-        "Current State Id": "1",
-        "True KLEE Id": "1",
-        "True Generate ID": "12",
-        "False KLEE Id": "7",
-        "False Generate ID": "13"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 29177)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 29177))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 52093)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 52093))",
-        "Fork": "True",
-        "Current State Id": "2",
-        "True KLEE Id": "2",
-        "True Generate ID": "14",
-        "False KLEE Id": "8",
-        "False Generate ID": "15"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 44726)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 44726))",
-        "Fork": "True",
-        "Current State Id": "2",
-        "True KLEE Id": "2",
-        "True Generate ID": "16",
-        "False KLEE Id": "9",
-        "False Generate ID": "17"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 56568)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 56568))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 7687)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 7687))"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 78741)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 78741))",
-        "Fork": "True",
-        "Current State Id": "8",
-        "True KLEE Id": "8",
-        "True Generate ID": "18",
-        "False KLEE Id": "10",
-        "False Generate ID": "19"
-    },
-    {
-        "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 69877)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 69877))",
+        "Line": "46",
+        "Predicate": "28",
+        "Branch Predicate": "(And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000))",
+        "Negate Predicate": "(Eq false (And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000)))",
         "Fork": "True",
         "Current State Id": "4",
         "True KLEE Id": "4",
-        "True Generate ID": "20",
-        "False KLEE Id": "11",
-        "False Generate ID": "21"
+        "True Generate ID": "14",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Eq false (And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym))))",
+            "(Slt 95000 (ReadLSB w32 0 b1_sym))",
+            "(Slt (ReadLSB w32 0 b2_sym) 5000)"
+        ],
+        "False KLEE Id": "8",
+        "False Generate ID": "15",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Eq false (And (Slt 85000 (ReadLSB w32 0 b1_sym)) (Slt 90000 (ReadLSB w32 0 b2_sym))))",
+            "(Eq false (And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000)))"
+        ]
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 14013)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 14013))"
+        "Line": "46",
+        "Predicate": "28",
+        "Branch Predicate": "(And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000))",
+        "Negate Predicate": "(Eq false (And (Slt 95000 (ReadLSB w32 0 b1_sym)) (Slt (ReadLSB w32 0 b2_sym) 5000)))"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 68577)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 68577))"
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "50",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "52",
         "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 83320)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 83320))",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 29095)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 29095))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "52",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 60924)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 60924))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "52",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 71287)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 71287))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "52",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 29464)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 29464))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "52",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 61263)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 61263))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "52",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 98823)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 98823))",
         "Fork": "True",
-        "Current State Id": "3",
-        "True KLEE Id": "3",
-        "True Generate ID": "22",
-        "False KLEE Id": "12",
-        "False Generate ID": "23"
+        "Current State Id": "2",
+        "True KLEE Id": "2",
+        "True Generate ID": "10",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))",
+            "(Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6)",
+            "(Sle (ReadLSB w32 0 b1_sym) 98823)"
+        ],
+        "False KLEE Id": "6",
+        "False Generate ID": "11",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))",
+            "(Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6)",
+            "(Eq false (Sle (ReadLSB w32 0 b1_sym) 98823))"
+        ]
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
+        "Line": "52",
         "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 74498)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 74498))"
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 65047)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 65047))"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
+        "Line": "52",
         "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 31753)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 31753))"
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 49964)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 49964))"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
+        "Line": "52",
         "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 29128)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 29128))"
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b1_sym) 65285)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 65285))"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 6547)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 6547))"
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 67704)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 67704))"
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 52095)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 52095))"
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 14519)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 14519))"
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
-        "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 73619)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 73619))"
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
     },
     {
         "File": "src/flips_inst.cpp",
-        "Line": "59",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "60",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
         "Predicate": "9",
-        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 47092)",
-        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47092))"
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 98773)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 98773))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 12572)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12572))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 21855)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 21855))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 93517)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 93517))",
+        "Fork": "True",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
+        "True Generate ID": "12",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))",
+            "(Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6)",
+            "(Sle (ReadLSB w32 0 b1_sym) 98823)",
+            "(Sle (ReadLSB w32 0 b2_sym) 93517)"
+        ],
+        "False KLEE Id": "7",
+        "False Generate ID": "13",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 coin1_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin1_arr_sym) 1)",
+            "(Sle 0 (ReadLSB w32 0 coin2_arr_sym))",
+            "(Sle (ReadLSB w32 0 coin2_arr_sym) 1)",
+            "(Eq false (And (Slt (ReadLSB w32 0 b1_sym) 10000) (Slt (ReadLSB w32 0 b2_sym) 10000)))",
+            "(Slt 85000 (ReadLSB w32 0 b1_sym))",
+            "(Slt 90000 (ReadLSB w32 0 b2_sym))",
+            "(Slt (Add w32 (ReadLSB w32 0 sum1_sym) (ReadLSB w32 0 sum2_sym)) 6)",
+            "(Sle (ReadLSB w32 0 b1_sym) 98823)",
+            "(Eq false (Sle (ReadLSB w32 0 b2_sym) 93517))"
+        ]
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 18437)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 18437))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 54020)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 54020))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 20563)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 20563))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 19538)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 19538))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 78762)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 78762))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 45641)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 45641))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 55527)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 55527))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 56286)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 56286))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 60957)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 60957))"
+    },
+    {
+        "File": "src/flips_inst.cpp",
+        "Line": "62",
+        "Predicate": "9",
+        "Branch Predicate": "(Sle (ReadLSB w32 0 b2_sym) 12900)",
+        "Negate Predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12900))"
     },
     {
         "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/basic_string.tcc",

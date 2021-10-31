@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
   klee_make_symbolic(&b1, sizeof(b1), "b1_sym");
   klee_make_symbolic(&b2, sizeof(b2), "b2_sym");
 
-  make_pse_symbolic(coin1, sizeof(coin1), "coin1_arr_sym", (int)0, int(1));
-  make_pse_symbolic(coin2, sizeof(coin2), "coin2_arr_sym", (int)0, int(1));
+  // make_pse_symbolic(coin1, sizeof(coin1), "coin1_arr_sym", (int)0, int(1));
+  // make_pse_symbolic(coin2, sizeof(coin2), "coin2_arr_sym", (int)0, int(1));
 
   klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
   klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");

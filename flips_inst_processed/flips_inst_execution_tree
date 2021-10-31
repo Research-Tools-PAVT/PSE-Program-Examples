@@ -59,15 +59,35 @@ digraph ExecutionTree {
 (Add w32
 (ReadLSB w32 0 sum1_sym)
 (ReadLSB w32 0 sum2_sym))))" color=red]
-	11 -> 14 [label="(And
+	11 -> 22 [label="(And
 (Slt
 (ReadLSB w32 0 b1_sym) 10000)
 (Slt 80000
 (ReadLSB w32 0 b2_sym)))" color=green]
-	11 -> 15 [label="(Eq false
+	11 -> 23 [label="(Eq false
 (And
 (Slt
 (ReadLSB w32 0 b1_sym) 10000)
 (Slt 80000
 (ReadLSB w32 0 b2_sym))))" color=red]
+	12 -> 14 [label="(Sle
+(ReadLSB w32 0 b1_sym) 99711)" color=green]
+	12 -> 15 [label="(Eq false
+(Sle
+(ReadLSB w32 0 b1_sym) 99711))" color=red]
+	14 -> 16 [label="(Sle
+(ReadLSB w32 0 b1_sym) 93592)" color=green]
+	14 -> 17 [label="(Eq false
+(Sle
+(ReadLSB w32 0 b1_sym) 93592))" color=red]
+	15 -> 20 [label="(Sle
+(ReadLSB w32 0 b2_sym) 8156)" color=green]
+	15 -> 21 [label="(Eq false
+(Sle
+(ReadLSB w32 0 b2_sym) 8156))" color=red]
+	16 -> 18 [label="(Sle
+(ReadLSB w32 0 b2_sym) 6260)" color=green]
+	16 -> 19 [label="(Eq false
+(Sle
+(ReadLSB w32 0 b2_sym) 6260))" color=red]
 }

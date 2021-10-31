@@ -62,6 +62,7 @@ int main(int argc, char **argv) {
   int A[n * n];
   int B[n * n];
   int C[n * n];
+  int r[n];
 
   for (size_t i = 0; i < n * n; i++) {
     int tempA, tempB, tempC;
@@ -83,7 +84,6 @@ int main(int argc, char **argv) {
 
   klee_assume(orAssume);
 
-  int r[n];
   for (size_t i = 0; i < n; i++) {
     int temp;
     make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);

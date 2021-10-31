@@ -1,7 +1,7 @@
 #include <PSE.h>
 #include <random>
 #include <time.h>
-#define FLIPS 2
+#define FLIPS 3
 
 int main(int argc, char *argv[]) {
 
@@ -30,14 +30,18 @@ int main(int argc, char *argv[]) {
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   /* f1 * b1 + f1 * b3 + f2 * b1 * f2 * b4 */
-  klee_assume(((b1 >= 1 && b1 <= 49999) && (b2 >= 75000 && b2 <= 100000) &&
-               (sum1 + sum2 < 3)) ||
-              ((b1 >= 1 && b1 <= 49999) && (b2 >= 75000 && b2 <= 100000) &&
-               (sum1 + sum2 > 5)) ||
-              ((b1 >= 50000 && b1 <= 100000) && (b2 >= 75000 && b2 <= 100000) &&
-               (sum1 + sum2 != 5)) ||
-              ((b1 >= 50000 && b1 <= 100000) && (b2 >= 75000 && b2 <= 100000) &&
-               (sum1 + sum2 <= 2)));
+  // klee_assume(((b1 >= 1 && b1 <= 49999) && (b2 >= 75000 && b2 <= 100000) &&
+  //              (sum1 + sum2 < 3)) ||
+  //             ((b1 >= 1 && b1 <= 49999) && (b2 >= 75000 && b2 <= 100000) &&
+  //              (sum1 + sum2 == 6)) ||
+  //             ((b1 >= 50000 && b1 <= 100000) && (b2 >= 75000 && b2 <= 100000)
+  //             &&
+  //              (sum1 + sum2 != 5)) ||
+  //             ((b1 >= 50000 && b1 <= 100000) && (b2 >= 75000 && b2 <= 100000)
+  //             &&
+  //              (sum1 + sum2 <= 2)));
+  klee_assume((b1 + b2 >= 195000) || (b1 + b2 <= 20000));
+  /* COMMENT : KLEE ASSUMES from ANALYSIS : END */
 
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {

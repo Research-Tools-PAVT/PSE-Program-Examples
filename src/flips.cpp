@@ -1,7 +1,7 @@
 #include <PSE.h>
 #include <random>
 #include <time.h>
-#define FLIPS 2
+#define FLIPS 3
 
 int main(int argc, char *argv[]) {
 

@@ -1,0 +1,8 @@
+digraph ExecutionTree {
+	1 -> 2 [label=UNK color=green]
+	1 -> 3 [label=UNK color=red]
+	2 -> 4 [label=UNK color=green]
+	2 -> 5 [label=UNK color=red]
+	3 -> 6 [label=UNK color=green]
+	3 -> 7 [label=UNK color=red]
+}

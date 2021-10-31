@@ -1,0 +1,2001 @@
+[
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "11",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "13",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "22",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "22",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "22",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "22",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "22",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "42",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "2",
+        "False KLEE Id": "2",
+        "False Generate ID": "3"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "4",
+        "False KLEE Id": "3",
+        "False Generate ID": "5"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "6",
+        "False KLEE Id": "4",
+        "False Generate ID": "7"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "8",
+        "False KLEE Id": "5",
+        "False Generate ID": "9"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
+        "True Generate ID": "10",
+        "False KLEE Id": "6",
+        "False Generate ID": "11"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
+        "True Generate ID": "12",
+        "False KLEE Id": "7",
+        "False Generate ID": "13"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
+        "True Generate ID": "14",
+        "False KLEE Id": "8",
+        "False Generate ID": "15"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "3",
+        "True KLEE Id": "3",
+        "True Generate ID": "16",
+        "False KLEE Id": "9",
+        "False Generate ID": "17"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "3",
+        "True KLEE Id": "3",
+        "True Generate ID": "18",
+        "False KLEE Id": "10",
+        "False Generate ID": "19"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "6",
+        "True KLEE Id": "6",
+        "True Generate ID": "20",
+        "False KLEE Id": "11",
+        "False Generate ID": "21"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "6",
+        "True KLEE Id": "6",
+        "True Generate ID": "22",
+        "False KLEE Id": "12",
+        "False Generate ID": "23"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "7",
+        "True KLEE Id": "7",
+        "True Generate ID": "24",
+        "False KLEE Id": "13",
+        "False Generate ID": "25"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "11",
+        "True KLEE Id": "11",
+        "True Generate ID": "26",
+        "False KLEE Id": "14",
+        "False Generate ID": "27"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "9",
+        "True KLEE Id": "9",
+        "True Generate ID": "28",
+        "False KLEE Id": "15",
+        "False Generate ID": "29"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "43",
+        "Predicate": "9",
+        "Fork": "True",
+        "Current State Id": "4",
+        "True KLEE Id": "4",
+        "True Generate ID": "30",
+        "False KLEE Id": "16",
+        "False Generate ID": "31"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "56",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "56",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "56",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "56",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "56",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "57",
+        "Predicate": "5",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "59",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "72",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "89",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "89",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "89",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "89",
+        "Predicate": "3",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "89",
+        "Predicate": "3",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "src/freivalds_char.cpp",
+        "Line": "96",
+        "Predicate": "7",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "235",
+        "Predicate": "11",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "235",
+        "Predicate": "11",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "235",
+        "Predicate": "11",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "235",
+        "Predicate": "11",
+        "Branch Predicate": "false",
+        "Negate Predicate": "true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "259",
+        "Predicate": "11",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "259",
+        "Predicate": "11",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "259",
+        "Predicate": "11",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "259",
+        "Predicate": "11",
+        "Branch Predicate": "true",
+        "Negate Predicate": "false"
+    }
+]

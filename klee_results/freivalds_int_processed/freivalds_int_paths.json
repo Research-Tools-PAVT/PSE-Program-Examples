@@ -1,0 +1,122 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c3e08d71-2272-44a6-953f-863f664fd2f9"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "a033b911-eece-45c0-9960-25c33075c3d7"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "ead5b02c-d820-4940-9ac7-62d3fc6fac9a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c3e08d71-2272-44a6-953f-863f664fd2f9"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "a033b911-eece-45c0-9960-25c33075c3d7"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "76aaaa62-94b7-4960-a3be-34aa4fb89b5c"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 3": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c3e08d71-2272-44a6-953f-863f664fd2f9"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "14cdfef0-a866-4ecb-9212-0871b18b2b3d"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "6e30b03b-13ef-484f-a52e-45e93429a3a5"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 4": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "c3e08d71-2272-44a6-953f-863f664fd2f9"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "14cdfef0-a866-4ecb-9212-0871b18b2b3d"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "10210a1f-bfbf-4ef5-94f9-523780b86001"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

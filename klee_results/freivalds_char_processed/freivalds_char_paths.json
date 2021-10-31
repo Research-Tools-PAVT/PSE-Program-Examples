@@ -1,0 +1,802 @@
+{
+    "Path 1": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "e5631298-8e5b-480d-939d-d848f74d1cbb"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "6a5d2fe8-8d37-41c9-a8eb-f63e379e052a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "uid": "39511435-d7c9-4f31-af17-d4163e1ecc6c"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 2": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "e5631298-8e5b-480d-939d-d848f74d1cbb"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "uid": "6a5d2fe8-8d37-41c9-a8eb-f63e379e052a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "9",
+                "uid": "b9c7a965-c89b-4a23-b904-333953d8c96f"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 3": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "31e76bd8-f7f9-483f-bea3-7193244f898a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "12",
+                "uid": "ee21fa51-2de2-43ba-a11b-3edcf606c50b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "14",
+                "uid": "f050c32e-212a-48ae-8714-9e84269131d4"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 4": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "31e76bd8-f7f9-483f-bea3-7193244f898a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "12",
+                "uid": "ee21fa51-2de2-43ba-a11b-3edcf606c50b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "15",
+                "uid": "98dc637a-58de-4e22-a8d8-cf8df32e4c70"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 5": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "b2fed604-9302-4a6e-9efd-14e8e07c7cf2"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "16",
+                "uid": "adc30758-1f8f-4c54-b636-b4e1ff148a1a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "18",
+                "uid": "a1fd9399-2287-4f1c-ab4b-74afefbc2891"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 6": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "b2fed604-9302-4a6e-9efd-14e8e07c7cf2"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "16",
+                "uid": "adc30758-1f8f-4c54-b636-b4e1ff148a1a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "19",
+                "uid": "d4d40a9d-dac9-4706-a484-5378bbe5eb97"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 7": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "6a2a8ef5-5739-4856-a28f-e7b4a70ad248"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "20",
+                "uid": "bd04d3e7-f241-44e1-b1db-3ad53b676963"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "22",
+                "uid": "6364cfb3-89db-4567-9ca4-de89053faa01"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 8": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "6a2a8ef5-5739-4856-a28f-e7b4a70ad248"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "20",
+                "uid": "bd04d3e7-f241-44e1-b1db-3ad53b676963"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "23",
+                "uid": "e7c4f6da-2cf3-4b14-921b-c8b0943468f4"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 9": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "31e76bd8-f7f9-483f-bea3-7193244f898a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "13",
+                "uid": "44881989-eb21-43e4-aef9-af1b4cd2a431"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "24",
+                "uid": "a8218b4e-b3d3-4829-aea7-549a8b842bff"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 10": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "10",
+                "uid": "31e76bd8-f7f9-483f-bea3-7193244f898a"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "13",
+                "uid": "44881989-eb21-43e4-aef9-af1b4cd2a431"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "25",
+                "uid": "693f1a3f-4801-41c5-ac46-73c91532f981"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 11": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "6a2a8ef5-5739-4856-a28f-e7b4a70ad248"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "21",
+                "uid": "b94949d0-c43a-446f-991a-f5f8cb228406"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "26",
+                "uid": "c4083aa7-94a4-4381-9aae-d36d13438d16"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 12": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "uid": "04c3b0f7-ceb7-40b7-8a1e-b2b21b54a71b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "11",
+                "uid": "6a2a8ef5-5739-4856-a28f-e7b4a70ad248"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "21",
+                "uid": "b94949d0-c43a-446f-991a-f5f8cb228406"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "27",
+                "uid": "16661844-0ba0-42dc-a322-fc1a996a0c69"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 13": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "b2fed604-9302-4a6e-9efd-14e8e07c7cf2"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "17",
+                "uid": "e72e7a0a-d95f-4752-82f4-ee3c6b692400"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "28",
+                "uid": "4f1f2c21-5c6a-45c5-9d81-7c88fcf584e4"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 14": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "uid": "b2fed604-9302-4a6e-9efd-14e8e07c7cf2"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "17",
+                "uid": "e72e7a0a-d95f-4752-82f4-ee3c6b692400"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "29",
+                "uid": "72a2a91f-372b-4104-bace-e775581c51c4"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 15": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "e5631298-8e5b-480d-939d-d848f74d1cbb"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "31bf7679-ad9a-463b-bf7f-9ccd4d75def1"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "30",
+                "uid": "931606b1-77a3-45f5-9a6d-f94f2d0cf302"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 16": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "343671fd-167f-4747-936f-14b8598aa7ce"
+            },
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "65971aa5-3415-403e-b935-79605cd8519b"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "e5631298-8e5b-480d-939d-d848f74d1cbb"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "uid": "31bf7679-ad9a-463b-bf7f-9ccd4d75def1"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        },
+        {
+            "treeNode": {
+                "nodeId": "31",
+                "uid": "f3662aac-ee0b-4f7d-981c-19f9075fa549"
+            },
+            "predicate": "UNK",
+            "variables": [],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

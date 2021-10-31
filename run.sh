@@ -8,7 +8,7 @@ clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 
 klee --silent-klee-assume --solver-backend=z3 --use-batching-search \
 --disable-inlining --only-output-states-covering-new \
---search=random-state --search=nurs:md2u \
+--search=nurs:depth --search=random-state --search=nurs:md2u \
 --set-ptree-dump --write-kqueries ${example}.bc
 
 # for test in klee-last/*.ktest; do

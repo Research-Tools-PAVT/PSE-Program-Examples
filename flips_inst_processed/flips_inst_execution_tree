@@ -10,54 +10,64 @@ digraph ExecutionTree {
 (ReadLSB w32 0 b1_sym) 10000)
 (Slt
 (ReadLSB w32 0 b2_sym) 10000)))" color=red]
-	2 -> 4 [label="(Slt 3
+	2 -> 4 [label="(Sle
 (Add w32
 (ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)))" color=green]
+(ReadLSB w32 0 sum2_sym)) 4)" color=green]
 	2 -> 5 [label="(Eq false
-(Slt 3
+(Sle
 (Add w32
 (ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym))))" color=red]
+(ReadLSB w32 0 sum2_sym)) 4))" color=red]
 	3 -> 6 [label="(And
-(Slt 85000
+(Slt 80000
 (ReadLSB w32 0 b1_sym))
-(Slt 90000
+(Slt 80000
 (ReadLSB w32 0 b2_sym)))" color=green]
 	3 -> 7 [label="(Eq false
 (And
-(Slt 85000
+(Slt 80000
 (ReadLSB w32 0 b1_sym))
-(Slt 90000
+(Slt 80000
 (ReadLSB w32 0 b2_sym))))" color=red]
-	6 -> 8 [label="(Slt
+	6 -> 8 [label="(Sle 4
 (Add w32
 (ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)) 6)" color=green]
+(ReadLSB w32 0 sum2_sym)))" color=green]
 	6 -> 9 [label="(Eq false
-(Slt
+(Sle 4
 (Add w32
 (ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)) 6))" color=red]
-	7 -> 14 [label="(And
-(Slt 95000
+(ReadLSB w32 0 sum2_sym))))" color=red]
+	7 -> 10 [label="(And
+(Slt 80000
 (ReadLSB w32 0 b1_sym))
 (Slt
-(ReadLSB w32 0 b2_sym) 5000))" color=green]
-	7 -> 15 [label="(Eq false
+(ReadLSB w32 0 b2_sym) 10000))" color=green]
+	7 -> 11 [label="(Eq false
 (And
-(Slt 95000
+(Slt 80000
 (ReadLSB w32 0 b1_sym))
 (Slt
-(ReadLSB w32 0 b2_sym) 5000)))" color=red]
-	8 -> 10 [label="(Sle
-(ReadLSB w32 0 b1_sym) 98823)" color=green]
-	8 -> 11 [label="(Eq false
-(Sle
-(ReadLSB w32 0 b1_sym) 98823))" color=red]
-	10 -> 12 [label="(Sle
-(ReadLSB w32 0 b2_sym) 93517)" color=green]
+(ReadLSB w32 0 b2_sym) 10000)))" color=red]
+	10 -> 12 [label="(Sle 5
+(Add w32
+(ReadLSB w32 0 sum1_sym)
+(ReadLSB w32 0 sum2_sym)))" color=green]
 	10 -> 13 [label="(Eq false
-(Sle
-(ReadLSB w32 0 b2_sym) 93517))" color=red]
+(Sle 5
+(Add w32
+(ReadLSB w32 0 sum1_sym)
+(ReadLSB w32 0 sum2_sym))))" color=red]
+	11 -> 14 [label="(And
+(Slt
+(ReadLSB w32 0 b1_sym) 10000)
+(Slt 80000
+(ReadLSB w32 0 b2_sym)))" color=green]
+	11 -> 15 [label="(Eq false
+(And
+(Slt
+(ReadLSB w32 0 b1_sym) 10000)
+(Slt 80000
+(ReadLSB w32 0 b2_sym))))" color=red]
 }

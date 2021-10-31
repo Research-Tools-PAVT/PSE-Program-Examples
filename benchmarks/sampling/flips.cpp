@@ -116,54 +116,9 @@ int main(int argc, char *argv[]) {
   /*
     Forall Variables.
   */
-  int b1 = 10, b2 = 10, SUM = 0;
+  int b1 = 0, b2 = 0;
   double bias1 = 0.0000;
   double bias2 = 0.0000;
-
-#ifdef KLEE
-#undef INSTRUMENT
-
-  int coin1[3], coin2[3], sum1, sum2;
-
-  klee_make_symbolic(&b1, sizeof(b1), "b1_sym");
-  klee_make_symbolic(&b2, sizeof(b2), "b2_sym");
-  klee_assume(b1 >= 0 && b1 <= 100000);
-  klee_assume(b2 >= 0 && b2 <= 100000);
-
-  make_pse_symbolic(coin1, sizeof(coin1), "coin1_arr_sym", (int)0, int(1));
-  make_pse_symbolic(coin2, sizeof(coin2), "coin2_arr_sym", (int)0, int(1));
-
-  klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
-  klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
-  klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
-
-  // generate 3 flips for coin-1
-  for (std::size_t i = 0; i < FLIPS; ++i) {
-    // Baised Coin-1.
-    if (rand() % 100000 >= b1)
-      coin1[i] = 1;
-    else
-      coin1[i] = 0;
-
-    sum1 += coin1[i];
-    klee_print_expr("Sum_1 = ", sum1);
-  }
-
-  // generate 3 flips for coin-2
-  for (std::size_t i = 0; i < FLIPS; ++i) {
-    // Baised Coin-2
-    if (rand() % 100000 >= b2)
-      coin2[i] = 1;
-    else
-      coin2[i] = 0;
-
-    sum2 += coin2[i];
-    klee_print_expr("Sum_2 = ", sum2);
-  }
-
-  SUM = sum1 + sum2;
-  klee_print_expr("SUM_FINAL = ", SUM);
-#endif
 
 #ifdef INSTRUMENT
   // init
@@ -174,20 +129,20 @@ int main(int argc, char *argv[]) {
   std::vector<std::pair<int, int>> b1Dist, b2Dist;
 
   /* f1 */
-  b1Dist.emplace_back(std::make_pair(50000, 100000));
-  b2Dist.emplace_back(std::make_pair(70000, 100000));
+  b1Dist.emplace_back(std::make_pair(1, 9999));
+  b2Dist.emplace_back(std::make_pair(1, 9999));
 
   /* f2 */
-  b1Dist.emplace_back(std::make_pair(1, 49999));
-  b2Dist.emplace_back(std::make_pair(70000, 100000));
+  b1Dist.emplace_back(std::make_pair(80001, 100000));
+  b2Dist.emplace_back(std::make_pair(80001, 100000));
 
   /* f3 */
-  b1Dist.emplace_back(std::make_pair(50000, 100000));
-  b2Dist.emplace_back(std::make_pair(1, 69999));
+  b1Dist.emplace_back(std::make_pair(80001, 100000));
+  b2Dist.emplace_back(std::make_pair(1, 9999));
 
   /* f4 */
-  b1Dist.emplace_back(std::make_pair(1, 49999));
-  b2Dist.emplace_back(std::make_pair(1, 69999));
+  b1Dist.emplace_back(std::make_pair(1, 9999));
+  b2Dist.emplace_back(std::make_pair(80001, 100000));
 
   int i = 4;
   while (i--) {
@@ -202,12 +157,11 @@ int main(int argc, char *argv[]) {
       b2 = distribution2(generator);
       bias1 = (double)(b1) / 100000;
       bias2 = (double)(b2) / 100000;
-      std::cout << "\nF1"
-                << "\n";
+      std::cout << "\nF" << std::to_string(4 - i) << "\n";
       std::cout << bias1 << ", " << bias2 << std::endl;
       std::bernoulli_distribution d1(bias1);
       std::bernoulli_distribution d2(bias2);
-      forallBuckets["f1"] += {{"b1", b1}, {"b2", b2}};
+      forallBuckets["f" + std::to_string(4 - i)] += {{"b1", b1}, {"b2", b2}};
       auto retCounts =
           getPSERunCounts(d1, d2, bias1, bias2, b1, b2, FORALLS, RUNS, rng);
       int index = 0;
@@ -216,9 +170,9 @@ int main(int argc, char *argv[]) {
         index++;
       }
     }
-    std::cout << "\n";
+    std::cout << "\n\t";
     for (const auto elems : totalCounts) {
-      std::cout << "\\multirow{2}{*}{" << elems << "} & ";
+      std::cout << "\\multirow{2}{*}{" << elems << "} & \n";
     }
     std::cout << "\n";
     bias1 = -0.1;

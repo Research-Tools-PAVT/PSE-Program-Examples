@@ -3,59 +3,165 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "4",
-                "uid": "311bb248-120c-486c-a536-c9d1ef9286f4"
+                "nodeId": "5",
+                "uid": "36914e6c-a2c7-4a19-90bc-05fec138a2cd"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 66077)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           5930))",
+            "predicateId": "cond_false_2",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 63970))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "7",
-                "uid": "7f4a7136-ee1d-46b3-a705-bdcc6670cf03"
+                "nodeId": "6",
+                "uid": "78378ba0-17b6-4b99-9157-1f04aab89fc9"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 63970))",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       47627)",
+            "predicateId": "cond_true_4",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 3222)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 3222))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "uid": "72cf9959-8a20-428e-93e1-50870488f11d"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       3222)",
+            "predicateId": "cond_true_5",
             "variables": [
                 "b2_sym"
             ],
@@ -67,81 +173,165 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "4",
-                "uid": "311bb248-120c-486c-a536-c9d1ef9286f4"
+                "nodeId": "5",
+                "uid": "36914e6c-a2c7-4a19-90bc-05fec138a2cd"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 66077)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           5930))",
+            "predicateId": "cond_false_2",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 63970))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "512b5c55-e98f-4e21-951d-dfb98740f022"
+                "uid": "78378ba0-17b6-4b99-9157-1f04aab89fc9"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 63970)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       47627)",
+            "predicateId": "cond_true_4",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Sle (ReadLSB w32 0 b2_sym) 1602)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 3222)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 3222))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "8",
-                "uid": "2bdc2c5e-db42-4d98-9215-7736be744456"
+                "nodeId": "9",
+                "uid": "f20d4a0e-d8bd-4975-8962-9de6a701b342"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 1602)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           3222))",
+            "predicateId": "cond_false_5",
             "variables": [
                 "b2_sym"
             ],
@@ -153,105 +343,169 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "nodeId": "3",
+                "uid": "014a4b65-e8dd-4d63-90b2-1dad68697328"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           56146))",
+            "predicateId": "cond_false_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "311bb248-120c-486c-a536-c9d1ef9286f4"
-            },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-            "variables": [
-                "b1_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)"
-            ],
-            "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 63970))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "6",
-                "uid": "512b5c55-e98f-4e21-951d-dfb98740f022"
-            },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-            "variables": [
-                "b2_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Sle (ReadLSB w32 0 b2_sym) 1602)"
-            ],
-            "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "9",
-                "uid": "b0d31ede-ad7f-44c0-9ec4-1be3b40c4483"
-            },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))",
-            "variables": [
-                "b2_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))",
-                "(Sle (ReadLSB w32 0 b2_sym) 24709)"
-            ],
-            "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 24709))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "10",
-                "uid": "922f5abd-68c1-455d-9f90-e60e87366f9f"
+                "uid": "8f422666-54c2-45f2-86c5-51c1fd01b60d"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 24709)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       66778)",
+            "predicateId": "cond_true_3",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "12",
+                "uid": "87fea3ff-7b32-43d5-9022-ba78ac6bfbee"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       62405)",
+            "predicateId": "cond_true_6",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 18367)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 18367))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "14",
+                "uid": "f9d76c6d-aa7e-46e8-b6a8-adc88c53967d"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       18367)",
+            "predicateId": "cond_true_7",
             "variables": [
                 "b2_sym"
             ],
@@ -263,105 +517,169 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "nodeId": "3",
+                "uid": "014a4b65-e8dd-4d63-90b2-1dad68697328"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           56146))",
+            "predicateId": "cond_false_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "4",
-                "uid": "311bb248-120c-486c-a536-c9d1ef9286f4"
+                "nodeId": "10",
+                "uid": "8f422666-54c2-45f2-86c5-51c1fd01b60d"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 66077)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       66778)",
+            "predicateId": "cond_true_3",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 63970))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "6",
-                "uid": "512b5c55-e98f-4e21-951d-dfb98740f022"
+                "nodeId": "12",
+                "uid": "87fea3ff-7b32-43d5-9022-ba78ac6bfbee"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 63970)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       62405)",
+            "predicateId": "cond_true_6",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Sle (ReadLSB w32 0 b2_sym) 1602)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 18367)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 18367))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "9",
-                "uid": "b0d31ede-ad7f-44c0-9ec4-1be3b40c4483"
+                "nodeId": "15",
+                "uid": "8a715ee1-e41d-4588-8675-b2a766c84d3d"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))",
-            "variables": [
-                "b2_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))",
-                "(Sle (ReadLSB w32 0 b2_sym) 24709)"
-            ],
-            "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)",
-                "(Sle (ReadLSB w32 0 b2_sym) 63970)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 1602))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 24709))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "11",
-                "uid": "e63fd628-e6b1-47ea-a00b-c7a6bc42dae6"
-            },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 24709))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           18367))",
+            "predicateId": "cond_false_7",
             "variables": [
                 "b2_sym"
             ],
@@ -373,59 +691,169 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6c4edb98-ae7b-46ee-bbd0-08b34cfae41a"
+                "uid": "014a4b65-e8dd-4d63-90b2-1dad68697328"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           56146))",
+            "predicateId": "cond_false_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "12",
-                "uid": "97ecf1e7-8eb5-444a-a940-0b858a2323d3"
+                "nodeId": "10",
+                "uid": "8f422666-54c2-45f2-86c5-51c1fd01b60d"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 58281)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       66778)",
+            "predicateId": "cond_true_3",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "13",
+                "uid": "20a30dec-63f7-4c2e-975a-29b31092da88"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           62405))",
+            "predicateId": "cond_false_6",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)",
-                "(Sle (ReadLSB w32 0 b2_sym) 44359)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 76376)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 44359))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 76376))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "14",
-                "uid": "72d80299-e587-4b89-92a1-6418291bccec"
+                "nodeId": "16",
+                "uid": "909447e2-0997-4cce-86b2-4966c111ec48"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 44359)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       76376)",
+            "predicateId": "cond_true_8",
             "variables": [
                 "b2_sym"
             ],
@@ -437,59 +865,169 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6c4edb98-ae7b-46ee-bbd0-08b34cfae41a"
+                "uid": "014a4b65-e8dd-4d63-90b2-1dad68697328"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           56146))",
+            "predicateId": "cond_false_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "12",
-                "uid": "97ecf1e7-8eb5-444a-a940-0b858a2323d3"
+                "nodeId": "10",
+                "uid": "8f422666-54c2-45f2-86c5-51c1fd01b60d"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 58281)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       66778)",
+            "predicateId": "cond_true_3",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 62405)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "13",
+                "uid": "20a30dec-63f7-4c2e-975a-29b31092da88"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           62405))",
+            "predicateId": "cond_false_6",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)",
-                "(Sle (ReadLSB w32 0 b2_sym) 44359)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 76376)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 44359))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 62405))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 76376))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "15",
-                "uid": "551c14e2-3b43-4e17-99e3-06d4a8fb336a"
+                "nodeId": "17",
+                "uid": "3e656db7-a85a-4271-8241-bfd209d39e6b"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 44359))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           76376))",
+            "predicateId": "cond_false_8",
             "variables": [
                 "b2_sym"
             ],
@@ -501,59 +1039,114 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6c4edb98-ae7b-46ee-bbd0-08b34cfae41a"
+                "uid": "014a4b65-e8dd-4d63-90b2-1dad68697328"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           56146))",
+            "predicateId": "cond_false_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "13",
-                "uid": "5a8b7d3d-e383-4c40-a754-e6e1b97c9c35"
+                "nodeId": "11",
+                "uid": "3bb47a37-344c-474f-a497-1313c3e6dc29"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           66778))",
+            "predicateId": "cond_false_3",
             "variables": [
-                "b2_sym"
+                "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Sle (ReadLSB w32 0 b2_sym) 84014)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 45038)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 45038))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "16",
-                "uid": "8823817a-19c4-48c5-a5d1-ba44a0aa25d2"
+                "nodeId": "18",
+                "uid": "108c82ad-848b-4e49-944d-e4fe8ac683a7"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 84014)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       45038)",
+            "predicateId": "cond_true_9",
             "variables": [
                 "b2_sym"
             ],
@@ -565,59 +1158,114 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "nodeId": "3",
+                "uid": "014a4b65-e8dd-4d63-90b2-1dad68697328"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           56146))",
+            "predicateId": "cond_false_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 66778)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "5",
-                "uid": "f401fd69-44c1-450f-8211-6de9a5438e0d"
+                "nodeId": "11",
+                "uid": "3bb47a37-344c-474f-a497-1313c3e6dc29"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           66778))",
+            "predicateId": "cond_false_3",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Sle (ReadLSB w32 0 b2_sym) 8267)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 45038)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66778))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 45038))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "18",
-                "uid": "047a3d90-865a-4197-a224-28d59818aa59"
+                "nodeId": "19",
+                "uid": "adc6d749-d228-4e6b-a6c7-ad6061a18b18"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 8267)",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           45038))",
+            "predicateId": "cond_false_9",
             "variables": [
                 "b2_sym"
             ],
@@ -629,81 +1277,165 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "f401fd69-44c1-450f-8211-6de9a5438e0d"
+                "uid": "36914e6c-a2c7-4a19-90bc-05fec138a2cd"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           5930))",
+            "predicateId": "cond_false_2",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Sle (ReadLSB w32 0 b2_sym) 8267)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "19",
-                "uid": "232bb3bc-2231-4666-9a23-d5eeb38e6120"
+                "nodeId": "7",
+                "uid": "eced69d1-f0e7-4e60-94b8-4d2cd502d15a"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           47627))",
+            "predicateId": "cond_false_4",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Sle (ReadLSB w32 0 b2_sym) 12249)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 79881)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "20",
-                "uid": "6e5faead-e656-4c89-b0bf-c700cbe63a4f"
+                "uid": "b7eabdc2-c20b-4e85-bcd1-59412349ef97"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 12249)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       79881)",
+            "predicateId": "cond_true_10",
             "variables": [
                 "b2_sym"
             ],
@@ -715,81 +1447,222 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "3",
-                "uid": "6c4edb98-ae7b-46ee-bbd0-08b34cfae41a"
+                "nodeId": "2",
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "13",
-                "uid": "5a8b7d3d-e383-4c40-a754-e6e1b97c9c35"
+                "nodeId": "5",
+                "uid": "36914e6c-a2c7-4a19-90bc-05fec138a2cd"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           5930))",
+            "predicateId": "cond_false_2",
             "variables": [
-                "b2_sym"
+                "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Sle (ReadLSB w32 0 b2_sym) 84014)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "17",
-                "uid": "f33bdaf7-72bd-4fe7-bb81-9bb5cd01de94"
+                "nodeId": "7",
+                "uid": "eced69d1-f0e7-4e60-94b8-4d2cd502d15a"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           47627))",
+            "predicateId": "cond_false_4",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))",
-                "(Sle (ReadLSB w32 0 b2_sym) 92535)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 79881)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 92535))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "21",
+                "uid": "cb050196-6fa3-4b73-a7d8-b8017f96be1d"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           79881))",
+            "predicateId": "cond_false_10",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 83533)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 83533))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "22",
-                "uid": "045fa257-5c99-45fd-b10e-f1ae3908b723"
+                "uid": "9c3cac5f-c7a8-4226-9195-195675d926bd"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 92535)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       83533)",
+            "predicateId": "cond_true_11",
             "variables": [
                 "b2_sym"
             ],
@@ -801,81 +1674,222 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "3",
-                "uid": "6c4edb98-ae7b-46ee-bbd0-08b34cfae41a"
+                "nodeId": "2",
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Sle (ReadLSB w32 0 b2_sym) 58281)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "13",
-                "uid": "5a8b7d3d-e383-4c40-a754-e6e1b97c9c35"
+                "nodeId": "5",
+                "uid": "36914e6c-a2c7-4a19-90bc-05fec138a2cd"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b1_sym)           5930))",
+            "predicateId": "cond_false_2",
             "variables": [
-                "b2_sym"
+                "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Sle (ReadLSB w32 0 b2_sym) 84014)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 47627)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "17",
-                "uid": "f33bdaf7-72bd-4fe7-bb81-9bb5cd01de94"
+                "nodeId": "7",
+                "uid": "eced69d1-f0e7-4e60-94b8-4d2cd502d15a"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           47627))",
+            "predicateId": "cond_false_4",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))",
-                "(Sle (ReadLSB w32 0 b2_sym) 92535)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 79881)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 58281))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 84014))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 92535))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "21",
+                "uid": "cb050196-6fa3-4b73-a7d8-b8017f96be1d"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           79881))",
+            "predicateId": "cond_false_10",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 83533)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 47627))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 79881))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 83533))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "23",
-                "uid": "587d8be7-653c-4421-9f65-2c8f8b714084"
+                "uid": "f1004bba-6c64-4c68-bdba-4f32e020591f"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 92535))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           83533))",
+            "predicateId": "cond_false_11",
             "variables": [
                 "b2_sym"
             ],
@@ -887,105 +1901,165 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "5",
-                "uid": "f401fd69-44c1-450f-8211-6de9a5438e0d"
+                "nodeId": "4",
+                "uid": "6324b840-c4bf-4be1-8e92-49cba515a27e"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       5930)",
+            "predicateId": "cond_true_2",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Sle (ReadLSB w32 0 b2_sym) 8267)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "19",
-                "uid": "232bb3bc-2231-4666-9a23-d5eeb38e6120"
-            },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-            "variables": [
-                "b2_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Sle (ReadLSB w32 0 b2_sym) 12249)"
-            ],
-            "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "21",
-                "uid": "6fa033c3-ef36-40b6-bf59-c9aca142f6c8"
-            },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))",
-            "variables": [
-                "b2_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))",
-                "(Sle (ReadLSB w32 0 b2_sym) 88315)"
-            ],
-            "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 88315))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "24",
-                "uid": "8e551132-068e-43d9-a3fd-06cd379315ff"
+                "uid": "ef3672ec-d850-48e6-adc3-1dc9b23f6fb1"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b2_sym) 88315)",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       32462)",
+            "predicateId": "cond_true_12",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 2625)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 2625))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "26",
+                "uid": "d4dc6f29-cd3e-420b-9d6d-d10c3e78db95"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       2625)",
+            "predicateId": "cond_true_13",
             "variables": [
                 "b2_sym"
             ],
@@ -997,105 +2071,789 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "b5ea0d7d-545d-4ded-9289-d40aa028b133"
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
             },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 84737))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "dfd4527c-87cb-48fe-9660-17363847a92b"
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
             },
-            "predicate": "(Sle (ReadLSB w32 0 b1_sym) 84737)",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Sle (ReadLSB w32 0 b1_sym) 66077)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "5",
-                "uid": "f401fd69-44c1-450f-8211-6de9a5438e0d"
+                "nodeId": "4",
+                "uid": "6324b840-c4bf-4be1-8e92-49cba515a27e"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       5930)",
+            "predicateId": "cond_true_2",
             "variables": [
                 "b1_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Sle (ReadLSB w32 0 b2_sym) 8267)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "19",
-                "uid": "232bb3bc-2231-4666-9a23-d5eeb38e6120"
+                "nodeId": "24",
+                "uid": "ef3672ec-d850-48e6-adc3-1dc9b23f6fb1"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       32462)",
+            "predicateId": "cond_true_12",
             "variables": [
                 "b2_sym"
             ],
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Sle (ReadLSB w32 0 b2_sym) 12249)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 2625)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 2625))"
             ]
         },
         {
             "treeNode": {
-                "nodeId": "21",
-                "uid": "6fa033c3-ef36-40b6-bf59-c9aca142f6c8"
+                "nodeId": "27",
+                "uid": "63884da3-eadb-4f7c-a3d3-d6206053501b"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           2625))",
+            "predicateId": "cond_false_13",
             "variables": [
                 "b2_sym"
             ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 14": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
+            },
             "nodeTrueQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))",
-                "(Sle (ReadLSB w32 0 b2_sym) 88315)"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
             ],
             "nodeFalseQuery": [
-                "(Sle (ReadLSB w32 0 b1_sym) 84737)",
-                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 66077))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 8267))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 12249))",
-                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 88315))"
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "6324b840-c4bf-4be1-8e92-49cba515a27e"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       5930)",
+            "predicateId": "cond_true_2",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))"
             ]
         },
         {
             "treeNode": {
                 "nodeId": "25",
-                "uid": "38e24b37-0112-404e-86a6-4c30fe729f46"
+                "uid": "fb836dc3-42f7-465b-afc9-989d12e65d04"
             },
-            "predicate": "(Eq false (Sle (ReadLSB w32 0 b2_sym) 88315))",
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           32462))",
+            "predicateId": "cond_false_12",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 53849))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "29",
+                "uid": "5ed8398e-7494-47c0-b72f-4aba4834ba93"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           53849))",
+            "predicateId": "cond_false_14",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 15": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
+            },
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "6324b840-c4bf-4be1-8e92-49cba515a27e"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       5930)",
+            "predicateId": "cond_true_2",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "25",
+                "uid": "fb836dc3-42f7-465b-afc9-989d12e65d04"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           32462))",
+            "predicateId": "cond_false_12",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 53849))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "28",
+                "uid": "078d5779-2133-4437-9328-ec258187197b"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       53849)",
+            "predicateId": "cond_true_14",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 34708)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 34708))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "30",
+                "uid": "1855679e-2f5e-43d4-9a56-c3c5969e5494"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       34708)",
+            "predicateId": "cond_true_15",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "Path 16": [
+        {
+            "treeNode": {
+                "nodeId": "1",
+                "uid": "7a94b5d2-f196-4b91-af34-bb5066b1c82e"
+            },
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 56146))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "uid": "94f30ac0-b1b3-448a-9687-2674aebcdea0"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       56146)",
+            "predicateId": "cond_true_1",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b1_sym) 5930))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "uid": "6324b840-c4bf-4be1-8e92-49cba515a27e"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b1_sym)       5930)",
+            "predicateId": "cond_true_2",
+            "variables": [
+                "b1_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 32462)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "25",
+                "uid": "fb836dc3-42f7-465b-afc9-989d12e65d04"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           32462))",
+            "predicateId": "cond_false_12",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 53849))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "28",
+                "uid": "078d5779-2133-4437-9328-ec258187197b"
+            },
+            "predicate": "(Sle (ReadLSB w32 0 b2_sym)       53849)",
+            "predicateId": "cond_true_14",
+            "variables": [
+                "b2_sym"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 34708)"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 1 (ReadLSB w32 0 b1_sym))",
+                "(Sle (ReadLSB w32 0 b1_sym) 100000)",
+                "(Sle 1 (ReadLSB w32 0 b2_sym))",
+                "(Sle (ReadLSB w32 0 b2_sym) 100000)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_0))",
+                "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 56146)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_1))",
+                "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b1_sym) 5930)",
+                "(Sle 0 (ReadLSB w32 0 coin1_index_2))",
+                "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_0))",
+                "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 32462))",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_1))",
+                "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
+                "(Sle (ReadLSB w32 0 b2_sym) 53849)",
+                "(Sle 0 (ReadLSB w32 0 coin2_index_2))",
+                "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
+                "(Eq false (Sle (ReadLSB w32 0 b2_sym) 34708))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "31",
+                "uid": "049b94c4-4d06-4636-8a8d-fb63512dff4b"
+            },
+            "predicate": "(Eq false      (Sle (ReadLSB w32 0 b2_sym)           34708))",
+            "predicateId": "cond_false_15",
             "variables": [
                 "b2_sym"
             ],

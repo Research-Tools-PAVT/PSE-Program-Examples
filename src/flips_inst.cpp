@@ -13,16 +13,13 @@ int main(int argc, char *argv[]) {
     Forall Variables.
   */
   int b1, b2, SUM;
-  double bias1;
-  double bias2;
+  // double bias1;
+  // double bias2;
 
   int coin1[3], coin2[3], sum1 = 0, sum2 = 0;
 
   klee_make_symbolic(&b1, sizeof(b1), "b1_sym");
   klee_make_symbolic(&b2, sizeof(b2), "b2_sym");
-
-  // make_pse_symbolic(coin1, sizeof(coin1), "coin1_arr_sym", (int)0, int(1));
-  // make_pse_symbolic(coin2, sizeof(coin2), "coin2_arr_sym", (int)0, int(1));
 
   klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
   klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
@@ -38,20 +35,28 @@ int main(int argc, char *argv[]) {
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-1.
+    int temp;
+    std::string name = "coin1_index_" + std::to_string(i);
+    make_pse_symbolic(&temp, sizeof(temp), name.c_str(), (int)0, int(1));
     if (rand() % 100000 >= b1)
-      coin1[i] = 1;
+      temp = 1;
     else
-      coin1[i] = 0;
+      temp = 0;
+    coin1[i] = temp;
     sum1 += coin1[i];
   }
 
   // generate 3 flips for coin-2
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-2
+    int temp;
+    std::string name = "coin2_index_" + std::to_string(i);
+    make_pse_symbolic(&temp, sizeof(temp), name.c_str(), (int)0, int(1));
     if (rand() % 100000 >= b2)
-      coin2[i] = 1;
+      temp = 1;
     else
-      coin2[i] = 0;
+      temp = 0;
+    coin2[i] = temp;
     sum2 += coin2[i];
   }
 

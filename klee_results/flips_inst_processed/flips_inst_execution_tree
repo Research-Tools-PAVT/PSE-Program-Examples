@@ -1,93 +1,20 @@
 digraph ExecutionTree {
-	1 -> 2 [label="(And
-(Slt
-(ReadLSB w32 0 b1_sym) 10000)
-(Slt
-(ReadLSB w32 0 b2_sym) 10000))" color=green]
-	1 -> 3 [label="(Eq false
-(And
-(Slt
-(ReadLSB w32 0 b1_sym) 10000)
-(Slt
-(ReadLSB w32 0 b2_sym) 10000)))" color=red]
-	2 -> 4 [label="(Sle
-(Add w32
-(ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)) 4)" color=green]
-	2 -> 5 [label="(Eq false
-(Sle
-(Add w32
-(ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)) 4))" color=red]
-	3 -> 6 [label="(And
-(Slt 80000
-(ReadLSB w32 0 b1_sym))
-(Slt 80000
-(ReadLSB w32 0 b2_sym)))" color=green]
-	3 -> 7 [label="(Eq false
-(And
-(Slt 80000
-(ReadLSB w32 0 b1_sym))
-(Slt 80000
-(ReadLSB w32 0 b2_sym))))" color=red]
-	6 -> 8 [label="(Sle 4
-(Add w32
-(ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)))" color=green]
-	6 -> 9 [label="(Eq false
-(Sle 4
-(Add w32
-(ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym))))" color=red]
-	7 -> 10 [label="(And
-(Slt 80000
-(ReadLSB w32 0 b1_sym))
-(Slt
-(ReadLSB w32 0 b2_sym) 10000))" color=green]
-	7 -> 11 [label="(Eq false
-(And
-(Slt 80000
-(ReadLSB w32 0 b1_sym))
-(Slt
-(ReadLSB w32 0 b2_sym) 10000)))" color=red]
-	10 -> 12 [label="(Sle 5
-(Add w32
-(ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym)))" color=green]
-	10 -> 13 [label="(Eq false
-(Sle 5
-(Add w32
-(ReadLSB w32 0 sum1_sym)
-(ReadLSB w32 0 sum2_sym))))" color=red]
-	11 -> 22 [label="(And
-(Slt
-(ReadLSB w32 0 b1_sym) 10000)
-(Slt 80000
-(ReadLSB w32 0 b2_sym)))" color=green]
-	11 -> 23 [label="(Eq false
-(And
-(Slt
-(ReadLSB w32 0 b1_sym) 10000)
-(Slt 80000
-(ReadLSB w32 0 b2_sym))))" color=red]
-	12 -> 14 [label="(Sle
-(ReadLSB w32 0 b1_sym) 99711)" color=green]
-	12 -> 15 [label="(Eq false
-(Sle
-(ReadLSB w32 0 b1_sym) 99711))" color=red]
-	14 -> 16 [label="(Sle
-(ReadLSB w32 0 b1_sym) 93592)" color=green]
-	14 -> 17 [label="(Eq false
-(Sle
-(ReadLSB w32 0 b1_sym) 93592))" color=red]
-	15 -> 20 [label="(Sle
-(ReadLSB w32 0 b2_sym) 8156)" color=green]
-	15 -> 21 [label="(Eq false
-(Sle
-(ReadLSB w32 0 b2_sym) 8156))" color=red]
-	16 -> 18 [label="(Sle
-(ReadLSB w32 0 b2_sym) 6260)" color=green]
-	16 -> 19 [label="(Eq false
-(Sle
-(ReadLSB w32 0 b2_sym) 6260))" color=red]
+	1 -> 2 [label=cond_true_1 color=green]
+	1 -> 3 [label=cond_false_1 color=red]
+	2 -> 4 [label=cond_true_2 color=green]
+	2 -> 5 [label=cond_false_2 color=red]
+	3 -> 6 [label=cond_true_3 color=green]
+	3 -> 7 [label=cond_false_3 color=red]
+	6 -> 8 [label=cond_true_4 color=green]
+	6 -> 9 [label=cond_false_4 color=red]
+	7 -> 12 [label=cond_true_5 color=green]
+	7 -> 13 [label=cond_false_5 color=red]
+	8 -> 10 [label=cond_true_8 color=green]
+	8 -> 11 [label=cond_false_8 color=red]
+	12 -> 14 [label=cond_true_6 color=green]
+	12 -> 15 [label=cond_false_6 color=red]
+	13 -> 16 [label=cond_true_7 color=green]
+	13 -> 17 [label=cond_false_7 color=red]
+	16 -> 18 [label=cond_true_9 color=green]
+	16 -> 19 [label=cond_false_9 color=red]
 }

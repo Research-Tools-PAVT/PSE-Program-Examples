@@ -21,8 +21,12 @@ Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
 
-
+EdgePredicateLabels = {}
+truePred = 0
+falsePred = 0
 # Find the parent node for a child or vice-versa
+
+
 def findNext(node):
     for edges in Tree.edgeSet:
         if node.data[0] == edges.child.data[0]:
@@ -41,6 +45,17 @@ def getLabel(node):
     return ""
 
 
+def getPredicateId(node):
+    # Return Empty string if nothing matches.
+    for edges in Tree.edgeSet:
+        if node.data[0] == edges.child.data[0]:
+            if not edges.label:
+                return ""
+            else:
+                return edges.label
+    return ""
+
+
 # Process the file dump from KLEE
 with open(file.strip(), "r") as fileptr:
     lines = fileptr.read().replace("\n", " ")
@@ -53,9 +68,9 @@ with open(file.strip(), "r") as fileptr:
             temp = {}
 
             # We seperate into each dump item, array constructed.
-            for fields in ConstraintObj.split(","):
-                if len(fields.strip().split(":")) == 2:
-                    [key, value] = fields.strip().split(":")
+            for fields in ConstraintObj.split(";"):
+                if len(fields.strip().split("-->")) == 2:
+                    [key, value] = fields.strip().split("-->")
 
                     # TrueQuery & FalseQuery need specialized processing.
                     if "Query" in key.strip():
@@ -71,7 +86,10 @@ with open(file.strip(), "r") as fileptr:
 
                     # Add the branch condition.
                     elif "Branch" in key.strip() or "Negate" in key.strip():
-                        temp[key.strip()] = " ".join(value.strip().split())
+                        # if ":" in value.strip():
+                        #     print("Named Abbr")
+                        temp[key.strip()] = " ".join(value.strip().split("\n"))
+                        # print(temp[key.strip()])
                     else:
                         temp[key.strip()] = value.strip()
 
@@ -123,6 +141,8 @@ for elems in results:
         node.trueQuerySet = elems.get("trueQuery", [])
         node.falseQuerySet = elems.get("falseQuery", [])
 
+        # print(trueExpr)
+
         # Convert to readable form.
         trueEdgeLabel = [
             genericParse(collectRecursive(loads(trueExpr)))
@@ -135,22 +155,32 @@ for elems in results:
         ]
 
         # Adding the tree edges to nodes.
+        truePred += 1
+        EdgePredicateLabels[truePred] = "\n(".join(
+            trueExpr.strip().split(" ("))
+
         node.edges.append(
             ExecutionTreeEdge(
                 node,
                 left,
-                label="\n(".join(trueExpr.strip().split(" (")),
-                edgeLabel=trueEdgeLabel[0],
+                label=f"cond_true_{truePred}",
+                edgeLabel="\n(".join(
+                    trueExpr.strip().split(" (")),
                 color="green",
             )
         )
+
+        falsePred += 1
+        EdgePredicateLabels[falsePred] = "\n(".join(
+            falseExpr.strip().split(" ("))
 
         node.edges.append(
             ExecutionTreeEdge(
                 node,
                 right,
-                label="\n(".join(falseExpr.strip().split(" (")),
-                edgeLabel=falseEdgeLabel[0],
+                label=f"cond_false_{falsePred}",
+                edgeLabel="\n(".join(
+                    falseExpr.strip().split(" (")),
                 color="red",
             )
         )
@@ -160,8 +190,9 @@ for elems in results:
             ExecutionTreeEdge(
                 node,
                 left,
-                label="\n(".join(trueExpr.strip().split(" (")),
-                edgeLabel=trueEdgeLabel[0],
+                label=f"cond_true_{truePred}",
+                edgeLabel="\n(".join(
+                    trueExpr.strip().split(" (")),
                 color="green",
             )
         )
@@ -170,8 +201,9 @@ for elems in results:
             ExecutionTreeEdge(
                 node,
                 right,
-                label="\n(".join(falseExpr.strip().split(" (")),
-                edgeLabel=falseEdgeLabel[0],
+                label=f"cond_false_{falsePred}",
+                edgeLabel="\n(".join(
+                    falseExpr.strip().split(" (")),
                 color="red",
             )
         )
@@ -198,6 +230,7 @@ for pathIds, nodes in pathMap.items():
     while temp is not None:
         collection = {}
         data = " ".join(getLabel(temp).strip().split("\n"))
+        predicateId = getPredicateId(temp)
         collection["treeNode"] = temp
 
         # COMMENT : Must collect all the variables in the expression.
@@ -219,6 +252,7 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = data
+            collection["predicateId"] = predicateId
             # processExpressionImap(imapsData, variables)
             # All query lead to this particular node.
             # KLEE Assumes also come-in at this point.

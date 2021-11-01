@@ -93,8 +93,14 @@ int main() {
     r[i] = temp;
   }
 
+  klee_assume(A[1] == 0);
+  klee_assume(r[0] == 0);
+  klee_assume(A[2] == 1);
+  klee_assume(r[3] == 1);
+
   if (freivalds(A, B, C, r, n) == 1) {
     klee_dump_kquery_state();
   }
+
   return 0;
 }

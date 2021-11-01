@@ -34,9 +34,9 @@ class ExecutionTreeEdge:
         self.imapdata = ""
         self.label = label
         self.edgeLabel = edgeLabel
-        self.data = label
+        self.data = edgeLabel
         self.color = color
-        self.graph = Digraph(comment="Execution Edge", format="png")
+        self.graph = Digraph(comment="Execution Edge", format="pdf")
 
     def view_edge(self):
         """
@@ -61,7 +61,7 @@ class ExecutionTree:
 
     def save_cfg(self, name="ExecutionTree", filename="sample", directory="."):
         graph = Digraph(name=name, filename=filename,
-                        directory=directory, format="png")
+                        directory=directory, format="pdf")
         for node in self.nodes:
             for edge in node.edges:
                 edge.label += edge.imapdata

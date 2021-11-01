@@ -134,6 +134,7 @@ def returnIfVars(elems):
 
 
 def collectRecursive(arr):
+    # print(f"{arr}\n")
     # Not a list
     if not isinstance(arr, list):
         return getTerminalType(arr)
@@ -187,11 +188,30 @@ def findVars(expr):
 
 
 if __name__ == "__main__":
-    string = '''
-(Select w32 (Slt N0:(Add w32 5
-                              (ReadLSB w32 0 left_count_sym))
-                  N1:(Add w32 4
-                              (ReadLSB w32 0 right_count_sym)))
-             N1
-             N0)            '''
+    string = '''         (Eq false
+             (Slt N2
+                  (ReadLSB w32 N5:(Extract w32 0 (Mul w64 4 (SExt w64 N4))) U0:[23=N6:(Read w8 3 f_5),
+                                                                                22=N7:(Read w8 2 f_5),
+                                                                                21=N8:(Read w8 1 f_5),
+                                                                                20=N9:(Read w8 0 f_5),
+                                                                                19=N10:(Read w8 3 f_4),
+                                                                                18=N11:(Read w8 2 f_4),
+                                                                                17=N12:(Read w8 1 f_4),
+                                                                                16=N13:(Read w8 0 f_4),
+                                                                                15=N14:(Read w8 3 f_3),
+                                                                                14=N15:(Read w8 2 f_3),
+                                                                                13=N16:(Read w8 1 f_3),
+                                                                                12=N17:(Read w8 0 f_3),
+                                                                                11=N18:(Read w8 3 f_2),
+                                                                                10=N19:(Read w8 2 f_2),
+                                                                                9=N20:(Read w8 1 f_2),
+                                                                                8=N21:(Read w8 0 f_2),
+                                                                                7=N22:(Read w8 3 f_1),
+                                                                                6=N23:(Read w8 2 f_1),
+                                                                                5=N24:(Read w8 1 f_1),
+                                                                                4=N25:(Read w8 0 f_1),
+                                                                                3=N26:(Read w8 3 f),
+                                                                                2=N27:(Read w8 2 f),
+                                                                                1=N28:(Read w8 1 f),
+                                                                                0=N29:(Read w8 0 f)] @ const_arr1)))'''
     print(json.dumps(collectRecursive(loads(string)), indent=4, sort_keys=True))

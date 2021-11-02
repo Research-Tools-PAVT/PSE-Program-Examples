@@ -22,57 +22,17 @@
  * E[count] = n * log(n) for any given random run.
  */
 
-int SIZE = 10;
+int SIZE = 5;
 int count = 0, counter = 0, swap_count = 0;
 
 int partition(int arr[], int left, int right) {
   // pivot element
-  int pivot, r, i = left - 1;
+  int pivot, i = left - 1, random;
+  make_pse_symbolic(&random, sizeof(random), "random_sym", (int)left,
+                    (int)right);
 
-  int beta[SIZE];
-  klee_make_symbolic(beta, sizeof(beta), "beta_sym");
-
-  int gamma[SIZE];
-  klee_make_symbolic(gamma, sizeof(gamma), "gamma_sym");
-
-  srand(time(NULL));
-  int random = left + rand() % abs(right - left);
-
-  beta[right] = arr[random];
+  pivot = arr[random];
   swap_count += 1;
-
-  /**
-   * @brief We need to extract count as a
-   * symbolic expression in the comparision.
-   */
-
-  auto __counter = std::to_string(counter++);
-
-  // COMMENT : Symbolic Expression for compare count.
-  std::string c_symbolic("count_");
-  c_symbolic += __counter;
-  c_symbolic += "_sym";
-  klee_make_symbolic(&count, sizeof(count), c_symbolic.c_str());
-
-  // COMMENT : Symbolic Expression for swap count.
-  std::string swap_symbolic("swap_");
-  swap_symbolic += __counter;
-  swap_symbolic += "_sym";
-  klee_make_symbolic(&swap_count, sizeof(swap_count), swap_symbolic.c_str());
-
-  // COMMENT : Symbolic Expression for "r".
-  std::string r_symbolic("r_");
-  r_symbolic += __counter;
-  r_symbolic += "_sym";
-  klee_make_symbolic(&r, sizeof(r), r_symbolic.c_str());
-
-  std::string pivot_symbolic("pivot_");
-  pivot_symbolic += __counter;
-  pivot_symbolic += "_sym";
-  klee_make_symbolic(&pivot, sizeof(pivot), pivot_symbolic.c_str());
-
-  klee_assume(pivot == beta[right]);
-  klee_assume(r == right);
 
   for (int j = left; j <= right; j++) {
     /**
@@ -88,22 +48,14 @@ int partition(int arr[], int left, int right) {
 
     // COMMENT : Fork Location.
     if (arr[j] <= pivot) {
-      klee_assume(beta[++i] == arr[j]);
       swap_count += 1;
+      i += 1;
     } else {
-      klee_assume(gamma[j] == arr[j]);
       swap_count += 0;
     }
   }
 
-  beta[i + 1] = arr[right];
   swap_count += 1;
-
-  klee_dump_symbolic_details(&swap_count, swap_symbolic.c_str());
-  klee_dump_symbolic_details(&count, c_symbolic.c_str());
-  klee_dump_symbolic_details(&r, r_symbolic.c_str());
-  klee_dump_symbolic_details(&pivot, pivot_symbolic.c_str());
-
   return (i + 1);
 }
 
@@ -121,16 +73,19 @@ void quicksort_arr(int arr[], int left, int right) {
   }
 }
 
-int concrete[] = {2, 28, 95, 96, 47, 10, 12, 3, 36, 58};
+// int concrete[] = {2, 28, 95, 96, 47, 10, 12, 3, 36, 58};
 
 int main() {
-  srand(time(NULL));
+  // srand(time(NULL));
 
   int arr[SIZE];
-  klee_make_symbolic(arr, sizeof(arr), "alpha_sym");
+  klee_make_symbolic(arr, sizeof(arr), "arr_sym");
 
-  for (auto i = 0; i < SIZE; i++)
-    arr[i] = concrete[i];
+  // for (auto i = 0; i < SIZE; i++)
+  //   arr[i] = concrete[i];
+
+  klee_make_symbolic(&swap_count, sizeof(swap_count), "swap_count_sym");
+  swap_count = 0;
 
   quicksort_arr(arr, 0, SIZE - 1);
 

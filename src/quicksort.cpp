@@ -1,6 +1,4 @@
 #include <PSE.h>
-#include <iostream>
-#include <stdio.h>
 
 #define N 5
 using namespace std;
@@ -47,13 +45,17 @@ void quicksort(unsigned char arr[], int p, int r, int *num_comps) {
 }
 
 int main() {
-  unsigned char arr[N];
+  unsigned char arr[N] = {0};
   klee_make_symbolic(&arr, sizeof(arr), "arr");
 
   klee_make_symbolic(&num_comps, sizeof(num_comps), "num_comps");
   num_comps = 0;
 
   quicksort(arr, 0, N - 1, &num_comps);
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume((arr[1] > arr[0] && num_comps >= 4) ||
+              (arr[1] > arr[0] && num_comps < 3));
 
   klee_dump_kquery_state();
   klee_print_expr("Num Compares : ", num_comps);

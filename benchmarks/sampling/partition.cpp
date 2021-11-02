@@ -22,7 +22,12 @@ unsigned int microseconds = 10000000;
 
 // for convenience
 using json = nlohmann::json;
-#define SIZE 8
+
+#define CLASSES 5
+#define FORALLS 10
+#define RUNS 1000
+
+#define SIZE 10
 
 int partition(char arr[]) {
   int pivot_elem, pivot, outcome = 0, left_count = 0, right_count = 0;
@@ -48,17 +53,22 @@ int partition(char arr[]) {
 
 int main() {
   srand(time(NULL));
-  int forall_samples = 10;
-  while (forall_samples--) {
-    char arr[SIZE];
-    for (auto i = 0; i < SIZE; i++) {
-      arr[i] = rand() % 255;
-    }
-    int runs = 1000;
-    while (runs--) {
-      auto outcome = partition(arr);
-      printf("Forall : %d, Runs : %d, Num Compares : %d\n", forall_samples,
-             runs, outcome);
+  int forall_classes = CLASSES;
+  while (forall_classes--) {
+    int forall_samples = FORALLS;
+    while (forall_samples--) {
+
+      char arr[SIZE];
+      for (auto i = 0; i < SIZE; i++) {
+        arr[i] = rand() % 255;
+      }
+      int runs = RUNS;
+
+      while (runs--) {
+        auto outcome = partition(arr);
+        printf("Class : %d, Forall : %d, Runs : %d, Num Compares : %d\n",
+               forall_classes, forall_samples, runs, outcome);
+      }
     }
   }
   return 0;

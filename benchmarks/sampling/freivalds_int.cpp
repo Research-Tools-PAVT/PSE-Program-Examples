@@ -23,6 +23,10 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
+#define CLASSES 5
+#define FORALLS 10
+#define RUNS 1000
+
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
     int temp = 0;
@@ -78,44 +82,47 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
-  int forall_samples = 10;
   srand(time(NULL));
-  while (forall_samples--) {
-    int runs = 1000;
-    size_t n = 2;
-    int A[n * n];
-    int B[n * n];
-    int C[n * n];
+  int forall_classes = CLASSES;
+  while (forall_classes--) {
+    int forall_samples = FORALLS;
+    while (forall_samples--) {
+      int runs = RUNS;
+      size_t n = 2;
+      int A[n * n];
+      int B[n * n];
+      int C[n * n];
 
-    for (size_t i = 0; i < n * n; i++) {
-      A[i] = rand() % 150000;
-      B[i] = rand() % 150000;
-      C[i] = rand() % 150000;
-    }
-
-    int realC[n * n];
-    matmul(A, B, n, realC);
-
-    bool orAssume = false;
-    for (size_t i = 0; i < n * n; i++) {
-      orAssume = orAssume || (C[i] != realC[i]);
-    }
-    //   klee_assume(orAssume);
-    while (runs--) {
-      int ret = 0;
-      int r[n];
-      for (size_t i = 0; i < n; i++) {
-        int temp;
-        // make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
-        temp = rand() % 2;
-        r[i] = temp;
+      for (size_t i = 0; i < n * n; i++) {
+        A[i] = rand() % 150000;
+        B[i] = rand() % 150000;
+        C[i] = rand() % 150000;
       }
 
-      if (freivalds(A, B, C, r, n) == 1) {
-        ret = 1;
+      int realC[n * n];
+      matmul(A, B, n, realC);
+
+      bool orAssume = false;
+      for (size_t i = 0; i < n * n; i++) {
+        orAssume = orAssume || (C[i] != realC[i]);
       }
-      printf("Forall : %d, Runs : %d, Return : %d\n", forall_samples, runs,
-             ret);
+      //   klee_assume(orAssume);
+      while (runs--) {
+        int ret = 0;
+        int r[n];
+        for (size_t i = 0; i < n; i++) {
+          int temp;
+          // make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
+          temp = rand() % 2;
+          r[i] = temp;
+        }
+
+        if (freivalds(A, B, C, r, n) == 1) {
+          ret = 1;
+        }
+        printf("Forall : %d, Runs : %d, Return : %d\n", forall_samples, runs,
+               ret);
+      }
     }
   }
   return 0;

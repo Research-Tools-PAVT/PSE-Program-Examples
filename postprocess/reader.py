@@ -13,7 +13,7 @@ import uuid
 import re
 
 idxT = 0
-flag = 0
+flag = 1  # Controls the display of constraints in SymbEx Tree.
 pathMap = {}
 aliasMap = {}
 nodeMap = {}
@@ -92,6 +92,8 @@ with open(file.strip(), "r") as fileptr:
                         #     print("Named Abbr")
                         stringVal = " ".join(value.strip(
                             "\n").strip("\t").split("\n"))
+                        # TODO : Replace or Propagrate the branch condition
+                        # under named abbreviation.
                         # if ":" in stringVal:
                         #     pattern = "(N[0-9][0-9]*:\(([^]]+)\))"
                         #     match = re.findall(pattern, stringVal)
@@ -165,11 +167,14 @@ for elems in results:
             # for x in falseExpr.strip().split(" (")
         ]
 
-        # Adding the tree edges to nodes.
+        # Store the constraints in a map
+        # show the map_id instead of the whole constraint.
+        # pretty print option.
         truePred += 1
         EdgePredicateLabels[truePred] = "\n(".join(
             trueExpr.strip().split(" ("))
 
+        # Adding the tree edges to nodes. (True Edge)
         node.edges.append(
             ExecutionTreeEdge(
                 node,
@@ -182,10 +187,14 @@ for elems in results:
             )
         )
 
+        # Store the constraints in a map
+        # show the map_id instead of the whole constraint.
+        # pretty print option.
         falsePred += 1
         EdgePredicateLabels[falsePred] = "\n(".join(
             falseExpr.strip().split(" ("))
 
+        # Adding the tree edges to nodes. (False Edge)
         node.edges.append(
             ExecutionTreeEdge(
                 node,
@@ -199,6 +208,7 @@ for elems in results:
         )
 
         # We also maintain a global edgeset to make queries faster.
+        # This is not used for displaying the SymbEx Tree.
         Tree.edgeSet.append(
             ExecutionTreeEdge(
                 node,
@@ -267,6 +277,9 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = data
+
+            # Show the id of the constraint that belongs to this edge
+            # in the SymbEx tree.
             collection["predicateId"] = predicateId
             # processExpressionImap(imapsData, variables)
             # All query lead to this particular node.

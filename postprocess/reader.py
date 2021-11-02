@@ -10,8 +10,10 @@ from sexpdata import loads, dumps
 from auxiliary import flatten
 from z3write import genericParse
 import uuid
+import re
 
-id = 0
+idxT = 0
+flag = 0
 pathMap = {}
 aliasMap = {}
 nodeMap = {}
@@ -88,7 +90,16 @@ with open(file.strip(), "r") as fileptr:
                     elif "Branch" in key.strip() or "Negate" in key.strip():
                         # if ":" in value.strip():
                         #     print("Named Abbr")
-                        temp[key.strip()] = " ".join(value.strip().split("\n"))
+                        stringVal = " ".join(value.strip(
+                            "\n").strip("\t").split("\n"))
+                        # if ":" in stringVal:
+                        #     pattern = "(N[0-9][0-9]*:\(([^]]+)\))"
+                        #     match = re.findall(pattern, stringVal)
+                        #     egs = stringVal.strip().split(":")
+                        #     for x in egs:
+                        #         print(x, "END")
+                        temp[key.strip()] = " ".join(value.strip(
+                            "\n").strip("\t").split("\n"))
                         # print(temp[key.strip()])
                     else:
                         temp[key.strip()] = value.strip()
@@ -163,10 +174,11 @@ for elems in results:
             ExecutionTreeEdge(
                 node,
                 left,
-                label=f"cond_true_{truePred}",
+                label=f"cond_true_{truePred}" if flag else "\n(".join(
+                    trueExpr.strip().split(" (")),
                 edgeLabel="\n(".join(
                     trueExpr.strip().split(" (")),
-                color="green",
+                color="blue",
             )
         )
 
@@ -178,7 +190,8 @@ for elems in results:
             ExecutionTreeEdge(
                 node,
                 right,
-                label=f"cond_false_{falsePred}",
+                label=f"cond_false_{falsePred}" if flag else "\n(".join(
+                    falseExpr.strip().split(" (")),
                 edgeLabel="\n(".join(
                     falseExpr.strip().split(" (")),
                 color="red",
@@ -190,10 +203,11 @@ for elems in results:
             ExecutionTreeEdge(
                 node,
                 left,
-                label=f"cond_true_{truePred}",
+                label=f"cond_true_{truePred}" if flag else "\n(".join(
+                    trueExpr.strip().split(" (")),
                 edgeLabel="\n(".join(
                     trueExpr.strip().split(" (")),
-                color="green",
+                color="blue",
             )
         )
 
@@ -201,7 +215,8 @@ for elems in results:
             ExecutionTreeEdge(
                 node,
                 right,
-                label=f"cond_false_{falsePred}",
+                label=f"cond_false_{falsePred}" if flag else "\n(".join(
+                    falseExpr.strip().split(" (")),
                 edgeLabel="\n(".join(
                     falseExpr.strip().split(" (")),
                 color="red",
@@ -214,8 +229,8 @@ for k, v in nodeMap.items():
     # Leaf nodes are path ends.
     # Update Path ID by Leaf node.
     if len(v.edges) == 0:
-        id = id + 1
-        pathMap[id] = v
+        idxT += idxT + 1
+        pathMap[idxT] = v
 
 # Construct the paths from PathMaps
 for pathIds, nodes in pathMap.items():

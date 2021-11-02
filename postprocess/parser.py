@@ -215,3 +215,4 @@ if __name__ == "__main__":
                                                                                 1=N28:(Read w8 1 f),
                                                                                 0=N29:(Read w8 0 f)] @ const_arr1)))'''
     print(json.dumps(collectRecursive(loads(string)), indent=4, sort_keys=True))
+    print(loads(string))

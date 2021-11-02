@@ -71,9 +71,12 @@ int main() {
 
   for (size_t i = 0; i < n * n; i++) {
     unsigned char tempA, tempB, tempC;
-    klee_make_symbolic(&tempA, sizeof(tempA), "A");
-    klee_make_symbolic(&tempB, sizeof(tempB), "B");
-    klee_make_symbolic(&tempC, sizeof(tempC), "C");
+    std::string a = "A_sym" + std::to_string(i);
+    std::string b = "B_sym" + std::to_string(i);
+    std::string c = "C_sym" + std::to_string(i);
+    klee_make_symbolic(&tempA, sizeof(tempA), a.c_str());
+    klee_make_symbolic(&tempB, sizeof(tempB), b.c_str());
+    klee_make_symbolic(&tempC, sizeof(tempC), c.c_str());
     A[i] = tempA;
     B[i] = tempB;
     C[i] = tempC;
@@ -87,16 +90,12 @@ int main() {
 
   unsigned char r[n];
   for (size_t i = 0; i < n; i++) {
-    unsigned char temp;
-    make_pse_symbolic(&temp, sizeof(temp), "r_sym", (unsigned char)0,
+    int temp;
+    std::string r_sym = "r_sym_" + std::to_string(i);
+    make_pse_symbolic(&temp, sizeof(temp), r_sym.c_str(), (unsigned char)0,
                       (unsigned char)1);
     r[i] = temp;
   }
-
-  klee_assume(A[1] == 0);
-  klee_assume(r[0] == 0);
-  klee_assume(A[2] == 1);
-  klee_assume(r[3] == 1);
 
   if (freivalds(A, B, C, r, n) == 1) {
     klee_dump_kquery_state();

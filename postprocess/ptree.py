@@ -61,7 +61,7 @@ class ExecutionTree:
 
     def save_cfg(self, name="ExecutionTree", filename="sample", directory="."):
         graph = Digraph(name=name, filename=filename,
-                        directory=directory, format="pdf")
+                        directory=directory, format="pdf", node_attr={'shape': 'record', 'height': '.1'})
         for node in self.nodes:
             for edge in node.edges:
                 edge.label += edge.imapdata

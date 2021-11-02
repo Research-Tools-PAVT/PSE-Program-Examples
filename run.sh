@@ -10,10 +10,12 @@ clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp -o klee_results/llvmir/${example}.ll
 
-klee --silent-klee-assume --solver-backend=z3 --use-batching-search \
---disable-inlining --only-output-states-covering-new \
---search=nurs:depth --smtlib-human-readable \
+klee --solver-backend=z3 --use-batching-search \
+--disable-inlining --emit-all-errors \
+--search=nurs:depth --search=random-state --smtlib-human-readable \
 --set-ptree-dump --write-kqueries ${example}.bc
+
+# --only-output-states-covering-new
 
 # for test in klee-last/*.ktest; do
 #     echo " ---------------- "

@@ -1,65 +1,57 @@
 #include <PSE.h>
-#include <random>
-#include <time.h>
 #define FLIPS 3
 
 int main(int argc, char *argv[]) {
 
-  std::random_device rd{};
-  std::mt19937 rng{rd()};
-  srand(time(NULL));
-
-  /*
-    Forall Variables.
-  */
-  int b1, b2, SUM;
-  // double bias1 = 0.00;
-  // double bias2 = 0.00;
-
-  int coin1[3], coin2[3], sum1 = 0, sum2 = 0;
+  int sum1 = 0, sum2 = 0, b1, b2, SUM, temp1arr[FLIPS], temp2arr[FLIPS];
 
   klee_make_symbolic(&b1, sizeof(b1), "b1_sym");
   klee_make_symbolic(&b2, sizeof(b2), "b2_sym");
+  klee_assume(b1 >= 1 && b1 <= 100000);
+  klee_assume(b2 >= 1 && b2 <= 100000);
 
   klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
   klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
   klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
 
-  klee_assume(b1 >= 1 && b1 <= 100000);
-  klee_assume(b2 >= 1 && b2 <= 100000);
-
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-1.
-    int temp;
-    std::string name = "coin1_index_" + std::to_string(i);
-    make_pse_symbolic(&temp, sizeof(temp), name.c_str(), (int)0, int(1));
-    if (rand() % 100000 >= b1)
-      temp = 1;
+    int temp1, coin_curr1;
+    std::string name = "temp_c1_" + std::to_string(i);
+    make_pse_symbolic(&temp1, sizeof(temp1), name.c_str(), (int)1, (int)100000);
+    std::string outcome_str = "coin1_index_" + std::to_string(i);
+    make_pse_symbolic(&coin_curr1, sizeof(coin_curr1), outcome_str.c_str(),
+                      (int)0, (int)1);
+    temp1arr[i] = temp1;
+    if (temp1 >= b1)
+      coin_curr1 = 1;
     else
-      temp = 0;
-    coin1[i] = temp;
-    sum1 += coin1[i];
+      coin_curr1 = 0;
+    sum1 += coin_curr1;
   }
 
   // generate 3 flips for coin-2
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-2
-    int temp;
-    std::string name = "coin2_index_" + std::to_string(i);
-    make_pse_symbolic(&temp, sizeof(temp), name.c_str(), (int)0, int(1));
-    if (rand() % 100000 >= b2)
-      temp = 1;
+    int temp2, coin_curr2;
+    std::string name = "temp_c2_" + std::to_string(i);
+    make_pse_symbolic(&temp2, sizeof(temp2), name.c_str(), (int)1, (int)100000);
+    std::string outcome_str = "coin2_index_" + std::to_string(i);
+    make_pse_symbolic(&coin_curr2, sizeof(coin_curr2), outcome_str.c_str(),
+                      (int)0, (int)1);
+    temp2arr[i] = temp2;
+    if (temp2 >= b2)
+      coin_curr2 = 1;
     else
-      temp = 0;
-    coin2[i] = temp;
-    sum2 += coin2[i];
+      coin_curr2 = 0;
+    sum2 += coin_curr2;
   }
 
   SUM = sum1 + sum2;
   klee_print_expr("Sum_1 ", sum1);
   klee_print_expr("Sum_2 ", sum2);
   klee_print_expr("SUM_FINAL ", SUM);
-
+  klee_dump_kquery_state();
   return 0;
 }

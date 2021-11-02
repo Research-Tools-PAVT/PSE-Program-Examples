@@ -27,7 +27,8 @@ int main() {
   int f[N];
   for (int i = 0; i < N; i++) {
     int temp;
-    klee_make_symbolic(&temp, sizeof(temp), "f");
+    std::string fname = "f" + std::to_string(i);
+    klee_make_symbolic(&temp, sizeof(temp), fname.c_str());
     f[i] = temp;
   }
   //  klee_make_symbolic(&f, sizeof(f), "f");
@@ -35,15 +36,16 @@ int main() {
   klee_make_symbolic(&x, sizeof(x), "x");
   klee_assume(x >= 0);
   klee_assume(x < N);
-
   klee_assume(monotone_check(f) == x);
 
   int l = (int)ceil(log2(N - 1));
-  int a = 0;
-  int b = N - 1;
-
-  int i;
+  int a = 0, i, b = N - 1;
   make_pse_symbolic(&i, sizeof(i), "i", (int)0, (int)(N - 1));
+
+  // Strictly increasing.
+  for (int i = 0; i < N - 1; i++)
+    klee_assume((f[i] > f[i + 1] && (i >= N / 2)) ||
+                (f[i] > f[i + 1] && (i < N / 2)));
 
   bool reject = false;
 

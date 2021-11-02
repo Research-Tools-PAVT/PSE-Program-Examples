@@ -6,6 +6,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string>
 
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
@@ -70,9 +71,14 @@ int main(int argc, char **argv) {
 
   for (size_t i = 0; i < n * n; i++) {
     int tempA, tempB, tempC;
-    klee_make_symbolic(&tempA, sizeof(tempA), "A");
-    klee_make_symbolic(&tempB, sizeof(tempB), "B");
-    klee_make_symbolic(&tempC, sizeof(tempC), "C");
+
+    std::string a = "A_sym" + std::to_string(i);
+    std::string b = "B_sym" + std::to_string(i);
+    std::string c = "C_sym" + std::to_string(i);
+
+    klee_make_symbolic(&tempA, sizeof(tempA), a.c_str());
+    klee_make_symbolic(&tempB, sizeof(tempB), b.c_str());
+    klee_make_symbolic(&tempC, sizeof(tempC), c.c_str());
     A[i] = tempA;
     B[i] = tempB;
     C[i] = tempC;
@@ -90,7 +96,8 @@ int main(int argc, char **argv) {
 
   for (size_t i = 0; i < n; i++) {
     int temp;
-    make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
+    std::string r_sym = "r_sym_" + std::to_string(i);
+    make_pse_symbolic(&temp, sizeof(temp), r_sym.c_str(), (int)0, (int)1);
     r[i] = temp;
   }
 

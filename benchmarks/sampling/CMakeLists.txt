@@ -15,4 +15,6 @@ set(CMAKE_CXX_FLAGS "-Wall -g -O3 -march=native -fsanitize=address -fsanitize=le
 
 add_executable (reservoir reservoir_sample.cpp)
 add_executable (freivalds freivalds_int.cpp)
+add_executable (sort quicksort.cpp)
+add_executable (partition partition.cpp)
 add_executable (flips flips.cpp)

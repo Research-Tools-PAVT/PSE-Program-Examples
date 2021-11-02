@@ -1,6 +1,27 @@
+#include <algorithm>
 #include <assert.h>
+#include <fstream>
+#include <functional>
+#include <getopt.h> /* getopt */
+#include <iomanip>
+#include <iostream>
+#include <iterator>
+#include <json.hpp>
+#include <random>
+#include <set>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+unsigned int microseconds = 10000000;
+
+// for convenience
+using json = nlohmann::json;
 
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
@@ -58,18 +79,18 @@ void matmul(int *A, int *B, size_t n, int *C) {
 
 int main(int argc, char **argv) {
   int forall_samples = 10;
+  srand(time(NULL));
   while (forall_samples--) {
-    int runs = 10;
+    int runs = 1000;
     size_t n = 2;
     int A[n * n];
     int B[n * n];
     int C[n * n];
 
     for (size_t i = 0; i < n * n; i++) {
-      int tempA, tempB, tempC;
-      A[i] = tempA;
-      B[i] = tempB;
-      C[i] = tempC;
+      A[i] = rand() % 150000;
+      B[i] = rand() % 150000;
+      C[i] = rand() % 150000;
     }
 
     int realC[n * n];
@@ -79,22 +100,23 @@ int main(int argc, char **argv) {
     for (size_t i = 0; i < n * n; i++) {
       orAssume = orAssume || (C[i] != realC[i]);
     }
-
     //   klee_assume(orAssume);
-
     while (runs--) {
+      int ret = 0;
       int r[n];
       for (size_t i = 0; i < n; i++) {
         int temp;
         // make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
+        temp = rand() % 2;
         r[i] = temp;
       }
 
       if (freivalds(A, B, C, r, n) == 1) {
-        // klee_dump_kquery_state();
+        ret = 1;
       }
+      printf("Forall : %d, Runs : %d, Return : %d\n", forall_samples, runs,
+             ret);
     }
   }
-
   return 0;
 }

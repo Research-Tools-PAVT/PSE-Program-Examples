@@ -8,30 +8,32 @@
 #include <assert.h>
 #include <random>
 
-#define SIZE 12
+#define SIZE 8
 
 int partition(int arr[]) {
   srand(time(NULL));
 
-  int random, pivot, outcome, left_count = 0, right_count = 0;
+  int pivot_elem, pivot, outcome, left_count = 0, right_count = 0;
 
   klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
   klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
   klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
   make_pse_symbolic(&pivot, sizeof(pivot), "pivot_prob_sym", 0, SIZE - 1);
 
-  // pivot element
-  if (arr[0] > 1000) {
-    arr[0] = pivot;
-    klee_assume(arr[random] == pivot);
-  }
+  pivot_elem = arr[pivot];
 
   for (int j = 0; j < SIZE - 1; j++) {
     // COMMENT : Fork Location.
-    arr[j] < pivot ? left_count++ : right_count++;
+    if (arr[j] < pivot_elem)
+      left_count += 1;
+    else
+      right_count += 1;
   }
 
-  outcome = left_count < (right_count - 1) ? (right_count - 1) : left_count;
+  if (left_count < (right_count - 1))
+    outcome = (right_count - 1);
+  else
+    outcome = left_count;
 
   klee_dump_symbolic_details(&outcome, "outcome_sym");
   klee_dump_symbolic_details(&pivot, "pivot_sym");

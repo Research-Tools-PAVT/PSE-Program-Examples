@@ -23,11 +23,11 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 5
+#define CLASSES 4
 #define FORALLS 10
 #define RUNS 1000
-
-#define SIZE 10
+#define BUCKET_SIZE 6
+#define SIZE 6
 
 int partition(char arr[]) {
   int pivot_elem, pivot, outcome = 0, left_count = 0, right_count = 0;
@@ -53,6 +53,8 @@ int partition(char arr[]) {
 
 int main() {
   srand(time(NULL));
+  std::vector<std::vector<int>> counters(CLASSES,
+                                         std::vector<int>(BUCKET_SIZE, 0));
   int forall_classes = CLASSES;
   while (forall_classes--) {
     int forall_samples = FORALLS;

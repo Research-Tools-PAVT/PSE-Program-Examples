@@ -63,11 +63,14 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
-  size_t n = 2;
+  size_t n = 4;
   int A[n * n];
   int B[n * n];
   int C[n * n];
   int r[n];
+
+  int ret;
+  klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
 
   for (size_t i = 0; i < n * n; i++) {
     int tempA, tempB, tempC;
@@ -102,7 +105,12 @@ int main(int argc, char **argv) {
   }
 
   if (freivalds(A, B, C, r, n) == 1) {
+    ret = 1;
     klee_dump_kquery_state();
   }
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume((C[1] != realC[1] && C[2] != realC[2]) ||
+              (C[1] == realC[1] && C[2] == realC[2]));
   return 0;
 }

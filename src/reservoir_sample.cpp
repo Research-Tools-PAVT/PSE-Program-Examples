@@ -44,7 +44,7 @@ int main() {
   klee_make_symbolic(&k, sizeof(k), "k_sym");
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(k == 13 && n == 20);
+  klee_assume(k == 11 && n == 20);
 
   /* Hold the record for "j" values sampled */
   int j_sample[n - k];

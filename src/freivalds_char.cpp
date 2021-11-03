@@ -69,6 +69,8 @@ int main() {
   unsigned char B[n * n];
   unsigned char C[n * n];
 
+  int ret;
+  klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
   for (size_t i = 0; i < n * n; i++) {
     unsigned char tempA, tempB, tempC;
     std::string a = "A_sym" + std::to_string(i);
@@ -98,6 +100,7 @@ int main() {
   }
 
   if (freivalds(A, B, C, r, n) == 1) {
+    ret = 1;
     klee_dump_kquery_state();
   }
 

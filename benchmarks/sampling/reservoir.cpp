@@ -35,7 +35,8 @@ using json = nlohmann::json;
 #define FORALLS 10
 #define RUNS 1000
 
-void reservoir_sample(int *input, int *sample, int n, int k) {
+int reservoir_sample(int *input, int *sample, int n, int k) {
+  int count = 0;
   for (int i = 0; i < k; i++) {
     sample[i] = input[i];
   }
@@ -46,9 +47,11 @@ void reservoir_sample(int *input, int *sample, int n, int k) {
     // COMMENT : Fork Location.
     if (j < k) {
       // Forks and produces the tree.
+      count++;
       sample[j] = input[i];
     }
   }
+  return count;
 }
 
 int main() {

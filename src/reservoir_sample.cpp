@@ -8,7 +8,7 @@
 #include <time.h>
 #include <vector>
 
-void reservoir_sample(int *input, int *sample, int n, int k) {
+void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
   for (int i = 0; i < k; i++) {
     sample[i] = input[i];
   }
@@ -17,10 +17,13 @@ void reservoir_sample(int *input, int *sample, int n, int k) {
   for (int i = k; i < n; i++) {
     count++;
     int j;
-    klee_print_expr("i_value\t", i);
+    // klee_print_expr("i_value\t", i);
     std::string name = "j_pse_" + std::to_string(count) + "_sym";
     make_pse_symbolic(&j, sizeof(j), name.c_str(), 0, (int)i);
-    klee_print_expr("j_sample\t", j);
+    // klee_print_expr("j_sample\t", j);
+
+    /* Record the PSE Variables */
+    j_sample[i - k] = j;
 
     // COMMENT : Fork Location.
     if (j < k) {
@@ -28,6 +31,9 @@ void reservoir_sample(int *input, int *sample, int n, int k) {
       sample[j] = input[i];
     }
   }
+
+  // for (std::size_t i = 0; i < n - k; i++)
+  //   klee_print_expr("j_sample \t", j_sample[i]);
 }
 
 int main() {
@@ -36,7 +42,10 @@ int main() {
 
   klee_make_symbolic(&n, sizeof(n), "n_sym");
   klee_make_symbolic(&k, sizeof(k), "k_sym");
-  klee_assume(k == 6 && n == 10);
+  klee_assume(k == 13 && n == 20);
+
+  /* Hold the record for "j" values sampled */
+  int j_sample[n - k];
 
   int arr[n];
   klee_make_symbolic(arr, sizeof(arr), "arr_sym");
@@ -54,7 +63,7 @@ int main() {
   }
 
   int *sample = (int *)malloc(sizeof(int) * k);
-  reservoir_sample(arr, sample, n, k);
+  reservoir_sample(arr, sample, n, k, j_sample);
 
   int ret = 0;
   // klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
@@ -72,6 +81,14 @@ int main() {
     klee_print_expr("Return Value", ret);
     // count here.
   }
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume(
+      (k > j_sample[0] && ret == 1) ||
+      (k < j_sample[0] && k > j_sample[1] && ret == 1) ||
+      (k < j_sample[0] && k < j_sample[1] && k > j_sample[2] && ret == 1) ||
+      (k < j_sample[0] && k < j_sample[1] && k < j_sample[2] &&
+       k > j_sample[4] && ret == 1));
 
   return 0;
 }

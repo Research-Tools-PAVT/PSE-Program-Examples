@@ -1,6 +1,6 @@
 #include <PSE.h>
 
-#define N 5
+#define N 7
 using namespace std;
 
 int num_comps;
@@ -54,8 +54,8 @@ int main() {
   quicksort(arr, 0, N - 1, &num_comps);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((arr[1] > arr[0] && num_comps >= 4) ||
-              (arr[1] > arr[0] && num_comps < 3));
+  klee_assume((arr[N - 1] > arr[N - 2] && num_comps == 5) ||
+              (arr[N - 1] > arr[N - 2] && num_comps >= 7));
 
   klee_dump_kquery_state();
   klee_print_expr("Num Compares : ", num_comps);

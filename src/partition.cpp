@@ -6,7 +6,7 @@
 
 #include <PSE.h>
 
-#define SIZE 8
+#define SIZE 10
 int outcome, pivot_elem;
 
 void partition(int arr[]) {
@@ -59,7 +59,9 @@ int main() {
   //   arr[i] = concrete[i];
   partition(arr);
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((arr[2] > pivot_elem && outcome >= 7) ||
-              (arr[2] < pivot_elem && arr[3] > pivot_elem && outcome > 6));
+  klee_assume((arr[1] > pivot_elem && arr[2] > pivot_elem && outcome >= 7) ||
+              (arr[1] < pivot_elem && arr[2] < pivot_elem &&
+               (outcome >= 5 && outcome <= 7)));
+
   return 0;
 }

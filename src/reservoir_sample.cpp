@@ -42,6 +42,8 @@ int main() {
 
   klee_make_symbolic(&n, sizeof(n), "n_sym");
   klee_make_symbolic(&k, sizeof(k), "k_sym");
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
   klee_assume(k == 13 && n == 20);
 
   /* Hold the record for "j" values sampled */
@@ -83,12 +85,8 @@ int main() {
   }
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(
-      (k > j_sample[0] && ret == 1) ||
-      (k < j_sample[0] && k > j_sample[1] && ret == 1) ||
-      (k < j_sample[0] && k < j_sample[1] && k > j_sample[2] && ret == 1) ||
-      (k < j_sample[0] && k < j_sample[1] && k < j_sample[2] &&
-       k > j_sample[4] && ret == 1));
+  klee_assume((k > j_sample[0] && k > j_sample[1] && ret == 1) ||
+              (k < j_sample[0] && k < j_sample[1] && ret == 0));
 
   return 0;
 }

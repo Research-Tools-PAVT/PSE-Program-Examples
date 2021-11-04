@@ -2,16 +2,15 @@
 
 export CC=$(which clang)
 export CXX=$(which clang++)
+test=$1
 
 cd bin
+CC=$(which clang-13) CXX=$(which clang++-13) cmake ..
 echo "== Deleting Tests =="
 rm -rf *
 
 mkdir -p tests
 cmake ..
-make -j 8
+make -j8
 
-# ./reservoir -p 1 -f 50 -r 500 -n 100 -l 0 2> matrix.md
-# ./reservoir -p 1 -f 50 -r 500 -n 100 -l 0 2> matrix.md
-
-./flips
+./${test}

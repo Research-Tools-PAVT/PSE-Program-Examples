@@ -18,7 +18,6 @@
 #include <unordered_set>
 #include <utility>
 #include <vector>
-unsigned int microseconds = 10000000;
 
 // for convenience
 using json = nlohmann::json;
@@ -71,9 +70,9 @@ void quicksort(int arr[], int p, int r) {
 }
 
 int main() {
+  srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
-  srand(time(NULL));
   json summaryObj;
   int forall_classes = CLASSES;
   while (forall_classes--) {
@@ -125,10 +124,10 @@ int main() {
         if (num_comps == 14) {
           counters[forall_classes][3] += 1;
         }
-        if (num_comps == 15) {
+        if (num_comps == 15 || num_comps == 16) {
           counters[forall_classes][4] += 1;
         }
-        if (num_comps >= 16) {
+        if (num_comps >= 17) {
           counters[forall_classes][5] += 1;
         }
       }

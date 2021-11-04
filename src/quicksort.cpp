@@ -48,10 +48,38 @@ int main() {
   num_comps = 0;
   quicksort(arr, 0, N - 1);
 
-  klee_assume(num_comps == 13 || num_comps >= 16);
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume((num_comps == 13) || 
+              (num_comps >= 17) || 
+              ((arr[1] > arr[0] && arr[2] < arr[1]) && (num_comps == 16 || num_comps == 15)));
 
   klee_dump_kquery_state();
   klee_print_expr("Num Compares : ", num_comps);
   klee_dump_symbolic_details(&num_comps, "num_comps");
   return 0;
 }
+
+/*
+
+KLEE: done: total instructions = 381219
+KLEE: done: completed paths = 720
+KLEE: done: partially completed paths = 0
+KLEE: done: generated tests = 6
+Paths Processed : 720
+
+KLEE: done: total instructions = 391441
+KLEE: done: completed paths = 296
+KLEE: done: partially completed paths = 424
+KLEE: done: generated tests = 429
+Paths Processed : 720
+
+----------------------------------------------------------------------------------------|
+    | B0(<= 11) | B1 ( == 12) | B1 ( == 13) | B1 ( == 14) | B1 ( 15 || 16) | B1 (>= 17) |
+----\------------\-------------\------------\-------------\----------------\------------|
+C1  |    0       |      0      |     1      |     0       |        0       |     1      |  
+C2  |    0       |      0      |     1      |     0       |        0       |     1      |
+C3  |    0       |      0      |     1      |     0       |        1       |     1      |
+C4  |    0       |      0      |     1      |     0       |        0       |     1      |
+----------------------------------------------------------------------------------------|
+
+*/

@@ -9,10 +9,6 @@
 #include <vector>
 
 void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
-  for (int i = 0; i < k; i++) {
-    sample[i] = input[i];
-  }
-
   int count = 0;
   for (int i = k; i < n; i++) {
     count++;
@@ -31,25 +27,24 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
       sample[j] = input[i];
     }
   }
-
-  // for (std::size_t i = 0; i < n - k; i++)
-  //   klee_print_expr("j_sample \t", j_sample[i]);
 }
 
 int main() {
   // srand(time(NULL));
-  int n, k;
+  int n = 8, k;
+  int ret = 0;
 
   klee_make_symbolic(&n, sizeof(n), "n_sym");
   klee_make_symbolic(&k, sizeof(k), "k_sym");
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(k == 11 && n == 20);
+  klee_assume((n == 8));
+  klee_assume((k >= 2) && k < n);
 
   /* Hold the record for "j" values sampled */
   int j_sample[n - k];
 
-  int arr[n];
+  int arr[n], sample[k];
   klee_make_symbolic(arr, sizeof(arr), "arr_sym");
 
   // for (size_t i = 0; i < n; i++) {
@@ -64,10 +59,12 @@ int main() {
     }
   }
 
-  int *sample = (int *)malloc(sizeof(int) * k);
+  for (int i = 0; i < k; i++) {
+    sample[i] = arr[i];
+  }
+
   reservoir_sample(arr, sample, n, k, j_sample);
 
-  int ret = 0;
   // klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
   for (int i = 0; i < k; i++) {
     if (arr[0] == sample[i]) {
@@ -75,18 +72,49 @@ int main() {
     }
   }
 
-  free(sample);
+  klee_print_expr("Return Value", ret);
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume(
+      (((k >= n / 2) && (k < (n / 2 + n / 4))) && ret == 0) ||
+      ((k >= (n / 2 + n / 4) && (k < (n / 2 + n / 4 + n / 8))) && ret == 0) ||
+      ((k >= (n / 2 + n / 4 + n / 8)) && ret == 1) || (k < n / 2));
 
   if (ret == 1) {
     // klee_assume(ret == 1);
     klee_dump_kquery_state();
-    klee_print_expr("Return Value", ret);
-    // count here.
   }
-
-  /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((k > j_sample[0] && k > j_sample[1] && ret == 1) ||
-              (k < j_sample[0] && k < j_sample[1] && ret == 0));
 
   return 0;
 }
+
+/*
+  ```
+  Without Assumes :
+
+  KLEE: done: total instructions = 26934
+  KLEE: done: completed paths = 127
+  KLEE: done: partially completed paths = 1
+  KLEE: done: generated tests = 5
+  Paths Processed : 127
+  ```
+
+  ```
+  With Assumes :
+
+  KLEE: done: total instructions = 31184
+  KLEE: done: completed paths = 63
+  KLEE: done: partially completed paths = 65
+  KLEE: done: generated tests = 66
+  Paths Processed : 127
+  ```
+-------------------------------
+    | B0(ret==0) | B1 (ret==1) |
+----\------------\-------------\
+C1  |    1       |      1      |
+C2  |    0       |      1      |
+C3  |    0       |      1      |
+C4  |    1       |      0      |
+C5  |    1       |      1      |
+-------------------------------|
+*/

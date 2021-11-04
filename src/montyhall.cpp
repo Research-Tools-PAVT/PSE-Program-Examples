@@ -12,12 +12,11 @@
 /**
  * switch => door_switch
  */
-bool montyhall(bool door_switch) {
+bool montyhall(bool door_switch, int choice) {
 
   int host_door = 0;
-  int car_door, choice;
+  int car_door;
 
-  make_pse_symbolic(&choice, sizeof(choice), "choice_pse_sym", 0, 3);
   make_pse_symbolic(&car_door, sizeof(car_door), "car_door_pse_sym", 0, 3);
   klee_make_symbolic(&host_door, sizeof(host_door), "host_door_sym");
 
@@ -67,19 +66,50 @@ bool montyhall(bool door_switch) {
 }
 
 int main() {
-  int choice = 0;
-  int door_switch = 0;
+  int door_switch = 0, choice;
 
   make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_sym", 0,
                     1);
+  make_pse_symbolic(&choice, sizeof(choice), "choice_pse_sym", 0, 3);
 
-  bool ret = montyhall(door_switch);
+  bool ret = montyhall(door_switch, choice);
   klee_print_expr("Ret : ", ret);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((door_switch == 1 && choice == 0 && ret == 1) ||
-              (door_switch == 0 && choice == 1 && ret == 0) ||
-              (door_switch == 0 && choice == 1 && ret == 1));
+  klee_assume((door_switch == 1 && ret == 0 && choice == 1) ||
+              (door_switch == 1 && ret == 1 && choice == 1) ||
+              (door_switch == 0 && choice != 1 && ret == 1));
 
   return 0;
 }
+
+/*
+```
+
+Without Assumes :
+KLEE: done: total instructions = 527
+KLEE: done: completed paths = 14
+KLEE: done: partially completed paths = 0
+KLEE: done: generated tests = 10
+
+With Assumes :
+KLEE: done: total instructions = 851
+KLEE: done: completed paths = 7
+KLEE: done: partially completed paths = 7
+KLEE: done: generated tests = 14
+
+With Assumes Refined :
+KLEE: done: total instructions = 868
+KLEE: done: completed paths = 4
+KLEE: done: partially completed paths = 12
+KLEE: done: generated tests = 16
+
+
+-------------------------------------|
+    |   B0 (ret==1)  |   B1 (ret==0) |
+----|----------------|---------------|
+C0  |      1         |       1       |  (door_switch==1)
+C1  |      0         |       1       |  (door_switch==0)
+----|----------------|---------------|
+```
+*/

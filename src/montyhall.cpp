@@ -69,9 +69,17 @@ bool montyhall(bool door_switch) {
 int main() {
   int choice = 0;
   int door_switch = 0;
-  std::vector<int> door_switch_dist = {0, 1};
 
   make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_sym", 0,
                     1);
-  return montyhall(door_switch);
+
+  bool ret = montyhall(door_switch);
+  klee_print_expr("Ret : ", ret);
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume((door_switch == 1 && choice == 0 && ret == 1) ||
+              (door_switch == 0 && choice == 1 && ret == 0) ||
+              (door_switch == 0 && choice == 1 && ret == 1));
+
+  return 0;
 }

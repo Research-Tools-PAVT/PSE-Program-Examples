@@ -11,9 +11,9 @@ clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 -disable-O0-optnone $SRC_PATH/${example}.cpp -o klee_results/llvmir/${example}.ll
 
 klee --only-output-states-covering-new \
---disable-inlining --emit-all-errors \
---search=nurs:depth \
--use-cex-cache --set-ptree-dump --write-kqueries --write-smt2s ${example}.bc
+--disable-inlining --emit-all-errors --search=random-state \
+--search=nurs:depth --search=nurs:md2u --show-cond \
+-use-cex-cache --write-kqueries --write-smt2s ${example}.bc
 
 # --only-output-states-covering-new
 

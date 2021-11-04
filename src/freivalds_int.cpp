@@ -63,7 +63,7 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
-  size_t n = 4;
+  size_t n = 2;
   int A[n * n];
   int B[n * n];
   int C[n * n];
@@ -109,8 +109,12 @@ int main(int argc, char **argv) {
     klee_dump_kquery_state();
   }
 
+  klee_print_expr("Ret : ", ret);
+  for (size_t i = 0; i < n; i++)
+    klee_print_expr("r", r[i]);
+
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((C[1] != realC[1] && C[2] != realC[2]) ||
-              (C[1] == realC[1] && C[2] == realC[2]));
+  // klee_assume();
+
   return 0;
 }

@@ -58,10 +58,10 @@ int main() {
   // for (auto i = 0; i < SIZE; i++)
   //   arr[i] = concrete[i];
   partition(arr);
+
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((arr[1] > pivot_elem && arr[2] > pivot_elem && outcome >= 7) ||
-              (arr[1] < pivot_elem && arr[2] < pivot_elem &&
-               (outcome >= 5 && outcome <= 7)));
+  klee_assume((arr[1] > pivot_elem && outcome >= 7) ||
+              (arr[1] <= pivot_elem && (outcome < 6)));
 
   return 0;
 }

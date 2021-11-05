@@ -10,10 +10,10 @@ clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp -o klee_results/llvmir/${example}.ll
 
-klee --only-output-states-covering-new \
+klee --use-query-log=all:smt2 \
 --disable-inlining --emit-all-errors --search=random-state \
---search=nurs:depth --search=nurs:md2u --show-cond \
--use-cex-cache --write-kqueries --write-smt2s ${example}.bc
+--search=nurs:depth --search=nurs:md2u \
+--use-cex-cache --write-kqueries --write-smt2s ${example}.bc
 
 # --only-output-states-covering-new
 
@@ -36,5 +36,7 @@ mv klee-last/* klee_results/${example}_klee_out/
 rm -rf klee-* *.bc *.dot *.out *.o *.a
 rm -rf klee_results/${example}_processed/
 
-python3 postprocess/reader.py klee_results/${example}_klee_out/conds_dump.txt ${example}
+cat klee_results/${example}_klee_out/temp_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
+
+python3 postprocess/reader.py klee_results/${example}_klee_out/conds_dump.txt ${example} klee_results/${example}_klee_out/states_removal.txt
 mv ${example}_processed klee_results/

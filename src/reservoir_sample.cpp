@@ -75,10 +75,11 @@ int main() {
   klee_print_expr("Return Value", ret);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(
-      (((k >= n / 2) && (k < (n / 2 + n / 4))) && ret == 0) ||
-      ((k >= (n / 2 + n / 4) && (k < (n / 2 + n / 4 + n / 8))) && ret == 0) ||
-      ((k >= (n / 2 + n / 4 + n / 8)) && ret == 1) || (k < n / 2));
+  klee_assume((k > j_sample[0] && k > j_sample[1] && ret == 1) ||
+              (k < j_sample[0] && k > j_sample[1] && ret == 0) ||
+              (k > j_sample[0] && k > j_sample[1] && ret == 1) ||
+              (k > j_sample[0] && k > j_sample[1] && ret == 0) ||
+              (k < j_sample[0] && k < j_sample[1] && ret == 1));
 
   if (ret == 1) {
     // klee_assume(ret == 1);

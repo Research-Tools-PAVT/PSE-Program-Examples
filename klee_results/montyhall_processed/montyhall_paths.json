@@ -3,7 +3,8 @@
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -28,9 +29,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -61,9 +65,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "211c23db-ed26-48e1-94e0-a2ec8717ae7b"
+                "emphemeralId": "4",
+                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "4",
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
                 "car_door_pse_sym",
@@ -97,9 +104,12 @@
         {
             "treeNode": {
                 "nodeId": "8",
-                "uid": "5c1fe2e6-52ae-42f8-829a-d332310e361f"
+                "emphemeralId": "8",
+                "uid": "7ebc3df5-72fe-4a7f-92d4-a39281dce0d4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "8",
+            "removed": false,
             "predicateId": "cond_true_4",
             "variables": [
                 "door_switch_pse_sym"
@@ -128,9 +138,12 @@
         {
             "treeNode": {
                 "nodeId": "23",
-                "uid": "2e576afe-c768-498e-8806-c4f57324b529"
+                "emphemeralId": "23",
+                "uid": "2b04621e-c3f5-42e6-a858-86631d6f072f"
             },
             "predicate": "(Eq false      (Eq 1          (ReadLSB w32 0 choice_pse_sym)))",
+            "EmphemeralId": 23,
+            "removed": false,
             "predicateId": "cond_false_7",
             "variables": [
                 "choice_pse_sym"
@@ -139,11 +152,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 3": [
+    "Path 2": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -168,9 +182,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -201,9 +218,12 @@
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "9b711f0e-1818-4c36-87d7-0036c1336ba4"
+                "emphemeralId": "5",
+                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "5",
+            "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
                 "car_door_pse_sym",
@@ -235,9 +255,12 @@
         {
             "treeNode": {
                 "nodeId": "10",
-                "uid": "471093cd-bd65-4462-88a1-67aa0d95d282"
+                "emphemeralId": "10",
+                "uid": "a116f460-1249-4aa4-806c-34c6299e6bad"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "10",
+            "removed": false,
             "predicateId": "cond_true_5",
             "variables": [
                 "door_switch_pse_sym"
@@ -263,9 +286,12 @@
         {
             "treeNode": {
                 "nodeId": "20",
-                "uid": "fea130f2-055a-4561-8619-a9fbc260a35a"
+                "emphemeralId": "20",
+                "uid": "746b9650-9431-43f4-bbbc-55f88d94e2c3"
             },
             "predicate": "(Eq 1      (ReadLSB w32 0 choice_pse_sym))",
+            "EmphemeralId": 20,
+            "removed": false,
             "predicateId": "cond_true_8",
             "variables": [
                 "choice_pse_sym"
@@ -274,11 +300,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 7": [
+    "Path 3": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -303,9 +330,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -336,9 +366,12 @@
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "9b711f0e-1818-4c36-87d7-0036c1336ba4"
+                "emphemeralId": "5",
+                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "5",
+            "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
                 "car_door_pse_sym",
@@ -370,9 +403,12 @@
         {
             "treeNode": {
                 "nodeId": "10",
-                "uid": "471093cd-bd65-4462-88a1-67aa0d95d282"
+                "emphemeralId": "10",
+                "uid": "a116f460-1249-4aa4-806c-34c6299e6bad"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "10",
+            "removed": false,
             "predicateId": "cond_true_5",
             "variables": [
                 "door_switch_pse_sym"
@@ -398,9 +434,12 @@
         {
             "treeNode": {
                 "nodeId": "21",
-                "uid": "66487423-fa9b-42bc-91e4-9c9243885696"
+                "emphemeralId": "21",
+                "uid": "4e408a5a-2a24-496f-9784-5ce9a27b946e"
             },
             "predicate": "(Eq false      (Eq 1          (ReadLSB w32 0 choice_pse_sym)))",
+            "EmphemeralId": 21,
+            "removed": false,
             "predicateId": "cond_false_8",
             "variables": [
                 "choice_pse_sym"
@@ -409,11 +448,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 15": [
+    "Path 4": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -438,9 +478,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -471,9 +514,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "211c23db-ed26-48e1-94e0-a2ec8717ae7b"
+                "emphemeralId": "4",
+                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "4",
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
                 "car_door_pse_sym",
@@ -507,9 +553,12 @@
         {
             "treeNode": {
                 "nodeId": "9",
-                "uid": "40dbec6b-11e4-439e-85cd-666cb599331e"
+                "emphemeralId": "9",
+                "uid": "c5e821a2-a904-424f-95d3-96dd39ccfbd5"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "9",
+            "removed": false,
             "predicateId": "cond_false_4",
             "variables": [
                 "door_switch_pse_sym"
@@ -544,9 +593,12 @@
         {
             "treeNode": {
                 "nodeId": "12",
-                "uid": "75e69b60-bb34-4304-a136-9ba9ce6d3c66"
+                "emphemeralId": "12",
+                "uid": "3cf4e379-c117-4dca-8169-fc9d11cb6375"
             },
             "predicate": "(Eq (ReadLSB w32 0 choice_pse_sym)      (ReadLSB w32 0 car_door_pse_sym))",
+            "EmphemeralId": 12,
+            "removed": true,
             "predicateId": "cond_true_9",
             "variables": [
                 "choice_pse_sym",
@@ -556,11 +608,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 31": [
+    "Path 5": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -585,9 +638,12 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "b43412fe-3f36-4dc2-ac46-ebbf1755c794"
+                "emphemeralId": "2",
+                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "2",
+            "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
                 "car_door_pse_sym",
@@ -619,9 +675,12 @@
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "ab6664fa-adbc-45bf-9ca1-3ece697e36b2"
+                "emphemeralId": "7",
+                "uid": "0c8d49ad-c6c2-4fe9-a6af-17874668c119"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "7",
+            "removed": false,
             "predicateId": "cond_false_3",
             "variables": [
                 "door_switch_pse_sym"
@@ -654,9 +713,12 @@
         {
             "treeNode": {
                 "nodeId": "16",
-                "uid": "61332fe4-e56e-4cbc-81c7-ef682f8f0b19"
+                "emphemeralId": "16",
+                "uid": "16a42dc8-1a1e-463d-96ac-02b126e3e332"
             },
             "predicate": "(Eq (ReadLSB w32 0 choice_pse_sym)      (ReadLSB w32 0 car_door_pse_sym))",
+            "EmphemeralId": 16,
+            "removed": false,
             "predicateId": "cond_true_10",
             "variables": [
                 "choice_pse_sym",
@@ -666,11 +728,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 63": [
+    "Path 6": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -695,9 +758,12 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "b43412fe-3f36-4dc2-ac46-ebbf1755c794"
+                "emphemeralId": "2",
+                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "2",
+            "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
                 "car_door_pse_sym",
@@ -729,9 +795,12 @@
         {
             "treeNode": {
                 "nodeId": "7",
-                "uid": "ab6664fa-adbc-45bf-9ca1-3ece697e36b2"
+                "emphemeralId": "7",
+                "uid": "0c8d49ad-c6c2-4fe9-a6af-17874668c119"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "7",
+            "removed": false,
             "predicateId": "cond_false_3",
             "variables": [
                 "door_switch_pse_sym"
@@ -764,9 +833,12 @@
         {
             "treeNode": {
                 "nodeId": "17",
-                "uid": "8130d8b7-f546-4b7a-9d16-5ef1367abe61"
+                "emphemeralId": "17",
+                "uid": "3c317d0a-1738-427c-9ffb-0b489859d580"
             },
             "predicate": "(Eq false      (Eq (ReadLSB w32 0 choice_pse_sym)          (ReadLSB w32 0 car_door_pse_sym)))",
+            "EmphemeralId": 17,
+            "removed": true,
             "predicateId": "cond_false_10",
             "variables": [
                 "choice_pse_sym",
@@ -776,11 +848,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 127": [
+    "Path 7": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -805,9 +878,12 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "b43412fe-3f36-4dc2-ac46-ebbf1755c794"
+                "emphemeralId": "2",
+                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "2",
+            "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
                 "car_door_pse_sym",
@@ -839,9 +915,12 @@
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "9a310a33-20ed-4ca1-97b4-050dec1f8d3b"
+                "emphemeralId": "6",
+                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "6",
+            "removed": false,
             "predicateId": "cond_true_3",
             "variables": [
                 "door_switch_pse_sym"
@@ -871,9 +950,12 @@
         {
             "treeNode": {
                 "nodeId": "14",
-                "uid": "88127adb-611f-4686-b814-69dc48bb71cf"
+                "emphemeralId": "14",
+                "uid": "a5b1c9c0-839f-485a-a270-19d048d98005"
             },
             "predicate": "(Eq 2      (ReadLSB w32 0 choice_pse_sym))",
+            "EmphemeralId": "14",
+            "removed": false,
             "predicateId": "cond_true_6",
             "variables": [
                 "choice_pse_sym"
@@ -899,9 +981,12 @@
         {
             "treeNode": {
                 "nodeId": "18",
-                "uid": "b3e83da0-2a43-4666-b132-0383f5d4a0b1"
+                "emphemeralId": "18",
+                "uid": "4b8ad9fb-6adb-4b1d-b4f9-9491777c846a"
             },
             "predicate": "(Eq 3      (ReadLSB w32 0 car_door_pse_sym))",
+            "EmphemeralId": 18,
+            "removed": false,
             "predicateId": "cond_true_11",
             "variables": [
                 "car_door_pse_sym"
@@ -910,11 +995,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 255": [
+    "Path 8": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -939,9 +1025,12 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "b43412fe-3f36-4dc2-ac46-ebbf1755c794"
+                "emphemeralId": "2",
+                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "2",
+            "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
                 "car_door_pse_sym",
@@ -973,9 +1062,12 @@
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "9a310a33-20ed-4ca1-97b4-050dec1f8d3b"
+                "emphemeralId": "6",
+                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "6",
+            "removed": false,
             "predicateId": "cond_true_3",
             "variables": [
                 "door_switch_pse_sym"
@@ -1005,9 +1097,12 @@
         {
             "treeNode": {
                 "nodeId": "14",
-                "uid": "88127adb-611f-4686-b814-69dc48bb71cf"
+                "emphemeralId": "14",
+                "uid": "a5b1c9c0-839f-485a-a270-19d048d98005"
             },
             "predicate": "(Eq 2      (ReadLSB w32 0 choice_pse_sym))",
+            "EmphemeralId": "14",
+            "removed": false,
             "predicateId": "cond_true_6",
             "variables": [
                 "choice_pse_sym"
@@ -1033,9 +1128,12 @@
         {
             "treeNode": {
                 "nodeId": "19",
-                "uid": "7d4f6a3c-1ebd-4ba7-9617-bd2d4c48788f"
+                "emphemeralId": "19",
+                "uid": "95423c36-31c0-4f73-b63e-d0223f467168"
             },
             "predicate": "(Eq false      (Eq 3          (ReadLSB w32 0 car_door_pse_sym)))",
+            "EmphemeralId": 19,
+            "removed": false,
             "predicateId": "cond_false_11",
             "variables": [
                 "car_door_pse_sym"
@@ -1044,11 +1142,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 511": [
+    "Path 9": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1073,9 +1172,12 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "b43412fe-3f36-4dc2-ac46-ebbf1755c794"
+                "emphemeralId": "2",
+                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "2",
+            "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
                 "car_door_pse_sym",
@@ -1107,9 +1209,12 @@
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "9a310a33-20ed-4ca1-97b4-050dec1f8d3b"
+                "emphemeralId": "6",
+                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "6",
+            "removed": false,
             "predicateId": "cond_true_3",
             "variables": [
                 "door_switch_pse_sym"
@@ -1139,9 +1244,12 @@
         {
             "treeNode": {
                 "nodeId": "15",
-                "uid": "57376072-14d2-4020-a4e1-ced333f95254"
+                "emphemeralId": "15",
+                "uid": "f52071ce-575f-4e32-ae7f-8523b9dce8e5"
             },
             "predicate": "(Eq false      (Eq 2          (ReadLSB w32 0 choice_pse_sym)))",
+            "EmphemeralId": "15",
+            "removed": false,
             "predicateId": "cond_false_6",
             "variables": [
                 "choice_pse_sym"
@@ -1173,9 +1281,12 @@
         {
             "treeNode": {
                 "nodeId": "24",
-                "uid": "bfa5a5cb-70f7-4c60-9144-cea2fe19ca53"
+                "emphemeralId": "24",
+                "uid": "cdf1f186-b428-493d-b9b6-641147fc3299"
             },
             "predicate": "(Eq 2      (ReadLSB w32 0 car_door_pse_sym))",
+            "EmphemeralId": 24,
+            "removed": false,
             "predicateId": "cond_true_12",
             "variables": [
                 "car_door_pse_sym"
@@ -1184,11 +1295,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 1023": [
+    "Path 10": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1213,9 +1325,12 @@
         {
             "treeNode": {
                 "nodeId": "2",
-                "uid": "b43412fe-3f36-4dc2-ac46-ebbf1755c794"
+                "emphemeralId": "2",
+                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "2",
+            "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
                 "car_door_pse_sym",
@@ -1247,9 +1362,12 @@
         {
             "treeNode": {
                 "nodeId": "6",
-                "uid": "9a310a33-20ed-4ca1-97b4-050dec1f8d3b"
+                "emphemeralId": "6",
+                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "6",
+            "removed": false,
             "predicateId": "cond_true_3",
             "variables": [
                 "door_switch_pse_sym"
@@ -1279,9 +1397,12 @@
         {
             "treeNode": {
                 "nodeId": "15",
-                "uid": "57376072-14d2-4020-a4e1-ced333f95254"
+                "emphemeralId": "15",
+                "uid": "f52071ce-575f-4e32-ae7f-8523b9dce8e5"
             },
             "predicate": "(Eq false      (Eq 2          (ReadLSB w32 0 choice_pse_sym)))",
+            "EmphemeralId": "15",
+            "removed": false,
             "predicateId": "cond_false_6",
             "variables": [
                 "choice_pse_sym"
@@ -1313,9 +1434,12 @@
         {
             "treeNode": {
                 "nodeId": "25",
-                "uid": "df37f242-e0dd-4108-80d3-6e32c5f253c4"
+                "emphemeralId": "25",
+                "uid": "6a7ff07a-0bef-4430-8bd7-027e87bb1ac1"
             },
             "predicate": "(Eq false      (Eq 2          (ReadLSB w32 0 car_door_pse_sym)))",
+            "EmphemeralId": 25,
+            "removed": false,
             "predicateId": "cond_false_12",
             "variables": [
                 "car_door_pse_sym"
@@ -1324,11 +1448,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 2047": [
+    "Path 11": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1353,9 +1478,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -1386,9 +1514,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "211c23db-ed26-48e1-94e0-a2ec8717ae7b"
+                "emphemeralId": "4",
+                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "4",
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
                 "car_door_pse_sym",
@@ -1422,9 +1553,12 @@
         {
             "treeNode": {
                 "nodeId": "8",
-                "uid": "5c1fe2e6-52ae-42f8-829a-d332310e361f"
+                "emphemeralId": "8",
+                "uid": "7ebc3df5-72fe-4a7f-92d4-a39281dce0d4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "8",
+            "removed": false,
             "predicateId": "cond_true_4",
             "variables": [
                 "door_switch_pse_sym"
@@ -1453,9 +1587,12 @@
         {
             "treeNode": {
                 "nodeId": "22",
-                "uid": "711cd22b-7a59-4d5e-81b4-3f0c81de8de7"
+                "emphemeralId": "22",
+                "uid": "d2e1051c-bb8a-4d84-b934-917b36f48506"
             },
             "predicate": "(Eq 1      (ReadLSB w32 0 choice_pse_sym))",
+            "EmphemeralId": "22",
+            "removed": false,
             "predicateId": "cond_true_7",
             "variables": [
                 "choice_pse_sym"
@@ -1481,9 +1618,12 @@
         {
             "treeNode": {
                 "nodeId": "26",
-                "uid": "2d799890-bb9e-47ad-bcaf-b05939aa1d79"
+                "emphemeralId": "26",
+                "uid": "bc157696-6fb3-4fbb-8699-6967226999f0"
             },
             "predicate": "(Eq 3      (ReadLSB w32 0 car_door_pse_sym))",
+            "EmphemeralId": 26,
+            "removed": false,
             "predicateId": "cond_true_13",
             "variables": [
                 "car_door_pse_sym"
@@ -1492,11 +1632,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 4095": [
+    "Path 12": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1521,9 +1662,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -1554,9 +1698,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "211c23db-ed26-48e1-94e0-a2ec8717ae7b"
+                "emphemeralId": "4",
+                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "4",
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
                 "car_door_pse_sym",
@@ -1590,9 +1737,12 @@
         {
             "treeNode": {
                 "nodeId": "8",
-                "uid": "5c1fe2e6-52ae-42f8-829a-d332310e361f"
+                "emphemeralId": "8",
+                "uid": "7ebc3df5-72fe-4a7f-92d4-a39281dce0d4"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "EmphemeralId": "8",
+            "removed": false,
             "predicateId": "cond_true_4",
             "variables": [
                 "door_switch_pse_sym"
@@ -1621,9 +1771,12 @@
         {
             "treeNode": {
                 "nodeId": "22",
-                "uid": "711cd22b-7a59-4d5e-81b4-3f0c81de8de7"
+                "emphemeralId": "22",
+                "uid": "d2e1051c-bb8a-4d84-b934-917b36f48506"
             },
             "predicate": "(Eq 1      (ReadLSB w32 0 choice_pse_sym))",
+            "EmphemeralId": "22",
+            "removed": false,
             "predicateId": "cond_true_7",
             "variables": [
                 "choice_pse_sym"
@@ -1649,9 +1802,12 @@
         {
             "treeNode": {
                 "nodeId": "27",
-                "uid": "ec90cdf7-2e52-47c4-8f77-a9997eefcb07"
+                "emphemeralId": "27",
+                "uid": "3bc8b38e-90bc-4360-a71a-52ef6062aece"
             },
             "predicate": "(Eq false      (Eq 3          (ReadLSB w32 0 car_door_pse_sym)))",
+            "EmphemeralId": 27,
+            "removed": false,
             "predicateId": "cond_false_13",
             "variables": [
                 "car_door_pse_sym"
@@ -1660,11 +1816,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 8191": [
+    "Path 13": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1689,9 +1846,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -1722,9 +1882,12 @@
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "9b711f0e-1818-4c36-87d7-0036c1336ba4"
+                "emphemeralId": "5",
+                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "5",
+            "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
                 "car_door_pse_sym",
@@ -1756,9 +1919,12 @@
         {
             "treeNode": {
                 "nodeId": "11",
-                "uid": "5b41f9dd-1292-4f08-8a50-dc1a2d797cf0"
+                "emphemeralId": "11",
+                "uid": "b8d8ec7f-6deb-4265-8e45-9e8b717bac8f"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "11",
+            "removed": false,
             "predicateId": "cond_false_5",
             "variables": [
                 "door_switch_pse_sym"
@@ -1787,9 +1953,12 @@
         {
             "treeNode": {
                 "nodeId": "28",
-                "uid": "d170bd2f-bb31-4441-b4d5-ef1226d7994c"
+                "emphemeralId": "28",
+                "uid": "cab00336-6576-4e15-a8d4-597da01b957f"
             },
             "predicate": "(And (Eq 0           (ReadLSB w32 0 door_switch_pse_sym))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": 28,
+            "removed": true,
             "predicateId": "cond_true_14",
             "variables": [
                 "door_switch_pse_sym",
@@ -1799,11 +1968,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 16383": [
+    "Path 14": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1828,9 +1998,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -1861,9 +2034,12 @@
         {
             "treeNode": {
                 "nodeId": "5",
-                "uid": "9b711f0e-1818-4c36-87d7-0036c1336ba4"
+                "emphemeralId": "5",
+                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "5",
+            "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
                 "car_door_pse_sym",
@@ -1895,9 +2071,12 @@
         {
             "treeNode": {
                 "nodeId": "11",
-                "uid": "5b41f9dd-1292-4f08-8a50-dc1a2d797cf0"
+                "emphemeralId": "11",
+                "uid": "b8d8ec7f-6deb-4265-8e45-9e8b717bac8f"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "11",
+            "removed": false,
             "predicateId": "cond_false_5",
             "variables": [
                 "door_switch_pse_sym"
@@ -1926,9 +2105,12 @@
         {
             "treeNode": {
                 "nodeId": "29",
-                "uid": "58592c23-ba48-4487-b368-3e4560b461f5"
+                "emphemeralId": "29",
+                "uid": "091f1ba6-752e-4487-a819-014ef5cc3278"
             },
             "predicate": "(Eq false      (And (Eq 0               (ReadLSB w32 0 door_switch_pse_sym))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": 29,
+            "removed": true,
             "predicateId": "cond_false_14",
             "variables": [
                 "door_switch_pse_sym",
@@ -1938,11 +2120,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 32767": [
+    "Path 15": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1967,9 +2150,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -2000,9 +2186,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "211c23db-ed26-48e1-94e0-a2ec8717ae7b"
+                "emphemeralId": "4",
+                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "4",
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
                 "car_door_pse_sym",
@@ -2036,9 +2225,12 @@
         {
             "treeNode": {
                 "nodeId": "9",
-                "uid": "40dbec6b-11e4-439e-85cd-666cb599331e"
+                "emphemeralId": "9",
+                "uid": "c5e821a2-a904-424f-95d3-96dd39ccfbd5"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "9",
+            "removed": false,
             "predicateId": "cond_false_4",
             "variables": [
                 "door_switch_pse_sym"
@@ -2073,9 +2265,12 @@
         {
             "treeNode": {
                 "nodeId": "13",
-                "uid": "58c79ae7-6ade-4b2d-8047-fa6f2ace6d00"
+                "emphemeralId": "13",
+                "uid": "f0af3d2b-93bd-464e-ae73-737a6c01a791"
             },
             "predicate": "(Eq false      (Eq (ReadLSB w32 0 choice_pse_sym)          (ReadLSB w32 0 car_door_pse_sym)))",
+            "EmphemeralId": "13",
+            "removed": false,
             "predicateId": "cond_false_9",
             "variables": [
                 "choice_pse_sym",
@@ -2109,9 +2304,12 @@
         {
             "treeNode": {
                 "nodeId": "30",
-                "uid": "c8257359-b843-48da-8833-7cd158b4b5c8"
+                "emphemeralId": "30",
+                "uid": "edad773d-6829-4406-a055-f363961bbe2c"
             },
             "predicate": "(And (Eq 0           (ReadLSB w32 0 door_switch_pse_sym))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": 30,
+            "removed": true,
             "predicateId": "cond_true_15",
             "variables": [
                 "door_switch_pse_sym",
@@ -2121,11 +2319,12 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 65535": [
+    "Path 16": [
         {
             "treeNode": {
                 "nodeId": "1",
-                "uid": "818ebea8-aa74-48ea-a177-ae03d60f8afa"
+                "emphemeralId": "1",
+                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -2150,9 +2349,12 @@
         {
             "treeNode": {
                 "nodeId": "3",
-                "uid": "6864f7c3-7d16-4c24-9602-58b8257246d7"
+                "emphemeralId": "3",
+                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": "3",
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "car_door_pse_sym",
@@ -2183,9 +2385,12 @@
         {
             "treeNode": {
                 "nodeId": "4",
-                "uid": "211c23db-ed26-48e1-94e0-a2ec8717ae7b"
+                "emphemeralId": "4",
+                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
+            "EmphemeralId": "4",
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
                 "car_door_pse_sym",
@@ -2219,9 +2424,12 @@
         {
             "treeNode": {
                 "nodeId": "9",
-                "uid": "40dbec6b-11e4-439e-85cd-666cb599331e"
+                "emphemeralId": "9",
+                "uid": "c5e821a2-a904-424f-95d3-96dd39ccfbd5"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "EmphemeralId": "9",
+            "removed": false,
             "predicateId": "cond_false_4",
             "variables": [
                 "door_switch_pse_sym"
@@ -2256,9 +2464,12 @@
         {
             "treeNode": {
                 "nodeId": "13",
-                "uid": "58c79ae7-6ade-4b2d-8047-fa6f2ace6d00"
+                "emphemeralId": "13",
+                "uid": "f0af3d2b-93bd-464e-ae73-737a6c01a791"
             },
             "predicate": "(Eq false      (Eq (ReadLSB w32 0 choice_pse_sym)          (ReadLSB w32 0 car_door_pse_sym)))",
+            "EmphemeralId": "13",
+            "removed": false,
             "predicateId": "cond_false_9",
             "variables": [
                 "choice_pse_sym",
@@ -2292,9 +2503,12 @@
         {
             "treeNode": {
                 "nodeId": "31",
-                "uid": "57113cd3-f8c5-4263-9dd0-f11ea895a906"
+                "emphemeralId": "31",
+                "uid": "579000f0-338d-4a68-ac3c-1fdd07712d69"
             },
             "predicate": "(Eq false      (And (Eq 0               (ReadLSB w32 0 door_switch_pse_sym))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
+            "EmphemeralId": 31,
+            "removed": true,
             "predicateId": "cond_false_15",
             "variables": [
                 "door_switch_pse_sym",

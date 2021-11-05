@@ -76,8 +76,8 @@ int main() {
   klee_print_expr("Ret : ", ret);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((door_switch == 1 && ret == 0 && choice == 1) ||
-              (door_switch == 1 && ret == 1 && choice == 1) ||
+  klee_assume((door_switch == 1 && ret == 0) ||
+              (door_switch == 1 && ret == 1) ||
               (door_switch == 0 && choice != 1 && ret == 1));
 
   return 0;

@@ -6,6 +6,7 @@ int main() {
   klee_assume(0 <= truth);
   klee_assume(truth <= 1);
 
+  int second_flip;
   int first_flip;
   make_pse_symbolic(&first_flip, sizeof(first_flip), "first_flip", 0, 1);
 
@@ -16,7 +17,6 @@ int main() {
   if (first_flip == 0) {
     ret = truth;
   } else {
-    int second_flip;
     make_pse_symbolic(&second_flip, sizeof(second_flip), "second_flip", 0, 1);
 
     if (second_flip == 1) {
@@ -25,6 +25,10 @@ int main() {
       ret = 0;
     }
   }
+
+  /* COMMENT : KLEE Assumes from ANALYSIS */
+  klee_assume((truth == 1 && first_flip == 0) ||
+              (truth == 1 && second_flip == 1));
 
   if (ret == truth) {
     klee_dump_kquery_state();

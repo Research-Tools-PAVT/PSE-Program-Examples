@@ -1,0 +1,155 @@
+[
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "17",
+        "Predicate": "7",
+        "Branch Predicate": " (Eq 0      (ReadLSB w32 0 first_flip))",
+        "Negate Predicate": " (Eq false      (Eq 0          (ReadLSB w32 0 first_flip)))",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "2",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 truth))",
+            "(Sle (ReadLSB w32 0 truth) 1)",
+            "(Eq 0 (ReadLSB w32 0 first_flip))"
+        ],
+        "False KLEE Id": "2",
+        "False Generate ID": "3",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 truth))",
+            "(Sle (ReadLSB w32 0 truth) 1)",
+            "(Sle 0 (ReadLSB w32 0 first_flip))",
+            "(Sle (ReadLSB w32 0 first_flip) 1)",
+            "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+        ]
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "22",
+        "Predicate": "9",
+        "Branch Predicate": " (Eq 1      (ReadLSB w32 0 second_flip))",
+        "Negate Predicate": " (Eq false      (Eq 1          (ReadLSB w32 0 second_flip)))",
+        "Fork": "True",
+        "Current State Id": "2",
+        "True KLEE Id": "2",
+        "True Generate ID": "6",
+        "trueQuery": [
+            "(Sle 0 (ReadLSB w32 0 truth))",
+            "(Sle (ReadLSB w32 0 truth) 1)",
+            "(Sle 0 (ReadLSB w32 0 first_flip))",
+            "(Sle (ReadLSB w32 0 first_flip) 1)",
+            "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "(Eq 1 (ReadLSB w32 0 second_flip))"
+        ],
+        "False KLEE Id": "4",
+        "False Generate ID": "7",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 truth))",
+            "(Sle (ReadLSB w32 0 truth) 1)",
+            "(Sle 0 (ReadLSB w32 0 first_flip))",
+            "(Sle (ReadLSB w32 0 first_flip) 1)",
+            "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "(Sle 0 (ReadLSB w32 0 second_flip))",
+            "(Sle (ReadLSB w32 0 second_flip) 1)",
+            "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
+        ]
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "29",
+        "Predicate": "27",
+        "Branch Predicate": " (And (Eq 1           (ReadLSB w32 0 truth))       (Eq 0           (ReadLSB w32 0 first_flip)))",
+        "Negate Predicate": " (Eq false      (And (Eq 1               (ReadLSB w32 0 truth))           (Eq 0               (ReadLSB w32 0 first_flip))))",
+        "Fork": "True",
+        "Current State Id": "1",
+        "True KLEE Id": "1",
+        "True Generate ID": "4",
+        "trueQuery": [
+            "(Eq 0 (ReadLSB w32 0 first_flip))",
+            "(Eq 1 (ReadLSB w32 0 truth))"
+        ],
+        "False KLEE Id": "3",
+        "False Generate ID": "5",
+        "falseQuery": [
+            "(Sle 0 (ReadLSB w32 0 truth))",
+            "(Sle (ReadLSB w32 0 truth) 1)",
+            "(Eq 0 (ReadLSB w32 0 first_flip))",
+            "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
+        ]
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "29",
+        "Predicate": "27",
+        "Branch Predicate": " (And (Eq 1           (ReadLSB w32 0 truth))       (Eq 0           (ReadLSB w32 0 first_flip)))",
+        "Negate Predicate": " (Eq false      (And (Eq 1               (ReadLSB w32 0 truth))           (Eq 0               (ReadLSB w32 0 first_flip))))"
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "29",
+        "Predicate": "27",
+        "Branch Predicate": " (And (Eq 1           (ReadLSB w32 0 truth))       (Eq 0           (ReadLSB w32 0 first_flip)))",
+        "Negate Predicate": " (Eq false      (And (Eq 1               (ReadLSB w32 0 truth))           (Eq 0               (ReadLSB w32 0 first_flip))))"
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "30",
+        "Predicate": "27",
+        "Expression": "(ite ((Eq 1      (ReadLSB w32 0 truth))(false)(false))),"
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "30",
+        "Predicate": "27",
+        "Expression": "(ite ((Eq 1      (ReadLSB w32 0 truth))((Eq 1      (ReadLSB w32 0 second_flip)))(false))),"
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "30",
+        "Predicate": "27",
+        "Expression": "(ite ((Eq 1      (ReadLSB w32 0 truth))((Eq 1      (ReadLSB w32 0 second_flip)))(false))),"
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "32",
+        "Predicate": "7",
+        "Branch Predicate": " true",
+        "Negate Predicate": " false"
+    },
+    {
+        "File": "src/randomized_response.cpp",
+        "Line": "32",
+        "Predicate": "7",
+        "Branch Predicate": " (Eq 1      (ReadLSB w32 0 truth))",
+        "Negate Predicate": " (Eq false      (Eq 1          (ReadLSB w32 0 truth)))"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "235",
+        "Predicate": "11",
+        "Branch Predicate": " false",
+        "Negate Predicate": " true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "235",
+        "Predicate": "11",
+        "Branch Predicate": " false",
+        "Negate Predicate": " true"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "259",
+        "Predicate": "11",
+        "Branch Predicate": " true",
+        "Negate Predicate": " false"
+    },
+    {
+        "File": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/stl_algobase.h",
+        "Line": "259",
+        "Predicate": "11",
+        "Branch Predicate": " true",
+        "Negate Predicate": " false"
+    }
+]

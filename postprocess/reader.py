@@ -22,6 +22,7 @@ paths = {}
 Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
+stateRemovals = sys.argv[3]
 
 EdgePredicateLabels = {}
 truePred = 0
@@ -57,6 +58,17 @@ def getPredicateId(node):
                 return edges.label
     return ""
 
+
+# States to be annotated for removal.
+annotateRemoveStates = []
+statesAnnotated = []
+with open(stateRemovals.strip(), "r") as fileptr:
+    annotateRemoveStates = fileptr.readlines()
+
+for x in annotateRemoveStates:
+    # print(x.split(":")[1].strip().split(",")[1][0:-1].strip())
+    statesAnnotated.append(
+        int(x.split(":")[1].strip().split(",")[1][0:-1].strip()))
 
 # Process the file dump from KLEE
 with open(file.strip(), "r") as fileptr:
@@ -128,6 +140,9 @@ for elems in results:
                            ExecutionTreeNode(f"{generate_true}"))
         right = nodeMap.get(f"{generate_false}",
                             ExecutionTreeNode(f"{generate_false}"))
+
+        left.emphemeralId = generate_true
+        right.emphemeralId = generate_false
 
         # Make sure we reuse the Node IDs.
         nodeMap[aliasMap.get(current, current)] = node
@@ -239,7 +254,7 @@ for k, v in nodeMap.items():
     # Leaf nodes are path ends.
     # Update Path ID by Leaf node.
     if len(v.edges) == 0:
-        idxT += idxT + 1
+        idxT += 1
         pathMap[idxT] = v
 
 # Construct the paths from PathMaps
@@ -248,6 +263,7 @@ for pathIds, nodes in pathMap.items():
     temp = nodes
     imapsData = {}
     variableListing = []
+    isPathFalseAnnotated = False
     variables_extra = set()
 
     # Recurse up from leaves to root,
@@ -277,7 +293,12 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = data
+            collection["EmphemeralId"] = temp.emphemeralId
 
+            collection["removed"] = False
+            if temp.emphemeralId in statesAnnotated:
+                collection["removed"] = True
+                isPathFalseAnnotated = True
             # Show the id of the constraint that belongs to this edge
             # in the SymbEx tree.
             collection["predicateId"] = predicateId
@@ -295,6 +316,10 @@ for pathIds, nodes in pathMap.items():
         # Append to path the collection so far
         path.append(collection)
         temp = findNext(temp)
+
+    if isPathFalseAnnotated:
+        print(f"\033[1;34mPath {pathIds} invalid\033[0m")
+
     paths[f"Path {pathIds}"] = path
 
 for _, path in paths.items():

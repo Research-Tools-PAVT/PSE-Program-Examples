@@ -23,7 +23,7 @@ Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
 stateRemovals = sys.argv[3]
-
+removals = 0
 EdgePredicateLabels = {}
 truePred = 0
 falsePred = 0
@@ -318,9 +318,11 @@ for pathIds, nodes in pathMap.items():
         temp = findNext(temp)
 
     if isPathFalseAnnotated:
+        removals += 1
         print(f"\033[1;34mPath {pathIds} invalid\033[0m")
 
-    paths[f"Path {pathIds}"] = path
+    if not isPathFalseAnnotated:
+        paths[f"Path {pathIds}"] = path
 
 for _, path in paths.items():
     path.sort(key=lambda x: int(x["treeNode"]["nodeId"]), reverse=False)
@@ -333,4 +335,4 @@ with open(f"{name}_processed/{name}_processed.json", "w", encoding="utf-8") as f
 with open(f"{name}_processed/{name}_paths.json", "w", encoding="utf-8") as f:
     json.dump(paths, f, ensure_ascii=False, indent=4)
 
-print(f"Paths Processed : {len(paths)}")
+print(f"Paths Processed : {len(paths) - removals}")

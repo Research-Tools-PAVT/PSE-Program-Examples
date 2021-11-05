@@ -4,7 +4,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -30,7 +30,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
+                "uid": "85fb7539-b9f1-4fbb-aa22-46e482474e36"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "3",
@@ -66,7 +66,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
+                "uid": "5033f0bc-d67c-4b08-b121-9924535c74f1"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "4",
@@ -105,7 +105,7 @@
             "treeNode": {
                 "nodeId": "8",
                 "emphemeralId": "8",
-                "uid": "7ebc3df5-72fe-4a7f-92d4-a39281dce0d4"
+                "uid": "910cd822-c9ff-4269-b3b3-e9c84da8d6d2"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "8",
@@ -139,7 +139,7 @@
             "treeNode": {
                 "nodeId": "23",
                 "emphemeralId": "23",
-                "uid": "2b04621e-c3f5-42e6-a858-86631d6f072f"
+                "uid": "38f435bd-2939-4709-8193-5dea49a11a02"
             },
             "predicate": "(Eq false      (Eq 1          (ReadLSB w32 0 choice_pse_sym)))",
             "EmphemeralId": 23,
@@ -157,7 +157,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -183,7 +183,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
+                "uid": "85fb7539-b9f1-4fbb-aa22-46e482474e36"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "3",
@@ -219,7 +219,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
+                "uid": "e1c4baba-ede4-4c15-9040-058983ccd1ae"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "5",
@@ -256,7 +256,7 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "a116f460-1249-4aa4-806c-34c6299e6bad"
+                "uid": "24b18925-6158-47bc-8c29-58a8c4dcf05e"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "10",
@@ -287,7 +287,7 @@
             "treeNode": {
                 "nodeId": "20",
                 "emphemeralId": "20",
-                "uid": "746b9650-9431-43f4-bbbc-55f88d94e2c3"
+                "uid": "dbba21e3-3701-444c-914d-ad284218333d"
             },
             "predicate": "(Eq 1      (ReadLSB w32 0 choice_pse_sym))",
             "EmphemeralId": 20,
@@ -305,7 +305,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -331,7 +331,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
+                "uid": "85fb7539-b9f1-4fbb-aa22-46e482474e36"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "3",
@@ -367,7 +367,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
+                "uid": "e1c4baba-ede4-4c15-9040-058983ccd1ae"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "5",
@@ -404,7 +404,7 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "a116f460-1249-4aa4-806c-34c6299e6bad"
+                "uid": "24b18925-6158-47bc-8c29-58a8c4dcf05e"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "10",
@@ -435,7 +435,7 @@
             "treeNode": {
                 "nodeId": "21",
                 "emphemeralId": "21",
-                "uid": "4e408a5a-2a24-496f-9784-5ce9a27b946e"
+                "uid": "12894587-a229-4ec9-a371-cd80451e7874"
             },
             "predicate": "(Eq false      (Eq 1          (ReadLSB w32 0 choice_pse_sym)))",
             "EmphemeralId": 21,
@@ -448,172 +448,13 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 4": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "3",
-                "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "3",
-            "removed": false,
-            "predicateId": "cond_false_1",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "emphemeralId": "4",
-                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
-            },
-            "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
-            "EmphemeralId": "4",
-            "removed": false,
-            "predicateId": "cond_true_2",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "9",
-                "emphemeralId": "9",
-                "uid": "c5e821a2-a904-424f-95d3-96dd39ccfbd5"
-            },
-            "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
-            "EmphemeralId": "9",
-            "removed": false,
-            "predicateId": "cond_false_4",
-            "variables": [
-                "door_switch_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "12",
-                "emphemeralId": "12",
-                "uid": "3cf4e379-c117-4dca-8169-fc9d11cb6375"
-            },
-            "predicate": "(Eq (ReadLSB w32 0 choice_pse_sym)      (ReadLSB w32 0 car_door_pse_sym))",
-            "EmphemeralId": 12,
-            "removed": true,
-            "predicateId": "cond_true_9",
-            "variables": [
-                "choice_pse_sym",
-                "car_door_pse_sym"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
+    "Path 4": [],
     "Path 5": [
         {
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -639,7 +480,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
+                "uid": "0fdf3161-57fb-41b2-b940-f3fe17b1e816"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "2",
@@ -676,7 +517,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "0c8d49ad-c6c2-4fe9-a6af-17874668c119"
+                "uid": "97bcee40-f18a-448e-ae42-fb0b3fe1311e"
             },
             "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
             "EmphemeralId": "7",
@@ -714,7 +555,7 @@
             "treeNode": {
                 "nodeId": "16",
                 "emphemeralId": "16",
-                "uid": "16a42dc8-1a1e-463d-96ac-02b126e3e332"
+                "uid": "e4dee20d-d0ef-4cbf-990a-a2ae04179074"
             },
             "predicate": "(Eq (ReadLSB w32 0 choice_pse_sym)      (ReadLSB w32 0 car_door_pse_sym))",
             "EmphemeralId": 16,
@@ -728,132 +569,13 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 6": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "emphemeralId": "2",
-                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
-            },
-            "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
-            "EmphemeralId": "2",
-            "removed": false,
-            "predicateId": "cond_true_1",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "7",
-                "emphemeralId": "7",
-                "uid": "0c8d49ad-c6c2-4fe9-a6af-17874668c119"
-            },
-            "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
-            "EmphemeralId": "7",
-            "removed": false,
-            "predicateId": "cond_false_3",
-            "variables": [
-                "door_switch_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "17",
-                "emphemeralId": "17",
-                "uid": "3c317d0a-1738-427c-9ffb-0b489859d580"
-            },
-            "predicate": "(Eq false      (Eq (ReadLSB w32 0 choice_pse_sym)          (ReadLSB w32 0 car_door_pse_sym)))",
-            "EmphemeralId": 17,
-            "removed": true,
-            "predicateId": "cond_false_10",
-            "variables": [
-                "choice_pse_sym",
-                "car_door_pse_sym"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
+    "Path 6": [],
     "Path 7": [
         {
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -879,7 +601,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
+                "uid": "0fdf3161-57fb-41b2-b940-f3fe17b1e816"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "2",
@@ -916,7 +638,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
+                "uid": "d1d1019a-d633-4cc6-8308-db9317112a85"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "6",
@@ -951,7 +673,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "a5b1c9c0-839f-485a-a270-19d048d98005"
+                "uid": "efca9075-f550-49af-b239-62c9426d136f"
             },
             "predicate": "(Eq 2      (ReadLSB w32 0 choice_pse_sym))",
             "EmphemeralId": "14",
@@ -982,7 +704,7 @@
             "treeNode": {
                 "nodeId": "18",
                 "emphemeralId": "18",
-                "uid": "4b8ad9fb-6adb-4b1d-b4f9-9491777c846a"
+                "uid": "8e353cdf-a369-4ad9-81dc-314a1aaaed00"
             },
             "predicate": "(Eq 3      (ReadLSB w32 0 car_door_pse_sym))",
             "EmphemeralId": 18,
@@ -1000,7 +722,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1026,7 +748,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
+                "uid": "0fdf3161-57fb-41b2-b940-f3fe17b1e816"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "2",
@@ -1063,7 +785,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
+                "uid": "d1d1019a-d633-4cc6-8308-db9317112a85"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "6",
@@ -1098,7 +820,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "a5b1c9c0-839f-485a-a270-19d048d98005"
+                "uid": "efca9075-f550-49af-b239-62c9426d136f"
             },
             "predicate": "(Eq 2      (ReadLSB w32 0 choice_pse_sym))",
             "EmphemeralId": "14",
@@ -1129,7 +851,7 @@
             "treeNode": {
                 "nodeId": "19",
                 "emphemeralId": "19",
-                "uid": "95423c36-31c0-4f73-b63e-d0223f467168"
+                "uid": "4ef48200-10d9-47c9-b8a3-4957b7ad8582"
             },
             "predicate": "(Eq false      (Eq 3          (ReadLSB w32 0 car_door_pse_sym)))",
             "EmphemeralId": 19,
@@ -1147,7 +869,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1173,7 +895,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
+                "uid": "0fdf3161-57fb-41b2-b940-f3fe17b1e816"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "2",
@@ -1210,7 +932,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
+                "uid": "d1d1019a-d633-4cc6-8308-db9317112a85"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "6",
@@ -1245,7 +967,7 @@
             "treeNode": {
                 "nodeId": "15",
                 "emphemeralId": "15",
-                "uid": "f52071ce-575f-4e32-ae7f-8523b9dce8e5"
+                "uid": "22f09ae0-1bf5-4643-a0af-ceea1855abfd"
             },
             "predicate": "(Eq false      (Eq 2          (ReadLSB w32 0 choice_pse_sym)))",
             "EmphemeralId": "15",
@@ -1282,7 +1004,7 @@
             "treeNode": {
                 "nodeId": "24",
                 "emphemeralId": "24",
-                "uid": "cdf1f186-b428-493d-b9b6-641147fc3299"
+                "uid": "1fd41fcd-10a7-4cbe-aac3-086206070e68"
             },
             "predicate": "(Eq 2      (ReadLSB w32 0 car_door_pse_sym))",
             "EmphemeralId": 24,
@@ -1300,7 +1022,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1326,7 +1048,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "71af8666-8d83-4e07-8dff-35313bfea5e3"
+                "uid": "0fdf3161-57fb-41b2-b940-f3fe17b1e816"
             },
             "predicate": "(And (Eq false           (Eq 1               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "2",
@@ -1363,7 +1085,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "0806185d-4ffd-4f4a-adb2-c7f6b6e7885a"
+                "uid": "d1d1019a-d633-4cc6-8308-db9317112a85"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "6",
@@ -1398,7 +1120,7 @@
             "treeNode": {
                 "nodeId": "15",
                 "emphemeralId": "15",
-                "uid": "f52071ce-575f-4e32-ae7f-8523b9dce8e5"
+                "uid": "22f09ae0-1bf5-4643-a0af-ceea1855abfd"
             },
             "predicate": "(Eq false      (Eq 2          (ReadLSB w32 0 choice_pse_sym)))",
             "EmphemeralId": "15",
@@ -1435,7 +1157,7 @@
             "treeNode": {
                 "nodeId": "25",
                 "emphemeralId": "25",
-                "uid": "6a7ff07a-0bef-4430-8bd7-027e87bb1ac1"
+                "uid": "659965a0-ccc6-4e63-840e-af7eebd00472"
             },
             "predicate": "(Eq false      (Eq 2          (ReadLSB w32 0 car_door_pse_sym)))",
             "EmphemeralId": 25,
@@ -1453,7 +1175,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1479,7 +1201,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
+                "uid": "85fb7539-b9f1-4fbb-aa22-46e482474e36"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "3",
@@ -1515,7 +1237,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
+                "uid": "5033f0bc-d67c-4b08-b121-9924535c74f1"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "4",
@@ -1554,7 +1276,7 @@
             "treeNode": {
                 "nodeId": "8",
                 "emphemeralId": "8",
-                "uid": "7ebc3df5-72fe-4a7f-92d4-a39281dce0d4"
+                "uid": "910cd822-c9ff-4269-b3b3-e9c84da8d6d2"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "8",
@@ -1588,7 +1310,7 @@
             "treeNode": {
                 "nodeId": "22",
                 "emphemeralId": "22",
-                "uid": "d2e1051c-bb8a-4d84-b934-917b36f48506"
+                "uid": "02326f4e-a01f-4684-868e-573b2f90c776"
             },
             "predicate": "(Eq 1      (ReadLSB w32 0 choice_pse_sym))",
             "EmphemeralId": "22",
@@ -1619,7 +1341,7 @@
             "treeNode": {
                 "nodeId": "26",
                 "emphemeralId": "26",
-                "uid": "bc157696-6fb3-4fbb-8699-6967226999f0"
+                "uid": "c4b72242-bfcf-4119-aca9-170058fa2b64"
             },
             "predicate": "(Eq 3      (ReadLSB w32 0 car_door_pse_sym))",
             "EmphemeralId": 26,
@@ -1637,7 +1359,7 @@
             "treeNode": {
                 "nodeId": "1",
                 "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
+                "uid": "f0c50f77-e9ac-45c7-bd8e-45ea7508892c"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
@@ -1663,7 +1385,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
+                "uid": "85fb7539-b9f1-4fbb-aa22-46e482474e36"
             },
             "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
             "EmphemeralId": "3",
@@ -1699,7 +1421,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
+                "uid": "5033f0bc-d67c-4b08-b121-9924535c74f1"
             },
             "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
             "EmphemeralId": "4",
@@ -1738,7 +1460,7 @@
             "treeNode": {
                 "nodeId": "8",
                 "emphemeralId": "8",
-                "uid": "7ebc3df5-72fe-4a7f-92d4-a39281dce0d4"
+                "uid": "910cd822-c9ff-4269-b3b3-e9c84da8d6d2"
             },
             "predicate": "(Extract 0 (ZExt w8 (Eq false                          (Eq 0                              (ReadLSB w32 0 door_switch_pse_sym)))))",
             "EmphemeralId": "8",
@@ -1772,7 +1494,7 @@
             "treeNode": {
                 "nodeId": "22",
                 "emphemeralId": "22",
-                "uid": "d2e1051c-bb8a-4d84-b934-917b36f48506"
+                "uid": "02326f4e-a01f-4684-868e-573b2f90c776"
             },
             "predicate": "(Eq 1      (ReadLSB w32 0 choice_pse_sym))",
             "EmphemeralId": "22",
@@ -1803,7 +1525,7 @@
             "treeNode": {
                 "nodeId": "27",
                 "emphemeralId": "27",
-                "uid": "3bc8b38e-90bc-4360-a71a-52ef6062aece"
+                "uid": "2e3f1e46-4a89-4d67-aae9-db4d91bed0e9"
             },
             "predicate": "(Eq false      (Eq 3          (ReadLSB w32 0 car_door_pse_sym)))",
             "EmphemeralId": 27,
@@ -1816,706 +1538,8 @@
             "nodeFalseQuery": []
         }
     ],
-    "Path 13": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "3",
-                "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "3",
-            "removed": false,
-            "predicateId": "cond_false_1",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "5",
-                "emphemeralId": "5",
-                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "5",
-            "removed": false,
-            "predicateId": "cond_false_2",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "11",
-                "emphemeralId": "11",
-                "uid": "b8d8ec7f-6deb-4265-8e45-9e8b717bac8f"
-            },
-            "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
-            "EmphemeralId": "11",
-            "removed": false,
-            "predicateId": "cond_false_5",
-            "variables": [
-                "door_switch_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Eq 1 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (And (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "28",
-                "emphemeralId": "28",
-                "uid": "cab00336-6576-4e15-a8d4-597da01b957f"
-            },
-            "predicate": "(And (Eq 0           (ReadLSB w32 0 door_switch_pse_sym))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
-            "EmphemeralId": 28,
-            "removed": true,
-            "predicateId": "cond_true_14",
-            "variables": [
-                "door_switch_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
-    "Path 14": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "3",
-                "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "3",
-            "removed": false,
-            "predicateId": "cond_false_1",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "5",
-                "emphemeralId": "5",
-                "uid": "f1d59875-2dbc-4922-b830-7b3eb7c1b9bb"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 2                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 2                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "5",
-            "removed": false,
-            "predicateId": "cond_false_2",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "11",
-                "emphemeralId": "11",
-                "uid": "b8d8ec7f-6deb-4265-8e45-9e8b717bac8f"
-            },
-            "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
-            "EmphemeralId": "11",
-            "removed": false,
-            "predicateId": "cond_false_5",
-            "variables": [
-                "door_switch_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Eq 1 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (And (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "29",
-                "emphemeralId": "29",
-                "uid": "091f1ba6-752e-4487-a819-014ef5cc3278"
-            },
-            "predicate": "(Eq false      (And (Eq 0               (ReadLSB w32 0 door_switch_pse_sym))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": 29,
-            "removed": true,
-            "predicateId": "cond_false_14",
-            "variables": [
-                "door_switch_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
-    "Path 15": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "3",
-                "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "3",
-            "removed": false,
-            "predicateId": "cond_false_1",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "emphemeralId": "4",
-                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
-            },
-            "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
-            "EmphemeralId": "4",
-            "removed": false,
-            "predicateId": "cond_true_2",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "9",
-                "emphemeralId": "9",
-                "uid": "c5e821a2-a904-424f-95d3-96dd39ccfbd5"
-            },
-            "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
-            "EmphemeralId": "9",
-            "removed": false,
-            "predicateId": "cond_false_4",
-            "variables": [
-                "door_switch_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "13",
-                "emphemeralId": "13",
-                "uid": "f0af3d2b-93bd-464e-ae73-737a6c01a791"
-            },
-            "predicate": "(Eq false      (Eq (ReadLSB w32 0 choice_pse_sym)          (ReadLSB w32 0 car_door_pse_sym)))",
-            "EmphemeralId": "13",
-            "removed": false,
-            "predicateId": "cond_false_9",
-            "variables": [
-                "choice_pse_sym",
-                "car_door_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Eq 1 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (And (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "30",
-                "emphemeralId": "30",
-                "uid": "edad773d-6829-4406-a055-f363961bbe2c"
-            },
-            "predicate": "(And (Eq 0           (ReadLSB w32 0 door_switch_pse_sym))       (Eq false           (Eq 1               (ReadLSB w32 0 choice_pse_sym))))",
-            "EmphemeralId": 30,
-            "removed": true,
-            "predicateId": "cond_true_15",
-            "variables": [
-                "door_switch_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
-    "Path 16": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "emphemeralId": "1",
-                "uid": "11aee10d-892c-49af-bb7e-3bdd53bb4aa5"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "3",
-                "emphemeralId": "3",
-                "uid": "073606ec-9b08-4c20-90ef-7858838b4cad"
-            },
-            "predicate": "(Eq false      (And (Eq false               (Eq 1                   (ReadLSB w32 0 car_door_pse_sym)))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": "3",
-            "removed": false,
-            "predicateId": "cond_false_1",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "emphemeralId": "4",
-                "uid": "9ca617a8-f50b-45fd-883c-b9c6dd75dba6"
-            },
-            "predicate": "(And (Eq false           (Eq 2               (ReadLSB w32 0 car_door_pse_sym)))       (Eq false           (Eq 2               (ReadLSB w32 0 choice_pse_sym))))",
-            "EmphemeralId": "4",
-            "removed": false,
-            "predicateId": "cond_true_2",
-            "variables": [
-                "car_door_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "9",
-                "emphemeralId": "9",
-                "uid": "c5e821a2-a904-424f-95d3-96dd39ccfbd5"
-            },
-            "predicate": "(Eq false      (Extract 0 (ZExt w8 (Eq false                              (Eq 0                                  (ReadLSB w32 0 door_switch_pse_sym))))))",
-            "EmphemeralId": "9",
-            "removed": false,
-            "predicateId": "cond_false_4",
-            "variables": [
-                "door_switch_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "13",
-                "emphemeralId": "13",
-                "uid": "f0af3d2b-93bd-464e-ae73-737a6c01a791"
-            },
-            "predicate": "(Eq false      (Eq (ReadLSB w32 0 choice_pse_sym)          (ReadLSB w32 0 car_door_pse_sym)))",
-            "EmphemeralId": "13",
-            "removed": false,
-            "predicateId": "cond_false_9",
-            "variables": [
-                "choice_pse_sym",
-                "car_door_pse_sym"
-            ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Eq 1 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 door_switch_pse_sym))",
-                "(Sle (ReadLSB w32 0 door_switch_pse_sym) 1)",
-                "(Sle 0 (ReadLSB w32 0 choice_pse_sym))",
-                "(Sle (ReadLSB w32 0 choice_pse_sym) 3)",
-                "(Sle 0 (ReadLSB w32 0 car_door_pse_sym))",
-                "(Sle (ReadLSB w32 0 car_door_pse_sym) 3)",
-                "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
-                "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
-                "(Eq false (Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym)))",
-                "(Eq false (And (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "31",
-                "emphemeralId": "31",
-                "uid": "579000f0-338d-4a68-ac3c-1fdd07712d69"
-            },
-            "predicate": "(Eq false      (And (Eq 0               (ReadLSB w32 0 door_switch_pse_sym))           (Eq false               (Eq 1                   (ReadLSB w32 0 choice_pse_sym)))))",
-            "EmphemeralId": 31,
-            "removed": true,
-            "predicateId": "cond_false_15",
-            "variables": [
-                "door_switch_pse_sym",
-                "choice_pse_sym"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ]
+    "Path 13": [],
+    "Path 14": [],
+    "Path 15": [],
+    "Path 16": []
 }

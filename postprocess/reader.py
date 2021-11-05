@@ -24,6 +24,7 @@ file = sys.argv[1]
 name = sys.argv[2]
 stateRemovals = sys.argv[3]
 removals = 0
+totPaths = 0
 EdgePredicateLabels = {}
 truePred = 0
 falsePred = 0
@@ -317,9 +318,10 @@ for pathIds, nodes in pathMap.items():
         path.append(collection)
         temp = findNext(temp)
 
+    totPaths += 1
     if isPathFalseAnnotated:
         removals += 1
-        print(f"\033[1;34mPath {pathIds} invalid\033[0m")
+        # print(f"\033[1;34mPath {pathIds} invalid\033[0m")
 
     if not isPathFalseAnnotated:
         paths[f"Path {pathIds}"] = path
@@ -335,4 +337,4 @@ with open(f"{name}_processed/{name}_processed.json", "w", encoding="utf-8") as f
 with open(f"{name}_processed/{name}_paths.json", "w", encoding="utf-8") as f:
     json.dump(paths, f, ensure_ascii=False, indent=4)
 
-print(f"Paths Processed : {len(paths) - removals}")
+print(f"Paths Processed : {totPaths - removals}")

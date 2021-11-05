@@ -145,6 +145,12 @@ for elems in results:
         left.emphemeralId = generate_true
         right.emphemeralId = generate_false
 
+        if left.emphemeralId in statesAnnotated:
+            left.invalidated = True
+
+        if right.emphemeralId in statesAnnotated:
+            right.invalidated = True
+
         # Make sure we reuse the Node IDs.
         nodeMap[aliasMap.get(current, current)] = node
         nodeMap[generate_true] = left
@@ -329,7 +335,20 @@ for pathIds, nodes in pathMap.items():
 for _, path in paths.items():
     path.sort(key=lambda x: int(x["treeNode"]["nodeId"]), reverse=False)
 
-Tree.save_cfg(filename=f"{name}_execution_tree", directory=f"{name}_processed")
+Tree.save_cfg(filename=f"{name}_execution_tree.dot",
+              directory=f"{name}_processed")
+
+getLines = []
+with open(f"{name}_processed/{name}_execution_tree.dot", "r") as fileptr:
+    getLines = fileptr.readlines()
+
+for elems in statesAnnotated:
+    getLines.insert(
+        2, f"\t{elems} [color=blue, fillcolor=red, style=filled, fontcolor=white, fontname=\"Courier-Bold\"]\n")
+
+with open(f"{name}_processed/{name}_execution_tree.dot", "w") as fileptr:
+    for lines in getLines:
+        fileptr.write(lines)
 
 with open(f"{name}_processed/{name}_processed.json", "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=4)

@@ -39,4 +39,10 @@ rm -rf klee_results/${example}_processed/
 cat klee_results/${example}_klee_out/temp_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
 
 python3 postprocess/reader.py klee_results/${example}_klee_out/conds_dump.txt ${example} klee_results/${example}_klee_out/states_removal.txt
+
+dot -Tpdf -Nfontsize=12 \
+-Efontname=Courier-Bold -Efontsize=8 \
+${example}_processed/${example}_execution_tree.dot > \
+${example}_processed/${example}_execution_tree.dot.pdf
+
 mv ${example}_processed klee_results/

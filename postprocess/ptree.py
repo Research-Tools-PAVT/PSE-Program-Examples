@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import uuid
+import random
 from graphviz import Source, Graph, Digraph
 
 
@@ -14,6 +15,7 @@ class ExecutionTreeNode(dict):
         self.right = None
         self.type = None
         self.emphemeralId = nodeId
+        self.invalidated = False
         self.parent = None
         self.added = False
         self.id = None
@@ -63,7 +65,7 @@ class ExecutionTree:
 
     def save_cfg(self, name="ExecutionTree", filename="sample", directory="."):
         graph = Digraph(name=name, filename=filename,
-                        directory=directory, format="pdf", node_attr={'shape': 'record', 'height': '.1'})
+                        directory=directory, format="pdf", node_attr={'shape': 'record', 'height': '.1', 'color': 'black', 'fontname': "Courier"})
         for node in self.nodes:
             for edge in node.edges:
                 edge.label += edge.imapdata

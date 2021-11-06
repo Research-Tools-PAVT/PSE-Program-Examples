@@ -32,6 +32,7 @@ Some other essential packages include the following
 - `sexpdata` (https://sexpdata.readthedocs.io/en/latest/).
 - `json` (https://docs.python.org/3/library/json.html).
 - `uuid` (https://docs.python.org/3/library/uuid.html#example).
+- `dot` or `xdot` binary must be available in the path.
 
 ```
 $ pip3 install graphviz sexpdata

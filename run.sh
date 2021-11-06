@@ -45,4 +45,6 @@ dot -Tpdf -Nfontsize=12 \
 ${example}_processed/${example}_execution_tree.dot > \
 ${example}_processed/${example}_execution_tree.dot.pdf
 
+mv constraints.json ${example}_processed.states.json
+mv ${example}_processed.states.json ${example}_processed/${example}_processed.states.json
 mv ${example}_processed klee_results/

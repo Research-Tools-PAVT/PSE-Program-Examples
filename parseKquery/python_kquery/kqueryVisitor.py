@@ -7,62 +7,56 @@ else:
 
 # This class defines a complete generic visitor for a parse tree produced by kqueryParser.
 
+
 class kqueryVisitor(ParseTreeVisitor):
 
-    # Visit a parse tree produced by kqueryParser#kquery.
-    def visitKquery(self, ctx:kqueryParser.KqueryContext):
+    # Visit a parse tree produced by kqueryParser#kqueryStart.
+    def visitKqueryStart(self, ctx: kqueryParser.KqueryStartContext):
         return self.visitChildren(ctx)
 
+    # Visit a parse tree produced by kqueryParser#kquery.
+    def visitKquery(self, ctx: kqueryParser.KqueryContext):
+        return self.visitChildren(ctx)
 
     # Visit a parse tree produced by kqueryParser#query_command.
-    def visitQuery_command(self, ctx:kqueryParser.Query_commandContext):
+    def visitQuery_command(self, ctx: kqueryParser.Query_commandContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#array_declaration.
-    def visitArray_declaration(self, ctx:kqueryParser.Array_declarationContext):
+    def visitArray_declaration(self, ctx: kqueryParser.Array_declarationContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#array_initializer.
-    def visitArray_initializer(self, ctx:kqueryParser.Array_initializerContext):
+    def visitArray_initializer(self, ctx: kqueryParser.Array_initializerContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#number_list.
-    def visitNumber_list(self, ctx:kqueryParser.Number_listContext):
+    def visitNumber_list(self, ctx: kqueryParser.Number_listContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#number.
-    def visitNumber(self, ctx:kqueryParser.NumberContext):
+    def visitNumber(self, ctx: kqueryParser.NumberContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#signed_constant.
-    def visitSigned_constant(self, ctx:kqueryParser.Signed_constantContext):
+    def visitSigned_constant(self, ctx: kqueryParser.Signed_constantContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#dec_constant.
-    def visitDec_constant(self, ctx:kqueryParser.Dec_constantContext):
+    def visitDec_constant(self, ctx: kqueryParser.Dec_constantContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#bin_constant.
-    def visitBin_constant(self, ctx:kqueryParser.Bin_constantContext):
+    def visitBin_constant(self, ctx: kqueryParser.Bin_constantContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#oct_constant.
-    def visitOct_constant(self, ctx:kqueryParser.Oct_constantContext):
+    def visitOct_constant(self, ctx: kqueryParser.Oct_constantContext):
         return self.visitChildren(ctx)
-
 
     # Visit a parse tree produced by kqueryParser#hex_constant.
-    def visitHex_constant(self, ctx:kqueryParser.Hex_constantContext):
+    def visitHex_constant(self, ctx: kqueryParser.Hex_constantContext):
         return self.visitChildren(ctx)
-
 
 
 del kqueryParser

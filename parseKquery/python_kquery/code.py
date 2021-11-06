@@ -6,15 +6,25 @@ from kqueryLexer import kqueryLexer
 from kqueryVisitor import kqueryVisitor
 
 
+class kqueryPPrinter(kqueryVisitor):
+    def __init__(self):
+        pass
+
+    # Visit a parse tree produced by kqueryParser#kqueryStart.
+    def visitorCode(self, ctx: kqueryParser.KqueryStartContext):
+        kqueryList = self.visit(ctx.kquery())
+        return kqueryList
+
+
 def main(argv):
     while True:
         text = InputStream(input(">"))
         lexer = kqueryLexer(text)
         stream = CommonTokenStream(lexer)
         parser = kqueryParser(stream)
-        tree = parser.kquery()
-        ast = kqueryVisitor().visitKquery(tree)
-        print('=', ast)
+        tree = parser.kqueryStart()
+        ast = kqueryVisitor().visitKqueryStart(tree)
+        print('=', tree, ast)
 
 
 if __name__ == '__main__':

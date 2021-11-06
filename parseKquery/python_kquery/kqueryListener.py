@@ -8,6 +8,15 @@ else:
 # This class defines a complete listener for a parse tree produced by kqueryParser.
 class kqueryListener(ParseTreeListener):
 
+    # Enter a parse tree produced by kqueryParser#kqueryStart.
+    def enterKqueryStart(self, ctx:kqueryParser.KqueryStartContext):
+        pass
+
+    # Exit a parse tree produced by kqueryParser#kqueryStart.
+    def exitKqueryStart(self, ctx:kqueryParser.KqueryStartContext):
+        pass
+
+
     # Enter a parse tree produced by kqueryParser#kquery.
     def enterKquery(self, ctx:kqueryParser.KqueryContext):
         pass

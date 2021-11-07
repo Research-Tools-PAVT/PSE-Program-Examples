@@ -309,11 +309,11 @@ for pathIds, nodes in pathMap.items():
             # Show the id of the constraint that belongs to this edge
             # in the SymbEx tree.
             collection["predicateId"] = predicateId
-            # processExpressionImap(imapsData, variables)
+            processExpressionImap(imapsData, variables)
             # All query lead to this particular node.
             # KLEE Assumes also come-in at this point.
             collection["variables"] = variables
-            # collection["IMap"] = imapsData
+            collection["IMap"] = imapsData
 
         # Print the full query even for the first Node.
         # whatever the case be

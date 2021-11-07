@@ -1,6 +1,23 @@
 #!/usr/bin/bash
-SRC_PATH=$1
-example=$2
+
+IFS=$'\n' read -r -d '' -a my_array < <( echo $1 | python3 -c '
+import sys
+lines = []
+for line in sys.stdin:
+  lines.append(line)
+pathsNames = lines[0].strip().split("/")
+src = pathsNames[0].strip()
+filename = pathsNames[1].strip().split(".")[0].strip()
+print(f"{src}\n{filename}")
+' && printf '\0' )
+
+echo "Directory : " ${my_array[0]}
+echo "File : " ${my_array[1]}
+
+sleep 2
+
+SRC_PATH=${my_array[0]}
+example=${my_array[1]}
 
 clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
@@ -10,10 +27,10 @@ clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp -o klee_results/llvmir/${example}.ll
 
-klee --use-query-log=all:smt2 \
+klee --optimize --filename-act ${example} \
 --disable-inlining --emit-all-errors --search=random-state \
 --search=nurs:depth --search=nurs:md2u \
---use-cex-cache --write-kqueries --write-smt2s ${example}.bc
+--use-cex-cache --write-kqueries ${example}.bc
 
 # --only-output-states-covering-new
 
@@ -36,7 +53,7 @@ mv klee-last/* klee_results/${example}_klee_out/
 rm -rf klee-* *.bc *.dot *.out *.o *.a
 rm -rf klee_results/${example}_processed/
 
-cat klee_results/${example}_klee_out/temp_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
+cat klee_results/${example}_klee_out/conds_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
 
 python3 postprocess/reader.py klee_results/${example}_klee_out/conds_dump.txt ${example} klee_results/${example}_klee_out/states_removal.txt
 

@@ -188,31 +188,6 @@ def findVars(expr):
 
 
 if __name__ == "__main__":
-    string = '''         (Eq false
-             (Slt N2
-                  (ReadLSB w32 N5:(Extract w32 0 (Mul w64 4 (SExt w64 N4))) U0:[23=N6:(Read w8 3 f_5),
-                                                                                22=N7:(Read w8 2 f_5),
-                                                                                21=N8:(Read w8 1 f_5),
-                                                                                20=N9:(Read w8 0 f_5),
-                                                                                19=N10:(Read w8 3 f_4),
-                                                                                18=N11:(Read w8 2 f_4),
-                                                                                17=N12:(Read w8 1 f_4),
-                                                                                16=N13:(Read w8 0 f_4),
-                                                                                15=N14:(Read w8 3 f_3),
-                                                                                14=N15:(Read w8 2 f_3),
-                                                                                13=N16:(Read w8 1 f_3),
-                                                                                12=N17:(Read w8 0 f_3),
-                                                                                11=N18:(Read w8 3 f_2),
-                                                                                10=N19:(Read w8 2 f_2),
-                                                                                9=N20:(Read w8 1 f_2),
-                                                                                8=N21:(Read w8 0 f_2),
-                                                                                7=N22:(Read w8 3 f_1),
-                                                                                6=N23:(Read w8 2 f_1),
-                                                                                5=N24:(Read w8 1 f_1),
-                                                                                4=N25:(Read w8 0 f_1),
-                                                                                3=N26:(Read w8 3 f),
-                                                                                2=N27:(Read w8 2 f),
-                                                                                1=N28:(Read w8 1 f),
-                                                                                0=N29:(Read w8 0 f)] @ const_arr1)))'''
+    string = '''        (Eq false      (Eq (ReadLSB w32 0 arr_sym)          (ReadLSB w32 4 U0:[(Add w32 3                                      N0:(Extract w32 0 (Mul w64 4                                                                 (SExt w64 (ReadLSB w32 0 j_pse_4_sym)))))=(Read w8 (Add w32 3                                                                                                                             N1:(Extract w32 0 (Mul w64 4                                                                                                                                                        (SExt w64 (Add w32 3                                                                                                                                                                           N2:(ReadLSB w32 0 k_sym))))))                                                                                                                    arr_sym),                             (Add w32 2 N0)=(Read w8 (Add w32 2 N1)                                                     arr_sym),                             (Add w32 1 N0)=(Read w8 (Add w32 1 N1)                                                     arr_sym),                             N0=(Read w8 N1 arr_sym),                             (Add w32 3                                      N3:(Extract w32 0 (Mul w64 4                                                                 (SExt w64 (ReadLSB w32 0 j_pse_3_sym)))))=(Read w8 (Add w32 3                                                                                                                             N4:(Extract w32 0 (Mul w64 4                                                                                                                                                        (SExt w64 (Add w32 2 N2)))))                                                                                                                    arr_sym),                             (Add w32 2 N3)=(Read w8 (Add w32 2 N4)                                                     arr_sym),                             (Add w32 1 N3)=(Read w8 (Add w32 1 N4)                                                     arr_sym),                             N3=(Read w8 N4 arr_sym),                             7=(Read w8 7 arr_sym),                             6=(Read w8 6 arr_sym),                             5=(Read w8 5 arr_sym),                             4=(Read w8 4 arr_sym),                             3=N5:(Read w8 3 arr_sym),                             2=N6:(Read w8 2 arr_sym),                             1=N7:(Read w8 1 arr_sym),                             0=N8:(Read w8 0 arr_sym)] @ const_arr12)))'''
     print(json.dumps(collectRecursive(loads(string)), indent=4, sort_keys=True))
     print(loads(string))

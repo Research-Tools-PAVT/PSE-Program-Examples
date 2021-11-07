@@ -5,6 +5,7 @@
 // --use-cex-cache %t1.bc
 
 #include "PSE.h"
+#include "klee/klee.h"
 #include <assert.h>
 #include <stdio.h>
 #include <vector>
@@ -67,18 +68,22 @@ bool montyhall(bool door_switch, int choice) {
 
 int main() {
   int door_switch = 0, choice;
+  int ret = 0;
 
   make_pse_symbolic(&door_switch, sizeof(door_switch), "door_switch_pse_sym", 0,
                     1);
   make_pse_symbolic(&choice, sizeof(choice), "choice_pse_sym", 0, 3);
 
-  bool ret = montyhall(door_switch, choice);
-  klee_print_expr("Ret : ", ret);
+  ret = montyhall(door_switch, choice);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   klee_assume((door_switch == 1 && ret == 0) ||
               (door_switch == 1 && ret == 1) ||
               (door_switch == 0 && choice != 1 && ret == 1));
+
+  if (ret == 1) {
+    mark_state_winning();
+  }
 
   return 0;
 }

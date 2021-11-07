@@ -54,8 +54,12 @@ rm -rf klee-* *.bc *.dot *.out *.o *.a
 rm -rf klee_results/${example}_processed/
 
 cat klee_results/${example}_klee_out/conds_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
+cat klee_results/${example}_klee_out/conds_dump.txt | grep "win" > klee_results/${example}_klee_out/success_states.txt
 
-python3 postprocess/reader.py klee_results/${example}_klee_out/conds_dump.txt ${example} klee_results/${example}_klee_out/states_removal.txt
+python3 postprocess/reader.py \
+klee_results/${example}_klee_out/conds_dump.txt \
+${example} klee_results/${example}_klee_out/states_removal.txt \
+klee_results/${example}_klee_out/success_states.txt
 
 dot -Tpdf -Nfontsize=12 \
 -Efontname=Courier-Bold -Efontsize=8 \

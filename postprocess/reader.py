@@ -19,10 +19,12 @@ aliasMap = {}
 nodeMap = {}
 results = []
 paths = {}
+winning_paths = []
 Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
 stateRemovals = sys.argv[3]
+successStates = sys.argv[4]
 removals = 0
 totPaths = 0
 EdgePredicateLabels = {}
@@ -69,6 +71,17 @@ with open(stateRemovals.strip(), "r") as fileptr:
 for x in annotateRemoveStates:
     # print(x.split(":")[1].strip().split(",")[1][0:-1].strip())
     statesAnnotated.append(
+        int(x.split(":")[1].strip().split(",")[1][0:-1].strip()))
+
+# States to be annotated for removal.
+annotateSuccessStates = []
+statesSuccessAnnotated = []
+with open(successStates.strip(), "r") as fileptr:
+    annotateSuccessStates = fileptr.readlines()
+
+for x in annotateSuccessStates:
+    # print(x.split(":")[1].strip().split(",")[1][0:-1].strip())
+    statesSuccessAnnotated.append(
         int(x.split(":")[1].strip().split(",")[1][0:-1].strip()))
 
 # Process the file dump from KLEE
@@ -267,9 +280,13 @@ for k, v in nodeMap.items():
 # Construct the paths from PathMaps
 for pathIds, nodes in pathMap.items():
     path = []
+    # winPath = []
+    winCollect = {}
+    winCollect["Path"] = []
     temp = nodes
     imapsData = {}
     variableListing = []
+    isWinningPath = False
     isPathFalseAnnotated = False
     variables_extra = set()
 
@@ -299,13 +316,18 @@ for pathIds, nodes in pathMap.items():
             parsedData = loads(data)
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
-            collection["predicate"] = data
+            collection["predicate"] = " ".join(data.split())
+            winCollect["Path"].append(" ".join(data.split()))
+
             collection["EmphemeralId"] = temp.emphemeralId
 
             collection["removed"] = False
             if temp.emphemeralId in statesAnnotated:
                 collection["removed"] = True
                 isPathFalseAnnotated = True
+            if temp.emphemeralId in statesSuccessAnnotated:
+                collection["marked_success"] = True
+                isWinningPath = True
             # Show the id of the constraint that belongs to this edge
             # in the SymbEx tree.
             collection["predicateId"] = predicateId
@@ -329,6 +351,10 @@ for pathIds, nodes in pathMap.items():
         removals += 1
         # print(f"\033[1;34mPath {pathIds} invalid\033[0m")
 
+    if isWinningPath:
+        winning_paths.append(winCollect)
+        print(f"\033[1;36mPath {pathIds} Winning\033[0m")
+
     if not isPathFalseAnnotated:
         paths[f"Path {pathIds}"] = path
 
@@ -346,6 +372,10 @@ for elems in statesAnnotated:
     getLines.insert(
         2, f"\t{elems} [color=blue, fillcolor=red, style=filled, fontcolor=white, fontname=\"Courier-Bold\"]\n")
 
+for elems in statesSuccessAnnotated:
+    getLines.insert(
+        2, f"\t{elems} [color=blue, fillcolor=green, style=filled, fontcolor=black, fontname=\"Courier-Bold\"]\n")
+
 with open(f"{name}_processed/{name}_execution_tree.dot", "w") as fileptr:
     for lines in getLines:
         fileptr.write(lines)
@@ -355,5 +385,8 @@ with open(f"{name}_processed/{name}_processed.json", "w", encoding="utf-8") as f
 
 with open(f"{name}_processed/{name}_paths.json", "w", encoding="utf-8") as f:
     json.dump(paths, f, ensure_ascii=False, indent=4)
+
+with open(f"{name}_processed/{name}_winning.json", "w", encoding="utf-8") as f:
+    json.dump(winning_paths, f, ensure_ascii=False, indent=4)
 
 print(f"Paths Processed : {totPaths - removals}")

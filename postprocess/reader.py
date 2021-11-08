@@ -11,6 +11,7 @@ from auxiliary import flatten
 from z3write import genericParse
 import uuid
 import re
+import pathlib
 
 idxT = 0
 flag = 1  # Controls the display of constraints in SymbEx Tree.

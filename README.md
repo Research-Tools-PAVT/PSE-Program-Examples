@@ -86,3 +86,22 @@ Probabilistic Symbolic Execution using KLEE, LLVM and Z3.
 Replaying is a way to check the the testcase produced by KLEE for a given program, by running it concretely on the program.
 For each complete path taken by KLEE, it generates one testcase containing the values of the `variables` marked `symbolic`, unless it
 is `redundant` or `UNSAT`.
+
+# All Files Execution
+
+```
+./run.sh src/flips.cpp
+./run.sh src/flips_inst.cpp
+./run.sh src/freivalds_char.cpp
+./run.sh src/freivalds_int.cpp
+./run.sh src/monotone_binary_int.cpp
+./run.sh src/montyhall.cpp
+./run.sh src/partition.cpp
+./run.sh src/randomized_response.cpp
+./run.sh src/reservoir_sample.cpp
+```
+
+```
+./run.sh src/quicksort.cpp
+./run.sh src/quicksort_swap.cpp
+```

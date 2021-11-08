@@ -63,9 +63,31 @@ def getPredicateId(node):
                 return edges.label
     return ""
 
+# Grab the definitions for the constant arrays from the kquery dump files
+def grabConstArrs(root):
+    constArrMap = {}
+    for filepath in root.rglob('*.kquery'):
+        with open(filepath.resolve(), 'r') as fp:
+            lines = fp.readlines()
+            for l in lines:
+                l = l.strip()
+                if('array const_arr' in l):
+                    args = l.split(' ')
+                    arrName = args[1][:args[1].find('[')]
+                    vals = l[l.rfind('['):]
+                    constArrMap[arrName] = vals
+    return constArrMap
+
+constArrMap = grabConstArrs(pathlib.Path(f'klee_results/{name}_klee_out/'))
 
 with open(file.strip(), mode='r') as fileptr:
-    results = json.load(fileptr)
+    if constArrMap:
+        constArrMap = dict((re.escape(k), v) for k, v in constArrMap.items()) 
+        pattern = re.compile("|".join(sorted(constArrMap.keys(),reverse=True)))
+        text = pattern.sub(lambda m: constArrMap[re.escape(m.group(0))], fileptr.read())
+        results = json.loads(text)
+    else:
+        results = json.load(fileptr)
 
 symbolic_exec_tree = results.get('symbolic_execution_tree', None)
 RemovedState = results.get('RemovedState', None)

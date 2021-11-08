@@ -27,7 +27,7 @@ clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp -o klee_results/llvmir/${example}.ll
 
-klee --optimize --filename-act ${example} \
+klee --filename-act ${example} \
 --disable-inlining --emit-all-errors --search=random-state \
 --search=nurs:depth --search=nurs:md2u \
 --use-cex-cache --write-kqueries ${example}.bc
@@ -53,19 +53,16 @@ mv klee-last/* klee_results/${example}_klee_out/
 rm -rf klee-* *.bc *.dot *.out *.o *.a
 rm -rf klee_results/${example}_processed/
 
-cat klee_results/${example}_klee_out/conds_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
-cat klee_results/${example}_klee_out/conds_dump.txt | grep "win" > klee_results/${example}_klee_out/success_states.txt
+# cat klee_results/${example}_klee_out/conds_dump.txt | grep "Error" > klee_results/${example}_klee_out/states_removal.txt
+# cat klee_results/${example}_klee_out/conds_dump.txt | grep "win" > klee_results/${example}_klee_out/success_states.txt
 
-python3 postprocess/reader.py \
-klee_results/${example}_klee_out/conds_dump.txt \
-${example} klee_results/${example}_klee_out/states_removal.txt \
-klee_results/${example}_klee_out/success_states.txt
+python3 postprocess/reader.py symbEx_tree.json ${example}
 
 dot -Tpdf -Nfontsize=12 \
 -Efontname=Courier-Bold -Efontsize=8 \
 ${example}_processed/${example}_execution_tree.dot > \
 ${example}_processed/${example}_execution_tree.dot.pdf
 
-mv constraints.json ${example}_processed.states.json
+mv symbEx_tree.json ${example}_processed.states.json
 mv ${example}_processed.states.json ${example}_processed/${example}_processed.states.json
 mv ${example}_processed klee_results/

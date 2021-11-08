@@ -31,15 +31,15 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 
 int main() {
   // srand(time(NULL));
-  int n = 8, k;
+  int n = 10, k;
   int ret = 0;
 
   klee_make_symbolic(&n, sizeof(n), "n_sym");
   klee_make_symbolic(&k, sizeof(k), "k_sym");
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((n == 8));
-  klee_assume((k >= 2) && k < n);
+  klee_assume((n == 10));
+  klee_assume((k >= 3) && k < n);
 
   /* Hold the record for "j" values sampled */
   int j_sample[n - k];
@@ -83,6 +83,7 @@ int main() {
 
   if (ret == 1) {
     // klee_assume(ret == 1);
+    mark_state_winning();
     klee_dump_kquery_state();
   }
 

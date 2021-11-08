@@ -1,0 +1,77 @@
+{
+    "RemovedState": {
+        "3": {
+            "EmphId": 5,
+            "Id": 3
+        },
+        "4": {
+            "EmphId": 7,
+            "Id": 4
+        }
+    },
+    "symbolic_execution_tree": {
+        "0": {
+            "Branch Predicate": "(Eq 0     (ReadLSB w32 0 first_flip))",
+            "Current State Id": 1,
+            "False Generate ID": 3,
+            "False KLEE Id": 2,
+            "Fork": "True",
+            "Negate Predicate": "(Eq false     (Eq 0         (ReadLSB w32 0 first_flip)))",
+            "True Generate ID": 2,
+            "True KLEE Id": 1,
+            "falseQuery": 1,
+            "isLeaf": "False",
+            "state_id": 0,
+            "trueQuery": 0
+        },
+        "2": {
+            "Branch Predicate": "(And (Eq 1          (ReadLSB w32 0 truth))      (Eq 0          (ReadLSB w32 0 first_flip)))",
+            "Current State Id": 1,
+            "False Generate ID": 5,
+            "False KLEE Id": 3,
+            "Fork": "True",
+            "Negate Predicate": "(Eq false     (And (Eq 1              (ReadLSB w32 0 truth))          (Eq 0              (ReadLSB w32 0 first_flip))))",
+            "True Generate ID": 4,
+            "True KLEE Id": 1,
+            "falseQuery": 1,
+            "isLeaf": "False",
+            "state_id": 2,
+            "trueQuery": 0
+        },
+        "3": {
+            "Branch Predicate": "(Eq 1     (ReadLSB w32 0 second_flip))",
+            "Current State Id": 2,
+            "False Generate ID": 7,
+            "False KLEE Id": 4,
+            "Fork": "True",
+            "Negate Predicate": "(Eq false     (Eq 1         (ReadLSB w32 0 second_flip)))",
+            "True Generate ID": 6,
+            "True KLEE Id": 2,
+            "falseQuery": 1,
+            "isLeaf": "False",
+            "state_id": 3,
+            "trueQuery": 0
+        },
+        "4": {
+            "Branch Predicate": "null",
+            "Fork": "True",
+            "Negate Predicate": "null",
+            "falseQuery": 1,
+            "isLeaf": "True",
+            "state_id": 4,
+            "trueQuery": 0
+        },
+        "5": {
+            "Fork": "False",
+            "Select Expression": "false"
+        },
+        "6": {
+            "Fork": "False",
+            "Select Expression": "(And (Eq 1          (ReadLSB w32 0 truth))      (Eq 1          (ReadLSB w32 0 second_flip)))"
+        },
+        "7": {
+            "Fork": "False",
+            "Select Expression": "(And (Eq 1          (ReadLSB w32 0 truth))      (Eq 1          (ReadLSB w32 0 second_flip)))"
+        }
+    }
+}

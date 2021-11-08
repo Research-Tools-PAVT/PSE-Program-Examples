@@ -1,30 +1,58 @@
 [
     {
         "Path": [
-            "(Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))",
-            "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym)))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))))"
+            "(Eq 1 (ReadLSB w32 0 choice_pse_sym))",
+            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
         ]
     },
     {
         "Path": [
-            "(Eq 0 (ReadLSB w32 0 door_switch_pse_sym))",
-            "(And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))))"
+            "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))",
+            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
         ]
     },
     {
         "Path": [
-            "(Eq (Select w32 (Eq 1 (ReadLSB w32 0 choice_pse_sym)) 3 1) (ReadLSB w32 0 car_door_pse_sym))",
-            "(Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))",
-            "(And (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym)))))"
+            "(Eq 3 (ReadLSB w32 0 car_door_pse_sym))",
+            "(Eq 2 (ReadLSB w32 0 choice_pse_sym))",
+            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))))"
         ]
     },
     {
         "Path": [
-            "(Eq (Select w32 (Eq 2 (ReadLSB w32 0 choice_pse_sym)) 3 2) (ReadLSB w32 0 car_door_pse_sym))",
-            "(Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))",
-            "(And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))))"
+            "(Eq 2 (ReadLSB w32 0 car_door_pse_sym))",
+            "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym)))",
+            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))))"
+        ]
+    },
+    {
+        "Path": [
+            "(Eq 3 (ReadLSB w32 0 car_door_pse_sym))",
+            "(Eq 1 (ReadLSB w32 0 choice_pse_sym))",
+            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
+        ]
+    },
+    {
+        "Path": [
+            "(Eq (ReadLSB w32 0 choice_pse_sym) (ReadLSB w32 0 car_door_pse_sym))",
+            "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym))))))",
+            "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym))))"
+        ]
+    },
+    {
+        "Path": [
+            "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))",
+            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_switch_pse_sym)))))",
+            "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse_sym))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse_sym))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse_sym)))))"
         ]
     }
 ]

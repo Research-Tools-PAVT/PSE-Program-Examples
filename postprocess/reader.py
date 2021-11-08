@@ -17,20 +17,21 @@ flag = 1  # Controls the display of constraints in SymbEx Tree.
 pathMap = {}
 aliasMap = {}
 nodeMap = {}
-results = []
+results = {}
 paths = {}
 winning_paths = []
 Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
-stateRemovals = sys.argv[3]
-successStates = sys.argv[4]
 removals = 0
 totPaths = 0
 EdgePredicateLabels = {}
 truePred = 0
 falsePred = 0
 # Find the parent node for a child or vice-versa
+
+statesAnnotated = []
+statesSuccessAnnotated = []
 
 
 def findNext(node):
@@ -62,211 +63,153 @@ def getPredicateId(node):
     return ""
 
 
-# States to be annotated for removal.
-annotateRemoveStates = []
-statesAnnotated = []
-with open(stateRemovals.strip(), "r") as fileptr:
-    annotateRemoveStates = fileptr.readlines()
+with open(file.strip(), mode='r') as fileptr:
+    results = json.load(fileptr)
 
-for x in annotateRemoveStates:
-    # print(x.split(":")[1].strip().split(",")[1][0:-1].strip())
-    statesAnnotated.append(
-        int(x.split(":")[1].strip().split(",")[1][0:-1].strip()))
+symbolic_exec_tree = results.get('symbolic_execution_tree', None)
+RemovedState = results.get('RemovedState', None)
+if RemovedState is not None:
+    for k, v in RemovedState.items():
+        statesAnnotated.append(int(v.get('EmphId', -1)))
 
-# States to be annotated for removal.
-annotateSuccessStates = []
-statesSuccessAnnotated = []
-with open(successStates.strip(), "r") as fileptr:
-    annotateSuccessStates = fileptr.readlines()
+win_states = symbolic_exec_tree.get('win_states', None)
+if win_states is not None:
+    for k, v in win_states.items():
+        statesSuccessAnnotated.append(int(v.get('EmphId', -1)))
 
-for x in annotateSuccessStates:
-    # print(x.split(":")[1].strip().split(",")[1][0:-1].strip())
-    statesSuccessAnnotated.append(
-        int(x.split(":")[1].strip().split(",")[1][0:-1].strip()))
+for currentState, elems in symbolic_exec_tree.items():
+    stateIdSmash = elems.get("state_id", None)
+    if stateIdSmash is not None:
+        if (elems.get("Fork", None) != "False" and elems.get("isLeaf", None) == "False"):
+            current = int(stateIdSmash)
+            # klee_true = int(elems.get("True KLEE Id", current))
+            generate_true = int(elems.get("True Generate ID", current))
+            # klee_false = int(elems.get("False KLEE Id", current))
+            generate_false = int(elems.get("False Generate ID", current))
 
-# Process the file dump from KLEE
-with open(file.strip(), "r") as fileptr:
-    lines = fileptr.read().replace("\n", " ")
+            # print(current, generate_true, generate_false)
+            # If node is present use it, else create new node
+            # Nodes are reused here. Map as a cache.
+            # Use the monotonically increasing state IDs as
+            # main ID field.
+            if nodeMap.get(current, None) is not None:
+                # print("Node Exists : Reusing")
+                node = nodeMap.get(current)
+            else:
+                node = ExecutionTreeNode(current)
 
-    # We read all lines here.
-    # We dont need the original dump after this point.
-    for elems in lines.split("}"):
-        if len(elems.strip()) != 0 and len(elems.split("{")) > 1:
-            ConstraintObj = elems.split("{")[1].strip()
-            temp = {}
+            if nodeMap.get(generate_true, None) is None:
+                # print(current, generate_true)
+                left = ExecutionTreeNode(generate_true)
+            else:
+                # print("Node Exists : Reusing")
+                left = nodeMap[generate_true]
 
-            # We seperate into each dump item, array constructed.
-            for fields in ConstraintObj.split(";"):
-                if len(fields.strip().split("-->")) == 2:
-                    [key, value] = fields.strip().split("-->")
+            if nodeMap.get(generate_false, None) is None:
+                # print(current, generate_false)
+                right = ExecutionTreeNode(generate_false)
+            else:
+                # print("Node Exists : Reusing")
+                right = nodeMap[generate_false]
 
-                    # TrueQuery & FalseQuery need specialized processing.
-                    if "Query" in key.strip():
-                        key_splits = [
-                            " ".join(x.strip().split())
-                            for x in value.strip()[1: len(value.strip()) - 1]
-                            .strip()
-                            .split("|")[0: len(value.strip())]
-                        ]
-                        temp[key.strip()] = [
-                            x for x in key_splits[0: len(key_splits) - 1]
-                        ]
+            # Make sure we reuse the Node IDs.
+            nodeMap[current] = node
+            nodeMap[generate_true] = left
+            nodeMap[generate_false] = right
 
-                    # Add the branch condition.
-                    elif "Branch" in key.strip() or "Negate" in key.strip():
-                        # if ":" in value.strip():
-                        #     print("Named Abbr")
-                        stringVal = " ".join(value.strip(
-                            "\n").strip("\t").split("\n"))
-                        # TODO : Replace or Propagrate the branch condition
-                        # under named abbreviation.
-                        # if ":" in stringVal:
-                        #     pattern = "(N[0-9][0-9]*:\(([^]]+)\))"
-                        #     match = re.findall(pattern, stringVal)
-                        #     egs = stringVal.strip().split(":")
-                        #     for x in egs:
-                        #         print(x, "END")
-                        temp[key.strip()] = " ".join(value.strip(
-                            "\n").strip("\t").split("\n"))
-                        # print(temp[key.strip()])
-                    else:
-                        temp[key.strip()] = value.strip()
+            left.emphemeralId = generate_true
+            right.emphemeralId = generate_false
 
-            # Add to result.
-            results.append(temp)
+            if left.emphemeralId in statesAnnotated:
+                left.invalidated = True
 
-results.sort(key=lambda x: int(x["Line"]), reverse=False)
+            if right.emphemeralId in statesAnnotated:
+                right.invalidated = True
 
-for elems in results:
-    if elems.get("Current State Id", None):
-        current = int(elems["Current State Id"])
-        klee_true = int(elems["True KLEE Id"])
-        generate_true = int(elems["True Generate ID"])
-        klee_false = int(elems["False KLEE Id"])
-        generate_false = int(elems["False Generate ID"])
+            # Added the branch predicates
+            trueExpr = elems.get("Branch Predicate", "UNK")
+            falseExpr = elems.get("Negate Predicate", "UNK")
 
-        # Nodes are reused here. Map as a cache.
-        node = nodeMap.get(
-            f"{aliasMap.get(current, current)}",
-            ExecutionTreeNode(f"{aliasMap.get(current, current)}"),
-        )
-        left = nodeMap.get(f"{generate_true}",
-                           ExecutionTreeNode(f"{generate_true}"))
-        right = nodeMap.get(f"{generate_false}",
-                            ExecutionTreeNode(f"{generate_false}"))
+            # Added the queries so for to reach this state in PTree.
+            node.trueQuerySet = elems.get("trueQuery", [])
+            node.falseQuerySet = elems.get("falseQuery", [])
 
-        left.emphemeralId = generate_true
-        right.emphemeralId = generate_false
+            # Convert to readable form.
+            trueEdgeLabel = [
+                genericParse(collectRecursive(loads(trueExpr)))
+                # for x in trueExpr.strip().split(" (")
+            ]
 
-        if left.emphemeralId in statesAnnotated:
-            left.invalidated = True
+            falseEdgeLabel = [
+                genericParse(collectRecursive(falseExpr))
+                # for x in falseExpr.strip().split(" (")
+            ]
 
-        if right.emphemeralId in statesAnnotated:
-            right.invalidated = True
+            # Store the constraints in a map
+            # show the map_id instead of the whole constraint.
+            # pretty print option.
+            truePred += 1
+            EdgePredicateLabels[truePred] = "\n(".join(
+                trueExpr.strip().split(" ("))
 
-        # Make sure we reuse the Node IDs.
-        nodeMap[aliasMap.get(current, current)] = node
-        nodeMap[generate_true] = left
-        nodeMap[generate_false] = right
-
-        if klee_true == current:
-            aliasMap[current] = generate_true
-            aliasMap[klee_false] = generate_false
-        elif klee_false == current:
-            aliasMap[current] = generate_false
-            aliasMap[klee_true] = generate_true
-        else:
-            pass
-
-        # Added the branch predicates
-        trueExpr = elems.get("Branch Predicate", "UNK")
-        falseExpr = elems.get("Negate Predicate", "UNK")
-
-        if trueExpr == "UNK":
-            print(f"Expr : {elems} \n\n")
-
-        # Added the queries so for to reach this state in PTree.
-        node.trueQuerySet = elems.get("trueQuery", [])
-        node.falseQuerySet = elems.get("falseQuery", [])
-
-        # print(trueExpr)
-
-        # Convert to readable form.
-        trueEdgeLabel = [
-            genericParse(collectRecursive(loads(trueExpr)))
-            # for x in trueExpr.strip().split(" (")
-        ]
-
-        falseEdgeLabel = [
-            genericParse(collectRecursive(falseExpr))
-            # for x in falseExpr.strip().split(" (")
-        ]
-
-        # Store the constraints in a map
-        # show the map_id instead of the whole constraint.
-        # pretty print option.
-        truePred += 1
-        EdgePredicateLabels[truePred] = "\n(".join(
-            trueExpr.strip().split(" ("))
-
-        # Adding the tree edges to nodes. (True Edge)
-        node.edges.append(
-            ExecutionTreeEdge(
-                node,
-                left,
-                label=f"cond_true_{truePred}" if flag else "\n(".join(
-                    trueExpr.strip().split(" (")),
-                edgeLabel="\n(".join(
-                    trueExpr.strip().split(" (")),
-                color="blue",
+            # Adding the tree edges to nodes. (True Edge)
+            node.edges.append(
+                ExecutionTreeEdge(
+                    node,
+                    left,
+                    label=f"cond_true_{truePred}" if flag else "\n(".join(
+                        trueExpr.strip().split(" (")),
+                    edgeLabel="\n(".join(
+                        trueExpr.strip().split(" (")),
+                    color="blue",
+                )
             )
-        )
 
-        # Store the constraints in a map
-        # show the map_id instead of the whole constraint.
-        # pretty print option.
-        falsePred += 1
-        EdgePredicateLabels[falsePred] = "\n(".join(
-            falseExpr.strip().split(" ("))
+            # Store the constraints in a map
+            # show the map_id instead of the whole constraint.
+            # pretty print option.
+            falsePred += 1
+            EdgePredicateLabels[falsePred] = "\n(".join(
+                falseExpr.strip().split(" ("))
 
-        # Adding the tree edges to nodes. (False Edge)
-        node.edges.append(
-            ExecutionTreeEdge(
-                node,
-                right,
-                label=f"cond_false_{falsePred}" if flag else "\n(".join(
-                    falseExpr.strip().split(" (")),
-                edgeLabel="\n(".join(
-                    falseExpr.strip().split(" (")),
-                color="red",
+            # Adding the tree edges to nodes. (False Edge)
+            node.edges.append(
+                ExecutionTreeEdge(
+                    node,
+                    right,
+                    label=f"cond_false_{falsePred}" if flag else "\n(".join(
+                        falseExpr.strip().split(" (")),
+                    edgeLabel="\n(".join(
+                        falseExpr.strip().split(" (")),
+                    color="red",
+                )
             )
-        )
 
-        # We also maintain a global edgeset to make queries faster.
-        # This is not used for displaying the SymbEx Tree.
-        Tree.edgeSet.append(
-            ExecutionTreeEdge(
-                node,
-                left,
-                label=f"cond_true_{truePred}" if flag else "\n(".join(
-                    trueExpr.strip().split(" (")),
-                edgeLabel="\n(".join(
-                    trueExpr.strip().split(" (")),
-                color="blue",
+            # We also maintain a global edgeset to make queries faster.
+            # This is not used for displaying the SymbEx Tree.
+            Tree.edgeSet.append(
+                ExecutionTreeEdge(
+                    node,
+                    left,
+                    label=f"cond_true_{truePred}" if flag else "\n(".join(
+                        trueExpr.strip().split(" (")),
+                    edgeLabel="\n(".join(
+                        trueExpr.strip().split(" (")),
+                    color="blue",
+                )
             )
-        )
 
-        Tree.edgeSet.append(
-            ExecutionTreeEdge(
-                node,
-                right,
-                label=f"cond_false_{falsePred}" if flag else "\n(".join(
-                    falseExpr.strip().split(" (")),
-                edgeLabel="\n(".join(
-                    falseExpr.strip().split(" (")),
-                color="red",
+            Tree.edgeSet.append(
+                ExecutionTreeEdge(
+                    node,
+                    right,
+                    label=f"cond_false_{falsePred}" if flag else "\n(".join(
+                        falseExpr.strip().split(" (")),
+                    edgeLabel="\n(".join(
+                        falseExpr.strip().split(" (")),
+                    color="red",
+                )
             )
-        )
 
 # Add Nodes & update Path IDs for PathMap
 for k, v in nodeMap.items():
@@ -274,6 +217,7 @@ for k, v in nodeMap.items():
     # Leaf nodes are path ends.
     # Update Path ID by Leaf node.
     if len(v.edges) == 0:
+        # print(v)
         idxT += 1
         pathMap[idxT] = v
 
@@ -312,7 +256,7 @@ for pathIds, nodes in pathMap.items():
                     variables_extra.add(v)
 
         # COMMENT : If the label/edge has an associated "predicate" with it.
-        if data:
+        if data and data != "null":
             parsedData = loads(data)
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
@@ -331,11 +275,14 @@ for pathIds, nodes in pathMap.items():
             # Show the id of the constraint that belongs to this edge
             # in the SymbEx tree.
             collection["predicateId"] = predicateId
-            processExpressionImap(imapsData, variables)
+
+            # IMaps Expressions
+            # processExpressionImap(imapsData, variables)
+            # collection["IMap"] = imapsData
+
             # All query lead to this particular node.
             # KLEE Assumes also come-in at this point.
             collection["variables"] = variables
-            collection["IMap"] = imapsData
 
         # Print the full query even for the first Node.
         # whatever the case be

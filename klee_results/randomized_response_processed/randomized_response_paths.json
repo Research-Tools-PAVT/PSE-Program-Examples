@@ -2,60 +2,42 @@
     "Path 1": [
         {
             "treeNode": {
-                "nodeId": "1",
-                "uid": "f7ee212b-2af4-48e6-9ce5-de797957f06f"
+                "nodeId": 0,
+                "emphemeralId": 0,
+                "uid": "e22bbb0b-2e60-4baf-b4c9-44e6350b7c18"
             },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Eq 0 (ReadLSB w32 0 first_flip))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
-            ]
+            "nodeTrueQuery": 0,
+            "nodeFalseQuery": 1
         },
         {
             "treeNode": {
-                "nodeId": "3",
-                "uid": "39daaa3c-e243-4de1-9014-29633369046c"
+                "nodeId": 2,
+                "emphemeralId": 2,
+                "uid": "bb732ad8-dff3-4a36-8931-5ad10da580b7"
             },
-            "predicate": "(Eq false      (Eq 0          (ReadLSB w32 0 first_flip)))",
-            "predicateId": "cond_false_1",
+            "predicate": "(Eq 0 (ReadLSB w32 0 first_flip))",
+            "EmphemeralId": 2,
+            "removed": false,
+            "predicateId": "cond_true_1",
             "variables": [
                 "first_flip"
             ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-                "(Eq 1 (ReadLSB w32 0 second_flip))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-                "(Sle 0 (ReadLSB w32 0 second_flip))",
-                "(Sle (ReadLSB w32 0 second_flip) 1)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
-            ]
+            "nodeTrueQuery": 0,
+            "nodeFalseQuery": 1
         },
         {
             "treeNode": {
-                "nodeId": "6",
-                "uid": "bdd9c887-0980-45b9-8d86-72c916a240c3"
+                "nodeId": 4,
+                "emphemeralId": 4,
+                "uid": "26313c1c-c942-4b26-a2d3-4c7bbaa4d51b"
             },
-            "predicate": "(Eq 1      (ReadLSB w32 0 second_flip))",
+            "predicate": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "EmphemeralId": 4,
+            "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
-                "second_flip"
+                "truth",
+                "first_flip"
             ],
             "nodeTrueQuery": [],
             "nodeFalseQuery": []
@@ -64,170 +46,41 @@
     "Path 3": [
         {
             "treeNode": {
-                "nodeId": "1",
-                "uid": "f7ee212b-2af4-48e6-9ce5-de797957f06f"
+                "nodeId": 0,
+                "emphemeralId": 0,
+                "uid": "e22bbb0b-2e60-4baf-b4c9-44e6350b7c18"
             },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Eq 0 (ReadLSB w32 0 first_flip))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
-            ]
+            "nodeTrueQuery": 0,
+            "nodeFalseQuery": 1
         },
         {
             "treeNode": {
-                "nodeId": "3",
-                "uid": "39daaa3c-e243-4de1-9014-29633369046c"
+                "nodeId": 3,
+                "emphemeralId": 3,
+                "uid": "6143ebbf-7e73-420f-af82-e5160667a4e4"
             },
-            "predicate": "(Eq false      (Eq 0          (ReadLSB w32 0 first_flip)))",
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "EmphemeralId": 3,
+            "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
                 "first_flip"
             ],
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-                "(Eq 1 (ReadLSB w32 0 second_flip))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-                "(Sle 0 (ReadLSB w32 0 second_flip))",
-                "(Sle (ReadLSB w32 0 second_flip) 1)",
-                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
-            ]
+            "nodeTrueQuery": 0,
+            "nodeFalseQuery": 1
         },
         {
             "treeNode": {
-                "nodeId": "7",
-                "uid": "8a58ef2b-20a1-4c13-9b56-112b7c5eb636"
+                "nodeId": 6,
+                "emphemeralId": 6,
+                "uid": "9a9c3a90-291a-454e-b369-f6d98dcb2f4c"
             },
-            "predicate": "(Eq false      (Eq 1          (ReadLSB w32 0 second_flip)))",
-            "predicateId": "cond_false_2",
-            "variables": [
-                "second_flip"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
-    "Path 7": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "uid": "f7ee212b-2af4-48e6-9ce5-de797957f06f"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Eq 0 (ReadLSB w32 0 first_flip))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "330103f7-5e90-441c-b375-9ba28b2d6dc9"
-            },
-            "predicate": "(Eq 0      (ReadLSB w32 0 first_flip))",
-            "predicateId": "cond_true_1",
-            "variables": [
-                "first_flip"
-            ],
-            "nodeTrueQuery": [
-                "(Eq 0 (ReadLSB w32 0 first_flip))",
-                "(Eq 1 (ReadLSB w32 0 truth))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Eq 0 (ReadLSB w32 0 first_flip))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "4",
-                "uid": "e16527f6-67dc-4ff6-93ed-8c9c0161e6bf"
-            },
-            "predicate": "(And (Eq 1           (ReadLSB w32 0 truth))       (Eq 0           (ReadLSB w32 0 first_flip)))",
+            "predicate": "(Eq 1 (ReadLSB w32 0 second_flip))",
+            "EmphemeralId": 6,
+            "removed": false,
             "predicateId": "cond_true_3",
             "variables": [
-                "truth",
-                "first_flip"
-            ],
-            "nodeTrueQuery": [],
-            "nodeFalseQuery": []
-        }
-    ],
-    "Path 15": [
-        {
-            "treeNode": {
-                "nodeId": "1",
-                "uid": "f7ee212b-2af4-48e6-9ce5-de797957f06f"
-            },
-            "nodeTrueQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Eq 0 (ReadLSB w32 0 first_flip))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Sle 0 (ReadLSB w32 0 first_flip))",
-                "(Sle (ReadLSB w32 0 first_flip) 1)",
-                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "2",
-                "uid": "330103f7-5e90-441c-b375-9ba28b2d6dc9"
-            },
-            "predicate": "(Eq 0      (ReadLSB w32 0 first_flip))",
-            "predicateId": "cond_true_1",
-            "variables": [
-                "first_flip"
-            ],
-            "nodeTrueQuery": [
-                "(Eq 0 (ReadLSB w32 0 first_flip))",
-                "(Eq 1 (ReadLSB w32 0 truth))"
-            ],
-            "nodeFalseQuery": [
-                "(Sle 0 (ReadLSB w32 0 truth))",
-                "(Sle (ReadLSB w32 0 truth) 1)",
-                "(Eq 0 (ReadLSB w32 0 first_flip))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
-            ]
-        },
-        {
-            "treeNode": {
-                "nodeId": "5",
-                "uid": "a2c8b003-f84f-48f2-ae8a-0cb8576d0c7b"
-            },
-            "predicate": "(Eq false      (And (Eq 1               (ReadLSB w32 0 truth))           (Eq 0               (ReadLSB w32 0 first_flip))))",
-            "predicateId": "cond_false_3",
-            "variables": [
-                "truth",
-                "first_flip"
+                "second_flip"
             ],
             "nodeTrueQuery": [],
             "nodeFalseQuery": []

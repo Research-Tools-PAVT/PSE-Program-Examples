@@ -4,18 +4,18 @@
 // --exit-on-error --optimize --disable-inlining --search=nurs:depth
 // --use-cex-cache %t1.bc
 
+#include "klee/klee.h"
 #include <PSE.h>
 
-#define SIZE 10
+#define SIZE 7
 int outcome, pivot_elem;
 
-void partition(int arr[]) {
+int partition(int arr[]) {
 
-  int pivot, outcome, left_count = 0, right_count = 0;
+  int pivot, left_count = 0, right_count = 0;
 
   klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
   klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
-  klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
   make_pse_symbolic(&pivot, sizeof(pivot), "pivot_prob_sym", 0, SIZE - 1);
 
   left_count = 0, right_count = 0;
@@ -41,8 +41,10 @@ void partition(int arr[]) {
    */
   klee_dump_symbolic_details(&outcome, "outcome_sym");
   klee_dump_symbolic_details(&pivot, "pivot_sym");
-  klee_print_expr("Outcome = ", outcome);
-  klee_print_expr("Pivot = ", pivot);
+  // klee_print_expr("Outcome = ", outcome);
+  // klee_print_expr("Pivot = ", pivot);
+
+  return outcome;
 }
 
 // int concrete[] = {2, 28, 95, 96, 47, 454, 65, -56, 7765, 234};
@@ -60,8 +62,16 @@ int main() {
   partition(arr);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((arr[1] > pivot_elem && outcome >= 7) ||
-              (arr[1] <= pivot_elem && (outcome < 6)));
+  klee_assume((arr[1] > pivot_elem && outcome >= 3) ||
+              (arr[1] <= pivot_elem && (outcome < 4)));
+
+  // Expectation Values.
+  expected_value("outcome", outcome);
+
+  if (outcome >= 4) {
+    /* These calls can be placed anywhere. */
+    mark_state_winning();
+  }
 
   return 0;
 }

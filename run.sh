@@ -29,9 +29,10 @@ clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 
 klee --filename-act ${example} \
 --disable-inlining --emit-all-errors \
---search=nurs:depth \
+--search=nurs:depth --dump-logs \
 --use-cex-cache --write-kqueries ${example}.bc
 
+# --dump-logs
 # --only-output-states-covering-new
 
 # for test in klee-last/*.ktest; do

@@ -1,6 +1,6 @@
 #include <PSE.h>
 
-#define N 6
+#define N 5
 int num_comps;
 
 void swap(int *a, int *b) {

@@ -292,9 +292,8 @@ for pathIds, nodes in pathMap.items():
             winCollect["Path"].append(" ".join(data.split()))
 
             collection["EmphemeralId"] = temp.emphemeralId
-            if exp_val_map.get(f"{temp.emphemeralId}", None) is not None:
-                collection["exp_value"] = exp_val_map.get(
-                    f"{temp.emphemeralId}", None)
+            if exp_val_map is not None:
+                collection["exp_value"] = exp_val_map.get(f"{temp.emphemeralId}", None)
 
             collection["removed"] = False
             if temp.emphemeralId in statesAnnotated:
@@ -334,7 +333,7 @@ for pathIds, nodes in pathMap.items():
 
         # For Expected Values
         last_node_id = path[0].get("EmphemeralId", None)
-        if last_node_id is not None:
+        if last_node_id is not None and exp_val_map is not None:
             values = exp_val_map.get(f"{last_node_id}")
             winCollect["Var Name"] = values[0]
             winCollect["Var Value"] = values[1]
@@ -347,14 +346,15 @@ for _, path in paths.items():
     path.sort(key=lambda x: int(x["treeNode"]["nodeId"]), reverse=False)
 
 # For Expected Values
-for idt, path in paths.items():
-    last_node_id = path[-1].get("EmphemeralId", None)
-    if last_node_id is not None:
-        obj = {}
-        values = exp_val_map.get(f"{last_node_id}")
-        obj["Var Name"] = values[0]
-        obj["Var Value"] = values[1]
-        paths[idt].append(obj)
+if exp_val_map is not None:
+    for idt, path in paths.items():
+        last_node_id = path[-1].get("EmphemeralId", None)
+        if last_node_id is not None:
+            obj = {}
+            values = exp_val_map.get(f"{last_node_id}")
+            obj["Var Name"] = values[0]
+            obj["Var Value"] = values[1]
+            paths[idt].append(obj)
 
 Tree.save_cfg(filename=f"{name}_execution_tree.dot",
               directory=f"{name}_processed")

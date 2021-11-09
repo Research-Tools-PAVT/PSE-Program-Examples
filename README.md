@@ -8,12 +8,13 @@ for a given variable, this can later be extended to get all `Valid KQuery` expre
 Clone & Build [KLEE](http://klee.github.io/build-llvm9/).
 
 - [KLEE - Symbolic Tree](https://github.com/lahiri-phdworks/klee/tree/symbolic_tree)
+- Installation Guide : [Install.md](Install.md)
 
 #### Functions Added :
 
 - `make_pse_symbolic(void *addr, size_t bytes, const char *name, T &&min_elem, T &&max_elem)` is the function that defines a `probabilistic` variable `addr` (pass by reference) with `symbolic` name `name` taking uniform distribution values from `min_elem` to `max_elem` range.
 
-- `klee_dump_kquery_state()` gives the dump of the `constraints` at a state encountered at that program point (invoke point) in `kquery_dump.txt` file in the corresponding `klee_out` folder of the test case.
+- `klee_dump_kquery_state()` gives the dump of the `constraints` at a state encountered at that program point (invoke point) in `kquery_dump.txt` file in the corresponding `klee_out` folder of the test case. Also prefer using `klee_print_expr()`.
 
 - `klee_dump_symbolic_details(void *var_name, const char *name)` gives the symbolic constraint of the program variable (pass a reference) `var_name` of the program and prints the dump under `name` tag in `kquery_dump.txt` file in the corresponding `klee_out` folder of the test case.
 

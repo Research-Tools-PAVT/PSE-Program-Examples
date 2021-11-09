@@ -1,0 +1,10 @@
+random_04 ~ UniformInt(0,4) :: w32
+random_24 ~ UniformInt(2,4) :: w32
+random_14 ~ UniformInt(1,4) :: w32
+random_01 ~ UniformInt(0,1) :: w32
+random_02 ~ UniformInt(0,2) :: w32
+random_34 ~ UniformInt(3,4) :: w32
+random_12 ~ UniformInt(1,2) :: w32
+random_03 ~ UniformInt(0,3) :: w32
+random_23 ~ UniformInt(2,3) :: w32
+random_13 ~ UniformInt(1,3) :: w32

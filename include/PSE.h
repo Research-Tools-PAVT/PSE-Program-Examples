@@ -44,15 +44,17 @@ template <class T>
 /**
  * @brief Creates a probabilistic symbolic variable. Specify start and end of
  * uniform distribution range. [Any order works]
- *
+ * @brief Calls mark_pse_symbolic() internally to mark the bytes as PSE Type.
  * @param addr (pointer)
- * @param bytes (size)
+ * @param bytes (size) (8 * bytes used for mark_pse_symbolic)
  * @param name
  * @param min_elem
  * @param max_elem
  */
 void make_pse_symbolic(void *addr, size_t bytes, const char *name, T &&min_elem,
                        T &&max_elem) {
+  mark_pse_symbolic(addr, 8 * bytes, name, std::min(min_elem, max_elem),
+                    std::max(min_elem, max_elem));
   klee_make_symbolic(addr, bytes, name);
   klee_assume(*(T *)addr >= std::min(min_elem, max_elem));
   klee_assume(*(T *)addr <= std::max(min_elem, max_elem));

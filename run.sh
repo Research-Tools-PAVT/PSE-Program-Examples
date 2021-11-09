@@ -61,6 +61,7 @@ dot -Tpdf -Nfontsize=12 \
 ${example}_processed/${example}_execution_tree.dot > \
 ${example}_processed/${example}_execution_tree.dot.pdf
 
-mv ${example}_summary.json ${example}_processed.states.json
-mv ${example}_processed.states.json ${example}_processed/${example}_processed.states.json
+mv ${example}_summary.json ${example}_processed/${example}_summary.json
 mv ${example}_processed klee_results/
+
+mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt

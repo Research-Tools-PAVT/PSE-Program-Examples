@@ -904,7 +904,7 @@ define i32 @main() #5 !dbg !1674 {
   %13 = load i32, i32* @num_comps, align 4, !dbg !1693
   call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.6, i64 0, i64 0), i32 %13), !dbg !1694
   %14 = load i32, i32* @num_comps, align 4, !dbg !1695
-  %15 = icmp sgt i32 %14, 11, !dbg !1697
+  %15 = icmp sgt i32 %14, 10, !dbg !1697
   br i1 %15, label %16, label %17, !dbg !1698
 
 16:                                               ; preds = %10

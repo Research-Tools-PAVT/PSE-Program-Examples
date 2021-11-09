@@ -343,6 +343,8 @@ for pathIds, nodes in pathMap.items():
             values = exp_val_map.get(f"{last_node_id}")
             winCollect["Var Name"] = values[0]
             winCollect["Var Value"] = values[1]
+            # if str.isdigit(values[1]):
+            # winCollect["Var Value"] = int(values[1])
 
     if isWinningPath:
         winning_paths.append(winCollect)

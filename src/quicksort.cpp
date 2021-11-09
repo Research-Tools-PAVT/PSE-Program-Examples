@@ -57,7 +57,7 @@ int main() {
 
   expected_value("num_comps", num_comps);
 
-  if (num_comps > 11) {
+  if (num_comps > 10) {
     mark_state_winning();
   }
 

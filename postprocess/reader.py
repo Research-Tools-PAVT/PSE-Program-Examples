@@ -257,7 +257,7 @@ for pathIds, nodes in pathMap.items():
     path = []
     # winPath = []
     winCollect = {}
-    winCollect["Path"] = []
+    winCollect["Path"] = pathIds
     winCollect["Var Name"] = ""
     winCollect["Var Value"] = ""
     temp = nodes
@@ -294,7 +294,7 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = " ".join(data.split())
-            winCollect["Path"].append(" ".join(data.split()))
+#            winCollect["Path"].append(" ".join(data.split()))
 
             collection["EmphemeralId"] = temp.emphemeralId
             if exp_val_map is not None:
@@ -335,7 +335,7 @@ for pathIds, nodes in pathMap.items():
         # print(f"\033[1;34mPath {pathIds} invalid\033[0m")
 
     if not isPathFalseAnnotated:
-        paths[f"Path {pathIds}"] = path
+        paths[f"{pathIds}"] = path
 
         # For Expected Values
         last_node_id = path[0].get("EmphemeralId", None)

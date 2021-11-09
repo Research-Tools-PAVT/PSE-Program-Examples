@@ -26,7 +26,7 @@ using json = nlohmann::json;
 #define FORALLS 10
 #define RUNS 10000
 #define BUCKET_SIZE 6
-#define N 6
+#define N 5
 
 int num_comps;
 
@@ -112,22 +112,22 @@ int main() {
         //   klee_print_expr("Num Compares : ", num_comps);
         //   klee_dump_symbolic_details(&num_comps, "num_comps");
         printf("Compares : %d\n", num_comps);
-        if (num_comps <= 11) {
+        if (num_comps <= 7) {
           counters[forall_classes][0] += 1;
         }
-        if (num_comps == 12) {
+        if (num_comps == 8) {
           counters[forall_classes][1] += 1;
         }
-        if (num_comps == 13) {
+        if (num_comps == 9) {
           counters[forall_classes][2] += 1;
         }
-        if (num_comps == 14) {
+        if (num_comps == 10) {
           counters[forall_classes][3] += 1;
         }
-        if (num_comps == 15 || num_comps == 16) {
+        if (num_comps == 11 || num_comps == 12) {
           counters[forall_classes][4] += 1;
         }
-        if (num_comps >= 17) {
+        if (num_comps >= 13) {
           counters[forall_classes][5] += 1;
         }
       }

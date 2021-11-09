@@ -1,3 +1,4 @@
+#include "klee/klee.h"
 #include <PSE.h>
 
 #define N 5
@@ -49,13 +50,17 @@ int main() {
   quicksort(arr, 0, N - 1);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((num_comps == 13) || (num_comps >= 17) ||
-              ((arr[1] > arr[0] && arr[2] < arr[1]) &&
-               (num_comps == 16 || num_comps == 15)));
+  klee_assume(num_comps > 10 && num_comps < 13);
 
-  klee_dump_kquery_state();
-  klee_print_expr("Num Compares : ", num_comps);
-  klee_dump_symbolic_details(&num_comps, "num_comps");
+  // klee_dump_kquery_state();
+  // klee_print_expr("Num Compares : ", num_comps);
+
+  expected_value("num_comps", num_comps);
+
+  if (num_comps > 11) {
+    mark_state_winning();
+  }
+
   return 0;
 }
 

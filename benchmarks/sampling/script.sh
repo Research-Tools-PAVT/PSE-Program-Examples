@@ -10,7 +10,6 @@ echo "== Deleting Tests =="
 rm -rf *
 
 mkdir -p tests
-cmake ..
-make -j8
+make -j8 ${test}
 
 ./${test}

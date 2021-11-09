@@ -65,6 +65,8 @@ def getPredicateId(node):
     return ""
 
 # Grab the definitions for the constant arrays from the kquery dump files
+
+
 def grabConstArrs(root):
     constArrMap = {}
     for filepath in root.rglob('*.kquery'):
@@ -79,13 +81,16 @@ def grabConstArrs(root):
                     constArrMap[arrName] = vals
     return constArrMap
 
+
 constArrMap = grabConstArrs(pathlib.Path(f'klee_results/{name}_klee_out/'))
 
 with open(file.strip(), mode='r') as fileptr:
     if constArrMap:
-        constArrMap = dict((re.escape(k), v) for k, v in constArrMap.items()) 
-        pattern = re.compile("|".join(sorted(constArrMap.keys(),reverse=True)))
-        text = pattern.sub(lambda m: constArrMap[re.escape(m.group(0))], fileptr.read())
+        constArrMap = dict((re.escape(k), v) for k, v in constArrMap.items())
+        pattern = re.compile(
+            "|".join(sorted(constArrMap.keys(), reverse=True)))
+        text = pattern.sub(
+            lambda m: constArrMap[re.escape(m.group(0))], fileptr.read())
         results = json.loads(text)
     else:
         results = json.load(fileptr)
@@ -293,7 +298,8 @@ for pathIds, nodes in pathMap.items():
 
             collection["EmphemeralId"] = temp.emphemeralId
             if exp_val_map is not None:
-                collection["exp_value"] = exp_val_map.get(f"{temp.emphemeralId}", None)
+                collection["exp_value"] = exp_val_map.get(
+                    f"{temp.emphemeralId}", None)
 
             collection["removed"] = False
             if temp.emphemeralId in statesAnnotated:
@@ -345,16 +351,16 @@ for pathIds, nodes in pathMap.items():
 for _, path in paths.items():
     path.sort(key=lambda x: int(x["treeNode"]["nodeId"]), reverse=False)
 
-# For Expected Values
-if exp_val_map is not None:
-    for idt, path in paths.items():
-        last_node_id = path[-1].get("EmphemeralId", None)
-        if last_node_id is not None:
-            obj = {}
-            values = exp_val_map.get(f"{last_node_id}")
-            obj["Var Name"] = values[0]
-            obj["Var Value"] = values[1]
-            paths[idt].append(obj)
+# For Expected Values in the Path
+# if exp_val_map is not None:
+#     for idt, path in paths.items():
+#         last_node_id = path[-1].get("EmphemeralId", None)
+#         if last_node_id is not None:
+#             obj = {}
+#             values = exp_val_map.get(f"{last_node_id}")
+#             obj["Var Name"] = values[0]
+#             obj["Var Value"] = values[1]
+#             paths[idt].append(obj)
 
 Tree.save_cfg(filename=f"{name}_execution_tree.dot",
               directory=f"{name}_processed")

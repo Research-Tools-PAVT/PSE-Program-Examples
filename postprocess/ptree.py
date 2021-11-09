@@ -23,8 +23,8 @@ class ExecutionTreeNode(dict):
         self.trueQuerySet = []
         self.falseQuerySet = []
         self.edges = []
-        dict.__init__(self, nodeId=nodeId,
-                      emphemeralId=self.emphemeralId, uid=str(uuid.uuid4()))
+        dict.__init__(self, nodeId=str(nodeId),
+                      emphemeralId=str(self.emphemeralId), uid=str(uuid.uuid4()))
         self.data.append(nodeId)
 
 

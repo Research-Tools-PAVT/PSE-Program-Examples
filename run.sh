@@ -76,4 +76,11 @@ mv ${example}_processed klee_results/
 
 mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt
 
-echo "cd ./code/plinko/ && cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t 4 "
+echo "Plinko on ${example}_processed" > plinko-results/time.txt
+echo "==== Running Plinko ===="
+
+cd ./code/plinko
+cabal v2-build
+
+/usr/bin/time --append --verbose -o ../../plinko-results/time.txt \
+cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t 2 ${3} ${4}

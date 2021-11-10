@@ -53,13 +53,18 @@ int main() {
   int arr[SIZE];
   // klee_make_symbolic(&SIZE, sizeof(int), "size_array");
   // klee_assume(SIZE == 5);
-  klee_make_symbolic(arr, sizeof(arr), "forall_array");
+
   klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
   klee_make_symbolic(&pivot_elem, sizeof(pivot_elem), "pivot_elem_sym");
 
-  // for (auto i = 0; i < SIZE; i++)
-  //   arr[i] = concrete[i];
-  partition(arr);
+  for (auto i = 0; i < SIZE; i++) {
+    int temp;
+    std::string array_symbolic = "arr_" + std::to_string(i);
+    klee_make_symbolic(&temp, sizeof(temp), array_symbolic.c_str());
+    arr[i] = temp;
+  }
+
+  outcome = partition(arr);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   klee_assume((arr[1] > pivot_elem && outcome >= 3) ||
@@ -67,11 +72,7 @@ int main() {
 
   // Expectation Values.
   expected_value("outcome", outcome);
-
-  if (outcome >= 4) {
-    /* These calls can be placed anywhere. */
-    mark_state_winning();
-  }
+  mark_state_winning();
 
   return 0;
 }

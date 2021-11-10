@@ -106,12 +106,13 @@ int main(int argc, char **argv) {
 
   if (freivalds(A, B, C, r, n) == 1) {
     ret = 1;
+    mark_state_winning();
     klee_dump_kquery_state();
   }
 
-  klee_print_expr("Ret : ", ret);
-  for (size_t i = 0; i < n; i++)
-    klee_print_expr("r", r[i]);
+  // klee_print_expr("Ret : ", ret);
+  // for (size_t i = 0; i < n; i++)
+  //   klee_print_expr("r", r[i]);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   // klee_assume();

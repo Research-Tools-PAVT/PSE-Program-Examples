@@ -1,0 +1,6 @@
+Up to date
+Num PSVs: 5
+constructProbs:   1.52s
+mergePathsWithProbs:   1.53s
+Couldn't construct model
+Z3 evaluation:   1.79s

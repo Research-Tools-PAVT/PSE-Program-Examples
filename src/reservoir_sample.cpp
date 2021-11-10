@@ -14,10 +14,9 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
   for (int i = k; i < n; i++) {
     count++;
     int j;
-    // klee_print_expr("i_value\t", i);
-    std::string name = "j_pse_" + std::to_string(count) + "_sym";
+
+    std::string name = "jpse_" + std::to_string(count);
     make_pse_symbolic(&j, sizeof(j), name.c_str(), 0, (int)i);
-    // klee_print_expr("j_sample\t", j);
 
     /* Record the PSE Variables */
     j_sample[i - k] = j;
@@ -32,21 +31,27 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 
 int main() {
   // srand(time(NULL));
-  int n = 10, k;
+  int n = 10, k = 4;
   int ret = 0;
 
-  klee_make_symbolic(&n, sizeof(n), "n_sym");
-  klee_make_symbolic(&k, sizeof(k), "k_sym");
+  // klee_make_symbolic(&n, sizeof(n), "n_sym");
+  // klee_make_symbolic(&k, sizeof(k), "k_sym");
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((n == 10) && (k == 4));
+  // klee_assume((n == 10) && (k == 4));
   // klee_assume((k >= 3) && k < n);
 
   /* Hold the record for "j" values sampled */
   int j_sample[n - k];
-
   int arr[n], sample[k];
-  klee_make_symbolic(arr, sizeof(arr), "arr_sym");
+
+  /* Make the forall array symbolic */
+  for (int i = 0; i < n; i++) {
+    int temp;
+    std::string array_symbolic = "arr_" + std::to_string(i);
+    klee_make_symbolic(&temp, sizeof(temp), array_symbolic.c_str());
+    arr[i] = temp;
+  }
 
   // for (size_t i = 0; i < n; i++) {
   //   arr[i] = i;
@@ -65,15 +70,16 @@ int main() {
   }
 
   reservoir_sample(arr, sample, n, k, j_sample);
+  klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
 
-  // klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
+  ret = 0;
   for (int i = 0; i < k; i++) {
     if (arr[0] == sample[i]) {
       ret = 1;
     }
   }
 
-  klee_print_expr("Return Value", ret);
+  // klee_print_expr("Return Value", ret);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   klee_assume((k > j_sample[0] && k > j_sample[1] && ret == 1) ||

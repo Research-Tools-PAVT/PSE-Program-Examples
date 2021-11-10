@@ -1,0 +1,17 @@
+Up to date
+Num PSVs: 7
+constructProbs:   6.77s
+mergePathsWithProbs:   6.82s
+arr_3 -> #x00000010
+arr_7 -> #x00000002
+arr_8 -> #x00000001
+arr_6 -> #x00000003
+arr_1 -> #x01000000
+arr_4 -> #x00000006
+arr_0 -> #x00000200
+arr_5 -> #x00000004
+arr_2 -> #x00000040
+arr_9 -> #x00000000
+sum_probs!0 -> (/ 3.0 10.0)
+
+Z3 evaluation:   7.35s

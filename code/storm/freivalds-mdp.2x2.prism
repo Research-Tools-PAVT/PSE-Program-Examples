@@ -1,0 +1,59 @@
+// Freivalds Algorithm
+// Concretized for 2x2 case
+// One loop (k = 1)
+// $ ./storm --prism /data/freivalds-mdp.2x2.prism --prop /data/freivalds_correctness.pctl
+mdp
+
+// Set upper bound for the elements of the matrices
+const int N = 3;
+
+module main
+
+  A11: [1..N];
+  A12: [1..N];
+  A21: [1..N];
+  A22: [1..N];
+
+  B11: [1..N];
+  B12: [1..N];
+  B21: [1..N];
+  B22: [1..N];
+
+  C11: [1..N];
+  C12: [1..N];
+  C21: [1..N];
+  C22: [1..N];
+
+	r1: [0..2];
+	r2: [0..2];
+
+	// Randomly generate the 0/1 r vector
+	[] r1=2 -> 0.5 : (r1'=0) + 0.5 : (r1'=1);
+	[] r2=2 -> 0.5 : (r2'=0) + 0.5 : (r2'=1);
+
+	[done] (r1!=2 & r2!=2) -> true;
+endmodule
+
+// Define matrix multiplication of AxB
+formula AB11 = A11*B11 + A12*B21;
+formula AB12 = A11*B12 + A12*B22;
+formula AB21 = A21*B11 + A22*B21;
+formula AB22 = A21*B12 + A22*B22;
+
+// Assume that AxB != C (at least one entry differs)
+init (C11!=AB11 & C12!=AB12 & C21!=AB21 & C22!=AB22) & r1=2 & r2=2 endinit
+
+formula Br1 = B11*r1 + B12*r1;
+formula Br2 = B21*r2 + B22*r2;
+
+formula ABr1 = A11*Br1 + A12*Br1;
+formula ABr2 = A21*Br2 + A22*Br2;
+
+formula Cr1 = C11*r1 + C12*r1;
+formula Cr2 = C21*r2 + C22*r2;
+
+formula sub1 = ABr1-Cr1;
+formula sub2 = ABr2-Cr2;
+
+label "done" = r1!=2 & r2!=2;
+label "falsePositive" = sub1=0 & sub2=0;

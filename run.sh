@@ -23,11 +23,14 @@ clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp
 
-clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
+echo "Compilation : " > time.log
+/usr/bin/time --append --verbose -o time.log clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
--disable-O0-optnone $SRC_PATH/${example}.cpp -o klee_results/llvmir/${example}.ll
+-disable-O0-optnone $SRC_PATH/${example}.cpp -o \
+klee_results/llvmir/${example}.ll
 
-klee --filename-act ${example} \
+echo "KLEE Symbolic Execution : " >> time.log
+/usr/bin/time --append --verbose -o time.log klee --filename-act ${example} \
 --disable-inlining --emit-all-errors \
 --search=nurs:depth --search=nurs:covnew --dump-logs \
 --use-cex-cache --write-kqueries ${example}.bc
@@ -48,13 +51,20 @@ klee --filename-act ${example} \
 #     KTEST_FILE=${test} ./a.out
 # done
 
+
+mv ${example}_summary.json ${example}_${2}_summary.json
+example=${example}_${2}
+
 rm -rf klee_results/${example}_klee_out/
 mkdir klee_results/${example}_klee_out/
 mv klee-last/* klee_results/${example}_klee_out/
-rm -rf klee-* *.bc *.dot *.out *.o *.a
 rm -rf klee_results/${example}_processed/
+rm -rf klee-* *.bc *.dot *.out *.o *.a
 
-python3 postprocess/reader.py ${example}_summary.json ${example}
+echo "Path Processing : " >> time.log
+/usr/bin/time --verbose --append -o time.log python3 \
+postprocess/reader.py ${example}_summary.json \
+${example}
 
 dot -Tpdf -Nfontsize=12 \
 -Efontname=Courier-Bold -Efontsize=8 \
@@ -65,3 +75,5 @@ mv ${example}_summary.json ${example}_processed/${example}_summary.json
 mv ${example}_processed klee_results/
 
 mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt
+
+echo "cd ./code/plinko/ && cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t 4 "

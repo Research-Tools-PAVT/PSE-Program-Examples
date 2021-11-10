@@ -1,0 +1,664 @@
+{
+    "actions": [],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r1 <- 0",
+                                    "ref": "r1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r1 <- 1",
+                                    "ref": "r1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(r1 = 2)",
+                        "exp": {
+                            "left": "r1",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r2 <- 0",
+                                    "ref": "r2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "r2 <- 1",
+                                    "ref": "r2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(r2 = 2)",
+                        "exp": {
+                            "left": "r2",
+                            "op": "=",
+                            "right": 2
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "res1 <- sub1",
+                                    "ref": "res1",
+                                    "value": {
+                                        "args": [],
+                                        "function": "sub1",
+                                        "op": "call"
+                                    }
+                                },
+                                {
+                                    "comment": "res2 <- sub2",
+                                    "ref": "res2",
+                                    "value": {
+                                        "args": [],
+                                        "function": "sub2",
+                                        "op": "call"
+                                    }
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((r1 != 2) & (r2 != 2))",
+                        "exp": {
+                            "left": {
+                                "left": "r1",
+                                "op": "≠",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "left": "r2",
+                                "op": "≠",
+                                "right": 2
+                            }
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l",
+                    "transient-values": [
+                        {
+                            "comment": "done <- ((r1 != 2) & (r2 != 2))",
+                            "ref": "done",
+                            "value": {
+                                "left": {
+                                    "left": "r1",
+                                    "op": "≠",
+                                    "right": 2
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "r2",
+                                    "op": "≠",
+                                    "right": 2
+                                }
+                            }
+                        },
+                        {
+                            "comment": "falsePositive <- ((res1 = 0) & (res2 = 0))",
+                            "ref": "falsePositive",
+                            "value": {
+                                "left": {
+                                    "left": "res1",
+                                    "op": "=",
+                                    "right": 0
+                                },
+                                "op": "∧",
+                                "right": {
+                                    "left": "res2",
+                                    "op": "=",
+                                    "right": 0
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "name": "main",
+            "variables": []
+        }
+    ],
+    "constants": [
+        {
+            "name": "N",
+            "type": "int",
+            "value": 3
+        }
+    ],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": {
+                    "left": "A21",
+                    "op": "*",
+                    "right": "B12"
+                },
+                "op": "+",
+                "right": {
+                    "left": "A22",
+                    "op": "*",
+                    "right": "B22"
+                }
+            },
+            "name": "AB22",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "A11",
+                    "op": "*",
+                    "right": "B11"
+                },
+                "op": "+",
+                "right": {
+                    "left": "A12",
+                    "op": "*",
+                    "right": "B21"
+                }
+            },
+            "name": "AB11",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "args": [],
+                    "function": "ABr2",
+                    "op": "call"
+                },
+                "op": "-",
+                "right": {
+                    "args": [],
+                    "function": "Cr2",
+                    "op": "call"
+                }
+            },
+            "name": "sub2",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "A21",
+                    "op": "*",
+                    "right": "B11"
+                },
+                "op": "+",
+                "right": {
+                    "left": "A22",
+                    "op": "*",
+                    "right": "B21"
+                }
+            },
+            "name": "AB21",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "A11",
+                    "op": "*",
+                    "right": "B12"
+                },
+                "op": "+",
+                "right": {
+                    "left": "A12",
+                    "op": "*",
+                    "right": "B22"
+                }
+            },
+            "name": "AB12",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "args": [],
+                    "function": "ABr1",
+                    "op": "call"
+                },
+                "op": "-",
+                "right": {
+                    "args": [],
+                    "function": "Cr1",
+                    "op": "call"
+                }
+            },
+            "name": "sub1",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "C21",
+                    "op": "*",
+                    "right": "r2"
+                },
+                "op": "+",
+                "right": {
+                    "left": "C22",
+                    "op": "*",
+                    "right": "r2"
+                }
+            },
+            "name": "Cr2",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "A21",
+                    "op": "*",
+                    "right": {
+                        "args": [],
+                        "function": "Br2",
+                        "op": "call"
+                    }
+                },
+                "op": "+",
+                "right": {
+                    "left": "A22",
+                    "op": "*",
+                    "right": {
+                        "args": [],
+                        "function": "Br2",
+                        "op": "call"
+                    }
+                }
+            },
+            "name": "ABr2",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "A11",
+                    "op": "*",
+                    "right": {
+                        "args": [],
+                        "function": "Br1",
+                        "op": "call"
+                    }
+                },
+                "op": "+",
+                "right": {
+                    "left": "A12",
+                    "op": "*",
+                    "right": {
+                        "args": [],
+                        "function": "Br1",
+                        "op": "call"
+                    }
+                }
+            },
+            "name": "ABr1",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "B21",
+                    "op": "*",
+                    "right": "r2"
+                },
+                "op": "+",
+                "right": {
+                    "left": "B22",
+                    "op": "*",
+                    "right": "r2"
+                }
+            },
+            "name": "Br2",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "C11",
+                    "op": "*",
+                    "right": "r1"
+                },
+                "op": "+",
+                "right": {
+                    "left": "C12",
+                    "op": "*",
+                    "right": "r1"
+                }
+            },
+            "name": "Cr1",
+            "parameters": [],
+            "type": "int"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": "B11",
+                    "op": "*",
+                    "right": "r1"
+                },
+                "op": "+",
+                "right": {
+                    "left": "B12",
+                    "op": "*",
+                    "right": "r1"
+                }
+            },
+            "name": "Br1",
+            "parameters": [],
+            "type": "int"
+        }
+    ],
+    "jani-version": 1,
+    "name": "temp",
+    "properties": [],
+    "restrict-initial": {
+        "exp": {
+            "left": {
+                "left": {
+                    "left": {
+                        "left": "res2",
+                        "op": "=",
+                        "right": -1
+                    },
+                    "op": "∧",
+                    "right": {
+                        "left": "r1",
+                        "op": "=",
+                        "right": 2
+                    }
+                },
+                "op": "∧",
+                "right": {
+                    "left": "r2",
+                    "op": "=",
+                    "right": 2
+                }
+            },
+            "op": "∧",
+            "right": {
+                "left": {
+                    "left": "res1",
+                    "op": "=",
+                    "right": -1
+                },
+                "op": "∧",
+                "right": {
+                    "left": {
+                        "left": {
+                            "left": "C22",
+                            "op": "≠",
+                            "right": {
+                                "args": [],
+                                "function": "AB22",
+                                "op": "call"
+                            }
+                        },
+                        "op": "∨",
+                        "right": {
+                            "left": "C12",
+                            "op": "≠",
+                            "right": {
+                                "args": [],
+                                "function": "AB12",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": {
+                            "left": "C21",
+                            "op": "≠",
+                            "right": {
+                                "args": [],
+                                "function": "AB21",
+                                "op": "call"
+                            }
+                        },
+                        "op": "∨",
+                        "right": {
+                            "left": "C11",
+                            "op": "≠",
+                            "right": {
+                                "args": [],
+                                "function": "AB11",
+                                "op": "call"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "main"
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": false,
+            "name": "done",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "initial-value": false,
+            "name": "falsePositive",
+            "transient": true,
+            "type": "bool"
+        },
+        {
+            "name": "A11",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "A12",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "A21",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "A22",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "B11",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "B12",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "B21",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "B22",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "C11",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "C12",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "C21",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "C22",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 1,
+                "upper-bound": 3
+            }
+        },
+        {
+            "name": "r1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "name": "r2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 2
+            }
+        },
+        {
+            "name": "res1",
+            "type": "int"
+        },
+        {
+            "name": "res2",
+            "type": "int"
+        }
+    ]
+}

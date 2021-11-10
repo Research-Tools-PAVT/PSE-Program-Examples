@@ -1,3 +1,4 @@
+#include "klee/klee.h"
 #include <PSE.h>
 #include <assert.h>
 #include <random>
@@ -38,8 +39,8 @@ int main() {
   klee_make_symbolic(&k, sizeof(k), "k_sym");
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((n == 10));
-  klee_assume((k >= 3) && k < n);
+  klee_assume((n == 10) && (k == 4));
+  // klee_assume((k >= 3) && k < n);
 
   /* Hold the record for "j" values sampled */
   int j_sample[n - k];
@@ -80,6 +81,9 @@ int main() {
               (k > j_sample[0] && k > j_sample[1] && ret == 1) ||
               (k > j_sample[0] && k > j_sample[1] && ret == 0) ||
               (k < j_sample[0] && k < j_sample[1] && ret == 1));
+
+  // Capture the value of ret.
+  expected_value("ret", ret);
 
   if (ret == 1) {
     // klee_assume(ret == 1);

@@ -1,0 +1,2 @@
+r_sym_0 ~ UniformInt(0,1) :: w8
+r_sym_1 ~ UniformInt(0,1) :: w8

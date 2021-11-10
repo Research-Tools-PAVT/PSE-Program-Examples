@@ -4,7 +4,6 @@
 // --exit-on-error --optimize --disable-inlining --search=nurs:depth
 // --use-cex-cache %t1.bc
 
-#include "klee/klee.h"
 #include <PSE.h>
 #include <cmath>
 #include <stdio.h>
@@ -60,13 +59,14 @@ int main() {
     }
   }
 
-  klee_assume(f[1] < f[0] && f[2] > f[1] && reject == true);
+  // klee_assume(f[1] < f[0] && f[2] > f[1] && reject == true);
 
   klee_print_expr("Reject : ", reject);
 
+  mark_state_winning();
+
   if (!reject) {
     klee_dump_kquery_state();
-    mark_state_winning();
   }
 
   return 0;

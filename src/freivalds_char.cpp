@@ -2,6 +2,7 @@
  * This is the freivalds_char_first.cpp example.
  */
 
+#include "klee/klee.h"
 #include <PSE.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -64,13 +65,14 @@ void matmul(unsigned char *A, unsigned char *B, size_t n, unsigned char *C) {
 }
 
 int main() {
-  size_t n = 4;
+  int n = 2;
   unsigned char A[n * n];
   unsigned char B[n * n];
   unsigned char C[n * n];
 
-  int ret;
+  char ret;
   klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
+
   for (size_t i = 0; i < n * n; i++) {
     unsigned char tempA, tempB, tempC;
     std::string a = "A_sym" + std::to_string(i);
@@ -87,21 +89,23 @@ int main() {
   unsigned char realC[n * n];
   matmul(A, B, n, realC);
 
-  //   klee_assume(C[1] != realC[1]);
-  klee_assume(C[0] != realC[0]);
+  klee_assume(C[1] != realC[1]);
 
   unsigned char r[n];
   for (size_t i = 0; i < n; i++) {
-    int temp;
+    char temp;
     std::string r_sym = "r_sym_" + std::to_string(i);
     make_pse_symbolic(&temp, sizeof(temp), r_sym.c_str(), (unsigned char)0,
                       (unsigned char)1);
     r[i] = temp;
   }
 
-  if (freivalds(A, B, C, r, n) == 1) {
-    ret = 1;
+  ret = freivalds(A, B, C, r, n);
+  expected_value("ret_sym", ret);
+
+  if (ret == 1) {
     klee_dump_kquery_state();
+    mark_state_winning();
   }
 
   return 0;

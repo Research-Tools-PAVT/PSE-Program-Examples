@@ -210,6 +210,10 @@ convertToZ3' _ t1 e@(Concat t2 _ _) = typeError t1 t2 e
 convertToZ3' dists t1@(BitVec n1) e@(Extract t2@(BitVec high) low e')
   | n1 == high = convertToZ3'' dists Unknown e' >>= mkExtract (low + high - 1) low
   | otherwise = typeError t1 t2 e
+convertToZ3' dists Boolean e@(Extract Boolean low e') = do
+  extracted <- convertToZ3'' dists Unknown e' >>= mkExtract low low 
+  _1 <- mkBitvector 1 1
+  mkEq extracted _1
 convertToZ3' dists Unknown (Extract (BitVec high) low e) = convertToZ3'' dists Unknown e >>= mkExtract (low + high - 1) low
 convertToZ3' _ t1 e@(Extract t2 _ _) = typeError t1 t2 e
 convertToZ3' dists t1@(BitVec n1) e@(ZExt t2@(BitVec n2) e')

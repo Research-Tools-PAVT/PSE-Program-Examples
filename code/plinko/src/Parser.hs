@@ -310,10 +310,12 @@ parseConcat = parseBinary "Concat" Concat parseKExpr
        <|> parseBinaryNoType "Concat" Concat parseKExpr
 
 parseExtract :: KParser KExpr
-parseExtract = TP.try $ between (sym "(" *> keyword "Extract")
+parseExtract = (TP.try $ between (sym "(" *> keyword "Extract")
                                 (spaces <* char ')')
-                                (Extract <$> parseKType <*> (skipMany space *> number) <*> (skipMany1 space *> parseKExpr))
-
+                                (Extract <$> parseKType <*> (skipMany space *> number) <*> (skipMany1 space *> parseKExpr)))
+  <|> (TP.try $ between (sym "(" *> keyword "Extract")
+                                (spaces <* char ')')
+                                (Extract Boolean <$> (skipMany space *> number) <*> (skipMany1 space *> parseKExpr)))
 parseZExt :: KParser KExpr
 parseZExt = parseUnaryWithType "ZExt" ZExt parseKExpr
 

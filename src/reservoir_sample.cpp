@@ -31,7 +31,7 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 
 int main() {
   // srand(time(NULL));
-  int n = 10, k = 4;
+  int n = 10, k = 3;
   int ret = 0;
 
   // klee_make_symbolic(&n, sizeof(n), "n_sym");

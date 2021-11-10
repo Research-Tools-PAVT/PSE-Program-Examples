@@ -52,9 +52,10 @@ int main(int argc, char *argv[]) {
   klee_assume(((b1 > temp1arr[0] && b2 < temp2arr[0]) && (sum1 + sum2 <= 5)) ||
               ((b1 < temp1arr[0] && b2 > temp2arr[0]) && (sum1 + sum2 >= 4)));
 
-  klee_print_expr("Sum_1 ", sum1);
-  klee_print_expr("Sum_2 ", sum2);
-  klee_print_expr("SUM_FINAL ", SUM);
+  // klee_print_expr("Sum_1 ", sum1);
+  // klee_print_expr("Sum_2 ", sum2);
+  // klee_print_expr("SUM_FINAL ", SUM);
   klee_dump_kquery_state();
+  mark_state_winning();
   return 0;
 }

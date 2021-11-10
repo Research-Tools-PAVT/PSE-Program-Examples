@@ -695,7 +695,7 @@ define i32 @main() #4 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   call void @llvm.dbg.declare(metadata i32* %2, metadata !1593, metadata !DIExpression()), !dbg !1594
   store i32 10, i32* %2, align 4, !dbg !1594
   call void @llvm.dbg.declare(metadata i32* %3, metadata !1595, metadata !DIExpression()), !dbg !1596
-  store i32 5, i32* %3, align 4, !dbg !1596
+  store i32 3, i32* %3, align 4, !dbg !1596
   call void @llvm.dbg.declare(metadata i32* %4, metadata !1597, metadata !DIExpression()), !dbg !1598
   store i32 0, i32* %4, align 4, !dbg !1598
   %19 = load i32, i32* %2, align 4, !dbg !1599

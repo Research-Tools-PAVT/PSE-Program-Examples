@@ -21,6 +21,7 @@ nodeMap = {}
 results = {}
 paths = {}
 winning_paths = []
+winning_paths_predicates = []
 Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
@@ -262,7 +263,18 @@ for pathIds, nodes in pathMap.items():
     winCollect["Path"] = pathIds
     winCollect["Var Name"] = ""
     winCollect["Var Value"] = ""
+
+    # Dump the actual winning paths as well.
+    # Gives a good estimation of what the membership
+    # function needs to be.
+    collectWinPred = {}
+    collectWinPred["Path"] = []
+    collectWinPred["Var Name"] = ""
+    collectWinPred["Var Value"] = ""
+
     temp = nodes
+
+    # For Independence Map Query.
     imapsData = {}
     variableListing = []
     isWinningPath = False
@@ -296,7 +308,7 @@ for pathIds, nodes in pathMap.items():
             variables = flatten(findVars(parsedData))
             variableListing.append(variables)
             collection["predicate"] = " ".join(data.split())
-#            winCollect["Path"].append(" ".join(data.split()))
+            collectWinPred["Path"].append(" ".join(data.split()))
 
             collection["EmphemeralId"] = temp.emphemeralId
             if exp_val_map is not None:
@@ -345,11 +357,14 @@ for pathIds, nodes in pathMap.items():
             values = exp_val_map.get(f"{last_node_id}")
             winCollect["Var Name"] = values[0]
             winCollect["Var Value"] = values[1]
+            collectWinPred["Var Name"] = values[0]
+            collectWinPred["Var Value"] = values[1]
             # if str.isdigit(values[1]):
             # winCollect["Var Value"] = int(values[1])
 
     if isWinningPath:
         winning_paths.append(winCollect)
+        winning_paths_predicates.append(collectWinPred)
         print(f"\033[1;36mPath {pathIds} Winning\033[0m")
 
 for _, path in paths.items():
@@ -393,5 +408,8 @@ with open(f"{name}_processed/{name}_paths.json", "w", encoding="utf-8") as f:
 
 with open(f"{name}_processed/{name}_winning.json", "w", encoding="utf-8") as f:
     json.dump(winning_paths, f, ensure_ascii=False, indent=4)
+
+with open(f"{name}_processed/{name}_allwn.json", "w", encoding="utf-8") as f:
+    json.dump(winning_paths_predicates, f, ensure_ascii=False, indent=4)
 
 print(f"Paths Processed : {totPaths - removals}")

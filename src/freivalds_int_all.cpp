@@ -90,12 +90,12 @@ int main(int argc, char **argv) {
   int realC[n * n];
   matmul(A, B, n, realC);
 
-  // bool orAssume = false;
-  // for (size_t i = 0; i < n * n; i++) {
-  //   orAssume = orAssume || (C[i] != realC[i]);
-  // }
+  bool orAssume = false;
+  for (size_t i = 0; i < n * n; i++) {
+    orAssume = orAssume || (C[i] != realC[i]);
+  }
 
-  klee_assume(C[0] != realC[0]);
+  klee_assume(orAssume);
 
   for (size_t i = 0; i < n; i++) {
     int temp;

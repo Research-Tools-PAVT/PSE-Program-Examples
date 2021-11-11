@@ -1,19 +1,19 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/montyhall_all.cpp -o klee_results/llvmir/montyhall_all.ll"
-	User time (seconds): 0.41
-	System time (seconds): 0.04
-	Percent of CPU this job got: 95%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.48
+	User time (seconds): 0.45
+	System time (seconds): 0.01
+	Percent of CPU this job got: 93%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.50
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 95976
+	Maximum resident set size (kbytes): 95964
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11661
+	Minor (reclaiming a frame) page faults: 11725
 	Voluntary context switches: 2
-	Involuntary context switches: 10
+	Involuntary context switches: 32
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 496
@@ -24,20 +24,20 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act montyhall_all --disable-inlining --emit-all-errors --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries montyhall_all.bc"
-	User time (seconds): 0.21
+	User time (seconds): 0.23
 	System time (seconds): 0.02
-	Percent of CPU this job got: 90%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+	Percent of CPU this job got: 85%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.29
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 82576
+	Maximum resident set size (kbytes): 81840
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 10715
+	Minor (reclaiming a frame) page faults: 10701
 	Voluntary context switches: 1
-	Involuntary context switches: 73
+	Involuntary context switches: 1034
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 1024
@@ -48,46 +48,46 @@ KLEE Symbolic Execution :
 	Exit status: 0
 Path Processing : 
 	Command being timed: "python3 postprocess/reader.py montyhall_all_summary.json montyhall_all"
-	User time (seconds): 0.23
-	System time (seconds): 0.01
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+	User time (seconds): 0.22
+	System time (seconds): 0.02
+	Percent of CPU this job got: 82%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.30
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16528
+	Maximum resident set size (kbytes): 16468
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 5637
-	Voluntary context switches: 10
-	Involuntary context switches: 36
+	Major (requiring I/O) page faults: 26
+	Minor (reclaiming a frame) page faults: 5616
+	Voluntary context switches: 30
+	Involuntary context switches: 235
 	Swaps: 0
-	File system inputs: 0
-	File system outputs: 320
+	File system inputs: 2296
+	File system outputs: 328
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on montyhall_all_processed : 
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/montyhall_all_processed -t 2 calculate-prob"
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/montyhall_all_processed -t 1 calculate-prob"
 	User time (seconds): 0.13
-	System time (seconds): 0.01
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.15
+	System time (seconds): 0.03
+	Percent of CPU this job got: 64%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.25
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 54576
+	Maximum resident set size (kbytes): 54776
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 13437
-	Voluntary context switches: 75
-	Involuntary context switches: 4
+	Major (requiring I/O) page faults: 81
+	Minor (reclaiming a frame) page faults: 13400
+	Voluntary context switches: 153
+	Involuntary context switches: 372
 	Swaps: 0
-	File system inputs: 0
+	File system inputs: 12376
 	File system outputs: 32
 	Socket messages sent: 0
 	Socket messages received: 0

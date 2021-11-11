@@ -55,8 +55,6 @@ int main() {
   quicksort(arr, 0, N - 1);
 
   expected_value("num_comps", num_comps);
-
-  // if (num_comps >= 13)
   mark_state_winning();
 
   return 0;

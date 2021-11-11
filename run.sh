@@ -51,20 +51,21 @@ echo "KLEE Symbolic Execution : " >> time.log
 #     KTEST_FILE=${test} ./a.out
 # done
 
-
-mv ${example}_summary.json ${example}_${2}_summary.json
-example=${example}_${2}
-
 rm -rf klee_results/${example}_klee_out/
 mkdir klee_results/${example}_klee_out/
 mv klee-last/* klee_results/${example}_klee_out/
 rm -rf klee_results/${example}_processed/
 rm -rf klee-* *.bc *.dot *.out *.o *.a
 
+mkdir -p plinko-results
+mkdir -p plinko-results/${example}_processed
+
 echo "Path Processing : " >> time.log
 /usr/bin/time --verbose --append -o time.log python3 \
 postprocess/reader.py ${example}_summary.json \
-${example}
+${example} > plinko-results/${example}_processed/${example}_logs.txt
+
+mv time.log plinko-results/${example}_processed/${example}_exec_time.txt
 
 dot -Tpdf -Nfontsize=12 \
 -Efontname=Courier-Bold -Efontsize=8 \
@@ -76,10 +77,7 @@ mv ${example}_processed klee_results/
 
 mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt
 
-mkdir -p plinko-results
-mkdir -p plinko-results/${example}_processed
-
-echo "Plinko running on ${example}_processed" > plinko-results/${example}_processed/${example}_time.txt
+echo "Plinko running on ${example}_processed : " >> plinko-results/${example}_processed/${example}_exec_time.txt
 
 echo "==== Init Plinko ===="
 
@@ -90,8 +88,8 @@ cabal v2-build
 echo "==== Run Plinko ===="
 
 /usr/bin/time --append --verbose -o \
-../../plinko-results/${example}_processed/${example}_time.txt \
+../../plinko-results/${example}_processed/${example}_exec_time.txt \
 cabal v2-run plinko -- \
 -d ../../klee_results/${example}_processed \
--t 2 ${3} ${4} 2> ../../plinko-results/${example}_processed/${example}_logs.txt \
+-t 2 ${2} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
 > ../../plinko-results/${example}_processed/${example}_processed.txt

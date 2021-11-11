@@ -4,7 +4,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "8f8aec1e-cacb-46a5-87c8-c14c722b2b62"
+                "uid": "fb24da1d-73e3-4f00-949e-497c68a587a8"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -23,7 +23,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "95cc75b0-2681-46d2-a573-5c766b720ecf"
+                "uid": "835d08d0-64e3-4afa-82ee-a4c3032b1065"
             },
             "predicate": "(Eq 0 (ReadLSB w32 0 first_flip))",
             "EmphemeralId": 2,
@@ -47,7 +47,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "a272abff-ef81-4351-b849-0d6d777dca3f"
+                "uid": "454c3c69-7c3a-485a-85a6-93c3f98be7c6"
             },
             "predicate": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 first_flip)))",
             "EmphemeralId": 4,
@@ -67,7 +67,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "8f8aec1e-cacb-46a5-87c8-c14c722b2b62"
+                "uid": "fb24da1d-73e3-4f00-949e-497c68a587a8"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -86,7 +86,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "b0e50cd6-4357-43d8-a82f-8430c817185d"
+                "uid": "1f00f0a7-15b3-4ddc-b837-6e1bd52f913f"
             },
             "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
             "EmphemeralId": 3,
@@ -118,7 +118,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "cf1d4ab7-b4ff-4d2e-bb4e-197d80491147"
+                "uid": "8ab141a0-fa90-4ccd-ad86-9e61d99acc46"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 second_flip))",
             "EmphemeralId": 6,

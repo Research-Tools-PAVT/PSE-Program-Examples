@@ -15,7 +15,7 @@ set(CMAKE_CXX_FLAGS "-Wall -g -O3 -march=native" CACHE STRING "" FORCE)
 
 add_executable (reservoir reservoir.cpp)
 add_executable (freivalds freivalds_int.cpp)
-add_executable (sort quicksort.cpp)
+add_executable (quicksort quicksort.cpp)
 add_executable (partition partition.cpp)
 add_executable (montyhall montyhall.cpp)
 add_executable (flips flips.cpp)

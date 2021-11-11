@@ -239,11 +239,11 @@
         "17": {
             "Branch Predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "Current State Id": 9,
-            "False Generate ID": 21,
-            "False KLEE Id": 11,
+            "False Generate ID": 19,
+            "False KLEE Id": 10,
             "Fork": "True",
             "Negate Predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "True Generate ID": 20,
+            "True Generate ID": 18,
             "True KLEE Id": 9,
             "falseQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -276,7 +276,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -285,18 +285,44 @@
             "wasQueued": "True"
         },
         "19": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
+            "Current State Id": 10,
+            "False Generate ID": 35,
+            "False KLEE Id": 18,
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
-            "exp_val": [
-                "num_comps",
-                "9"
+            "Negate Predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
+            "True Generate ID": 34,
+            "True KLEE Id": 10,
+            "falseQuery": [
+                "(Sle 0 (ReadLSB w32 0 pivot03))",
+                "(Sle (ReadLSB w32 0 pivot03) 3)",
+                "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
+                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
+                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
+                "(Sle 1 (ReadLSB w32 0 pivot13))",
+                "(Sle (ReadLSB w32 0 pivot13) 3)",
+                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
+                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
+                "(Sle 2 (ReadLSB w32 0 pivot23))",
+                "(Sle (ReadLSB w32 0 pivot23) 3)",
+                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))"
             ],
-            "falseQuery": [],
-            "isLeaf": "True",
+            "isLeaf": "False",
             "state_id": 19,
-            "trueQuery": [],
-            "wasQueued": "True"
+            "trueQuery": [
+                "(Sle 0 (ReadLSB w32 0 pivot03))",
+                "(Sle (ReadLSB w32 0 pivot03) 3)",
+                "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
+                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
+                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
+                "(Sle 1 (ReadLSB w32 0 pivot13))",
+                "(Sle (ReadLSB w32 0 pivot13) 3)",
+                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
+                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
+                "(Sle 2 (ReadLSB w32 0 pivot23))",
+                "(Sle (ReadLSB w32 0 pivot23) 3)",
+                "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))"
+            ]
         },
         "2": {
             "Branch Predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0)))",
@@ -328,7 +354,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "10"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -337,44 +363,18 @@
             "wasQueued": "True"
         },
         "21": {
-            "Branch Predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
-            "Current State Id": 11,
-            "False Generate ID": 35,
-            "False KLEE Id": 18,
+            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
-            "True Generate ID": 34,
-            "True KLEE Id": 11,
-            "falseQuery": [
-                "(Sle 0 (ReadLSB w32 0 pivot03))",
-                "(Sle (ReadLSB w32 0 pivot03) 3)",
-                "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
-                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
-                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
-                "(Sle 1 (ReadLSB w32 0 pivot13))",
-                "(Sle (ReadLSB w32 0 pivot13) 3)",
-                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-                "(Sle 2 (ReadLSB w32 0 pivot23))",
-                "(Sle (ReadLSB w32 0 pivot23) 3)",
-                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))"
+            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "exp_val": [
+                "num_comps",
+                "1"
             ],
-            "isLeaf": "False",
+            "falseQuery": [],
+            "isLeaf": "True",
             "state_id": 21,
-            "trueQuery": [
-                "(Sle 0 (ReadLSB w32 0 pivot03))",
-                "(Sle (ReadLSB w32 0 pivot03) 3)",
-                "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
-                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
-                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)) (ZExt w32 (Read w8 N0 U0))))",
-                "(Sle 1 (ReadLSB w32 0 pivot13))",
-                "(Sle (ReadLSB w32 0 pivot13) 3)",
-                "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-                "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-                "(Sle 2 (ReadLSB w32 0 pivot23))",
-                "(Sle (ReadLSB w32 0 pivot23) 3)",
-                "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))"
-            ]
+            "trueQuery": [],
+            "wasQueued": "True"
         },
         "22": {
             "Branch Predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=(Read w8 N2 U3), 2=N1, 1=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
@@ -422,7 +422,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "10"
+                "1"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -436,7 +436,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -450,7 +450,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -464,7 +464,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -478,7 +478,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -492,7 +492,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -506,7 +506,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -544,7 +544,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -558,7 +558,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -572,7 +572,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -586,7 +586,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -600,7 +600,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "1"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -614,7 +614,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "0"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -628,7 +628,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "3"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -642,7 +642,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "2"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -750,7 +750,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "10"
+                "4"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -844,7 +844,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "10"
+                "4"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -858,7 +858,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "4"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -872,7 +872,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "3"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -886,7 +886,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "6"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -900,7 +900,7 @@
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "exp_val": [
                 "num_comps",
-                "13"
+                "5"
             ],
             "falseQuery": [],
             "isLeaf": "True",
@@ -1033,11 +1033,11 @@
         "9": {
             "Branch Predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "Current State Id": 5,
-            "False Generate ID": 19,
-            "False KLEE Id": 10,
+            "False Generate ID": 21,
+            "False KLEE Id": 11,
             "Fork": "True",
             "Negate Predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ const_arr1)] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "True Generate ID": 18,
+            "True Generate ID": 20,
             "True KLEE Id": 5,
             "falseQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -1065,113 +1065,113 @@
         "exp_val_map": {
             "18": [
                 "num_comps",
-                "9"
-            ],
-            "19": [
-                "num_comps",
-                "9"
+                "1"
             ],
             "20": [
                 "num_comps",
-                "10"
+                "2"
+            ],
+            "21": [
+                "num_comps",
+                "1"
             ],
             "23": [
                 "num_comps",
-                "10"
+                "1"
             ],
             "24": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "25": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "26": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "27": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "28": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "29": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "30": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "31": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "32": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "33": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "34": [
                 "num_comps",
-                "13"
+                "1"
             ],
             "35": [
                 "num_comps",
-                "13"
+                "0"
             ],
             "36": [
                 "num_comps",
-                "13"
+                "3"
             ],
             "37": [
                 "num_comps",
-                "13"
+                "2"
             ],
             "40": [
                 "num_comps",
-                "10"
+                "4"
             ],
             "43": [
                 "num_comps",
-                "10"
+                "4"
             ],
             "44": [
                 "num_comps",
-                "13"
+                "4"
             ],
             "45": [
                 "num_comps",
-                "13"
+                "3"
             ],
             "46": [
                 "num_comps",
-                "13"
+                "6"
             ],
             "47": [
                 "num_comps",
-                "13"
+                "5"
             ]
         },
         "win_states": {
             "18": {
                 "EmphId": 18,
-                "stateId": 5
-            },
-            "19": {
-                "EmphId": 19,
-                "stateId": 10
+                "stateId": 9
             },
             "20": {
                 "EmphId": 20,
-                "stateId": 9
+                "stateId": 5
+            },
+            "21": {
+                "EmphId": 21,
+                "stateId": 11
             },
             "23": {
                 "EmphId": 23,
@@ -1219,7 +1219,7 @@
             },
             "34": {
                 "EmphId": 34,
-                "stateId": 11
+                "stateId": 10
             },
             "35": {
                 "EmphId": 35,

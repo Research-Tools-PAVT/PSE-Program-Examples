@@ -4,7 +4,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -21,7 +21,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -55,13 +55,13 @@
             "treeNode": {
                 "nodeId": "11",
                 "emphemeralId": "11",
-                "uid": "b78b6442-3e41-4b7f-aeb0-5aa9e4c9db5a"
+                "uid": "0326a398-2b2b-4cf0-ac98-7d99d141e151"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 11,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_false_10",
+            "predicateId": "cond_false_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -91,7 +91,7 @@
             "treeNode": {
                 "nodeId": "12",
                 "emphemeralId": "12",
-                "uid": "3766d2c4-5a75-4139-a1bd-2c259a95b666"
+                "uid": "37dc0fbd-6876-40b3-9016-f68d8e563570"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 12,
@@ -133,13 +133,13 @@
             "treeNode": {
                 "nodeId": "30",
                 "emphemeralId": "30",
-                "uid": "e9262d2b-5b41-46e1-a499-a74e718b75af"
+                "uid": "fc38c82e-31e5-48de-b34b-55243ea582ee"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 1 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 30,
             "exp_value": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "removed": false,
             "marked_success": true,
@@ -163,7 +163,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -180,7 +180,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -214,13 +214,13 @@
             "treeNode": {
                 "nodeId": "11",
                 "emphemeralId": "11",
-                "uid": "b78b6442-3e41-4b7f-aeb0-5aa9e4c9db5a"
+                "uid": "0326a398-2b2b-4cf0-ac98-7d99d141e151"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 11,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_false_10",
+            "predicateId": "cond_false_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -250,7 +250,7 @@
             "treeNode": {
                 "nodeId": "12",
                 "emphemeralId": "12",
-                "uid": "3766d2c4-5a75-4139-a1bd-2c259a95b666"
+                "uid": "37dc0fbd-6876-40b3-9016-f68d8e563570"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 12,
@@ -292,13 +292,13 @@
             "treeNode": {
                 "nodeId": "31",
                 "emphemeralId": "31",
-                "uid": "0f633107-0f95-4516-b0fa-8086ce8aa8e4"
+                "uid": "cd70eed1-a647-4e09-95a5-77126e10da81"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 1 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 31,
             "exp_value": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -322,7 +322,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -339,7 +339,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -373,13 +373,13 @@
             "treeNode": {
                 "nodeId": "11",
                 "emphemeralId": "11",
-                "uid": "b78b6442-3e41-4b7f-aeb0-5aa9e4c9db5a"
+                "uid": "0326a398-2b2b-4cf0-ac98-7d99d141e151"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 11,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_false_10",
+            "predicateId": "cond_false_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -409,7 +409,7 @@
             "treeNode": {
                 "nodeId": "13",
                 "emphemeralId": "13",
-                "uid": "b19a6f70-3e24-4769-ba7e-c3e73fb17112"
+                "uid": "b67baa15-93ce-45eb-a839-65bd7fb46c7d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 13,
@@ -451,13 +451,13 @@
             "treeNode": {
                 "nodeId": "24",
                 "emphemeralId": "24",
-                "uid": "fd98d83b-37d2-409b-bba2-86e0c9bfa3cc"
+                "uid": "935353f1-6ded-48c9-a4a3-98e76269278b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 24,
             "exp_value": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -481,7 +481,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -498,7 +498,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -532,13 +532,13 @@
             "treeNode": {
                 "nodeId": "11",
                 "emphemeralId": "11",
-                "uid": "b78b6442-3e41-4b7f-aeb0-5aa9e4c9db5a"
+                "uid": "0326a398-2b2b-4cf0-ac98-7d99d141e151"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 11,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_false_10",
+            "predicateId": "cond_false_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -568,7 +568,7 @@
             "treeNode": {
                 "nodeId": "13",
                 "emphemeralId": "13",
-                "uid": "b19a6f70-3e24-4769-ba7e-c3e73fb17112"
+                "uid": "b67baa15-93ce-45eb-a839-65bd7fb46c7d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 13,
@@ -610,13 +610,13 @@
             "treeNode": {
                 "nodeId": "25",
                 "emphemeralId": "25",
-                "uid": "c1855da1-f2af-4e97-94e0-06ba6d6617d4"
+                "uid": "5b00ef18-0dd0-4e30-b74e-393c5ff7bd8d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 25,
             "exp_value": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "removed": false,
             "marked_success": true,
@@ -640,7 +640,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -657,7 +657,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -691,13 +691,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -727,7 +727,7 @@
             "treeNode": {
                 "nodeId": "15",
                 "emphemeralId": "15",
-                "uid": "3b2e075c-6f7e-41da-bf53-08836a472764"
+                "uid": "e6201815-fceb-4259-8c59-7daf74b8304e"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 15,
@@ -769,13 +769,13 @@
             "treeNode": {
                 "nodeId": "28",
                 "emphemeralId": "28",
-                "uid": "b32c6947-9b3e-4ada-a4bc-7ce8fbe4a509"
+                "uid": "d9e858f7-636a-41df-8815-487c411b26b7"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 2 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 28,
             "exp_value": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "removed": false,
             "marked_success": true,
@@ -799,7 +799,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -816,7 +816,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -850,13 +850,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -886,7 +886,7 @@
             "treeNode": {
                 "nodeId": "15",
                 "emphemeralId": "15",
-                "uid": "3b2e075c-6f7e-41da-bf53-08836a472764"
+                "uid": "e6201815-fceb-4259-8c59-7daf74b8304e"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 15,
@@ -928,13 +928,13 @@
             "treeNode": {
                 "nodeId": "29",
                 "emphemeralId": "29",
-                "uid": "5526cd3d-1ab2-495b-ae7f-5b62d6836190"
+                "uid": "aee0d78d-51f9-42e4-a53e-1ae3063d6ace"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 2 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 29,
             "exp_value": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -958,7 +958,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -975,7 +975,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -1009,7 +1009,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -1045,7 +1045,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "a8667fbc-9c42-463e-be64-42a048dd8ab7"
+                "uid": "49c3ba34-85fb-409c-bd29-d49be266f36d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 7,
@@ -1087,7 +1087,7 @@
             "treeNode": {
                 "nodeId": "16",
                 "emphemeralId": "16",
-                "uid": "34fd608e-91d7-47be-b6d0-6964a1ccb872"
+                "uid": "0498315a-f288-45df-a5b3-c4dec1be704d"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 16,
@@ -1131,13 +1131,13 @@
             "treeNode": {
                 "nodeId": "23",
                 "emphemeralId": "23",
-                "uid": "fd1bc06c-aa9b-42b2-837f-1c0cac065620"
+                "uid": "fd08052f-1b02-4d09-a1dc-07bd3fc91bda"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 23,
             "exp_value": [
                 "num_comps",
-                "10"
+                "1"
             ],
             "removed": false,
             "marked_success": true,
@@ -1161,7 +1161,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -1178,7 +1178,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -1212,7 +1212,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -1248,7 +1248,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "a8667fbc-9c42-463e-be64-42a048dd8ab7"
+                "uid": "49c3ba34-85fb-409c-bd29-d49be266f36d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 7,
@@ -1290,7 +1290,7 @@
             "treeNode": {
                 "nodeId": "17",
                 "emphemeralId": "17",
-                "uid": "c568fba2-b77f-4a46-aed0-e429b51cba77"
+                "uid": "db5645d9-7a09-48ff-957a-07f5e2757b6c"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 17,
@@ -1332,15 +1332,15 @@
         },
         {
             "treeNode": {
-                "nodeId": "20",
-                "emphemeralId": "20",
-                "uid": "6513c508-744d-4019-8dab-e6857d4395dd"
+                "nodeId": "18",
+                "emphemeralId": "18",
+                "uid": "e4ff89d3-fb74-4345-8009-63e55f6fc97e"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "EmphemeralId": 20,
+            "EmphemeralId": 18,
             "exp_value": [
                 "num_comps",
-                "10"
+                "1"
             ],
             "removed": false,
             "marked_success": true,
@@ -1364,7 +1364,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -1381,7 +1381,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -1415,7 +1415,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -1451,7 +1451,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "a8667fbc-9c42-463e-be64-42a048dd8ab7"
+                "uid": "49c3ba34-85fb-409c-bd29-d49be266f36d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 7,
@@ -1493,7 +1493,7 @@
             "treeNode": {
                 "nodeId": "17",
                 "emphemeralId": "17",
-                "uid": "c568fba2-b77f-4a46-aed0-e429b51cba77"
+                "uid": "db5645d9-7a09-48ff-957a-07f5e2757b6c"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 17,
@@ -1535,12 +1535,12 @@
         },
         {
             "treeNode": {
-                "nodeId": "21",
-                "emphemeralId": "21",
-                "uid": "b37e1955-168e-4151-9422-6ebbee21537a"
+                "nodeId": "19",
+                "emphemeralId": "19",
+                "uid": "d39e80a1-6d88-4593-b79d-730574846e2b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "EmphemeralId": 21,
+            "EmphemeralId": 19,
             "exp_value": null,
             "removed": false,
             "predicateId": "cond_false_9",
@@ -1587,17 +1587,17 @@
             "treeNode": {
                 "nodeId": "34",
                 "emphemeralId": "34",
-                "uid": "f1180e24-11fa-4955-b6cc-8dc5df2c12c4"
+                "uid": "10cf64e4-f906-4306-859b-7fd6552283eb"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
             "EmphemeralId": 34,
             "exp_value": [
                 "num_comps",
-                "13"
+                "1"
             ],
             "removed": false,
             "marked_success": true,
-            "predicateId": "cond_true_11",
+            "predicateId": "cond_true_10",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) =N1: (Read w8 1 U0: [N2: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) =N3: (Read w8 0 U1: [N4: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N5: (Read w8 0 arr_3)] @ U2: [3=N5\\, 2= (Read w8 0 arr_2) \\, 1= (Read w8 0 arr_1) \\, 0= (Read w8 0 arr)] @ [0 0 0 0])] @ U3: [3=N3\\, 0= (Read w8 N4 U2)] @ U1)]",
                 "@",
@@ -1617,7 +1617,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -1634,7 +1634,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -1668,7 +1668,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -1704,7 +1704,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "a8667fbc-9c42-463e-be64-42a048dd8ab7"
+                "uid": "49c3ba34-85fb-409c-bd29-d49be266f36d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 7,
@@ -1746,7 +1746,7 @@
             "treeNode": {
                 "nodeId": "17",
                 "emphemeralId": "17",
-                "uid": "c568fba2-b77f-4a46-aed0-e429b51cba77"
+                "uid": "db5645d9-7a09-48ff-957a-07f5e2757b6c"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 17,
@@ -1788,12 +1788,12 @@
         },
         {
             "treeNode": {
-                "nodeId": "21",
-                "emphemeralId": "21",
-                "uid": "b37e1955-168e-4151-9422-6ebbee21537a"
+                "nodeId": "19",
+                "emphemeralId": "19",
+                "uid": "d39e80a1-6d88-4593-b79d-730574846e2b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "EmphemeralId": 21,
+            "EmphemeralId": 19,
             "exp_value": null,
             "removed": false,
             "predicateId": "cond_false_9",
@@ -1840,17 +1840,17 @@
             "treeNode": {
                 "nodeId": "35",
                 "emphemeralId": "35",
-                "uid": "872345fe-b468-48de-959a-d3955457d214"
+                "uid": "91f5bc5c-400f-4ac0-90eb-0fd368571aa3"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
             "EmphemeralId": 35,
             "exp_value": [
                 "num_comps",
-                "13"
+                "0"
             ],
             "removed": false,
             "marked_success": true,
-            "predicateId": "cond_false_11",
+            "predicateId": "cond_false_10",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) =N1: (Read w8 1 U0: [N2: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) =N3: (Read w8 0 U1: [N4: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N5: (Read w8 0 arr_3)] @ U2: [3=N5\\, 2= (Read w8 0 arr_2) \\, 1= (Read w8 0 arr_1) \\, 0= (Read w8 0 arr)] @ [0 0 0 0])] @ U3: [3=N3\\, 0= (Read w8 N4 U2)] @ U1)]",
                 "@",
@@ -1870,7 +1870,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -1887,7 +1887,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -1921,7 +1921,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -1957,7 +1957,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "a8667fbc-9c42-463e-be64-42a048dd8ab7"
+                "uid": "49c3ba34-85fb-409c-bd29-d49be266f36d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 7,
@@ -1999,7 +1999,7 @@
             "treeNode": {
                 "nodeId": "16",
                 "emphemeralId": "16",
-                "uid": "34fd608e-91d7-47be-b6d0-6964a1ccb872"
+                "uid": "0498315a-f288-45df-a5b3-c4dec1be704d"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 16,
@@ -2043,7 +2043,7 @@
             "treeNode": {
                 "nodeId": "22",
                 "emphemeralId": "22",
-                "uid": "bbab04c5-f579-407a-b01d-d9c485ec2757"
+                "uid": "f8d5d573-9596-4045-9092-deda5fe4b000"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 22,
@@ -2093,13 +2093,13 @@
             "treeNode": {
                 "nodeId": "36",
                 "emphemeralId": "36",
-                "uid": "7f1ad9d1-b074-4c2e-b87f-d0180b4d35fe"
+                "uid": "e85904d4-705d-4654-8c44-b3c54f3aefe7"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=(Read w8 N2 U3), 2=N1, 1=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
             "EmphemeralId": 36,
             "exp_value": [
                 "num_comps",
-                "13"
+                "3"
             ],
             "removed": false,
             "marked_success": true,
@@ -2123,7 +2123,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -2140,7 +2140,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -2174,7 +2174,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -2210,7 +2210,7 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "a8667fbc-9c42-463e-be64-42a048dd8ab7"
+                "uid": "49c3ba34-85fb-409c-bd29-d49be266f36d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 7,
@@ -2252,7 +2252,7 @@
             "treeNode": {
                 "nodeId": "16",
                 "emphemeralId": "16",
-                "uid": "34fd608e-91d7-47be-b6d0-6964a1ccb872"
+                "uid": "0498315a-f288-45df-a5b3-c4dec1be704d"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 16,
@@ -2296,7 +2296,7 @@
             "treeNode": {
                 "nodeId": "22",
                 "emphemeralId": "22",
-                "uid": "bbab04c5-f579-407a-b01d-d9c485ec2757"
+                "uid": "f8d5d573-9596-4045-9092-deda5fe4b000"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 22,
@@ -2346,13 +2346,13 @@
             "treeNode": {
                 "nodeId": "37",
                 "emphemeralId": "37",
-                "uid": "26a8e0f7-0760-40bf-b174-b99ba8291902"
+                "uid": "7465d4c0-dfb3-4260-952c-36d0f36ce704"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=(Read w8 N2 U3), 2=N1, 1=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
             "EmphemeralId": 37,
             "exp_value": [
                 "num_comps",
-                "13"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -2376,7 +2376,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -2393,7 +2393,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -2427,13 +2427,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -2463,7 +2463,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "f286626b-7f36-42bd-92f7-2629a816309c"
+                "uid": "2ebe3e60-b9e7-4c3b-8922-feab81638ea0"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 14,
@@ -2505,7 +2505,7 @@
             "treeNode": {
                 "nodeId": "38",
                 "emphemeralId": "38",
-                "uid": "27b7c365-18c1-430c-94dd-eea2587d602d"
+                "uid": "5eec7004-a434-4560-a82d-d3f5096f4ffd"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 38,
@@ -2549,13 +2549,13 @@
             "treeNode": {
                 "nodeId": "43",
                 "emphemeralId": "43",
-                "uid": "d6f3f515-b324-4a72-90ab-fc1d864f13fb"
+                "uid": "85d4c0eb-9dd8-417b-9bcf-80fa3865d84b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 43,
             "exp_value": [
                 "num_comps",
-                "10"
+                "4"
             ],
             "removed": false,
             "marked_success": true,
@@ -2579,7 +2579,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -2596,7 +2596,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -2630,13 +2630,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -2666,7 +2666,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "f286626b-7f36-42bd-92f7-2629a816309c"
+                "uid": "2ebe3e60-b9e7-4c3b-8922-feab81638ea0"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 14,
@@ -2708,7 +2708,7 @@
             "treeNode": {
                 "nodeId": "39",
                 "emphemeralId": "39",
-                "uid": "ed0620e3-290d-4c88-b7f9-a6716ed6a6f4"
+                "uid": "ddf39f5d-bbd9-455f-816b-dc7206f66097"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 39,
@@ -2752,13 +2752,13 @@
             "treeNode": {
                 "nodeId": "40",
                 "emphemeralId": "40",
-                "uid": "a54b4707-48b6-4c47-a8db-242e6c5fa135"
+                "uid": "462dfc12-00d6-4760-bc32-5419a9cff3e7"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 40,
             "exp_value": [
                 "num_comps",
-                "10"
+                "4"
             ],
             "removed": false,
             "marked_success": true,
@@ -2782,7 +2782,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -2799,7 +2799,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -2833,13 +2833,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -2869,7 +2869,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "f286626b-7f36-42bd-92f7-2629a816309c"
+                "uid": "2ebe3e60-b9e7-4c3b-8922-feab81638ea0"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 14,
@@ -2911,7 +2911,7 @@
             "treeNode": {
                 "nodeId": "39",
                 "emphemeralId": "39",
-                "uid": "ed0620e3-290d-4c88-b7f9-a6716ed6a6f4"
+                "uid": "ddf39f5d-bbd9-455f-816b-dc7206f66097"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 39,
@@ -2955,7 +2955,7 @@
             "treeNode": {
                 "nodeId": "41",
                 "emphemeralId": "41",
-                "uid": "6749fccb-e66d-4333-8e55-fbb0d0f26fe2"
+                "uid": "85194b36-1366-46d6-9c9a-78c288364912"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 41,
@@ -3005,13 +3005,13 @@
             "treeNode": {
                 "nodeId": "44",
                 "emphemeralId": "44",
-                "uid": "d0aee5a6-8b94-4296-9466-21cf333c062f"
+                "uid": "15e450f0-9b7a-4745-aca4-d3d1c6a200c6"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=N1, 0=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
             "EmphemeralId": 44,
             "exp_value": [
                 "num_comps",
-                "13"
+                "4"
             ],
             "removed": false,
             "marked_success": true,
@@ -3035,7 +3035,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -3052,7 +3052,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -3086,13 +3086,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -3122,7 +3122,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "f286626b-7f36-42bd-92f7-2629a816309c"
+                "uid": "2ebe3e60-b9e7-4c3b-8922-feab81638ea0"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 14,
@@ -3164,7 +3164,7 @@
             "treeNode": {
                 "nodeId": "39",
                 "emphemeralId": "39",
-                "uid": "ed0620e3-290d-4c88-b7f9-a6716ed6a6f4"
+                "uid": "ddf39f5d-bbd9-455f-816b-dc7206f66097"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 39,
@@ -3208,7 +3208,7 @@
             "treeNode": {
                 "nodeId": "41",
                 "emphemeralId": "41",
-                "uid": "6749fccb-e66d-4333-8e55-fbb0d0f26fe2"
+                "uid": "85194b36-1366-46d6-9c9a-78c288364912"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 41,
@@ -3258,13 +3258,13 @@
             "treeNode": {
                 "nodeId": "45",
                 "emphemeralId": "45",
-                "uid": "43647221-162f-484f-9ba4-b07e68fb7dae"
+                "uid": "5d45e701-9242-4d36-b174-b2edbbfdf9f5"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=N1, 0=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
             "EmphemeralId": 45,
             "exp_value": [
                 "num_comps",
-                "13"
+                "3"
             ],
             "removed": false,
             "marked_success": true,
@@ -3288,7 +3288,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -3305,7 +3305,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -3339,13 +3339,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -3375,7 +3375,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "f286626b-7f36-42bd-92f7-2629a816309c"
+                "uid": "2ebe3e60-b9e7-4c3b-8922-feab81638ea0"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 14,
@@ -3417,7 +3417,7 @@
             "treeNode": {
                 "nodeId": "38",
                 "emphemeralId": "38",
-                "uid": "27b7c365-18c1-430c-94dd-eea2587d602d"
+                "uid": "5eec7004-a434-4560-a82d-d3f5096f4ffd"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 38,
@@ -3461,7 +3461,7 @@
             "treeNode": {
                 "nodeId": "42",
                 "emphemeralId": "42",
-                "uid": "73afd6f0-6f8f-4c54-94f1-cfa5ae3ba5fd"
+                "uid": "0bf80832-c442-4205-a2f6-242a16844d79"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 42,
@@ -3511,13 +3511,13 @@
             "treeNode": {
                 "nodeId": "46",
                 "emphemeralId": "46",
-                "uid": "644317db-ef30-4041-9a1f-b891ab16338e"
+                "uid": "5890d813-d1d6-4c1b-9629-6311172727a3"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=(Read w8 N2 U3), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
             "EmphemeralId": 46,
             "exp_value": [
                 "num_comps",
-                "13"
+                "6"
             ],
             "removed": false,
             "marked_success": true,
@@ -3541,7 +3541,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -3558,7 +3558,7 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "7c373578-094e-4e16-adbb-db3f5f0ea512"
+                "uid": "4443c9ae-6cf8-469b-8b89-ddf6b4c8a471"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 2,
@@ -3592,13 +3592,13 @@
             "treeNode": {
                 "nodeId": "10",
                 "emphemeralId": "10",
-                "uid": "1b66e8fe-d2eb-4ec5-b19e-730e2a2fe2c6"
+                "uid": "0b664f94-4b38-43c1-9d94-7df1d10c778b"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 10,
             "exp_value": null,
             "removed": false,
-            "predicateId": "cond_true_10",
+            "predicateId": "cond_true_11",
             "variables": [
                 "[N0: (Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) =N1: (Read w8 0 arr_3)]",
                 "@",
@@ -3628,7 +3628,7 @@
             "treeNode": {
                 "nodeId": "14",
                 "emphemeralId": "14",
-                "uid": "f286626b-7f36-42bd-92f7-2629a816309c"
+                "uid": "2ebe3e60-b9e7-4c3b-8922-feab81638ea0"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 14,
@@ -3670,7 +3670,7 @@
             "treeNode": {
                 "nodeId": "38",
                 "emphemeralId": "38",
-                "uid": "27b7c365-18c1-430c-94dd-eea2587d602d"
+                "uid": "5eec7004-a434-4560-a82d-d3f5096f4ffd"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 38,
@@ -3714,7 +3714,7 @@
             "treeNode": {
                 "nodeId": "42",
                 "emphemeralId": "42",
-                "uid": "73afd6f0-6f8f-4c54-94f1-cfa5ae3ba5fd"
+                "uid": "0bf80832-c442-4205-a2f6-242a16844d79"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 42,
@@ -3764,13 +3764,13 @@
             "treeNode": {
                 "nodeId": "47",
                 "emphemeralId": "47",
-                "uid": "ebca13dc-1d93-4a6f-9915-aad43ab787c8"
+                "uid": "b41f02a5-8cd0-4906-97bc-84f37ed589db"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=(Read w8 N2 U3), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
             "EmphemeralId": 47,
             "exp_value": [
                 "num_comps",
-                "13"
+                "5"
             ],
             "removed": false,
             "marked_success": true,
@@ -3794,7 +3794,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -3811,7 +3811,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -3845,7 +3845,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -3881,7 +3881,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "c932fe93-374d-4471-bef2-e2da0e17d741"
+                "uid": "45328c90-9712-45b5-b5e0-d3f1c5d85beb"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 6,
@@ -3923,13 +3923,13 @@
             "treeNode": {
                 "nodeId": "26",
                 "emphemeralId": "26",
-                "uid": "ec463225-4a98-4eed-a865-9bbeb92206eb"
+                "uid": "6e97b141-dcc5-4ca1-862f-6a057a6f4599"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 2=(Read w8 0 U0), 1=(Read w8 N2 U1), 0=(Read w8 2 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 26,
             "exp_value": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -3953,7 +3953,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -3970,7 +3970,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -4004,7 +4004,7 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "ad44ab04-c405-4050-a748-e6a5cdb93dc7"
+                "uid": "272a031f-a25f-4628-841b-7f2cd38d5b09"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 5,
@@ -4040,7 +4040,7 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "c932fe93-374d-4471-bef2-e2da0e17d741"
+                "uid": "45328c90-9712-45b5-b5e0-d3f1c5d85beb"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 6,
@@ -4082,13 +4082,13 @@
             "treeNode": {
                 "nodeId": "27",
                 "emphemeralId": "27",
-                "uid": "2baa6085-b575-420d-b15b-1239235f3d3a"
+                "uid": "c685f170-64ac-4cd0-8fb7-f5778d12f53a"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 2=(Read w8 0 U0), 1=(Read w8 N2 U1), 0=(Read w8 2 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 27,
             "exp_value": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "removed": false,
             "marked_success": true,
@@ -4112,7 +4112,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -4129,7 +4129,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -4163,7 +4163,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "8f4a4acf-e562-4c36-9e8d-3942f8552c91"
+                "uid": "fcaa5489-4888-4260-9ee8-01105f0f8342"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 4,
@@ -4199,7 +4199,7 @@
             "treeNode": {
                 "nodeId": "8",
                 "emphemeralId": "8",
-                "uid": "038bba08-d93c-40b9-8b81-d85c7e2ba7b8"
+                "uid": "c37a0deb-7d73-4d40-8ba5-3297d2039543"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 8,
@@ -4241,13 +4241,13 @@
             "treeNode": {
                 "nodeId": "32",
                 "emphemeralId": "32",
-                "uid": "2da76891-c054-4daa-be05-4c1c758587c6"
+                "uid": "15ab5033-03fd-44ae-93ce-fd131e726918"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 0 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
             "EmphemeralId": 32,
             "exp_value": [
                 "num_comps",
-                "9"
+                "3"
             ],
             "removed": false,
             "marked_success": true,
@@ -4271,7 +4271,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -4288,7 +4288,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -4322,7 +4322,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "8f4a4acf-e562-4c36-9e8d-3942f8552c91"
+                "uid": "fcaa5489-4888-4260-9ee8-01105f0f8342"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 4,
@@ -4358,7 +4358,7 @@
             "treeNode": {
                 "nodeId": "8",
                 "emphemeralId": "8",
-                "uid": "038bba08-d93c-40b9-8b81-d85c7e2ba7b8"
+                "uid": "c37a0deb-7d73-4d40-8ba5-3297d2039543"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 8,
@@ -4400,13 +4400,13 @@
             "treeNode": {
                 "nodeId": "33",
                 "emphemeralId": "33",
-                "uid": "3b13f171-bc99-4878-b5fa-b00f8486b0ae"
+                "uid": "52c62b82-e4bb-450b-917a-cfe7ad944f20"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 0 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
             "EmphemeralId": 33,
             "exp_value": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -4430,7 +4430,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -4447,7 +4447,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -4481,7 +4481,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "8f4a4acf-e562-4c36-9e8d-3942f8552c91"
+                "uid": "fcaa5489-4888-4260-9ee8-01105f0f8342"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 4,
@@ -4517,7 +4517,7 @@
             "treeNode": {
                 "nodeId": "9",
                 "emphemeralId": "9",
-                "uid": "c33176dd-6324-401f-bacb-edc55fbdf60c"
+                "uid": "f40458fd-cccc-4b14-b9f6-b7f21d9bc486"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 9,
@@ -4557,15 +4557,15 @@
         },
         {
             "treeNode": {
-                "nodeId": "18",
-                "emphemeralId": "18",
-                "uid": "783152d8-98b9-40f7-98e8-629905cb4abc"
+                "nodeId": "20",
+                "emphemeralId": "20",
+                "uid": "6e0dd9f0-a943-48a3-a92b-21996cdee9d3"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "EmphemeralId": 18,
+            "EmphemeralId": 20,
             "exp_value": [
                 "num_comps",
-                "9"
+                "2"
             ],
             "removed": false,
             "marked_success": true,
@@ -4589,7 +4589,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "4b91f087-4313-4ae7-b413-0e628337ebf5"
+                "uid": "53564bf2-4adb-4387-b9e7-04e3349417ac"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 pivot03))",
@@ -4606,7 +4606,7 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "88ce80f5-5af6-4901-b736-d15f6a42e9d5"
+                "uid": "d1282ecc-b924-4931-b841-bee001f5472b"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 3,
@@ -4640,7 +4640,7 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "8f4a4acf-e562-4c36-9e8d-3942f8552c91"
+                "uid": "fcaa5489-4888-4260-9ee8-01105f0f8342"
             },
             "predicate": "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
             "EmphemeralId": 4,
@@ -4676,7 +4676,7 @@
             "treeNode": {
                 "nodeId": "9",
                 "emphemeralId": "9",
-                "uid": "c33176dd-6324-401f-bacb-edc55fbdf60c"
+                "uid": "f40458fd-cccc-4b14-b9f6-b7f21d9bc486"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
             "EmphemeralId": 9,
@@ -4716,15 +4716,15 @@
         },
         {
             "treeNode": {
-                "nodeId": "19",
-                "emphemeralId": "19",
-                "uid": "9d01a3b3-129b-47f3-8954-02d86f607d98"
+                "nodeId": "21",
+                "emphemeralId": "21",
+                "uid": "c621a598-6f1c-4260-bd1d-200d0092414d"
             },
             "predicate": "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "EmphemeralId": 19,
+            "EmphemeralId": 21,
             "exp_value": [
                 "num_comps",
-                "9"
+                "1"
             ],
             "removed": false,
             "marked_success": true,

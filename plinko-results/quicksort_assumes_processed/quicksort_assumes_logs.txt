@@ -81,13 +81,19 @@ Found Const Array.
 [1;36mPath 6 Winning[0m
 [1;36mPath 7 Winning[0m
 [1;36mPath 8 Winning[0m
+[1;36mPath 9 Winning[0m
+[1;36mPath 11 Winning[0m
+[1;36mPath 12 Winning[0m
 [1;36mPath 13 Winning[0m
 [1;36mPath 14 Winning[0m
+[1;36mPath 15 Winning[0m
+[1;36mPath 16 Winning[0m
+[1;36mPath 18 Winning[0m
 [1;36mPath 19 Winning[0m
 [1;36mPath 20 Winning[0m
 [1;36mPath 21 Winning[0m
 [1;36mPath 22 Winning[0m
 [1;36mPath 23 Winning[0m
 [1;36mPath 24 Winning[0m
-Paths Processed : 16
-Num PSVs: 5
+Paths Processed : 22
+Num PSVs: 6

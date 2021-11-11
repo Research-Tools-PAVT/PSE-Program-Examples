@@ -22,10 +22,10 @@ int partition(unsigned char arr[], int low, int high) {
   int i = (low - 1);
   for (int j = low; j <= high - 1; j++) {
     if (arr[j] <= pivot) {
+      num_comps += 1;
       i++;
       swap(&arr[i], &arr[j]);
     }
-    num_comps += 1;
   }
   swap(&arr[i + 1], &arr[high]);
   return (i + 1);
@@ -37,7 +37,7 @@ void quicksort(unsigned char arr[], int low, int high) {
     quicksort(arr, low, pi - 1);
     quicksort(arr, pi + 1, high);
   }
-  num_comps += 1;
+  // num_comps += 1;
 }
 
 int main() {
@@ -55,7 +55,7 @@ int main() {
   quicksort(arr, 0, N - 1);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(num_comps >= 8 && num_comps <= 12);
+  klee_assume(num_comps >= 1 && num_comps <= 5);
 
   // klee_dump_kquery_state();
   // klee_print_expr("Num Compares : ", num_comps);

@@ -24,8 +24,8 @@ int partition(unsigned char arr[], int low, int high) {
     if (arr[j] <= pivot) {
       i++;
       swap(&arr[i], &arr[j]);
+      num_comps += 1;
     }
-    num_comps += 1;
   }
   swap(&arr[i + 1], &arr[high]);
   return (i + 1);
@@ -37,7 +37,7 @@ void quicksort(unsigned char arr[], int low, int high) {
     quicksort(arr, low, pi - 1);
     quicksort(arr, pi + 1, high);
   }
-  num_comps += 1;
+  // num_comps += 1;
 }
 
 int main() {

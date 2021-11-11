@@ -41,9 +41,40 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
   int count = 0;
   for (int i = k; i < n; i++) {
     count++;
+
     int j = 0 + rand() % (i - 1);
     /* Record the PSE Variables */
     j_sample[i - k] = j;
+
+    /* Map to forall classes */
+    if (forall_classes == 4) {
+      // (k < n)
+      n = 8 + rand() % 100;
+      k = rand() % 100 - 5;
+      while (k >= n) {
+        k = 2 + rand() % 100;
+      }
+    }
+    if (forall_classes == 3) {
+      // ((k >= n / 2) && (k < (n / 2 + n / 4)))
+      n = 8 + rand() % 100;
+      k = (n >> 1) + rand() % 2;
+    }
+    if (forall_classes == 2) {
+      // (k >= (n / 2 + n / 4) && (k < (n / 2 + n / 4 + n / 8)))
+      n = 8 + rand() % 100;
+      k = (n >> 1) + (n >> 2) + rand() % 2;
+    }
+    if (forall_classes == 1) {
+      // (k >= (n / 2 + n / 4 + n / 8))
+      n = 8 + rand() % 100;
+      k = (n >> 1) + (n >> 2) + (n >> 3) + rand() % 2;
+    }
+    if (forall_classes == 0) {
+      // (k <= n / 2)
+      n = 8 + rand() % 100;
+      k = (n >> 1) - (rand() % 2);
+    }
 
     // COMMENT : Fork Location.
     if (j < k) {
@@ -62,39 +93,10 @@ int main() {
     int forall_samples = FORALLS;
     while (forall_samples--) {
 
-      int n = 0, k = 0;
-      /* Map to forall classes */
-      if (forall_classes == 4) {
-        // (k < n)
-        n = 8 + rand() % 100;
-        k = rand() % 100 - 5;
-        while (k >= n) {
-          k = 2 + rand() % 100;
-        }
-      }
-      if (forall_classes == 3) {
-        // ((k >= n / 2) && (k < (n / 2 + n / 4)))
-        n = 8 + rand() % 100;
-        k = (n >> 1) + rand() % 2;
-      }
-      if (forall_classes == 2) {
-        // (k >= (n / 2 + n / 4) && (k < (n / 2 + n / 4 + n / 8)))
-        n = 8 + rand() % 100;
-        k = (n >> 1) + (n >> 2) + rand() % 2;
-      }
-      if (forall_classes == 1) {
-        // (k >= (n / 2 + n / 4 + n / 8))
-        n = 8 + rand() % 100;
-        k = (n >> 1) + (n >> 2) + (n >> 3) + rand() % 2;
-      }
-      if (forall_classes == 0) {
-        // (k <= n / 2)
-        n = 8 + rand() % 100;
-        k = (n >> 1) - (rand() % 2);
-      }
+      int n = 10, k = 4;
 
       int arr[n];
-      int pick_index = rand() % (n - 1);
+      int pick_index = rand() % (k - 1);
 
       for (size_t i = 0; i < n; i++) {
         arr[i] = rand() % 14241 + rand() % 62354 + rand() % 5412 + rand();

@@ -1,12 +1,12 @@
 {
     "RemovedState": {
+        "2": {
+            "EmphId": 10,
+            "Id": 2
+        },
         "3": {
             "EmphId": 5,
             "Id": 3
-        },
-        "4": {
-            "EmphId": 7,
-            "Id": 4
         }
     },
     "symbolic_execution_tree": {
@@ -34,26 +34,38 @@
                 "(Eq 0 (ReadLSB w32 0 first_flip))"
             ]
         },
+        "10": {
+            "Fork": "False",
+            "Select Expression": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 1 (ReadLSB w32 0 first_flip)))",
+            "isLeaf": "True",
+            "wasQueued": "True"
+        },
+        "11": {
+            "Fork": "False",
+            "Select Expression": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 1 (ReadLSB w32 0 first_flip)))",
+            "isLeaf": "True",
+            "wasQueued": "True"
+        },
         "2": {
-            "Branch Predicate": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 truth))",
             "Current State Id": 1,
             "False Generate ID": 5,
             "False KLEE Id": 3,
             "Fork": "True",
-            "Negate Predicate": "(Eq false (And (Eq 1 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 first_flip))))",
+            "Negate Predicate": "(Eq false (Eq 0 (ReadLSB w32 0 truth)))",
             "True Generate ID": 4,
             "True KLEE Id": 1,
             "falseQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
                 "(Sle (ReadLSB w32 0 truth) 1)",
                 "(Eq 0 (ReadLSB w32 0 first_flip))",
-                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
+                "(Eq false (Eq 0 (ReadLSB w32 0 truth)))"
             ],
             "isLeaf": "False",
             "state_id": 2,
             "trueQuery": [
                 "(Eq 0 (ReadLSB w32 0 first_flip))",
-                "(Eq 1 (ReadLSB w32 0 truth))"
+                "(Eq 0 (ReadLSB w32 0 truth))"
             ]
         },
         "3": {
@@ -98,30 +110,96 @@
         },
         "5": {
             "Fork": "False",
-            "Select Expression": "false",
+            "Select Expression": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 1 (ReadLSB w32 0 first_flip)))",
             "isLeaf": "True",
             "wasQueued": "True"
         },
         "6": {
-            "Fork": "False",
-            "Select Expression": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 1 (ReadLSB w32 0 second_flip)))",
-            "isLeaf": "True",
-            "wasQueued": "True"
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 truth))",
+            "Current State Id": 2,
+            "False Generate ID": 11,
+            "False KLEE Id": 6,
+            "Fork": "True",
+            "Negate Predicate": "(Eq false (Eq 0 (ReadLSB w32 0 truth)))",
+            "True Generate ID": 10,
+            "True KLEE Id": 2,
+            "falseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq false (Eq 0 (ReadLSB w32 0 truth)))"
+            ],
+            "isLeaf": "False",
+            "state_id": 6,
+            "trueQuery": [
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 0 (ReadLSB w32 0 truth))"
+            ]
         },
         "7": {
+            "Branch Predicate": "(And (Eq 0 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 second_flip)))",
+            "Current State Id": 4,
+            "False Generate ID": 9,
+            "False KLEE Id": 5,
+            "Fork": "True",
+            "Negate Predicate": "(Eq false (And (Eq 0 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 second_flip))))",
+            "True Generate ID": 8,
+            "True KLEE Id": 4,
+            "falseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+                "(Eq false (And (Eq 0 (ReadLSB w32 0 truth)) (Eq 0 (ReadLSB w32 0 second_flip))))"
+            ],
+            "isLeaf": "False",
+            "state_id": 7,
+            "trueQuery": [
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 0 (ReadLSB w32 0 truth))",
+                "(Eq 0 (ReadLSB w32 0 second_flip))"
+            ]
+        },
+        "8": {
+            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Fork": "True",
+            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "falseQuery": [],
+            "isLeaf": "True",
+            "state_id": 8,
+            "trueQuery": [],
+            "wasQueued": "True"
+        },
+        "9": {
             "Fork": "False",
-            "Select Expression": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 1 (ReadLSB w32 0 second_flip)))",
+            "Select Expression": "(And (Eq 1 (ReadLSB w32 0 truth)) (Eq 1 (ReadLSB w32 0 first_flip)))",
             "isLeaf": "True",
             "wasQueued": "True"
         },
         "win_states": {
+            "11": {
+                "EmphId": 11,
+                "stateId": 6
+            },
             "4": {
                 "EmphId": 4,
                 "stateId": 1
             },
-            "6": {
-                "EmphId": 6,
-                "stateId": 2
+            "8": {
+                "EmphId": 8,
+                "stateId": 4
             }
         }
     }

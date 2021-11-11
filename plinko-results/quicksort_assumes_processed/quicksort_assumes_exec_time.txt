@@ -2,18 +2,18 @@ Compilation :
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/quicksort_assumes.cpp -o klee_results/llvmir/quicksort_assumes.ll"
 	User time (seconds): 0.43
 	System time (seconds): 0.02
-	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.45
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.46
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 95956
+	Maximum resident set size (kbytes): 95876
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11566
+	Minor (reclaiming a frame) page faults: 11609
 	Voluntary context switches: 1
-	Involuntary context switches: 11
+	Involuntary context switches: 25
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 552
@@ -24,23 +24,23 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act quicksort_assumes --disable-inlining --emit-all-errors --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries quicksort_assumes.bc"
-	User time (seconds): 0.56
-	System time (seconds): 0.00
-	Percent of CPU this job got: 100%
+	User time (seconds): 0.54
+	System time (seconds): 0.01
+	Percent of CPU this job got: 97%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.57
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 83620
+	Maximum resident set size (kbytes): 83720
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 9274
-	Voluntary context switches: 0
-	Involuntary context switches: 21
+	Minor (reclaiming a frame) page faults: 9282
+	Voluntary context switches: 2
+	Involuntary context switches: 271
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 1416
+	File system outputs: 1456
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -48,23 +48,23 @@ KLEE Symbolic Execution :
 	Exit status: 0
 Path Processing : 
 	Command being timed: "python3 postprocess/reader.py quicksort_assumes_summary.json quicksort_assumes"
-	User time (seconds): 0.82
-	System time (seconds): 0.02
+	User time (seconds): 0.83
+	System time (seconds): 0.01
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.84
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.85
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16788
+	Maximum resident set size (kbytes): 16772
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 6137
-	Voluntary context switches: 8
-	Involuntary context switches: 41
+	Minor (reclaiming a frame) page faults: 5938
+	Voluntary context switches: 7
+	Involuntary context switches: 94
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 912
+	File system outputs: 768
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -72,23 +72,23 @@ Path Processing :
 	Exit status: 0
 Plinko running on quicksort_assumes_processed : 
 	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/quicksort_assumes_processed -t 2 expected-value"
-	User time (seconds): 22.03
-	System time (seconds): 0.10
-	Percent of CPU this job got: 183%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.08
+	User time (seconds): 10.90
+	System time (seconds): 0.08
+	Percent of CPU this job got: 178%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.14
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 161072
+	Maximum resident set size (kbytes): 131064
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 49973
-	Voluntary context switches: 1413
-	Involuntary context switches: 1393
+	Minor (reclaiming a frame) page faults: 42325
+	Voluntary context switches: 836
+	Involuntary context switches: 1298
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 32
+	File system outputs: 24
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0

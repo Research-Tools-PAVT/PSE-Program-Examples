@@ -1,10 +1,5 @@
 [
     {
-        "Path": 1,
-        "Var Name": "num_comps",
-        "Var Value": "3"
-    },
-    {
         "Path": 2,
         "Var Name": "num_comps",
         "Var Value": "2"
@@ -18,11 +13,6 @@
         "Path": 4,
         "Var Name": "num_comps",
         "Var Value": "1"
-    },
-    {
-        "Path": 5,
-        "Var Name": "num_comps",
-        "Var Value": "3"
     },
     {
         "Path": 6,
@@ -45,11 +35,6 @@
         "Var Value": "1"
     },
     {
-        "Path": 11,
-        "Var Name": "num_comps",
-        "Var Value": "3"
-    },
-    {
         "Path": 12,
         "Var Name": "num_comps",
         "Var Value": "2"
@@ -70,14 +55,9 @@
         "Var Value": "4"
     },
     {
-        "Path": 16,
+        "Path": 17,
         "Var Name": "num_comps",
-        "Var Value": "3"
-    },
-    {
-        "Path": 18,
-        "Var Name": "num_comps",
-        "Var Value": "5"
+        "Var Value": "6"
     },
     {
         "Path": 19,
@@ -88,11 +68,6 @@
         "Path": 20,
         "Var Name": "num_comps",
         "Var Value": "1"
-    },
-    {
-        "Path": 21,
-        "Var Name": "num_comps",
-        "Var Value": "3"
     },
     {
         "Path": 22,

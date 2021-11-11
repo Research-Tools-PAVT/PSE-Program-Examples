@@ -28,8 +28,8 @@ int main() {
   }
 
   /* COMMENT : KLEE Assumes from ANALYSIS */
-  klee_assume((truth == 1 && first_flip == 0) ||
-              (truth == 1 && second_flip == 1));
+  klee_assume((truth == 0 && second_flip == 0) ||
+              (truth == 0 && ret == truth) || (truth == 1 && first_flip == 1));
 
   if (ret == truth) {
     klee_dump_kquery_state();

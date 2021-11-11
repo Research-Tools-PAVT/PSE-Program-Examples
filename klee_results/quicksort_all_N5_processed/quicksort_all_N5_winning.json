@@ -25,14 +25,49 @@
         "Var Value": "6"
     },
     {
+        "Path": 6,
+        "Var Name": "num_comps",
+        "Var Value": "5"
+    },
+    {
+        "Path": 7,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": 8,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": 9,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": 10,
+        "Var Name": "num_comps",
+        "Var Value": "0"
+    },
+    {
         "Path": 11,
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
+        "Path": 12,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
         "Path": 13,
         "Var Name": "num_comps",
         "Var Value": "6"
+    },
+    {
+        "Path": 14,
+        "Var Name": "num_comps",
+        "Var Value": "5"
     },
     {
         "Path": 15,
@@ -48,6 +83,11 @@
         "Path": 17,
         "Var Name": "num_comps",
         "Var Value": "6"
+    },
+    {
+        "Path": 18,
+        "Var Name": "num_comps",
+        "Var Value": "5"
     },
     {
         "Path": 19,
@@ -75,6 +115,11 @@
         "Var Value": "6"
     },
     {
+        "Path": 24,
+        "Var Name": "num_comps",
+        "Var Value": "5"
+    },
+    {
         "Path": 25,
         "Var Name": "num_comps",
         "Var Value": "4"
@@ -98,6 +143,26 @@
         "Path": 29,
         "Var Name": "num_comps",
         "Var Value": "6"
+    },
+    {
+        "Path": 30,
+        "Var Name": "num_comps",
+        "Var Value": "5"
+    },
+    {
+        "Path": 31,
+        "Var Name": "num_comps",
+        "Var Value": "5"
+    },
+    {
+        "Path": 32,
+        "Var Name": "num_comps",
+        "Var Value": "5"
+    },
+    {
+        "Path": 33,
+        "Var Name": "num_comps",
+        "Var Value": "5"
     },
     {
         "Path": 34,
@@ -135,6 +200,56 @@
         "Var Value": "7"
     },
     {
+        "Path": 41,
+        "Var Name": "num_comps",
+        "Var Value": "10"
+    },
+    {
+        "Path": 42,
+        "Var Name": "num_comps",
+        "Var Value": "9"
+    },
+    {
+        "Path": 43,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 44,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 45,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 46,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": 47,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 48,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": 49,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 50,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
         "Path": 51,
         "Var Name": "num_comps",
         "Var Value": "4"
@@ -145,14 +260,54 @@
         "Var Value": "3"
     },
     {
+        "Path": 53,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 54,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
         "Path": 55,
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
+        "Path": 56,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 57,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 58,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
         "Path": 59,
         "Var Name": "num_comps",
         "Var Value": "3"
+    },
+    {
+        "Path": 60,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 61,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 62,
+        "Var Name": "num_comps",
+        "Var Value": "1"
     },
     {
         "Path": 63,
@@ -165,9 +320,44 @@
         "Var Value": "3"
     },
     {
+        "Path": 65,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 66,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
         "Path": 67,
         "Var Name": "num_comps",
         "Var Value": "3"
+    },
+    {
+        "Path": 68,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 69,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 70,
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": 71,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 72,
+        "Var Name": "num_comps",
+        "Var Value": "2"
     },
     {
         "Path": 73,
@@ -183,6 +373,21 @@
         "Path": 75,
         "Var Name": "num_comps",
         "Var Value": "3"
+    },
+    {
+        "Path": 76,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 77,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": 78,
+        "Var Name": "num_comps",
+        "Var Value": "1"
     },
     {
         "Path": 79,
@@ -210,6 +415,11 @@
         "Var Value": "3"
     },
     {
+        "Path": 84,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
         "Path": 85,
         "Var Name": "num_comps",
         "Var Value": "4"
@@ -222,30 +432,40 @@
     {
         "Path": 87,
         "Var Name": "num_comps",
-        "Var Value": "4"
+        "Var Value": "3"
     },
     {
         "Path": 88,
         "Var Name": "num_comps",
-        "Var Value": "3"
+        "Var Value": "2"
     },
     {
         "Path": 89,
+        "Var Name": "num_comps",
+        "Var Value": "4"
+    },
+    {
+        "Path": 90,
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
         "Path": 91,
         "Var Name": "num_comps",
-        "Var Value": "4"
+        "Var Value": "3"
     },
     {
         "Path": 92,
         "Var Name": "num_comps",
-        "Var Value": "3"
+        "Var Value": "2"
     },
     {
         "Path": 93,
+        "Var Name": "num_comps",
+        "Var Value": "4"
+    },
+    {
+        "Path": 94,
         "Var Name": "num_comps",
         "Var Value": "3"
     },
@@ -265,6 +485,11 @@
         "Var Value": "3"
     },
     {
+        "Path": 98,
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
         "Path": 99,
         "Var Name": "num_comps",
         "Var Value": "4"
@@ -278,6 +503,11 @@
         "Path": 101,
         "Var Name": "num_comps",
         "Var Value": "3"
+    },
+    {
+        "Path": 102,
+        "Var Name": "num_comps",
+        "Var Value": "2"
     },
     {
         "Path": 103,
@@ -325,9 +555,19 @@
         "Var Value": "6"
     },
     {
+        "Path": 112,
+        "Var Name": "num_comps",
+        "Var Value": "5"
+    },
+    {
         "Path": 113,
         "Var Name": "num_comps",
         "Var Value": "6"
+    },
+    {
+        "Path": 114,
+        "Var Name": "num_comps",
+        "Var Value": "5"
     },
     {
         "Path": 115,
@@ -353,5 +593,10 @@
         "Path": 119,
         "Var Name": "num_comps",
         "Var Value": "6"
+    },
+    {
+        "Path": 120,
+        "Var Name": "num_comps",
+        "Var Value": "5"
     }
 ]

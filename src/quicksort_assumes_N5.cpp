@@ -56,7 +56,7 @@ int main() {
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   klee_assume(num_comps == 3 || num_comps == 6 || num_comps == 7 ||
-              num_comps == 8);
+              num_comps == 4 || num_comps == 8);
 
   // klee_dump_kquery_state();
   // klee_print_expr("Num Compares : ", num_comps);

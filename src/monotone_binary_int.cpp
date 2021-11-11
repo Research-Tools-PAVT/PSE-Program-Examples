@@ -59,7 +59,7 @@ int main() {
     }
   }
 
-  // klee_assume(f[1] < f[0] && f[2] > f[1] && reject == true);
+  klee_assume(f[1] < f[0] && f[2] > f[1] && reject == true);
 
   klee_print_expr("Reject : ", reject);
 

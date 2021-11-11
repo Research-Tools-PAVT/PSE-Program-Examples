@@ -2,7 +2,7 @@
 #include <PSE.h>
 #include <string>
 
-#define N 5
+#define N 4
 int num_comps;
 
 void swap(unsigned char *a, unsigned char *b) {
@@ -55,7 +55,7 @@ int main() {
   quicksort(arr, 0, N - 1);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  // klee_assume(num_comps > 10 && num_comps < 14);
+  klee_assume(num_comps >= 8 && num_comps <= 12);
 
   // klee_dump_kquery_state();
   // klee_print_expr("Num Compares : ", num_comps);

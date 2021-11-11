@@ -1,0 +1,2 @@
+first_flip ~ UniformInt(0,1) :: w32
+second_flip ~ UniformInt(0,1) :: w32

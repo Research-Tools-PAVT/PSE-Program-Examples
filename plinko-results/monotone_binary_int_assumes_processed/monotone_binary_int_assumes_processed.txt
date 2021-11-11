@@ -1,0 +1,7 @@
+Up to date
+constructProbs:   0.03s
+mergePathsWithProbs:   0.03s
+x -> #x0000000000000000
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.05s

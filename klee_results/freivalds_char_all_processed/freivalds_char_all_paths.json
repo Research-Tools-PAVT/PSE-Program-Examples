@@ -4,7 +4,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "535bd9e1-4d77-4fc8-90e8-4a5f59da2d6e"
+                "uid": "c7892ba6-4245-494c-a8b6-396bb785bbae"
             },
             "nodeTrueQuery": [
                 "(Eq false (Eq (ZExt w32 (Read w8 0 C_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Read w8 0 B_sym1))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Read w8 0 B_sym3))))))))",
@@ -27,11 +27,10 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "99bdf31e-dac6-4d2e-91ce-0b00e34d2ab9"
+                "uid": "2de50175-d05d-4732-806b-a136d5d5522b"
             },
             "predicate": "(Eq false (Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym0)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym1)) N1))))))))",
             "EmphemeralId": 2,
-            "exp_value": null,
             "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
@@ -75,14 +74,10 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "01370d58-71f6-4658-ae28-b17894a44146"
+                "uid": "da7f8bd7-7e1f-4c13-9e4f-71063e3ad970"
             },
             "predicate": "(Eq false (Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym2)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym3)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym3)) N1))))))))",
             "EmphemeralId": 6,
-            "exp_value": [
-                "ret_sym",
-                "0"
-            ],
             "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
@@ -112,7 +107,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "535bd9e1-4d77-4fc8-90e8-4a5f59da2d6e"
+                "uid": "c7892ba6-4245-494c-a8b6-396bb785bbae"
             },
             "nodeTrueQuery": [
                 "(Eq false (Eq (ZExt w32 (Read w8 0 C_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Read w8 0 B_sym1))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Read w8 0 B_sym3))))))))",
@@ -135,11 +130,10 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "99bdf31e-dac6-4d2e-91ce-0b00e34d2ab9"
+                "uid": "2de50175-d05d-4732-806b-a136d5d5522b"
             },
             "predicate": "(Eq false (Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym0)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym1)) N1))))))))",
             "EmphemeralId": 2,
-            "exp_value": null,
             "removed": false,
             "predicateId": "cond_true_1",
             "variables": [
@@ -183,14 +177,10 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "f9052226-36c1-4a0c-82a6-84d7545a7c57"
+                "uid": "7dd5a1c7-f226-4837-8c2f-1b924859bd8b"
             },
             "predicate": "(Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym2)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym3)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym3)) N1)))))))",
             "EmphemeralId": 7,
-            "exp_value": [
-                "ret_sym",
-                "0"
-            ],
             "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
@@ -220,7 +210,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "535bd9e1-4d77-4fc8-90e8-4a5f59da2d6e"
+                "uid": "c7892ba6-4245-494c-a8b6-396bb785bbae"
             },
             "nodeTrueQuery": [
                 "(Eq false (Eq (ZExt w32 (Read w8 0 C_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Read w8 0 B_sym1))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Read w8 0 B_sym3))))))))",
@@ -243,11 +233,10 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "eab2f01d-ca8e-47bc-a5fe-c1e6e5038e3e"
+                "uid": "2b3f86cd-3da2-432d-860d-78b3b4edf41c"
             },
             "predicate": "(Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym0)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym1)) N1)))))))",
             "EmphemeralId": 3,
-            "exp_value": null,
             "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
@@ -291,14 +280,10 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "0063d0a5-6a19-4793-beb2-39d62805debd"
+                "uid": "83b9562a-211d-425c-9c30-e8f21aa6e53c"
             },
             "predicate": "(Eq false (Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym2)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym3)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym3)) N1))))))))",
             "EmphemeralId": 4,
-            "exp_value": [
-                "ret_sym",
-                "0"
-            ],
             "removed": false,
             "predicateId": "cond_true_3",
             "variables": [
@@ -328,7 +313,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "535bd9e1-4d77-4fc8-90e8-4a5f59da2d6e"
+                "uid": "c7892ba6-4245-494c-a8b6-396bb785bbae"
             },
             "nodeTrueQuery": [
                 "(Eq false (Eq (ZExt w32 (Read w8 0 C_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Read w8 0 B_sym1))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Read w8 0 B_sym3))))))))",
@@ -351,11 +336,10 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "eab2f01d-ca8e-47bc-a5fe-c1e6e5038e3e"
+                "uid": "2b3f86cd-3da2-432d-860d-78b3b4edf41c"
             },
             "predicate": "(Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym0)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym1)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym0)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym1)) N1)))))))",
             "EmphemeralId": 3,
-            "exp_value": null,
             "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
@@ -399,14 +383,10 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "089ddedb-8010-4e05-88a0-4dc935be1b63"
+                "uid": "72992930-1ad6-4f58-a3d2-2800f8e80f1e"
             },
             "predicate": "(Eq 0 (Extract w8 0 (Sub w32 (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 A_sym2)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym0)) N0:(ZExt w32 (Read w8 0 r_sym_0))))) (Mul w32 (ZExt w32 (Read w8 0 B_sym1)) N1:(ZExt w32 (Read w8 0 r_sym_1))))))))) (Mul w32 (ZExt w32 (Read w8 0 A_sym3)) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 B_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 B_sym3)) N1)))))))) (ZExt w32 (Extract w8 0 (Add w32 (ZExt w32 (Extract w8 0 (Mul w32 (ZExt w32 (Read w8 0 C_sym2)) N0))) (Mul w32 (ZExt w32 (Read w8 0 C_sym3)) N1)))))))",
             "EmphemeralId": 5,
-            "exp_value": [
-                "ret_sym",
-                "1"
-            ],
             "removed": false,
             "marked_success": true,
             "predicateId": "cond_false_3",

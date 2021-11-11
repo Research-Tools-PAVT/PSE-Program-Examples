@@ -1,0 +1,5 @@
+Up to date
+constructProbs:   0.51s
+mergePathsWithProbs:   0.52s
+13.0
+Z3 evaluation:  37.31s

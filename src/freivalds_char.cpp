@@ -100,12 +100,10 @@ int main() {
     r[i] = temp;
   }
 
-  ret = freivalds(A, B, C, r, n);
-  expected_value("ret_sym", ret);
-
-  if (ret == 1) {
-    klee_dump_kquery_state();
+  if (freivalds(A, B, C, r, n) == 1) {
+    ret = 1;
     mark_state_winning();
+    klee_dump_kquery_state();
   }
 
   return 0;

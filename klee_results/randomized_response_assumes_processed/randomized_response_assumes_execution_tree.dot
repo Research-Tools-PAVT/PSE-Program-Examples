@@ -1,0 +1,13 @@
+digraph ExecutionTree {
+	node [color=black fontname=Courier height=.5 shape=record]
+	6 [color=blue, fillcolor=green, style=filled, fontcolor=black, fontname="Courier-Bold"]
+	4 [color=blue, fillcolor=green, style=filled, fontcolor=black, fontname="Courier-Bold"]
+	7 [color=blue, fillcolor=red, style=filled, fontcolor=white, fontname="Courier-Bold"]
+	5 [color=blue, fillcolor=red, style=filled, fontcolor=white, fontname="Courier-Bold"]
+	0 -> 2 [label=cond_true_1 color=blue]
+	0 -> 3 [label=cond_false_1 color=red]
+	2 -> 4 [label=cond_true_2 color=blue]
+	2 -> 5 [label=cond_false_2 color=red]
+	3 -> 6 [label=cond_true_3 color=blue]
+	3 -> 7 [label=cond_false_3 color=red]
+}

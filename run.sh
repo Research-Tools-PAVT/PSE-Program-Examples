@@ -76,16 +76,22 @@ mv ${example}_processed klee_results/
 
 mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt
 
+mkdir -p plinko-results
 mkdir -p plinko-results/${example}_processed
-echo "Plinko running on ${example}_processed" > plinko-results/${example}_processed/time.txt
-echo "==== Running Plinko ===="
+
+echo "Plinko running on ${example}_processed" > plinko-results/${example}_processed/${example}_time.txt
+
+echo "==== Init Plinko ===="
 
 cd ./code/plinko
+
 cabal v2-build
 
+echo "==== Run Plinko ===="
+
 /usr/bin/time --append --verbose -o \
-../../plinko-results/${example}_processed/time.txt \
+../../plinko-results/${example}_processed/${example}_time.txt \
 cabal v2-run plinko -- \
 -d ../../klee_results/${example}_processed \
--t 2 ${3} ${4} 2> ../../plinko-results/${example}_processed/${example}_processed.txt \
+-t 2 ${3} ${4} 2> ../../plinko-results/${example}_processed/${example}_logs.txt \
 > ../../plinko-results/${example}_processed/${example}_processed.txt

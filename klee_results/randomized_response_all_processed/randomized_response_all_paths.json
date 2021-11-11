@@ -1,0 +1,446 @@
+{
+    "1": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "fb906f0d-749c-4da0-b242-db7c3fb4100b"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "emphemeralId": "2",
+                "uid": "db4447fc-2b10-4271-a406-6977ac2fc554"
+            },
+            "predicate": "(Eq 0 (ReadLSB w32 0 first_flip))",
+            "EmphemeralId": 2,
+            "removed": false,
+            "marked_success": true,
+            "predicateId": "cond_true_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "2": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "fb906f0d-749c-4da0-b242-db7c3fb4100b"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "emphemeralId": "3",
+                "uid": "23a3890c-46e9-4d93-8884-90797d6580f1"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "EmphemeralId": 3,
+            "removed": false,
+            "predicateId": "cond_false_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "emphemeralId": "4",
+                "uid": "adba5838-ebbd-42ee-9827-bfe77ab7c2fb"
+            },
+            "predicate": "(Eq 1 (ReadLSB w32 0 second_flip))",
+            "EmphemeralId": 4,
+            "removed": false,
+            "predicateId": "cond_true_2",
+            "variables": [
+                "second_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 1 (ReadLSB w32 0 truth))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "8",
+                "emphemeralId": "8",
+                "uid": "6d00e029-c513-4f96-8c16-2911d4db7446"
+            },
+            "predicate": "(Eq 1 (ReadLSB w32 0 truth))",
+            "EmphemeralId": 8,
+            "removed": false,
+            "marked_success": true,
+            "predicateId": "cond_true_3",
+            "variables": [
+                "truth"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "3": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "fb906f0d-749c-4da0-b242-db7c3fb4100b"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "emphemeralId": "3",
+                "uid": "23a3890c-46e9-4d93-8884-90797d6580f1"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "EmphemeralId": 3,
+            "removed": false,
+            "predicateId": "cond_false_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "emphemeralId": "4",
+                "uid": "adba5838-ebbd-42ee-9827-bfe77ab7c2fb"
+            },
+            "predicate": "(Eq 1 (ReadLSB w32 0 second_flip))",
+            "EmphemeralId": 4,
+            "removed": false,
+            "predicateId": "cond_true_2",
+            "variables": [
+                "second_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 1 (ReadLSB w32 0 truth))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "9",
+                "emphemeralId": "9",
+                "uid": "8371530a-8332-427c-b203-6e69b335dc0b"
+            },
+            "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 truth)))",
+            "EmphemeralId": 9,
+            "removed": false,
+            "predicateId": "cond_false_3",
+            "variables": [
+                "truth"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "4": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "fb906f0d-749c-4da0-b242-db7c3fb4100b"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "emphemeralId": "3",
+                "uid": "23a3890c-46e9-4d93-8884-90797d6580f1"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "EmphemeralId": 3,
+            "removed": false,
+            "predicateId": "cond_false_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "emphemeralId": "5",
+                "uid": "56d8a79b-14e4-4919-9e2f-4a34b4a5ceea"
+            },
+            "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+            "EmphemeralId": 5,
+            "removed": false,
+            "predicateId": "cond_false_2",
+            "variables": [
+                "second_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+                "(Eq 0 (ReadLSB w32 0 truth))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+                "(Eq false (Eq 0 (ReadLSB w32 0 truth)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "6",
+                "emphemeralId": "6",
+                "uid": "0caed78b-2c0c-4247-b5f2-e37d434ebf56"
+            },
+            "predicate": "(Eq 0 (ReadLSB w32 0 truth))",
+            "EmphemeralId": 6,
+            "removed": false,
+            "marked_success": true,
+            "predicateId": "cond_true_4",
+            "variables": [
+                "truth"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "5": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "fb906f0d-749c-4da0-b242-db7c3fb4100b"
+            },
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "emphemeralId": "3",
+                "uid": "23a3890c-46e9-4d93-8884-90797d6580f1"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "EmphemeralId": 3,
+            "removed": false,
+            "predicateId": "cond_false_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Eq 1 (ReadLSB w32 0 second_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "emphemeralId": "5",
+                "uid": "56d8a79b-14e4-4919-9e2f-4a34b4a5ceea"
+            },
+            "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+            "EmphemeralId": 5,
+            "removed": false,
+            "predicateId": "cond_false_2",
+            "variables": [
+                "second_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+                "(Eq 0 (ReadLSB w32 0 truth))"
+            ],
+            "nodeFalseQuery": [
+                "(Sle 0 (ReadLSB w32 0 truth))",
+                "(Sle (ReadLSB w32 0 truth) 1)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+                "(Sle 0 (ReadLSB w32 0 second_flip))",
+                "(Sle (ReadLSB w32 0 second_flip) 1)",
+                "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+                "(Eq false (Eq 0 (ReadLSB w32 0 truth)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "7",
+                "emphemeralId": "7",
+                "uid": "4f210b6e-a46a-4ad6-87e9-88fa333d18ca"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 truth)))",
+            "EmphemeralId": 7,
+            "removed": false,
+            "predicateId": "cond_false_4",
+            "variables": [
+                "truth"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

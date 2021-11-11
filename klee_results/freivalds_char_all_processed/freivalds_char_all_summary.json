@@ -92,10 +92,6 @@
             "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
-            "exp_val": [
-                "ret_sym",
-                "0"
-            ],
             "falseQuery": [],
             "isLeaf": "True",
             "state_id": 4,
@@ -106,10 +102,6 @@
             "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
-            "exp_val": [
-                "ret_sym",
-                "1"
-            ],
             "falseQuery": [],
             "isLeaf": "True",
             "state_id": 5,
@@ -120,10 +112,6 @@
             "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
-            "exp_val": [
-                "ret_sym",
-                "0"
-            ],
             "falseQuery": [],
             "isLeaf": "True",
             "state_id": 6,
@@ -134,33 +122,11 @@
             "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
             "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
-            "exp_val": [
-                "ret_sym",
-                "0"
-            ],
             "falseQuery": [],
             "isLeaf": "True",
             "state_id": 7,
             "trueQuery": [],
             "wasQueued": "True"
-        },
-        "exp_val_map": {
-            "4": [
-                "ret_sym",
-                "0"
-            ],
-            "5": [
-                "ret_sym",
-                "1"
-            ],
-            "6": [
-                "ret_sym",
-                "0"
-            ],
-            "7": [
-                "ret_sym",
-                "0"
-            ]
         },
         "win_states": {
             "5": {

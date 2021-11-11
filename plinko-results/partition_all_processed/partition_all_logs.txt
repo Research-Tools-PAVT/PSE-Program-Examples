@@ -1,0 +1,2 @@
+Num PSVs: 1
+plinko: Z3 error: there is no current model

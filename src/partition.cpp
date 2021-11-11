@@ -14,8 +14,8 @@ int partition(int arr[]) {
 
   int pivot, left_count = 0, right_count = 0;
 
-  klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
-  klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
+  // klee_make_symbolic(&left_count, sizeof(left_count), "left_count_sym");
+  // klee_make_symbolic(&right_count, sizeof(right_count), "right_count_sym");
   make_pse_symbolic(&pivot, sizeof(pivot), "pivot_prob_sym", 0, SIZE - 1);
 
   left_count = 0, right_count = 0;
@@ -47,12 +47,8 @@ int partition(int arr[]) {
   return outcome;
 }
 
-// int concrete[] = {2, 28, 95, 96, 47, 454, 65, -56, 7765, 234};
-
 int main() {
   int arr[SIZE];
-  // klee_make_symbolic(&SIZE, sizeof(int), "size_array");
-  // klee_assume(SIZE == 5);
 
   klee_make_symbolic(&outcome, sizeof(outcome), "outcome_sym");
   klee_make_symbolic(&pivot_elem, sizeof(pivot_elem), "pivot_elem_sym");
@@ -68,7 +64,7 @@ int main() {
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
   klee_assume((arr[1] > pivot_elem && outcome >= 3) ||
-              (arr[1] <= pivot_elem && (outcome < 4)));
+              (arr[1] <= pivot_elem && (outcome < 5)));
 
   // Expectation Values.
   expected_value("outcome", outcome);

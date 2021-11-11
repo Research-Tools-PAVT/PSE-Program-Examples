@@ -1,3 +1,4 @@
+#include "klee/klee.h"
 #include <PSE.h>
 
 int main() {
@@ -32,6 +33,7 @@ int main() {
 
   if (ret == truth) {
     klee_dump_kquery_state();
+    mark_state_winning();
   }
 
   return 0;

@@ -75,6 +75,7 @@ def grabConstArrs(root):
             for l in lines:
                 l = l.strip()
                 if('array const_arr' in l):
+                    print("\nFound Const Array. (kquery)\n")
                     args = l.split(' ')
                     arrName = args[1][:args[1].find('[')]
                     vals = l[l.rfind('['):]
@@ -92,6 +93,7 @@ with open(file.strip(), mode='r') as fileptr:
         text = pattern.sub(
             lambda m: constArrMap[re.escape(m.group(0))], fileptr.read())
         results = json.loads(text)
+        print("\nFound Const Array.\n")
     else:
         results = json.load(fileptr)
 

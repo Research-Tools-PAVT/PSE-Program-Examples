@@ -84,34 +84,3 @@ int main() {
 
   return 0;
 }
-
-/*
-```
-
-Without Assumes :
-KLEE: done: total instructions = 527
-KLEE: done: completed paths = 14
-KLEE: done: partially completed paths = 0
-KLEE: done: generated tests = 10
-
-With Assumes :
-KLEE: done: total instructions = 851
-KLEE: done: completed paths = 7
-KLEE: done: partially completed paths = 7
-KLEE: done: generated tests = 14
-
-With Assumes Refined :
-KLEE: done: total instructions = 868
-KLEE: done: completed paths = 4
-KLEE: done: partially completed paths = 12
-KLEE: done: generated tests = 16
-
-
--------------------------------------|
-    |   B0 (ret==1)  |   B1 (ret==0) |
-----|----------------|---------------|
-C0  |      1         |       1       |  (door_switch==1)
-C1  |      0         |       1       |  (door_switch==0)
-----|----------------|---------------|
-```
-*/

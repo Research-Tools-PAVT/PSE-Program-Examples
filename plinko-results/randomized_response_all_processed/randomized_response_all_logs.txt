@@ -1,5 +1,0 @@
-[1;36mPath 1 Winning[0m
-[1;36mPath 2 Winning[0m
-[1;36mPath 4 Winning[0m
-Paths Processed : 5
-Num PSVs: 2

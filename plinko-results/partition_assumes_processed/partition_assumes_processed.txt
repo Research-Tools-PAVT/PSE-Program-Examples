@@ -1,3 +1,0 @@
-Up to date
-constructProbs:   4.36s
-mergePathsWithProbs:   4.46s

@@ -27,6 +27,8 @@ int main() {
     }
   }
 
+  expected_value("ret", ret);
+
   if (ret == truth) {
     klee_dump_kquery_state();
     mark_state_winning();

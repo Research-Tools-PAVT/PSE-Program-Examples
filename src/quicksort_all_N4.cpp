@@ -2,7 +2,7 @@
 #include <PSE.h>
 #include <string>
 
-#define N 5
+#define N 4
 int num_comps;
 
 void swap(unsigned char *a, unsigned char *b) {
@@ -24,7 +24,7 @@ int partition(unsigned char arr[], int low, int high) {
     if (arr[j] <= pivot) {
       i++;
       swap(&arr[i], &arr[j]);
-      /* COMMENT : Fixed This */
+      /* COMMENT : Fixed This. */
       num_comps += 1;
     }
   }
@@ -58,29 +58,3 @@ int main() {
 
   return 0;
 }
-
-/*
-
-KLEE: done: total instructions = 381219
-KLEE: done: completed paths = 720
-KLEE: done: partially completed paths = 0
-KLEE: done: generated tests = 6
-Paths Processed : 720
-
-KLEE: done: total instructions = 391441
-KLEE: done: completed paths = 296
-KLEE: done: partially completed paths = 424
-KLEE: done: generated tests = 429
-Paths Processed : 720
-
-----------------------------------------------------------------------------------------|
-    | B0(<= 11) | B1 ( == 12) | B1 ( == 13) | B1 ( == 14) | B1 ( 15 || 16) | B1
-(>= 17) |
-----\------------\-------------\------------\-------------\----------------\------------|
-C1  |    0       |      0      |     1      |     0       |        0       | 1 |
-C2  |    0       |      0      |     1      |     0       |        0       | 1 |
-C3  |    0       |      0      |     1      |     0       |        1       | 1 |
-C4  |    0       |      0      |     1      |     0       |        0       | 1 |
-----------------------------------------------------------------------------------------|
-
-*/

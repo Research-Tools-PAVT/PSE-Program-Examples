@@ -10,6 +10,11 @@ Clone & Build [KLEE](http://klee.github.io/build-llvm9/).
 - [KLEE - Symbolic Tree](https://github.com/lahiri-phdworks/klee/tree/symbolic_tree)
 - Installation Guide : [Install.md](Install.md)
 
+### Plinko Directory :
+
+- Developed by [Zach](https://github.com/zsusag). [plinko](https://git.justinh.su/)
+- The directory [code](code/plinko/README.md) contains the tool.
+
 #### Functions Added :
 
 - `make_pse_symbolic(void *addr, size_t bytes, const char *name, T &&min_elem, T &&max_elem)` is the function that defines a `probabilistic` variable `addr` (pass by reference) with `symbolic` name `name` taking uniform distribution values from `min_elem` to `max_elem` range.
@@ -42,17 +47,17 @@ $ pip3 install graphviz sexpdata
 ## Run Command
 
 ```bash
-$ ./run.sh <src_dir> <file_name>
+$ ./run.sh <src_dir> <file_name> <extra-args> <args-to-plinko>
 ```
 
 ## Running Examples
 
 ```bash
-$ ./run.sh src freivalds_char
+$ ./run.sh src/montyhall_all.cpp calculate-prob
 ```
 
 ```bash
-$ ./run.sh src montyhall
+$ ./run.sh src/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
 ```
 
 Check the `klee_results` folder for `paths` and `processed` symbolic execution tree.
@@ -88,21 +93,34 @@ Replaying is a way to check the the testcase produced by KLEE for a given progra
 For each complete path taken by KLEE, it generates one testcase containing the values of the `variables` marked `symbolic`, unless it
 is `redundant` or `UNSAT`.
 
-# All Files Execution
+# All Files Execution (Done)
 
 ```
-./run.sh src/flips.cpp
-./run.sh src/flips_inst.cpp
-./run.sh src/freivalds_char.cpp
-./run.sh src/freivalds_int.cpp
-./run.sh src/monotone_binary_int.cpp
-./run.sh src/montyhall.cpp
-./run.sh src/partition.cpp
-./run.sh src/randomized_response.cpp
-./run.sh src/reservoir_sample.cpp
+./run.sh src/montyhall_all.cpp calculate-prob
+./run.sh src/randomized_response_all.cpp calculate-prob
+./run.sh src/bloomfilter_all.cpp calculate-prob
+./run.sh src/freivalds_int_all.cpp calculate-prob
+./run.sh src/monotone_binary_int_all.cpp calculate-prob
+./run.sh src/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
+./run.sh src/reservoir_sample_v2_all.cpp reservoir-sample "-n 15 -k 6"
+./run.sh src/quicksort_all_N4.cpp expected-value
+sed -i "s/-t 2/-t 1/g" run.sh
+./run.sh src/quicksort_all_N5.cpp expected-value
+sed -i "s/-t 1/-t 2/g" run.sh
 ```
 
+# Assume Files Execution (WIP)
+
 ```
-./run.sh src/quicksort.cpp
-./run.sh src/quicksort_swap.cpp
+./run.sh src/assumes/montyhall_assumes.cpp calculate-prob
+./run.sh src/assumes/randomized_response_assumes.cpp calculate-prob
+./run.sh src/assumes/bloomfilter_assumes.cpp calculate-prob
+./run.sh src/assumes/freivalds_int_assumes.cpp calculate-prob
+./run.sh src/assumes/monotone_binary_int_assumes.cpp calculate-prob
+./run.sh src/assumes/reservoir_sample_v1_assumes.cpp reservoir-sample "-n 10 -k 4"
+./run.sh src/assumes/reservoir_sample_v2_assumes.cpp reservoir-sample "-n 15 -k 6"
+./run.sh src/assumes/quicksort_assumes_N4.cpp expected-value
+sed -i "s/-t 2/-t 1/g" run.sh
+./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
+sed -i "s/-t 1/-t 2/g" run.sh
 ```

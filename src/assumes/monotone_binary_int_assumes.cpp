@@ -59,7 +59,8 @@ int main() {
     }
   }
 
-  expected_value("reject", reject);
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume(f[1] < f[0] && f[2] > f[1] && reject == true);
 
   if (!reject) {
     mark_state_winning();
@@ -68,3 +69,23 @@ int main() {
 
   return 0;
 }
+
+/*
+
+KLEE: done: total instructions = 21073
+KLEE: done: completed paths = 224
+KLEE: done: partially completed paths = 0
+KLEE: done: generated tests = 10
+
+KLEE: done: total instructions = 27375
+KLEE: done: completed paths = 164
+KLEE: done: partially completed paths = 92
+KLEE: done: generated tests = 105
+
+
+f[1] > f[0]
+f[1] <= f[0]
+f[1] < f[2] && f[1] > f[0]
+f[1] >= f[2] && f[1] > f[0]
+
+*/

@@ -7,7 +7,7 @@
 
 ## Building
 
-To build _Plinko_, navigate to the `plinko` directory and run the `cabal` build command:
+To build *Plinko*, navigate to the `plinko` directory and run the `cabal` build command:
 
 ```
 $ cabal v2-build
@@ -24,15 +24,15 @@ $ cd test/klee_examples/
 $ ./run.sh reservoir_sample
 ```
 
-This will create two directories: `reservoir_sample_klee_out/` and `reservoir_sample_processed/`.
+   This will create two directories: `reservoir_sample_klee_out/` and `reservoir_sample_processed/`. 
 
 2. Create the distributions file for the example desired and name it as `{example}_processed/{example}_dists.txt`. See [distribution file syntax](#Distribution-File-Syntax) for more information on how to properly write the file.
 
-3. Run _Plinko_ by providing the `{example}_processed/` directory path, number of threads you'd like Z3 to be run with (I'd suggest no more than 2 for optimal performance right now...), and which benchmark you'd like to run (aka, which query you'd like to ask). Note that some benchmarks require the user to provide the concretized settings for applicable variables.
+3. Run *Plinko* by providing the `{example}_processed/` directory path, number of threads you'd like Z3 to be run with (I'd suggest no more than 2 for optimal performance right now...), and which benchmark you'd like to run (aka, which query you'd like to ask). Note that some benchmarks require the user to provide the concretized settings for applicable variables.
 
-For example, if you'd like to run the reservoir sampling benchmark, you need to provide _Plinko_ with the concretized setting of `n` and `k`. See the help pages for the subcommands in the _Plinko_ help menu for more information.
+For example, if you'd like to run the reservoir sampling benchmark, you need to provide *Plinko* with the concretized setting of `n` and `k`. See the help pages for the subcommands in the *Plinko* help menu for more information.
 
-In general, a properly formed _Plinko_ command is of the following form
+In general, a properly formed *Plinko* command is of the following form
 
 ```
 $ cabal v2-run plinko -- -d path/to/processed/dir -t 1 BENCHMARK {Concretizations}
@@ -44,7 +44,7 @@ Specifically, for reservoir sampling, where `n = 10` and `k = 5`, the command wo
 $ cabal v2-run plinko -- -d test/klee_examples/reservoir_sample_processed/ -t 2 reservoir-sample -n 10 -k 5
 ```
 
-Note the `--` after `plinko`. This is _VERY_ important. This tells `cabal` to pass the following arguments/options to the `plinko` binary instead of `cabal`. If you'd like to avoid this syntax, you can also run
+Note the `--` after `plinko`. This is *VERY* important. This tells `cabal` to pass the following arguments/options to the `plinko` binary instead of `cabal`. If you'd like to avoid this syntax, you can also run
 
 ```
 $ cabal v2-install exe:plinko
@@ -67,13 +67,12 @@ UniformInt(lower,upper)
 Bernoulli(bias)
 ```
 
-where `lower` and `upper` are integers and `bias` is a floating-point number, and `N` is the number of _bits_ the variable uses. Generally this will be `w32` for integers.
+where `lower` and `upper` are integers and `bias` is a floating-point number, and `N` is the number of *bits* the variable uses. Generally this will be `w32` for integers.
 
-_There is currently a bug where if there is a trailing newline character at the end of the file you will get an error during parsing._
+*There is currently a bug where if there is a trailing newline character at the end of the file you will get an error during parsing.*
 
 ### Sample: `reservoir_sample_dists.txt`
-
-Below is a sample `reservoir_sample_dists.txt` file which works up to `n=10`.
+Below	is a sample `reservoir_sample_dists.txt` file which works up to `n=10`.
 
 ```
 j_sym01 ~ UniformInt(0,1) :: w32
@@ -90,7 +89,7 @@ j_sym010 ~ UniformInt(0,10) :: w32
 
 ### Sample: `bloom_dists.txt`
 
-For programs which randomly samples many times under the same name and domain (e.g., within a `for` loop), KLEE will automatically append a counter to the end of the probabilistic symbolic variable name.
+For programs which randomly samples many times under the same name and domain (e.g., within a `for` loop), KLEE will automatically append a counter to the end of the probabilistic symbolic variable name. 
 
 For example, in `bloom.cpp`, `x_sym` is sampled numerous times in a `for` loop whenever an element is hashed. Since the distribution remains the same among all the variables (`x_sym`, `x_sym_1`, `x_sym_2`, etc.), it is only required to include the basename of the variable in the `_dists.txt` file.
 
@@ -98,4 +97,4 @@ For example, in `bloom.cpp`, `x_sym` is sampled numerous times in a `for` loop w
 x_sym ~ UniformInt(0,4) :: w32
 ```
 
-The above line will tell _Plinko_ that whenever you see a probabilistic symbolic variable with the _prefix_ of `x_sym` to assign it the distribution `UniformInt(0,4)`.
+The above line will tell *Plinko* that whenever you see a probabilistic symbolic variable with the *prefix* of `x_sym` to assign it the distribution `UniformInt(0,4)`.

@@ -90,12 +90,17 @@ int main(int argc, char **argv) {
   int realC[n * n];
   matmul(A, B, n, realC);
 
-  bool orAssume = false;
-  for (size_t i = 0; i < n * n; i++) {
-    orAssume = orAssume || (C[i] != realC[i]);
-  }
+  // KLEE optimize wont work since it does compiler optimzation
+  // like short-circuit evaluation. Doing so, KLEE may not get
+  // some of the KLEE assumes we put in.
 
-  klee_assume(orAssume);
+  // bool orAssume = false;
+  // for (size_t i = 0; i < n * n; i++) {
+  //   orAssume = orAssume || (C[i] != realC[i]);
+  // }
+  // klee_assume(orAssume);
+
+  klee_assume(C[1] != realC[1] && C[2] != realC[2]);
 
   for (size_t i = 0; i < n; i++) {
     int temp;
@@ -104,8 +109,9 @@ int main(int argc, char **argv) {
     r[i] = temp;
   }
 
-  if (freivalds(A, B, C, r, n) == 1) {
-    ret = 1;
+  ret = freivalds(A, B, C, r, n);
+
+  if (ret == 1) {
     mark_state_winning();
     klee_dump_kquery_state();
   }

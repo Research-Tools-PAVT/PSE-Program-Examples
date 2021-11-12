@@ -354,13 +354,14 @@ for pathIds, nodes in pathMap.items():
         # For Expected Values
         last_node_id = path[0].get("EmphemeralId", None)
         if last_node_id is not None and exp_val_map is not None:
-            values = exp_val_map.get(f"{last_node_id}")
-            winCollect["Var Name"] = values[0]
-            winCollect["Var Value"] = values[1]
-            collectWinPred["Var Name"] = values[0]
-            collectWinPred["Var Value"] = values[1]
-            # if str.isdigit(values[1]):
-            # winCollect["Var Value"] = int(values[1])
+            values = exp_val_map.get(f"{last_node_id}", None)
+            if values is not None:
+                winCollect["Var Name"] = values[0]
+                winCollect["Var Value"] = values[1]
+                collectWinPred["Var Name"] = values[0]
+                collectWinPred["Var Value"] = values[1]
+                # if str.isdigit(values[1]):
+                # winCollect["Var Value"] = int(values[1])
 
     if isWinningPath:
         winning_paths.append(winCollect)

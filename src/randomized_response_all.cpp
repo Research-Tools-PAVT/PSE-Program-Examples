@@ -1,4 +1,3 @@
-#include "klee/klee.h"
 #include <PSE.h>
 
 int main() {
@@ -27,9 +26,9 @@ int main() {
     }
   }
 
+  // expected_value("ret", ret);
+
   if (ret == truth) {
-    // expected_value("ret", ret);
-    klee_dump_kquery_state();
     mark_state_winning();
   }
 

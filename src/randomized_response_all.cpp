@@ -12,7 +12,7 @@ int main() {
   make_pse_symbolic(&first_flip, sizeof(first_flip), "first_flip", 0, 1);
 
   // 0 = No, 1 = Yes
-  int ret;
+  int ret = 0;
 
   // 0 = tails; 1 = heads
   if (first_flip == 0) {
@@ -27,9 +27,8 @@ int main() {
     }
   }
 
-  expected_value("ret", ret);
-
   if (ret == truth) {
+    // expected_value("ret", ret);
     klee_dump_kquery_state();
     mark_state_winning();
   }

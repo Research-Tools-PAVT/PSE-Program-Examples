@@ -32,7 +32,7 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 
 int main() {
   // srand(time(NULL));
-  int n = 15, k = 6;
+  int n = 12, k = 5;
   int ret = 0;
 
   /* Hold the record for "j" values sampled */

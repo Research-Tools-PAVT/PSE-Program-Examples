@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
   // }
   // klee_assume(orAssume);
 
-  klee_assume(C[1] != realC[1] && C[2] != realC[2]);
+  klee_assume(C[1] != realC[1]);
 
   for (size_t i = 0; i < n; i++) {
     int temp;

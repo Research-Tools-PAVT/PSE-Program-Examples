@@ -95,7 +95,9 @@ echo -e "\e[1;34m===== Run Plinko =====\e[0m"
 ../../plinko-results/${example}_processed/${example}_exec_time.txt \
 cabal v2-run plinko -- \
 -d ../../klee_results/${example}_processed \
--t 1 ${2} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
+-t 2 ${2} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
 > ../../plinko-results/${example}_processed/${example}_processed.txt
 
-cat ../../plinko-results/${example}_processed/${example}_processed.txt >> complete_results.txt
+echo "Example : ${example}" >> ../../complete_results.txt
+echo "Plinko Results : " >> ../../complete_results.txt
+cat ../../plinko-results/${example}_processed/${example}_processed.txt >> ../../complete_results.txt

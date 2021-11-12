@@ -59,7 +59,7 @@ int main() {
     }
   }
 
-  expected_value("reject", reject);
+  // expected_value("reject", reject);
 
   if (!reject) {
     mark_state_winning();

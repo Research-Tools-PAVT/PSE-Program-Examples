@@ -96,14 +96,14 @@ is `redundant` or `UNSAT`.
 # All Files Execution (Done)
 
 ```
-./run.sh src/montyhall_all.cpp calculate-prob
-./run.sh src/randomized_response_all.cpp calculate-prob
-./run.sh src/bloomfilter_all.cpp calculate-prob
-./run.sh src/freivalds_int_all.cpp calculate-prob
-./run.sh src/monotone_binary_int_all.cpp calculate-prob
-./run.sh src/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
-./run.sh src/reservoir_sample_v2_all.cpp reservoir-sample "-n 12 -k 5"
-./run.sh src/quicksort_all_N4.cpp expected-value
+./run.sh src/base/montyhall_all.cpp calculate-prob
+./run.sh src/base/randomized_response_all.cpp calculate-prob
+./run.sh src/base/bloomfilter_all.cpp calculate-prob
+./run.sh src/base/freivalds_int_all.cpp calculate-prob
+./run.sh src/base/monotone_binary_int_all.cpp calculate-prob
+./run.sh src/base/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
+./run.sh src/base/reservoir_sample_v2_all.cpp reservoir-sample "-n 12 -k 5"
+./run.sh src/base/quicksort_all_N4.cpp expected-value
 sed -i "s/-t 2/-t 1/g" run.sh
 ./run.sh src/quicksort_all_N5.cpp expected-value
 sed -i "s/-t 1/-t 2/g" run.sh

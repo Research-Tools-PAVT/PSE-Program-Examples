@@ -23,6 +23,7 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
+#define BUCKET_SIZE 5
 #define CLASSES 5
 #define FORALLS 10
 #define RUNS 1000
@@ -83,6 +84,8 @@ void matmul(int *A, int *B, size_t n, int *C) {
 
 int main(int argc, char **argv) {
   srand(time(NULL));
+  std::vector<std::vector<int>> counters(CLASSES,
+                                         std::vector<int>(BUCKET_SIZE, 0));
   int forall_classes = CLASSES;
   while (forall_classes--) {
     int forall_samples = FORALLS;
@@ -125,5 +128,31 @@ int main(int argc, char **argv) {
       }
     }
   }
+  for (const auto &x : counters) {
+    std::cout << std::endl;
+    for (const auto &e : x) {
+      std::cout << std::setw(7) << e << ",";
+    }
+  }
+  std::cout << std::endl;
+
+  int classCounter = 0;
+  int flag = 0;
+  for (const auto &x : counters) {
+    classCounter++;
+    std::cout << std::endl;
+    int bucketCounter = 0;
+    if (flag == 0)
+      for (const auto &e : x)
+        std::cout << std::setw(5) << "B" << bucketCounter++;
+    flag = 1;
+    std::cout << "\n"
+              << "C" << classCounter;
+    for (const auto &e : x) {
+      e >= 30000 ? std::cout << std::setw(5) << 1 << ","
+                 : std::cout << std::setw(5) << 0 << ",";
+    }
+  }
+  std::cout << std::endl;
   return 0;
 }

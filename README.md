@@ -124,3 +124,27 @@ sed -i "s/-t 2/-t 1/g" run.sh
 ./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
 sed -i "s/-t 1/-t 2/g" run.sh
 ```
+
+## Membership Function Sources.
+
+```cpp
+add_executable (bloomfilter bloomfilter.cpp)
+add_executable (freivalds_int freivalds_int.cpp)
+add_executable (monotone_binary_int monotone_binary_int.cpp)
+add_executable (montyhall montyhall.cpp)
+add_executable (quicksort_N4 quicksort_N4.cpp)
+add_executable (quicksort_N5 quicksort_N5.cpp)
+add_executable (randomized_response randomized_response.cpp)
+add_executable (reservoir_v1 reservoir_v1.cpp)
+add_executable (reservoir_v2 reservoir_v2.cpp)
+
+bloomfilter.cpp
+freivalds_int.cpp
+monotone_binary_int.cpp
+montyhall.cpp
+quicksort_N4.cpp
+quicksort_N5.cpp
+randomized_response.cpp
+reservoir_v1.cpp
+reservoir_v2.cpp
+```

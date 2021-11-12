@@ -13,10 +13,12 @@ add_definitions(
 
 set(CMAKE_CXX_FLAGS "-Wall -g -O3 -march=native" CACHE STRING "" FORCE)
 
-add_executable (reservoir reservoir.cpp)
-add_executable (freivalds freivalds_int.cpp)
-add_executable (quicksort_N5 quicksort_N5.cpp)
-add_executable (quicksort_N4 quicksort_N4.cpp)
-add_executable (partition partition.cpp)
+add_executable (bloomfilter bloomfilter.cpp)
+add_executable (freivalds_int freivalds_int.cpp)
+add_executable (monotone_binary_int monotone_binary_int.cpp)
 add_executable (montyhall montyhall.cpp)
-add_executable (flips flips.cpp)
+add_executable (quicksort_N4 quicksort_N4.cpp)
+add_executable (quicksort_N5 quicksort_N5.cpp)
+add_executable (randomized_response randomized_response.cpp)
+add_executable (reservoir_v1 reservoir_v1.cpp)
+add_executable (reservoir_v2 reservoir_v2.cpp)

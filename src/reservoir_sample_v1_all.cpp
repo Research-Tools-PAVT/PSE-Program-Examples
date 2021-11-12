@@ -69,13 +69,12 @@ int main() {
     }
   }
 
-  // Capture the value of ret.
-  expected_value("ret", ret);
-
   if (ret == 1) {
     mark_state_winning();
     klee_dump_kquery_state();
   }
 
+  // Capture the value of ret.
+  expected_value("ret", ret);
   return 0;
 }

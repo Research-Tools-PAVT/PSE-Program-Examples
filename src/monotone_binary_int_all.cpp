@@ -59,12 +59,11 @@ int main() {
     }
   }
 
-  // expected_value("reject", reject);
-
   if (!reject) {
     mark_state_winning();
     klee_dump_kquery_state();
   }
 
+  expected_value("reject", reject);
   return 0;
 }

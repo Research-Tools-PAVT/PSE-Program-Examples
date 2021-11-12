@@ -1,6 +1,6 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/montyhall_all.cpp -o klee_results/llvmir/montyhall_all.ll"
-	User time (seconds): 0.46
+	User time (seconds): 0.45
 	System time (seconds): 0.01
 	Percent of CPU this job got: 99%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.47
@@ -8,12 +8,12 @@ Compilation :
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96248
+	Maximum resident set size (kbytes): 95744
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11689
+	Minor (reclaiming a frame) page faults: 11686
 	Voluntary context switches: 1
-	Involuntary context switches: 22
+	Involuntary context switches: 13
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 496
@@ -24,20 +24,20 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act montyhall_all --disable-inlining --emit-all-errors --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries montyhall_all.bc"
-	User time (seconds): 0.23
-	System time (seconds): 0.02
-	Percent of CPU this job got: 100%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+	User time (seconds): 0.21
+	System time (seconds): 0.01
+	Percent of CPU this job got: 92%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.25
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 82504
+	Maximum resident set size (kbytes): 82428
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 10705
-	Voluntary context switches: 0
-	Involuntary context switches: 5
+	Minor (reclaiming a frame) page faults: 10710
+	Voluntary context switches: 2
+	Involuntary context switches: 7
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 1024
@@ -48,20 +48,20 @@ KLEE Symbolic Execution :
 	Exit status: 0
 Path Processing : 
 	Command being timed: "python3 postprocess/reader.py montyhall_all_summary.json montyhall_all"
-	User time (seconds): 0.25
+	User time (seconds): 0.22
 	System time (seconds): 0.01
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.26
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.24
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16672
+	Maximum resident set size (kbytes): 16560
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 5626
+	Minor (reclaiming a frame) page faults: 5669
 	Voluntary context switches: 7
-	Involuntary context switches: 138
+	Involuntary context switches: 26
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 328
@@ -71,21 +71,21 @@ Path Processing :
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on montyhall_all_processed : 
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/montyhall_all_processed -t 1 calculate-prob"
-	User time (seconds): 0.13
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/montyhall_all_processed -t 2 calculate-prob"
+	User time (seconds): 0.12
 	System time (seconds): 0.02
-	Percent of CPU this job got: 93%
+	Percent of CPU this job got: 92%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.16
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 53796
+	Maximum resident set size (kbytes): 53544
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 13181
+	Minor (reclaiming a frame) page faults: 13176
 	Voluntary context switches: 75
-	Involuntary context switches: 6
+	Involuntary context switches: 26
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 32

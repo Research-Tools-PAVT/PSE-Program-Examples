@@ -17,6 +17,7 @@
                 "(Sle (ReadLSB w32 0 r_sym_1) 1)",
                 "(Eq 0 (Sub w32 (Add w32 (Mul w32 (ReadLSB w32 0 A_sym0) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym0) N0:(ReadLSB w32 0 r_sym_0)) (Mul w32 (ReadLSB w32 0 B_sym1) N1:(ReadLSB w32 0 r_sym_1)))) (Mul w32 (ReadLSB w32 0 A_sym1) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym2) N0) (Mul w32 (ReadLSB w32 0 B_sym3) N1)))) (Add w32 (Mul w32 (ReadLSB w32 0 C_sym0) N0) (Mul w32 (ReadLSB w32 0 C_sym1) N1))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 0,
             "trueQuery": [
@@ -46,6 +47,7 @@
                 "(Eq false (Eq 0 (Sub w32 (Add w32 (Mul w32 (ReadLSB w32 0 A_sym0) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym0) N0:(ReadLSB w32 0 r_sym_0)) (Mul w32 (ReadLSB w32 0 B_sym1) N1:(ReadLSB w32 0 r_sym_1)))) (Mul w32 (ReadLSB w32 0 A_sym1) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym2) N0) (Mul w32 (ReadLSB w32 0 B_sym3) N1)))) (Add w32 (Mul w32 (ReadLSB w32 0 C_sym0) N0) (Mul w32 (ReadLSB w32 0 C_sym1) N1)))))",
                 "(Eq 0 (Sub w32 (Add w32 (Mul w32 (ReadLSB w32 0 A_sym2) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym0) N0:(ReadLSB w32 0 r_sym_0)) (Mul w32 (ReadLSB w32 0 B_sym1) N1:(ReadLSB w32 0 r_sym_1)))) (Mul w32 (ReadLSB w32 0 A_sym3) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym2) N0) (Mul w32 (ReadLSB w32 0 B_sym3) N1)))) (Add w32 (Mul w32 (ReadLSB w32 0 C_sym2) N0) (Mul w32 (ReadLSB w32 0 C_sym3) N1))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 2,
             "trueQuery": [
@@ -76,6 +78,7 @@
                 "(Eq 0 (Sub w32 (Add w32 (Mul w32 (ReadLSB w32 0 A_sym0) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym0) N0:(ReadLSB w32 0 r_sym_0)) (Mul w32 (ReadLSB w32 0 B_sym1) N1:(ReadLSB w32 0 r_sym_1)))) (Mul w32 (ReadLSB w32 0 A_sym1) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym2) N0) (Mul w32 (ReadLSB w32 0 B_sym3) N1)))) (Add w32 (Mul w32 (ReadLSB w32 0 C_sym0) N0) (Mul w32 (ReadLSB w32 0 C_sym1) N1))))",
                 "(Eq 0 (Sub w32 (Add w32 (Mul w32 (ReadLSB w32 0 A_sym2) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym0) N0:(ReadLSB w32 0 r_sym_0)) (Mul w32 (ReadLSB w32 0 B_sym1) N1:(ReadLSB w32 0 r_sym_1)))) (Mul w32 (ReadLSB w32 0 A_sym3) (Add w32 (Mul w32 (ReadLSB w32 0 B_sym2) N0) (Mul w32 (ReadLSB w32 0 B_sym3) N1)))) (Add w32 (Mul w32 (ReadLSB w32 0 C_sym2) N0) (Mul w32 (ReadLSB w32 0 C_sym3) N1))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 3,
             "trueQuery": [
@@ -89,44 +92,86 @@
             ]
         },
         "4": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 3,
+            "exp_val": [
+                "ret",
+                "0"
+            ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 4,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "5": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 3,
+            "exp_val": [
+                "ret",
+                "1"
+            ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 5,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "6": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 2,
+            "exp_val": [
+                "ret",
+                "0"
+            ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 6,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "7": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 2,
+            "exp_val": [
+                "ret",
+                "0"
+            ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 7,
             "trueQuery": [],
             "wasQueued": "True"
+        },
+        "exp_val_map": {
+            "4": [
+                "ret",
+                "0"
+            ],
+            "5": [
+                "ret",
+                "1"
+            ],
+            "6": [
+                "ret",
+                "0"
+            ],
+            "7": [
+                "ret",
+                "0"
+            ]
         },
         "win_states": {
             "5": {

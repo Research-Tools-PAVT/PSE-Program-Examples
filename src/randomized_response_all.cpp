@@ -26,11 +26,10 @@ int main() {
     }
   }
 
-  // expected_value("ret", ret);
-
   if (ret == truth) {
     mark_state_winning();
   }
 
+  // expected_value("ret", ret);
   return 0;
 }

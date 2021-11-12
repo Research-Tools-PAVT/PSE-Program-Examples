@@ -121,6 +121,18 @@ for currentState, elems in symbolic_exec_tree.items():
             # klee_false = int(elems.get("False KLEE Id", current))
             generate_false = int(elems.get("False Generate ID", current))
 
+            # leftInfo = symbolic_exec_tree.get(
+            #     elems.get("True Generate ID", current), None)
+            # if leftInfo is not None:
+            #     if leftInfo.isLeaf == "True":
+            #         generate_true = None
+
+            # rightInfo = symbolic_exec_tree.get(
+            #     elems.get("False Generate ID", current), None)
+            # if rightInfo is not None:
+            #     if rightInfo.isLeaf == "True":
+            #         generate_false = None
+
             # print(current, generate_true, generate_false)
             # If node is present use it, else create new node
             # Nodes are reused here. Map as a cache.
@@ -132,14 +144,14 @@ for currentState, elems in symbolic_exec_tree.items():
             else:
                 node = ExecutionTreeNode(current)
 
-            if nodeMap.get(generate_true, None) is None:
+            if generate_true is not None and nodeMap.get(generate_true, None) is None:
                 # print(current, generate_true)
                 left = ExecutionTreeNode(generate_true)
             else:
                 # print("Node Exists : Reusing")
                 left = nodeMap[generate_true]
 
-            if nodeMap.get(generate_false, None) is None:
+            if generate_false is not None and nodeMap.get(generate_false, None) is None:
                 # print(current, generate_false)
                 right = ExecutionTreeNode(generate_false)
             else:
@@ -151,13 +163,13 @@ for currentState, elems in symbolic_exec_tree.items():
             nodeMap[generate_true] = left
             nodeMap[generate_false] = right
 
-            left.emphemeralId = generate_true
-            right.emphemeralId = generate_false
+            left.ephemeralId = generate_true
+            right.ephemeralId = generate_false
 
-            if left.emphemeralId in statesAnnotated:
+            if left.ephemeralId in statesAnnotated:
                 left.invalidated = True
 
-            if right.emphemeralId in statesAnnotated:
+            if right.ephemeralId in statesAnnotated:
                 right.invalidated = True
 
             # Added the branch predicates
@@ -310,16 +322,16 @@ for pathIds, nodes in pathMap.items():
             collection["predicate"] = " ".join(data.split())
             collectWinPred["Path"].append(" ".join(data.split()))
 
-            collection["EmphemeralId"] = temp.emphemeralId
+            collection["ephemeralId"] = temp.ephemeralId
             if exp_val_map is not None:
                 collection["exp_value"] = exp_val_map.get(
-                    f"{temp.emphemeralId}", None)
+                    f"{temp.ephemeralId}", None)
 
             collection["removed"] = False
-            if temp.emphemeralId in statesAnnotated:
+            if temp.ephemeralId in statesAnnotated:
                 collection["removed"] = True
                 isPathFalseAnnotated = True
-            if temp.emphemeralId in statesSuccessAnnotated:
+            if temp.ephemeralId in statesSuccessAnnotated:
                 collection["marked_success"] = True
                 isWinningPath = True
             # Show the id of the constraint that belongs to this edge
@@ -352,7 +364,7 @@ for pathIds, nodes in pathMap.items():
         paths[f"{pathIds}"] = path
 
         # For Expected Values
-        last_node_id = path[0].get("EmphemeralId", None)
+        last_node_id = path[0].get("ephemeralId", None)
         if last_node_id is not None and exp_val_map is not None:
             values = exp_val_map.get(f"{last_node_id}", None)
             if values is not None:
@@ -374,7 +386,7 @@ for _, path in paths.items():
 # For Expected Values in the Path
 # if exp_val_map is not None:
 #     for idt, path in paths.items():
-#         last_node_id = path[-1].get("EmphemeralId", None)
+#         last_node_id = path[-1].get("ephemeralId", None)
 #         if last_node_id is not None:
 #             obj = {}
 #             values = exp_val_map.get(f"{last_node_id}")

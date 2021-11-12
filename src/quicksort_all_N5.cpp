@@ -53,8 +53,8 @@ int main() {
   num_comps = 0;
   quicksort(arr, 0, N - 1);
 
-  expected_value("num_comps", num_comps);
   mark_state_winning();
 
+  expected_value("num_comps", num_comps);
   return 0;
 }

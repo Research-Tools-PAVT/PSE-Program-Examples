@@ -18,6 +18,7 @@
                 "(Sle (ReadLSB w32 0 car_door_pse) 3)",
                 "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 0,
             "trueQuery": [
@@ -52,6 +53,7 @@
                 "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
                 "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 10,
             "trueQuery": [
@@ -85,6 +87,7 @@
                 "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))",
                 "(Eq false (Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 11,
             "trueQuery": [
@@ -101,84 +104,96 @@
             ]
         },
         "12": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 9,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 12,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "13": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 9,
             "exp_val": [
                 "ret",
                 "0"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 13,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "14": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 11,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 14,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "15": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 11,
             "exp_val": [
                 "ret",
                 "0"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 15,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "16": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 6,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 16,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "17": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 6,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 17,
             "trueQuery": [],
@@ -203,6 +218,7 @@
                 "(Eq 1 (ReadLSB w32 0 choice_pse))",
                 "(Eq false (Eq 3 (ReadLSB w32 0 car_door_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 18,
             "trueQuery": [
@@ -214,14 +230,16 @@
             ]
         },
         "19": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 8,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 19,
             "trueQuery": [],
@@ -247,6 +265,7 @@
                 "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))",
                 "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 2,
             "trueQuery": [
@@ -280,6 +299,7 @@
                 "(Eq 2 (ReadLSB w32 0 choice_pse))",
                 "(Eq false (Eq 3 (ReadLSB w32 0 car_door_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 20,
             "trueQuery": [
@@ -312,6 +332,7 @@
                 "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))",
                 "(Eq false (Eq 2 (ReadLSB w32 0 car_door_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 21,
             "trueQuery": [
@@ -326,84 +347,96 @@
             ]
         },
         "22": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 21,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 22,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "23": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 21,
             "exp_val": [
                 "ret",
                 "0"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 23,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "24": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 18,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 24,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "25": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 18,
             "exp_val": [
                 "ret",
                 "0"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 25,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "26": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 20,
             "exp_val": [
                 "ret",
                 "1"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 26,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "27": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 20,
             "exp_val": [
                 "ret",
                 "0"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 27,
             "trueQuery": [],
@@ -428,6 +461,7 @@
                 "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))",
                 "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 3,
             "trueQuery": [
@@ -463,6 +497,7 @@
                 "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))",
                 "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 4,
             "trueQuery": [
@@ -498,6 +533,7 @@
                 "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))))",
                 "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 5,
             "trueQuery": [
@@ -531,6 +567,7 @@
                 "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
                 "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 6,
             "trueQuery": [
@@ -542,14 +579,16 @@
             ]
         },
         "7": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 5,
             "exp_val": [
                 "ret",
                 "0"
             ],
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 7,
             "trueQuery": [],
@@ -575,6 +614,7 @@
                 "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
                 "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 8,
             "trueQuery": [
@@ -609,6 +649,7 @@
                 "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))",
                 "(Eq false (Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 9,
             "trueQuery": [

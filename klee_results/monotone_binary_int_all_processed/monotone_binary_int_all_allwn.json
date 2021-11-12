@@ -6,8 +6,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -16,8 +16,8 @@
             "(Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1))",
             "(Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -27,8 +27,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -38,8 +38,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -49,8 +49,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -60,8 +60,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -72,8 +72,8 @@
             "(Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -84,8 +84,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -97,8 +97,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -109,8 +109,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -122,8 +122,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -134,8 +134,8 @@
             "(Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -144,8 +144,8 @@
             "(Eq false (Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1)))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     },
     {
         "Path": [
@@ -154,7 +154,7 @@
             "(Slt (ReadLSB w32 0 f2) (ReadLSB w32 0 f1))",
             "(Eq false (Slt (ReadLSB w32 0 f1) (ReadLSB w32 0 f0)))"
         ],
-        "Var Name": "",
-        "Var Value": ""
+        "Var Name": "reject",
+        "Var Value": "0"
     }
 ]

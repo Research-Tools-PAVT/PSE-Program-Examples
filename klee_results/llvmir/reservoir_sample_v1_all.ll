@@ -910,17 +910,17 @@ define i32 @main() #4 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
 
 126:                                              ; preds = %109
   %127 = load i32, i32* %4, align 4, !dbg !1748
-  call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.7, i64 0, i64 0), i32 %127), !dbg !1749
-  %128 = load i32, i32* %4, align 4, !dbg !1750
-  %129 = icmp eq i32 %128, 1, !dbg !1752
-  br i1 %129, label %130, label %131, !dbg !1753
+  %128 = icmp eq i32 %127, 1, !dbg !1750
+  br i1 %128, label %129, label %130, !dbg !1751
 
-130:                                              ; preds = %126
-  call void @mark_state_winning(), !dbg !1754
-  call void @klee_dump_kquery_state(), !dbg !1756
-  br label %131, !dbg !1757
+129:                                              ; preds = %126
+  call void @mark_state_winning(), !dbg !1752
+  call void @klee_dump_kquery_state(), !dbg !1754
+  br label %130, !dbg !1755
 
-131:                                              ; preds = %130, %126
+130:                                              ; preds = %129, %126
+  %131 = load i32, i32* %4, align 4, !dbg !1756
+  call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.7, i64 0, i64 0), i32 %131), !dbg !1757
   store i32 0, i32* %1, align 4, !dbg !1758
   %132 = load i8*, i8** %5, align 8, !dbg !1759
   call void @llvm.stackrestore(i8* %132), !dbg !1759
@@ -940,9 +940,9 @@ declare i8* @llvm.stacksave() #5
 
 declare void @klee_assume(i64) #3
 
-declare void @expected_value(i8*, ...) #3
-
 declare void @mark_state_winning() #3
+
+declare void @expected_value(i8*, ...) #3
 
 ; Function Attrs: nounwind
 declare void @llvm.stackrestore(i8*) #5
@@ -3285,7 +3285,7 @@ attributes #10 = { noreturn nounwind }
 !1653 = !DILocation(line: 43, column: 3, scope: !1630)
 !1654 = distinct !{!1654, !1633, !1655}
 !1655 = !DILocation(line: 48, column: 3, scope: !1626)
-!1656 = !DILocation(line: 81, column: 1, scope: !1635)
+!1656 = !DILocation(line: 80, column: 1, scope: !1635)
 !1657 = !DILocalVariable(name: "i", scope: !1658, file: !12, line: 51, type: !86)
 !1658 = distinct !DILexicalBlock(scope: !1592, file: !12, line: 51, column: 3)
 !1659 = !DILocation(line: 51, column: 13, scope: !1658)
@@ -3377,18 +3377,18 @@ attributes #10 = { noreturn nounwind }
 !1745 = !DILocation(line: 66, column: 3, scope: !1729)
 !1746 = distinct !{!1746, !1732, !1747}
 !1747 = !DILocation(line: 70, column: 3, scope: !1725)
-!1748 = !DILocation(line: 73, column: 25, scope: !1592)
-!1749 = !DILocation(line: 73, column: 3, scope: !1592)
-!1750 = !DILocation(line: 75, column: 7, scope: !1751)
-!1751 = distinct !DILexicalBlock(scope: !1592, file: !12, line: 75, column: 7)
-!1752 = !DILocation(line: 75, column: 11, scope: !1751)
-!1753 = !DILocation(line: 75, column: 7, scope: !1592)
-!1754 = !DILocation(line: 76, column: 5, scope: !1755)
-!1755 = distinct !DILexicalBlock(scope: !1751, file: !12, line: 75, column: 17)
-!1756 = !DILocation(line: 77, column: 5, scope: !1755)
-!1757 = !DILocation(line: 78, column: 3, scope: !1755)
-!1758 = !DILocation(line: 80, column: 3, scope: !1592)
-!1759 = !DILocation(line: 81, column: 1, scope: !1592)
+!1748 = !DILocation(line: 72, column: 7, scope: !1749)
+!1749 = distinct !DILexicalBlock(scope: !1592, file: !12, line: 72, column: 7)
+!1750 = !DILocation(line: 72, column: 11, scope: !1749)
+!1751 = !DILocation(line: 72, column: 7, scope: !1592)
+!1752 = !DILocation(line: 73, column: 5, scope: !1753)
+!1753 = distinct !DILexicalBlock(scope: !1749, file: !12, line: 72, column: 17)
+!1754 = !DILocation(line: 74, column: 5, scope: !1753)
+!1755 = !DILocation(line: 75, column: 3, scope: !1753)
+!1756 = !DILocation(line: 78, column: 25, scope: !1592)
+!1757 = !DILocation(line: 78, column: 3, scope: !1592)
+!1758 = !DILocation(line: 79, column: 3, scope: !1592)
+!1759 = !DILocation(line: 80, column: 1, scope: !1592)
 !1760 = distinct !DISubprogram(name: "__to_chars_len<unsigned int>", linkageName: "_ZNSt8__detail14__to_chars_lenIjEEjT_i", scope: !4, file: !3, line: 47, type: !1761, scopeLine: 48, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !11, templateParams: !1275, retainedNodes: !1274)
 !1761 = !DISubroutineType(types: !1762)
 !1762 = !{!10, !10, !86}

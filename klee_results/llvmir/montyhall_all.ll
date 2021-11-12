@@ -698,22 +698,22 @@ define i32 @main() #4 !dbg !1519 {
   %15 = zext i1 %14 to i32, !dbg !1536
   store i32 %15, i32* %4, align 4, !dbg !1537
   %16 = load i32, i32* %4, align 4, !dbg !1538
-  call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0), i32 %16), !dbg !1539
-  %17 = load i32, i32* %4, align 4, !dbg !1540
-  %18 = icmp eq i32 %17, 1, !dbg !1542
-  br i1 %18, label %19, label %20, !dbg !1543
+  %17 = icmp eq i32 %16, 1, !dbg !1540
+  br i1 %17, label %18, label %19, !dbg !1541
 
-19:                                               ; preds = %0
-  call void @mark_state_winning(), !dbg !1544
-  br label %20, !dbg !1546
+18:                                               ; preds = %0
+  call void @mark_state_winning(), !dbg !1542
+  br label %19, !dbg !1544
 
-20:                                               ; preds = %19, %0
+19:                                               ; preds = %18, %0
+  %20 = load i32, i32* %4, align 4, !dbg !1545
+  call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str.8, i64 0, i64 0), i32 %20), !dbg !1546
   ret i32 0, !dbg !1547
 }
 
-declare void @expected_value(i8*, ...) #3
-
 declare void @mark_state_winning() #3
+
+declare void @expected_value(i8*, ...) #3
 
 ; Function Attrs: noinline nounwind uwtable
 define linkonce_odr i32 @_ZNSt8__detail14__to_chars_lenIjEEjT_i(i32 %0, i32 %1) #5 comdat !dbg !1548 {
@@ -2923,16 +2923,16 @@ attributes #10 = { noreturn nounwind }
 !1535 = !DILocation(line: 77, column: 32, scope: !1519)
 !1536 = !DILocation(line: 77, column: 9, scope: !1519)
 !1537 = !DILocation(line: 77, column: 7, scope: !1519)
-!1538 = !DILocation(line: 79, column: 25, scope: !1519)
-!1539 = !DILocation(line: 79, column: 3, scope: !1519)
-!1540 = !DILocation(line: 81, column: 7, scope: !1541)
-!1541 = distinct !DILexicalBlock(scope: !1519, file: !12, line: 81, column: 7)
-!1542 = !DILocation(line: 81, column: 11, scope: !1541)
-!1543 = !DILocation(line: 81, column: 7, scope: !1519)
-!1544 = !DILocation(line: 82, column: 5, scope: !1545)
-!1545 = distinct !DILexicalBlock(scope: !1541, file: !12, line: 81, column: 17)
-!1546 = !DILocation(line: 83, column: 3, scope: !1545)
-!1547 = !DILocation(line: 85, column: 3, scope: !1519)
+!1538 = !DILocation(line: 79, column: 7, scope: !1539)
+!1539 = distinct !DILexicalBlock(scope: !1519, file: !12, line: 79, column: 7)
+!1540 = !DILocation(line: 79, column: 11, scope: !1539)
+!1541 = !DILocation(line: 79, column: 7, scope: !1519)
+!1542 = !DILocation(line: 80, column: 5, scope: !1543)
+!1543 = distinct !DILexicalBlock(scope: !1539, file: !12, line: 79, column: 17)
+!1544 = !DILocation(line: 81, column: 3, scope: !1543)
+!1545 = !DILocation(line: 83, column: 25, scope: !1519)
+!1546 = !DILocation(line: 83, column: 3, scope: !1519)
+!1547 = !DILocation(line: 84, column: 3, scope: !1519)
 !1548 = distinct !DISubprogram(name: "__to_chars_len<unsigned int>", linkageName: "_ZNSt8__detail14__to_chars_lenIjEEjT_i", scope: !4, file: !3, line: 47, type: !1549, scopeLine: 48, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !11, templateParams: !1241, retainedNodes: !1240)
 !1549 = !DISubroutineType(types: !1550)
 !1550 = !{!10, !10, !86}

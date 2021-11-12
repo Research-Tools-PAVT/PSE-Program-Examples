@@ -1,19 +1,19 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/bloomfilter_all.cpp -o klee_results/llvmir/bloomfilter_all.ll"
-	User time (seconds): 0.50
+	User time (seconds): 0.48
 	System time (seconds): 0.02
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.53
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.50
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 100184
+	Maximum resident set size (kbytes): 100404
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 12858
+	Minor (reclaiming a frame) page faults: 12915
 	Voluntary context switches: 1
-	Involuntary context switches: 173
+	Involuntary context switches: 56
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 1800
@@ -24,23 +24,23 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act bloomfilter_all --disable-inlining --emit-all-errors --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries bloomfilter_all.bc"
-	User time (seconds): 2.62
-	System time (seconds): 0.06
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.74
+	User time (seconds): 2.57
+	System time (seconds): 0.03
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.60
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 99596
+	Maximum resident set size (kbytes): 99020
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 9
-	Minor (reclaiming a frame) page faults: 13636
-	Voluntary context switches: 2
-	Involuntary context switches: 1135
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 13635
+	Voluntary context switches: 1
+	Involuntary context switches: 87
 	Swaps: 0
-	File system inputs: 64
-	File system outputs: 5344
+	File system inputs: 0
+	File system outputs: 5384
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -48,47 +48,47 @@ KLEE Symbolic Execution :
 	Exit status: 0
 Path Processing : 
 	Command being timed: "python3 postprocess/reader.py bloomfilter_all_summary.json bloomfilter_all"
-	User time (seconds): 4.91
-	System time (seconds): 0.04
+	User time (seconds): 4.96
+	System time (seconds): 0.03
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.96
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.00
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 18248
+	Maximum resident set size (kbytes): 18220
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 8645
-	Voluntary context switches: 6
-	Involuntary context switches: 164
+	Minor (reclaiming a frame) page faults: 9107
+	Voluntary context switches: 7
+	Involuntary context switches: 182
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 7880
+	File system outputs: 7960
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on bloomfilter_all_processed : 
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/bloomfilter_all_processed -t 1 calculate-prob"
-	User time (seconds): 346.50
-	System time (seconds): 3.52
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/bloomfilter_all_processed -t 2 calculate-prob"
+	User time (seconds): 333.77
+	System time (seconds): 2.92
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:52.30
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:37.30
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 4647804
+	Maximum resident set size (kbytes): 4661304
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 1933811
-	Voluntary context switches: 68891
-	Involuntary context switches: 26869
+	Minor (reclaiming a frame) page faults: 1987399
+	Voluntary context switches: 65674
+	Involuntary context switches: 13713
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 32
+	File system outputs: 40
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0

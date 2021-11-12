@@ -76,11 +76,10 @@ int main() {
 
   ret = montyhall(door_switch, choice);
 
-  expected_value("ret", ret);
-
   if (ret == 1) {
     mark_state_winning();
   }
 
+  expected_value("ret", ret);
   return 0;
 }

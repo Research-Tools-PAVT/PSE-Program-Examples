@@ -913,15 +913,15 @@ define i32 @main() #5 !dbg !1673 {
   store i32 0, i32* @num_comps, align 4, !dbg !1701
   %17 = getelementptr inbounds [5 x i8], [5 x i8]* %2, i64 0, i64 0, !dbg !1702
   call void @_Z9quicksortPhii(i8* %17, i32 0, i32 4), !dbg !1703
-  %18 = load i32, i32* @num_comps, align 4, !dbg !1704
-  call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.5, i64 0, i64 0), i32 %18), !dbg !1705
-  call void @mark_state_winning(), !dbg !1706
+  call void @mark_state_winning(), !dbg !1704
+  %18 = load i32, i32* @num_comps, align 4, !dbg !1705
+  call void (i8*, ...) @expected_value(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.5, i64 0, i64 0), i32 %18), !dbg !1706
   ret i32 0, !dbg !1707
 }
 
-declare void @expected_value(i8*, ...) #3
-
 declare void @mark_state_winning() #3
+
+declare void @expected_value(i8*, ...) #3
 
 ; Function Attrs: noinline nounwind uwtable
 define linkonce_odr i32 @_ZNSt8__detail14__to_chars_lenIjEEjT_i(i32 %0, i32 %1) #4 comdat !dbg !1708 {
@@ -3321,9 +3321,9 @@ attributes #10 = { noreturn nounwind }
 !1701 = !DILocation(line: 53, column: 13, scope: !1673)
 !1702 = !DILocation(line: 54, column: 13, scope: !1673)
 !1703 = !DILocation(line: 54, column: 3, scope: !1673)
-!1704 = !DILocation(line: 56, column: 31, scope: !1673)
-!1705 = !DILocation(line: 56, column: 3, scope: !1673)
-!1706 = !DILocation(line: 57, column: 3, scope: !1673)
+!1704 = !DILocation(line: 56, column: 3, scope: !1673)
+!1705 = !DILocation(line: 58, column: 31, scope: !1673)
+!1706 = !DILocation(line: 58, column: 3, scope: !1673)
 !1707 = !DILocation(line: 59, column: 3, scope: !1673)
 !1708 = distinct !DISubprogram(name: "__to_chars_len<unsigned int>", linkageName: "_ZNSt8__detail14__to_chars_lenIjEEjT_i", scope: !87, file: !86, line: 47, type: !1709, scopeLine: 48, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !2, templateParams: !91, retainedNodes: !90)
 !1709 = !DISubroutineType(types: !1710)

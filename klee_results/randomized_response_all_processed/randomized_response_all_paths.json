@@ -4,7 +4,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "2679ad09-ce76-496e-a610-4071d4103607"
+                "uid": "51995d87-ca14-43a3-9cd7-5c984bc21227"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -23,10 +23,10 @@
             "treeNode": {
                 "nodeId": "2",
                 "emphemeralId": "2",
-                "uid": "759dc987-70d1-41fa-a69f-f31ce87e716d"
+                "uid": "ed07b0a8-a591-433e-88ac-9fc4455fdf8d"
             },
             "predicate": "(Eq 0 (ReadLSB w32 0 first_flip))",
-            "EmphemeralId": 2,
+            "ephemeralId": 2,
             "removed": false,
             "marked_success": true,
             "predicateId": "cond_true_1",
@@ -42,7 +42,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "2679ad09-ce76-496e-a610-4071d4103607"
+                "uid": "51995d87-ca14-43a3-9cd7-5c984bc21227"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -61,10 +61,10 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "c275c7a2-d617-4829-8181-0977610e1d3b"
+                "uid": "24b8e695-bb31-414e-ba2a-d1a28b6ff64f"
             },
             "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-            "EmphemeralId": 3,
+            "ephemeralId": 3,
             "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
@@ -93,10 +93,10 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "3de7f96f-8266-44a6-9221-55b072f538f0"
+                "uid": "c4e2435a-e279-4f1e-817a-370a35d7b57a"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 second_flip))",
-            "EmphemeralId": 4,
+            "ephemeralId": 4,
             "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
@@ -123,10 +123,10 @@
             "treeNode": {
                 "nodeId": "8",
                 "emphemeralId": "8",
-                "uid": "c370186e-daf1-4657-a6f4-229f04f1603d"
+                "uid": "2b12c42e-8a21-431b-b0dd-3670100ecb27"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 truth))",
-            "EmphemeralId": 8,
+            "ephemeralId": 8,
             "removed": false,
             "marked_success": true,
             "predicateId": "cond_true_3",
@@ -142,7 +142,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "2679ad09-ce76-496e-a610-4071d4103607"
+                "uid": "51995d87-ca14-43a3-9cd7-5c984bc21227"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -161,10 +161,10 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "c275c7a2-d617-4829-8181-0977610e1d3b"
+                "uid": "24b8e695-bb31-414e-ba2a-d1a28b6ff64f"
             },
             "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-            "EmphemeralId": 3,
+            "ephemeralId": 3,
             "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
@@ -193,10 +193,10 @@
             "treeNode": {
                 "nodeId": "4",
                 "emphemeralId": "4",
-                "uid": "3de7f96f-8266-44a6-9221-55b072f538f0"
+                "uid": "c4e2435a-e279-4f1e-817a-370a35d7b57a"
             },
             "predicate": "(Eq 1 (ReadLSB w32 0 second_flip))",
-            "EmphemeralId": 4,
+            "ephemeralId": 4,
             "removed": false,
             "predicateId": "cond_true_2",
             "variables": [
@@ -223,10 +223,10 @@
             "treeNode": {
                 "nodeId": "9",
                 "emphemeralId": "9",
-                "uid": "bd5d1225-f377-4ae6-b0bb-8d633ad6e50e"
+                "uid": "70956918-f2dd-4d12-8903-0c5893c0380b"
             },
             "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 truth)))",
-            "EmphemeralId": 9,
+            "ephemeralId": 9,
             "removed": false,
             "predicateId": "cond_false_3",
             "variables": [
@@ -241,7 +241,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "2679ad09-ce76-496e-a610-4071d4103607"
+                "uid": "51995d87-ca14-43a3-9cd7-5c984bc21227"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -260,10 +260,10 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "c275c7a2-d617-4829-8181-0977610e1d3b"
+                "uid": "24b8e695-bb31-414e-ba2a-d1a28b6ff64f"
             },
             "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-            "EmphemeralId": 3,
+            "ephemeralId": 3,
             "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
@@ -292,10 +292,10 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "447d9206-e1dc-4608-bb61-2f934f8a8a85"
+                "uid": "4ba07e89-03e1-4238-b6e9-56051b629c43"
             },
             "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
-            "EmphemeralId": 5,
+            "ephemeralId": 5,
             "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
@@ -326,10 +326,10 @@
             "treeNode": {
                 "nodeId": "6",
                 "emphemeralId": "6",
-                "uid": "e8e3b4a1-1644-419e-b4ad-e7c99ac702df"
+                "uid": "49ad0fd0-dffd-4e55-a8e4-33d185136dec"
             },
             "predicate": "(Eq 0 (ReadLSB w32 0 truth))",
-            "EmphemeralId": 6,
+            "ephemeralId": 6,
             "removed": false,
             "marked_success": true,
             "predicateId": "cond_true_4",
@@ -345,7 +345,7 @@
             "treeNode": {
                 "nodeId": "0",
                 "emphemeralId": "0",
-                "uid": "2679ad09-ce76-496e-a610-4071d4103607"
+                "uid": "51995d87-ca14-43a3-9cd7-5c984bc21227"
             },
             "nodeTrueQuery": [
                 "(Sle 0 (ReadLSB w32 0 truth))",
@@ -364,10 +364,10 @@
             "treeNode": {
                 "nodeId": "3",
                 "emphemeralId": "3",
-                "uid": "c275c7a2-d617-4829-8181-0977610e1d3b"
+                "uid": "24b8e695-bb31-414e-ba2a-d1a28b6ff64f"
             },
             "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
-            "EmphemeralId": 3,
+            "ephemeralId": 3,
             "removed": false,
             "predicateId": "cond_false_1",
             "variables": [
@@ -396,10 +396,10 @@
             "treeNode": {
                 "nodeId": "5",
                 "emphemeralId": "5",
-                "uid": "447d9206-e1dc-4608-bb61-2f934f8a8a85"
+                "uid": "4ba07e89-03e1-4238-b6e9-56051b629c43"
             },
             "predicate": "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
-            "EmphemeralId": 5,
+            "ephemeralId": 5,
             "removed": false,
             "predicateId": "cond_false_2",
             "variables": [
@@ -430,10 +430,10 @@
             "treeNode": {
                 "nodeId": "7",
                 "emphemeralId": "7",
-                "uid": "9cf3bc49-97c6-4038-bc63-32b4d112054d"
+                "uid": "08b584d8-c60a-44c6-ad93-24b0a3d0e810"
             },
             "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 truth)))",
-            "EmphemeralId": 7,
+            "ephemeralId": 7,
             "removed": false,
             "predicateId": "cond_false_4",
             "variables": [

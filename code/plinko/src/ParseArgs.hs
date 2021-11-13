@@ -15,6 +15,7 @@ data Benchmark = Montyhall
                | Monotone Double
                | Freivalds Int
                | CalcProb
+               | PrintProb
   deriving (Eq, Show)
 
 reservoirBench :: Parser Benchmark
@@ -55,7 +56,8 @@ parseArgs = Args
                 <> command "expected-value" (info (pure ExpectedValue) $ progDesc "calculate the expected value")
                 <> command "monotone-binary-search" (info monotoneBench $ progDesc "run the monotone binary serach benchmark")
                 <> command "freivalds" (info freivaldsBench $ progDesc "run the Freivalds' benchmark")
-                <> command "calculate-prob" (info (pure CalcProb) $ progDesc "calculate the raw probability (not guaranteed to be maximal or minimal)") )
+                <> command "calculate-prob" (info (pure CalcProb) $ progDesc "calculate the raw probability (not guaranteed to be maximal or minimal)")
+                <> command "print-prob" (info (pure PrintProb) $ progDesc "print the SMTLIBv2 string representing the probability sum"))
 
 runArgsParser :: IO Args
 runArgsParser = execParser opts

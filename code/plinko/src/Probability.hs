@@ -1,7 +1,7 @@
 module Probability where
 
-import qualified Data.Set as Set
-import qualified Data.Map as Map
+import qualified Data.HashSet as Set
+import qualified Data.HashMap.Lazy as Map
 import Data.List as List
 import Data.Maybe
 import Data.Generics.Uniplate.Data
@@ -108,9 +108,9 @@ distsToTotalWeight dists = product $ map (getDenom . dist) dists
 calcIMap :: DistMap -> [KExpr] -> [IndPartition]
 calcIMap dists = Set.toList . kernel (Set.map Set.singleton allPsvs)
   where allPsvs = Set.fromList $ Map.keys dists
-        kernel :: Set.Set IndPartition -> [KExpr] -> Set.Set IndPartition
+        kernel :: Set.HashSet IndPartition -> [KExpr] -> Set.HashSet IndPartition
         kernel curPart (k:ks') = let curPsvs = Set.intersection allPsvs $ Set.fromList [ v | VarC _ v <- universe k ]
-                                     newPart = Set.map (\p -> if not (p `Set.disjoint` curPsvs) then Set.union p curPsvs else p) curPart
+                                     newPart = Set.map (\p -> if not (disjoint p curPsvs) then Set.union p curPsvs else p) curPart
           in kernel newPart ks'
         kernel curPart [] = curPart
 

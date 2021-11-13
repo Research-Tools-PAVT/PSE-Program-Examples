@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 // Max 23 w/ 10 minute timeout
-#define N 4
+#define N 5
 size_t monotone_check(int *f) {
   int last = f[0];
   size_t count = 0;
@@ -64,6 +64,6 @@ int main() {
     klee_dump_kquery_state();
   }
 
-  expected_value("reject", reject);
+  // expected_value("reject", reject);
   return 0;
 }

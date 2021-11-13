@@ -7,9 +7,9 @@ import Syntax
 
 import Data.Char 
 import Data.Functor
-import qualified Data.Map as Map
+import qualified Data.HashMap.Lazy as Map
 import qualified Text.Parsec as TP
-import qualified Text.Parsec.ByteString.Lazy as LB
+import qualified Text.Parsec.ByteString as B
 import Data.Aeson
 import Data.Aeson.Key
 import qualified Data.Aeson.KeyMap as KM
@@ -175,7 +175,7 @@ parseKTypeFP = do
   spaces
   return $ FP $ read num
 
-parseKTypeDist :: LB.Parser KType
+parseKTypeDist :: B.Parser KType
 parseKTypeDist = do
   _ <- char 'w'
   num <- many1 digit
@@ -434,31 +434,31 @@ parseFOGt = parseBinaryNoTypeNeeded "FOGt" FOGt parseKExpr
 parseFOGe :: KParser KExpr
 parseFOGe = parseBinaryNoTypeNeeded "FOGe" FOGe parseKExpr
 
-parseDistDefs :: LB.Parser [DistDef]
+parseDistDefs :: B.Parser [DistDef]
 parseDistDefs = (endBy parseDistDef newline) <* eof
 
-parseDistDef :: LB.Parser DistDef
+parseDistDef :: B.Parser DistDef
 parseDistDef = DistDef <$> ident <*> (skipMany1 space *> sym "~" *> parseDist) <*> (spaces *> keyword "::" *> parseKTypeDist)
 
-parseArrType :: LB.Parser KType
+parseArrType :: B.Parser KType
 parseArrType = Arr <$> parseKTypeDist <*> (spaces *> keyword "->" *> parseKTypeDist)
 
-parseDist :: LB.Parser Dist
+parseDist :: B.Parser Dist
 parseDist =  parseUniformIntDist
          <|> parseBernoulliDist
 
-parseEitherIntString :: LB.Parser (Either Int String)
+parseEitherIntString :: B.Parser (Either Int String)
 parseEitherIntString = (Left <$> number <|> Right <$> ident) <* spaces
 
-parseEitherRationalString :: LB.Parser (Either Rational String)
+parseEitherRationalString :: B.Parser (Either Rational String)
 parseEitherRationalString = (Left <$> rational <|> Right <$> ident) <* spaces
 
-parseUniformIntDist :: LB.Parser Dist
+parseUniformIntDist :: B.Parser Dist
 parseUniformIntDist = between (sym "UniformInt" *> sym "(")
                               (spaces <* char ')')
                               (UniformInt <$> parseEitherIntString <*> (sym "," *> parseEitherIntString))
 
-parseBernoulliDist :: LB.Parser Dist
+parseBernoulliDist :: B.Parser Dist
 parseBernoulliDist = between (sym "Bernoulli" *> sym "(")
                              (spaces <* char ')')
                              (Bernoulli <$> parseEitherRationalString)

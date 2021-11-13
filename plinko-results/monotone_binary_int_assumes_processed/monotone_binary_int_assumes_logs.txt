@@ -205,37 +205,19 @@ Found Const Array. (kquery)
 
 Found Const Array.
 
-[1;36mPath 2 Winning[0m
-[1;36mPath 6 Winning[0m
-[1;36mPath 9 Winning[0m
-[1;36mPath 13 Winning[0m
-[1;36mPath 17 Winning[0m
-[1;36mPath 19 Winning[0m
-[1;36mPath 23 Winning[0m
-[1;36mPath 30 Winning[0m
-[1;36mPath 31 Winning[0m
-[1;36mPath 32 Winning[0m
 [1;36mPath 33 Winning[0m
-[1;36mPath 34 Winning[0m
-[1;36mPath 35 Winning[0m
 [1;36mPath 36 Winning[0m
+[1;36mPath 37 Winning[0m
+[1;36mPath 38 Winning[0m
 [1;36mPath 39 Winning[0m
-[1;36mPath 40 Winning[0m
-[1;36mPath 41 Winning[0m
+[1;36mPath 42 Winning[0m
 [1;36mPath 43 Winning[0m
+[1;36mPath 44 Winning[0m
 [1;36mPath 46 Winning[0m
-[1;36mPath 47 Winning[0m
-[1;36mPath 50 Winning[0m
-[1;36mPath 53 Winning[0m
-[1;36mPath 56 Winning[0m
-[1;36mPath 62 Winning[0m
-[1;36mPath 63 Winning[0m
-[1;36mPath 66 Winning[0m
-[1;36mPath 67 Winning[0m
-[1;36mPath 68 Winning[0m
-[1;36mPath 74 Winning[0m
+[1;36mPath 49 Winning[0m
+[1;36mPath 60 Winning[0m
+[1;36mPath 72 Winning[0m
 [1;36mPath 75 Winning[0m
 [1;36mPath 76 Winning[0m
-[1;36mPath 78 Winning[0m
-Paths Processed : 80
+Paths Processed : 32
 Num PSVs: 1

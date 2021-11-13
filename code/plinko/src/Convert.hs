@@ -6,9 +6,9 @@ import Syntax
 import Control.Monad ( foldM, (>=>) )
 import Z3.Monad
 --import Data.Either
-import qualified Data.Map as Map
+import qualified Data.HashMap.Lazy as Map
 import qualified Data.Binary as Bin
-import qualified Data.ByteString.Lazy as BS
+import qualified Data.ByteString.Lazy as B
 import GHC.Stack
 import Debug.Trace
 
@@ -21,25 +21,25 @@ mergePathsWithProbs probs (Just expect) pathAssumes = do
 
   pathAssumesASTs <- pathAssumes
   _0 <- mkRealNum (0 :: Double)
-  (mapM (\(cond,val) -> mkIte cond val _0) $ zip pathAssumesASTs eachExpect) >>= mkAdd
+  mapM (\(cond,val) -> mkIte cond val _0) (zip pathAssumesASTs eachExpect) >>= mkAdd
 mergePathsWithProbs probs Nothing pathAssumes = do
   probsAsASTs <- probs
   pathAssumesASTs <- pathAssumes
   _0 <- mkRealNum (0 :: Double)
-  (mapM (\(cond,prob) -> mkIte cond prob _0) $ zip pathAssumesASTs probsAsASTs) >>= mkAdd
+  mapM (\(cond,prob) -> mkIte cond prob _0) (zip pathAssumesASTs probsAsASTs) >>= mkAdd
 
 valsToZ3 :: (KType, [Integer]) -> Z3 [AST]
 valsToZ3 (BitVec n, xs) = mapM (mkBvNum n) xs
-valsToZ3 (Boolean, _) = error $ "Type Error: Cannot convert Integers into boolean values"
+valsToZ3 (Boolean, _) = error "Type Error: Cannot convert Integers into boolean values"
 valsToZ3 (Arr (BitVec domSize) (BitVec rangeSize), xs) = mapM intToZ3Arr xs
   where intToZ3Arr :: Integer -> Z3 AST
         intToZ3Arr i = do
-          iAsBytes <- mapM (mkBvNum rangeSize) (dropWhile ((==) 0) $ BS.unpack $ Bin.encode i)
+          iAsBytes <- mapM (mkBvNum rangeSize) (dropWhile (0 ==) $ B.unpack $ Bin.encode i)
           inds <- mapM (mkBvNum domSize) (reverse [ 8*x | x <- [0..length iAsBytes - 1]])
           domSort <- mkBvSort domSize
           _0 <- mkBvNum rangeSize (0 :: Integer)
           constArr <- mkConstArray domSort _0
-          simplify =<< (foldM (\a -> \(i',v) -> mkStore a i' v) constArr (zip inds iAsBytes))
+          foldM (\a -> uncurry (mkStore a)) constArr (zip inds iAsBytes)
 valsToZ3 (t,_) = error $ "Type Error: Unsupported PSV type: " ++ show t
                            
 varToSort :: DistDef -> Z3 AST
@@ -55,7 +55,7 @@ varToSort d = case ktype d of
   t -> error $ "Type Error: Unsupported P.S.V. type: " ++ show t
 
 convertToZ3 :: MonadZ3 z3 => DistMap -> KExpr -> z3 AST
-convertToZ3 dists k = convertToZ3' dists Boolean k
+convertToZ3 dists = convertToZ3' dists Boolean 
 
 binaryConvert :: MonadZ3 z3 => DistMap -> KType -> (AST -> AST -> z3 AST) -> KExpr -> KExpr -> z3 AST
 binaryConvert dists t z3fun e1 e2 = do
@@ -71,7 +71,7 @@ fpBinaryConvert dists t z3fun e1 e2 = do
   z3fun rm z1 z2
 
 convertToZ3'' :: MonadZ3 z3 => DistMap -> KType -> KExpr -> z3 AST
-convertToZ3'' dists m ke = convertToZ3' dists m ke
+convertToZ3'' = convertToZ3'
 
 convertToZ3' :: MonadZ3 z3 => DistMap -> KType -> KExpr -> z3 AST
 convertToZ3' dists t1 (VarC t2 s) 
@@ -185,7 +185,7 @@ convertToZ3' dists t1@(BitVec n1) e@(AShr t2@(BitVec n2) e1 e2)
   | n1 == n2 = binaryConvert dists t2 mkBvashr e1 e2
   | otherwise = typeError t1 t2 e
 convertToZ3' dists t (Eq e1 e2) = convertComparison dists t mkEq e1 e2
-convertToZ3' dists t (Ne e1 e2) = convertComparison dists t (\a1 -> \a2 -> mkEq a1 a2 >>= mkNot) e1 e2
+convertToZ3' dists t (Ne e1 e2) = convertComparison dists t (\a1 -> mkEq a1 >=> mkNot) e1 e2
 convertToZ3' dists t (Ult e1 e2) = convertComparison dists t mkBvult e1 e2
 convertToZ3' dists t (Ule e1 e2) = convertComparison dists t mkBvule e1 e2
 convertToZ3' dists t (Ugt e1 e2) = convertComparison dists t mkBvugt e1 e2
@@ -248,7 +248,7 @@ convertToZ3' dists t1@(BitVec n1) e@(ReadLSB t2@(BitVec n2) ind arr)
 --      mulOffset <- mkBvNum 32 8
 --      ind' <- (mkBvmul mulOffset) =<< (convertToZ3'' dists (BitVec 32) ind)
       ind' <- convertToZ3'' dists (BitVec 32) ind
-      inds <- mapM (\n -> mkBvNum 32 n >>= mkBvadd ind') [1..(n2 `div` 8) - 1]
+      inds <- mapM (mkBvNum 32 >=> mkBvadd ind') [1..(n2 `div` 8) - 1]
       vals <- mapM (mkSelect arr') (ind':inds)
       --str <- getSort (head vals) >>= sortToString
       foldM (flip mkConcat) (head vals) (tail vals)
@@ -258,7 +258,7 @@ convertToZ3' dists Unknown (ReadLSB (BitVec t) ind arr) = do
 --  mulOffset <- mkBvNum 32 8
 --  ind' <- (mkBvmul mulOffset) =<< (convertToZ3'' dists (BitVec 32) ind)
   ind' <- convertToZ3'' dists (BitVec 32) ind
-  inds <- mapM (\n -> mkBvNum 32 n >>= mkBvadd ind') [1..(t `div` 8) - 1]
+  inds <- mapM (mkBvNum 32 >=> mkBvadd ind') [1..(t `div` 8) - 1]
   vals <- mapM (mkSelect arr') (ind':inds)
   foldM (flip mkConcat) (head vals) (tail vals)
 convertToZ3' dists (FP s) (ReadLSB (BitVec t) ind arr) = do
@@ -579,7 +579,7 @@ getKType (FOLe _ _) = Boolean
 getKType (FOGt _ _) = Boolean
 getKType (FOGe _ _) = Boolean
 
-getVarTypes :: [KExpr] -> Map.Map String KType
+getVarTypes :: [KExpr] -> Map.HashMap String KType
 getVarTypes = undefined
 
 convertBitsizeToFP :: MonadZ3 z3 => Int -> z3 Sort

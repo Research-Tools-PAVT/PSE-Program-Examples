@@ -5,8 +5,9 @@ import Convert
 import Syntax
 
 import Z3.Monad
+import Debug.Trace
 
-import qualified Data.Map as Map
+import qualified Data.HashMap.Lazy as Map
 import qualified Data.Traversable as T
 
 --------------------------------------
@@ -115,8 +116,6 @@ randomizedResponseFairEqual probs assumes = do
   case mbModel of
        Just model -> showModel model
        Nothing    -> return "Couldn't construct model"
-
-
 
 bloomFilter :: Z3 AST -> Z3 AST -> Z3 String
 bloomFilter probs assumes = do
@@ -232,7 +231,7 @@ montyhall threads probs assumes = do
 
   sum_probs <- mkFreshRealVar "sum_probs"
   rawProbs <- probs
-  _third <- mkRealNum (1 / 3::Double)
+  _third <- mkRealNum (35 / 100::Double)
 
   body <- mkAnd =<< T.sequence
     [
@@ -288,21 +287,44 @@ expectedValue threads probs assumes = do
   case mbModel of
        Just model -> do curMax <- modelEval model sum_probs True
                         case curMax of
-                          Just curMaxAST -> z3Maximize assumes curMaxAST rawProbs >>= astToString
+                          Just curMaxAST -> z3Maximize assumes curMaxAST sum_probs model
                           Nothing -> return "Error in evaluating model"
        Nothing    -> return "Couldn't construct model"
-  where z3Maximize :: Z3 AST -> AST -> AST -> Z3 AST
-        z3Maximize assumes curMax toMaximize = do
+  where z3Maximize :: Z3 AST -> AST -> AST -> Model -> Z3 String
+        z3Maximize assumes curMax toMaximize oldMod = do
           newConstr <- mkGt toMaximize curMax
           assert newConstr
-          assumes >>= assert
+--          assumes >>= assert
           (_res, newModel) <- solverCheckAndGetModel
           case newModel of
             Just mod -> do newMod <- modelEval mod toMaximize True
                            case newMod of
-                             Just newMax -> z3Maximize assumes newMax toMaximize
-                             Nothing -> return curMax
-            Nothing -> return curMax
+                             Just newMax -> z3Maximize assumes newMax toMaximize mod
+                             Nothing -> showModel oldMod
+            Nothing -> showModel oldMod
+
+-- expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 String
+-- expectedValue threads probs assumes = do
+--   params <- mkParams
+--   threadsName <- mkStringSymbol "threads"
+--   paramsSetUInt params threadsName threads
+--   solverSetParams params
+
+--   sum_probs <- mkFreshRealVar "sum_probs"
+--   --upper_bound <- mkRealNum (2 * 5 * log 5)
+
+--   rawProbs <- probs
+--   body <- mkAnd =<< T.sequence
+--     [ mkEq sum_probs rawProbs,
+--       assumes
+-- --      mkGt sum_probs upper_bound
+--     ]
+
+--   assert body
+--   (_res, mbModel) <- solverCheckAndGetModel
+--   case mbModel of
+--     Just model -> showModel model
+--     Nothing    -> return "Couldn't construct model"
 
 monotone :: Word -> Z3 AST -> Z3 AST -> Double -> Z3 String
 monotone threads probs assumes n = do
@@ -377,6 +399,28 @@ calcProb threads probs assumes = do
        Just model -> showModel model
        Nothing    -> return "Couldn't construct model"
 
+check1 :: Word -> Z3 AST -> Z3 AST -> Z3 String
+check1 threads probs assumes = do
+  params <- mkParams
+  threadsName <- mkStringSymbol "threads"
+  paramsSetUInt params threadsName threads
+  solverSetParams params
+
+  sum_probs <- mkFreshRealVar "sum_probs"
+  rawProbs <- probs
+  _1 <- mkRealNum (1.0 :: Double)
+  body <- mkAnd =<< T.sequence
+    [
+      mkEq sum_probs rawProbs,
+      assumes,
+      mkNot =<< mkEq sum_probs _1
+    ]
+  
+  assert body
+  (_res, mbModel) <- solverCheckAndGetModel
+  case mbModel of
+       Just model -> showModel model
+       Nothing    -> return "Couldn't construct model"  
 
 askZ3 :: Word -> Benchmark -> Z3 AST -> Z3 AST -> IO String
 askZ3 threads benchmark probs assumes = evalZ3 $ case benchmark of
@@ -386,5 +430,4 @@ askZ3 threads benchmark probs assumes = evalZ3 $ case benchmark of
   Monotone n -> monotone threads probs assumes n
   Freivalds k -> freivalds threads probs assumes k
   CalcProb -> calcProb threads probs assumes
-    
-  
+  PrintProb -> astToString =<< probs

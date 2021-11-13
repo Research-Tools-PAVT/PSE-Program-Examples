@@ -1,72 +1,162 @@
 [
     {
         "Path": 2,
-        "Var Name": "reject",
-        "Var Value": "0"
-    },
-    {
-        "Path": 4,
-        "Var Name": "reject",
-        "Var Value": "0"
-    },
-    {
-        "Path": 5,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
     },
     {
         "Path": 6,
-        "Var Name": "reject",
-        "Var Value": "0"
-    },
-    {
-        "Path": 8,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
     },
     {
         "Path": 9,
-        "Var Name": "reject",
-        "Var Value": "0"
-    },
-    {
-        "Path": 10,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
     },
     {
         "Path": 13,
-        "Var Name": "reject",
-        "Var Value": "0"
-    },
-    {
-        "Path": 15,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
     },
     {
         "Path": 17,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
     },
     {
-        "Path": 22,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Path": 19,
+        "Var Name": "",
+        "Var Value": ""
     },
     {
-        "Path": 24,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Path": 23,
+        "Var Name": "",
+        "Var Value": ""
     },
     {
         "Path": 30,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 31,
+        "Var Name": "",
+        "Var Value": ""
     },
     {
         "Path": 32,
-        "Var Name": "reject",
-        "Var Value": "0"
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 33,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 34,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 35,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 36,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 39,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 40,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 41,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 43,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 46,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 47,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 50,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 53,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 56,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 62,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 63,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 66,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 67,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 68,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 74,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 75,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 76,
+        "Var Name": "",
+        "Var Value": ""
+    },
+    {
+        "Path": 78,
+        "Var Name": "",
+        "Var Value": ""
     }
 ]

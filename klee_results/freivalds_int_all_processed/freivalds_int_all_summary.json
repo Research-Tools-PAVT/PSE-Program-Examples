@@ -96,10 +96,6 @@
             "Fork": "True",
             "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "ParentId": 3,
-            "exp_val": [
-                "ret",
-                "0"
-            ],
             "falseQuery": [],
             "hasChildren": "False",
             "isLeaf": "True",
@@ -112,10 +108,6 @@
             "Fork": "True",
             "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "ParentId": 3,
-            "exp_val": [
-                "ret",
-                "1"
-            ],
             "falseQuery": [],
             "hasChildren": "False",
             "isLeaf": "True",
@@ -128,10 +120,6 @@
             "Fork": "True",
             "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "ParentId": 2,
-            "exp_val": [
-                "ret",
-                "0"
-            ],
             "falseQuery": [],
             "hasChildren": "False",
             "isLeaf": "True",
@@ -144,34 +132,12 @@
             "Fork": "True",
             "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "ParentId": 2,
-            "exp_val": [
-                "ret",
-                "0"
-            ],
             "falseQuery": [],
             "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 7,
             "trueQuery": [],
             "wasQueued": "True"
-        },
-        "exp_val_map": {
-            "4": [
-                "ret",
-                "0"
-            ],
-            "5": [
-                "ret",
-                "1"
-            ],
-            "6": [
-                "ret",
-                "0"
-            ],
-            "7": [
-                "ret",
-                "0"
-            ]
         },
         "win_states": {
             "5": {

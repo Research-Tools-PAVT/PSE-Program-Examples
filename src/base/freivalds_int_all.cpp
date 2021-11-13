@@ -116,6 +116,6 @@ int main(int argc, char **argv) {
     klee_dump_kquery_state();
   }
 
-  expected_value("ret", ret);
+  // expected_value("ret", ret);
   return 0;
 }

@@ -3,22 +3,26 @@ module Util where
 import Syntax
 import Convert
 
-import qualified Data.Set as Set
-
 import Text.ParserCombinators.Parsec
 import Z3.Monad
 import Data.Generics.Uniplate.Data
 import Data.Maybe
 import Data.Either
 import Data.List
-
+import Data.Hashable
 --import Text.Parsec (ParseError)
 
 import Debug.Trace
 
-import qualified Data.Set as Set
-import qualified Data.Map.Strict as Map
+import qualified Data.HashSet as Set
+import qualified Data.HashMap.Lazy as Map
 import qualified Data.Traversable as T
+
+notMember :: (Eq k, Hashable k) => k -> Map.HashMap k a -> Bool
+notMember k m = not $ Map.member k m
+
+disjoint :: (Eq a, Hashable a) => Set.HashSet a -> Set.HashSet a -> Bool
+disjoint hs1 hs2 = Set.null $ Set.intersection hs1 hs2
 
 isSimple :: KExpr -> Bool
 isSimple (Eq (NumC _) (VarC _ _))  = True  
@@ -67,7 +71,7 @@ negateComparison (Eq (Sge e1 e2) (BoolC False)) = Slt e1 e2
 negateComparison e = e
 
 -- Assuming range of 8 bits
-removeReads :: Map.Map String KType -> KExpr -> KExpr
+removeReads :: Map.HashMap String KType -> KExpr -> KExpr
 removeReads m e = case e of
   (ReadLSB t (NumC n) (VarC _ v)) -> determineExtract v t n
   (ReadMSB t (NumC n) (VarC _ v)) -> determineExtract v t n
@@ -85,7 +89,7 @@ removeReads m e = case e of
 astToIOString :: Z3 AST -> IO String
 astToIOString ast = evalZ3 $ astToString =<< ast
 
-getVarVals :: Map.Map String KType -> DistMap -> [WinningPath] -> Maybe (Z3 [AST])
+getVarVals :: Map.HashMap String KType -> DistMap -> [WinningPath] -> Maybe (Z3 [AST])
 getVarVals foralls dists wps 
   | all (isJust . varVal) wps = Just $ mapM convVals (catMaybes $ map varVal wps)
   | otherwise = Nothing
@@ -99,14 +103,14 @@ expandAnd = nub . concatMap expand
         expand (And _ e1 e2) = [e1,e2]
         expand ke = [ke]
 
--- checkWinning :: [WinningPath] -> Set.Set (Set.Set KExpr)
+-- checkWinning :: [WinningPath] -> Set.HashSet (Set.HashSet KExpr)
 -- checkWinning = Set.fromList . map (Set.fromList . extractErrors)
 --   where extractErrors :: WinningPath -> [KExpr]
 --         extractErrors (WinningPath ws _ _) = case partitionEithers ws of
 --           ([], r) -> r
 --           (l, _) -> error $ "Error converting WinningPath into KExprs" ++ show l ++ show ws
 
--- filterWinning :: Set.Set (Set.Set KExpr) -> [Branch] -> Bool
+-- filterWinning :: Set.HashSet (Set.HashSet KExpr) -> [Branch] -> Bool
 -- filterWinning winning bs = case partitionEithers $ map predicate $ tail bs of
 --   ([], paths) -> Set.member (Set.fromList paths) winning
 --   (errors, _) -> error $ "Error: Parse errors found in the _paths.json file: " ++ show errors
@@ -127,14 +131,14 @@ getConcretizedVal v eqs = do
   assert rawEqs
   fmap snd $ withModel $ \m -> fromJust <$> evalInt m rawV
 
-collectForallSizes :: DistMap -> [[Branch]] -> Map.Map String KType
+collectForallSizes :: DistMap -> [[Branch]] -> Map.HashMap String KType
 collectForallSizes dm bs = let allExprs = concatMap (concatMap (\b -> rights $ (predicate b):(nodeTrueQuery b))) bs
                                allForallReads = concatMap (\e' -> [ extractVarAndType e | e <- universe e', isForallRead e]) allExprs
   in Map.fromListWith max allForallReads
   where isForallRead :: KExpr -> Bool
-        isForallRead (ReadLSB _ (NumC _) (VarC _ s)) = Map.notMember s dm
-        isForallRead (ReadMSB _ (NumC _) (VarC _ s)) = Map.notMember s dm
-        isForallRead (Read _ (NumC _) (VarC _ s)) = Map.notMember s dm
+        isForallRead (ReadLSB _ (NumC _) (VarC _ s)) = notMember s dm
+        isForallRead (ReadMSB _ (NumC _) (VarC _ s)) = notMember s dm
+        isForallRead (Read _ (NumC _) (VarC _ s)) = notMember s dm
         isForallRead _ = False
 
         -- Assuming range of 8 bits
@@ -153,12 +157,12 @@ collectPSVs origDists bs = let allPSVs = nub [ v | path <- bs, e <- path, VarC _
           Just d -> DistDef v (dist d) (ktype d)
           Nothing -> error ("Unknown prob. sym. var: " ++ v)
 
-collectAssumes :: Map.Map String KType -> DistMap -> [[Branch]] -> (Z3 AST, Z3 [AST])
+collectAssumes :: Map.HashMap String KType -> DistMap -> [[Branch]] -> (Z3 AST, Z3 [AST])
 collectAssumes foralls dists bss = let perPathAssumes = map (Set.filter removeIfPSV . collectPerPath) bss
                                        univAssumes = if null perPathAssumes then Set.empty else foldr1 Set.intersection perPathAssumes
                                        uniquePerPathAssumes = map (\xs -> if null xs then [BoolC True] else xs) $ map (Set.toList . flip Set.difference univAssumes) perPathAssumes  
   in (mapM (convertToZ3 dists) (Set.toList univAssumes) >>= mkAnd, sequence $ map (\xs -> mapM (convertToZ3 dists) xs >>= mkAnd) uniquePerPathAssumes)
-  where collectPerPath :: [Branch] -> Set.Set KExpr
+  where collectPerPath :: [Branch] -> Set.HashSet KExpr
         collectPerPath bs = let preds = case partitionEithers $ map predicate bs of
                                   ([], r) -> Set.fromList (map (transform $ removeReads foralls) r)
                                   (l, _)  -> error $ "Error: ParseErrors found in predicate, collectAssumes" ++ show l
@@ -185,7 +189,7 @@ partitionConjuncts distMap ips ks = map extractConjuncts ips
 --      then ([], Left ("Unsupported KExprs: " ++ unlines (map show lefts')))
 --      else let concrVars = collectConcretized rights'
 --           in (Map.elems concrVars, storeDists' rights' concrVars)
---   where collectConcretized :: [KExpr] -> Map.Map String KExpr 
+--   where collectConcretized :: [KExpr] -> Map.HashMap String KExpr 
 --         collectConcretized ((Eq (BoolC _) _):ks') = collectConcretized ks'
 --         collectConcretized ((Eq _ (BoolC _)):ks') = collectConcretized ks'
 --         collectConcretized (e@(Eq e1 e2):ks') = let varName = head ([ v | VarC v <- universe e1 ] ++ [ v | VarC v <- universe e2 ])
@@ -193,7 +197,7 @@ partitionConjuncts distMap ips ks = map extractConjuncts ips
 --         collectConcretized (_:ks') = collectConcretized ks'
 --         collectConcretized [] = Map.empty
           
--- storeDists' :: [KExpr] -> Map.Map String KExpr -> Either String (IO Dists)
+-- storeDists' :: [KExpr] -> Map.HashMap String KExpr -> Either String (IO Dists)
 -- storeDists' ((Sle lower' (ReadLSB _ _ (VarC v1))):ds) concrVars = case head ds of
 --   (Sle (ReadLSB _ _ (VarC v2)) upper') -> if v1 == v2 && Map.notMember v1 concrVars
 --     then let lowerVars = [ v | VarC v <- universe lower' ]
@@ -209,7 +213,7 @@ partitionConjuncts distMap ips ks = map extractConjuncts ips
 --          then storeDists' (tail ds) concrVars
 --          else Left $ show v1 ++ " does not match " ++ show v2
 --   e -> Left $ "Expecting (Sle) expression; received: " ++ show e ++ show (Sle lower' (ReadLSB 0 (NumC 0) (VarC v1)))
---   where evalBound :: [String] -> [String] -> KExpr -> Map.Map String KExpr -> IO (Either Int KExpr)
+--   where evalBound :: [String] -> [String] -> KExpr -> Map.HashMap String KExpr -> IO (Either Int KExpr)
 --         evalBound vars replVars ke concrVars'
 --           | null vars || null (vars \\ replVars) = do
 --               maybeNewVal <- evalZ3 (getConcretizedVal (convertToZ3 ke) (map (convertToZ3 . (Map.!) concrVars') replVars))

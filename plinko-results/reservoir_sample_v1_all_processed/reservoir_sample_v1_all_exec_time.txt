@@ -1,19 +1,19 @@
 Compilation : 
-	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/reservoir_sample_v1_all.cpp -o klee_results/llvmir/reservoir_sample_v1_all.ll"
-	User time (seconds): 0.41
-	System time (seconds): 0.05
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.47
+	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/base/reservoir_sample_v1_all.cpp -o klee_results/llvmir/reservoir_sample_v1_all.ll"
+	User time (seconds): 0.45
+	System time (seconds): 0.01
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.49
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96036
+	Maximum resident set size (kbytes): 96208
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11647
-	Voluntary context switches: 1
-	Involuntary context switches: 121
+	Minor (reclaiming a frame) page faults: 11684
+	Voluntary context switches: 2
+	Involuntary context switches: 15
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 552
@@ -24,23 +24,23 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act reservoir_sample_v1_all --disable-inlining --emit-all-errors --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries reservoir_sample_v1_all.bc"
-	User time (seconds): 59.35
-	System time (seconds): 0.13
-	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:59.66
+	User time (seconds): 65.46
+	System time (seconds): 0.09
+	Percent of CPU this job got: 81%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20.41
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96276
+	Maximum resident set size (kbytes): 96428
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 13
-	Minor (reclaiming a frame) page faults: 12440
-	Voluntary context switches: 6
-	Involuntary context switches: 3435
+	Major (requiring I/O) page faults: 12
+	Minor (reclaiming a frame) page faults: 12417
+	Voluntary context switches: 1
+	Involuntary context switches: 14406
 	Swaps: 0
-	File system inputs: 512
-	File system outputs: 8088
+	File system inputs: 0
+	File system outputs: 8368
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -48,20 +48,20 @@ KLEE Symbolic Execution :
 	Exit status: 0
 Path Processing : 
 	Command being timed: "python3 postprocess/reader.py reservoir_sample_v1_all_summary.json reservoir_sample_v1_all"
-	User time (seconds): 2.66
-	System time (seconds): 0.04
+	User time (seconds): 2.62
+	System time (seconds): 0.06
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.72
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.70
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 19204
+	Maximum resident set size (kbytes): 19292
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 16450
-	Voluntary context switches: 9
-	Involuntary context switches: 1242
+	Minor (reclaiming a frame) page faults: 16484
+	Voluntary context switches: 7
+	Involuntary context switches: 180
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 19792
@@ -71,23 +71,23 @@ Path Processing :
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on reservoir_sample_v1_all_processed : 
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/reservoir_sample_v1_all_processed -t 2 reservoir-sample -n 10 -k 4"
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/reservoir_sample_v1_all_processed -t 2 calculate-prob"
 	User time (seconds): 4.13
-	System time (seconds): 0.09
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.35
+	System time (seconds): 0.13
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.28
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 276692
+	Maximum resident set size (kbytes): 273416
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 2
-	Minor (reclaiming a frame) page faults: 86143
-	Voluntary context switches: 638
-	Involuntary context switches: 338
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 85373
+	Voluntary context switches: 626
+	Involuntary context switches: 526
 	Swaps: 0
-	File system inputs: 168
+	File system inputs: 0
 	File system outputs: 32
 	Socket messages sent: 0
 	Socket messages received: 0

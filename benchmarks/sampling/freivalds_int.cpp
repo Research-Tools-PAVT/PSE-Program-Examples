@@ -23,10 +23,10 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define BUCKET_SIZE 5
-#define CLASSES 5
+#define CLASSES 1
 #define FORALLS 10
 #define RUNS 1000
+#define BUCKET_SIZE 5
 
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
@@ -83,6 +83,8 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
+  std::freopen("../results/bloomfilter.txt", "w", stdout);
+
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
@@ -97,9 +99,9 @@ int main(int argc, char **argv) {
       int C[n * n];
 
       for (size_t i = 0; i < n * n; i++) {
-        A[i] = rand() % 150000;
-        B[i] = rand() % 150000;
-        C[i] = rand() % 150000;
+        A[i] = rand() % 3000;
+        B[i] = rand() % 3000;
+        C[i] = rand() % 3000;
       }
 
       int realC[n * n];

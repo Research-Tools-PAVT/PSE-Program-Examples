@@ -23,12 +23,14 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 5
+#define CLASSES 1
 #define FORALLS 10
 #define RUNS 1000
 #define BUCKET_SIZE 5
 
 int main() {
+  std::freopen("../results/randomized_response.txt", "w", stdout);
+
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
@@ -65,9 +67,9 @@ int main() {
 
         if (ret == truth) {
           // Win
-          std::cerr << "success" << std::endl;
+          std::cout << "success" << std::endl;
         } else {
-          std::cerr << "failure" << std::endl;
+          std::cout << "failure" << std::endl;
         }
       }
     }

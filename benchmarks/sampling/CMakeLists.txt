@@ -11,7 +11,7 @@ add_definitions(
     -D__STDC_CONSTANT_MACROS
 )
 
-set(CMAKE_CXX_FLAGS "-Wall -g -O3 -march=native" CACHE STRING "" FORCE)
+set(CMAKE_CXX_FLAGS "-Wall -Wshadow -Wundef -g3 -O3 -fsanitize=undefined -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=vla-bound -fsanitize=signed-integer-overflow -fsanitize=bounds -march=native -fsanitize=address -fsanitize=leak" CACHE STRING "" FORCE)
 
 add_executable (bloomfilter bloomfilter.cpp)
 add_executable (freivalds_int freivalds_int.cpp)

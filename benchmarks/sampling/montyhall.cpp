@@ -20,9 +20,9 @@
 #include <vector>
 unsigned int microseconds = 10000000;
 
-#define CLASSES 2
+#define CLASSES 1
 #define FORALLS 10
-#define RUNS 10000
+#define RUNS 1000
 #define BUCKET_SIZE 2
 #define SIZE 6
 
@@ -82,6 +82,8 @@ bool montyhall(bool door_switch, int choice) {
 }
 
 int main() {
+
+  std::freopen("../results/montyhall.txt", "w", stdout);
 
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
@@ -149,6 +151,6 @@ int main() {
     }
   }
   std::cout << std::endl;
-  std::cout << counters[0][0] << counters[1][0] << std::endl;
+  // std::cout << counters[0][0] << counters[1][0] << std::endl;
   return 0;
 }

@@ -23,9 +23,9 @@
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 4
-#define FORALLS 50
-#define RUNS 100000
+#define CLASSES 1
+#define FORALLS 10
+#define RUNS 1000
 #define BUCKET_SIZE 5
 #define N 5
 
@@ -72,7 +72,7 @@ void quicksort(int arr[], int p, int r) {
 
 int main() {
 
-  std::freopen("../quicksort_N5.txt", "w", stdout);
+  std::freopen("../results/quicksort_N5.txt", "w", stdout);
 
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,

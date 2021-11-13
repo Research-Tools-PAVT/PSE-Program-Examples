@@ -31,7 +31,7 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 5
+#define CLASSES 1
 #define FORALLS 10
 #define RUNS 1000
 #define BUCKET_SIZE 3
@@ -179,6 +179,8 @@ int bloom_reset(struct bloom *bloom) {
 const char *bloom_version() { return MAKESTRING(BLOOM_VERSION); }
 
 int main() {
+  std::freopen("../results/bloomfilter.txt", "w", stdout);
+
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
@@ -210,9 +212,9 @@ int main() {
         if (ret == 1) {
           // mark_state_winning();
           // klee_dump_kquery_state();
-          std::cerr << "success : " << ret << std::endl;
+          std::cout << "success : " << ret << std::endl;
         } else {
-          std::cerr << "failure : " << ret << std::endl;
+          std::cout << "failure : " << ret << std::endl;
         }
       }
     }

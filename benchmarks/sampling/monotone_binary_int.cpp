@@ -23,7 +23,7 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 5
+#define CLASSES 1
 #define FORALLS 10
 #define RUNS 1000
 #define BUCKET_SIZE 5
@@ -43,6 +43,8 @@ size_t monotone_check(int *f) {
 }
 
 int main() {
+  std::freopen("../results/monotone_binary_int.txt", "w", stdout);
+
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
@@ -87,9 +89,9 @@ int main() {
         if (!reject) {
           // mark_state_winning();
           // klee_dump_kquery_state();
-          std::cerr << "success : " << x << std::endl;
+          std::cout << "success : " << x << std::endl;
         } else {
-          std::cerr << "failure : " << x << std::endl;
+          std::cout << "failure : " << x << std::endl;
         }
       }
     }

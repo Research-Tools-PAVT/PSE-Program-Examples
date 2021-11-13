@@ -30,9 +30,9 @@ using json = nlohmann::json;
 #define MAX_RANGE 2147483646
 #endif
 
-#define CLASSES 5
+#define CLASSES 1
 #define FORALLS 10
-#define RUNS 10000
+#define RUNS 1000
 #define BUCKET_SIZE 2
 
 int forall_classes = CLASSES;
@@ -46,35 +46,35 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
     /* Record the PSE Variables */
     j_sample[i - k] = j;
 
-    /* Map to forall classes */
-    if (forall_classes == 4) {
-      // (k < n)
-      n = 8 + rand() % 100;
-      k = rand() % 100 - 5;
-      while (k >= n) {
-        k = 2 + rand() % 100;
-      }
-    }
-    if (forall_classes == 3) {
-      // ((k >= n / 2) && (k < (n / 2 + n / 4)))
-      n = 8 + rand() % 100;
-      k = (n >> 1) + rand() % 2;
-    }
-    if (forall_classes == 2) {
-      // (k >= (n / 2 + n / 4) && (k < (n / 2 + n / 4 + n / 8)))
-      n = 8 + rand() % 100;
-      k = (n >> 1) + (n >> 2) + rand() % 2;
-    }
-    if (forall_classes == 1) {
-      // (k >= (n / 2 + n / 4 + n / 8))
-      n = 8 + rand() % 100;
-      k = (n >> 1) + (n >> 2) + (n >> 3) + rand() % 2;
-    }
-    if (forall_classes == 0) {
-      // (k <= n / 2)
-      n = 8 + rand() % 100;
-      k = (n >> 1) - (rand() % 2);
-    }
+    // /* Map to forall classes */
+    // if (forall_classes == 4) {
+    //   // (k < n)
+    //   n = 8 + rand() % 100;
+    //   k = rand() % 100 - 5;
+    //   while (k >= n) {
+    //     k = 2 + rand() % 100;
+    //   }
+    // }
+    // if (forall_classes == 3) {
+    //   // ((k >= n / 2) && (k < (n / 2 + n / 4)))
+    //   n = 8 + rand() % 100;
+    //   k = (n >> 1) + rand() % 2;
+    // }
+    // if (forall_classes == 2) {
+    //   // (k >= (n / 2 + n / 4) && (k < (n / 2 + n / 4 + n / 8)))
+    //   n = 8 + rand() % 100;
+    //   k = (n >> 1) + (n >> 2) + rand() % 2;
+    // }
+    // if (forall_classes == 1) {
+    //   // (k >= (n / 2 + n / 4 + n / 8))
+    //   n = 8 + rand() % 100;
+    //   k = (n >> 1) + (n >> 2) + (n >> 3) + rand() % 2;
+    // }
+    // if (forall_classes == 0) {
+    //   // (k <= n / 2)
+    //   n = 8 + rand() % 100;
+    //   k = (n >> 1) - (rand() % 2);
+    // }
 
     // COMMENT : Fork Location.
     if (j < k) {
@@ -85,9 +85,11 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 }
 
 int main() {
+  std::freopen("../results/reservoir_v1.txt", "w", stdout);
+
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
-  json summaryObj;
+  // json summaryObj;
   while (forall_classes--) {
     srand(time(NULL));
     int forall_samples = FORALLS;
@@ -133,10 +135,10 @@ int main() {
       usleep(microseconds);
       free(sample);
     }
-    for (auto i = 0; i < BUCKET_SIZE; i++)
-      summaryObj["class_" + std::to_string(forall_classes)]
-                ["bucket_" + std::to_string(i)] = {
-                    "num_comps", counters[forall_classes - 1][i]};
+    // for (auto i = 0; i < BUCKET_SIZE; i++)
+    //   summaryObj["class_" + std::to_string(forall_classes)]
+    //             ["bucket_" + std::to_string(i)] = {
+    //                 "num_comps", counters[forall_classes - 1][i]};
   }
 
   for (const auto &x : counters) {

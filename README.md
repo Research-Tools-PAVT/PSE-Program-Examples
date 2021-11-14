@@ -148,3 +148,11 @@ randomized_response.cpp
 reservoir_v1.cpp
 reservoir_v2.cpp
 ```
+
+## Commands
+
+```bash
+$ ./run.sh src/base/freivalds_int_all.cpp calculate-prob
+$ ./run.sh src/base/freivalds_int_orcase.cpp calculate-prob # this needed the --optimize on KLEE.
+$ ./run.sh src/base/monotone_binary_int_all.cpp calculate-prob
+```

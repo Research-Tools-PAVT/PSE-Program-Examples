@@ -25,6 +25,7 @@ winning_paths_predicates = []
 Tree = ExecutionTree()
 file = sys.argv[1]
 name = sys.argv[2]
+expected_val_enabled = int(sys.argv[3])
 removals = 0
 totPaths = 0
 EdgePredicateLabels = {}
@@ -273,8 +274,9 @@ for pathIds, nodes in pathMap.items():
     # winPath = []
     winCollect = {}
     winCollect["Path"] = pathIds
-    winCollect["Var Name"] = ""
-    winCollect["Var Value"] = ""
+    if expected_val_enabled != 0:
+        winCollect["Var Name"] = ""
+        winCollect["Var Value"] = ""
 
     # Dump the actual winning paths as well.
     # Gives a good estimation of what the membership
@@ -368,8 +370,9 @@ for pathIds, nodes in pathMap.items():
         if last_node_id is not None and exp_val_map is not None:
             values = exp_val_map.get(f"{last_node_id}", None)
             if values is not None:
-                winCollect["Var Name"] = values[0]
-                winCollect["Var Value"] = values[1]
+                if expected_val_enabled != 0:
+                    winCollect["Var Name"] = values[0]
+                    winCollect["Var Value"] = values[1]
                 collectWinPred["Var Name"] = values[0]
                 collectWinPred["Var Value"] = values[1]
                 # if str.isdigit(values[1]):

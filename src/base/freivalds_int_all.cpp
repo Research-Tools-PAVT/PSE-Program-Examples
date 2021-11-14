@@ -3,11 +3,8 @@
  */
 
 #include <PSE.h>
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string>
-
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
     int temp = 0;
@@ -62,26 +59,17 @@ void matmul(int *A, int *B, size_t n, int *C) {
   }
 }
 
-int main(int argc, char **argv) {
-  size_t n = 2;
+int main() {
+  size_t n = 3;
   int A[n * n];
   int B[n * n];
   int C[n * n];
-  int r[n];
-
-  int ret;
-  klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
 
   for (size_t i = 0; i < n * n; i++) {
     int tempA, tempB, tempC;
-
-    std::string a = "A_sym" + std::to_string(i);
-    std::string b = "B_sym" + std::to_string(i);
-    std::string c = "C_sym" + std::to_string(i);
-
-    klee_make_symbolic(&tempA, sizeof(tempA), a.c_str());
-    klee_make_symbolic(&tempB, sizeof(tempB), b.c_str());
-    klee_make_symbolic(&tempC, sizeof(tempC), c.c_str());
+    klee_make_symbolic(&tempA, sizeof(tempA), "A");
+    klee_make_symbolic(&tempB, sizeof(tempB), "B");
+    klee_make_symbolic(&tempC, sizeof(tempC), "C");
     A[i] = tempA;
     B[i] = tempB;
     C[i] = tempC;
@@ -90,32 +78,25 @@ int main(int argc, char **argv) {
   int realC[n * n];
   matmul(A, B, n, realC);
 
-  // KLEE optimize wont work since it does compiler optimzation
-  // like short-circuit evaluation. Doing so, KLEE may not get
-  // some of the KLEE assumes we put in.
-
   // bool orAssume = false;
   // for (size_t i = 0; i < n * n; i++) {
   //   orAssume = orAssume || (C[i] != realC[i]);
   // }
-  // klee_assume(orAssume);
 
+  // klee_assume(orAssume);
   klee_assume(C[0] != realC[0]);
 
+  int r[n];
   for (size_t i = 0; i < n; i++) {
     int temp;
-    std::string r_sym = "r_sym_" + std::to_string(i);
-    make_pse_symbolic(&temp, sizeof(temp), r_sym.c_str(), (int)0, (int)1);
+    make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
     r[i] = temp;
   }
 
-  ret = freivalds(A, B, C, r, n);
-
-  if (ret == 1) {
+  if (freivalds(A, B, C, r, n) == 1) {
     mark_state_winning();
     klee_dump_kquery_state();
   }
 
-  // expected_value("ret", ret);
   return 0;
 }

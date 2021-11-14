@@ -61,7 +61,7 @@ $_ZZNSt8__detail18__to_chars_10_implIjEEvPcjT_E8__digits = comdat any
 @.str.1 = private unnamed_addr constant [5 x i8] c"_sym\00", align 1
 @.str.2 = private unnamed_addr constant [7 x i8] c"denom_\00", align 1
 @.str.3 = private unnamed_addr constant [13 x i8] c"setFraction_\00", align 1
-@.str.4 = private unnamed_addr constant [2 x i8] c"f\00", align 1
+@.str.4 = private unnamed_addr constant [5 x i8] c"fsym\00", align 1
 @.str.5 = private unnamed_addr constant [2 x i8] c"x\00", align 1
 @.str.6 = private unnamed_addr constant [2 x i8] c"i\00", align 1
 @_ZZNSt8__detail18__to_chars_10_implIjEEvPcjT_E8__digits = linkonce_odr constant [201 x i8] c"00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899\00", comdat, align 16, !dbg !0
@@ -485,7 +485,7 @@ define i64 @_Z14monotone_checkPi(i32* %0) #4 !dbg !1410 {
 
 9:                                                ; preds = %27, %1
   %10 = load i64, i64* %5, align 8, !dbg !1424
-  %11 = icmp ult i64 %10, 5, !dbg !1426
+  %11 = icmp ult i64 %10, 7, !dbg !1426
   br i1 %11, label %12, label %30, !dbg !1427
 
 12:                                               ; preds = %9
@@ -525,7 +525,7 @@ define i64 @_Z14monotone_checkPi(i32* %0) #4 !dbg !1410 {
 ; Function Attrs: noinline norecurse uwtable
 define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 to i8*) !dbg !1448 {
   %1 = alloca i32, align 4
-  %2 = alloca [5 x i32], align 16
+  %2 = alloca [7 x i32], align 16
   %3 = alloca i32, align 4
   %4 = alloca i32, align 4
   %5 = alloca %"class.std::__cxx11::basic_string", align 8
@@ -543,14 +543,14 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   %17 = alloca i32, align 4
   %18 = alloca i32, align 4
   store i32 0, i32* %1, align 4
-  call void @llvm.dbg.declare(metadata [5 x i32]* %2, metadata !1449, metadata !DIExpression()), !dbg !1453
+  call void @llvm.dbg.declare(metadata [7 x i32]* %2, metadata !1449, metadata !DIExpression()), !dbg !1453
   call void @llvm.dbg.declare(metadata i32* %3, metadata !1454, metadata !DIExpression()), !dbg !1456
   store i32 0, i32* %3, align 4, !dbg !1456
   br label %19, !dbg !1457
 
 19:                                               ; preds = %32, %0
   %20 = load i32, i32* %3, align 4, !dbg !1458
-  %21 = icmp slt i32 %20, 5, !dbg !1460
+  %21 = icmp slt i32 %20, 7, !dbg !1460
   br i1 %21, label %22, label %43, !dbg !1461
 
 22:                                               ; preds = %19
@@ -558,7 +558,7 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   call void @llvm.dbg.declare(metadata %"class.std::__cxx11::basic_string"* %5, metadata !1465, metadata !DIExpression()), !dbg !1466
   %23 = load i32, i32* %3, align 4, !dbg !1467
   call void @_ZNSt7__cxx119to_stringEi(%"class.std::__cxx11::basic_string"* sret %6, i32 %23), !dbg !1468
-  invoke void @_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_OS8_(%"class.std::__cxx11::basic_string"* sret %5, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.4, i64 0, i64 0), %"class.std::__cxx11::basic_string"* dereferenceable(32) %6)
+  invoke void @_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_OS8_(%"class.std::__cxx11::basic_string"* sret %5, i8* getelementptr inbounds ([5 x i8], [5 x i8]* @.str.4, i64 0, i64 0), %"class.std::__cxx11::basic_string"* dereferenceable(32) %6)
           to label %24 unwind label %35, !dbg !1469
 
 24:                                               ; preds = %22
@@ -572,7 +572,7 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   %28 = load i32, i32* %4, align 4, !dbg !1474
   %29 = load i32, i32* %3, align 4, !dbg !1475
   %30 = sext i32 %29 to i64, !dbg !1476
-  %31 = getelementptr inbounds [5 x i32], [5 x i32]* %2, i64 0, i64 %30, !dbg !1476
+  %31 = getelementptr inbounds [7 x i32], [7 x i32]* %2, i64 0, i64 %30, !dbg !1476
   store i32 %28, i32* %31, align 4, !dbg !1477
   call void @_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev(%"class.std::__cxx11::basic_string"* %5) #8, !dbg !1478
   br label %32, !dbg !1479
@@ -612,17 +612,17 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   %47 = zext i1 %46 to i64, !dbg !1489
   call void @klee_assume(i64 %47), !dbg !1491
   %48 = load i64, i64* %9, align 8, !dbg !1492
-  %49 = icmp ult i64 %48, 5, !dbg !1493
+  %49 = icmp ult i64 %48, 7, !dbg !1493
   %50 = zext i1 %49 to i64, !dbg !1492
   call void @klee_assume(i64 %50), !dbg !1494
-  %51 = getelementptr inbounds [5 x i32], [5 x i32]* %2, i64 0, i64 0, !dbg !1495
+  %51 = getelementptr inbounds [7 x i32], [7 x i32]* %2, i64 0, i64 0, !dbg !1495
   %52 = call i64 @_Z14monotone_checkPi(i32* %51), !dbg !1496
   %53 = load i64, i64* %9, align 8, !dbg !1497
   %54 = icmp eq i64 %52, %53, !dbg !1498
   %55 = zext i1 %54 to i64, !dbg !1496
   call void @klee_assume(i64 %55), !dbg !1499
   call void @llvm.dbg.declare(metadata i32* %10, metadata !1500, metadata !DIExpression()), !dbg !1501
-  %56 = call double @log2(double 4.000000e+00) #8, !dbg !1502
+  %56 = call double @log2(double 6.000000e+00) #8, !dbg !1502
   %57 = call double @llvm.ceil.f64(double %56), !dbg !1503
   %58 = fptosi double %57 to i32, !dbg !1503
   store i32 %58, i32* %10, align 4, !dbg !1501
@@ -630,10 +630,10 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   store i32 0, i32* %11, align 4, !dbg !1505
   call void @llvm.dbg.declare(metadata i32* %12, metadata !1506, metadata !DIExpression()), !dbg !1507
   call void @llvm.dbg.declare(metadata i32* %13, metadata !1508, metadata !DIExpression()), !dbg !1509
-  store i32 4, i32* %13, align 4, !dbg !1509
+  store i32 6, i32* %13, align 4, !dbg !1509
   %59 = bitcast i32* %12 to i8*, !dbg !1510
   store i32 0, i32* %14, align 4, !dbg !1511
-  store i32 4, i32* %15, align 4, !dbg !1512
+  store i32 6, i32* %15, align 4, !dbg !1512
   call void @_Z17make_pse_symbolicIiEvPvmPKcOT_S4_(i8* %59, i64 4, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.6, i64 0, i64 0), i32* dereferenceable(4) %14, i32* dereferenceable(4) %15), !dbg !1513
   call void @llvm.dbg.declare(metadata i8* %16, metadata !1514, metadata !DIExpression()), !dbg !1515
   store i8 0, i8* %16, align 1, !dbg !1515
@@ -665,11 +665,11 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
 75:                                               ; preds = %64
   %76 = load i32, i32* %12, align 4, !dbg !1538
   %77 = sext i32 %76 to i64, !dbg !1541
-  %78 = getelementptr inbounds [5 x i32], [5 x i32]* %2, i64 0, i64 %77, !dbg !1541
+  %78 = getelementptr inbounds [7 x i32], [7 x i32]* %2, i64 0, i64 %77, !dbg !1541
   %79 = load i32, i32* %78, align 4, !dbg !1541
   %80 = load i32, i32* %18, align 4, !dbg !1542
   %81 = sext i32 %80 to i64, !dbg !1543
-  %82 = getelementptr inbounds [5 x i32], [5 x i32]* %2, i64 0, i64 %81, !dbg !1543
+  %82 = getelementptr inbounds [7 x i32], [7 x i32]* %2, i64 0, i64 %81, !dbg !1543
   %83 = load i32, i32* %82, align 4, !dbg !1543
   %84 = icmp sgt i32 %79, %83, !dbg !1544
   br i1 %84, label %85, label %86, !dbg !1545
@@ -686,11 +686,11 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
 88:                                               ; preds = %64
   %89 = load i32, i32* %12, align 4, !dbg !1552
   %90 = sext i32 %89 to i64, !dbg !1555
-  %91 = getelementptr inbounds [5 x i32], [5 x i32]* %2, i64 0, i64 %90, !dbg !1555
+  %91 = getelementptr inbounds [7 x i32], [7 x i32]* %2, i64 0, i64 %90, !dbg !1555
   %92 = load i32, i32* %91, align 4, !dbg !1555
   %93 = load i32, i32* %18, align 4, !dbg !1556
   %94 = sext i32 %93 to i64, !dbg !1557
-  %95 = getelementptr inbounds [5 x i32], [5 x i32]* %2, i64 0, i64 %94, !dbg !1557
+  %95 = getelementptr inbounds [7 x i32], [7 x i32]* %2, i64 0, i64 %94, !dbg !1557
   %96 = load i32, i32* %95, align 4, !dbg !1557
   %97 = icmp slt i32 %92, %96, !dbg !1558
   br i1 %97, label %98, label %99, !dbg !1559
@@ -2955,9 +2955,9 @@ attributes #10 = { noreturn nounwind }
 !1447 = !DILocation(line: 23, column: 3, scope: !1410)
 !1448 = distinct !DISubprogram(name: "main", scope: !12, file: !12, line: 26, type: !204, scopeLine: 26, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !11, retainedNodes: !1274)
 !1449 = !DILocalVariable(name: "f", scope: !1448, file: !12, line: 27, type: !1450)
-!1450 = !DICompositeType(tag: DW_TAG_array_type, baseType: !24, size: 160, elements: !1451)
+!1450 = !DICompositeType(tag: DW_TAG_array_type, baseType: !24, size: 224, elements: !1451)
 !1451 = !{!1452}
-!1452 = !DISubrange(count: 5)
+!1452 = !DISubrange(count: 7)
 !1453 = !DILocation(line: 27, column: 7, scope: !1448)
 !1454 = !DILocalVariable(name: "i", scope: !1455, file: !12, line: 28, type: !24)
 !1455 = distinct !DILexicalBlock(scope: !1448, file: !12, line: 28, column: 3)
@@ -2970,14 +2970,14 @@ attributes #10 = { noreturn nounwind }
 !1462 = !DILocalVariable(name: "temp", scope: !1463, file: !12, line: 29, type: !24)
 !1463 = distinct !DILexicalBlock(scope: !1459, file: !12, line: 28, column: 31)
 !1464 = !DILocation(line: 29, column: 9, scope: !1463)
-!1465 = !DILocalVariable(name: "fname", scope: !1463, file: !12, line: 30, type: !1303)
+!1465 = !DILocalVariable(name: "name", scope: !1463, file: !12, line: 30, type: !1303)
 !1466 = !DILocation(line: 30, column: 17, scope: !1463)
-!1467 = !DILocation(line: 30, column: 46, scope: !1463)
-!1468 = !DILocation(line: 30, column: 31, scope: !1463)
-!1469 = !DILocation(line: 30, column: 29, scope: !1463)
-!1470 = !DILocation(line: 30, column: 25, scope: !1463)
+!1467 = !DILocation(line: 30, column: 48, scope: !1463)
+!1468 = !DILocation(line: 30, column: 33, scope: !1463)
+!1469 = !DILocation(line: 30, column: 31, scope: !1463)
+!1470 = !DILocation(line: 30, column: 24, scope: !1463)
 !1471 = !DILocation(line: 31, column: 24, scope: !1463)
-!1472 = !DILocation(line: 31, column: 51, scope: !1463)
+!1472 = !DILocation(line: 31, column: 50, scope: !1463)
 !1473 = !DILocation(line: 31, column: 5, scope: !1463)
 !1474 = !DILocation(line: 32, column: 12, scope: !1463)
 !1475 = !DILocation(line: 32, column: 7, scope: !1463)
@@ -2989,7 +2989,7 @@ attributes #10 = { noreturn nounwind }
 !1481 = !DILocation(line: 28, column: 3, scope: !1459)
 !1482 = distinct !{!1482, !1461, !1483}
 !1483 = !DILocation(line: 33, column: 3, scope: !1455)
-!1484 = !DILocation(line: 69, column: 1, scope: !1463)
+!1484 = !DILocation(line: 68, column: 1, scope: !1463)
 !1485 = !DILocalVariable(name: "x", scope: !1448, file: !12, line: 35, type: !119)
 !1486 = !DILocation(line: 35, column: 10, scope: !1448)
 !1487 = !DILocation(line: 36, column: 22, scope: !1448)
@@ -3083,7 +3083,7 @@ attributes #10 = { noreturn nounwind }
 !1575 = distinct !DILexicalBlock(scope: !1572, file: !12, line: 62, column: 16)
 !1576 = !DILocation(line: 64, column: 5, scope: !1575)
 !1577 = !DILocation(line: 65, column: 3, scope: !1575)
-!1578 = !DILocation(line: 68, column: 3, scope: !1448)
+!1578 = !DILocation(line: 67, column: 3, scope: !1448)
 !1579 = distinct !DISubprogram(name: "operator+<char, std::char_traits<char>, std::allocator<char> >", linkageName: "_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_OS8_", scope: !5, file: !15, line: 6131, type: !1580, scopeLine: 6133, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !11, templateParams: !1583, retainedNodes: !1274)
 !1580 = !DISubroutineType(types: !1581)
 !1581 = !{!16, !132, !1582}

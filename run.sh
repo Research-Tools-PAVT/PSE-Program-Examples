@@ -69,7 +69,7 @@ echo -e "\e[1;34mProcessing Dumps ...\e[0m"
 echo "Path Processing : " >> time.log
 /usr/bin/time --verbose --append -o time.log python3 \
 postprocess/reader.py ${example}_summary.json \
-${example} > plinko-results/${example}_processed/${example}_logs.txt
+${example} 0 > plinko-results/${example}_processed/${example}_logs.txt
 
 mv time.log plinko-results/${example}_processed/${example}_exec_time.txt
 
@@ -99,5 +99,6 @@ cabal v2-run plinko -- \
 > ../../plinko-results/${example}_processed/${example}_processed.txt
 
 echo "Example : ${example}" >> ../../complete_results.txt
+echo "Date : `date`" >> ../../complete_results.txt
 echo "Plinko Results : " >> ../../complete_results.txt
 cat ../../plinko-results/${example}_processed/${example}_processed.txt >> ../../complete_results.txt

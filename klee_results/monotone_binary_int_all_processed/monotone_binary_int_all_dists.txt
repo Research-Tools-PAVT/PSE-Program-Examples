@@ -1,1 +1,1 @@
-i ~ UniformInt(0,4) :: w32
+i ~ UniformInt(0,6) :: w32

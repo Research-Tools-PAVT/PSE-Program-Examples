@@ -185,6 +185,9 @@ int main() {
 
   ret = bloom_check(&bloom, arr[n]);
 
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume((ret == 1));
+
   if (ret == 1) {
     mark_state_winning();
     // klee_dump_kquery_state();

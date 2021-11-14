@@ -44,8 +44,8 @@ int main() {
       // klee_assume(0 <= truth);
       // klee_assume(truth <= 1);
 
-      int second_flip = rand() % 2;
-      int first_flip = rand() % 2;
+      int second_flip = (rand() % 50000) % 2;
+      int first_flip = (rand() % 50000) % 2;
       // make_pse_symbolic(&first_flip, sizeof(first_flip), "first_flip", 0, 1);
 
       // 0 = No, 1 = Yes

@@ -63,7 +63,7 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
-  size_t n = 2;
+  size_t n = 5;
   int A[n * n];
   int B[n * n];
   int C[n * n];
@@ -90,12 +90,13 @@ int main(int argc, char **argv) {
   int realC[n * n];
   matmul(A, B, n, realC);
 
-  bool orAssume = false;
-  for (size_t i = 0; i < n * n; i++) {
-    orAssume = orAssume || (C[i] != realC[i]);
-  }
+  // bool orAssume = false;
+  // for (size_t i = 0; i < n * n; i++) {
+  //   orAssume = orAssume || (C[i] != realC[i]);
+  // }
 
-  klee_assume(orAssume);
+  // klee_assume(orAssume);
+  klee_assume(C[0] != realC[0]);
 
   for (size_t i = 0; i < n; i++) {
     int temp;
@@ -105,9 +106,13 @@ int main(int argc, char **argv) {
   }
 
   ret = freivalds(A, B, C, r, n);
+  klee_print_expr("r[0]", r[0]);
+  klee_print_expr("r[1]", r[1]);
+  klee_print_expr("r[2]", r[2]);
+  klee_print_expr("ret", ret);
 
   /* COMEMNT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((ret == 1) && (C[1] == realC[1]) && (C[2] == realC[2]));
+  klee_assume((ret == 1));
 
   if (ret == 1) {
     mark_state_winning();

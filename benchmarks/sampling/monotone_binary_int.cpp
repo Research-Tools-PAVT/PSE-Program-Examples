@@ -23,7 +23,7 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 1
+#define CLASSES 2
 #define FORALLS 10
 #define RUNS 1000
 #define BUCKET_SIZE 5
@@ -56,13 +56,11 @@ int main() {
       int f[N];
       // TODO : Populate f[], Half array monotonic, quater array monotonic etc.
 
-      //  klee_make_symbolic(&f, sizeof(f), "f");
+      // klee_assume(monotone_check(f) == x);
       size_t x = monotone_check(f);
       // klee_make_symbolic(&x, sizeof(x), "x");
       // klee_assume(x >= 0);
       // klee_assume(x < N);
-
-      // klee_assume(monotone_check(f) == x);
 
       while (runs--) {
         int l = (int)ceil(log2(N - 1));
@@ -73,6 +71,7 @@ int main() {
         bool reject = false;
         for (int t = 0; t < l; t++) {
           int p = (int)ceil((double(a + b)) / (double)2.0);
+          /* Fork Location. */
           if (i <= p) {
             if (f[i] > f[p]) {
               reject = true;
@@ -89,20 +88,21 @@ int main() {
         if (!reject) {
           // mark_state_winning();
           // klee_dump_kquery_state();
-          std::cout << "success : " << x << std::endl;
+          // std::cout << "success : " << x << std::endl;
         } else {
-          std::cout << "failure : " << x << std::endl;
+          // std::cout << "failure : " << x << std::endl;
         }
       }
     }
   }
-  for (const auto &x : counters) {
-    std::cout << std::endl;
-    for (const auto &e : x) {
-      std::cout << std::setw(7) << e << ",";
-    }
-  }
-  std::cout << std::endl;
+
+  // for (const auto &x : counters) {
+  //   std::cout << std::endl;
+  //   for (const auto &e : x) {
+  //     std::cout << std::setw(7) << e << ",";
+  //   }
+  // }
+  // std::cout << std::endl;
 
   int classCounter = 0;
   int flag = 0;
@@ -112,15 +112,16 @@ int main() {
     int bucketCounter = 0;
     if (flag == 0)
       for (const auto &e : x)
-        std::cout << std::setw(5) << "B" << bucketCounter++;
+        std::cout << std::setw(9) << "B" << bucketCounter++;
     flag = 1;
     std::cout << "\n"
               << "C" << classCounter;
     for (const auto &e : x) {
-      e >= 30000 ? std::cout << std::setw(5) << 1 << ","
-                 : std::cout << std::setw(5) << 0 << ",";
+      std::cout << std::setw(9) << e << ", ";
     }
   }
+
   std::cout << std::endl;
+
   return 0;
 }

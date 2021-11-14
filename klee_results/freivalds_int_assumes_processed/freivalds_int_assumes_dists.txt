@@ -1,0 +1,5 @@
+r_sym_0 ~ UniformInt(0,1) :: w32
+r_sym_1 ~ UniformInt(0,1) :: w32
+r_sym_2 ~ UniformInt(0,1) :: w32
+r_sym_3 ~ UniformInt(0,1) :: w32
+r_sym_4 ~ UniformInt(0,1) :: w32

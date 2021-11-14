@@ -31,21 +31,27 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 1
+#define CLASSES 2
 #define FORALLS 10
 #define RUNS 1000
-#define BUCKET_SIZE 3
+#define BUCKET_SIZE 4
 #define MAKESTRING(n) STRING(n)
 #define STRING(n) #n
+
+int global_forall_hoisted = -1;
+int ghMAX = -1;
+std::vector<std::vector<int>> counters(CLASSES,
+                                       std::vector<int>(BUCKET_SIZE, 0));
 
 unsigned int hash(struct prob_hash *prob_hash, int key, unsigned int max) {
   auto found = prob_hash->map.find(key);
   // If the key is not in the map, get a random element and rehash
   if (found == prob_hash->map.end()) {
     unsigned int x = 0 + rand() % max;
+    global_forall_hoisted = x;
+    ghMAX = max;
     // make_pse_symbolic(&x, sizeof(x), "x_sym", (unsigned int)0,
     //                   (unsigned int)max);
-    printf("max = %d\n", max);
     prob_hash->map[key] = x;
     return x;
   } else {
@@ -58,7 +64,6 @@ inline static int test_bit_set_bit(unsigned char *buf, unsigned int x,
   unsigned int byte = x >> 3;
   unsigned char c = buf[byte]; // expensive memory access
   unsigned int mask = 1 << (x % 8);
-
   if (c & mask) {
     return 1;
   } else {
@@ -71,7 +76,7 @@ inline static int test_bit_set_bit(unsigned char *buf, unsigned int x,
 
 static int bloom_check_add(struct bloom *bloom, int key, int add) {
   if (bloom->ready == 0) {
-    printf("bloom at %p not initialized!\n", (void *)bloom);
+    // printf("bloom at %p not initialized!\n", (void *)bloom);
     return -1;
   }
 
@@ -125,8 +130,8 @@ int bloom_init(struct bloom *bloom, int entries, double error) {
   }
 
   bloom->hashes = (int)ceil(0.693147180559945 * bloom->bpe); // ln(2)
-  printf("Hashes = %d\n", bloom->hashes);
-  printf("Bits = %d\n", bloom->bits);
+  // printf("Hashes = %d\n", bloom->hashes);
+  // printf("Bits = %d\n", bloom->bits);
 
   bloom->bf = (unsigned char *)calloc(bloom->bytes, sizeof(unsigned char));
   if (bloom->bf == NULL) { // LCOV_EXCL_START
@@ -147,13 +152,13 @@ int bloom_add(struct bloom *bloom, int key) {
 }
 
 void bloom_print(struct bloom *bloom) {
-  printf("bloom at %p\n", (void *)bloom);
-  printf(" ->entries = %d\n", bloom->entries);
-  printf(" ->error = %f\n", bloom->error);
-  printf(" ->bits = %d\n", bloom->bits);
-  printf(" ->bits per elem = %f\n", bloom->bpe);
-  printf(" ->bytes = %d\n", bloom->bytes);
-  printf(" ->hash functions = %d\n", bloom->hashes);
+  // printf("bloom at %p\n", (void *)bloom);
+  // printf(" ->entries = %d\n", bloom->entries);
+  // printf(" ->error = %f\n", bloom->error);
+  // printf(" ->bits = %d\n", bloom->bits);
+  // printf(" ->bits per elem = %f\n", bloom->bpe);
+  // printf(" ->bytes = %d\n", bloom->bytes);
+  // printf(" ->hash functions = %d\n", bloom->hashes);
 }
 
 void bloom_free(struct bloom *bloom) {
@@ -182,23 +187,39 @@ int main() {
   std::freopen("../results/bloomfilter.txt", "w", stdout);
 
   srand(time(NULL));
-  std::vector<std::vector<int>> counters(CLASSES,
-                                         std::vector<int>(BUCKET_SIZE, 0));
+
   int forall_classes = CLASSES;
   while (forall_classes--) {
     int forall_samples = FORALLS;
     while (forall_samples--) {
       int runs = RUNS;
+      double error = 0.4;
       int n = 3;
-      int ret = 0;
       int arr[n + 1];
-      for (int i = 0; i < n + 1; i++) {
-        arr[i] = i;
-      }
 
       // TODO : Distinct Array.
+      for (int i = 0; i < n + 1; i++) {
+        arr[i] = i + rand() % 57 + rand() % 101 + rand() % 481243;
+      }
+
+      // arr[n] is checked, two cases one duplicate,
+      // other not duplicate.
+
+      /* C0 */
+      if (forall_classes == 0) {
+        arr[0] = arr[n];
+      }
+
+      /* C1 */
+      if (forall_samples == 1) {
+        if (rand() % 5000 == 0)
+          arr[0] = arr[n] + 1 + rand() % 10;
+        else
+          arr[0] = arr[n] - 1 - rand() % 10;
+      }
+
       while (runs--) {
-        double error = 0.4;
+        int ret = 0;
         struct bloom bloom;
         bloom_init(&bloom, n, error);
 
@@ -209,15 +230,50 @@ int main() {
         ret = bloom_check(&bloom, arr[n]);
         bloom_free(&bloom);
 
-        if (ret == 1) {
-          // mark_state_winning();
-          // klee_dump_kquery_state();
-          std::cout << "success : " << ret << std::endl;
-        } else {
-          std::cout << "failure : " << ret << std::endl;
+        if (global_forall_hoisted >= 0 &&
+            (global_forall_hoisted <= (ghMAX / 3)) && (ret == 1))
+          counters[forall_classes][0] += 1;
+
+        if (global_forall_hoisted > (ghMAX / 3) &&
+            global_forall_hoisted <= ((2 * ghMAX) / 3) && (ret == 1))
+          counters[forall_classes][1] += 1;
+
+        if (global_forall_hoisted > ((2 * ghMAX) / 3) && (ret == 1))
+          counters[forall_classes][2] += 1;
+
+        if (ret == 0) {
+          counters[forall_classes][3] += 1;
         }
       }
     }
   }
+
+  // for (const auto &x : counters) {
+  //   std::cout << std::endl;
+  //   for (const auto &e : x) {
+  //     std::cout << std::setw(7) << e << ",";
+  //   }
+  // }
+  // std::cout << std::endl;
+
+  int classCounter = 0;
+  int flag = 0;
+  for (const auto &x : counters) {
+    classCounter++;
+    std::cout << std::endl;
+    int bucketCounter = 0;
+    if (flag == 0)
+      for (const auto &e : x)
+        std::cout << std::setw(9) << "B" << bucketCounter++;
+    flag = 1;
+    std::cout << "\n"
+              << "C" << classCounter;
+    for (const auto &e : x) {
+      std::cout << std::setw(9) << e << ", ";
+    }
+  }
+
+  std::cout << std::endl;
+
   return 0;
 }

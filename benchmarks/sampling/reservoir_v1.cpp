@@ -30,21 +30,20 @@ using json = nlohmann::json;
 #define MAX_RANGE 2147483646
 #endif
 
-#define CLASSES 1
+#define CLASSES 4
 #define FORALLS 10
-#define RUNS 1000
+#define RUNS 10000
 #define BUCKET_SIZE 2
 
 int forall_classes = CLASSES;
 
 void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
-  int count = 0;
   for (int i = k; i < n; i++) {
-    count++;
-
     int j = 0 + rand() % (i - 1);
+
     /* Record the PSE Variables */
-    j_sample[i - k] = j;
+    if (i - k >= 2)
+      j_sample[i - k] = j;
 
     // COMMENT : Fork Location.
     if (j < k) {
@@ -83,6 +82,31 @@ int main() {
       while (runs--) {
         int j_sample[n - k];
 
+        /* PSE Classes */
+        /* C0 */
+        if (forall_classes == 0) {
+          j_sample[0] = k + 1;
+          j_sample[1] = k + 1;
+        }
+
+        /* C1 */
+        if (forall_classes == 1) {
+          j_sample[0] = k - 1;
+          j_sample[1] = k - 1;
+        }
+
+        /* C2 */
+        if (forall_classes == 2) {
+          j_sample[0] = k - 1;
+          j_sample[1] = k + 1;
+        }
+
+        /* C3 */
+        if (forall_classes == 3) {
+          j_sample[0] = k + 1;
+          j_sample[1] = k - 1;
+        }
+
         reservoir_sample(arr, sample, n, k, j_sample);
         int ret = 0;
         for (int i = 0; i < k; i++) {
@@ -91,9 +115,8 @@ int main() {
             break;
           }
         }
-        printf("Class : %d, \n\tForall : %d, Runs : %d, Pick, %d, Sample "
-               "Matched? : %d\n",
-               forall_classes, forall_samples, runs, pick_index, ret);
+
+        /* PSE Buckets */
         if (ret == 1) {
           counters[forall_classes][0] += 1;
         }
@@ -111,13 +134,13 @@ int main() {
     //                 "num_comps", counters[forall_classes - 1][i]};
   }
 
-  for (const auto &x : counters) {
-    std::cout << std::endl;
-    for (const auto &e : x) {
-      std::cout << std::setw(7) << e << ",";
-    }
-  }
-  std::cout << std::endl;
+  // for (const auto &x : counters) {
+  //   std::cout << std::endl;
+  //   for (const auto &e : x) {
+  //     std::cout << std::setw(7) << e << ",";
+  //   }
+  // }
+  // std::cout << std::endl;
 
   int classCounter = 0;
   int flag = 0;
@@ -127,15 +150,32 @@ int main() {
     int bucketCounter = 0;
     if (flag == 0)
       for (const auto &e : x)
-        std::cout << std::setw(5) << "B" << bucketCounter++;
+        std::cout << std::setw(9) << "B" << bucketCounter++;
     flag = 1;
     std::cout << "\n"
               << "C" << classCounter;
     for (const auto &e : x) {
-      e >= 30000 ? std::cout << std::setw(5) << 1 << ","
-                 : std::cout << std::setw(5) << 0 << ",";
+      std::cout << std::setw(9) << e << ", ";
     }
   }
+
   std::cout << std::endl;
+
+  std::vector<int> valuesMesh;
+
+  for (const auto &x : counters) {
+    for (const auto &e : x) {
+      valuesMesh.emplace_back(e);
+    }
+  }
+
+  std::sort(valuesMesh.begin(), valuesMesh.end(), std::greater<int>());
+  std::cout << std::endl;
+
+  for (auto x : valuesMesh) {
+    std::cout << std::setw(9)
+              << (double)((double)x / (FORALLS * RUNS * CLASSES)) << "\n";
+  }
+
   return 0;
 }

@@ -83,7 +83,7 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
-  std::freopen("../results/freivalds_int.txt", "w", stdout);
+  std::freopen("../results/freivalds_multiple_int.txt", "w", stdout);
   std::set<int> pseDistinct, forallDistinct;
   srand(time(NULL));
   std::vector<std::vector<int>> counters(CLASSES,
@@ -94,6 +94,7 @@ int main(int argc, char **argv) {
     while (forall_samples--) {
       int runs = RUNS;
       size_t n = 3;
+      size_t k = 7;
       int A[n * n];
       int B[n * n];
       int C[n * n];
@@ -155,11 +156,14 @@ int main(int argc, char **argv) {
         int ret = 0;
         int r[n];
         int bucketChoosen = 0;
-        for (size_t i = 0; i < n; i++) {
-          r[i] = (rand() % 50000) % 2;
-        }
 
-        ret = freivalds(A, B, C, r, n);
+        for (size_t i = 0; i < k; i++) {
+          /* Freivalds Running Multiple Times. */
+          for (size_t j = 0; j < n; j++) {
+            r[j] = (rand() % 50000) % 2;
+          }
+          ret = ret && freivalds(A, B, C, r, n) == 1;
+        }
 
         /* PSE Buckets */
         if (r[0] != 1 && r[1] == 1 && r[2] == 1 && ret == 1) {

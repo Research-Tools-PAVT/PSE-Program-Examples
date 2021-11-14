@@ -230,6 +230,7 @@ int main() {
         ret = bloom_check(&bloom, arr[n]);
         bloom_free(&bloom);
 
+        /* PSE Buckets */
         if (global_forall_hoisted >= 0 &&
             (global_forall_hoisted <= (ghMAX / 3)) && (ret == 1))
           counters[forall_classes][0] += 1;
@@ -274,6 +275,22 @@ int main() {
   }
 
   std::cout << std::endl;
+
+  std::vector<int> valuesMesh;
+
+  for (const auto &x : counters) {
+    for (const auto &e : x) {
+      valuesMesh.emplace_back(e);
+    }
+  }
+
+  std::sort(valuesMesh.begin(), valuesMesh.end(), std::greater<int>());
+  std::cout << std::endl;
+
+  for (auto x : valuesMesh) {
+    std::cout << std::setw(9)
+              << (double)((double)x / (FORALLS * RUNS * CLASSES)) << "\n";
+  }
 
   return 0;
 }

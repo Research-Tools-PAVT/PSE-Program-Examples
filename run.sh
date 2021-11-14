@@ -49,7 +49,7 @@ klee_results/llvmir/${example}.ll
 echo "KLEE Symbolic Execution : " >> time.log
 /usr/bin/time --append --verbose -o time.log \
 klee --filename-act ${example} \
---disable-inlining --emit-all-errors --show-cond \
+--disable-inlining --emit-all-errors --show-cond --optimize \
 --search=nurs:depth --search=nurs:covnew --dump-logs \
 --use-cex-cache --write-kqueries ${example}.bc
 

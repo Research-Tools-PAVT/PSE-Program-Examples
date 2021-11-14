@@ -54,6 +54,10 @@ int main() {
     while (forall_samples--) {
       int runs = RUNS;
       int f[N];
+
+      for (auto i = 0; i < N; i++) {
+        f[i] = i + rand() % 51423 - rand() % 14778;
+      }
       // TODO : Populate f[], Half array monotonic, quater array monotonic etc.
 
       // klee_assume(monotone_check(f) == x);
@@ -61,6 +65,19 @@ int main() {
       // klee_make_symbolic(&x, sizeof(x), "x");
       // klee_assume(x >= 0);
       // klee_assume(x < N);
+
+      /* Forall Classes. */
+      /* C0 */
+      if (forall_classes == 0) {
+        f[0] = rand() % 15000;
+        f[1] = f[0] + 1 + rand() % 15000;
+      }
+
+      /* C1 */
+      if (forall_classes == 1) {
+        f[0] = rand() % 15000;
+        f[1] = f[0] - (1 + rand() % 15000);
+      }
 
       while (runs--) {
         int l = (int)ceil(log2(N - 1));
@@ -85,13 +102,24 @@ int main() {
           }
         }
 
-        if (!reject) {
-          // mark_state_winning();
-          // klee_dump_kquery_state();
-          // std::cout << "success : " << x << std::endl;
-        } else {
-          // std::cout << "failure : " << x << std::endl;
+        /* PSE Buckets */
+        if (i >= N / 4) {
+          counters[forall_classes][0] += 1;
         }
+
+        if ((i >= N / 4) && (i <= N / 2)) {
+          counters[forall_classes][1] += 1;
+        }
+
+        if ((i > N / 2) && (i <= ((3 * N) / 4))) {
+          counters[forall_classes][2] += 1;
+        }
+
+        if (i >= ((3 * N) / 4)) {
+          counters[forall_classes][3] += 1;
+        }
+
+        // Query : !reject
       }
     }
   }
@@ -122,6 +150,22 @@ int main() {
   }
 
   std::cout << std::endl;
+
+  std::vector<int> valuesMesh;
+
+  for (const auto &x : counters) {
+    for (const auto &e : x) {
+      valuesMesh.emplace_back(e);
+    }
+  }
+
+  std::sort(valuesMesh.begin(), valuesMesh.end(), std::greater<int>());
+  std::cout << std::endl;
+
+  for (auto x : valuesMesh) {
+    std::cout << std::setw(9)
+              << (double)((double)x / (FORALLS * RUNS * CLASSES)) << "\n";
+  }
 
   return 0;
 }

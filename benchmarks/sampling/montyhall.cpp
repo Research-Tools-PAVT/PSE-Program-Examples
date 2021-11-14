@@ -20,19 +20,17 @@
 #include <vector>
 unsigned int microseconds = 10000000;
 
-#define CLASSES 1
+#define CLASSES 2
 #define FORALLS 10
-#define RUNS 1000
-#define BUCKET_SIZE 2
-#define SIZE 6
+#define RUNS 10000
+#define BUCKET_SIZE 4
 
 /**
  * switch => door_switch
  */
-bool montyhall(bool door_switch, int choice) {
+bool montyhall(bool door_switch, int choice, int car_door) {
 
   int host_door = 0;
-  int car_door = rand() % 4;
 
   //   make_pse_symbolic(&choice, sizeof(choice), "choice_pse_sym", 0, 3);
   //   make_pse_symbolic(&car_door, sizeof(car_door), "car_door_pse_sym", 0, 3);
@@ -90,48 +88,62 @@ int main() {
                                          std::vector<int>(BUCKET_SIZE, 0));
 
   int forall_classes = CLASSES;
-  int door_switch;
   while (forall_classes--) {
 
     int forall_samples = FORALLS;
     while (forall_samples--) {
 
       int runs = RUNS;
+      int choice;
+      int door_switch;
+
+      /* C1 */
+      if (forall_classes == 1) {
+        door_switch = 0;
+        choice = 1 + rand() % 3;
+      }
+
+      /* C0 */
+      if (forall_classes == 0) {
+        door_switch = 1;
+        choice = 1;
+      }
+
       while (runs--) {
-        int choice = rand() % 4;
+        int car_door = rand() % 4;
 
-        /* C1 */
-        if (forall_classes == 1) {
-          door_switch = 0;
-          choice = 1 + rand() % 3;
-        }
+        bool ret = montyhall(door_switch, choice, car_door);
 
-        /* C0 */
-        if (forall_classes == 0) {
-          door_switch = 1;
-          choice = 1;
-        }
-
-        bool ret = montyhall(door_switch, choice);
-
-        if (ret == true) {
+        /* PSE Buckets */
+        if (car_door == 0) {
           counters[forall_classes][0] += 1;
         }
-        if (ret == false) {
+
+        if (car_door == 1) {
           counters[forall_classes][1] += 1;
         }
-        printf("Class : %d, Forall : %d, Runs : %d, MontyHall : %d\n",
-               forall_classes, forall_samples, runs, ret);
+
+        if (car_door == 2) {
+          counters[forall_classes][2] += 1;
+        }
+
+        if (car_door == 3) {
+          counters[forall_classes][3] += 1;
+        }
+
+        // Query : ret == 1
+        // printf("Class : %d, Forall : %d, Runs : %d, MontyHall : %d\n",
+        //        forall_classes, forall_samples, runs, ret);
       }
     }
   }
-  for (const auto &x : counters) {
-    std::cout << std::endl;
-    for (const auto &e : x) {
-      std::cout << std::setw(7) << e << ",";
-    }
-  }
-  std::cout << std::endl;
+  // for (const auto &x : counters) {
+  //   std::cout << std::endl;
+  //   for (const auto &e : x) {
+  //     std::cout << std::setw(7) << e << ",";
+  //   }
+  // }
+  // std::cout << std::endl;
 
   int classCounter = 0;
   int flag = 0;
@@ -146,11 +158,26 @@ int main() {
               << "C" << classCounter;
     classCounter++;
     for (const auto &e : x) {
-      e >= 30000 ? std::cout << std::setw(5) << 1 << ","
-                 : std::cout << std::setw(5) << 0 << ",";
+      std::cout << e << ", ";
     }
   }
   std::cout << std::endl;
-  // std::cout << counters[0][0] << counters[1][0] << std::endl;
+
+  std::vector<int> valuesMesh;
+
+  for (const auto &x : counters) {
+    for (const auto &e : x) {
+      valuesMesh.emplace_back(e);
+    }
+  }
+
+  std::sort(valuesMesh.begin(), valuesMesh.end(), std::greater<int>());
+  std::cout << std::endl;
+
+  for (auto x : valuesMesh) {
+    std::cout << std::setw(9)
+              << (double)((double)x / (FORALLS * RUNS * CLASSES)) << "\n";
+  }
+
   return 0;
 }

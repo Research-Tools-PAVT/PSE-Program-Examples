@@ -130,6 +130,8 @@ int main() {
         //   klee_print_expr("Num Compares : ", num_comps);
         //   klee_dump_symbolic_details(&num_comps, "num_comps");
         // printf("Compares : %d\n", num_comps);
+
+        /* PSE Buckets */
         if (num_comps == 0) {
           counters[forall_classes][0] += 1;
         }
@@ -151,12 +153,13 @@ int main() {
         if (num_comps == 6) {
           counters[forall_classes][6] += 1;
         }
+
         runsCC++;
       }
       std::cerr << runsCC << std::endl;
     }
 
-    std::cout << FORALLS * RUNS - runsCC << std::endl;
+    // std::cout << FORALLS * RUNS - runsCC << std::endl;
 
     // for (auto i = 0; i < BUCKET_SIZE; i++)
     //   summaryObj["class_" + std::to_string(forall_classes)]
@@ -261,8 +264,8 @@ int main() {
   std::cout << std::endl;
 
   for (auto x : valuesMesh) {
-    std::cout << std::setw(9) << (double)((double)x / (FORALLS * RUNS * 4))
-              << "\n";
+    std::cout << std::setw(9)
+              << (double)((double)x / (FORALLS * RUNS * CLASSES)) << "\n";
   }
 
   return 0;

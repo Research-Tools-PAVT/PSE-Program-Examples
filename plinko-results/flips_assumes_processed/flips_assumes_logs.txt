@@ -1,0 +1,36 @@
+[1;36mPath 1 Winning[0m
+[1;36mPath 3 Winning[0m
+[1;36mPath 7 Winning[0m
+[1;36mPath 9 Winning[0m
+[1;36mPath 11 Winning[0m
+[1;36mPath 13 Winning[0m
+[1;36mPath 17 Winning[0m
+[1;36mPath 19 Winning[0m
+[1;36mPath 25 Winning[0m
+[1;36mPath 27 Winning[0m
+[1;36mPath 29 Winning[0m
+[1;36mPath 31 Winning[0m
+[1;36mPath 37 Winning[0m
+[1;36mPath 39 Winning[0m
+[1;36mPath 49 Winning[0m
+[1;36mPath 51 Winning[0m
+[1;36mPath 63 Winning[0m
+[1;36mPath 65 Winning[0m
+[1;36mPath 67 Winning[0m
+[1;36mPath 69 Winning[0m
+[1;36mPath 75 Winning[0m
+[1;36mPath 77 Winning[0m
+[1;36mPath 79 Winning[0m
+[1;36mPath 81 Winning[0m
+[1;36mPath 93 Winning[0m
+[1;36mPath 95 Winning[0m
+[1;36mPath 107 Winning[0m
+[1;36mPath 109 Winning[0m
+[1;36mPath 117 Winning[0m
+[1;36mPath 119 Winning[0m
+[1;36mPath 123 Winning[0m
+[1;36mPath 125 Winning[0m
+Paths Processed : 32
+Missing: COMMAND
+
+Usage: plinko (-d|--klee-output-dir DIR) [-t|--threads NUM_THREADS] COMMAND

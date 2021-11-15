@@ -78,7 +78,8 @@ int main() {
 
   klee_assume(C[0] != realC[0]);
 
-  bool ret = true;
+  int ret = 1;
+
   for (size_t i = 0; i < k; i++) {
     /* Freivalds Running Multiple Times. */
     int r[n];

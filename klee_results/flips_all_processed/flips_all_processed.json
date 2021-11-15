@@ -20,6 +20,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 0,
             "trueQuery": [
@@ -64,6 +65,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 10,
             "trueQuery": [
@@ -89,100 +91,120 @@
             ]
         },
         "100": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 72,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 100,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "101": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 72,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 101,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "102": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 81,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 102,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "103": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 81,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 103,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "104": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 83,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 104,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "105": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 83,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 105,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "106": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 87,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 106,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "107": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 87,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 107,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "108": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 82,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 108,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "109": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 82,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 109,
             "trueQuery": [],
@@ -218,6 +240,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 11,
             "trueQuery": [
@@ -287,6 +310,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 110,
             "trueQuery": [
@@ -371,6 +395,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 111,
             "trueQuery": [
@@ -411,80 +436,96 @@
             ]
         },
         "112": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 80,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 112,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "113": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 80,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 113,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "114": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 68,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 114,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "115": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 68,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 115,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "116": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 86,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 116,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "117": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 86,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 117,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "118": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 111,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 118,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "119": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 111,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 119,
             "trueQuery": [],
@@ -530,6 +571,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 12,
             "trueQuery": [
@@ -565,20 +607,24 @@
             ]
         },
         "120": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 110,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 120,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "121": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 110,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 121,
             "trueQuery": [],
@@ -629,6 +675,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 122,
             "trueQuery": [
@@ -713,6 +760,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 123,
             "trueQuery": [
@@ -753,40 +801,48 @@
             ]
         },
         "124": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 123,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 124,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "125": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 123,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 125,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "126": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 122,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 126,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "127": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 122,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 127,
             "trueQuery": [],
@@ -832,6 +888,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 13,
             "trueQuery": [
@@ -911,6 +968,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 14,
             "trueQuery": [
@@ -995,6 +1053,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 15,
             "trueQuery": [
@@ -1074,6 +1133,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 16,
             "trueQuery": [
@@ -1148,6 +1208,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 17,
             "trueQuery": [
@@ -1222,6 +1283,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 18,
             "trueQuery": [
@@ -1296,6 +1358,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 19,
             "trueQuery": [
@@ -1355,6 +1418,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 2,
             "trueQuery": [
@@ -1419,6 +1483,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 20,
             "trueQuery": [
@@ -1503,6 +1568,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 21,
             "trueQuery": [
@@ -1577,6 +1643,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 22,
             "trueQuery": [
@@ -1641,6 +1708,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 23,
             "trueQuery": [
@@ -1671,60 +1739,72 @@
             ]
         },
         "24": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 15,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 24,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "25": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 15,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 25,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "26": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 14,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 26,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "27": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 14,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 27,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "28": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 21,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 28,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "29": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 21,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 29,
             "trueQuery": [],
@@ -1755,6 +1835,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 3,
             "trueQuery": [
@@ -1814,6 +1895,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 30,
             "trueQuery": [
@@ -1888,6 +1970,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 31,
             "trueQuery": [
@@ -1957,6 +2040,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 32,
             "trueQuery": [
@@ -2021,6 +2105,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 33,
             "trueQuery": [
@@ -2095,6 +2180,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 34,
             "trueQuery": [
@@ -2179,6 +2265,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 35,
             "trueQuery": [
@@ -2263,6 +2350,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 36,
             "trueQuery": [
@@ -2347,6 +2435,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 37,
             "trueQuery": [
@@ -2387,20 +2476,24 @@
             ]
         },
         "38": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 20,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 38,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "39": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 20,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 39,
             "trueQuery": [],
@@ -2436,6 +2529,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 4,
             "trueQuery": [
@@ -2505,6 +2599,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 40,
             "trueQuery": [
@@ -2589,6 +2684,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 41,
             "trueQuery": [
@@ -2673,6 +2769,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 42,
             "trueQuery": [
@@ -2757,6 +2854,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 43,
             "trueQuery": [
@@ -2836,6 +2934,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 44,
             "trueQuery": [
@@ -2910,6 +3009,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 45,
             "trueQuery": [
@@ -2984,6 +3084,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 46,
             "trueQuery": [
@@ -3058,6 +3159,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 47,
             "trueQuery": [
@@ -3093,20 +3195,24 @@
             ]
         },
         "48": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 35,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 48,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "49": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 35,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 49,
             "trueQuery": [],
@@ -3142,6 +3248,7 @@
                 "(Sle (ReadLSB w32 0 coin1_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b1_sym) (ReadLSB w32 0 temp_c1_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 5,
             "trueQuery": [
@@ -3167,20 +3274,24 @@
             ]
         },
         "50": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 37,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 50,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "51": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 37,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 51,
             "trueQuery": [],
@@ -3231,6 +3342,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 52,
             "trueQuery": [
@@ -3315,6 +3427,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 53,
             "trueQuery": [
@@ -3355,40 +3468,48 @@
             ]
         },
         "54": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 34,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 54,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "55": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 34,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 55,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "56": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 36,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 56,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "57": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 36,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 57,
             "trueQuery": [],
@@ -3434,6 +3555,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 58,
             "trueQuery": [
@@ -3508,6 +3630,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 59,
             "trueQuery": [
@@ -3577,6 +3700,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 6,
             "trueQuery": [
@@ -3607,60 +3731,72 @@
             ]
         },
         "60": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 41,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 60,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "61": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 41,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 61,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "62": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 43,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 62,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "63": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 43,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 63,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "64": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 40,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 64,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "65": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 40,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 65,
             "trueQuery": [],
@@ -3711,6 +3847,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 66,
             "trueQuery": [
@@ -3795,6 +3932,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 67,
             "trueQuery": [
@@ -3879,6 +4017,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 68,
             "trueQuery": [
@@ -3963,6 +4102,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 69,
             "trueQuery": [
@@ -4037,6 +4177,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 7,
             "trueQuery": [
@@ -4111,6 +4252,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 70,
             "trueQuery": [
@@ -4195,6 +4337,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 71,
             "trueQuery": [
@@ -4279,6 +4422,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 72,
             "trueQuery": [
@@ -4363,6 +4507,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 73,
             "trueQuery": [
@@ -4403,60 +4548,72 @@
             ]
         },
         "74": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 42,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 74,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "75": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 42,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 75,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "76": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 53,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 76,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "77": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 53,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 77,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "78": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 52,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 78,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "79": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 52,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 79,
             "trueQuery": [],
@@ -4497,6 +4654,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 8,
             "trueQuery": [
@@ -4571,6 +4729,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 80,
             "trueQuery": [
@@ -4655,6 +4814,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 81,
             "trueQuery": [
@@ -4739,6 +4899,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 82,
             "trueQuery": [
@@ -4823,6 +4984,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 83,
             "trueQuery": [
@@ -4902,6 +5064,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 84,
             "trueQuery": [
@@ -4976,6 +5139,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_1) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_1)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 85,
             "trueQuery": [
@@ -5055,6 +5219,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 86,
             "trueQuery": [
@@ -5139,6 +5304,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_2) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_2)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 87,
             "trueQuery": [
@@ -5179,20 +5345,24 @@
             ]
         },
         "88": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 67,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 88,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "89": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 67,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 89,
             "trueQuery": [],
@@ -5233,6 +5403,7 @@
                 "(Sle (ReadLSB w32 0 coin2_index_0) 1)",
                 "(Eq false (Sle (ReadLSB w32 0 b2_sym) (ReadLSB w32 0 temp_c2_0)))"
             ],
+            "hasChildren": "False",
             "isLeaf": "False",
             "state_id": 9,
             "trueQuery": [
@@ -5263,100 +5434,120 @@
             ]
         },
         "90": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 66,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 90,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "91": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 66,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 91,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "92": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 69,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 92,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "93": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 69,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 93,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "94": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 73,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 94,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "95": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 73,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 95,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "96": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 71,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 96,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "97": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 71,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 97,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "98": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 70,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 98,
             "trueQuery": [],
             "wasQueued": "True"
         },
         "99": {
-            "Branch Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Branch Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
             "Fork": "True",
-            "Negate Predicate": "(Eq true (ReadLSB w32 0 leaf_sym))",
+            "Negate Predicate": "(Eq 0 (ReadLSB w32 0 leaf_sym))",
+            "ParentId": 70,
             "falseQuery": [],
+            "hasChildren": "False",
             "isLeaf": "True",
             "state_id": 99,
             "trueQuery": [],

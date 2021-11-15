@@ -17,17 +17,18 @@
 #define MAKESTRING(n) STRING(n)
 #define STRING(n) #n
 
+int global_max = 0;
+unsigned int inner_x = 0;
 unsigned int hash(struct prob_hash *prob_hash, int key, unsigned int max) {
   auto found = prob_hash->map.find(key);
 
   // If the key is not in the map, get a random element and rehash
   if (found == prob_hash->map.end()) {
-    unsigned int x;
-    make_pse_symbolic(&x, sizeof(x), "x_sym", (unsigned int)0,
+    global_max = max;
+    make_pse_symbolic(&inner_x, sizeof(inner_x), "x_sym", (unsigned int)0,
                       (unsigned int)max);
-    printf("max = %d\n", max);
-    prob_hash->map[key] = x;
-    return x;
+    prob_hash->map[key] = inner_x;
+    return inner_x;
   } else {
     return found->second;
   }

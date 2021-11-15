@@ -1,19 +1,19 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/extras/flips_assumes.cpp -o klee_results/llvmir/flips_assumes.ll"
-	User time (seconds): 0.41
-	System time (seconds): 0.03
-	Percent of CPU this job got: 95%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.46
+	User time (seconds): 0.45
+	System time (seconds): 0.05
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.50
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 95920
+	Maximum resident set size (kbytes): 95624
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11740
+	Minor (reclaiming a frame) page faults: 11651
 	Voluntary context switches: 2
-	Involuntary context switches: 74
+	Involuntary context switches: 61
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 584
@@ -24,74 +24,73 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act flips_assumes --disable-inlining --emit-all-errors --show-cond --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries flips_assumes.bc"
-	User time (seconds): 1.11
-	System time (seconds): 0.05
-	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.18
+	User time (seconds): 0.72
+	System time (seconds): 0.04
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.80
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 98052
+	Maximum resident set size (kbytes): 96992
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 10
-	Minor (reclaiming a frame) page faults: 13359
-	Voluntary context switches: 3
-	Involuntary context switches: 58
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 13125
+	Voluntary context switches: 12
+	Involuntary context switches: 555
 	Swaps: 0
-	File system inputs: 416
-	File system outputs: 5048
+	File system inputs: 0
+	File system outputs: 3048
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Path Processing : 
-	Command being timed: "python3 postprocess/reader.py flips_assumes_summary.json flips_assumes 0"
-	User time (seconds): 2.28
-	System time (seconds): 0.03
+	Command being timed: "python3 postprocess/reader.py flips_assumes_summary.json flips_assumes 1"
+	User time (seconds): 0.97
+	System time (seconds): 0.02
 	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.37
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.01
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 19516
+	Maximum resident set size (kbytes): 17748
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11677
-	Voluntary context switches: 11
-	Involuntary context switches: 328
+	Minor (reclaiming a frame) page faults: 6560
+	Voluntary context switches: 8
+	Involuntary context switches: 253
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 2800
+	File system outputs: 1000
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on flips_assumes_processed : 
-Command exited with non-zero status 1
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/flips_assumes_processed -t 2"
-	User time (seconds): 0.10
-	System time (seconds): 0.00
-	Percent of CPU this job got: 66%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.17
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/flips_assumes_processed -t 2 expected-value"
+	User time (seconds): 0.19
+	System time (seconds): 0.01
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.21
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 51944
+	Maximum resident set size (kbytes): 51736
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 6890
-	Voluntary context switches: 59
-	Involuntary context switches: 277
+	Minor (reclaiming a frame) page faults: 13063
+	Voluntary context switches: 85
+	Involuntary context switches: 28
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 24
+	File system outputs: 32
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
-	Exit status: 1
+	Exit status: 0

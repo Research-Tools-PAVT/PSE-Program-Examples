@@ -1,98 +1,37 @@
 [
     {
-        "Path": 1
+        "Path": 10,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     },
     {
-        "Path": 3
+        "Path": 11,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     },
     {
-        "Path": 7
+        "Path": 12,
+        "Var Name": "SUM_sym",
+        "Var Value": "0"
     },
     {
-        "Path": 9
+        "Path": 16,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     },
     {
-        "Path": 11
+        "Path": 20,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     },
     {
-        "Path": 13
+        "Path": 28,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     },
     {
-        "Path": 17
-    },
-    {
-        "Path": 19
-    },
-    {
-        "Path": 25
-    },
-    {
-        "Path": 27
-    },
-    {
-        "Path": 29
-    },
-    {
-        "Path": 31
-    },
-    {
-        "Path": 37
-    },
-    {
-        "Path": 39
-    },
-    {
-        "Path": 49
-    },
-    {
-        "Path": 51
-    },
-    {
-        "Path": 63
-    },
-    {
-        "Path": 65
-    },
-    {
-        "Path": 67
-    },
-    {
-        "Path": 69
-    },
-    {
-        "Path": 75
-    },
-    {
-        "Path": 77
-    },
-    {
-        "Path": 79
-    },
-    {
-        "Path": 81
-    },
-    {
-        "Path": 93
-    },
-    {
-        "Path": 95
-    },
-    {
-        "Path": 107
-    },
-    {
-        "Path": 109
-    },
-    {
-        "Path": 117
-    },
-    {
-        "Path": 119
-    },
-    {
-        "Path": 123
-    },
-    {
-        "Path": 125
+        "Path": 40,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     }
 ]

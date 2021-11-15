@@ -12,3 +12,5 @@ make -j 8 ${1}
 
 echo "==== Executing ===="
 ./${1}
+
+cat ../results/${1}.txt

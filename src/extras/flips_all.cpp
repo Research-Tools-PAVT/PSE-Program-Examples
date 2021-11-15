@@ -1,5 +1,6 @@
 #include <PSE.h>
-#define FLIPS 3
+#include <klee/klee.h>
+#define FLIPS 2
 
 int main(int argc, char *argv[]) {
 
@@ -11,8 +12,8 @@ int main(int argc, char *argv[]) {
   klee_assume(b2 >= 1 && b2 <= 100000);
 
   klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
-  klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
-  klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
+  // klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
+  // klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
 
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {
@@ -55,6 +56,6 @@ int main(int argc, char *argv[]) {
 
   klee_dump_kquery_state();
   mark_state_winning();
-
+  expected_value("SUM", SUM);
   return 0;
 }

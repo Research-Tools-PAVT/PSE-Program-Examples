@@ -1,5 +1,6 @@
 #include <PSE.h>
-#define FLIPS 3
+#include <klee/klee.h>
+#define FLIPS 2
 
 int main(int argc, char *argv[]) {
 
@@ -9,8 +10,8 @@ int main(int argc, char *argv[]) {
   klee_make_symbolic(&b2, sizeof(b2), "b2_sym");
 
   klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
-  klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
-  klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
+  // klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
+  // klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
 
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {
@@ -49,13 +50,14 @@ int main(int argc, char *argv[]) {
   SUM = sum1 + sum2;
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(((b1 > temp1arr[0] && b2 < temp2arr[0]) && (sum1 + sum2 <= 5)) ||
-              ((b1 < temp1arr[0] && b2 > temp2arr[0]) && (sum1 + sum2 >= 4)));
+  klee_assume(((b1 > temp1arr[0] && b2 > temp2arr[0]) && (sum1 + sum2 <= 4)) ||
+              ((b1 < temp1arr[0] && b2 < temp2arr[0]) && (sum1 + sum2 >= 3)));
 
   // klee_print_expr("Sum_1 ", sum1);
   // klee_print_expr("Sum_2 ", sum2);
   // klee_print_expr("SUM_FINAL ", SUM);
   klee_dump_kquery_state();
   mark_state_winning();
+  expected_value("SUM_sym", SUM);
   return 0;
 }

@@ -1,5 +1,17 @@
 #!/usr/bin/bash
 
+# Set to 1 if Expected Value to be calculated.
+DUMPEXPECT=1
+
+# Set to 1 if KLEE optimization is needed.
+OPT=0
+
+if [[ $OPT == 1 ]]; then
+    OPT="--optimize"
+else
+    OPT=""
+fi
+
 stopwatch(){
     date1=`date +%s`;
     while true; do
@@ -49,7 +61,7 @@ klee_results/llvmir/${example}.ll
 echo "KLEE Symbolic Execution : " >> time.log
 /usr/bin/time --append --verbose -o time.log \
 klee --filename-act ${example} \
---disable-inlining --emit-all-errors --show-cond \
+--disable-inlining --emit-all-errors --show-cond ${OPT} \
 --search=nurs:depth --search=nurs:covnew --dump-logs \
 --use-cex-cache --write-kqueries ${example}.bc
 
@@ -69,7 +81,7 @@ echo -e "\e[1;34mProcessing Dumps ...\e[0m"
 echo "Path Processing : " >> time.log
 /usr/bin/time --verbose --append -o time.log python3 \
 postprocess/reader.py ${example}_summary.json \
-${example} 0 > plinko-results/${example}_processed/${example}_logs.txt
+${example} ${DUMPEXPECT} > plinko-results/${example}_processed/${example}_logs.txt
 
 mv time.log plinko-results/${example}_processed/${example}_exec_time.txt
 

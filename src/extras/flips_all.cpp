@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
 
-  int sum1 = 0, sum2 = 0, b1, b2, SUM, temp1arr[FLIPS], temp2arr[FLIPS];
+  int sum1 = 0, sum2 = 0, b1, b2, SUM, tmp1[FLIPS], tmp2[FLIPS];
 
   klee_make_symbolic(&b1, sizeof(b1), "b1_sym");
   klee_make_symbolic(&b2, sizeof(b2), "b2_sym");
@@ -25,10 +25,10 @@ int main(int argc, char *argv[]) {
     klee_make_symbolic(&temp1, sizeof(temp1), name.c_str());
     klee_assume(temp1 >= 1 && temp1 <= LIMIT);
     klee_assume(temp1 >= 1 && temp1 <= LIMIT);
-    std::string outcome_str = "coin1_index_" + std::to_string(i);
-    make_pse_symbolic(&coin_curr1, sizeof(coin_curr1), outcome_str.c_str(),
-                      (int)0, (int)1);
-    temp1arr[i] = temp1;
+    // std::string outcome_str = "coin1_index_" + std::to_string(i);
+    // make_pse_symbolic(&coin_curr1, sizeof(coin_curr1), outcome_str.c_str(),
+    //                   (int)0, (int)1);
+    tmp1[i] = temp1;
     if (temp1 >= b1)
       coin_curr1 = 1;
     else
@@ -44,10 +44,10 @@ int main(int argc, char *argv[]) {
     klee_make_symbolic(&temp2, sizeof(temp2), name.c_str());
     klee_assume(temp2 >= 1 && temp2 <= LIMIT);
     klee_assume(temp2 >= 1 && temp2 <= LIMIT);
-    std::string outcome_str = "coin2_index_" + std::to_string(i);
-    make_pse_symbolic(&coin_curr2, sizeof(coin_curr2), outcome_str.c_str(),
-                      (int)0, (int)1);
-    temp2arr[i] = temp2;
+    // std::string outcome_str = "coin2_index_" + std::to_string(i);
+    // make_pse_symbolic(&coin_curr2, sizeof(coin_curr2), outcome_str.c_str(),
+    //                   (int)0, (int)1);
+    tmp2[i] = temp2;
     if (temp2 >= b2)
       coin_curr2 = 1;
     else

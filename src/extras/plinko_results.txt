@@ -1,72 +1,36 @@
-Example : flips_all
-Date : Monday 15 November 2021 05:08:28 PM IST
+Example : flips_assumes
+Date : Monday 15 November 2021 06:05:46 PM IST
 Plinko Results : 
 Up to date
-constructProbs:   0.64s
-mergePathsWithProbs:   0.66s
-temp_c2_1 -> #x00000f38
-coin2_index_0 -> #x00000000
-temp_c2_0 -> #x00000718
-SUM_sym -> #x00000001
-coin1_index_2 -> #x00000000
-temp_c2_2 -> #x00002708
-b2_sym -> #x00000f31
+constructProbs:   0.25s
+mergePathsWithProbs:   0.26s
+temp_c2_1 -> #x00001711
 sum_probs!0 -> 6.0
-b1_sym -> #x00000713
-coin2_index_2 -> #x00000000
 temp_c1_1 -> #x00000712
-coin2_index_1 -> #x00000000
-temp_c1_0 -> #x00000711
-temp_c1_2 -> #x00001712
-coin1_index_1 -> #x00000000
-coin1_index_0 -> #x00000000
-
-Z3 evaluation:   0.75s
-Example : flips_assumes
-Date : Monday 15 November 2021 05:08:34 PM IST
-Plinko Results : 
-Up to date
-constructProbs:   0.22s
-mergePathsWithProbs:   0.23s
-temp_c2_1 -> #x00001712
-coin2_index_0 -> #x00000000
-temp_c2_0 -> #x00000812
-SUM_sym -> #x00000001
-coin1_index_2 -> #x00000000
-b2_sym -> #x00000713
-temp_c2_2 -> #x00001712
-sum_probs!0 -> 6.0
-b1_sym -> #x00001713
-coin2_index_2 -> #x00000000
-temp_c1_1 -> #x00001f12
-coin2_index_1 -> #x00000000
 temp_c1_0 -> #x00000712
-temp_c1_2 -> #x00000712
-coin1_index_1 -> #x00000000
-coin1_index_0 -> #x00000000
-
-Z3 evaluation:   0.25s
-Example : flips_assumes
-Date : Monday 15 November 2021 05:09:06 PM IST
-Plinko Results : 
-Up to date
-constructProbs:   0.07s
-mergePathsWithProbs:   0.07s
-temp_c2_1 -> #x00000711
-coin2_index_0 -> #x00000000
 temp_c2_0 -> #x00000711
 SUM_sym -> #x00000001
-coin1_index_2 -> #x00000000
+temp_c1_2 -> #x00000712
 b2_sym -> #x00000712
 temp_c2_2 -> #x00000711
-sum_probs!0 -> 1.0
 b1_sym -> #x00000713
-coin2_index_2 -> #x00000000
-temp_c1_1 -> #x00000712
-coin2_index_1 -> #x00000000
-temp_c1_0 -> #x00001712
-temp_c1_2 -> #x00000712
-coin1_index_1 -> #x00000000
-coin1_index_0 -> #x00000000
 
-Z3 evaluation:   0.10s
+Z3 evaluation:   0.34s
+Example : flips_all
+Date : Monday 15 November 2021 06:05:57 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   0.47s
+mergePathsWithProbs:   0.48s
+temp_c2_1 -> #x00002000
+sum_probs!0 -> 6.0
+temp_c1_1 -> #x00001011
+temp_c1_0 -> #x00002011
+temp_c2_0 -> #x00002002
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000004
+temp_c2_2 -> #x00002000
+b2_sym -> #x00000003
+b1_sym -> #x00002016
+
+Z3 evaluation:   0.64s

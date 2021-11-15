@@ -1,21 +1,15 @@
 Up to date
-constructProbs:   0.07s
-mergePathsWithProbs:   0.07s
-temp_c2_1 -> #x00000711
-coin2_index_0 -> #x00000000
+constructProbs:   0.25s
+mergePathsWithProbs:   0.26s
+temp_c2_1 -> #x00001711
+sum_probs!0 -> 6.0
+temp_c1_1 -> #x00000712
+temp_c1_0 -> #x00000712
 temp_c2_0 -> #x00000711
 SUM_sym -> #x00000001
-coin1_index_2 -> #x00000000
+temp_c1_2 -> #x00000712
 b2_sym -> #x00000712
 temp_c2_2 -> #x00000711
-sum_probs!0 -> 1.0
 b1_sym -> #x00000713
-coin2_index_2 -> #x00000000
-temp_c1_1 -> #x00000712
-coin2_index_1 -> #x00000000
-temp_c1_0 -> #x00001712
-temp_c1_2 -> #x00000712
-coin1_index_1 -> #x00000000
-coin1_index_0 -> #x00000000
 
-Z3 evaluation:   0.10s
+Z3 evaluation:   0.34s

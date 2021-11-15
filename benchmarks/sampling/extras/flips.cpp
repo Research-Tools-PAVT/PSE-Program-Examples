@@ -31,9 +31,9 @@ using json = nlohmann::json;
 
 #define CLASSES 4
 #define FORALLS 10
-#define RUNS 1000
-#define BUCKET_SIZE 5
-#define FLIPS 2
+#define RUNS 100000
+#define BUCKET_SIZE 7
+#define FLIPS 3
 
 int main(void) {
   std::freopen("../results/flips.txt", "w", stdout);
@@ -50,26 +50,26 @@ int main(void) {
       /* FORALL Buckets */
       /* C0 >= 8000 */
       if (forall_classes == 0) {
-        b1 = 8000 + rand() % (10000 - 8000);
-        b2 = 8000 + rand() % (10000 - 8000);
+        b1 = 8001 + rand() % (10000 - 8000);
+        b2 = 8001 + rand() % (10000 - 8000);
       }
 
       /* C1 <= 2500 */
       if (forall_classes == 1) {
-        b1 = rand() % 2500;
-        b2 = rand() % 2500;
+        b1 = rand() % 8000;
+        b2 = rand() % 8000;
       }
 
       /* C2 */
       if (forall_classes == 2) {
-        b1 = 8000 + rand() % (10000 - 8000);
-        b2 = rand() % 2500;
+        b1 = 8001 + rand() % (10000 - 8000);
+        b2 = rand() % 8000;
       }
 
       /* C3 */
       if (forall_classes == 3) {
-        b1 = rand() % 2500;
-        b2 = 8000 + rand() % (10000 - 8000);
+        b1 = rand() % 8000;
+        b2 = 8001 + rand() % (10000 - 8000);
       }
 
       while (runs--) {
@@ -130,6 +130,28 @@ int main(void) {
     }
   }
 
+  std::cout << std::endl;
+  std::cout << std::endl;
+
+  classCounter = 0;
+  flag = 0;
+  for (const auto &x : counters) {
+    classCounter++;
+    std::cout << std::endl;
+    int bucketCounter = 0;
+    if (flag == 0)
+      for (const auto &e : x)
+        std::cout << std::setw(4) << "B" << bucketCounter++;
+    flag = 1;
+    std::cout << "\n"
+              << "C" << classCounter;
+    for (const auto &e : x) {
+      (e >= 98000) ? std::cout << std::setw(3) << 1 << ", "
+                   : std::cout << std::setw(3) << 0 << ", ";
+    }
+  }
+
+  std::cout << std::endl;
   std::cout << std::endl;
 
   std::vector<int> valuesMesh;

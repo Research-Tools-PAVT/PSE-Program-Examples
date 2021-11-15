@@ -1,7 +1,1 @@
 SUM_sym ~ UniformInt(0,4) :: w32
-coin1_index_0 ~ UniformInt(0,1) :: w32
-coin1_index_1 ~ UniformInt(0,1) :: w32
-coin1_index_2 ~ UniformInt(0,1) :: w32
-coin2_index_0 ~ UniformInt(0,1) :: w32
-coin2_index_1 ~ UniformInt(0,1) :: w32
-coin2_index_2 ~ UniformInt(0,1) :: w32

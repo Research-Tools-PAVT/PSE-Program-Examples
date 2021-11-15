@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 // Max 23 w/ 10 minute timeout
-#define N 7
+#define N 4
 size_t monotone_check(int *f) {
   int last = f[0];
   size_t count = 0;

@@ -1,19 +1,19 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/base/monotone_binary_int_all.cpp -o klee_results/llvmir/monotone_binary_int_all.ll"
-	User time (seconds): 0.44
-	System time (seconds): 0.02
-	Percent of CPU this job got: 96%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.48
+	User time (seconds): 0.43
+	System time (seconds): 0.03
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.46
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96140
+	Maximum resident set size (kbytes): 95740
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11676
-	Voluntary context switches: 2
-	Involuntary context switches: 7
+	Minor (reclaiming a frame) page faults: 11734
+	Voluntary context switches: 1
+	Involuntary context switches: 16
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 528
@@ -24,23 +24,23 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act monotone_binary_int_all --disable-inlining --emit-all-errors --show-cond --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries monotone_binary_int_all.bc"
-	User time (seconds): 101.89
-	System time (seconds): 0.37
-	Percent of CPU this job got: 94%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:48.36
+	User time (seconds): 2.31
+	System time (seconds): 0.03
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.36
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 116052
+	Maximum resident set size (kbytes): 93632
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 14
-	Minor (reclaiming a frame) page faults: 17323
-	Voluntary context switches: 2
-	Involuntary context switches: 52469
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 11697
+	Voluntary context switches: 1
+	Involuntary context switches: 227
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 18264
+	File system outputs: 1528
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -48,44 +48,44 @@ KLEE Symbolic Execution :
 	Exit status: 0
 Path Processing : 
 	Command being timed: "python3 postprocess/reader.py monotone_binary_int_all_summary.json monotone_binary_int_all 0"
-	User time (seconds): 19.84
-	System time (seconds): 0.30
-	Percent of CPU this job got: 94%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:21.36
+	User time (seconds): 0.61
+	System time (seconds): 0.03
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.67
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 30812
+	Maximum resident set size (kbytes): 16884
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 218329
-	Voluntary context switches: 11
-	Involuntary context switches: 16112
+	Minor (reclaiming a frame) page faults: 5993
+	Voluntary context switches: 8
+	Involuntary context switches: 134
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 29408
+	File system outputs: 824
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on monotone_binary_int_all_processed : 
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/monotone_binary_int_all_processed -t 2 calculate-prob"
-	User time (seconds): 2.57
-	System time (seconds): 0.06
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/monotone_binary_int_all_processed -t 2 monotone-binary-search -n 4"
+	User time (seconds): 0.16
+	System time (seconds): 0.03
 	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.69
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.20
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 149180
+	Maximum resident set size (kbytes): 52564
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 39085
-	Voluntary context switches: 422
-	Involuntary context switches: 574
+	Minor (reclaiming a frame) page faults: 13525
+	Voluntary context switches: 90
+	Involuntary context switches: 17
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 32

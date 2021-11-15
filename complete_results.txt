@@ -1,0 +1,36 @@
+Example : monotone_binary_int_all
+Date : Monday 15 November 2021 10:32:51 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   1.95s
+mergePathsWithProbs:   2.00s
+x -> #xffffffffffffffff
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   2.11s
+Example : monotone_binary_int_all
+Date : Monday 15 November 2021 10:35:07 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   0.01s
+mergePathsWithProbs:   0.01s
+x -> #x1ddde2001fc01c1d
+fsym2 -> #xffffffff
+fsym1 -> #x00000000
+fsym0 -> #x00000001
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.03s
+
+Example : monotone_binary_int_all
+Date : Monday 15 November 2021 10:36:03 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   0.06s
+mergePathsWithProbs:   0.06s
+x -> #xffffffffffffffff
+fsym3 -> #xffffffff
+fsym2 -> #x00000000
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.08s

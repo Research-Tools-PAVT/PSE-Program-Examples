@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Set to 1 if Expected Value to be calculated.
-DUMPEXPECT=1
+DUMPEXPECT=0
 
 # Set to 1 if KLEE optimization is needed.
 OPT=0

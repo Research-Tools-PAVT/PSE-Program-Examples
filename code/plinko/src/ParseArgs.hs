@@ -14,6 +14,8 @@ data Benchmark = Montyhall
                | ExpectedValue
                | Monotone Double
                | Freivalds Int
+               | BloomFilter Double
+               | CountMinSketch Double
                | CalcProb
                | PrintProb
   deriving (Eq, Show)
@@ -40,6 +42,18 @@ freivaldsBench = Freivalds
                   <> value 1
                   <> help "the number of iterations Freivalds' algorithm is run")
 
+bloomFilterBench :: Parser Benchmark
+bloomFilterBench = BloomFilter
+  <$> option auto (  long "epsilon"
+                  <> short 'e'
+                  <> help "the expected false-positive error rate, epsilon")
+
+countMinSketchBench :: Parser Benchmark
+countMinSketchBench = CountMinSketch
+  <$> option auto (  long "gamma"
+                  <> short 'g'
+                  <> help "the expected probability of getting a miscount above epsilon rate, gamma")
+
 parseArgs :: Parser Args
 parseArgs = Args
   <$> strOption (  long "klee-output-dir"
@@ -56,6 +70,8 @@ parseArgs = Args
                 <> command "expected-value" (info (pure ExpectedValue) $ progDesc "calculate the expected value")
                 <> command "monotone-binary-search" (info monotoneBench $ progDesc "run the monotone binary serach benchmark")
                 <> command "freivalds" (info freivaldsBench $ progDesc "run the Freivalds' benchmark")
+                <> command "bloom-filter" (info bloomFilterBench $ progDesc "run the Bloom Filter benchmark")
+                <> command "countminsketch" (info countMinSketchBench $ progDesc "run the CountMinSketch benchmark")
                 <> command "calculate-prob" (info (pure CalcProb) $ progDesc "calculate the raw probability (not guaranteed to be maximal or minimal)")
                 <> command "print-prob" (info (pure PrintProb) $ progDesc "print the SMTLIBv2 string representing the probability sum"))
 

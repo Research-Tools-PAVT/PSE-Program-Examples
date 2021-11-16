@@ -10,6 +10,7 @@ import Data.Maybe
 import Data.Either
 import Data.List
 import Data.Hashable
+import Control.Monad ((>=>))
 --import Text.Parsec (ParseError)
 
 import Debug.Trace
@@ -91,7 +92,7 @@ astToIOString ast = evalZ3 $ astToString =<< ast
 
 getVarVals :: Map.HashMap String KType -> DistMap -> [WinningPath] -> Maybe (Z3 [AST])
 getVarVals foralls dists wps 
-  | all (isJust . varVal) wps = Just $ mapM convVals (catMaybes $ map varVal wps)
+  | all (isJust . varVal) wps = Just $ mapM convVals (mapMaybe varVal wps)
   | otherwise = Nothing
   where convVals :: Either ParseError KExpr -> Z3 AST
         convVals (Right ke) = convertToZ3' dists (BitVec 32) (transform (removeReads foralls . negateComparison) ke)
@@ -132,7 +133,7 @@ getConcretizedVal v eqs = do
   fmap snd $ withModel $ \m -> fromJust <$> evalInt m rawV
 
 collectForallSizes :: DistMap -> [[Branch]] -> Map.HashMap String KType
-collectForallSizes dm bs = let allExprs = concatMap (concatMap (\b -> rights $ (predicate b):(nodeTrueQuery b))) bs
+collectForallSizes dm bs = let allExprs = concatMap (concatMap (\b -> rights $ predicate b:nodeTrueQuery b)) bs
                                allForallReads = concatMap (\e' -> [ extractVarAndType e | e <- universe e', isForallRead e]) allExprs
   in Map.fromListWith max allForallReads
   where isForallRead :: KExpr -> Bool
@@ -153,27 +154,34 @@ collectPSVs :: [DistDef] -> [[KExpr]] -> [DistDef]
 collectPSVs origDists bs = let allPSVs = nub [ v | path <- bs, e <- path, VarC _ v <- universe e]
   in map joinDistWithVar (filter (\v -> any (flip isPrefixOf v . varName) origDists) allPSVs)
   where joinDistWithVar :: String -> DistDef
-        joinDistWithVar v = case find (\s -> isPrefixOf (varName s) v) (reverse origDists) of
+        joinDistWithVar v = case find (\s -> varName s `isPrefixOf` v) (reverse origDists) of
           Just d -> DistDef v (dist d) (ktype d)
           Nothing -> error ("Unknown prob. sym. var: " ++ v)
 
 collectAssumes :: Map.HashMap String KType -> DistMap -> [[Branch]] -> (Z3 AST, Z3 [AST])
 collectAssumes foralls dists bss = let perPathAssumes = map (Set.filter removeIfPSV . collectPerPath) bss
-                                       univAssumes = if null perPathAssumes then Set.empty else foldr1 Set.intersection perPathAssumes
-                                       uniquePerPathAssumes = map (\xs -> if null xs then [BoolC True] else xs) $ map (Set.toList . flip Set.difference univAssumes) perPathAssumes  
-  in (mapM (convertToZ3 dists) (Set.toList univAssumes) >>= mkAnd, sequence $ map (\xs -> mapM (convertToZ3 dists) xs >>= mkAnd) uniquePerPathAssumes)
+                                       univAssumes = if null perPathAssumes
+                                                     then Set.empty
+                                                     else foldr1 Set.intersection perPathAssumes
+                                       uniquePerPathAssumes = map
+                                         ((\ xs -> if null xs
+                                                   then [BoolC True]
+                                                   else xs)
+                                          . Set.toList . flip Set.difference univAssumes)
+                                         perPathAssumes
+  in (mapM (convertToZ3 dists) (Set.toList univAssumes) >>= mkAnd, mapM (mapM (convertToZ3 dists) >=> mkAnd) uniquePerPathAssumes)
   where collectPerPath :: [Branch] -> Set.HashSet KExpr
         collectPerPath bs = let preds = case partitionEithers $ map predicate bs of
                                   ([], r) -> Set.fromList (map (transform $ removeReads foralls) r)
                                   (l, _)  -> error $ "Error: ParseErrors found in predicate, collectAssumes" ++ show l
-                                assumes = case partitionEithers $ (init (nodeTrueQuery (bs !! (length bs - 2)))) of
+                                assumes = case partitionEithers (init (nodeTrueQuery (bs !! (length bs - 2)))) of
                                   ([], r) -> Set.fromList (map (transform $ removeReads foralls) r)
                                   (l, _)  -> error $ "Error: ParseErrors found in nodeTrueQuery, collectAssumes" ++ show l
           in Set.difference assumes preds
 
         removeIfPSV :: KExpr -> Bool
         removeIfPSV ke = let vars = nub [ v | VarC _ v <- universe ke ]
-          in not $ any (\v -> any (flip isPrefixOf v) (Map.keys dists)) vars
+          in not $ any (\v -> any (`isPrefixOf` v) (Map.keys dists)) vars
 
 distsToDistMap :: [DistDef] -> DistMap
 distsToDistMap = Map.fromList . map (\d -> (varName d, (dist d, ktype d)))

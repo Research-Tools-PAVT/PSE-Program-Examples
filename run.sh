@@ -2,14 +2,56 @@
 
 # Set to 1 if Expected Value to be calculated.
 DUMPEXPECT=0
+THREADS=2
 
 # Set to 1 if KLEE optimization is needed.
-OPT=0
+OPT=1
+COMMANDS=$2
 
 if [[ $OPT == 1 ]]; then
     OPT="--optimize"
 else
     OPT=""
+fi
+
+if [[ ${2} == "reservoir" ]];
+then
+    DUMPEXPECT=0
+    THREADS=2
+    OPT=0
+    COMMANDS="reservoir-sample"
+fi
+
+if [[ ${2} == "freivalds" ]];
+then
+    DUMPEXPECT=0
+    THREADS=2
+    OPT=0
+    COMMANDS="freivalds"
+fi
+
+if [[ ${2} == "bloomfilter" ]];
+then
+    DUMPEXPECT=0
+    THREADS=2
+    OPT=0
+    COMMANDS="bloom-filter"
+fi
+
+if [[ ${2} == "monotone" ]];
+then
+    DUMPEXPECT=0
+    THREADS=1
+    OPT=1
+    COMMANDS="montone-binary-search"
+fi
+
+if [[ ${2} == "montyhall" ]];
+then
+    DUMPEXPECT=0
+    THREADS=2
+    OPT=0
+    COMMANDS=${2}
 fi
 
 stopwatch(){
@@ -103,11 +145,13 @@ cabal v2-build
 
 echo -e "\e[1;34m===== Run Plinko =====\e[0m"
 
+echo "cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t ${THREADS} ${COMMANDS} ${3}"
+
 /usr/bin/time --append --verbose -o \
 ../../plinko-results/${example}_processed/${example}_exec_time.txt \
 cabal v2-run plinko -- \
 -d ../../klee_results/${example}_processed \
--t 2 ${2} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
+-t ${THREADS} ${COMMANDS} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
 > ../../plinko-results/${example}_processed/${example}_processed.txt
 
 echo "Example : ${example}" >> ../../complete_results.txt

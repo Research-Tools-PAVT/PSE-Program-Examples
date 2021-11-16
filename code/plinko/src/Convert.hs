@@ -39,7 +39,7 @@ valsToZ3 (Arr (BitVec domSize) (BitVec rangeSize), xs) = mapM intToZ3Arr xs
           domSort <- mkBvSort domSize
           _0 <- mkBvNum rangeSize (0 :: Integer)
           constArr <- mkConstArray domSort _0
-          foldM (\a -> uncurry (mkStore a)) constArr (zip inds iAsBytes)
+          foldM (uncurry . mkStore) constArr (zip inds iAsBytes)
 valsToZ3 (t,_) = error $ "Type Error: Unsupported PSV type: " ++ show t
                            
 varToSort :: DistDef -> Z3 AST
@@ -264,7 +264,7 @@ convertToZ3' dists Unknown (ReadLSB (BitVec t) ind arr) = do
 convertToZ3' dists (FP s) (ReadLSB (BitVec t) ind arr) = do
   arr' <- convertToZ3'' dists (Arr (BitVec 32) (BitVec 8)) arr
   ind' <- convertToZ3'' dists (BitVec 32) ind
-  inds <- mapM (\n -> mkBvNum 32 n >>= mkBvadd ind') [1..(t `div` 8) - 1]
+  inds <- mapM (mkBvNum 32 >=> mkBvadd ind') [1..(t `div` 8) - 1]
   vals <- mapM (mkSelect arr') (ind':inds)
   bv <- foldM (flip mkConcat) (head vals) (tail vals)
   sort <- convertBitsizeToFP s
@@ -274,20 +274,20 @@ convertToZ3' dists t1@(BitVec n1) e@(ReadMSB t2@(BitVec n2) ind arr)
   | n1 == n2 = do
       arr' <- convertToZ3'' dists (Arr (BitVec 32) (BitVec 8)) arr
       ind' <- convertToZ3'' dists (BitVec 32) ind
-      inds <- mapM (\n -> mkBvNum 32 n >>= mkBvadd ind') [1..(n2 `div` 8) - 1]
+      inds <- mapM (mkBvNum 32 >=> mkBvadd ind') [1..(n2 `div` 8) - 1]
       vals <- mapM (mkSelect arr') (reverse (ind':inds))
       foldM (flip mkConcat) (head vals) (tail vals)
   | otherwise = typeError t1 t2 e
 convertToZ3' dists Unknown (ReadMSB (BitVec t) ind arr) = do
   arr' <- convertToZ3'' dists (Arr (BitVec 32) (BitVec 8)) arr
   ind' <- convertToZ3'' dists (BitVec 32) ind
-  inds <- mapM (\n -> mkBvNum 32 n >>= mkBvadd ind') [1..(t `div` 8) - 1]
+  inds <- mapM (mkBvNum 32 >=> mkBvadd ind') [1..(t `div` 8) - 1]
   vals <- mapM (mkSelect arr') (reverse (ind':inds))
   foldM (flip mkConcat) (head vals) (tail vals)
 convertToZ3' dists (FP _) (ReadMSB (BitVec t) ind arr) = do
   arr' <- convertToZ3'' dists (Arr (BitVec 32) (BitVec 8)) arr
   ind' <- convertToZ3'' dists (BitVec 32) ind
-  inds <- mapM (\n -> mkBvNum 32 n >>= mkBvadd ind') [1..(t `div` 8) - 1]
+  inds <- mapM (mkBvNum 32 >=> mkBvadd ind') [1..(t `div` 8) - 1]
   vals <- mapM (mkSelect arr') (reverse (ind':inds))
   foldM (flip mkConcat) (head vals) (tail vals)
 convertToZ3' _ t1 e@(ReadMSB t2 _ _) = typeError t1 t2 e
@@ -316,7 +316,7 @@ convertToZ3' _ _ (KArray xs) = do
   arrSort <- mkBvSort 32
   _0 <- mkBvNum 8 (0 :: Integer)
   arr <- mkConstArray arrSort _0
-  inds <- mapM (mkBvNum 32) [0..((length xs) - 1)]
+  inds <- mapM (mkBvNum 32) [0..(length xs - 1)]
   vals <- mapM (mkBvNum 8) xs
   foldM (uncurry . mkStore) arr (zip inds vals)
 convertToZ3' dists t1@(BitVec _) e@(Select t2 cond tru fls)
@@ -327,10 +327,15 @@ convertToZ3' dists t1@(BitVec _) e@(Select t2 cond tru fls)
       mkIte cond' tru' fls'
   | otherwise = typeError t1 t2 e
 convertToZ3' dists t1@(FP _) e@(Select _ cond tru fls) = do
-      cond' <- convertToZ3'' dists Boolean cond
-      tru'  <- convertToZ3'' dists t1 tru
-      fls'  <- convertToZ3'' dists t1 fls
-      mkIte cond' tru' fls'
+  cond' <- convertToZ3'' dists Boolean cond
+  tru'  <- convertToZ3'' dists t1 tru
+  fls'  <- convertToZ3'' dists t1 fls
+  mkIte cond' tru' fls'
+convertToZ3' dists Boolean (Select Boolean cond tru fls) = do
+  cond' <- convertToZ3'' dists Boolean cond
+  tru'  <- convertToZ3'' dists Boolean tru
+  fls'  <- convertToZ3'' dists Boolean fls
+  mkIte cond' tru' fls'
 convertToZ3' dists Unknown (Select t cond tru fls) = do
   cond' <- convertToZ3'' dists Boolean cond
   tru'  <- convertToZ3'' dists t tru
@@ -403,13 +408,13 @@ convertToZ3' dists Unknown (FAbs t' e) = case getKType e of
   FP n -> mkFpaAbs =<< convertToZ3'' dists (FP n) e
   t -> typeError (FP 32) t (FAbs t' e)
 convertToZ3' dists t@(FP _) (FNeg e)
-  | t == (getKType e) = mkFpaNeg =<< convertToZ3'' dists t e
+  | t == getKType e = mkFpaNeg =<< convertToZ3'' dists t e
   | otherwise = typeError t (getKType e) (FNeg e)
 convertToZ3' dists Unknown (FNeg e) = case getKType e of
   FP n -> mkFpaNeg =<< convertToZ3'' dists (FP n) e
   t -> typeError (FP 32) t (FNeg e)
 convertToZ3' dists t@(FP _) e'@(FRint e)
-  | t == (getKType e) || Unknown == (getKType e) = do
+  | t == getKType e || Unknown == getKType e = do
       rm <- mkFpaRoundNearestTiesToEven
       eAst <- convertToZ3'' dists t e
       mkFpaRoundToIntegral rm eAst

@@ -1,36 +1,40 @@
 Example : monotone_binary_int_all
-Date : Monday 15 November 2021 10:32:51 PM IST
+Date : Tuesday 16 November 2021 11:35:23 AM IST
 Plinko Results : 
 Up to date
-constructProbs:   1.95s
-mergePathsWithProbs:   2.00s
-x -> #xffffffffffffffff
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   2.11s
-Example : monotone_binary_int_all
-Date : Monday 15 November 2021 10:35:07 PM IST
+constructProbs:   0.58s
+mergePathsWithProbs:   0.61s
+Couldn't construct model
+Z3 evaluation: 200.13s
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:16:48 PM IST
 Plinko Results : 
 Up to date
-constructProbs:   0.01s
-mergePathsWithProbs:   0.01s
-x -> #x1ddde2001fc01c1d
-fsym2 -> #xffffffff
-fsym1 -> #x00000000
-fsym0 -> #x00000001
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.03s
-
-Example : monotone_binary_int_all
-Date : Monday 15 November 2021 10:36:03 PM IST
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:20:05 PM IST
 Plinko Results : 
 Up to date
-constructProbs:   0.06s
-mergePathsWithProbs:   0.06s
-x -> #xffffffffffffffff
-fsym3 -> #xffffffff
-fsym2 -> #x00000000
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.08s
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:20:34 PM IST
+Plinko Results : 
+Up to date
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:22:25 PM IST
+Plinko Results : 
+Up to date
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:25:20 PM IST
+Plinko Results : 
+Up to date
+constructProbs: 148.93s
+mergePathsWithProbs: 148.98s
+Couldn't construct model
+Z3 evaluation: 163.93s
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:38:56 PM IST
+Plinko Results : 
+Up to date
+constructProbs: 160.47s
+mergePathsWithProbs: 160.51s
+Couldn't construct model
+Z3 evaluation: 174.31s

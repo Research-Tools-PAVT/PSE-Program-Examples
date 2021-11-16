@@ -5,7 +5,7 @@
 // --use-cex-cache %t1.bc
 
 #include <PSE.h>
-#include <cmath>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 

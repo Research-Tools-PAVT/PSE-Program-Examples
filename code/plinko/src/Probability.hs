@@ -16,13 +16,13 @@ import Convert
 import Debug.Trace
 
 indepOptimize :: [DistDef] -> DistMap -> [([KExpr],[DistDef],Integer)] -> [[IndPartition]] -> Z3 [AST]
-indepOptimize dists distMap ppaths iips = mapM (uncurry kernel) $ zip ppaths iips
+indepOptimize dists distMap = zipWithM kernel
   where kernel :: ([KExpr],[DistDef],Integer) -> [IndPartition] -> Z3 AST
         kernel (ks,newDists,w) ips = let partConjuncts = partitionConjuncts distMap ips ks
-                                         partDists = map (\p -> filter ((flip Set.member) p . varName) newDists) ips
+                                         partDists = map (\p -> filter (flip Set.member p . varName) newDists) ips
                                          onlyForall = filter (\k -> null [v | VarC _ v <- universe k, Map.member v distMap]) ks
-                                         perConjProbs = map (uncurry $ constructProbs distMap) $ zip (onlyForall:partConjuncts) ([]:partDists)
-          in do numer <- mkMul =<< sequence ((mkIntNum w):perConjProbs)
+                                         perConjProbs = zipWith (constructProbs distMap) (onlyForall : partConjuncts) ([] : partDists)
+          in do numer <- mkMul =<< sequence (mkIntNum w:perConjProbs)
                 denom <- (mkRational . toRational) $ distsToTotalWeight dists
                 mkDiv numer denom
 
@@ -54,7 +54,7 @@ constructProbs distMap ks dists = computePathProb dists $ map (convertToZ3 distM
 --          mkDiv numSum denom
 
 constructProbsNoIndep :: [DistDef] -> DistMap -> [([KExpr],[DistDef],Integer)] -> Z3 [AST]
-constructProbsNoIndep dists distMap ppaths = mapM (\(ps,ds,weight) -> computePathProb ds weight $ map (convertToZ3 distMap) ps) ppaths
+constructProbsNoIndep dists distMap = mapM (\(ps,ds,weight) -> computePathProb ds weight $ map (convertToZ3 distMap) ps)
   where substsAsAST :: [DistDef] -> Z3 [([(AST,AST)],AST)]
         substsAsAST ds = do vars <-  mapM varToSort ds
                             let (vals, weights) = distsToDomainsAndWeights ds
@@ -115,15 +115,22 @@ calcIMap dists = Set.toList . kernel (Set.map Set.singleton allPsvs)
         kernel curPart [] = curPart
 
 preprocessSimple :: [DistDef] -> [[KExpr]] -> [([KExpr],[DistDef],Integer)]
-preprocessSimple dists paths = map preprocessPath paths
+preprocessSimple dists = map preprocessPath
   where preprocessPath :: [KExpr] -> ([KExpr],[DistDef],Integer)
-        preprocessPath p = let probVarConjuncts = map (\d -> filter (\e -> (varName d) `elem` [s | VarC _ s <- universe e]) p) dists
+        preprocessPath p = let probVarConjuncts = map (\d -> filter (\e -> varName d `elem` [s | VarC _ s <- universe e]) p) dists
                                simpleConjuncts = map (filter isSimple) probVarConjuncts
-                               weightExprs = map (\(c,s) -> if (length c == length s) && (not $ null s) then Just (last s) else Nothing) $ zip probVarConjuncts simpleConjuncts
-                               updateExprs = map (\(s,l) -> case l of Nothing -> s; (Just _) -> init s) $ zip simpleConjuncts weightExprs
-                               newDists = map (\(es,d) -> DistDef (varName d) (foldl' updateDist (dist d) es) (ktype d)) $ zip updateExprs dists
-                               weight = product $ map (uncurry calcWeight) $ zip weightExprs newDists
-          in (p List.\\ (concat simpleConjuncts), concatMap (\(ws,ds) -> if isNothing ws then [ds] else []) $ zip weightExprs newDists, weight)
+                               weightExprs = zipWith (\ c s ->
+                                                        if (length c == length s) && not (null s)
+                                                         then Just (last s)
+                                                         else Nothing)
+                                             probVarConjuncts simpleConjuncts
+                               updateExprs = zipWith (\ s l -> case l of
+                                                                Nothing -> s
+                                                                Just _ -> init s)
+                                             simpleConjuncts weightExprs
+                               newDists = zipWith (\ es d -> DistDef (varName d) (foldl' updateDist (dist d) es) (ktype d)) updateExprs dists
+                               weight = product $ zipWith calcWeight weightExprs newDists
+          in (p List.\\ concat simpleConjuncts, concatMap (\(ws,ds) -> ([ds | isNothing ws])) $ zip weightExprs newDists, weight)
 
         updateDist ::  Dist -> KExpr -> Dist
         updateDist (UniformInt (Left l) (Left u)) (Eq (NumC n) _)

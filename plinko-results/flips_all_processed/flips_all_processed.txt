@@ -1,15 +1,1 @@
 Up to date
-constructProbs:   0.47s
-mergePathsWithProbs:   0.48s
-temp_c2_1 -> #x00002000
-sum_probs!0 -> 6.0
-temp_c1_1 -> #x00001011
-temp_c1_0 -> #x00002011
-temp_c2_0 -> #x00002002
-SUM_sym -> #x00000000
-temp_c1_2 -> #x00000004
-temp_c2_2 -> #x00002000
-b2_sym -> #x00000003
-b1_sym -> #x00002016
-
-Z3 evaluation:   0.64s

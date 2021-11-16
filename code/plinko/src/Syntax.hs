@@ -1,7 +1,5 @@
 {-# LANGUAGE DeriveGeneric  #-}
 {-# LANGUAGE DeriveDataTypeable #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DeriveAnyClass #-}
 
 module Syntax where
 

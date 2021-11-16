@@ -91,7 +91,7 @@ randomizedResponseFairNotEqual probs assumes = do
   body <- mkAnd =<< T.sequence
     [ mkEq sum_probs rawProbs,
       assumes,
-      mkNot =<< (mkEq sum_probs _one_quarter)
+      mkNot =<< mkEq sum_probs _one_quarter
     ]
   
   assert body
@@ -108,7 +108,7 @@ randomizedResponseFairEqual probs assumes = do
   body <- mkAnd =<< T.sequence
     [ mkEq sum_probs rawProbs,
       assumes,
-      mkNot =<< (mkEq sum_probs _three_quarters)
+      mkNot =<< mkEq sum_probs _three_quarters
     ]
   
   assert body
@@ -117,50 +117,7 @@ randomizedResponseFairEqual probs assumes = do
        Just model -> showModel model
        Nothing    -> return "Couldn't construct model"
 
-bloomFilter :: Z3 AST -> Z3 AST -> Z3 String
-bloomFilter probs assumes = do
-  params <- mkParams
-  threads <- mkStringSymbol "threads"
-  paramsSetUInt params threads 2
-  solverSetParams params
 
-  sum_probs <- mkFreshRealVar "sum_probs"
-  rawProbs <- probs
-  _bound <- mkRealNum (40 / 100::Double)
-  body <- mkAnd =<< T.sequence
-    [ mkEq sum_probs rawProbs,
-      assumes,
-      mkNot =<< mkLe sum_probs _bound
-    ]
-  
-  assert body
-  (_res, mbModel) <- solverCheckAndGetModel
-  case mbModel of
-       Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
-
-countMinSketch :: Z3 AST -> Z3 AST -> Z3 String
-countMinSketch probs assumes = do
-  params <- mkParams
-  threads <- mkStringSymbol "threads"
-  paramsSetUInt params threads 2
-  solverSetParams params
-
-
-  sum_probs <- mkFreshRealVar "sum_probs"
-  rawProbs <- probs
-  _bound <- mkRealNum (25 / 100::Double)
-  body <- mkAnd =<< T.sequence
-    [ mkEq sum_probs rawProbs,
-      assumes,
-      mkGt sum_probs _bound
-    ]
-  
-  assert body
-  (_res, mbModel) <- solverCheckAndGetModel
-  case mbModel of
-       Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
 
 
 z3Script :: Z3 AST -> Z3 String
@@ -221,6 +178,52 @@ printZ3ASTs asts = do
   print str
 
 ----------------------------------------------------------
+
+countMinSketch :: Word -> Z3 AST -> Z3 AST -> Double -> Z3 String
+countMinSketch threads probs assumes gamma = do
+  params <- mkParams
+  threadsName <- mkStringSymbol "threads"
+  paramsSetUInt params threadsName threads
+  solverSetParams params
+
+  sum_probs <- mkFreshRealVar "sum_probs"
+  rawProbs <- probs
+  _bound <- mkRealNum gamma
+  body <- mkAnd =<< T.sequence
+    [ mkEq sum_probs rawProbs,
+      assumes,
+      mkGt sum_probs _bound
+    ]
+  
+  assert body
+  (_res, mbModel) <- solverCheckAndGetModel
+  case mbModel of
+       Just model -> showModel model
+       Nothing    -> return "Couldn't construct model"
+
+
+bloomFilter :: Word -> Z3 AST -> Z3 AST -> Double -> Z3 String
+bloomFilter threads probs assumes eps = do
+  params <- mkParams
+  threadsName <- mkStringSymbol "threads"
+  paramsSetUInt params threadsName threads
+  solverSetParams params
+
+  sum_probs <- mkFreshRealVar "sum_probs"
+  rawProbs <- probs
+  _bound <- mkRealNum eps
+  body <- mkAnd =<< T.sequence
+    [ mkEq sum_probs rawProbs,
+      assumes,
+      mkGt sum_probs _bound
+    ]
+  
+  assert body
+  (_res, mbModel) <- solverCheckAndGetModel
+  case mbModel of
+       Just model -> showModel model
+       Nothing    -> return "Couldn't construct model"
+
 
 montyhall :: Word -> Z3 AST -> Z3 AST -> Z3 String
 montyhall threads probs assumes = do
@@ -429,5 +432,7 @@ askZ3 threads benchmark probs assumes = evalZ3 $ case benchmark of
   ExpectedValue -> expectedValue threads probs assumes
   Monotone n -> monotone threads probs assumes n
   Freivalds k -> freivalds threads probs assumes k
+  BloomFilter eps -> bloomFilter threads probs assumes eps
+  CountMinSketch gamma -> countMinSketch threads probs assumes gamma
   CalcProb -> calcProb threads probs assumes
   PrintProb -> astToString =<< probs

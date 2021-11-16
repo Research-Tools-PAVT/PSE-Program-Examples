@@ -5,12 +5,12 @@
 // --use-cex-cache %t1.bc
 
 #include <PSE.h>
-#include <cmath>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 // Max 23 w/ 10 minute timeout
-#define N 4
+#define N 23
 size_t monotone_check(int *f) {
   int last = f[0];
   size_t count = 0;

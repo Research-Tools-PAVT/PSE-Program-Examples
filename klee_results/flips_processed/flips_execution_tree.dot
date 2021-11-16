@@ -1,0 +1,4 @@
+digraph ExecutionTree {
+	node [color=black fontname=Courier height=.5 shape=record]
+	0 [color=blue, fillcolor=green, style=filled, fontcolor=black, fontname="Courier-Bold"]
+}

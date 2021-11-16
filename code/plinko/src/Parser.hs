@@ -25,7 +25,7 @@ instance FromJSON JSONPathList where
         nums = map (read . toString . fst) kvs
         vals = map snd kvs
     in do branches <- mapM parseJSON vals
-          return $ PathList (map (uncurry Path) $ zip nums branches)
+          return $ PathList (zipWith Path nums branches)
 
 instance FromJSON Branch where
   parseJSON = withObject "Branch" $ \obj -> do
@@ -310,12 +310,16 @@ parseConcat = parseBinary "Concat" Concat parseKExpr
        <|> parseBinaryNoType "Concat" Concat parseKExpr
 
 parseExtract :: KParser KExpr
-parseExtract = (TP.try $ between (sym "(" *> keyword "Extract")
-                                (spaces <* char ')')
-                                (Extract <$> parseKType <*> (skipMany space *> number) <*> (skipMany1 space *> parseKExpr)))
-  <|> (TP.try $ between (sym "(" *> keyword "Extract")
-                                (spaces <* char ')')
-                                (Extract Boolean <$> (skipMany space *> number) <*> (skipMany1 space *> parseKExpr)))
+parseExtract = TP.try
+  (between
+    (sym "(" *> keyword "Extract") (spaces <* char ')')
+    (Extract <$> parseKType <*> (skipMany space *> number)
+     <*> (skipMany1 space *> parseKExpr)))
+  <|>
+  TP.try (between
+          (sym "(" *> keyword "Extract") (spaces <* char ')')
+          (Extract Boolean <$> (skipMany space *> number)
+           <*> (skipMany1 space *> parseKExpr)))
 parseZExt :: KParser KExpr
 parseZExt = parseUnaryWithType "ZExt" ZExt parseKExpr
 
@@ -352,9 +356,13 @@ parseArrayUpdate = KArrayUpdate <$> (sym "[" *> sepBy1 parseIndexVal (sym ",")) 
           return (ind,val)
 
 parseSelect :: KParser KExpr
-parseSelect = TP.try $ between (sym "(" *> keyword "Select")
+parseSelect = TP.try (between (sym "(" *> keyword "Select")
                        (spaces <* char ')')
-                       (Select <$> parseKType <*> (spaces *> parseKExpr) <*> (spaces *> parseKExpr) <*> (spaces *> parseKExpr))
+                       (Select <$> parseKType <*> (spaces *> parseKExpr) <*> (spaces *> parseKExpr) <*> (spaces *> parseKExpr)))
+  <|>
+  TP.try (between (sym "(" *> keyword "Select")
+                       (spaces <* char ')')
+                       (Select Boolean <$> (spaces *> parseKExpr) <*> (spaces *> parseKExpr) <*> (spaces *> parseKExpr)))
 
 parseFPExt :: KParser KExpr
 parseFPExt = parseUnaryWithFPType "FPExt" FPExt parseKExpr
@@ -435,7 +443,7 @@ parseFOGe :: KParser KExpr
 parseFOGe = parseBinaryNoTypeNeeded "FOGe" FOGe parseKExpr
 
 parseDistDefs :: B.Parser [DistDef]
-parseDistDefs = (endBy parseDistDef newline) <* eof
+parseDistDefs = endBy parseDistDef newline <* eof
 
 parseDistDef :: B.Parser DistDef
 parseDistDef = DistDef <$> ident <*> (skipMany1 space *> sym "~" *> parseDist) <*> (spaces *> keyword "::" *> parseKTypeDist)

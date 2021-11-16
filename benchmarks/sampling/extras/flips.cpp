@@ -30,8 +30,8 @@ unsigned int microseconds = 10000000;
 using json = nlohmann::json;
 
 #define CLASSES 4
-#define FORALLS 10
-#define RUNS 100000
+#define FORALLS 100
+#define RUNS 10000
 #define BUCKET_SIZE 7
 #define FLIPS 3
 
@@ -43,64 +43,70 @@ int main(void) {
   int forall_classes = CLASSES;
   while (forall_classes--) {
     int forall_samples = FORALLS;
+
     while (forall_samples--) {
+      std::unordered_map<int, int> forallSamplesDist;
+      for (int i = 0; i < BUCKET_SIZE; i++)
+        forallSamplesDist[i] = 0;
+
       int runs = RUNS;
-      int b1 = 0, b2 = 0, temp1arr[FLIPS], temp2arr[FLIPS];
+      int b1 = 0, b2 = 0, tmp1[FLIPS], tmp2[FLIPS];
+
+      tmp1[0] = rand() % 10000;
+      tmp2[0] = rand() % 10000;
 
       /* FORALL Buckets */
-      /* C0 >= 8000 */
+      /* C0 >= first tmp */
       if (forall_classes == 0) {
-        b1 = 8001 + rand() % (10000 - 8000);
-        b2 = 8001 + rand() % (10000 - 8000);
+        b1 = tmp1[0] + 1;
+        b2 = tmp2[0] + 1;
       }
 
-      /* C1 <= 2500 */
+      /* C1 <= first tmp */
       if (forall_classes == 1) {
-        b1 = rand() % 8000;
-        b2 = rand() % 8000;
+        b1 = tmp1[0] - 1 + rand() % 2;
+        b2 = tmp2[0] - 1 + rand() % 2;
       }
 
       /* C2 */
       if (forall_classes == 2) {
-        b1 = 8001 + rand() % (10000 - 8000);
-        b2 = rand() % 8000;
+        b1 = tmp1[0] + 1;
+        b2 = tmp2[0] - 1 + rand() % 2;
       }
 
       /* C3 */
       if (forall_classes == 3) {
-        b1 = rand() % 8000;
-        b2 = 8001 + rand() % (10000 - 8000);
+        b1 = tmp1[0] - 1 + rand() % 2;
+        b2 = tmp2[0] + 1;
       }
 
       while (runs--) {
         int sum1 = 0, sum2 = 0, SUM;
 
-        // generate 3 flips for coin-1
+        // generate 3 flips for coin-1 and coin-2.
         for (std::size_t i = 0; i < FLIPS; ++i) {
-          // Baised Coin-1.
-          int coin_curr1;
-          temp1arr[i] = rand() % 10000;
-          if (temp1arr[i] >= b1)
-            coin_curr1 = 1;
-          else
-            coin_curr1 = 0;
-          sum1 += coin_curr1;
-        }
 
-        // generate 3 flips for coin-2
-        for (std::size_t i = 0; i < FLIPS; ++i) {
-          // Baised Coin-2
-          int coin_curr2;
-          temp2arr[i] = rand() % 10000;
-          if (temp2arr[i] >= b2)
-            coin_curr2 = 1;
-          else
-            coin_curr2 = 0;
-          sum2 += coin_curr2;
+          if (i != 0) {
+            tmp1[i] = rand() % 10000;
+            tmp2[i] = rand() % 10000;
+          }
+
+          if (tmp1[i] >= b1)
+            sum1 += 1;
+
+          if (tmp2[i] >= b2)
+            sum2 += 1;
         }
 
         SUM = sum1 + sum2;
-        counters[forall_classes][SUM] += 1;
+        // counters[forall_classes][SUM] += 1;
+        forallSamplesDist[SUM] += 1;
+      }
+
+      for (const auto &e : forallSamplesDist) {
+        if (e.second >= counters[forall_classes][e.first]) {
+          counters[forall_classes][e.first] = e.second;
+        }
       }
     }
   }
@@ -146,8 +152,8 @@ int main(void) {
     std::cout << "\n"
               << "C" << classCounter;
     for (const auto &e : x) {
-      (e >= 98000) ? std::cout << std::setw(3) << 1 << ", "
-                   : std::cout << std::setw(3) << 0 << ", ";
+      (e >= 7000) ? std::cout << std::setw(3) << 1 << ", "
+                  : std::cout << std::setw(3) << 0 << ", ";
     }
   }
 

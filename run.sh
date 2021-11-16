@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 # Set to 1 if Expected Value to be calculated.
-DUMPEXPECT=0
-THREADS=1
+DUMPEXPECT=1
+THREADS=2
 
 # Set to 1 if KLEE optimization is needed.
-OPT=1
+OPT=0
 COMMANDS=$2
 
 if [[ $OPT == 1 ]]; then

@@ -31,10 +31,10 @@ int main(int argc, char *argv[]) {
     //                   (int)0, (int)1);
     tmp1[i] = temp1;
     if (temp1 >= b1)
-      coin_curr1 = 1;
+      sum1 += 1;
     else
-      coin_curr1 = 0;
-    sum1 += coin_curr1;
+      sum1 += 0;
+    // sum1 += coin_curr1;
   }
 
   // generate 3 flips for coin-2
@@ -50,10 +50,10 @@ int main(int argc, char *argv[]) {
     //                   (int)0, (int)1);
     tmp2[i] = temp2;
     if (temp2 >= b2)
-      coin_curr2 = 1;
+      sum2 += 1;
     else
-      coin_curr2 = 0;
-    sum2 += coin_curr2;
+      sum2 += 0;
+    // sum2 += coin_curr2;
   }
 
   SUM = sum1 + sum2;

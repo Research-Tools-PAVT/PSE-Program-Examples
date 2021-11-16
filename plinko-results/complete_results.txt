@@ -198,3 +198,67 @@ C_2 -> #x00000000
 sum_probs!0 -> (/ 1.0 128.0)
 
 Z3 evaluation: 233.23s
+
+Example : countminsketch_all
+Date : Tuesday 16 November 2021 12:54:53 PM IST
+Plinko Results : 
+Up to date
+constructProbs: 137.67s
+mergePathsWithProbs: 137.71s
+sum_probs!0 -> (/ 17033.0 23328.0)
+
+Z3 evaluation: 142.27s
+
+Example : freivalds_int_all
+Date : Tuesday 16 November 2021 01:26:23 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   0.01s
+mergePathsWithProbs:   0.01s
+C -> #xffffffff
+A -> #x00000000
+A_1 -> #x00000000
+A_2 -> #x00000000
+B_6 -> #x00000001
+B_3 -> #x00000001
+B -> #x00000001
+B_2 -> #x00000000
+B_5 -> #x00000000
+B_8 -> #x00000000
+C_2 -> #x00000000
+A_3 -> #x00000000
+A_4 -> #x00000000
+A_5 -> #x00000000
+C_5 -> #x00000000
+A_6 -> #x00000000
+A_7 -> #x00000000
+A_8 -> #x00000000
+C_8 -> #x00000000
+B_1 -> #x00000000
+B_4 -> #x00000000
+B_7 -> #x00000000
+C_1 -> #x00000000
+C_4 -> #x00000000
+C_7 -> #x00000000
+C_3 -> #x00000000
+C_6 -> #x00000000
+sum_probs!0 -> (/ 1.0 2.0)
+
+# Monotone Binary Search (Optimize, N=23, 30 to 24 paths)
+Z3 evaluation:   0.03s
+Example : monotone_binary_int_all
+Date : Tuesday 16 November 2021 01:50:33 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   0.48s
+mergePathsWithProbs:   0.51s
+Couldn't construct model
+Z3 evaluation: 109.50s
+Example : monotone_binary_int_assumes
+Date : Tuesday 16 November 2021 01:51:29 PM IST
+Plinko Results : 
+Up to date
+constructProbs:   0.39s
+mergePathsWithProbs:   0.41s
+Couldn't construct model
+Z3 evaluation:  17.89s

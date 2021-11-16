@@ -2,7 +2,7 @@
 
 # Set to 1 if Expected Value to be calculated.
 DUMPEXPECT=0
-THREADS=2
+THREADS=1
 
 # Set to 1 if KLEE optimization is needed.
 OPT=1

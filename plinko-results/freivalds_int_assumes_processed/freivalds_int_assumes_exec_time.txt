@@ -1,19 +1,19 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/assumes/freivalds_int_assumes.cpp -o klee_results/llvmir/freivalds_int_assumes.ll"
-	User time (seconds): 0.44
-	System time (seconds): 0.00
-	Percent of CPU this job got: 95%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.47
+	User time (seconds): 0.45
+	System time (seconds): 0.01
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.48
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96392
+	Maximum resident set size (kbytes): 96016
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11783
+	Minor (reclaiming a frame) page faults: 11763
 	Voluntary context switches: 2
-	Involuntary context switches: 9
+	Involuntary context switches: 28
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 656
@@ -24,47 +24,47 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act freivalds_int_assumes --disable-inlining --emit-all-errors --show-cond --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries freivalds_int_assumes.bc"
-	User time (seconds): 86.33
-	System time (seconds): 0.39
+	User time (seconds): 5.36
+	System time (seconds): 0.06
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:27.01
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:05.44
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 538884
+	Maximum resident set size (kbytes): 235720
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 13
-	Minor (reclaiming a frame) page faults: 185333
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 47746
 	Voluntary context switches: 1
-	Involuntary context switches: 5450
+	Involuntary context switches: 68
 	Swaps: 0
-	File system inputs: 16
-	File system outputs: 4400
+	File system inputs: 0
+	File system outputs: 1336
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Path Processing : 
-	Command being timed: "python3 postprocess/reader.py freivalds_int_assumes_summary.json freivalds_int_assumes"
-	User time (seconds): 12.39
+	Command being timed: "python3 postprocess/reader.py freivalds_int_assumes_summary.json freivalds_int_assumes 0"
+	User time (seconds): 0.89
 	System time (seconds): 0.02
-	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.56
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.91
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16840
+	Maximum resident set size (kbytes): 16400
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 8026
+	Minor (reclaiming a frame) page faults: 5643
 	Voluntary context switches: 8
-	Involuntary context switches: 516
+	Involuntary context switches: 23
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 1496
+	File system outputs: 216
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -72,20 +72,20 @@ Path Processing :
 	Exit status: 0
 Plinko running on freivalds_int_assumes_processed : 
 	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/freivalds_int_assumes_processed -t 2 calculate-prob"
-	User time (seconds): 0.17
+	User time (seconds): 0.11
 	System time (seconds): 0.02
-	Percent of CPU this job got: 93%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.21
+	Percent of CPU this job got: 92%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.15
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 51704
+	Maximum resident set size (kbytes): 51500
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 13061
-	Voluntary context switches: 96
-	Involuntary context switches: 71
+	Minor (reclaiming a frame) page faults: 12592
+	Voluntary context switches: 71
+	Involuntary context switches: 2
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 32

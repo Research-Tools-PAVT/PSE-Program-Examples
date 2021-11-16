@@ -63,14 +63,14 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main(int argc, char **argv) {
-  size_t n = 5;
+  size_t n = 3;
   int A[n * n];
   int B[n * n];
   int C[n * n];
   int r[n];
 
   int ret;
-  klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
+  // klee_make_symbolic(&ret, sizeof(ret), "ret_sym");
 
   for (size_t i = 0; i < n * n; i++) {
     int tempA, tempB, tempC;
@@ -106,15 +106,15 @@ int main(int argc, char **argv) {
   }
 
   ret = freivalds(A, B, C, r, n);
-  klee_print_expr("r[0]", r[0]);
-  klee_print_expr("r[1]", r[1]);
-  klee_print_expr("r[2]", r[2]);
-  klee_print_expr("ret", ret);
 
   /* COMEMNT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((ret == 1));
+  klee_assume(ret == 1);
 
   if (ret == 1) {
+    // klee_print_expr("res[0]", res[0]);
+    // klee_print_expr("res[1]", res[1]);
+    // klee_print_expr("res[2]", res[2]);
+    klee_print_expr("ret", ret);
     mark_state_winning();
     klee_dump_kquery_state();
   }

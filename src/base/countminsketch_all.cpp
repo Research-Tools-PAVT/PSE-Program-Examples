@@ -166,7 +166,8 @@ int main() {
     c.update(arr[i], 1);
   }
 
-  if (c.estimate(arr[0]) > 1 + epsilon * n) {
+  if ((c.estimate(arr[0]) > 1 + epsilon * n) ||
+      (c.estimate(arr[1]) > 1 + epsilon * n)) {
     // Should happen with probability less than gamma
     mark_state_winning();
     klee_dump_kquery_state();

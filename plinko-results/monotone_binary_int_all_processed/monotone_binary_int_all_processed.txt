@@ -1,5 +1,5 @@
 Up to date
-constructProbs:   0.58s
-mergePathsWithProbs:   0.61s
+constructProbs:   0.48s
+mergePathsWithProbs:   0.51s
 Couldn't construct model
-Z3 evaluation: 200.13s
+Z3 evaluation: 109.50s

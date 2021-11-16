@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <assert.h>
+#include <ctime>
 #include <fstream>
 #include <functional>
 #include <getopt.h> /* getopt */
@@ -25,8 +26,8 @@ using json = nlohmann::json;
 
 #define CLASSES 4
 #define FORALLS 10
-#define RUNS 10000
-#define BUCKET_SIZE 9
+#define RUNS 100000
+#define BUCKET_SIZE 10
 
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
@@ -86,6 +87,10 @@ int main(int argc, char **argv) {
   std::freopen("../results/freivalds_int.txt", "w", stdout);
   std::set<int> pseDistinct, forallDistinct;
   srand(time(NULL));
+  std::uniform_int_distribution coin{0, 1};
+  // Initialize our mersenne twister with a random seed based on the clock
+  std::mt19937 mersenne{
+      static_cast<std::mt19937::result_type>(std::time(nullptr))};
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
   int forall_classes = CLASSES;
@@ -155,57 +160,32 @@ int main(int argc, char **argv) {
         int ret = 0;
         int r[n];
         int bucketChoosen = 0;
+
         for (size_t i = 0; i < n; i++) {
-          r[i] = (rand() % 50000) % 2;
+          r[i] = coin(mersenne);
         }
 
+        // std::cerr << r[0] << r[1] << r[2] << "\n";
         ret = freivalds(A, B, C, r, n);
 
-        /* PSE Buckets */
-        if (r[0] != 1 && r[1] == 1 && r[2] == 1 && ret == 1) {
-          bucketChoosen = 0;
+        if (r[0] == 1 && r[1] == 1 && r[2] == 1 && ret == 1) {
           counters[forall_classes][0] += 1;
         }
 
-        if (r[0] != 1 && r[1] == 1 && r[2] != 1 && ret == 1) {
-          bucketChoosen = 1;
+        else if (r[0] == 1 && r[1] == 1 && r[2] == 1 && ret == 0) {
           counters[forall_classes][1] += 1;
         }
 
-        if (r[0] == 1 && r[1] != 1 && r[2] == 1 && ret == 1) {
-          bucketChoosen = 2;
+        else if (r[0] != 1 && r[1] != 1 && r[2] != 1 && ret == 0) {
           counters[forall_classes][2] += 1;
         }
 
-        if (r[0] == 1 && r[1] != 1 && r[2] != 1 && ret == 1) {
-          bucketChoosen = 3;
+        else if (r[0] != 1 && r[1] != 1 && r[2] != 1 && ret == 1) {
           counters[forall_classes][3] += 1;
         }
 
-        if (r[0] != 1 && r[1] != 1 && r[2] == 1 && ret == 1) {
-          bucketChoosen = 4;
+        else {
           counters[forall_classes][4] += 1;
-        }
-
-        if (r[0] != 1 && r[1] != 1 && r[2] != 1 && ret == 1) {
-          bucketChoosen = 5;
-          counters[forall_classes][5] += 1;
-        }
-
-        if (r[0] == 1 && r[1] == 1 && r[2] == 1 && ret == 1) {
-          bucketChoosen = 6;
-          counters[forall_classes][6] += 1;
-        }
-
-        if (r[0] == 1 && r[1] == 1 && r[2] != 1 && ret == 1) {
-          bucketChoosen = 7;
-          counters[forall_classes][7] += 1;
-        }
-
-        /* Non Winning Case here. */
-        if (ret == 0) {
-          bucketChoosen = 8;
-          counters[forall_classes][8] += 1;
         }
       }
     }
@@ -227,12 +207,12 @@ int main(int argc, char **argv) {
     int bucketCounter = 0;
     if (flag == 0)
       for (const auto &e : x)
-        std::cout << std::setw(8) << "B" << bucketCounter++;
+        std::cout << std::setw(10) << "B" << bucketCounter++;
     flag = 1;
     std::cout << "\n"
               << "C" << classCounter;
     for (const auto &e : x) {
-      std::cout << std::setw(7) << e << ", ";
+      std::cout << std::setw(9) << e << ", ";
     }
   }
 

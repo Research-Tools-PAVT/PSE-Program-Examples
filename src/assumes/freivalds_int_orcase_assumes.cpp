@@ -1,7 +1,10 @@
+/*
+ * This is the freivalds_int_first.cpp example.
+ */
+
 #include <PSE.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
     int temp = 0;
@@ -57,8 +60,8 @@ void matmul(int *A, int *B, size_t n, int *C) {
 }
 
 int main() {
-  size_t n = 3;
-  size_t k = 7;
+  size_t n = 2;
+  int ret = 0;
   int A[n * n];
   int B[n * n];
   int C[n * n];
@@ -76,22 +79,24 @@ int main() {
   int realC[n * n];
   matmul(A, B, n, realC);
 
-  klee_assume(C[0] != realC[0]);
-
-  bool ret = true;
-  for (size_t i = 0; i < k; i++) {
-    /* Freivalds Running Multiple Times. */
-    int r[n];
-    for (size_t j = 0; j < n; j++) {
-      int temp;
-      make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
-      r[j] = temp;
-    }
-    ret = ret && freivalds(A, B, C, r, n) == 1;
+  bool orAssume = false;
+  for (size_t i = 0; i < n * n; i++) {
+    orAssume = orAssume || (C[i] != realC[i]);
   }
 
-  /* COMMENT : KLEE ASSUMES from ANALYSIS*/
-  klee_assume((ret == 1) || (ret == 0 && realC[1] == C[1] && realC[2] == C[2]));
+  klee_assume(orAssume);
+
+  int r[n];
+  for (size_t i = 0; i < n; i++) {
+    int temp;
+    make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
+    r[i] = temp;
+  }
+
+  ret = freivalds(A, B, C, r, n);
+
+  /* COMMENT : KLEE ASSUMES from ANALYSIS */
+  klee_assume((ret == 1 && C[1] == realC[1]));
 
   if (ret == 1) {
     mark_state_winning();

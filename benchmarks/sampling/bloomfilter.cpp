@@ -193,7 +193,7 @@ int main() {
     int forall_samples = FORALLS;
     while (forall_samples--) {
       int runs = RUNS;
-      double error = 0.4;
+      double error = 0.39;
       int n = 3;
       int arr[n + 1];
 

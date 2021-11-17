@@ -162,7 +162,7 @@ const char *bloom_version() { return MAKESTRING(BLOOM_VERSION); }
 int main() {
   struct bloom bloom;
   int n = 3;
-  double error = 0.4;
+  double error = 0.39;
   bloom_init(&bloom, n, error);
 
   int ret = 0;
@@ -187,7 +187,7 @@ int main() {
   ret = bloom_check(&bloom, arr[n]);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((ret == 1));
+  klee_assume((arr[0] == arr[n] && ret == 1));
 
   if (ret == 1) {
     mark_state_winning();

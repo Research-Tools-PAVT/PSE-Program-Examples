@@ -163,6 +163,8 @@ int main() {
     c.update(arr[i], 1);
   }
 
+  /* NO KLEE Assumes needed only 2 paths. */
+
   if (c.estimate(arr[0]) > 1 + epsilon * n) {
     // Should happen with probability less than gamma
     mark_state_winning();

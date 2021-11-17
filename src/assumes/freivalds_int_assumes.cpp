@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
   ret = freivalds(A, B, C, r, n);
 
   /* COMEMNT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(ret == 1);
+  klee_assume((ret == 0) || (ret == 1 && realC[1] == C[1] && realC[2] == C[2]));
 
   if (ret == 1) {
     // klee_print_expr("res[0]", res[0]);

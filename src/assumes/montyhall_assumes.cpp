@@ -4,8 +4,8 @@
 // --exit-on-error --optimize --disable-inlining --search=nurs:depth
 // --use-cex-cache %t1.bc
 
-#include "PSE.h"
 #include "klee/klee.h"
+#include <PSE.h>
 #include <assert.h>
 #include <stdio.h>
 #include <vector>

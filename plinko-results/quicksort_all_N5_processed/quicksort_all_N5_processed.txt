@@ -1,5 +1,11 @@
 Up to date
-constructProbs:  94.67s
-mergePathsWithProbs:  94.83s
-6.0
-Z3 evaluation: 239.00s
+constructProbs:  91.42s
+mergePathsWithProbs:  91.78s
+arr -> #x93
+sum_probs!0 -> (/ 91.0 15.0)
+arr_2 -> #x89
+arr_1 -> #x93
+arr_4 -> #x89
+arr_3 -> #x94
+
+Z3 evaluation: 191.62s

@@ -2,7 +2,7 @@
     {
         "Path": 1,
         "Var Name": "num_comps",
-        "Var Value": "3"
+        "Var Value": "1"
     },
     {
         "Path": 2,
@@ -17,17 +17,17 @@
     {
         "Path": 4,
         "Var Name": "num_comps",
-        "Var Value": "1"
+        "Var Value": "3"
     },
     {
         "Path": 5,
         "Var Name": "num_comps",
-        "Var Value": "3"
+        "Var Value": "2"
     },
     {
         "Path": 6,
         "Var Name": "num_comps",
-        "Var Value": "2"
+        "Var Value": "3"
     },
     {
         "Path": 7,
@@ -37,17 +37,17 @@
     {
         "Path": 8,
         "Var Name": "num_comps",
-        "Var Value": "1"
+        "Var Value": "2"
     },
     {
         "Path": 9,
         "Var Name": "num_comps",
-        "Var Value": "1"
+        "Var Value": "4"
     },
     {
         "Path": 10,
         "Var Name": "num_comps",
-        "Var Value": "0"
+        "Var Value": "4"
     },
     {
         "Path": 11,
@@ -57,42 +57,42 @@
     {
         "Path": 12,
         "Var Name": "num_comps",
-        "Var Value": "2"
+        "Var Value": "4"
     },
     {
         "Path": 13,
         "Var Name": "num_comps",
-        "Var Value": "4"
+        "Var Value": "5"
     },
     {
         "Path": 14,
         "Var Name": "num_comps",
-        "Var Value": "4"
+        "Var Value": "6"
     },
     {
         "Path": 15,
         "Var Name": "num_comps",
-        "Var Value": "4"
+        "Var Value": "1"
     },
     {
         "Path": 16,
         "Var Name": "num_comps",
-        "Var Value": "3"
+        "Var Value": "1"
     },
     {
         "Path": 17,
         "Var Name": "num_comps",
-        "Var Value": "6"
+        "Var Value": "2"
     },
     {
         "Path": 18,
         "Var Name": "num_comps",
-        "Var Value": "5"
+        "Var Value": "3"
     },
     {
         "Path": 19,
         "Var Name": "num_comps",
-        "Var Value": "2"
+        "Var Value": "0"
     },
     {
         "Path": 20,
@@ -102,7 +102,7 @@
     {
         "Path": 21,
         "Var Name": "num_comps",
-        "Var Value": "3"
+        "Var Value": "1"
     },
     {
         "Path": 22,
@@ -117,6 +117,6 @@
     {
         "Path": 24,
         "Var Name": "num_comps",
-        "Var Value": "1"
+        "Var Value": "3"
     }
 ]

@@ -1,1 +1,0 @@
-r_sym ~ UniformInt(0,1) :: w8

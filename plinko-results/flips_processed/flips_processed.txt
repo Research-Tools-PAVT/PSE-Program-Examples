@@ -12,4 +12,4 @@ b2_sym -> #x00000713
 temp_c2_2 -> #x00002612
 b1_sym -> #x00002333
 
-Z3 evaluation:   0.55s
+Z3 evaluation:   0.52s

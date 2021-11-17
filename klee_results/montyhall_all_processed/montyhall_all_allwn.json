@@ -1,82 +1,49 @@
 [
     {
         "Path": [
-            "(Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse))",
-            "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))",
-            "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))))"
+            "(Eq (Select w32 (Eq 2 (ReadLSB w32 0 choice_pse)) 3 2) (ReadLSB w32 0 car_door_pse))",
+            "(Eq false (Eq 0 (ReadLSB w32 0 door_pse)))",
+            "(And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))))"
         ],
         "Var Name": "ret",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq 3 (ReadLSB w32 0 car_door_pse))",
-            "(Eq 1 (ReadLSB w32 0 choice_pse))",
-            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
-            "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))"
-        ],
-        "Var Name": "ret",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq 3 (ReadLSB w32 0 car_door_pse))",
-            "(Eq 2 (ReadLSB w32 0 choice_pse))",
-            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
-            "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))))"
-        ],
-        "Var Name": "ret",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq 2 (ReadLSB w32 0 car_door_pse))",
-            "(Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))",
-            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
-            "(And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))))"
-        ],
-        "Var Name": "ret",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq 1 (ReadLSB w32 0 choice_pse))",
-            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
-            "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))"
-        ],
-        "Var Name": "ret",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))",
-            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
-            "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse)))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))"
-        ],
-        "Var Name": "ret",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))",
-            "(Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse)))))",
-            "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))"
-        ],
-        "Var Name": "ret",
-        "Var Value": "1"
+        "Var Value": "(ZExt w32 (Eq (Select w32 (Eq 2 (ReadLSB w32 0 choice_pse)) 3 2) (ReadLSB w32 0 car_door_pse)))"
     },
     {
         "Path": [
             "(Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse))",
-            "(Eq false (Extract 0 (ZExt w8 (Eq false (Eq 0 (ReadLSB w32 0 door_pse))))))",
-            "(And (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 2 (ReadLSB w32 0 choice_pse))))",
-            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))) (Eq false (Eq 1 (ReadLSB w32 0 choice_pse)))))"
+            "(Eq 0 (ReadLSB w32 0 door_pse))",
+            "(And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse))))"
         ],
         "Var Name": "ret",
-        "Var Value": "1"
+        "Var Value": "(ZExt w32 (Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse)))"
+    },
+    {
+        "Path": [
+            "(Eq false (Eq 0 (ReadLSB w32 0 door_pse)))",
+            "(Eq false (And (Eq false (Eq 2 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse)))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse)))))"
+        ],
+        "Var Name": "ret",
+        "Var Value": "(ZExt w32 (Eq (Select w32 (Eq 1 (ReadLSB w32 0 choice_pse)) 2 1) (ReadLSB w32 0 car_door_pse)))"
+    },
+    {
+        "Path": [
+            "(Eq (Select w32 (Eq 1 (ReadLSB w32 0 choice_pse)) 3 1) (ReadLSB w32 0 car_door_pse))",
+            "(Eq false (Eq 0 (ReadLSB w32 0 door_pse)))",
+            "(And (Eq false (Eq 2 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse)))))"
+        ],
+        "Var Name": "ret",
+        "Var Value": "(ZExt w32 (Eq (Select w32 (Eq 1 (ReadLSB w32 0 choice_pse)) 3 1) (ReadLSB w32 0 car_door_pse)))"
+    },
+    {
+        "Path": [
+            "(Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse))",
+            "(Eq 0 (ReadLSB w32 0 door_pse))",
+            "(And (Eq false (Eq 2 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 2 (ReadLSB w32 0 car_door_pse))))",
+            "(Eq false (And (Eq false (Eq 1 (ReadLSB w32 0 choice_pse))) (Eq false (Eq 1 (ReadLSB w32 0 car_door_pse)))))"
+        ],
+        "Var Name": "ret",
+        "Var Value": "(ZExt w32 (Eq (ReadLSB w32 0 choice_pse) (ReadLSB w32 0 car_door_pse)))"
     }
 ]

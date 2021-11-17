@@ -1,19 +1,19 @@
 Compilation : 
-	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/randomized_response_all.cpp -o klee_results/llvmir/randomized_response_all.ll"
-	User time (seconds): 0.42
+	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/base/randomized_response_all.cpp -o klee_results/llvmir/randomized_response_all.ll"
+	User time (seconds): 0.43
 	System time (seconds): 0.02
-	Percent of CPU this job got: 96%
+	Percent of CPU this job got: 95%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.47
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 95544
+	Maximum resident set size (kbytes): 95816
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11710
+	Minor (reclaiming a frame) page faults: 11667
 	Voluntary context switches: 2
-	Involuntary context switches: 11
+	Involuntary context switches: 103
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 480
@@ -23,72 +23,72 @@ Compilation :
 	Page size (bytes): 4096
 	Exit status: 0
 KLEE Symbolic Execution : 
-	Command being timed: "klee --filename-act randomized_response_all --disable-inlining --emit-all-errors --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries randomized_response_all.bc"
-	User time (seconds): 0.11
-	System time (seconds): 0.02
-	Percent of CPU this job got: 97%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.14
+	Command being timed: "klee --filename-act randomized_response_all --disable-inlining --emit-all-errors --show-cond --optimize --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries randomized_response_all.bc"
+	User time (seconds): 0.09
+	System time (seconds): 0.00
+	Percent of CPU this job got: 80%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.13
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 73416
+	Maximum resident set size (kbytes): 77544
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 8609
+	Minor (reclaiming a frame) page faults: 8602
 	Voluntary context switches: 2
-	Involuntary context switches: 62
+	Involuntary context switches: 74
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 808
+	File system outputs: 504
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Path Processing : 
-	Command being timed: "python3 postprocess/reader.py randomized_response_all_summary.json randomized_response_all"
+	Command being timed: "python3 postprocess/reader.py randomized_response_all_summary.json randomized_response_all 0"
 	User time (seconds): 0.09
-	System time (seconds): 0.01
-	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.11
+	System time (seconds): 0.00
+	Percent of CPU this job got: 85%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.12
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16236
+	Maximum resident set size (kbytes): 16116
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 5501
+	Minor (reclaiming a frame) page faults: 5468
 	Voluntary context switches: 10
-	Involuntary context switches: 26
+	Involuntary context switches: 98
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 128
+	File system outputs: 96
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 Plinko running on randomized_response_all_processed : 
-	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/randomized_response_all_processed -t 2 calculate-prob"
-	User time (seconds): 0.10
-	System time (seconds): 0.02
-	Percent of CPU this job got: 88%
+	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/randomized_response_all_processed -t 1 calculate-prob"
+	User time (seconds): 0.09
+	System time (seconds): 0.03
+	Percent of CPU this job got: 87%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.14
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 53812
+	Maximum resident set size (kbytes): 51900
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 12798
-	Voluntary context switches: 78
-	Involuntary context switches: 24
+	Minor (reclaiming a frame) page faults: 12380
+	Voluntary context switches: 79
+	Involuntary context switches: 18
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 32
+	File system outputs: 24
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0

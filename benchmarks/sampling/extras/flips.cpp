@@ -29,10 +29,10 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 4
-#define FORALLS 100
-#define RUNS 10000
-#define BUCKET_SIZE 7
+#define CLASSES 5
+#define FORALLS 10
+#define RUNS 100000
+#define BUCKET_SIZE 4
 #define FLIPS 3
 
 int main(void) {
@@ -60,55 +60,60 @@ int main(void) {
       // /* FORALL Buckets */
       // /* C0 >= first tmp */
       // if (forall_classes == 0) {
-      //   b1 = tmp1[0] + 1;
-      //   b2 = tmp2[0] + 1;
+      //   b1 = tmp1[0] + 1 + rand() % 100;
+      //   b2 = tmp2[0] + 1 + rand() % 100;
       // }
 
       // /* C1 <= first tmp */
-      // if (forall_classes == 1) {
-      //   b1 = tmp1[0] - 1 + rand() % 2;
-      //   b2 = tmp2[0] - 1 + rand() % 2;
+      // else if (forall_classes == 1) {
+      //   b1 = tmp1[0] - (1 + rand() % 10);
+      //   b2 = tmp2[0] - (1 + rand() % 10);
       // }
 
       // /* C2 */
-      // if (forall_classes == 2) {
-      //   b1 = tmp1[0] + 1;
-      //   b2 = tmp2[0] - 1 + rand() % 2;
+      // else if (forall_classes == 2) {
+      //   b1 = tmp1[0] + 1 + rand() % 100;
+      //   b2 = tmp2[0] - (1 + rand() % 10);
       // }
 
       // /* C3 */
-      // if (forall_classes == 3) {
-      //   b1 = tmp1[0] - 1 + rand() % 2;
-      //   b2 = tmp2[0] + 1;
+      // else if (forall_classes == 3) {
+      //   b1 = tmp1[0] - (1 + rand() % 10);
+      //   b2 = tmp2[0] + 1 + rand() % 100;
       // }
 
-      // /* FORALL Buckets */
-      // /* C0 >= first tmp */
-      // if (forall_classes == 0) {
-      //   b1 = 5000 + rand() % 2;
-      //   b2 = 5000 + rand() % 2;
+      // else {
+      //   b1 = tmp1[0];
+      //   b2 = tmp2[0];
       // }
 
-      // /* C1 <= first tmp */
-      // if (forall_classes == 1) {
-      //   b1 = 5000 - rand() % 5;
-      //   b2 = 5000 - rand() % 5;
-      // }
+      /* FORALL Buckets */
+      /* C0 >= first tmp */
+      if (forall_classes == 0) {
+        b1 = 5000 + rand() % 2;
+        b2 = 5000 + rand() % 2;
+      }
 
-      // /* C2 */
-      // if (forall_classes == 2) {
-      //   b1 = 5000 + rand() % 2;
-      //   b2 = 5000 - rand() % 5;
-      // }
+      /* C1 <= first tmp */
+      if (forall_classes == 1) {
+        b1 = 5000 - rand() % 5;
+        b2 = 5000 - rand() % 5;
+      }
 
-      // /* C3 */
-      // if (forall_classes == 3) {
-      //   b1 = 5000 - rand() % 5;
-      //   b2 = 5000 + rand() % 2;
-      // }
+      /* C2 */
+      if (forall_classes == 2) {
+        b1 = 5000 + rand() % 2;
+        b2 = 5000 - rand() % 5;
+      }
+
+      /* C3 */
+      if (forall_classes == 3) {
+        b1 = 5000 - rand() % 5;
+        b2 = 5000 + rand() % 2;
+      }
 
       while (runs--) {
-        int sum1 = 0, sum2 = 0, SUM;
+        int sum1 = 0, sum2 = 0, SUM = 0;
 
         // generate 3 flips for coin-1 and coin-2.
         for (std::size_t i = 0; i < FLIPS; ++i) {
@@ -126,13 +131,29 @@ int main(void) {
         }
 
         SUM = sum1 + sum2;
-        // counters[forall_classes][SUM] += 1;
-        forallSamplesDist[SUM] += 1;
+
+        if (SUM == 0 || SUM == 3)
+          forallSamplesDist[0] += 1;
+        else if (SUM == 1 || SUM == 2)
+          forallSamplesDist[1] += 1;
+        else if (SUM == 6 || SUM == 4)
+          forallSamplesDist[2] += 1;
+        else
+          forallSamplesDist[3] += 1;
+
+        // if (SUM == 0 || SUM == 2)
+        //   counters[forall_classes][0] += 1;
+        // else if (SUM == 1)
+        //   counters[forall_classes][1] += 1;
+        // else if (SUM == 6)
+        //   counters[forall_classes][2] += 1;
+        // else
+        //   counters[forall_classes][3] += 1;
       }
 
       for (const auto &e : forallSamplesDist) {
-        if (e.second >= counters[forall_classes][e.first]) {
-          counters[forall_classes][e.first] = e.second;
+        if ((e.second) >= counters[forall_classes][e.first]) {
+          counters[forall_classes][e.first] = (e.second);
         }
       }
     }
@@ -199,8 +220,7 @@ int main(void) {
   std::cout << std::endl;
 
   for (auto x : valuesMesh) {
-    std::cout << std::setw(9)
-              << (double)((double)x / (FORALLS * RUNS * CLASSES)) << "\n";
+    std::cout << std::setw(9) << (double)((double)x / (1)) << "\n";
   }
 
   return 0;

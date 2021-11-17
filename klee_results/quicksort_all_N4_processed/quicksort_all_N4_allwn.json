@@ -1,262 +1,262 @@
 [
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 1 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 1=(Read w8 N2 U2), 0=(Read w8 1 U1)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": [
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 1=(Read w8 N2 U2), 0=(Read w8 1 U1)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": [
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[3=(Read w8 0 U1:[N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N2:(Read w8 0 arr_3)] @ U2:[3=N2, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 N1 U2), 1=N3:(Read w8 2 U1), 0=(Read w8 1 U1)] @ U1) (Read w8 0 [N0=N3] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": [
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[3=(Read w8 0 U1:[N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N2:(Read w8 0 arr_3)] @ U2:[3=N2, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 N1 U2), 1=N3:(Read w8 2 U1), 0=(Read w8 1 U1)] @ U1) (Read w8 0 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
         ],
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
         "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 1 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[3=(Read w8 2 U1:[N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N2:(Read w8 0 arr_3)] @ U2:[3=N2, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 N1 U2), 1=N3:(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1) (Read w8 0 [N0=N3] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
         "Var Value": "2"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "2"
-    },
-    {
-        "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 2 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[3=(Read w8 2 U1:[N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N2:(Read w8 0 arr_3)] @ U2:[3=N2, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 N1 U2), 1=N3:(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1) (Read w8 0 [N0=N3] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
         "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 2 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 1 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 0 U1), 1=(Read w8 N2 U2), 0=(Read w8 2 U1)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": [
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 1 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 0 U1), 1=(Read w8 N2 U2), 0=(Read w8 2 U1)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
         ],
         "Var Name": "num_comps",
         "Var Value": "2"
     },
     {
         "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "1"
-    },
-    {
-        "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=N1, 1=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "0"
-    },
-    {
-        "Path": [
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=(Read w8 N2 U3), 2=N1, 1=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "3"
-    },
-    {
-        "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=N3, 0=(Read w8 N4 U2)] @ U1)] @ U4:[3=(Read w8 N2 U3), 2=N1, 1=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 0=(Read w8 N2 U1)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "2"
-    },
-    {
-        "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 1 [N0=N3] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 0 [N0=N3] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
         "Var Value": "4"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 1 [N0=N3] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 0 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
         "Var Value": "4"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=N1, 0=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "4"
-    },
-    {
-        "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=N1, 0=(Read w8 N2 U3)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12))) U0:[2=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U2:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U3:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U4:[3=(Read w8 N4 U3), 2=N3, 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2), 0=(Read w8 N2 U4)] @ U1) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 1 [N0=N3] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 0 [N0=N3] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=(Read w8 N2 U3), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12))) U0:[2=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U2:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U3:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U4:[3=(Read w8 N4 U3), 2=N3, 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2), 0=(Read w8 N2 U4)] @ U1) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 1 [N0=N3] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 0 [N0=N3] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
-        "Var Value": "6"
+        "Var Value": "4"
     },
     {
         "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N3:(Read w8 2 U1:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U2:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U3:[3=(Read w8 N4 U2), 2=N3, 1=(Read w8 1 U1), 0=(Read w8 0 U1)] @ U1)] @ U4:[2=(Read w8 N2 U3), 1=N1, 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U4))))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 N2 U1), 2=N1, 1=(Read w8 1 U0), 0=(Read w8 0 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[2=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U1:[3=(Read w8 N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U2:[3=N3:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N4:(Read w8 2 U3:[N2=N3] @ U2), 1=(Read w8 1 U3), 0=(Read w8 0 U3)] @ U3), 1=N5:(Read w8 1 U4:[N1=N4] @ U1), 0=(Read w8 0 U4)] @ U4) (Read w8 0 [N0=N5] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 1 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 0 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
         "Var Value": "5"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 2=(Read w8 0 U0), 1=(Read w8 N2 U1), 0=(Read w8 2 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[2=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U1:[3=(Read w8 N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U2:[3=N3:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N4:(Read w8 2 U3:[N2=N3] @ U2), 1=(Read w8 1 U3), 0=(Read w8 0 U3)] @ U3), 1=N5:(Read w8 1 U4:[N1=N4] @ U1), 0=(Read w8 0 U4)] @ U4) (Read w8 0 [N0=N5] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 1 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot02))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U1:[3=N2:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=N3:(Read w8 2 U2:[N1=N2] @ U1), 1=(Read w8 1 U2), 0=(Read w8 0 U2)] @ U2) (Read w8 0 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
         ],
         "Var Name": "num_comps",
-        "Var Value": "2"
+        "Var Value": "6"
     },
     {
         "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 1 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 2=(Read w8 0 U0), 1=(Read w8 N2 U1), 0=(Read w8 2 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
         ],
         "Var Name": "num_comps",
         "Var Value": "1"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 0 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": [
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U1:[3=N2:(Read w8 0 U2:[N3:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N4:(Read w8 0 arr_3)] @ U3:[3=N4, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N3 U3)] @ U2), 2=N5:(Read w8 2 U4:[N1=N2] @ U1), 1=(Read w8 1 U4)] @ U4) (Read w8 1 [N0=N5] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": [
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot12))) U0:[3=(Read w8 N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U1:[3=N2:(Read w8 0 U2:[N3:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N4:(Read w8 0 arr_3)] @ U3:[3=N4, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N3 U3)] @ U2), 2=N5:(Read w8 2 U4:[N1=N2] @ U1), 1=(Read w8 1 U4)] @ U4) (Read w8 1 [N0=N5] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 1 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
         ],
         "Var Name": "num_comps",
         "Var Value": "3"
     },
     {
         "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01)))=N1:(Read w8 2 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=(Read w8 0 U0), 2=(Read w8 N2 U1), 1=N1, 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 1 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U2:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U3:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U4:[3=N3, 0=(Read w8 N4 U3)] @ U2), 1=(Read w8 N2 U4)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
         ],
         "Var Name": "num_comps",
-        "Var Value": "2"
+        "Var Value": "0"
     },
     {
         "Path": [
-            "(Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
-        ],
-        "Var Name": "num_comps",
-        "Var Value": "2"
-    },
-    {
-        "Path": [
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23)))=N1:(Read w8 0 U0:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U1:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U2:[3=N1, 1=(Read w8 N2 U1), 0=(Read w8 1 U0)] @ U0)) (ZExt w32 (Read w8 N0 U2))))",
-            "(Eq false (Sle (ZExt w32 (Read w8 2 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))",
-            "(Sle (ZExt w32 (Read w8 1 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0)))",
-            "(Eq false (Sle (ZExt w32 (Read w8 0 [N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N1:(Read w8 0 arr_3)] @ U0:[3=N1, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])) (ZExt w32 (Read w8 N0 U0))))"
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 1 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13)))=N3:(Read w8 0 U2:[N4:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N5:(Read w8 0 arr_3)] @ U3:[3=N5, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0])] @ U4:[3=N3, 0=(Read w8 N4 U3)] @ U2), 1=(Read w8 N2 U4)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot13))) U0:[3=N1:(Read w8 0 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 0=(Read w8 N2 U2)] @ U1) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0))"
         ],
         "Var Name": "num_comps",
         "Var Value": "1"
+    },
+    {
+        "Path": [
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 1 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 1=(Read w8 N2 U2), 0=(Read w8 0 U1)] @ U1) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "1"
+    },
+    {
+        "Path": [
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot23))) U0:[3=N1:(Read w8 1 U1:[N2:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N3:(Read w8 0 arr_3)] @ U2:[3=N3, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 1=(Read w8 N2 U2), 0=(Read w8 0 U1)] @ U1) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": [
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[3=(Read w8 1 U1:[N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N2:(Read w8 0 arr_3)] @ U2:[3=N2, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 N1 U2), 1=N3:(Read w8 2 U1), 0=(Read w8 0 U1)] @ U1) (Read w8 0 [N0=N3] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "2"
+    },
+    {
+        "Path": [
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot01))) U0:[3=(Read w8 1 U1:[N1:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03)))=N2:(Read w8 0 arr_3)] @ U2:[3=N2, 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]), 2=(Read w8 N1 U2), 1=N3:(Read w8 2 U1), 0=(Read w8 0 U1)] @ U1) (Read w8 0 [N0=N3] @ U0)))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 2 [N0=N1] @ U0)))",
+            "(Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 1 [N0=N1] @ U0))",
+            "(Eq false (Ult (Read w8 N0:(Extract w32 0 (SExt w64 (ReadLSB w32 0 pivot03))) U0:[3=N1:(Read w8 0 arr_3), 2=(Read w8 0 arr_2), 1=(Read w8 0 arr_1), 0=(Read w8 0 arr)] @ [0 0 0 0]) (Read w8 0 [N0=N1] @ U0)))"
+        ],
+        "Var Name": "num_comps",
+        "Var Value": "3"
     }
 ]

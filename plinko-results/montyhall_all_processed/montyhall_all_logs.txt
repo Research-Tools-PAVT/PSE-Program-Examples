@@ -2,9 +2,6 @@
 [1;36mPath 3 Winning[0m
 [1;36mPath 5 Winning[0m
 [1;36mPath 7 Winning[0m
-[1;36mPath 10 Winning[0m
-[1;36mPath 11 Winning[0m
-[1;36mPath 12 Winning[0m
-[1;36mPath 13 Winning[0m
-Paths Processed : 14
+[1;36mPath 9 Winning[0m
+Paths Processed : 10
 Num PSVs: 3

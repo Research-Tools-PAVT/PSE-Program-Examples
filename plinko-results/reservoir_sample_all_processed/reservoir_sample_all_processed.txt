@@ -1,0 +1,19 @@
+Up to date
+constructProbs:  31.18s
+mergePathsWithProbs:  31.33s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 7.0 13.0)
+
+Z3 evaluation: 103.28s

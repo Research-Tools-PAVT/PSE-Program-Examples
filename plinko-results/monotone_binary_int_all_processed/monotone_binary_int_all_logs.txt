@@ -89,6 +89,12 @@ Found Const Array. (kquery)
 Found Const Array. (kquery)
 
 
+Found Const Array. (kquery)
+
+
+Found Const Array. (kquery)
+
+
 Found Const Array.
 
 [1;36mPath 1 Winning[0m
@@ -106,5 +112,6 @@ Found Const Array.
 [1;36mPath 25 Winning[0m
 [1;36mPath 27 Winning[0m
 [1;36mPath 29 Winning[0m
-Paths Processed : 30
+[1;36mPath 31 Winning[0m
+Paths Processed : 32
 Num PSVs: 1

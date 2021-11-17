@@ -8,17 +8,7 @@
     },
     {
         "Path": [
-            "(Eq 1 (ReadLSB w32 0 truth))",
-            "(Eq 1 (ReadLSB w32 0 second_flip))",
-            "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
-        ],
-        "Var Name": "",
-        "Var Value": ""
-    },
-    {
-        "Path": [
-            "(Eq 0 (ReadLSB w32 0 truth))",
-            "(Eq false (Eq 1 (ReadLSB w32 0 second_flip)))",
+            "(Eq (ReadLSB w32 0 truth) (ZExt w32 (Eq 1 (ReadLSB w32 0 second_flip))))",
             "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
         ],
         "Var Name": "",

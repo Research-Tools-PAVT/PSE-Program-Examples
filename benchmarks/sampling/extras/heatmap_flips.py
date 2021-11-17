@@ -8,14 +8,15 @@ def extract_csv_gen_plot(csv_path, name):
     data.index.names = ['ForAll Classes']
     data.columns.names = ['Probabilistic Classes']
     data = data.drop(data.columns[[0, 0]], axis=1)
-    g = sns.heatmap(data, square=True, cmap="mako")
+    g = sns.heatmap(data, square=True, cmap="Blues",
+                    annot=True,  fmt='', annot_kws={"size": 8}, vmin=40000, vmax=90000)
     g.set_yticklabels(g.get_yticklabels(), rotation=0)
     # g.set_title('HeatMap of frequency values for Biased Coin Flips example.')
     plt.tight_layout()
     plt.savefig(name)
 
 
-# extract_csv_gen_plot1("data.csv", "coin_flips.pdf")
+extract_csv_gen_plot("data.csv", "coin_flips_1.pdf")
 # extract_csv_gen_plot("data1.csv", "coin_flips_filter.pdf")
 
-extract_csv_gen_plot("data.csv", "coin_flips_1.pdf")
+# extract_csv_gen_plot("data1.csv", "coin_flips_2.pdf")

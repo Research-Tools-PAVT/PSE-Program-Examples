@@ -585,3 +585,274 @@ sum_probs!0 -> (/ 9.0 26.0)
 
 Z3 evaluation:  71.70s
  ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:44:35 PM IST
+Paths Processed : 64
+Num PSVs: 6
+Winning : 64
+Plinko Results : 
+Up to date
+constructProbs:   0.79s
+mergePathsWithProbs:   0.80s
+sum_probs!0 -> 1.0
+arr_3 -> #x00000000
+arr_10 -> #x00000000
+arr_8 -> #x00000000
+arr_12 -> #x00000000
+arr_6 -> #x00000000
+arr_1 -> #x00000000
+arr_7 -> #x00000000
+arr_11 -> #x00000000
+arr_5 -> #x00000000
+arr_0 -> #x00000001
+arr_4 -> #x00000000
+arr_2 -> #x00000000
+arr_9 -> #x00000000
+
+Z3 evaluation:   0.83s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:49:24 PM IST
+Paths Processed : 127
+Num PSVs: 6
+Winning : 64
+Plinko Results : 
+Up to date
+constructProbs:  31.61s
+mergePathsWithProbs:  31.69s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 7.0 13.0)
+
+Z3 evaluation: 108.04s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:51:33 PM IST
+Paths Processed : 0
+Winning : 0
+Plinko Results : 
+Up to date
+constructProbs:   0.00s
+mergePathsWithProbs:   0.00s
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.02s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:51:51 PM IST
+
+plinko: ../../klee_results/reservoir_sample_assumes_processed: getDirectoryContents:openDirStream: does not exist (No such file or directory)
+Winning : 0
+Plinko Results : 
+Up to date
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:53:04 PM IST
+Found Const Array. (kquery)
+
+Winning : 0
+Plinko Results : 
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:53:16 PM IST
+Paths Processed : 0
+Winning : 0
+Plinko Results : 
+Up to date
+constructProbs:   0.00s
+mergePathsWithProbs:   0.00s
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.02s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 09:56:35 PM IST
+Paths Processed : 48
+Num PSVs: 6
+Winning : 48
+Plinko Results : 
+Up to date
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:00:22 PM IST
+Paths Processed : 63
+Num PSVs: 6
+Winning : 32
+Plinko Results : 
+Up to date
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:02:06 PM IST
+Paths Processed : 32
+Num PSVs: 6
+Winning : 16
+Plinko Results : 
+Up to date
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:02:14 PM IST
+Paths Processed : 7
+Num PSVs: 2
+Winning : 4
+Plinko Results : 
+Up to date
+constructProbs:   0.09s
+mergePathsWithProbs:   0.10s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 11.0 13.0)
+
+Z3 evaluation:   0.15s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:04:08 PM IST
+Paths Processed : 4
+Num PSVs: 2
+Winning : 2
+Plinko Results : 
+Up to date
+constructProbs:   0.06s
+mergePathsWithProbs:   0.06s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 10.0 13.0)
+
+Z3 evaluation:   0.11s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:04:27 PM IST
+Paths Processed : 3
+Num PSVs: 2
+Winning : 2
+Plinko Results : 
+Up to date
+constructProbs:   0.03s
+mergePathsWithProbs:   0.03s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 1.0 13.0)
+
+Z3 evaluation:   0.05s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:05:56 PM IST
+Paths Processed : 63
+Num PSVs: 6
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:   4.08s
+mergePathsWithProbs:   4.12s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 1.0 13.0)
+
+Z3 evaluation:  12.53s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:09:27 PM IST
+Paths Processed : 64
+Num PSVs: 6
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:  26.39s
+mergePathsWithProbs:  26.44s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 6.0 13.0)
+
+Z3 evaluation:  84.59s
+ ====== ====== 
+Example : reservoir_sample_assumes
+Date : Wednesday 17 November 2021 10:15:22 PM IST
+Paths Processed : 63
+Num PSVs: 6
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:  26.82s
+mergePathsWithProbs:  26.92s
+arr_3 -> #xffffffff
+arr_5 -> #xffffffff
+arr_1 -> #xffffffff
+arr_9 -> #xffffffff
+arr_12 -> #xffffffff
+arr_10 -> #xffffffff
+arr_7 -> #xffffffff
+arr_11 -> #xffffffff
+arr_8 -> #xffffffff
+arr_4 -> #xffffffff
+arr_2 -> #xffffffff
+arr_6 -> #xffffffff
+arr_0 -> #x00000000
+sum_probs!0 -> (/ 6.0 13.0)
+
+Z3 evaluation:  85.09s
+ ====== ====== 

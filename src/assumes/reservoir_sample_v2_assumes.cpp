@@ -82,10 +82,8 @@ int main() {
   // klee_print_expr("Return Value", ret);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(((j_sample[0] > k) && (j_sample[1] > k) && (ret == 1)) ||
-              ((j_sample[0] < k) && (j_sample[1] < k) && (ret == 1)) ||
-              ((j_sample[0] > k) && (j_sample[1] < k) && (ret == 1)) ||
-              ((j_sample[0] < k) && (j_sample[1] < k) && (ret == 1)));
+  klee_assume(((j_sample[0] < k) && ret == 1) ||
+              ((j_sample[0] >= k) && ret == 0));
 
   // Capture the value of ret.
   expected_value("ret", ret);

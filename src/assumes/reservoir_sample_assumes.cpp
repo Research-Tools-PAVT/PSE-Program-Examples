@@ -65,11 +65,8 @@ int main() {
   }
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(((j_sample[0] > k) && (j_sample[1] > k) && (ret == 1)) ||
-              ((j_sample[0] < k) && (j_sample[1] < k) && (ret == 1)) ||
-              ((j_sample[0] > k) && (j_sample[1] < k) && (ret == 1)) ||
-              ((j_sample[0] < k) && (j_sample[1] < k) && (ret == 1)) ||
-              ((j_sample[0] > k) && (j_sample[1] > k) && (ret == 0)));
+  klee_assume(((j_sample[0] < k) && ret == 1) ||
+              ((j_sample[0] >= k) && ret == 0));
 
   if (ret == 1) {
     mark_state_winning();

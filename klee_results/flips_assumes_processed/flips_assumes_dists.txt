@@ -1,0 +1,1 @@
+SUM_sym ~ UniformInt(0,6) :: w32

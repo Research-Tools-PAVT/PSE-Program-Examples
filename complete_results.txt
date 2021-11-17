@@ -1,858 +1,616 @@
-Example : quicksort_assumes_N4
-Date : Wednesday 17 November 2021 07:58:02 PM IST
-Paths Processed : 17
-Num PSVs: 6
-Winning : 17
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:54:47 PM IST
+Paths Processed : 11
+Num PSVs: 0
+Winning : 11
 Plinko Results : 
 Up to date
-constructProbs:   0.31s
-mergePathsWithProbs:   0.32s
-arr -> #x42
+constructProbs:   0.08s
+mergePathsWithProbs:   0.08s
+temp_c2_1 -> #x00000712
 sum_probs!0 -> 3.0
-arr_2 -> #x42
-arr_1 -> #x41
-arr_3 -> #x41
+temp_c1_1 -> #x00001712
+temp_c1_0 -> #x00000712
+temp_c2_0 -> #x00001712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00001712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000712
+b1_sym -> #x00000713
 
-Z3 evaluation:   0.66s
+Z3 evaluation:   0.10s
  ====== ====== 
-Example : quicksort_assumes_N5
-Date : Wednesday 17 November 2021 08:01:51 PM IST
-Paths Processed : 71
-Num PSVs: 10
-Winning : 71
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:54:51 PM IST
+Paths Processed : 11
+Num PSVs: 0
+Winning : 11
 Plinko Results : 
 Up to date
-constructProbs:  52.25s
-mergePathsWithProbs:  52.47s
-arr -> #x20
-sum_probs!0 -> (/ 28.0 5.0)
-arr_2 -> #x20
-arr_1 -> #x20
-arr_4 -> #x20
-arr_3 -> #x21
-
-Z3 evaluation: 183.46s
- ====== ====== 
-Example : montyhall_assumes
-Date : Wednesday 17 November 2021 08:11:32 PM IST
-Paths Processed : 8
-Num PSVs: 3
-Winning : 5
-Plinko Results : 
-Up to date
-constructProbs:   0.01s
-mergePathsWithProbs:   0.02s
-sum_probs!0 -> (/ 3.0 8.0)
-
-Z3 evaluation:   0.03s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:13:06 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:14:44 PM IST
-Paths Processed : 1
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:15:28 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:15:35 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:15:41 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:15:48 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:16:24 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:16:50 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:17:37 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:17:56 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:18:12 PM IST
-Paths Processed : 1
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:19:00 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:19:22 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:19:52 PM IST
-Paths Processed : 2
-Num PSVs: 2
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 1.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:20:12 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:21:06 PM IST
-Paths Processed : 1
-Winning : 0
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
+constructProbs:   0.08s
+mergePathsWithProbs:   0.08s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
 sum_probs!0 -> 0.0
 
-Z3 evaluation:   0.02s
+Z3 evaluation:   0.10s
  ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:21:15 PM IST
-Paths Processed : 2
-Num PSVs: 2
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 1.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:21:39 PM IST
-Paths Processed : 0
-Winning : 0
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:21:54 PM IST
-Paths Processed : 0
-Winning : 0
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:22:07 PM IST
-Paths Processed : 0
-Winning : 0
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:22:18 PM IST
-Paths Processed : 1
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:24:42 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:25:06 PM IST
-Paths Processed : 1
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:25:33 PM IST
-Paths Processed : 1
-Num PSVs: 1
-Winning : 1
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> (/ 1.0 2.0)
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:26:17 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:26:55 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:27:40 PM IST
-Paths Processed : 2
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 1.0
-truth -> #x00000000
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:28:49 PM IST
-Paths Processed : 4
-Num PSVs: 2
-Winning : 3
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:33:04 PM IST
-Paths Processed : 3
-Num PSVs: 1
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 1.0 2.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:34:35 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 3
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:36:58 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : randomized_response_assumes
-Date : Wednesday 17 November 2021 08:37:35 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-truth -> #x00000000
-sum_probs!0 -> (/ 3.0 4.0)
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : monotone_binary_int_assumes
-Date : Wednesday 17 November 2021 08:40:54 PM IST
-Paths Processed : 24
-Num PSVs: 1
-Winning : 12
-Plinko Results : 
-Up to date
-constructProbs:   0.45s
-mergePathsWithProbs:   0.47s
-Couldn't construct model
-Z3 evaluation:   8.15s
- ====== ====== 
-Example : monotone_binary_int_assumes
-Date : Wednesday 17 November 2021 08:41:40 PM IST
-Paths Processed : 16
-Num PSVs: 1
-Winning : 8
-Plinko Results : 
-Up to date
-constructProbs:   0.26s
-mergePathsWithProbs:   0.28s
-Couldn't construct model
-Z3 evaluation:   2.37s
- ====== ====== 
-Example : freivalds_int_assumes
-Date : Wednesday 17 November 2021 08:49:07 PM IST
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:55:38 PM IST
 Paths Processed : 1
 Num PSVs: 0
 Winning : 1
 Plinko Results : 
 Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-C_sym4 -> #x00000000
-r_sym_0 -> #x00000000
-C_sym6 -> #x00000000
-A_sym1 -> #x00000000
-C_sym0 -> #x00001000
-A_sym3 -> #x00000000
-C_sym7 -> #x00000000
-A_sym0 -> #x00000000
-A_sym6 -> #x00000000
-B_sym6 -> #x00000000
-C_sym3 -> #x00000000
-A_sym4 -> #x00000000
-B_sym5 -> #x00000000
-A_sym2 -> #x00000000
-A_sym7 -> #xa000000a
-r_sym_1 -> #x00000001
-A_sym5 -> #x00000000
-C_sym5 -> #x00000000
-B_sym7 -> #x1bc1210a
-B_sym1 -> #x00000000
-B_sym8 -> #x00000001
-C_sym2 -> #x00000000
-C_sym8 -> #x00000000
-B_sym4 -> #x373fc631
-B_sym2 -> #x00000000
-B_sym3 -> #x00000000
-B_sym0 -> #x00000000
-A_sym8 -> #x00000002
-r_sym_2 -> #x00000001
-C_sym1 -> #x00000000
+constructProbs:   0.01s
+mergePathsWithProbs:   0.01s
 sum_probs!0 -> 1.0
+b1_sym -> #x00002001
+temp_c2_1 -> #x0000000e
+temp_c1_1 -> #x00002000
+temp_c1_0 -> #x00002000
+temp_c2_0 -> #x00002710
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00002000
+b2_sym -> #x00000010
+temp_c2_2 -> #x0000000e
 
-Z3 evaluation:   0.24s
- ====== ====== Example : freivalds_multiple_int_assumes
-Date : Wednesday 17 November 2021 09:39:08 PM IST
-plinko: ../../klee_results/freivalds_multiple_int_assumes_processed: getDirectoryContents:openDirStream: does not exist (No such file or directory)
-Winning : 0
-Plinko Results : 
-Up to date
+Z3 evaluation:   0.03s
  ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:41:50 PM IST
-Paths Processed : 16
-Num PSVs: 6
-Winning : 16
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:55:42 PM IST
+Paths Processed : 1
+Num PSVs: 0
+Winning : 1
 Plinko Results : 
 Up to date
-constructProbs:  25.62s
-mergePathsWithProbs:  25.68s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 9.0 26.0)
-
-Z3 evaluation:  71.70s
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:44:35 PM IST
-Paths Processed : 64
-Num PSVs: 6
-Winning : 64
-Plinko Results : 
-Up to date
-constructProbs:   0.79s
-mergePathsWithProbs:   0.80s
+constructProbs:   0.01s
+mergePathsWithProbs:   0.01s
 sum_probs!0 -> 1.0
-arr_3 -> #x00000000
-arr_10 -> #x00000000
-arr_8 -> #x00000000
-arr_12 -> #x00000000
-arr_6 -> #x00000000
-arr_1 -> #x00000000
-arr_7 -> #x00000000
-arr_11 -> #x00000000
-arr_5 -> #x00000000
-arr_0 -> #x00000001
-arr_4 -> #x00000000
-arr_2 -> #x00000000
-arr_9 -> #x00000000
+b1_sym -> #x00002001
+temp_c2_1 -> #x0000000e
+temp_c1_1 -> #x00002000
+temp_c1_0 -> #x00002000
+temp_c2_0 -> #x00002710
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00002000
+b2_sym -> #x00000010
+temp_c2_2 -> #x0000000e
 
-Z3 evaluation:   0.83s
+Z3 evaluation:   0.03s
  ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:49:24 PM IST
-Paths Processed : 127
-Num PSVs: 6
-Winning : 64
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:56:11 PM IST
+Paths Processed : 5
+Num PSVs: 0
+Winning : 5
 Plinko Results : 
 Up to date
-constructProbs:  31.61s
-mergePathsWithProbs:  31.69s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 7.0 13.0)
+constructProbs:   0.04s
+mergePathsWithProbs:   0.04s
+temp_c2_1 -> #x00000712
+sum_probs!0 -> 2.0
+temp_c1_1 -> #x00001712
+temp_c1_0 -> #x00000712
+temp_c2_0 -> #x00001712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000712
+b1_sym -> #x00000713
 
-Z3 evaluation: 108.04s
+Z3 evaluation:   0.06s
  ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:51:33 PM IST
-Paths Processed : 0
-Winning : 0
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:56:15 PM IST
+Paths Processed : 5
+Num PSVs: 0
+Winning : 5
 Plinko Results : 
 Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
+constructProbs:   0.04s
+mergePathsWithProbs:   0.04s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
 sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:51:51 PM IST
-
-plinko: ../../klee_results/reservoir_sample_assumes_processed: getDirectoryContents:openDirStream: does not exist (No such file or directory)
-Winning : 0
-Plinko Results : 
-Up to date
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:53:04 PM IST
-Found Const Array. (kquery)
-
-Winning : 0
-Plinko Results : 
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:53:16 PM IST
-Paths Processed : 0
-Winning : 0
-Plinko Results : 
-Up to date
-constructProbs:   0.00s
-mergePathsWithProbs:   0.00s
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.02s
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 09:56:35 PM IST
-Paths Processed : 48
-Num PSVs: 6
-Winning : 48
-Plinko Results : 
-Up to date
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:00:22 PM IST
-Paths Processed : 63
-Num PSVs: 6
-Winning : 32
-Plinko Results : 
-Up to date
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:02:06 PM IST
-Paths Processed : 32
-Num PSVs: 6
-Winning : 16
-Plinko Results : 
-Up to date
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:02:14 PM IST
-Paths Processed : 7
-Num PSVs: 2
-Winning : 4
-Plinko Results : 
-Up to date
-constructProbs:   0.09s
-mergePathsWithProbs:   0.10s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 11.0 13.0)
-
-Z3 evaluation:   0.15s
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:04:08 PM IST
-Paths Processed : 4
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.06s
-mergePathsWithProbs:   0.06s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 10.0 13.0)
-
-Z3 evaluation:   0.11s
- ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:04:27 PM IST
-Paths Processed : 3
-Num PSVs: 2
-Winning : 2
-Plinko Results : 
-Up to date
-constructProbs:   0.03s
-mergePathsWithProbs:   0.03s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 1.0 13.0)
 
 Z3 evaluation:   0.05s
  ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:05:56 PM IST
-Paths Processed : 63
-Num PSVs: 6
-Winning : 32
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:57:42 PM IST
+Paths Processed : 22
+Num PSVs: 0
+Winning : 22
 Plinko Results : 
 Up to date
-constructProbs:   4.08s
-mergePathsWithProbs:   4.12s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 1.0 13.0)
+constructProbs:   0.16s
+mergePathsWithProbs:   0.16s
+temp_c2_1 -> #x00001712
+sum_probs!0 -> 3.0
+temp_c1_1 -> #x00000712
+temp_c1_0 -> #x00001712
+temp_c2_0 -> #x00000712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00001712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000712
+b1_sym -> #x00000713
 
-Z3 evaluation:  12.53s
+Z3 evaluation:   0.18s
  ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:09:27 PM IST
-Paths Processed : 64
-Num PSVs: 6
-Winning : 32
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:57:46 PM IST
+Paths Processed : 22
+Num PSVs: 0
+Winning : 22
 Plinko Results : 
 Up to date
-constructProbs:  26.39s
-mergePathsWithProbs:  26.44s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 6.0 13.0)
+constructProbs:   0.16s
+mergePathsWithProbs:   0.16s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
 
-Z3 evaluation:  84.59s
+Z3 evaluation:   0.18s
  ====== ====== 
-Example : reservoir_sample_assumes
-Date : Wednesday 17 November 2021 10:15:22 PM IST
-Paths Processed : 63
-Num PSVs: 6
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:59:07 PM IST
+Paths Processed : 32
+Num PSVs: 0
 Winning : 32
 Plinko Results : 
 Up to date
-constructProbs:  26.82s
-mergePathsWithProbs:  26.92s
-arr_3 -> #xffffffff
-arr_5 -> #xffffffff
-arr_1 -> #xffffffff
-arr_9 -> #xffffffff
-arr_12 -> #xffffffff
-arr_10 -> #xffffffff
-arr_7 -> #xffffffff
-arr_11 -> #xffffffff
-arr_8 -> #xffffffff
-arr_4 -> #xffffffff
-arr_2 -> #xffffffff
-arr_6 -> #xffffffff
-arr_0 -> #x00000000
-sum_probs!0 -> (/ 6.0 13.0)
+constructProbs:   0.23s
+mergePathsWithProbs:   0.24s
+temp_c2_1 -> #x00002312
+sum_probs!0 -> 5.0
+temp_c1_1 -> #x00000712
+temp_c1_0 -> #x00000712
+temp_c2_0 -> #x00001712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000f12
+b1_sym -> #x00002613
 
-Z3 evaluation:  85.09s
+Z3 evaluation:   0.27s
+ ====== ====== 
+Example : flips_assumes
+Date : Wednesday 17 November 2021 11:59:12 PM IST
+Paths Processed : 32
+Num PSVs: 0
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:   0.23s
+mergePathsWithProbs:   0.23s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.25s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:00:13 AM IST
+Paths Processed : 46
+Num PSVs: 0
+Winning : 46
+Plinko Results : 
+Up to date
+constructProbs:   0.33s
+mergePathsWithProbs:   0.34s
+temp_c2_1 -> #x00001712
+sum_probs!0 -> 5.0
+temp_c1_1 -> #x00000712
+temp_c1_0 -> #x00000712
+temp_c2_0 -> #x00000712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000712
+temp_c2_2 -> #x00001f12
+b2_sym -> #x00001713
+b1_sym -> #x00000713
+
+Z3 evaluation:   0.38s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:00:17 AM IST
+Paths Processed : 46
+Num PSVs: 0
+Winning : 46
+Plinko Results : 
+Up to date
+constructProbs:   0.35s
+mergePathsWithProbs:   0.36s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.37s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:01:14 AM IST
+Paths Processed : 34
+Num PSVs: 0
+Winning : 34
+Plinko Results : 
+Up to date
+constructProbs:   0.24s
+mergePathsWithProbs:   0.25s
+temp_c2_1 -> #x00001712
+sum_probs!0 -> 4.0
+temp_c1_1 -> #x00000712
+temp_c1_0 -> #x00000712
+temp_c2_0 -> #x00001712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000712
+b1_sym -> #x00000b13
+
+Z3 evaluation:   0.28s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:01:18 AM IST
+Paths Processed : 34
+Num PSVs: 0
+Winning : 34
+Plinko Results : 
+Up to date
+constructProbs:   0.25s
+mergePathsWithProbs:   0.26s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.27s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:01:55 AM IST
+Paths Processed : 26
+Num PSVs: 0
+Winning : 26
+Plinko Results : 
+Up to date
+constructProbs:   0.19s
+mergePathsWithProbs:   0.19s
+temp_c2_1 -> #x00001712
+sum_probs!0 -> 5.0
+temp_c1_1 -> #x00001fd2
+temp_c1_0 -> #x00000fbc
+temp_c2_0 -> #x00002612
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00002512
+temp_c2_2 -> #x00001712
+b2_sym -> #x00001713
+b1_sym -> #x00001fbb
+
+Z3 evaluation:   0.22s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:02:00 AM IST
+Paths Processed : 26
+Num PSVs: 0
+Winning : 26
+Plinko Results : 
+Up to date
+constructProbs:   0.19s
+mergePathsWithProbs:   0.19s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.21s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:02:37 AM IST
+Paths Processed : 35
+Num PSVs: 0
+Winning : 35
+Plinko Results : 
+Up to date
+constructProbs:   0.25s
+mergePathsWithProbs:   0.25s
+temp_c2_1 -> #x00000712
+sum_probs!0 -> 5.0
+temp_c1_1 -> #x00000712
+temp_c1_0 -> #x00001712
+temp_c2_0 -> #x00001712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00001712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000f12
+b1_sym -> #x00001713
+
+Z3 evaluation:   0.28s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:02:41 AM IST
+Paths Processed : 35
+Num PSVs: 0
+Winning : 35
+Plinko Results : 
+Up to date
+constructProbs:   0.26s
+mergePathsWithProbs:   0.26s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.28s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:03:29 AM IST
+Paths Processed : 32
+Num PSVs: 0
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:   0.23s
+mergePathsWithProbs:   0.23s
+temp_c2_1 -> #x00000212
+sum_probs!0 -> 6.0
+temp_c1_1 -> #x00002510
+temp_c1_0 -> #x00002548
+temp_c2_0 -> #x00001512
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00001510
+temp_c2_2 -> #x00001712
+b2_sym -> #x00001313
+b1_sym -> #x00002551
+
+Z3 evaluation:   0.26s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:03:34 AM IST
+Paths Processed : 32
+Num PSVs: 0
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:   0.24s
+mergePathsWithProbs:   0.25s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 1.0
+
+Z3 evaluation:   0.27s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:04:28 AM IST
+Paths Processed : 10
+Num PSVs: 0
+Winning : 10
+Plinko Results : 
+Up to date
+constructProbs:   0.07s
+mergePathsWithProbs:   0.07s
+temp_c2_1 -> #x00000712
+sum_probs!0 -> 3.0
+temp_c1_1 -> #x00001712
+temp_c1_0 -> #x00000712
+temp_c2_0 -> #x00001712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00001712
+b2_sym -> #x00000713
+temp_c2_2 -> #x00000712
+b1_sym -> #x00000713
+
+Z3 evaluation:   0.09s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:04:32 AM IST
+Paths Processed : 10
+Num PSVs: 0
+Winning : 10
+Plinko Results : 
+Up to date
+constructProbs:   0.07s
+mergePathsWithProbs:   0.08s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.09s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:05:09 AM IST
+Paths Processed : 16
+Num PSVs: 0
+Winning : 16
+Plinko Results : 
+Up to date
+constructProbs:   0.12s
+mergePathsWithProbs:   0.12s
+temp_c2_1 -> #x00000794
+sum_probs!0 -> 5.0
+temp_c1_1 -> #x00002512
+temp_c1_0 -> #x00002312
+temp_c2_0 -> #x00000714
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00002702
+b2_sym -> #x00000715
+temp_c2_2 -> #x00002614
+b1_sym -> #x00002113
+
+Z3 evaluation:   0.14s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:05:14 AM IST
+Paths Processed : 16
+Num PSVs: 0
+Winning : 16
+Plinko Results : 
+Up to date
+constructProbs:   0.12s
+mergePathsWithProbs:   0.12s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.14s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:05:57 AM IST
+Paths Processed : 26
+Num PSVs: 0
+Winning : 26
+Plinko Results : 
+Up to date
+constructProbs:   0.19s
+mergePathsWithProbs:   0.19s
+temp_c2_1 -> #x00001712
+sum_probs!0 -> 5.0
+temp_c1_1 -> #x00001fd2
+temp_c1_0 -> #x00001fbc
+temp_c2_0 -> #x00000712
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00002512
+temp_c2_2 -> #x00001712
+b2_sym -> #x00000713
+b1_sym -> #x00001fbb
+
+Z3 evaluation:   0.22s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:06:01 AM IST
+Paths Processed : 26
+Num PSVs: 0
+Winning : 26
+Plinko Results : 
+Up to date
+constructProbs:   0.19s
+mergePathsWithProbs:   0.19s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 0.0
+
+Z3 evaluation:   0.21s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:06:47 AM IST
+Paths Processed : 32
+Num PSVs: 0
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:   0.23s
+mergePathsWithProbs:   0.24s
+temp_c2_1 -> #x00000212
+sum_probs!0 -> 6.0
+temp_c1_1 -> #x00002510
+temp_c1_0 -> #x00002548
+temp_c2_0 -> #x00001512
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00001510
+temp_c2_2 -> #x00001712
+b2_sym -> #x00001313
+b1_sym -> #x00002551
+
+Z3 evaluation:   0.26s
+ ====== ====== 
+Example : flips_assumes
+Date : Thursday 18 November 2021 12:06:51 AM IST
+Paths Processed : 32
+Num PSVs: 0
+Winning : 32
+Plinko Results : 
+Up to date
+constructProbs:   0.24s
+mergePathsWithProbs:   0.25s
+temp_c2_1 -> #x00000711
+temp_c1_1 -> #x00000711
+temp_c1_0 -> #x00000711
+temp_c2_0 -> #x00000711
+SUM_sym -> #x00000000
+temp_c1_2 -> #x00000711
+temp_c2_2 -> #x00000711
+b2_sym -> #x00000711
+b1_sym -> #x00000711
+sum_probs!0 -> 1.0
+
+Z3 evaluation:   0.27s
  ====== ====== 

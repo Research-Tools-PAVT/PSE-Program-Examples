@@ -29,7 +29,7 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 5
+#define CLASSES 4
 #define FORALLS 10
 #define RUNS 100000
 #define BUCKET_SIZE 4
@@ -52,65 +52,60 @@ int main(void) {
       int runs = RUNS;
       int b1 = 0, b2 = 0, tmp1[FLIPS], tmp2[FLIPS];
 
-      b1 = rand() % 10000;
-      b2 = rand() % 10000;
-      // tmp1[0] = rand() % 10000;
-      // tmp2[0] = rand() % 10000;
-
-      // /* FORALL Buckets */
-      // /* C0 >= first tmp */
-      // if (forall_classes == 0) {
-      //   b1 = tmp1[0] + 1 + rand() % 100;
-      //   b2 = tmp2[0] + 1 + rand() % 100;
-      // }
-
-      // /* C1 <= first tmp */
-      // else if (forall_classes == 1) {
-      //   b1 = tmp1[0] - (1 + rand() % 10);
-      //   b2 = tmp2[0] - (1 + rand() % 10);
-      // }
-
-      // /* C2 */
-      // else if (forall_classes == 2) {
-      //   b1 = tmp1[0] + 1 + rand() % 100;
-      //   b2 = tmp2[0] - (1 + rand() % 10);
-      // }
-
-      // /* C3 */
-      // else if (forall_classes == 3) {
-      //   b1 = tmp1[0] - (1 + rand() % 10);
-      //   b2 = tmp2[0] + 1 + rand() % 100;
-      // }
-
-      // else {
-      //   b1 = tmp1[0];
-      //   b2 = tmp2[0];
-      // }
+      // b1 = rand() % 10000;
+      // b2 = rand() % 10000;
+      tmp1[0] = rand() % 10000;
+      tmp2[0] = rand() % 10000;
 
       /* FORALL Buckets */
       /* C0 >= first tmp */
       if (forall_classes == 0) {
-        b1 = 5000 + rand() % 2;
-        b2 = 5000 + rand() % 2;
+        b1 = tmp1[0] + rand() % 100;
+        b2 = tmp2[0] + rand() % 100;
       }
 
       /* C1 <= first tmp */
-      if (forall_classes == 1) {
-        b1 = 5000 - rand() % 5;
-        b2 = 5000 - rand() % 5;
+      else if (forall_classes == 1) {
+        b1 = tmp1[0] - (1 + rand() % 10);
+        b2 = tmp2[0] - (1 + rand() % 10);
       }
 
       /* C2 */
-      if (forall_classes == 2) {
-        b1 = 5000 + rand() % 2;
-        b2 = 5000 - rand() % 5;
+      else if (forall_classes == 2) {
+        b1 = tmp1[0] + 1 + rand() % 100;
+        b2 = tmp2[0] - (1 + rand() % 10);
       }
 
       /* C3 */
-      if (forall_classes == 3) {
-        b1 = 5000 - rand() % 5;
-        b2 = 5000 + rand() % 2;
+      else {
+        b1 = tmp1[0] - (1 + rand() % 10);
+        b2 = tmp2[0] + 1 + rand() % 100;
       }
+
+      /* FORALL Buckets */
+      /* C0 >= first tmp */
+      // if (forall_classes == 0) {
+      //   b1 = 5000 + rand() % 2;
+      //   b2 = 5000 + rand() % 2;
+      // }
+
+      // /* C1 <= first tmp */
+      // if (forall_classes == 1) {
+      //   b1 = 5000 - rand() % 5;
+      //   b2 = 5000 - rand() % 5;
+      // }
+
+      // /* C2 */
+      // if (forall_classes == 2) {
+      //   b1 = 5000 + rand() % 2;
+      //   b2 = 5000 - rand() % 5;
+      // }
+
+      // /* C3 */
+      // if (forall_classes == 3) {
+      //   b1 = 5000 - rand() % 5;
+      //   b2 = 5000 + rand() % 2;
+      // }
 
       while (runs--) {
         int sum1 = 0, sum2 = 0, SUM = 0;
@@ -118,10 +113,10 @@ int main(void) {
         // generate 3 flips for coin-1 and coin-2.
         for (std::size_t i = 0; i < FLIPS; ++i) {
 
-          // if (i != 0) {
-          tmp1[i] = rand() % 10000;
-          tmp2[i] = rand() % 10000;
-          // }
+          if (i != 0) {
+            tmp1[i] = rand() % 10000;
+            tmp2[i] = rand() % 10000;
+          }
 
           if (tmp1[i] >= b1)
             sum1 += 1;
@@ -132,23 +127,23 @@ int main(void) {
 
         SUM = sum1 + sum2;
 
-        if (SUM == 0 || SUM == 3)
+        // if (SUM == 0 || SUM == 3)
+        //   forallSamplesDist[0] += 1;
+        // else if (SUM == 1 || SUM == 2)
+        //   forallSamplesDist[1] += 1;
+        // else if (SUM == 6 || SUM == 4)
+        //   forallSamplesDist[2] += 1;
+        // else
+        //   forallSamplesDist[3] += 1;
+
+        if (SUM == 0)
           forallSamplesDist[0] += 1;
-        else if (SUM == 1 || SUM == 2)
+        else if (SUM == 6)
           forallSamplesDist[1] += 1;
-        else if (SUM == 6 || SUM == 4)
+        else if (SUM == 4 || SUM == 5)
           forallSamplesDist[2] += 1;
         else
           forallSamplesDist[3] += 1;
-
-        // if (SUM == 0 || SUM == 2)
-        //   counters[forall_classes][0] += 1;
-        // else if (SUM == 1)
-        //   counters[forall_classes][1] += 1;
-        // else if (SUM == 6)
-        //   counters[forall_classes][2] += 1;
-        // else
-        //   counters[forall_classes][3] += 1;
       }
 
       for (const auto &e : forallSamplesDist) {
@@ -178,7 +173,7 @@ int main(void) {
         std::cout << std::setw(8) << "B" << bucketCounter++;
     flag = 1;
     std::cout << "\n"
-              << "C" << classCounter;
+              << "C" << classCounter << ", " << classCounter << ",";
     for (const auto &e : x) {
       std::cout << std::setw(7) << e << ", ";
     }
@@ -198,7 +193,7 @@ int main(void) {
         std::cout << std::setw(4) << "B" << bucketCounter++;
     flag = 1;
     std::cout << "\n"
-              << "C" << classCounter;
+              << "C" << classCounter << ", " << classCounter << ",";
     for (const auto &e : x) {
       (e >= 7000) ? std::cout << std::setw(3) << 1 << ", "
                   : std::cout << std::setw(3) << 0 << ", ";

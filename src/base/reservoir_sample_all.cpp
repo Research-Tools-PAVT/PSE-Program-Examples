@@ -1,4 +1,3 @@
-// N : 15, K : 4
 #include "klee/klee.h"
 #include <PSE.h>
 #include <assert.h>
@@ -32,7 +31,7 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 
 int main() {
   // srand(time(NULL));
-  int n = 12, k = 5;
+  int n = 13, k = 7;
   int ret = 0;
 
   /* Hold the record for "j" values sampled */
@@ -70,7 +69,5 @@ int main() {
     klee_dump_kquery_state();
   }
 
-  // Capture the value of ret.
-  //  expected_value("ret", ret);
   return 0;
 }

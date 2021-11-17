@@ -10,7 +10,8 @@
 #include <stdlib.h>
 
 // Max 23 w/ 10 minute timeout
-#define N 23
+#define N 24
+
 size_t monotone_check(int *f) {
   int last = f[0];
   size_t count = 0;
@@ -27,19 +28,23 @@ int main() {
   int f[N];
   for (int i = 0; i < N; i++) {
     int temp;
-    std::string name = "fsym" + std::to_string(i);
-    klee_make_symbolic(&temp, sizeof(temp), name.c_str());
+    klee_make_symbolic(&temp, sizeof(temp), "f");
     f[i] = temp;
   }
   //  klee_make_symbolic(&f, sizeof(f), "f");
+
   size_t x;
   klee_make_symbolic(&x, sizeof(x), "x");
   klee_assume(x >= 0);
   klee_assume(x < N);
+
   klee_assume(monotone_check(f) == x);
 
   int l = (int)ceil(log2(N - 1));
-  int a = 0, i, b = N - 1;
+  int a = 0;
+  int b = N - 1;
+
+  int i;
   make_pse_symbolic(&i, sizeof(i), "i", (int)0, (int)(N - 1));
 
   bool reject = false;
@@ -63,6 +68,5 @@ int main() {
     mark_state_winning();
     klee_dump_kquery_state();
   }
-
   return 0;
 }

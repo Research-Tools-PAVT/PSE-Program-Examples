@@ -52,33 +52,60 @@ int main(void) {
       int runs = RUNS;
       int b1 = 0, b2 = 0, tmp1[FLIPS], tmp2[FLIPS];
 
-      tmp1[0] = rand() % 10000;
-      tmp2[0] = rand() % 10000;
+      b1 = rand() % 10000;
+      b2 = rand() % 10000;
+      // tmp1[0] = rand() % 10000;
+      // tmp2[0] = rand() % 10000;
 
-      /* FORALL Buckets */
-      /* C0 >= first tmp */
-      if (forall_classes == 0) {
-        b1 = tmp1[0] + 1;
-        b2 = tmp2[0] + 1;
-      }
+      // /* FORALL Buckets */
+      // /* C0 >= first tmp */
+      // if (forall_classes == 0) {
+      //   b1 = tmp1[0] + 1;
+      //   b2 = tmp2[0] + 1;
+      // }
 
-      /* C1 <= first tmp */
-      if (forall_classes == 1) {
-        b1 = tmp1[0] - 1 + rand() % 2;
-        b2 = tmp2[0] - 1 + rand() % 2;
-      }
+      // /* C1 <= first tmp */
+      // if (forall_classes == 1) {
+      //   b1 = tmp1[0] - 1 + rand() % 2;
+      //   b2 = tmp2[0] - 1 + rand() % 2;
+      // }
 
-      /* C2 */
-      if (forall_classes == 2) {
-        b1 = tmp1[0] + 1;
-        b2 = tmp2[0] - 1 + rand() % 2;
-      }
+      // /* C2 */
+      // if (forall_classes == 2) {
+      //   b1 = tmp1[0] + 1;
+      //   b2 = tmp2[0] - 1 + rand() % 2;
+      // }
 
-      /* C3 */
-      if (forall_classes == 3) {
-        b1 = tmp1[0] - 1 + rand() % 2;
-        b2 = tmp2[0] + 1;
-      }
+      // /* C3 */
+      // if (forall_classes == 3) {
+      //   b1 = tmp1[0] - 1 + rand() % 2;
+      //   b2 = tmp2[0] + 1;
+      // }
+
+      // /* FORALL Buckets */
+      // /* C0 >= first tmp */
+      // if (forall_classes == 0) {
+      //   b1 = 5000 + rand() % 2;
+      //   b2 = 5000 + rand() % 2;
+      // }
+
+      // /* C1 <= first tmp */
+      // if (forall_classes == 1) {
+      //   b1 = 5000 - rand() % 5;
+      //   b2 = 5000 - rand() % 5;
+      // }
+
+      // /* C2 */
+      // if (forall_classes == 2) {
+      //   b1 = 5000 + rand() % 2;
+      //   b2 = 5000 - rand() % 5;
+      // }
+
+      // /* C3 */
+      // if (forall_classes == 3) {
+      //   b1 = 5000 - rand() % 5;
+      //   b2 = 5000 + rand() % 2;
+      // }
 
       while (runs--) {
         int sum1 = 0, sum2 = 0, SUM;
@@ -86,10 +113,10 @@ int main(void) {
         // generate 3 flips for coin-1 and coin-2.
         for (std::size_t i = 0; i < FLIPS; ++i) {
 
-          if (i != 0) {
-            tmp1[i] = rand() % 10000;
-            tmp2[i] = rand() % 10000;
-          }
+          // if (i != 0) {
+          tmp1[i] = rand() % 10000;
+          tmp2[i] = rand() % 10000;
+          // }
 
           if (tmp1[i] >= b1)
             sum1 += 1;

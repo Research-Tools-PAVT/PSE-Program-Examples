@@ -6,7 +6,6 @@
 #include <prob_hash_int.h>
 #include <stdlib.h>
 #include <time.h>
-
 using namespace std;
 
 /**
@@ -137,7 +136,7 @@ void CountMinSketch::genajbj(int **hashes, int i) {
 unsigned int CountMinSketch::hashstr(const char *str) {
   unsigned long hash = 5381;
   int c;
-  while (c == *str++) {
+  while (c = *str++) {
     hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
   }
   return hash;
@@ -155,7 +154,6 @@ int main() {
     // klee_make_symbolic(&temp, sizeof(temp), "a_sym");
     arr[i] = i; // temp;
   }
-
   // for(size_t i = 0; i < n; i++) {
   //   for(size_t j = i + 1; j < n; j++) {
   //     klee_assume(arr[i] != arr[j]);
@@ -166,8 +164,8 @@ int main() {
     c.update(arr[i], 1);
   }
 
-  if ((c.estimate(arr[0]) > 1 + epsilon * n) ||
-      (c.estimate(arr[1]) > 1 + epsilon * n)) {
+  // c.estimate(arr[0]) > 1 + epsilon*n
+  if (c.estimate(arr[0]) > 3) {
     // Should happen with probability less than gamma
     mark_state_winning();
     klee_dump_kquery_state();

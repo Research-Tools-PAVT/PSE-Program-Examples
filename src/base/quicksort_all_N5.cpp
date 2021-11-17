@@ -50,6 +50,13 @@ int main() {
     arr[i] = temp;
   }
 
+  // /* Distinct Array */
+  // for (auto i = 0; i < N - 1; i++) {
+  //   for (auto j = i + 1; j < N; j++) {
+  //     klee_assume(arr[i] != arr[j]);
+  //   }
+  // }
+
   num_comps = 0;
   quicksort(arr, 0, N - 1);
 

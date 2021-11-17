@@ -161,23 +161,22 @@ const char *bloom_version() { return MAKESTRING(BLOOM_VERSION); }
 int main() {
   struct bloom bloom;
   int n = 3;
-  double error = 0.4;
+  double error = 0.39;
   bloom_init(&bloom, n, error);
 
   int ret = 0;
   int arr[n + 1];
   for (int i = 0; i < n + 1; i++) {
-    //		int temp;
-    //		klee_make_symbolic(&temp, sizeof(temp), "a_sym");
-    arr[i] = i; // temp;
+    // int temp;
+    // klee_make_symbolic(&temp, sizeof(temp), "a_sym");
+    arr[i] = i;
   }
 
-  for (size_t i = 0; i < n; i++) {
-    for (size_t j = i + 1; j < n; j++) {
-      if (j > i)
-        klee_assume(arr[i] != arr[j]);
-    }
-  }
+  // for (size_t i = 0; i < n; i++) {
+  //   for (size_t j = i + 1; j < n+1; j++) {
+  //       klee_assume(arr[i] != arr[j]);
+  //   }
+  // }
 
   for (int i = 0; i < n; i++) {
     bloom_add(&bloom, arr[i]);
@@ -191,6 +190,5 @@ int main() {
   }
 
   bloom_free(&bloom);
-  // expected_value("ret", ret);
   return 0;
 }

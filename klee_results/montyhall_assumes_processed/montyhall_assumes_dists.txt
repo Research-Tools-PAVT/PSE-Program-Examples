@@ -1,0 +1,3 @@
+door_pse ~ UniformInt(0,1) :: w32
+choice_pse ~ UniformInt(0,3) :: w32
+car_door_pse ~ UniformInt(0,3) :: w32

@@ -25,8 +25,8 @@ using json = nlohmann::json;
 
 #define CLASSES 2
 #define FORALLS 10
-#define RUNS 10000
-#define BUCKET_SIZE 3
+#define RUNS 100000
+#define BUCKET_SIZE 4
 
 int main() {
   std::freopen("../results/randomized_response.txt", "w", stdout);
@@ -83,8 +83,12 @@ int main() {
           counters[forall_classes][1] += 1;
         }
 
-        if (ret != 1) {
+        if (first_flip == 0 && ret == 0) {
           counters[forall_classes][2] += 1;
+        }
+
+        if (first_flip == 1 && ret == 0) {
+          counters[forall_classes][3] += 1;
         }
 
         // Query : ret == truth

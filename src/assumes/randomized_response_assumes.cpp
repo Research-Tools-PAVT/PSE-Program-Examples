@@ -19,7 +19,6 @@ int main() {
     ret = truth;
   } else {
     make_pse_symbolic(&second_flip, sizeof(second_flip), "second_flip", 0, 1);
-
     if (second_flip == 1) {
       ret = 1;
     } else {
@@ -28,8 +27,8 @@ int main() {
   }
 
   /* COMMENT : KLEE Assumes from ANALYSIS */
-  klee_assume((first_flip == 0 && ret == 0) || (truth == 0 && ret == truth) ||
-              (truth == 1 && first_flip == 1));
+  klee_assume((first_flip == 0) ||
+              (second_flip == 1 && first_flip == 1 && ret == 1));
 
   if (ret == truth) {
     // klee_dump_kquery_state();

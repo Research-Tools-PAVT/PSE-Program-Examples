@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 // Max 23 w/ 10 minute timeout
-#define N 23
+#define N 24
 size_t monotone_check(int *f) {
   int last = f[0];
   size_t count = 0;
@@ -60,7 +60,7 @@ int main() {
   }
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((i >= (N / 4)) && (f[0] < f[1]));
+  klee_assume((f[0] < f[1]) && (i >= (N / 2)));
 
   if (!reject) {
     mark_state_winning();

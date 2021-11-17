@@ -1,0 +1,10 @@
+pivot04 ~ UniformInt(0,4) :: w32
+pivot02 ~ UniformInt(0,2) :: w32
+pivot01 ~ UniformInt(0,1) :: w32
+pivot03 ~ UniformInt(0,3) :: w32
+pivot24 ~ UniformInt(2,4) :: w32
+pivot23 ~ UniformInt(2,3) :: w32
+pivot14 ~ UniformInt(1,4) :: w32
+pivot34 ~ UniformInt(3,4) :: w32
+pivot12 ~ UniformInt(1,2) :: w32
+pivot13 ~ UniformInt(1,3) :: w32

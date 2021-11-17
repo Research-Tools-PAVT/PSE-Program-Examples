@@ -1,0 +1,169 @@
+{
+    "1": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "eddbb582-d47f-4202-846c-82bb685b09be"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "2",
+                "emphemeralId": "2",
+                "uid": "303a39bf-c512-4234-b0f9-682ebc1ddf1d"
+            },
+            "predicate": "(Eq 0 (ReadLSB w32 0 first_flip))",
+            "ephemeralId": 2,
+            "removed": false,
+            "marked_success": true,
+            "predicateId": "cond_true_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "2": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "eddbb582-d47f-4202-846c-82bb685b09be"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "emphemeralId": "3",
+                "uid": "ad240def-0f54-4b15-9e4d-a2d4e34873e6"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "ephemeralId": 3,
+            "removed": false,
+            "predicateId": "cond_false_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 1 (ReadLSB w32 0 first_flip))",
+                "(Eq 1 (ReadLSB w32 0 truth))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 1 (ReadLSB w32 0 first_flip))",
+                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "4",
+                "emphemeralId": "4",
+                "uid": "f316ee0d-e005-49ba-8cba-3ddfa1ce6f70"
+            },
+            "predicate": "(Eq (ZExt w32 (Eq 1 (ReadLSB w32 0 second_flip))) (ReadLSB w32 0 truth))",
+            "ephemeralId": 4,
+            "removed": false,
+            "marked_success": true,
+            "predicateId": "cond_true_2",
+            "variables": [
+                "second_flip",
+                "truth"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ],
+    "3": [
+        {
+            "treeNode": {
+                "nodeId": "0",
+                "emphemeralId": "0",
+                "uid": "eddbb582-d47f-4202-846c-82bb685b09be"
+            },
+            "nodeTrueQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Eq 0 (ReadLSB w32 0 first_flip))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Sle 0 (ReadLSB w32 0 first_flip))",
+                "(Sle (ReadLSB w32 0 first_flip) 1)",
+                "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "3",
+                "emphemeralId": "3",
+                "uid": "ad240def-0f54-4b15-9e4d-a2d4e34873e6"
+            },
+            "predicate": "(Eq false (Eq 0 (ReadLSB w32 0 first_flip)))",
+            "ephemeralId": 3,
+            "removed": false,
+            "predicateId": "cond_false_1",
+            "variables": [
+                "first_flip"
+            ],
+            "nodeTrueQuery": [
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 1 (ReadLSB w32 0 first_flip))",
+                "(Eq 1 (ReadLSB w32 0 truth))"
+            ],
+            "nodeFalseQuery": [
+                "(Eq false (Eq 0 (Xor w32 1 (LShr w32 (ReadLSB w32 0 truth) 31))))",
+                "(Slt (ReadLSB w32 0 truth) 2)",
+                "(Eq 1 (ReadLSB w32 0 second_flip))",
+                "(Eq 1 (ReadLSB w32 0 first_flip))",
+                "(Eq false (Eq 1 (ReadLSB w32 0 truth)))"
+            ]
+        },
+        {
+            "treeNode": {
+                "nodeId": "5",
+                "emphemeralId": "5",
+                "uid": "7128b24d-9553-4010-ab94-aa720008dbd3"
+            },
+            "predicate": "(Eq false (Eq (ZExt w32 (Eq 1 (ReadLSB w32 0 second_flip))) (ReadLSB w32 0 truth)))",
+            "ephemeralId": 5,
+            "removed": false,
+            "predicateId": "cond_false_2",
+            "variables": [
+                "second_flip",
+                "truth"
+            ],
+            "nodeTrueQuery": [],
+            "nodeFalseQuery": []
+        }
+    ]
+}

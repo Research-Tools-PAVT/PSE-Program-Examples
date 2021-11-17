@@ -97,6 +97,10 @@ int main(int argc, char **argv) {
   while (forall_classes--) {
     int forall_samples = FORALLS;
     while (forall_samples--) {
+      std::unordered_map<int, int> forallSamplesDist;
+      for (int i = 0; i < BUCKET_SIZE; i++)
+        forallSamplesDist[i] = 0;
+
       int runs = RUNS;
       size_t n = 3;
       int A[n * n];
@@ -169,23 +173,29 @@ int main(int argc, char **argv) {
         ret = freivalds(A, B, C, r, n);
 
         if (r[0] == 1 && r[1] == 1 && r[2] == 1 && ret == 1) {
-          counters[forall_classes][0] += 1;
+          forallSamplesDist[0] += 1;
         }
 
         else if (r[0] == 1 && r[1] == 1 && r[2] == 1 && ret == 0) {
-          counters[forall_classes][1] += 1;
+          forallSamplesDist[1] += 1;
         }
 
         else if (r[0] != 1 && r[1] != 1 && r[2] != 1 && ret == 0) {
-          counters[forall_classes][2] += 1;
+          forallSamplesDist[2] += 1;
         }
 
         else if (r[0] != 1 && r[1] != 1 && r[2] != 1 && ret == 1) {
-          counters[forall_classes][3] += 1;
+          forallSamplesDist[3] += 1;
         }
 
         else {
-          counters[forall_classes][4] += 1;
+          forallSamplesDist[4] += 1;
+        }
+      }
+
+      for (const auto &e : forallSamplesDist) {
+        if ((e.second) >= counters[forall_classes][e.first]) {
+          counters[forall_classes][e.first] = (e.second);
         }
       }
     }
@@ -213,6 +223,26 @@ int main(int argc, char **argv) {
               << "C" << classCounter;
     for (const auto &e : x) {
       std::cout << std::setw(9) << e << ", ";
+    }
+  }
+
+  std::cout << std::endl;
+
+  classCounter = 0;
+  flag = 0;
+  for (const auto &x : counters) {
+    classCounter++;
+    std::cout << std::endl;
+    int bucketCounter = 0;
+    if (flag == 0)
+      for (const auto &e : x)
+        std::cout << std::setw(10) << "B" << bucketCounter++;
+    flag = 1;
+    std::cout << "\n"
+              << "C" << classCounter;
+    for (const auto &e : x) {
+      e >= 25000 ? std::cout << std::setw(9) << 1 << ","
+                 : std::cout << std::setw(9) << 0 << ",";
     }
   }
 

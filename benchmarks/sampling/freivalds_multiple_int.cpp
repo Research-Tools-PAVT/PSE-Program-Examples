@@ -25,7 +25,7 @@ using json = nlohmann::json;
 
 #define CLASSES 4
 #define FORALLS 10
-#define RUNS 10000
+#define RUNS 100000
 #define BUCKET_SIZE 9
 
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
@@ -92,6 +92,10 @@ int main(int argc, char **argv) {
   while (forall_classes--) {
     int forall_samples = FORALLS;
     while (forall_samples--) {
+      std::unordered_map<int, int> forallSamplesDist;
+      for (int i = 0; i < BUCKET_SIZE; i++)
+        forallSamplesDist[i] = 0;
+
       int runs = RUNS;
       size_t n = 3;
       size_t k = 7;
@@ -168,48 +172,54 @@ int main(int argc, char **argv) {
         /* PSE Buckets */
         if (r[0] != 1 && r[1] == 1 && r[2] == 1 && ret == 1) {
           bucketChoosen = 0;
-          counters[forall_classes][0] += 1;
+          forallSamplesDist[0] += 1;
         }
 
         if (r[0] != 1 && r[1] == 1 && r[2] != 1 && ret == 1) {
           bucketChoosen = 1;
-          counters[forall_classes][1] += 1;
+          forallSamplesDist[1] += 1;
         }
 
         if (r[0] == 1 && r[1] != 1 && r[2] == 1 && ret == 1) {
           bucketChoosen = 2;
-          counters[forall_classes][2] += 1;
+          forallSamplesDist[2] += 1;
         }
 
         if (r[0] == 1 && r[1] != 1 && r[2] != 1 && ret == 1) {
           bucketChoosen = 3;
-          counters[forall_classes][3] += 1;
+          forallSamplesDist[3] += 1;
         }
 
         if (r[0] != 1 && r[1] != 1 && r[2] == 1 && ret == 1) {
           bucketChoosen = 4;
-          counters[forall_classes][4] += 1;
+          forallSamplesDist[4] += 1;
         }
 
         if (r[0] != 1 && r[1] != 1 && r[2] != 1 && ret == 1) {
           bucketChoosen = 5;
-          counters[forall_classes][5] += 1;
+          forallSamplesDist[5] += 1;
         }
 
         if (r[0] == 1 && r[1] == 1 && r[2] == 1 && ret == 1) {
           bucketChoosen = 6;
-          counters[forall_classes][6] += 1;
+          forallSamplesDist[6] += 1;
         }
 
         if (r[0] == 1 && r[1] == 1 && r[2] != 1 && ret == 1) {
           bucketChoosen = 7;
-          counters[forall_classes][7] += 1;
+          forallSamplesDist[7] += 1;
         }
 
         /* Non Winning Case here. */
         if (ret == 0) {
           bucketChoosen = 8;
-          counters[forall_classes][8] += 1;
+          forallSamplesDist[8] += 1;
+        }
+      }
+
+      for (const auto &e : forallSamplesDist) {
+        if ((e.second) >= counters[forall_classes][e.first]) {
+          counters[forall_classes][e.first] = (e.second);
         }
       }
     }
@@ -231,12 +241,32 @@ int main(int argc, char **argv) {
     int bucketCounter = 0;
     if (flag == 0)
       for (const auto &e : x)
-        std::cout << std::setw(8) << "B" << bucketCounter++;
+        std::cout << std::setw(10) << "B" << bucketCounter++;
     flag = 1;
     std::cout << "\n"
               << "C" << classCounter;
     for (const auto &e : x) {
-      std::cout << std::setw(7) << e << ", ";
+      std::cout << std::setw(9) << e << ", ";
+    }
+  }
+
+  std::cout << std::endl;
+
+  classCounter = 0;
+  flag = 0;
+  for (const auto &x : counters) {
+    classCounter++;
+    std::cout << std::endl;
+    int bucketCounter = 0;
+    if (flag == 0)
+      for (const auto &e : x)
+        std::cout << std::setw(10) << "B" << bucketCounter++;
+    flag = 1;
+    std::cout << "\n"
+              << "C" << classCounter;
+    for (const auto &e : x) {
+      e >= 25000 ? std::cout << std::setw(9) << 1 << ","
+                 : std::cout << std::setw(9) << 0 << ",";
     }
   }
 

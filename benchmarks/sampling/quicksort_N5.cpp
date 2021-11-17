@@ -23,9 +23,9 @@
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 1
+#define CLASSES 5
 #define FORALLS 10
-#define RUNS 1000
+#define RUNS 100000
 #define BUCKET_SIZE 5
 #define N 5
 
@@ -93,26 +93,31 @@ int main() {
     // counters[forall_classes][6] = 0;
 
     while (forall_samples--) {
+      std::unordered_map<int, int> forallSamplesDist;
+      for (int i = 0; i < BUCKET_SIZE; i++)
+        forallSamplesDist[i] = 0;
+
       int arr[N] = {0};
       if (forall_classes == 3) {
         arr[0] = rand() % 65536;
         arr[1] = arr[0] + 1 + rand() % 65536;
         arr[2] = arr[1] + 1 + rand() % 65536;
-      }
-      if (forall_classes == 2) {
+      } else if (forall_classes == 2) {
         arr[0] = rand() % 65536;
         arr[1] = arr[0] - (1 + rand() % 65536);
         arr[2] = arr[1] - (1 + rand() % 65536);
-      }
-      if (forall_classes == 1) {
+      } else if (forall_classes == 1) {
         arr[0] = rand() % 65536;
         arr[1] = arr[0] + 1 + rand() % 65536;
         arr[2] = arr[1] - (1 + rand() % 65536);
-      }
-      if (forall_classes == 0) {
+      } else if (forall_classes == 0) {
         arr[0] = rand() % 65536;
         arr[1] = arr[0] - (1 + rand() % 65536);
         arr[2] = arr[1] + 1 + rand() % 65536;
+      } else {
+        arr[0] = rand() % 65536;
+        arr[1] = arr[0];
+        arr[2] = arr[0];
       }
 
       for (auto i = 3; i < N; i++) {
@@ -133,36 +138,29 @@ int main() {
 
         /* PSE Buckets */
         if (num_comps <= 2) {
-          counters[forall_classes][0] += 1;
+          forallSamplesDist[0] += 1;
         }
         if (num_comps == 3 || num_comps == 4) {
-          counters[forall_classes][1] += 1;
+          forallSamplesDist[1] += 1;
         }
         if (num_comps == 5 || num_comps == 6 || num_comps == 7) {
-          counters[forall_classes][2] += 1;
+          forallSamplesDist[2] += 1;
         }
         if (num_comps == 8) {
-          counters[forall_classes][3] += 1;
+          forallSamplesDist[3] += 1;
         }
         if (num_comps >= 9) {
-          counters[forall_classes][4] += 1;
+          forallSamplesDist[4] += 1;
         }
-
-        runsCC++;
       }
-      std::cerr << runsCC << std::endl;
+
+      for (const auto &e : forallSamplesDist) {
+        if ((e.second) >= counters[forall_classes][e.first]) {
+          counters[forall_classes][e.first] = (e.second);
+        }
+      }
     }
-
-    std::cout << FORALLS * RUNS - runsCC << std::endl;
-
-    // for (auto i = 0; i < BUCKET_SIZE; i++)
-    //   summaryObj["class_" + std::to_string(forall_classes)]
-    //             ["bucket_" + std::to_string(i)] = {"num_comps",
-    //                                                counters[forall_classes][i]};
   }
-
-  /* Analysis Ends Here */
-  std::cout << "Analysis Ends\n\n";
 
   // for (const auto &x : counters) {
   //   std::cout << std::endl;
@@ -193,8 +191,7 @@ int main() {
     for (const auto &e : x) {
       // e >= 17000 ? std::cout << std::setw(5) << 1 << ","
       //            : std::cout << std::setw(5) << 0 << ",";
-      std::cout << std::setw(9) << (double)((double)e / (FORALLS * RUNS))
-                << ", ";
+      std::cout << std::setw(9) << e << ", ";
     }
     classCounter++;
   }
@@ -211,7 +208,6 @@ int main() {
     if (flag == 0) {
       for (const auto &e : x)
         std::cout << std::setw(10) << "B" << bucketCounter++;
-      std::cout << std::setw(10) << "Exp";
     }
 
     flag = 1;
@@ -219,30 +215,10 @@ int main() {
               << "C" << classCounter;
     int bucket = 0;
     double total = 0;
-    int MULT = 0;
     for (const auto &e : x) {
-      // e >= 17000 ? std::cout << std::setw(5) << 1 << ","
-      //            : std::cout << std::setw(5) << 0 << ",";
-      MULT = bucket + 2;
-
-      total += (double)(((double)e / (FORALLS * RUNS)) * MULT);
-
-      std::cout << std::setw(9)
-                << (double)(((double)e / (FORALLS * RUNS)) * MULT) << ", ";
-
-      // if (e > 1000) {
-      //   std::cerr << "Assumes : (C" << classCounter << " && B" << bucket
-      //             << ") || freq : " << counters[classCounter][bucket] <<
-      //             "\n";
-      // }
-
-      bucket++;
+      e >= 25000 ? std::cout << std::setw(9) << 1 << ","
+                 : std::cout << std::setw(9) << 0 << ",";
     }
-
-    std::cerr << "Expected Value : " << classCounter
-              << " :: " << (double)(total) << std::endl;
-
-    std::cout << std::setw(9) << (double)(total);
     classCounter++;
   }
 

@@ -1,279 +1,171 @@
 Example : flips_assumes
-Date : Thursday 18 November 2021 01:19:18 PM IST
-Paths Processed : 28
+Date : Friday 19 November 2021 01:07:09 AM IST
+Paths Processed : 64
 Num PSVs: 6
-Winning : 28
+Winning : 64
 Plinko Results : 
 Up to date
-constructProbs:   5.21s
-mergePathsWithProbs:   5.22s
-b2_sym -> #x00000001
-b1_sym -> #x00000001
-sum_probs!0 -> 6.0
+constructProbs:  11.86s
+mergePathsWithProbs:  11.86s
+b1_sym -> #x00000000
+b2_sym -> #x00000000
+sum_probs!0 -> 5.0
 
-Z3 evaluation:  20.74s
+Z3 evaluation:  72.67s
  ====== ====== 
 Example : flips_assumes
-Date : Thursday 18 November 2021 01:19:30 PM IST
-Paths Processed : 28
+Date : Friday 19 November 2021 01:07:39 AM IST
+Paths Processed : 64
 Num PSVs: 6
-Winning : 28
+Winning : 64
 Plinko Results : 
 Up to date
-constructProbs:   5.15s
-mergePathsWithProbs:   5.15s
-b2_sym -> #x00000001
-b1_sym -> #x00000001
+constructProbs:  12.17s
+mergePathsWithProbs:  12.18s
+b1_sym -> #x00000000
+b2_sym -> #x00000000
 sum_probs!0 -> 1.0
 
-Z3 evaluation:   7.51s
+Z3 evaluation:  25.83s
  ====== ====== 
 Example : flips_assumes
-Date : Thursday 18 November 2021 01:21:27 PM IST
+Date : Friday 19 November 2021 01:18:15 AM IST
+Paths Processed : 64
+Num PSVs: 6
+Winning : 64
+Plinko Results : 
+Up to date
+constructProbs:  34.73s
+mergePathsWithProbs:  34.74s
+b1_sym -> #x00000000
+b2_sym -> #x00000000
+sum_probs!0 -> 5.0
+
+Z3 evaluation: 405.30s
+ ====== ====== 
+Example : flips_assumes
+Date : Friday 19 November 2021 01:20:26 AM IST
+Paths Processed : 64
+Num PSVs: 6
+Winning : 64
+Plinko Results : 
+Up to date
+constructProbs:  34.85s
+mergePathsWithProbs:  34.86s
+b1_sym -> #x00000000
+b2_sym -> #x00000000
+sum_probs!0 -> 1.0
+
+Z3 evaluation: 126.65s
+ ====== ====== 
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:32:42 AM IST
+
 Paths Processed : 0
 Winning : 0
 Plinko Results : 
 Up to date
 constructProbs:   0.00s
 mergePathsWithProbs:   0.00s
-sum_probs!0 -> 0.0
-
+Couldn't construct model
 Z3 evaluation:   0.02s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:21:30 PM IST
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:34:59 AM IST
+Paths Processed : 83
+Num PSVs: 8
+Winning : 31
+Plinko Results : 
+Up to date
+ ====== ====== 
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:35:25 AM IST
+
 Paths Processed : 0
 Winning : 0
 Plinko Results : 
 Up to date
 constructProbs:   0.00s
 mergePathsWithProbs:   0.00s
-sum_probs!0 -> 0.0
-
+Couldn't construct model
 Z3 evaluation:   0.02s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:22:44 PM IST
-Paths Processed : 32
-Num PSVs: 0
-Winning : 32
-Plinko Results : 
-Up to date
-constructProbs:   0.14s
-mergePathsWithProbs:   0.15s
-temp_c2_1 -> #x40000000
-sum_probs!0 -> 6.0
-temp_c1_1 -> #x00000000
-temp_c1_0 -> #x00000000
-temp_c2_0 -> #x40000000
-SUM_sym -> #x00000000
-temp_c1_2 -> #x00000000
-b2_sym -> #x00000001
-temp_c2_2 -> #x40000000
-b1_sym -> #x00000001
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:37:25 AM IST
 
-Z3 evaluation:   0.17s
- ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:22:49 PM IST
-Paths Processed : 32
-Num PSVs: 0
-Winning : 32
-Plinko Results : 
-Up to date
-constructProbs:   0.14s
-mergePathsWithProbs:   0.15s
-SUM_sym -> #x00000000
-b2_sym -> #x00000001
-b1_sym -> #x00000001
-temp_c1_0 -> #x00000000
-temp_c1_1 -> #x00000000
-temp_c1_2 -> #x00000000
-temp_c2_0 -> #x00000000
-temp_c2_1 -> #x00000000
-temp_c2_2 -> #x00000000
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.16s
- ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:31:48 PM IST
-Paths Processed : 1
-Num PSVs: 0
-Winning : 1
+Paths Processed : 0
+Winning : 0
 Plinko Results : 
 Up to date
 constructProbs:   0.00s
-mergePathsWithProbs:   0.01s
-sum_probs!0 -> 1.0
-b1_sym -> #x00000001
-temp_c2_1 -> #x00000000
-temp_c1_1 -> #x00000000
-temp_c1_0 -> #x00000000
-temp_c2_0 -> #x7fffffff
-SUM_sym -> #x00000000
-temp_c1_2 -> #x00000000
-b2_sym -> #x00000001
-temp_c2_2 -> #x00000000
-
-Z3 evaluation:   0.03s
+mergePathsWithProbs:   0.00s
+Couldn't construct model
+Z3 evaluation:   0.02s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:31:51 PM IST
-Paths Processed : 1
-Num PSVs: 0
-Winning : 1
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:57:33 AM IST
+plinko: ../../klee_results/bloomfilter_assumes_processed: getDirectoryContents:openDirStream: does not exist (No such file or directory)
+Winning : 0
 Plinko Results : 
 Up to date
-constructProbs:   0.01s
-mergePathsWithProbs:   0.01s
-sum_probs!0 -> 1.0
-b1_sym -> #x00000001
-temp_c2_1 -> #x00000000
-temp_c1_1 -> #x00000000
-temp_c1_0 -> #x00000000
-temp_c2_0 -> #x7fffffff
-SUM_sym -> #x00000000
-temp_c1_2 -> #x00000000
-b2_sym -> #x00000001
-temp_c2_2 -> #x00000000
-
-Z3 evaluation:   0.03s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:50:05 PM IST
-Paths Processed : 5
-Num PSVs: 0
-Winning : 5
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:58:55 AM IST
+Paths Processed : 83
+Num PSVs: 8
+Winning : 31
 Plinko Results : 
 Up to date
-constructProbs:   0.03s
-mergePathsWithProbs:   0.03s
-temp_c2_1 -> #x00000000
-sum_probs!0 -> 2.0
-temp_c1_1 -> #x40000000
-temp_c1_0 -> #x00000000
-temp_c2_0 -> #x40000000
-SUM_sym -> #x00000000
-temp_c1_2 -> #x00000000
-b2_sym -> #x00000001
-temp_c2_2 -> #x00000000
-b1_sym -> #x00000001
-
-Z3 evaluation:   0.05s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:50:09 PM IST
-Paths Processed : 5
-Num PSVs: 0
-Winning : 5
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:59:37 AM IST
+Paths Processed : 83
+Num PSVs: 8
+Winning : 31
 Plinko Results : 
 Up to date
-constructProbs:   0.02s
-mergePathsWithProbs:   0.02s
-SUM_sym -> #x00000000
-b2_sym -> #x00000001
-b1_sym -> #x00000001
-temp_c1_0 -> #x00000000
-temp_c1_1 -> #x00000000
-temp_c1_2 -> #x00000000
-temp_c2_0 -> #x00000000
-temp_c2_1 -> #x00000000
-temp_c2_2 -> #x00000000
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.04s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:51:10 PM IST
-Paths Processed : 9
-Num PSVs: 0
-Winning : 9
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 01:59:45 AM IST
+[1;36mPath 16 Winning[0m
+plinko: ../../klee_results/bloomfilter_assumes_processed: getDirectoryContents:openDirStream: does not exist (No such file or directory)
+Winning : 4
 Plinko Results : 
 Up to date
-constructProbs:   0.04s
-mergePathsWithProbs:   0.04s
-temp_c2_1 -> #x00000000
-sum_probs!0 -> 3.0
-temp_c1_1 -> #x00000000
-temp_c1_0 -> #x40000000
-temp_c2_0 -> #x40000000
-SUM_sym -> #x00000000
-temp_c1_2 -> #x40000000
-b2_sym -> #x00000001
-temp_c2_2 -> #x00000000
-b1_sym -> #x00000001
-
-Z3 evaluation:   0.06s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:51:13 PM IST
-Paths Processed : 9
-Num PSVs: 0
-Winning : 9
+Example : bloomfilter_assumes
+Date : Friday 19 November 2021 02:05:56 AM IST
+Paths Processed : 31
+Num PSVs: 8
+Winning : 31
 Plinko Results : 
 Up to date
-constructProbs:   0.04s
-mergePathsWithProbs:   0.04s
-SUM_sym -> #x00000000
-b2_sym -> #x00000001
-b1_sym -> #x00000001
-temp_c1_0 -> #x00000000
-temp_c1_1 -> #x00000000
-temp_c1_2 -> #x00000000
-temp_c2_0 -> #x00000000
-temp_c2_1 -> #x00000000
-temp_c2_2 -> #x00000000
-sum_probs!0 -> 0.0
+constructProbs: 341.92s
+mergePathsWithProbs: 341.95s
+sum_probs!0 -> (/ 44177.0 78125.0)
 
-Z3 evaluation:   0.06s
+Z3 evaluation: 348.94s
  ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:51:54 PM IST
-Paths Processed : 9
-Num PSVs: 0
-Winning : 9
+Example : quicksort_assumes_N5
+Date : Friday 19 November 2021 02:12:02 AM IST
+Paths Processed : 71
+Num PSVs: 10
+Winning : 71
 Plinko Results : 
 Up to date
-constructProbs:   0.04s
-mergePathsWithProbs:   0.04s
-temp_c2_1 -> #x00000000
-sum_probs!0 -> 3.0
-temp_c1_1 -> #x00000000
-temp_c1_0 -> #x40000000
-temp_c2_0 -> #x40000000
-SUM_sym -> #x00000000
-temp_c1_2 -> #x40000000
-b2_sym -> #x00000001
-temp_c2_2 -> #x00000000
-b1_sym -> #x00000001
+constructProbs:  51.92s
+mergePathsWithProbs:  52.16s
+arr -> #x28
+sum_probs!0 -> (/ 28.0 5.0)
+arr_2 -> #x28
+arr_1 -> #x28
+arr_4 -> #x28
+arr_3 -> #x69
 
-Z3 evaluation:   0.06s
- ====== ====== 
-Example : flips_assumes
-Date : Thursday 18 November 2021 01:51:58 PM IST
-Paths Processed : 9
-Num PSVs: 0
-Winning : 9
-Plinko Results : 
-Up to date
-constructProbs:   0.04s
-mergePathsWithProbs:   0.04s
-SUM_sym -> #x00000000
-b2_sym -> #x00000001
-b1_sym -> #x00000001
-temp_c1_0 -> #x00000000
-temp_c1_1 -> #x00000000
-temp_c1_2 -> #x00000000
-temp_c2_0 -> #x00000000
-temp_c2_1 -> #x00000000
-temp_c2_2 -> #x00000000
-sum_probs!0 -> 0.0
-
-Z3 evaluation:   0.06s
+Z3 evaluation: 172.53s
  ====== ====== 
 Example : monotone_binary_int_assumes
-Date : Thursday 18 November 2021 02:28:33 PM IST
+Date : Friday 19 November 2021 02:16:13 AM IST
 Paths Processed : 16
 Num PSVs: 1
 Winning : 8
@@ -282,5 +174,5 @@ Up to date
 constructProbs:   0.27s
 mergePathsWithProbs:   0.28s
 Couldn't construct model
-Z3 evaluation:   2.20s
+Z3 evaluation:   3.16s
  ====== ====== 

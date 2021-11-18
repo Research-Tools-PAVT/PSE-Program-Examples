@@ -23,13 +23,13 @@ unsigned int microseconds = 10000000;
 // for convenience
 using json = nlohmann::json;
 
-#define CLASSES 2
+#define CLASSES 3
 #define FORALLS 10
-#define RUNS 1000
+#define RUNS 10000
 #define BUCKET_SIZE 5
 
 // Max 23 w/ 10 minute timeout
-#define N 4
+#define N 24
 size_t monotone_check(int *f) {
   int last = f[0];
   size_t count = 0;
@@ -71,12 +71,16 @@ int main() {
       if (forall_classes == 0) {
         f[0] = rand() % 15000;
         f[1] = f[0] + 1 + rand() % 15000;
+        f[2] = f[0] + 1 + rand() % 15000;
+        f[3] = f[2] + 1 + rand() % 15000;
       }
 
       /* C1 */
-      if (forall_classes == 1) {
+      else if (forall_classes == 1) {
         f[0] = rand() % 15000;
-        f[1] = f[0] - (1 + rand() % 15000);
+        f[1] = f[0] + (1 + rand() % 15000);
+        f[2] = f[0] + (1 + rand() % 15000);
+        f[3] = f[2] - (1 + rand() % 15000);
       }
 
       while (runs--) {

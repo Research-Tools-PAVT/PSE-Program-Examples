@@ -1,44 +1,229 @@
 	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
-	User time (seconds): 23.39
-	System time (seconds): 0.50
-	Percent of CPU this job got: 93%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:25.57
+	User time (seconds): 17.00
+	System time (seconds): 0.85
+	Percent of CPU this job got: 92%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.28
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 591812
+	Maximum resident set size (kbytes): 1135396
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 302789
-	Voluntary context switches: 2960
-	Involuntary context switches: 8645
+	Major (requiring I/O) page faults: 1002
+	Minor (reclaiming a frame) page faults: 483170
+	Voluntary context switches: 3712
+	Involuntary context switches: 2360
 	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4832
+	File system inputs: 160744
+	File system outputs: 5208
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 10.22
-	System time (seconds): 0.49
-	Percent of CPU this job got: 90%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.84
+	User time (seconds): 26.48
+	System time (seconds): 0.93
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:28.48
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 607952
+	Maximum resident set size (kbytes): 1275360
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 12
+	Minor (reclaiming a frame) page faults: 657167
+	Voluntary context switches: 3879
+	Involuntary context switches: 1213
+	Swaps: 0
+	File system inputs: 480
+	File system outputs: 5216
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 16.85
+	System time (seconds): 0.68
+	Percent of CPU this job got: 94%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:18.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1129452
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 285432
-	Voluntary context switches: 1566
-	Involuntary context switches: 1664
+	Minor (reclaiming a frame) page faults: 478923
+	Voluntary context switches: 2877
+	Involuntary context switches: 767
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 4832
+	File system outputs: 5208
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 27.37
+	System time (seconds): 0.89
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:29.41
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1272520
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 664654
+	Voluntary context switches: 3971
+	Involuntary context switches: 2331
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 5208
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 17.37
+	System time (seconds): 0.75
+	Percent of CPU this job got: 91%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:19.77
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1126000
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 14
+	Minor (reclaiming a frame) page faults: 472552
+	Voluntary context switches: 3023
+	Involuntary context switches: 4484
+	Swaps: 0
+	File system inputs: 768
+	File system outputs: 5440
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 27.65
+	System time (seconds): 0.86
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:29.61
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1287968
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 9
+	Minor (reclaiming a frame) page faults: 657015
+	Voluntary context switches: 4015
+	Involuntary context switches: 1470
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 5440
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 47.06
+	System time (seconds): 1.87
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:50.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4102000
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 13
+	Minor (reclaiming a frame) page faults: 1535794
+	Voluntary context switches: 8281
+	Involuntary context switches: 2729
+	Swaps: 0
+	File system inputs: 912
+	File system outputs: 5872
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Command terminated by signal 2
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 0.01
+	System time (seconds): 0.01
+	Percent of CPU this job got: 22%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 9500
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2007
+	Voluntary context switches: 19
+	Involuntary context switches: 35
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 383.03
+	System time (seconds): 4.87
+	Percent of CPU this job got: 105%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:08.36
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8100920
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 15
+	Minor (reclaiming a frame) page faults: 4019497
+	Voluntary context switches: 40477
+	Involuntary context switches: 10322
+	Swaps: 0
+	File system inputs: 1088
+	File system outputs: 5440
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 2.04
+	System time (seconds): 0.18
+	Percent of CPU this job got: 66%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.36
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 96432
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 58660
+	Voluntary context switches: 212
+	Involuntary context switches: 465
+	Swaps: 0
+	File system inputs: 40
+	File system outputs: 3056
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -46,297 +231,435 @@
 	Exit status: 0
 	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
 	User time (seconds): 1.35
-	System time (seconds): 0.18
-	Percent of CPU this job got: 59%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.60
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 97756
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 67555
-	Voluntary context switches: 215
-	Involuntary context switches: 786
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 1744
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 1.30
-	System time (seconds): 0.17
+	System time (seconds): 0.12
 	Percent of CPU this job got: 57%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.56
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.59
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 97520
+	Maximum resident set size (kbytes): 96068
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 67479
-	Voluntary context switches: 207
-	Involuntary context switches: 316
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 1736
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
-	User time (seconds): 2.84
-	System time (seconds): 0.23
-	Percent of CPU this job got: 72%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.25
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96136
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 70559
-	Voluntary context switches: 261
-	Involuntary context switches: 1009
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4456
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 2.78
-	System time (seconds): 0.17
-	Percent of CPU this job got: 72%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.06
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96532
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 69623
-	Voluntary context switches: 264
-	Involuntary context switches: 527
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4448
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
-	User time (seconds): 2.57
-	System time (seconds): 0.16
-	Percent of CPU this job got: 72%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.78
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 98136
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 72190
-	Voluntary context switches: 212
-	Involuntary context switches: 481
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 3952
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 2.47
-	System time (seconds): 0.18
-	Percent of CPU this job got: 71%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.73
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 97772
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 70292
-	Voluntary context switches: 216
-	Involuntary context switches: 451
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 3936
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
-	User time (seconds): 2.72
-	System time (seconds): 0.22
-	Percent of CPU this job got: 71%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.14
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 98012
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 72539
-	Voluntary context switches: 230
-	Involuntary context switches: 1859
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4016
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 2.61
-	System time (seconds): 0.23
-	Percent of CPU this job got: 72%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.92
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96244
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 70231
-	Voluntary context switches: 232
-	Involuntary context switches: 894
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4016
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
-	User time (seconds): 2.60
-	System time (seconds): 0.19
-	Percent of CPU this job got: 71%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.92
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96272
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 68920
-	Voluntary context switches: 233
-	Involuntary context switches: 813
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4088
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 2.55
-	System time (seconds): 0.17
-	Percent of CPU this job got: 71%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.79
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96556
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 68691
-	Voluntary context switches: 218
-	Involuntary context switches: 487
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4080
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
-	User time (seconds): 2.59
-	System time (seconds): 0.24
-	Percent of CPU this job got: 72%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.89
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96524
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 68763
-	Voluntary context switches: 233
-	Involuntary context switches: 674
-	Swaps: 0
-	File system inputs: 0
-	File system outputs: 4096
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 0
-	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
-	User time (seconds): 2.56
-	System time (seconds): 0.22
-	Percent of CPU this job got: 71%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.87
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 96540
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 69325
+	Major (requiring I/O) page faults: 24
+	Minor (reclaiming a frame) page faults: 65080
 	Voluntary context switches: 220
-	Involuntary context switches: 527
+	Involuntary context switches: 1058
+	Swaps: 0
+	File system inputs: 3288
+	File system outputs: 1536
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 1.34
+	System time (seconds): 0.10
+	Percent of CPU this job got: 57%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 95976
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 65198
+	Voluntary context switches: 192
+	Involuntary context switches: 397
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 4096
+	File system outputs: 1536
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 85.61
+	System time (seconds): 1.08
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:28.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1090716
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 17
+	Minor (reclaiming a frame) page faults: 574024
+	Voluntary context switches: 9486
+	Involuntary context switches: 9616
+	Swaps: 0
+	File system inputs: 1472
+	File system outputs: 4944
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 19.29
+	System time (seconds): 0.72
+	Percent of CPU this job got: 94%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:21.19
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1094356
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 530580
+	Voluntary context switches: 2832
+	Involuntary context switches: 1478
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 4912
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 74.22
+	System time (seconds): 1.52
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:17.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2057208
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 996726
+	Voluntary context switches: 8851
+	Involuntary context switches: 12318
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 5224
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 27.76
+	System time (seconds): 1.05
+	Percent of CPU this job got: 95%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:30.08
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1283848
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 662497
+	Voluntary context switches: 4068
+	Involuntary context switches: 2790
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 5192
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp expected-value"
+	User time (seconds): 403.44
+	System time (seconds): 4.82
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:50.33
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 8099244
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 3725483
+	Voluntary context switches: 44401
+	Involuntary context switches: 23278
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 5224
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/extras/flips_assumes.cpp calculate-prob"
+	User time (seconds): 126.71
+	System time (seconds): 2.69
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:10.68
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4100652
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 2242319
+	Voluntary context switches: 16468
+	Involuntary context switches: 5010
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 5216
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 8.19
+	System time (seconds): 0.14
+	Percent of CPU this job got: 87%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 102028
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 59
+	Minor (reclaiming a frame) page faults: 74005
+	Voluntary context switches: 220
+	Involuntary context switches: 2389
+	Swaps: 0
+	File system inputs: 4304
+	File system outputs: 8872
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 10.52
+	System time (seconds): 0.27
+	Percent of CPU this job got: 89%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 125596
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 105421
+	Voluntary context switches: 492
+	Involuntary context switches: 1661
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 14304
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 8.32
+	System time (seconds): 0.22
+	Percent of CPU this job got: 87%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.72
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 101572
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 73938
+	Voluntary context switches: 197
+	Involuntary context switches: 998
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8864
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 8.29
+	System time (seconds): 0.19
+	Percent of CPU this job got: 87%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.73
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 101564
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 73916
+	Voluntary context switches: 211
+	Involuntary context switches: 1251
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8872
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 1.24
+	System time (seconds): 0.09
+	Percent of CPU this job got: 55%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 96420
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 53607
+	Voluntary context switches: 223
+	Involuntary context switches: 99
+	Swaps: 0
+	File system inputs: 656
+	File system outputs: 72
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 70.45
+	System time (seconds): 0.87
+	Percent of CPU this job got: 97%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:13.07
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1461576
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 521427
+	Voluntary context switches: 12449
+	Involuntary context switches: 8482
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 14312
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 39.14
+	System time (seconds): 0.52
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:41.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 651548
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 268478
+	Voluntary context switches: 6115
+	Involuntary context switches: 3762
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 14320
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 6.33
+	System time (seconds): 0.22
+	Percent of CPU this job got: 86%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.60
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 102176
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 64849
+	Voluntary context switches: 188
+	Involuntary context switches: 255
+	Swaps: 0
+	File system inputs: 40
+	File system outputs: 6688
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter -e 0.39"
+	User time (seconds): 354.32
+	System time (seconds): 3.40
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:01.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4640300
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 8
+	Minor (reclaiming a frame) page faults: 2017706
+	Voluntary context switches: 69159
+	Involuntary context switches: 36830
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 11144
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value"
+	User time (seconds): 182.86
+	System time (seconds): 0.70
+	Percent of CPU this job got: 98%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:06.16
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 586868
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 10
+	Minor (reclaiming a frame) page faults: 229112
+	Voluntary context switches: 22980
+	Involuntary context switches: 9420
+	Swaps: 0
+	File system inputs: 448
+	File system outputs: 11528
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
 	Page size (bytes): 4096
 	Exit status: 0
 	Command being timed: "./run.sh src/assumes/monotone_binary_int_assumes.cpp monotone-binary-search -n 24"
-	User time (seconds): 12.92
-	System time (seconds): 0.16
-	Percent of CPU this job got: 92%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:14.22
+	User time (seconds): 14.63
+	System time (seconds): 0.19
+	Percent of CPU this job got: 90%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:16.41
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 113596
+	Maximum resident set size (kbytes): 113452
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 79295
-	Voluntary context switches: 518
-	Involuntary context switches: 754
+	Major (requiring I/O) page faults: 11
+	Minor (reclaiming a frame) page faults: 79020
+	Voluntary context switches: 621
+	Involuntary context switches: 4007
 	Swaps: 0
-	File system inputs: 0
+	File system inputs: 464
 	File system outputs: 4864
 	Socket messages sent: 0
 	Socket messages received: 0

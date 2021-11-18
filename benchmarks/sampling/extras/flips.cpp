@@ -127,20 +127,20 @@ int main(void) {
 
         SUM = sum1 + sum2;
 
-        // if (SUM == 0 || SUM == 3)
+        // if (SUM == 3 || SUM == 6)
         //   forallSamplesDist[0] += 1;
         // else if (SUM == 1 || SUM == 2)
         //   forallSamplesDist[1] += 1;
-        // else if (SUM == 6 || SUM == 4)
+        // else if (SUM == 4)
         //   forallSamplesDist[2] += 1;
         // else
         //   forallSamplesDist[3] += 1;
 
-        if (SUM == 0 || SUM == 1)
+        if (SUM == 5 || SUM == 6 || SUM == 4)
           forallSamplesDist[0] += 1;
-        else if (SUM == 6 || SUM == 5)
+        else if (SUM == 3)
           forallSamplesDist[1] += 1;
-        else if (SUM == 4)
+        else if (SUM == 2 || SUM == 1)
           forallSamplesDist[2] += 1;
         else
           forallSamplesDist[3] += 1;
@@ -165,7 +165,6 @@ int main(void) {
   int classCounter = 0;
   int flag = 0;
   for (const auto &x : counters) {
-    classCounter++;
     std::cout << std::endl;
     int bucketCounter = 0;
     if (flag == 0)
@@ -177,6 +176,7 @@ int main(void) {
     for (const auto &e : x) {
       std::cout << std::setw(7) << e << ", ";
     }
+    classCounter++;
   }
 
   std::cout << std::endl;
@@ -185,7 +185,6 @@ int main(void) {
   classCounter = 0;
   flag = 0;
   for (const auto &x : counters) {
-    classCounter++;
     std::cout << std::endl;
     int bucketCounter = 0;
     if (flag == 0)
@@ -198,6 +197,7 @@ int main(void) {
       (e >= 7000) ? std::cout << std::setw(3) << 1 << ", "
                   : std::cout << std::setw(3) << 0 << ", ";
     }
+    classCounter++;
   }
 
   std::cout << std::endl;

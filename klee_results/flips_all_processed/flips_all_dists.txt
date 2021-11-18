@@ -1,6 +1,6 @@
-temp_c1_0 ~ UniformInt(1,5) :: w32
-temp_c1_1 ~ UniformInt(1,5) :: w32
-temp_c1_2 ~ UniformInt(1,5) :: w32
-temp_c2_0 ~ UniformInt(1,5) :: w32
-temp_c2_1 ~ UniformInt(1,5) :: w32
-temp_c2_2 ~ UniformInt(1,5) :: w32
+temp_c1_0 ~ UniformInt(1,10) :: w32
+temp_c2_0 ~ UniformInt(1,10) :: w32
+temp_c1_1 ~ UniformInt(1,10) :: w32
+temp_c2_1 ~ UniformInt(1,10) :: w32
+temp_c1_2 ~ UniformInt(1,10) :: w32
+temp_c2_2 ~ UniformInt(1,10) :: w32

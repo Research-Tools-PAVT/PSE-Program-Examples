@@ -33,8 +33,8 @@ using json = nlohmann::json;
 
 #define CLASSES 2
 #define FORALLS 10
-#define RUNS 1000
-#define BUCKET_SIZE 2
+#define RUNS 10000
+#define BUCKET_SIZE 5
 #define MAKESTRING(n) STRING(n)
 #define STRING(n) #n
 
@@ -198,7 +198,7 @@ int main() {
       int arr[n + 1];
 
       // TODO : Distinct Array.
-      for (int i = 0; i < n + 1; i++) {
+      for (int i = 0; i < n; i++) {
         arr[i] = i + rand() % 57 + rand() % 101 + rand() % 481243;
       }
 
@@ -208,16 +208,16 @@ int main() {
       /* C0 */
       /* arr[0] == arr[n] */
       if (forall_classes == 0) {
-        arr[0] = arr[n];
+        arr[n] = arr[0];
       }
 
       /* C1 */
       /* arr[0] != arr[n] */
       if (forall_samples == 1) {
         if (rand() % 5000 == 0)
-          arr[0] = arr[n] + 1 + rand() % 10;
+          arr[n] = arr[0] + 1 + rand() % 10;
         else
-          arr[0] = arr[n] - 1 - rand() % 10;
+          arr[n] = arr[0] - 1 - rand() % 10;
       }
 
       while (runs--) {
@@ -232,6 +232,9 @@ int main() {
         ret = bloom_check(&bloom, arr[n]);
         bloom_free(&bloom);
 
+        // if (ret == 1) {
+        //   std::cerr << global_forall_hoisted << std::endl;
+        // }
         /* PSE Buckets */
         // if (global_forall_hoisted >= 0 &&
         //     (global_forall_hoisted <= (ghMAX / 3)) && (ret == 1))
@@ -244,12 +247,20 @@ int main() {
         // if (global_forall_hoisted > ((2 * ghMAX) / 3) && (ret == 1))
         //   counters[forall_classes][2] += 1;
 
-        if (ret == 1) {
+        if (global_forall_hoisted == 1) {
           counters[forall_classes][0] += 1;
         }
-
-        if (ret == 0) {
+        if (global_forall_hoisted == 2) {
           counters[forall_classes][1] += 1;
+        }
+        if (global_forall_hoisted == 3) {
+          counters[forall_classes][2] += 1;
+        }
+        if (global_forall_hoisted == 4) {
+          counters[forall_classes][3] += 1;
+        } else {
+          std::cout << global_forall_hoisted << std::endl;
+          counters[forall_classes][4] += 1;
         }
       }
     }

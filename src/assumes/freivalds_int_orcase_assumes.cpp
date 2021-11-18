@@ -96,7 +96,8 @@ int main() {
   ret = freivalds(A, B, C, r, n);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume((ret == 1 && C[1] == realC[1]));
+  klee_assume((ret == 1 && C[1] == realC[1] && C[0] == realC[0]) ||
+              (ret == 1 && C[1] != realC[1] && C[0] == realC[0]));
 
   if (ret == 1) {
     mark_state_winning();

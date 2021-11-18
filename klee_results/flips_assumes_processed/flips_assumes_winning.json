@@ -1,98 +1,162 @@
 [
     {
-        "Path": 1
+        "Path": 1,
+        "Var Name": "SUM_sym",
+        "Var Value": "6"
     },
     {
-        "Path": 5
+        "Path": 5,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 9
+        "Path": 9,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 10
+        "Path": 10,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 11
+        "Path": 11,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 13
+        "Path": 13,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 14
+        "Path": 14,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 15
+        "Path": 15,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 17
+        "Path": 17,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 18
+        "Path": 18,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 19
+        "Path": 19,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 22
+        "Path": 22,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 23
+        "Path": 23,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 24
+        "Path": 24,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 26
+        "Path": 26,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 27
+        "Path": 27,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 28
+        "Path": 28,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 30
+        "Path": 30,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 31
+        "Path": 31,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 32
+        "Path": 32,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 36
+        "Path": 36,
+        "Var Name": "SUM_sym",
+        "Var Value": "1"
     },
     {
-        "Path": 40
+        "Path": 40,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 42
+        "Path": 42,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 43
+        "Path": 43,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 44
+        "Path": 44,
+        "Var Name": "SUM_sym",
+        "Var Value": "2"
     },
     {
-        "Path": 45
+        "Path": 45,
+        "Var Name": "SUM_sym",
+        "Var Value": "4"
     },
     {
-        "Path": 49
+        "Path": 49,
+        "Var Name": "SUM_sym",
+        "Var Value": "4"
     },
     {
-        "Path": 56
+        "Path": 56,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 60
+        "Path": 60,
+        "Var Name": "SUM_sym",
+        "Var Value": "3"
     },
     {
-        "Path": 61
+        "Path": 61,
+        "Var Name": "SUM_sym",
+        "Var Value": "5"
     },
     {
-        "Path": 62
+        "Path": 62,
+        "Var Name": "SUM_sym",
+        "Var Value": "4"
     },
     {
-        "Path": 63
+        "Path": 63,
+        "Var Name": "SUM_sym",
+        "Var Value": "4"
     }
 ]

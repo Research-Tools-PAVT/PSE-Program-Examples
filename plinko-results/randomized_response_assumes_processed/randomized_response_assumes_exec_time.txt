@@ -1,19 +1,19 @@
 Compilation : 
 	Command being timed: "clang++-10 -I /home/clustfuzz/klee/include -I include -S -emit-llvm -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang -disable-O0-optnone src/assumes/randomized_response_assumes.cpp -o klee_results/llvmir/randomized_response_assumes.ll"
 	User time (seconds): 0.41
-	System time (seconds): 0.02
-	Percent of CPU this job got: 95%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.45
+	System time (seconds): 0.03
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.46
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 95508
+	Maximum resident set size (kbytes): 95780
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 11577
+	Minor (reclaiming a frame) page faults: 11590
 	Voluntary context switches: 2
-	Involuntary context switches: 109
+	Involuntary context switches: 61
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 480
@@ -24,20 +24,20 @@ Compilation :
 	Exit status: 0
 KLEE Symbolic Execution : 
 	Command being timed: "klee --filename-act randomized_response_assumes --disable-inlining --emit-all-errors --show-cond --optimize --search=nurs:depth --search=nurs:covnew --dump-logs --use-cex-cache --write-kqueries randomized_response_assumes.bc"
-	User time (seconds): 0.10
+	User time (seconds): 0.11
 	System time (seconds): 0.02
-	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.12
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.13
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 77196
+	Maximum resident set size (kbytes): 76940
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 8
-	Minor (reclaiming a frame) page faults: 8605
-	Voluntary context switches: 1
-	Involuntary context switches: 25
+	Minor (reclaiming a frame) page faults: 8604
+	Voluntary context switches: 0
+	Involuntary context switches: 13
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 496
@@ -50,18 +50,18 @@ Path Processing :
 	Command being timed: "python3 postprocess/reader.py randomized_response_assumes_summary.json randomized_response_assumes 0"
 	User time (seconds): 0.08
 	System time (seconds): 0.01
-	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.09
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.10
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16156
+	Maximum resident set size (kbytes): 16148
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 5484
-	Voluntary context switches: 7
-	Involuntary context switches: 67
+	Minor (reclaiming a frame) page faults: 5469
+	Voluntary context switches: 8
+	Involuntary context switches: 28
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 88
@@ -72,19 +72,19 @@ Path Processing :
 	Exit status: 0
 Plinko running on randomized_response_assumes_processed : 
 	Command being timed: "cabal v2-run plinko -- -d ../../klee_results/randomized_response_assumes_processed -t 1 calculate-prob"
-	User time (seconds): 0.09
-	System time (seconds): 0.02
-	Percent of CPU this job got: 96%
+	User time (seconds): 0.10
+	System time (seconds): 0.01
+	Percent of CPU this job got: 100%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.12
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 51700
+	Maximum resident set size (kbytes): 51892
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 12255
-	Voluntary context switches: 78
+	Minor (reclaiming a frame) page faults: 12285
+	Voluntary context switches: 79
 	Involuntary context switches: 5
 	Swaps: 0
 	File system inputs: 0

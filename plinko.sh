@@ -26,16 +26,19 @@
 # export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/quicksort_all_N5.cpp expected-value
 # export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/freivalds_int_orcase.cpp freivalds "-k 1"
 
-# export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp expected-value
-# export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/montyhall_assumes.cpp calculate-prob
-# export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/randomized_response_assumes.cpp calculate-prob
-# export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_int_assumes.cpp freivalds "-k 1"
-# export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_multiple_int_assumes.cpp freivalds "-k 7"
-# export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N4.cpp expected-value
-# export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
+export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/montyhall_assumes.cpp calculate-prob
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/randomized_response_assumes.cpp calculate-prob
+export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N4.cpp expected-value
+export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/monotone_binary_int_assumes.cpp monotone-binary-search "-n 24"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_int_assumes.cpp freivalds "-k 1"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_multiple_int_assumes.cpp freivalds "-k 7"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/reservoir_sample_v1_assumes.cpp reservoir-sample "-n 10 -k 4"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/reservoir_sample_v2_assumes.cpp reservoir-sample "-n 12 -k 5"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/reservoir_sample_assumes.cpp reservoir-sample "-n 13 -k 7"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter "-e 0.39"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_int_orcase_assumes.cpp freivalds "-k 1"
 
 # export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_all.cpp expected-value
 # export DUMPEXPECT=0 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_all.cpp calculate-prob
-
-export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp expected-value
-export DUMPEXPECT=0 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp calculate-prob

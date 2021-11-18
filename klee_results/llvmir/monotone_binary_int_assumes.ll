@@ -717,20 +717,20 @@ define i32 @main() #5 personality i8* bitcast (i32 (...)* @__gxx_personality_v0 
   br label %60, !dbg !1575, !llvm.loop !1576
 
 106:                                              ; preds = %60
-  %107 = load i32, i32* %12, align 4, !dbg !1578
-  %108 = icmp sge i32 %107, 12, !dbg !1579
-  br i1 %108, label %109, label %115, !dbg !1580
+  %107 = getelementptr inbounds [24 x i32], [24 x i32]* %2, i64 0, i64 0, !dbg !1578
+  %108 = load i32, i32* %107, align 16, !dbg !1578
+  %109 = getelementptr inbounds [24 x i32], [24 x i32]* %2, i64 0, i64 1, !dbg !1579
+  %110 = load i32, i32* %109, align 4, !dbg !1579
+  %111 = icmp slt i32 %108, %110, !dbg !1580
+  br i1 %111, label %112, label %115, !dbg !1581
 
-109:                                              ; preds = %106
-  %110 = getelementptr inbounds [24 x i32], [24 x i32]* %2, i64 0, i64 0, !dbg !1581
-  %111 = load i32, i32* %110, align 16, !dbg !1581
-  %112 = getelementptr inbounds [24 x i32], [24 x i32]* %2, i64 0, i64 1, !dbg !1582
-  %113 = load i32, i32* %112, align 4, !dbg !1582
-  %114 = icmp slt i32 %111, %113, !dbg !1583
+112:                                              ; preds = %106
+  %113 = load i32, i32* %12, align 4, !dbg !1582
+  %114 = icmp sge i32 %113, 12, !dbg !1583
   br label %115
 
-115:                                              ; preds = %109, %106
-  %116 = phi i1 [ false, %106 ], [ %114, %109 ], !dbg !1584
+115:                                              ; preds = %112, %106
+  %116 = phi i1 [ false, %106 ], [ %114, %112 ], !dbg !1584
   %117 = zext i1 %116 to i64, !dbg !1585
   call void @klee_assume(i64 %117), !dbg !1586
   %118 = load i8, i8* %16, align 1, !dbg !1587
@@ -3113,11 +3113,11 @@ attributes #10 = { noreturn nounwind }
 !1576 = distinct !{!1576, !1531, !1577}
 !1577 = !DILocation(line: 60, column: 3, scope: !1524)
 !1578 = !DILocation(line: 63, column: 16, scope: !1455)
-!1579 = !DILocation(line: 63, column: 18, scope: !1455)
-!1580 = !DILocation(line: 63, column: 30, scope: !1455)
-!1581 = !DILocation(line: 63, column: 34, scope: !1455)
-!1582 = !DILocation(line: 63, column: 41, scope: !1455)
-!1583 = !DILocation(line: 63, column: 39, scope: !1455)
+!1579 = !DILocation(line: 63, column: 23, scope: !1455)
+!1580 = !DILocation(line: 63, column: 21, scope: !1455)
+!1581 = !DILocation(line: 63, column: 29, scope: !1455)
+!1582 = !DILocation(line: 63, column: 33, scope: !1455)
+!1583 = !DILocation(line: 63, column: 35, scope: !1455)
 !1584 = !DILocation(line: 0, scope: !1455)
 !1585 = !DILocation(line: 63, column: 15, scope: !1455)
 !1586 = !DILocation(line: 63, column: 3, scope: !1455)

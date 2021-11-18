@@ -136,11 +136,11 @@ int main(void) {
         // else
         //   forallSamplesDist[3] += 1;
 
-        if (SUM == 0)
+        if (SUM == 0 || SUM == 1)
           forallSamplesDist[0] += 1;
-        else if (SUM == 6)
+        else if (SUM == 6 || SUM == 5)
           forallSamplesDist[1] += 1;
-        else if (SUM == 4 || SUM == 5)
+        else if (SUM == 4)
           forallSamplesDist[2] += 1;
         else
           forallSamplesDist[3] += 1;

@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
   klee_assume(b1 >= 1 && b1 <= LIMIT);
   klee_assume(b2 >= 1 && b2 <= LIMIT);
 
-  klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
+  make_pse_symbolic(&SUM, sizeof(SUM), "SUM_sym", 0, 6);
   SUM = 0;
 
   // generate 3 flips for coin-1
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     // Baised Coin-1.
     int temp1;
     std::string name = "temp_c1_" + std::to_string(i);
-    make_pse_symbolic(&temp1, sizeof(temp1), name.c_str(), 1, LIMIT);
+    klee_make_symbolic(&temp1, sizeof(temp1), name.c_str());
     tmp1[i] = temp1;
     if (temp1 >= b1)
       sum1 += 1;
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     // Baised Coin-2
     int temp2;
     std::string name = "temp_c2_" + std::to_string(i);
-    make_pse_symbolic(&temp2, sizeof(temp2), name.c_str(), 1, LIMIT);
+    klee_make_symbolic(&temp2, sizeof(temp2), name.c_str());
     tmp2[i] = temp2;
     if (temp2 >= b2)
       sum2 += 1;
@@ -50,6 +50,9 @@ int main(int argc, char *argv[]) {
       (b1 > tmp1[0] && b2 > tmp2[0] && (SUM == 3 || SUM == 2 || SUM == 6)) ||
       (b1 <= tmp1[0] && b2 <= tmp2[0] && (SUM == 3 || SUM == 2 || SUM == 6)));
 
+  // klee_assume(
+  //     (b1 > tmp1[0] && b2 <= tmp2[0] && (SUM == 1 || SUM == 0 || SUM == 2))
+  //     || (b1 <= tmp1[0] && b2 <= tmp2[0] && (SUM == 3 || SUM == 0)));
   // klee_dump_kquery_state();
   mark_state_winning();
   expected_value("SUM_sym", SUM);

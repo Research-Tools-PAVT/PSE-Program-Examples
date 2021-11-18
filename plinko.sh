@@ -34,5 +34,8 @@
 # export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N4.cpp expected-value
 # export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
 
+# export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_all.cpp expected-value
+# export DUMPEXPECT=0 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_all.cpp calculate-prob
+
 export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp expected-value
 export DUMPEXPECT=0 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp calculate-prob

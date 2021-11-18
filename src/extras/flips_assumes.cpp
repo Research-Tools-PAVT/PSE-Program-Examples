@@ -1,7 +1,7 @@
 #include <PSE.h>
 #include <klee/klee.h>
 #define FLIPS 3
-#define LIMIT 10000
+#define LIMIT 5
 
 int main(int argc, char *argv[]) {
 
@@ -12,57 +12,38 @@ int main(int argc, char *argv[]) {
   klee_assume(b1 >= 1 && b1 <= LIMIT);
   klee_assume(b2 >= 1 && b2 <= LIMIT);
 
-  make_pse_symbolic(&SUM, sizeof(SUM), "SUM_sym", 0, 6);
+  klee_make_symbolic(&SUM, sizeof(SUM), "SUM_sym");
   SUM = 0;
-  // klee_make_symbolic(&sum1, sizeof(sum1), "sum1_sym");
-  // klee_make_symbolic(&sum2, sizeof(sum2), "sum2_sym");
 
   // generate 3 flips for coin-1
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-1.
-    int temp1, coin_curr1;
+    int temp1;
     std::string name = "temp_c1_" + std::to_string(i);
-    klee_make_symbolic(&temp1, sizeof(temp1), name.c_str());
-    klee_assume(temp1 >= 1 && temp1 <= LIMIT);
-    klee_assume(temp1 >= 1 && temp1 <= LIMIT);
-    // std::string outcome_str = "coin1_index_" + std::to_string(i);
-    // make_pse_symbolic(&coin_curr1, sizeof(coin_curr1), outcome_str.c_str(),
-    //                   (int)0, (int)1);
+    make_pse_symbolic(&temp1, sizeof(temp1), name.c_str(), 1, LIMIT);
     tmp1[i] = temp1;
     if (temp1 >= b1)
       sum1 += 1;
     else
       sum1 += 0;
-    // sum1 += coin_curr1;
   }
 
   // generate 3 flips for coin-2
   for (std::size_t i = 0; i < FLIPS; ++i) {
     // Baised Coin-2
-    int temp2, coin_curr2;
+    int temp2;
     std::string name = "temp_c2_" + std::to_string(i);
-    klee_make_symbolic(&temp2, sizeof(temp2), name.c_str());
-    klee_assume(temp2 >= 1 && temp2 <= LIMIT);
-    klee_assume(temp2 >= 1 && temp2 <= LIMIT);
-    // std::string outcome_str = "coin2_index_" + std::to_string(i);
-    // make_pse_symbolic(&coin_curr2, sizeof(coin_curr2), outcome_str.c_str(),
-    //                   (int)0, (int)1);
+    make_pse_symbolic(&temp2, sizeof(temp2), name.c_str(), 1, LIMIT);
     tmp2[i] = temp2;
     if (temp2 >= b2)
       sum2 += 1;
     else
       sum2 += 0;
-    // sum2 += coin_curr2;
   }
 
   SUM = sum1 + sum2;
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  // klee_assume(
-  //     (b1 > tmp1[0] && b2 > tmp2[0] && (SUM == 0 || SUM == 2)) ||
-  //     (b1 <= tmp1[0] && b2 <= tmp2[0] && (SUM == 2 || SUM == 4 || SUM == 6))
-  //     || (b1 > tmp1[0] && b2 <= tmp2[0] && (SUM == 1 || SUM == 3 || SUM ==
-  //     5)) || (b1 <= tmp1[0] && b2 > tmp2[0] && (SUM == 1 || SUM == 3)));
   klee_assume(
       (b1 > tmp1[0] && b2 <= tmp2[0] && (SUM == 3 || SUM == 2 || SUM == 6)) ||
       (b1 <= tmp1[0] && b2 > tmp2[0] && (SUM == 1 || SUM == 5 || SUM == 4)) ||

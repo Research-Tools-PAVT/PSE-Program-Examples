@@ -1,6 +1,7 @@
 #include <PSE.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 
 void matrix_vector_prod(int *m, int *v, size_t n, int *out) {
   for (size_t i = 0; i < n; i++) {
@@ -79,19 +80,21 @@ int main() {
   klee_assume(C[0] != realC[0]);
 
   bool ret = true;
+  std::vector<int> r_syms;
   for (size_t i = 0; i < k; i++) {
     /* Freivalds Running Multiple Times. */
     int r[n];
     for (size_t j = 0; j < n; j++) {
       int temp;
-      make_pse_symbolic(&temp, sizeof(temp), "r_sym", (int)0, (int)1);
+      std::string name = "r_sym_" + std::to_string(i) + "_" + std::to_string(j);
+      make_pse_symbolic(&temp, sizeof(temp), name.c_str(), (int)0, (int)1);
       r[j] = temp;
+      r_syms.push_back(r[j]);
     }
     ret = ret && freivalds(A, B, C, r, n) == 1;
   }
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS*/
-  klee_assume((ret == 1) || (ret == 0 && realC[1] == C[1] && realC[2] == C[2]));
 
   if (ret == 1) {
     mark_state_winning();

@@ -1657,8 +1657,8 @@ define i32 @main() #8 !dbg !3305 {
   %86 = load i32, i32* %85, align 4, !dbg !3409
   %87 = call i32 @_Z11bloom_checkP5bloomi(%struct.bloom* %2, i32 %86), !dbg !3410
   store i32 %87, i32* %5, align 4, !dbg !3411
-  %88 = load i32, i32* %5, align 4, !dbg !3412
-  %89 = icmp eq i32 %88, 1, !dbg !3413
+  %88 = load i32, i32* @inner_x, align 4, !dbg !3412
+  %89 = icmp eq i32 %88, 0, !dbg !3413
   %90 = zext i1 %89 to i64, !dbg !3412
   call void @klee_assume(i64 %90), !dbg !3414
   %91 = load i32, i32* %5, align 4, !dbg !3415
@@ -8458,7 +8458,7 @@ attributes #16 = { noreturn }
 !3410 = !DILocation(line: 187, column: 9, scope: !3305)
 !3411 = !DILocation(line: 187, column: 7, scope: !3305)
 !3412 = !DILocation(line: 190, column: 15, scope: !3305)
-!3413 = !DILocation(line: 190, column: 19, scope: !3305)
+!3413 = !DILocation(line: 190, column: 23, scope: !3305)
 !3414 = !DILocation(line: 190, column: 3, scope: !3305)
 !3415 = !DILocation(line: 192, column: 7, scope: !3416)
 !3416 = distinct !DILexicalBlock(scope: !3305, file: !3, line: 192, column: 7)

@@ -187,7 +187,7 @@ int main() {
   ret = bloom_check(&bloom, arr[n]);
 
   /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(inner_x == 1 || inner_x == 0 || inner_x == 3);
+  klee_assume(inner_x == 0);
 
   if (ret == 1) {
     mark_state_winning();

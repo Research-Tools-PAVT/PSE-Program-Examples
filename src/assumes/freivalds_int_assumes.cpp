@@ -48,6 +48,7 @@ int freivalds(int *A, int *B, int *C, int *r, size_t n) {
   free(ABr);
   free(Cr);
   free(res);
+
   return ret;
 }
 

@@ -94,8 +94,6 @@ int main() {
     ret = ret && freivalds(A, B, C, r, n) == 1;
   }
 
-  /* COMMENT : KLEE ASSUMES from ANALYSIS*/
-
   if (ret == 1) {
     mark_state_winning();
     klee_dump_kquery_state();

@@ -19,6 +19,7 @@
 
 int global_max = 0;
 unsigned int inner_x = 0;
+std::vector<int> x_vals;
 unsigned int hash(struct prob_hash *prob_hash, int key, unsigned int max) {
   auto found = prob_hash->map.find(key);
 
@@ -27,6 +28,7 @@ unsigned int hash(struct prob_hash *prob_hash, int key, unsigned int max) {
     global_max = max;
     make_pse_symbolic(&inner_x, sizeof(inner_x), "x_sym", (unsigned int)0,
                       (unsigned int)max);
+    x_vals.push_back(inner_x);
     prob_hash->map[key] = inner_x;
     return inner_x;
   } else {
@@ -62,6 +64,15 @@ static int bloom_check_add(struct bloom *bloom, int key, int add) {
 
   for (i = 0; i < bloom->hashes; i++) {
     x = hash(&(bloom->hash_fns[i]), key, bloom->bits - 1);
+    /* COMMENT : KLEE ASSUMES from ANALYSIS */
+    inner_x = x;
+
+    if (i == 1)
+      klee_assume(inner_x == 2 || inner_x == 0 || inner_x == 3);
+
+    if (i == 0)
+      klee_assume(inner_x == 2 || inner_x == 0 || inner_x == 4);
+
     if (test_bit_set_bit(bloom->bf, x, add)) {
       hits++;
     } else if (!add) {
@@ -186,11 +197,9 @@ int main() {
 
   ret = bloom_check(&bloom, arr[n]);
 
-  /* COMMENT : KLEE ASSUMES from ANALYSIS */
-  klee_assume(inner_x == 0);
-
   if (ret == 1) {
     mark_state_winning();
+    expected_value("x", inner_x);
     // klee_dump_kquery_state();
   }
 

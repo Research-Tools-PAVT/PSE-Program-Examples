@@ -48,7 +48,6 @@ unsigned int hash(struct prob_hash *prob_hash, int key, unsigned int max) {
   // If the key is not in the map, get a random element and rehash
   if (found == prob_hash->map.end()) {
     unsigned int x = 0 + rand() % max;
-    global_forall_hoisted = x;
     ghMAX = max;
     // make_pse_symbolic(&x, sizeof(x), "x_sym", (unsigned int)0,
     //                   (unsigned int)max);
@@ -86,6 +85,7 @@ static int bloom_check_add(struct bloom *bloom, int key, int add) {
 
   for (i = 0; i < bloom->hashes; i++) {
     x = hash(&(bloom->hash_fns[i]), key, bloom->bits - 1);
+    global_forall_hoisted = x;
     if (test_bit_set_bit(bloom->bf, x, add)) {
       hits++;
     } else if (!add) {
@@ -247,19 +247,20 @@ int main() {
         // if (global_forall_hoisted > ((2 * ghMAX) / 3) && (ret == 1))
         //   counters[forall_classes][2] += 1;
 
-        if (global_forall_hoisted == 1) {
+        if ((global_forall_hoisted == 0 || global_forall_hoisted == 1) &&
+            ret == 1) {
           counters[forall_classes][0] += 1;
         }
+        // if (global_forall_hoisted == 1) {
+        //   counters[forall_classes][1] += 1;
+        // }
         if (global_forall_hoisted == 2) {
-          counters[forall_classes][1] += 1;
-        }
-        if (global_forall_hoisted == 3) {
           counters[forall_classes][2] += 1;
         }
-        if (global_forall_hoisted == 4) {
+        if (global_forall_hoisted == 3) {
           counters[forall_classes][3] += 1;
-        } else {
-          std::cout << global_forall_hoisted << std::endl;
+        }
+        if (ret == 0) {
           counters[forall_classes][4] += 1;
         }
       }

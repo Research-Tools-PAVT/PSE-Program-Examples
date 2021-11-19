@@ -54,7 +54,7 @@ void reservoir_sample(int *input, int *sample, int n, int k, int *j_sample) {
 }
 
 int main() {
-  std::freopen("../results/reservoir_v1.txt", "w", stdout);
+  std::freopen("../results/reservoir_main.txt", "w", stdout);
 
   std::vector<std::vector<int>> counters(CLASSES,
                                          std::vector<int>(BUCKET_SIZE, 0));
@@ -64,7 +64,7 @@ int main() {
     int forall_samples = FORALLS;
     while (forall_samples--) {
 
-      int n = 12, k = 5;
+      int n = 13, k = 7;
 
       int arr[n];
       int pick_index = rand() % (k - 1);

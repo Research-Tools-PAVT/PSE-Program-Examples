@@ -33,7 +33,7 @@ using json = nlohmann::json;
 
 #define CLASSES 2
 #define FORALLS 10
-#define RUNS 10000
+#define RUNS 100000
 #define BUCKET_SIZE 5
 #define MAKESTRING(n) STRING(n)
 #define STRING(n) #n

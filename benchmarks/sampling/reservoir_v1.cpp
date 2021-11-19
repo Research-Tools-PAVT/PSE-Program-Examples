@@ -32,7 +32,7 @@ using json = nlohmann::json;
 
 #define CLASSES 4
 #define FORALLS 10
-#define RUNS 10000
+#define RUNS 100000
 #define BUCKET_SIZE 2
 
 int forall_classes = CLASSES;

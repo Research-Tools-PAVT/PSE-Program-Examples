@@ -22,7 +22,7 @@ unsigned int microseconds = 10000000;
 
 #define CLASSES 2
 #define FORALLS 10
-#define RUNS 10000
+#define RUNS 100000
 #define BUCKET_SIZE 4
 
 /**

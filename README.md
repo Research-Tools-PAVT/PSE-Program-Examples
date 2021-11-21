@@ -23,6 +23,13 @@ Clone & Build [KLEE](http://klee.github.io/build-llvm9/).
 
 - `klee_dump_symbolic_details(void *var_name, const char *name)` gives the symbolic constraint of the program variable (pass a reference) `var_name` of the program and prints the dump under `name` tag in `kquery_dump.txt` file in the corresponding `klee_out` folder of the test case.
 
+- `mark_pse_symbolic(void *addr, size_t bytes, const char *name, T &&min_elem, T &&max_elem)` used internally to in `make_pse_symbolic()` function to mark a variable
+  as `probablilistic symbolic`. This makes `KLEE` tag the variable and the `min` and `max` ranges into a `UniformInt(min, max)` distribution for the variable. It also used to generate the `*_dists.txt` file.
+
+- `expected_value(const char* name, ...)` record and store a the execution value of a `program variable` internally while `KLEE` runs. The recorded value is used by `plinko` internally to compute the expected value of that program variable. Eg. `expected_value("SUM", sum);` records the value of variable sum for expecation calculation.
+
+- `make_state_winning()` used to mark a state as winning. Used by `plinko` to generate and filter all `user` marked winning paths. Must be used in conjunction with the target query being `SAT`, which will filter and record all winning paths automatically.
+
 #### `KQuery Expression` are s-expressions based on KLEE Kleaver expressions :
 
 [KQuery Reference](https://klee.github.io/docs/kquery/)
@@ -46,18 +53,30 @@ $ pip3 install graphviz sexpdata
 
 ## Run Command
 
+Some parameters :
+
+```cpp
+DUMPEXPECT=1 // Expectation calculation needed. (annontate your code with expected_value(const char* name, ...))
+THREADS=1 // Number of concurrent threads for plinko to run (Max:2)
+OPT=1 // Enable klee --optimize flag or not.
+```
+
 ```bash
-$ ./run.sh <src_dir> <file_name> <extra-args> <args-to-plinko>
+$ export DUMPEXPECT=1 THREADS=1 OPT=1 ./run.sh <src_dir> <file_name> <extra-args> <args-to-plinko>
 ```
 
 ## Running Examples
 
 ```bash
-$ ./run.sh src/montyhall_all.cpp calculate-prob
+$ export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v \
+--append --o timings.txt ./run.sh src/base/quicksort_all_N4.cpp \
+expected-value
 ```
 
 ```bash
-$ ./run.sh src/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
+$ export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v \
+--append --o timings.txt ./run.sh src/base/reservoir_sample_all.cpp \
+reservoir-sample "-n 13 -k 7"
 ```
 
 Check the `klee_results` folder for `paths` and `processed` symbolic execution tree.
@@ -93,66 +112,40 @@ Replaying is a way to check the the testcase produced by KLEE for a given progra
 For each complete path taken by KLEE, it generates one testcase containing the values of the `variables` marked `symbolic`, unless it
 is `redundant` or `UNSAT`.
 
-# All Files Execution (Done)
-
-```
-./run.sh src/base/montyhall_all.cpp calculate-prob
-./run.sh src/base/randomized_response_all.cpp calculate-prob
-./run.sh src/base/bloomfilter_all.cpp calculate-prob
-./run.sh src/base/freivalds_int_all.cpp calculate-prob
-./run.sh src/base/monotone_binary_int_all.cpp calculate-prob
-./run.sh src/base/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
-./run.sh src/base/reservoir_sample_v2_all.cpp reservoir-sample "-n 12 -k 5"
-./run.sh src/base/quicksort_all_N4.cpp expected-value
-sed -i "s/-t 2/-t 1/g" run.sh
-./run.sh src/quicksort_all_N5.cpp expected-value
-sed -i "s/-t 1/-t 2/g" run.sh
-```
-
-# Assume Files Execution (WIP)
-
-```
-./run.sh src/assumes/montyhall_assumes.cpp calculate-prob
-./run.sh src/assumes/randomized_response_assumes.cpp calculate-prob
-./run.sh src/assumes/bloomfilter_assumes.cpp calculate-prob
-./run.sh src/assumes/freivalds_int_assumes.cpp calculate-prob
-./run.sh src/assumes/monotone_binary_int_assumes.cpp calculate-prob
-./run.sh src/assumes/reservoir_sample_v1_assumes.cpp reservoir-sample "-n 10 -k 4"
-./run.sh src/assumes/reservoir_sample_v2_assumes.cpp reservoir-sample "-n 12 -k 5"
-./run.sh src/assumes/quicksort_assumes_N4.cpp expected-value
-sed -i "s/-t 2/-t 1/g" run.sh
-./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
-sed -i "s/-t 1/-t 2/g" run.sh
-```
-
-## Membership Function Sources.
-
-```cpp
-add_executable (bloomfilter bloomfilter.cpp)
-add_executable (freivalds_int freivalds_int.cpp)
-add_executable (monotone_binary_int monotone_binary_int.cpp)
-add_executable (montyhall montyhall.cpp)
-add_executable (quicksort_N4 quicksort_N4.cpp)
-add_executable (quicksort_N5 quicksort_N5.cpp)
-add_executable (randomized_response randomized_response.cpp)
-add_executable (reservoir_v1 reservoir_v1.cpp)
-add_executable (reservoir_v2 reservoir_v2.cpp)
-
-bloomfilter.cpp
-freivalds_int.cpp
-monotone_binary_int.cpp
-montyhall.cpp
-quicksort_N4.cpp
-quicksort_N5.cpp
-randomized_response.cpp
-reservoir_v1.cpp
-reservoir_v2.cpp
-```
-
-## Commands
+# Plinko Benchmark Commands.
 
 ```bash
-$ ./run.sh src/base/freivalds_int_all.cpp calculate-prob
-$ ./run.sh src/base/freivalds_int_orcase.cpp calculate-prob # this needed the --optimize on KLEE.
-$ ./run.sh src/base/monotone_binary_int_all.cpp calculate-prob
+# All (no-assumes cases) -- baseline.
+export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings.txt ./run.sh src/extras/flips.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/montyhall_all.cpp calculate-prob
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/randomized_response_all.cpp calculate-prob
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/countminsketch_all.cpp countminsketch "-g 0.25"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/freivalds_int_all.cpp freivalds "-k 1"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/freivalds_multiple_int.cpp freivalds "-k 7"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/bloomfilter_all.cpp bloom-filter "-e 0.39"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/monotone_binary_int_all.cpp monotone-binary-search "-n 24"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/reservoir_sample_v1_all.cpp reservoir-sample "-n 10 -k 4"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/reservoir_sample_v2_all.cpp reservoir-sample "-n 12 -k 5"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/reservoir_sample_all.cpp reservoir-sample "-n 13 -k 7"
+export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/quicksort_all_N4.cpp expected-value
+export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/quicksort_all_N5.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings.txt ./run.sh src/base/freivalds_int_orcase.cpp freivalds "-k 1"
+
+# Assumes Instrumented cases.
+export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/montyhall_assumes.cpp calculate-prob
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/randomized_response_assumes.cpp calculate-prob
+export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N4.cpp expected-value
+export DUMPEXPECT=1 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/quicksort_assumes_N5.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/monotone_binary_int_assumes.cpp monotone-binary-search "-n 24"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_int_assumes.cpp freivalds "-k 1"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_multiple_int_assumes.cpp freivalds "-k 7"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/reservoir_sample_v1_assumes.cpp reservoir-sample "-n 10 -k 4"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/reservoir_sample_v2_assumes.cpp reservoir-sample "-n 12 -k 5"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/reservoir_sample_assumes.cpp reservoir-sample "-n 13 -k 7"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/bloomfilter_assumes.cpp bloom-filter "-e 0.39"
+export DUMPEXPECT=0 THREADS=1 OPT=1 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/assumes/freivalds_int_orcase_assumes.cpp freivalds "-k 1"
+
+export DUMPEXPECT=1 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp expected-value
+export DUMPEXPECT=0 THREADS=1 OPT=0 && /usr/bin/time -v --append --o timings_assumes.txt ./run.sh src/extras/flips_assumes.cpp calculate-prob
 ```

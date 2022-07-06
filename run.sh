@@ -90,27 +90,27 @@ mv ${example}_processed klee_results/
 
 mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt
 
-echo "Plinko running on ${example}_processed : " >> plinko-results/${example}_processed/${example}_exec_time.txt
-echo -e "\e[1;34m===== Init Plinko =====\e[0m"
+# echo "Plinko running on ${example}_processed : " >> plinko-results/${example}_processed/${example}_exec_time.txt
+# echo -e "\e[1;34m===== Init Plinko =====\e[0m"
 
-cd ./code/plinko
-cabal v2-build
+# cd ./code/plinko
+# cabal v2-build
 
-echo -e "\e[1;34m===== Run Plinko =====\e[0m"
+# echo -e "\e[1;34m===== Run Plinko =====\e[0m"
 
-echo "cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t ${THREADS} ${COMMANDS} ${3}"
+# echo "cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t ${THREADS} ${COMMANDS} ${3}"
 
-/usr/bin/time --append --verbose -o \
-../../plinko-results/${example}_processed/${example}_exec_time.txt \
-cabal v2-run plinko -- \
--d ../../klee_results/${example}_processed \
--t ${THREADS} ${COMMANDS} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
-> ../../plinko-results/${example}_processed/${example}_processed.txt
+# /usr/bin/time --append --verbose -o \
+# ../../plinko-results/${example}_processed/${example}_exec_time.txt \
+# cabal v2-run plinko -- \
+# -d ../../klee_results/${example}_processed \
+# -t ${THREADS} ${COMMANDS} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
+# > ../../plinko-results/${example}_processed/${example}_processed.txt
 
-echo "Example : ${example}" >> ../../complete_results.txt
-echo "Date : `date`" >> ../../complete_results.txt
-tail -n 2 ../../plinko-results/${example}_processed/${example}_logs.txt >> ../../complete_results.txt
-echo "Winning : `cat ../../plinko-results/${example}_processed/${example}_logs.txt | grep "Winning" | wc -l`" >> ../../complete_results.txt
-echo "Plinko Results : " >> ../../complete_results.txt
-cat ../../plinko-results/${example}_processed/${example}_processed.txt >> ../../complete_results.txt
-echo " ====== ====== " >> ../../complete_results.txt
+# echo "Example : ${example}" >> ../../complete_results.txt
+# echo "Date : `date`" >> ../../complete_results.txt
+# tail -n 2 ../../plinko-results/${example}_processed/${example}_logs.txt >> ../../complete_results.txt
+# echo "Winning : `cat ../../plinko-results/${example}_processed/${example}_logs.txt | grep "Winning" | wc -l`" >> ../../complete_results.txt
+# echo "Plinko Results : " >> ../../complete_results.txt
+# cat ../../plinko-results/${example}_processed/${example}_processed.txt >> ../../complete_results.txt
+# echo " ====== ====== " >> ../../complete_results.txt

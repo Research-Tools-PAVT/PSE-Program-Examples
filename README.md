@@ -10,6 +10,45 @@ Clone & Build [KLEE](http://klee.github.io/build-llvm9/).
 - [KLEE - Symbolic Tree](https://github.com/lahiri-phdworks/klee/tree/symbolic_tree)
 - Installation Guide : [Install.md](Install.md)
 
+```bash
+export HOME=/home
+
+# LLVM 10, clang-10 build
+git clone https://github.com/klee/klee-uclibc.git
+cd klee-uclibc
+./configure --make-llvm-lib --with-llvm-config $(which llvm-config-10) --with-cc $(which clang-10) --enable-assertions --enable-release
+make -j 8
+   
+mkdir libcxx-build
+cd ./klee
+
+LLVM_VERSION=10 BASE=$HOME/libcxx-build REQUIRES_RTTI=1 DISABLE_ASSERTIONS=1 \
+    ENABLE_DEBUG=0 ENABLE_OPTIMIZED=1 ./scripts/build/build.sh libcxx
+
+cd ../
+mkdir klee-build && cd ./klee-build
+
+cmake \
+  -DENABLE_POSIX_RUNTIME=ON \
+  -DENABLE_KLEE_UCLIBC=ON \
+  -DKLEE_UCLIBC_PATH=$HOME/klee-uclibc \
+  -DLLVM_CONFIG_BINARY=$(which llvm-config-10) \
+  -DLLVMCC=$(which clang-10) \
+  -DLLVMCXX=$(which clang++-10) \
+  -DENABLE_KLEE_LIBCXX=ON \
+  -DENABLE_KLEE_EH_CXX=ON \
+  -DKLEE_RUNTIME_BUILD_TYPE=Release+Debug+Asserts \
+  -DKLEE_LIBCXX_DIR=$HOME/libcxx-build/libc++-install-90/ \
+  -DKLEE_LIBCXXABI_SRC_DIR=$HOME/libcxx-build/llvm-90/libcxxabi/ \
+  -DKLEE_LIBCXX_INCLUDE_DIR=$HOME/libcxx-build/libc++-install-90/include/c++/v1/ \
+  -DENABLE_KLEE_EH_CXX=ON \
+  -DENABLE_UNIT_TESTS=ON \
+  -DGTEST_SRC_DIR=$HOME/googletest-release-1.7.0/ $HOME/klee
+  
+make -j 4
+make install
+```
+
 ### Plinko Directory :
 
 - Developed by [Zach](https://github.com/zsusag). [plinko](https://git.justinh.su/)

@@ -14,7 +14,7 @@ data Args = Args { kleeDir :: FilePath
 
 data Benchmark = Montyhall
                | ReservoirSample Integer Integer
-               | ExpectedValue
+               | ExpectedValue Double
                | Monotone Double
                | Freivalds Int
                | BloomFilter Double
@@ -59,6 +59,12 @@ countMinSketchBench = CountMinSketch
                   <> short 'g'
                   <> help "the expected probability of getting a miscount above epsilon rate, gamma")
 
+expectedValueBench :: Parser Benchmark
+expectedValueBench = ExpectedValue
+  <$> option auto (  long "val2"
+                  <> short 'v'
+                  <> help "the value for expected value calculation")
+
 parseArgs :: Parser Args
 parseArgs = Args
   <$> strOption (  long "klee-output-dir"
@@ -80,7 +86,8 @@ parseArgs = Args
                 <> help "turn on the array assertion optimization" )
   <*> subparser (  command "montyhall" (info (pure Montyhall) $ progDesc "run the Montyhall benchmark")
                 <> command "reservoir-sample" (info reservoirBench $ progDesc "run the reservoir sample benchmark")
-                <> command "expected-value" (info (pure ExpectedValue) $ progDesc "calculate the expected value")
+                <> command "expected-value" 
+                  (info expectedValueBench $ progDesc "calculate the expected value")
                 <> command "monotone-binary-search" (info monotoneBench $ progDesc "run the monotone binary serach benchmark")
                 <> command "freivalds" (info freivaldsBench $ progDesc "run the Freivalds' benchmark")
                 <> command "bloom-filter" (info bloomFilterBench $ progDesc "run the Bloom Filter benchmark")
@@ -89,6 +96,7 @@ parseArgs = Args
                 <> command "print-prob" (info (pure PrintProb) $ progDesc "print the SMTLIBv2 string representing the probability sum")
                 <> command "mironov" (info (pure Mironov) $ progDesc "do mironov test")
                 <> command "calculate-worst-case" (info (pure CalcWorstCase) $ progDesc "Calculate the probability of reaching the path with the most comparisons (for quicksort)"))
+
 
 runArgsParser :: IO Args
 runArgsParser = execParser opts

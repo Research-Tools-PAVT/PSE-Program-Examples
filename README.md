@@ -18,7 +18,7 @@ git clone https://github.com/klee/klee-uclibc.git
 cd klee-uclibc
 ./configure --make-llvm-lib --with-llvm-config $(which llvm-config-10) --with-cc $(which clang-10) --enable-assertions --enable-release
 make -j 8
-   
+
 mkdir libcxx-build
 cd ./klee
 
@@ -44,7 +44,7 @@ cmake \
   -DENABLE_KLEE_EH_CXX=ON \
   -DENABLE_UNIT_TESTS=ON \
   -DGTEST_SRC_DIR=$HOME/googletest-release-1.7.0/ $HOME/klee
-  
+
 make -j 4
 make install
 ```

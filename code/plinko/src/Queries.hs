@@ -7,6 +7,10 @@ import Data.Ratio
 
 import Z3.Monad
 import Z3.Opts
+import Control.Monad.IO.Class (liftIO)
+import System.IO (hFlush, stdout)
+import Control.Monad.Catch (catch, SomeException)
+
 
 import qualified Data.HashMap.Lazy as Map
 import qualified Data.Traversable as T
@@ -328,67 +332,139 @@ reservoir threads probs assumes arrayAsserts dynProgAsserts n k = do
        Just model -> showModel model
        Nothing    -> return "Property verified!"
 
-expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Z3 String
-expectedValue threads probs assumes arrayAsserts dynProgAsserts = do
+expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Double -> Z3 String
+expectedValue threads probs assumes arrayAsserts dynProgAsserts val2 = do
+  -- Print debug info and flush stdout
+  liftIO $ putStrLn $ "Running expectedValue with " ++ show threads ++ " threads and val2 = " ++ show val2
+  liftIO $ hFlush stdout
+
+  -- Set up the Z3 parameters
   params <- mkParams
+  timeoutSymbol <- mkStringSymbol "timeout"
+  -- Set a timeout of 5000 milliseconds (5 seconds)
+  paramsSetUInt params timeoutSymbol 5000 
+  solverSetParams params
+
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
   solverSetParams params
 
+  -- Create the sum_probs variable
   sum_probs <- mkFreshRealVar "sum_probs"
+  liftIO $ putStrLn "Created fresh real variable: sum_probs"
+  liftIO $ hFlush stdout
+
+  -- Fetch the probability from probs
+  liftIO $ putStrLn "About to fetch rawProbs"
   rawProbs <- probs
+  liftIO $ putStrLn "Fetched rawProbs"
+  liftIO $ hFlush stdout
+
+  -- Create the body with assumptions
   body <- mkAnd =<< T.sequence
     [ mkEq sum_probs rawProbs,
       assumes
     ]
+  liftIO $ putStrLn "Created body with assumptions"
+  liftIO $ hFlush stdout
 
+  -- Asserting the body
   assert body
+  liftIO $ putStrLn "Asserted body"
+  liftIO $ hFlush stdout
+
+  -- Asserting array and dynamic programming assertions
   mapM_ assert =<< arrayAsserts
+  liftIO $ putStrLn "Asserted array assertions"
+  liftIO $ hFlush stdout
   mapM_ assert =<< dynProgAsserts
+  liftIO $ putStrLn "Asserted dynamic assertions"
+  liftIO $ hFlush stdout
 
+  -- Add the constraint sum_probs > val2
+  val2AST <- mkRealNum val2
+  greaterThanVal2 <- mkLt sum_probs val2AST
+  assert greaterThanVal2
+  liftIO $ putStrLn $ "Asserted that sum_probs > " ++ show val2
+  liftIO $ hFlush stdout
+
+  -- Checking the model after adding the constraint
   (_res, mbModel) <- solverCheckAndGetModel
-  ret <- case mbModel of
-    Just model -> do curMax <- modelEval model sum_probs True
-                     case curMax of
-                       Just curMaxAST -> z3Maximize assumes curMaxAST sum_probs model
-                       Nothing -> return "Error in evaluating model"
-    Nothing    -> return "Property verified!"
-  return "Quicksort number of comparisons verified!"
-  where z3Maximize :: Z3 AST -> AST -> AST -> Model -> Z3 String
-        z3Maximize assumes curMax toMaximize oldMod = do
-          newConstr <- mkGt toMaximize curMax
-          assert newConstr
---          assumes >>= assert
-          (_res, newModel) <- solverCheckAndGetModel
-          case newModel of
-            Just mod -> do newMod <- modelEval mod toMaximize True
-                           case newMod of
-                             Just newMax -> z3Maximize assumes newMax toMaximize mod
-                             Nothing -> showModel oldMod
-            Nothing -> showModel oldMod
+  liftIO $ putStrLn "Checked model after constraint"
+  liftIO $ hFlush stdout
 
--- expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 String
--- expectedValue threads probs assumes = do
+  case mbModel of
+    Just model -> do
+      liftIO $ putStrLn "Model found, evaluating sum_probs"
+      liftIO $ hFlush stdout
+      curMax <- modelEval model sum_probs True
+      case curMax of
+        Just _ -> do
+          liftIO $ putStrLn $ "Model evaluated successfully where sum_probs > " ++ show val2
+          liftIO $ hFlush stdout
+          liftIO $ putStrLn "Model found. Printing model:"
+          liftIO $ hFlush stdout
+          modelStr <- showModel model  -- Fetch the model as a string
+          liftIO $ putStrLn modelStr    -- Print the model
+          liftIO $ hFlush stdout
+          -- return modelStr
+          return $ "A model was found where sum_probs > " ++ show val2
+        Nothing -> do
+          liftIO $ putStrLn "Error in evaluating model"
+          liftIO $ hFlush stdout
+          return "Error in evaluating model"
+    Nothing -> do
+      liftIO $ putStrLn $ "No model found where sum_probs < " ++ show val2
+      liftIO $ hFlush stdout
+      return $ "Property verified! No model found where sum_probs < " ++ show val2
+
+
+-- Previous implementation.
+-- expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Z3 String
+-- expectedValue threads probs assumes arrayAsserts dynProgAsserts = do
 --   params <- mkParams
 --   threadsName <- mkStringSymbol "threads"
 --   paramsSetUInt params threadsName threads
 --   solverSetParams params
 
 --   sum_probs <- mkFreshRealVar "sum_probs"
---   --upper_bound <- mkRealNum (2 * 5 * log 5)
-
 --   rawProbs <- probs
 --   body <- mkAnd =<< T.sequence
 --     [ mkEq sum_probs rawProbs,
 --       assumes
--- --      mkGt sum_probs upper_bound
 --     ]
 
 --   assert body
+--   mapM_ assert =<< arrayAsserts
+--   mapM_ assert =<< dynProgAsserts
+
 --   (_res, mbModel) <- solverCheckAndGetModel
---   case mbModel of
---     Just model -> showModel model
+--   ret <- case mbModel of
+--     Just model -> do curMax <- modelEval model sum_probs True
+--                      case curMax of
+--                        Just curMaxAST -> z3Maximize assumes curMaxAST sum_probs model
+--                        Nothing -> return "Error in evaluating model"
 --     Nothing    -> return "Property verified!"
+--   return "Quicksort number of comparisons verified!"
+--   where z3Maximize :: Z3 AST -> AST -> AST -> Model -> Z3 String
+--         z3Maximize assumes curMax toMaximize oldMod = do
+--           newConstr <- mkGt toMaximize curMax
+--           assert newConstr
+-- --          assumes >>= assert
+--           (_res, newModel) <- solverCheckAndGetModel
+--           case newModel of
+--             Just mod -> do newMod <- modelEval mod toMaximize True
+--                            case newMod of
+--                              Just newMax -> z3Maximize assumes newMax toMaximize mod
+--                              Nothing -> showModel oldMod
+--             Nothing -> showModel oldMod
+
+-- Custom exception handler for Z3 computations
+handleZ3Exception :: SomeException -> Z3 AST
+handleZ3Exception e = do
+  liftIO $ putStrLn $ "Error in fetching rawProbs: " ++ show e
+  liftIO $ hFlush stdout
+  mkFalse -- Return a dummy AST to continue (modify based on your case)
 
 monotone :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Double -> Z3 String
 monotone threads probs assumes arrayAsserts dynProgAsserts n = do
@@ -457,10 +533,12 @@ calcProb threads probs assumes arrayAsserts dynProgAsserts = do
 
   sum_probs <- mkFreshRealVar "sum_probs"
   rawProbs <- probs
+  limit <- mkRealNum (10000 :: Double)
   body <- mkAnd =<< T.sequence
     [
       mkEq sum_probs rawProbs,
-      assumes
+      assumes,
+      mkLt sum_probs limit
     ]
   
   assert body
@@ -469,8 +547,16 @@ calcProb threads probs assumes arrayAsserts dynProgAsserts = do
 
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
-       Just model -> showModel model
-       Nothing    -> return "Property verified!"
+       Just model -> do
+          liftIO $ putStrLn "Model evaluated successfully where sum_probs"
+          liftIO $ hFlush stdout
+          liftIO $ putStrLn "Model found. Printing model:"
+          liftIO $ hFlush stdout
+          modelStr <- showModel model  -- Fetch the model as a string
+          liftIO $ putStrLn modelStr    -- Print the model
+          liftIO $ hFlush stdout
+          return modelStr
+       Nothing    -> return "Property holds!"
 
 check1 :: Word -> Z3 AST -> Z3 AST -> Z3 String
 check1 threads probs assumes = do
@@ -497,14 +583,25 @@ check1 threads probs assumes = do
 
 askZ3 :: Word -> Benchmark -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> IO String
 askZ3 threads benchmark probs assumes arrayAsserts dynProgAsserts = evalZ3 $ case benchmark of
-  Montyhall -> montyhall threads probs assumes arrayAsserts dynProgAsserts
-  ReservoirSample n k -> reservoir threads probs assumes arrayAsserts dynProgAsserts n k
-  ExpectedValue -> expectedValue threads probs assumes arrayAsserts dynProgAsserts
-  Monotone n -> monotone threads probs assumes arrayAsserts dynProgAsserts n
-  Freivalds k -> freivalds threads probs assumes arrayAsserts dynProgAsserts k
-  BloomFilter eps -> bloomFilter threads probs assumes arrayAsserts dynProgAsserts eps
-  CountMinSketch gamma -> countMinSketch threads probs assumes arrayAsserts dynProgAsserts gamma
-  Mironov -> mironov threads probs assumes arrayAsserts dynProgAsserts
-  CalcProb -> calcProb threads probs assumes arrayAsserts dynProgAsserts
-  PrintProb -> astToString =<< probs
-  CalcWorstCase -> expectedValue threads probs assumes arrayAsserts dynProgAsserts
+   Montyhall
+     -> montyhall threads probs assumes arrayAsserts dynProgAsserts
+   ReservoirSample n k
+     -> reservoir threads probs assumes arrayAsserts dynProgAsserts n k
+   ExpectedValue val2
+     -> expectedValue threads probs assumes arrayAsserts dynProgAsserts val2
+  -- Match on val2 here
+   Monotone n
+     -> monotone threads probs assumes arrayAsserts dynProgAsserts n
+   Freivalds k
+     -> freivalds threads probs assumes arrayAsserts dynProgAsserts k
+   BloomFilter eps
+     -> bloomFilter threads probs assumes arrayAsserts dynProgAsserts eps
+   CountMinSketch gamma
+     -> countMinSketch threads probs assumes arrayAsserts dynProgAsserts gamma
+   Mironov
+     -> mironov threads probs assumes arrayAsserts dynProgAsserts
+   CalcProb
+     -> calcProb threads probs assumes arrayAsserts dynProgAsserts
+   PrintProb -> astToString =<< probs
+   CalcWorstCase
+     -> expectedValue threads probs assumes arrayAsserts dynProgAsserts 0

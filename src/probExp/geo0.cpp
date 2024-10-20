@@ -19,7 +19,6 @@ int geo0(int flip, int prob) {
       X = X + 1;
       path_prob *= ((PRECISION - prob) / PRECISION);
 
-      klee_assume(X < 10);
       mark_state_winning();
     }
   }

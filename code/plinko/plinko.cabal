@@ -18,19 +18,19 @@ build-type:          Simple
 extra-source-files:  CHANGELOG.md
 
 library
-  exposed-modules:     Convert, Parser, Syntax, Util, Probability, ParseArgs, Queries
-  build-depends:       base >=4.14, parsec, unordered-containers,
-                       containers, aeson==2.0.1.0, bytestring, uniplate, binary, bytestring, z3,
-                       optparse-applicative, hashable
+  exposed-modules:     Convert, Parser, Syntax, Util, Probability, ParseArgs, Queries, Simplify
+  build-depends:       base >=4.13, parsec, unordered-containers,
+                       containers, aeson>=2.0.1.0, bytestring, uniplate, binary, bytestring, z3,
+                       optparse-applicative, hashable, bv, vector, extra
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -O3 -fwarn-unused-binds -fwarn-unused-imports -Wall -fno-warn-orphans
                      
 executable plinko
   main-is:             Main.hs
-  build-depends:       plinko, base >=4.14, parsec, aeson,
+  build-depends:       plinko, base >=4.13, parsec, aeson,
                        bytestring, z3, containers, timeit, uniplate,
-                       lens, directory, filepath
+                       lens, directory, filepath, unordered-containers
   hs-source-dirs:      app
   ghc-options:         -O3 -fwarn-unused-binds -fwarn-unused-imports -Wall -fbreak-on-error -threaded
   default-language:    Haskell2010

@@ -3,13 +3,16 @@ module Convert where
 import Syntax
 
 --import Data.Bifunctor ( bimap )
-import Control.Monad ( foldM, (>=>) )
+import Control.Monad ( foldM, (>=>), zipWithM )
+import Control.Monad.Extra (concatMapM)
 import Z3.Monad
 --import Data.Either
+import Data.Foldable (foldrM)
 import qualified Data.HashMap.Lazy as Map
 import qualified Data.Binary as Bin
 import qualified Data.ByteString.Lazy as B
-import GHC.Stack
+import GHC.Float ( castWord32ToFloat, castWord64ToDouble )
+import qualified Data.BitVector as BV
 import Debug.Trace
 
 mergePathsWithProbs :: Z3 [AST] -> Maybe (Z3 [AST]) -> Z3 [AST] -> Z3 AST
@@ -27,6 +30,33 @@ mergePathsWithProbs probs Nothing pathAssumes = do
   pathAssumesASTs <- pathAssumes
   _0 <- mkRealNum (0 :: Double)
   mapM (\(cond,prob) -> mkIte cond prob _0) (zip pathAssumesASTs probsAsASTs) >>= mkAdd
+
+createArrayAsserts :: DistMap -> Map.HashMap KExpr String -> Z3 [AST]
+createArrayAsserts distMap arrMap = concatMapM createArrayVar $ Map.toList arrMap
+  where toPairsPair :: [a] -> ([a],[a])
+        toPairsPair [] = ([],[])
+        toPairsPair (x:y:zs) = let (xs,ys) = toPairsPair zs in (x:xs,y:ys)
+
+        arrSort :: Z3 Sort
+        arrSort = do domSort <- mkBvSort 32
+                     rangeSort <- mkBvSort 8
+                     mkArraySort domSort rangeSort
+
+        createArrayVar :: (KExpr,String) -> Z3 [AST]
+        createArrayVar (KArrayUpdate es arr,s) = do
+          arr' <- convertToZ3' distMap (Arr (BitVec 32) (BitVec 8)) arr
+          arrName <- mkStringSymbol s
+          arrVar <- mkVar arrName =<< arrSort
+          origArrayAssert <- mkEq arrVar arr'
+          let (inds,vals) = toPairsPair es
+          inds' <- mapM (convertToZ3' distMap (BitVec 32)) inds
+          vals' <- mapM (convertToZ3' distMap (BitVec 8)) vals
+          selects <- mapM (mkSelect arrVar) inds'
+          zipWithM mkEq selects vals'
+--          deterStoreAsserts <- mapM (uncurry mkEq) $ zip selects vals'
+--          return deterStoreAsserts-- $ reverse (origArrayAssert:deterStoreAsserts)
+        createArrayVar _ = error "Shouldn't ever ever ever happen..."
+
 
 valsToZ3 :: (KType, [Integer]) -> Z3 [AST]
 valsToZ3 (BitVec n, xs) = mapM (mkBvNum n) xs
@@ -55,7 +85,10 @@ varToSort d = case ktype d of
   t -> error $ "Type Error: Unsupported P.S.V. type: " ++ show t
 
 convertToZ3 :: MonadZ3 z3 => DistMap -> KExpr -> z3 AST
-convertToZ3 dists = convertToZ3' dists Boolean 
+convertToZ3 dists = convertToZ3' dists Boolean
+
+convertToZ3Real :: MonadZ3 z3 => DistMap -> KExpr -> z3 AST
+convertToZ3Real dists = convertToZ3' dists Real
 
 binaryConvert :: MonadZ3 z3 => DistMap -> KType -> (AST -> AST -> z3 AST) -> KExpr -> KExpr -> z3 AST
 binaryConvert dists t z3fun e1 e2 = do
@@ -84,8 +117,8 @@ convertToZ3' dists t1 (VarC t2 s)
                  domSort <- mkBvSort domSize
                  rangeSort <- mkBvSort rangeSize
                  arrSort <- mkArraySort domSort rangeSort
-                 funcDec <- mkStringSymbol s >>= (\s' -> mkFuncDecl s' [] arrSort)
-                 mkApp funcDec []
+                 sym <- mkStringSymbol s
+                 mkVar sym arrSort
                (Arr dom range) -> error $ "Unsupported domain or range type(s):\nDomain: " ++ show dom ++ "\nRange: " ++ show range
                _ -> error $ "Unsupported variable type: " ++ show actualT
         else error ("Distribution types do not match: " ++ show actualT ++ " != " ++ show t2)
@@ -96,8 +129,8 @@ convertToZ3' dists t1 (VarC t2 s)
           domSort <- mkBvSort domSize
           rangeSort <- mkBvSort rangeSize
           arrSort <- mkArraySort domSort rangeSort
-          funcDec <- mkStringSymbol s >>= (\s' -> mkFuncDecl s' [] arrSort)
-          mkApp funcDec []
+          sym <- mkStringSymbol s
+          mkVar sym arrSort
         (Arr dom range) -> error $ "Unsupported domain or range type(s):\nDomain: " ++ show dom ++ "\nRange: " ++ show range
         _ -> error $ "Unsupported variable type: " ++ show t2
   | t2 == Unknown =  case Map.lookup s dists of
@@ -109,23 +142,31 @@ convertToZ3' dists t1 (VarC t2 s)
                  domSort <- mkBvSort domSize
                  rangeSort <- mkBvSort rangeSize
                  arrSort <- mkArraySort domSort rangeSort
-                 funcDec <- mkStringSymbol s >>= (\s' -> mkFuncDecl s' [] arrSort)
-                 mkApp funcDec []
+                 sym <- mkStringSymbol s
+                 mkVar sym arrSort
                (Arr dom range) -> error $ "Unsupported domain or range type(s):\nDomain: " ++ show dom ++ "\nRange: " ++ show range
                _ -> error $ "Unsupported variable type: " ++ show actualT
         else error ("Distribution types do not match: " ++ show actualT ++ " != " ++ show t2)
       Nothing -> mkStringSymbol s >>= flip mkBvVar 32
-  | otherwise = error ("Variable type mismatch: Expected = " ++ show t1 ++ ", Actual = " ++ show t2 ++ " in, " ++ show (VarC t2 s))
+  | otherwise = case t1 of
+      FP n1 -> do symb <- mkStringSymbol s
+                  sort <- convertBitsizeToFP n1
+                  mkVar symb sort
+      _ -> error ("Variable type mismatch: Expected = " ++ show t1 ++ ", Actual = " ++ show t2 ++ " in, " ++ show (VarC t2 s))
 convertToZ3' _ (BitVec s) (NumC n) = mkBvNum s n
-convertToZ3' _ (FP s) (NumC n) = do
---  rm <- mkFpaRoundNearestTiesToEven
-  sort <- convertBitsizeToFP s
-  bv <- mkBvNum s n
-  mkFpaToFpBv bv sort
+convertToZ3' _ (FP s) (NumC n) = convertUIntToFP s n
+  -- | s == 32 = mkFpaNumeralFloat (castWord32ToFloat $ fromInteger n) =<< mkFpaSort32
+  -- | s == 64 = mkFpaNumeralDouble (castWord64ToDouble $ fromInteger n) =<< mkFpaSort64
+  -- | otherwise = error $ "Type Error: Unsupported bitsize: " ++ show s
 convertToZ3' _ Unknown (NumC n) = mkBvNum 8 n
+convertToZ3' _ Real (NumC n) = mkRealNum n
 convertToZ3' _ t (NumC n) = error $ "Type Error: Cannot cast a " ++ show (NumC n) ++ " to " ++ show t
 convertToZ3' _ Boolean (BoolC b) = mkBool b
 convertToZ3' _ t (BoolC b) = error $ "Type Error: Cannot cast a " ++ show (BoolC b) ++ " to " ++ show t
+convertToZ3' dists Real (Add Real e1 e2) = do
+  e1' <- convertToZ3'' dists Real e1
+  e2' <- convertToZ3'' dists Real e2
+  mkAdd [e1',e2']
 convertToZ3' dists t1 e@(Add t2 e1 e2)
   | t1 == t2 || t1 == Unknown = binaryConvert dists t2 mkBvadd e1 e2
   | otherwise = typeError t1 t2 e
@@ -136,6 +177,10 @@ convertToZ3' dists (FP s) (Sub t e1 e2) = do
   bv <- binaryConvert dists t mkBvsub e1 e2
   sort <- convertBitsizeToFP s
   mkFpaToFpBv bv sort
+convertToZ3' dists Real (Mul Real e1 e2) = do
+  e1' <- convertToZ3'' dists Real e1
+  e2' <- convertToZ3'' dists Real e2
+  mkMul [e1',e2']
 convertToZ3' dists t1 e@(Mul t2 e1 e2)
   | t1 == t2 || t1 == Unknown = binaryConvert dists t2 mkBvmul e1 e2
   | otherwise = typeError t1 t2 e
@@ -152,6 +197,7 @@ convertToZ3' dists t1 e@(SRem t2 e1 e2)
   | t1 == t2 || t1 == Unknown = binaryConvert dists t2 mkBvsrem e1 e2
   | otherwise = typeError t1 t2 e
 convertToZ3' dists t1 e@(Not t2 e') 
+  | t1 == Boolean = convertToZ3'' dists Boolean e' >>= mkNot
   | t1 == t2 || t1 == Unknown = convertToZ3'' dists t2 e' >>= mkBvnot
   | otherwise = typeError t1 t2 e
 convertToZ3' dists t1@(BitVec n) e@(And t2 e1 e2) = case t2 of
@@ -208,13 +254,13 @@ convertToZ3' dists Unknown (Concat (BitVec n) e1 e2) = do
   mkConcat z3e1 z3e2
 convertToZ3' _ t1 e@(Concat t2 _ _) = typeError t1 t2 e
 convertToZ3' dists t1@(BitVec n1) e@(Extract t2@(BitVec high) low e')
-  | n1 == high = convertToZ3'' dists Unknown e' >>= mkExtract (low + high - 1) low
+  | n1 == high = convertToZ3'' dists Unknown e' >>= mkExtract (fromInteger low + high - 1) (fromInteger low)
   | otherwise = typeError t1 t2 e
-convertToZ3' dists Boolean e@(Extract Boolean low e') = do
-  extracted <- convertToZ3'' dists Unknown e' >>= mkExtract low low 
+convertToZ3' dists Boolean (Extract Boolean low e') = do
+  extracted <- convertToZ3'' dists Unknown e' >>= mkExtract (fromInteger low) (fromInteger low)
   _1 <- mkBitvector 1 1
   mkEq extracted _1
-convertToZ3' dists Unknown (Extract (BitVec high) low e) = convertToZ3'' dists Unknown e >>= mkExtract (low + high - 1) low
+convertToZ3' dists Unknown (Extract (BitVec high) low e) = convertToZ3'' dists Unknown e >>= mkExtract (fromInteger low + high - 1) (fromInteger low)
 convertToZ3' _ t1 e@(Extract t2 _ _) = typeError t1 t2 e
 convertToZ3' dists t1@(BitVec n1) e@(ZExt t2@(BitVec n2) e')
   | n1 == n2 = do
@@ -306,19 +352,28 @@ convertToZ3' dists (FP _) (Read t i arr) = do
   iAST <- convertToZ3'' dists (BitVec 32) i
   mkSelect a iAST
 convertToZ3' _ t1 e@(Read t2 _ _) = typeError t1 t2 e
-convertToZ3' dists t (KArrayUpdate ((ind,val):xs) arr) = do
+convertToZ3' dists t (KArrayUpdate (ind:val:xs) arr) = do
   a <- convertToZ3'' dists t (KArrayUpdate xs arr)
   i <- convertToZ3'' dists (BitVec 32) ind
-  v <- convertToZ3'' dists Unknown val
+  v <- convertToZ3'' dists (BitVec 8) val
   mkStore a i v
 convertToZ3' dists t (KArrayUpdate [] arr) = convertToZ3'' dists t arr
-convertToZ3' _ _ (KArray xs) = do
-  arrSort <- mkBvSort 32
-  _0 <- mkBvNum 8 (0 :: Integer)
-  arr <- mkConstArray arrSort _0
-  inds <- mapM (mkBvNum 32) [0..(length xs - 1)]
-  vals <- mapM (mkBvNum 8) xs
-  foldM (uncurry . mkStore) arr (zip inds vals)
+convertToZ3' _ _ (KArray xs)
+  | all (== 0) xs = do
+      arrSort <- mkBvSort 32
+      _0 <- mkBvNum 8 (0 :: Integer)
+      mkConstArray arrSort _0
+  | all (== head xs) $ tail xs = do  
+      arrSort <- mkBvSort 32
+      _val <- mkBvNum 8 $ head xs
+      mkConstArray arrSort _val
+  | otherwise = do
+      arrSort <- mkBvSort 32
+      _0 <- mkBvNum 8 (0 :: Integer)
+      arr <- mkConstArray arrSort _0
+      inds <- mapM (mkBvNum 32) [0..(length xs - 1)]
+      vals <- mapM (mkBvNum 8) xs
+      foldM (uncurry . mkStore) arr (zip inds vals)
 convertToZ3' dists t1@(BitVec _) e@(Select t2 cond tru fls)
   | t1 == t2 = do
       cond' <- convertToZ3'' dists Boolean cond
@@ -326,7 +381,7 @@ convertToZ3' dists t1@(BitVec _) e@(Select t2 cond tru fls)
       fls'  <- convertToZ3'' dists t2 fls
       mkIte cond' tru' fls'
   | otherwise = typeError t1 t2 e
-convertToZ3' dists t1@(FP _) e@(Select _ cond tru fls) = do
+convertToZ3' dists t1@(FP _) (Select _ cond tru fls) = do
   cond' <- convertToZ3'' dists Boolean cond
   tru'  <- convertToZ3'' dists t1 tru
   fls'  <- convertToZ3'' dists t1 fls
@@ -344,52 +399,52 @@ convertToZ3' dists Unknown (Select t cond tru fls) = do
 convertToZ3' dists t1@(FP n) e'@(FPExt t2@(FP _) e)
   | t1 == t2 = do
       rm <- mkFpaRoundNearestTiesToEven
-      sort <- convertBitsizeToFP n
-      eAst <- convertToZ3'' dists t1 e
+      sort <- trace "fpext" $ convertBitsizeToFP n
+      eAst <- convertToZ3'' dists (getFPType e) e
       mkFpaToFpFloat rm eAst sort
   | otherwise = typeError t1 t2 e'
-convertToZ3' dists Unknown (FPExt t@(FP n) e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+convertToZ3' dists Unknown (FPExt (FP n) e) = do
+  rm <- trace "fpext" mkFpaRoundNearestTiesToEven
   sort <- convertBitsizeToFP n
-  e' <- convertToZ3'' dists t e
+  e' <- convertToZ3'' dists (getFPType e) e
   mkFpaToFpFloat rm e' sort
 convertToZ3' dists t1@(FP n) e'@(FPTrunc t2@(FP _) e)
   | t1 == t2 = do
       rm <- mkFpaRoundNearestTiesToEven
-      sort <- convertBitsizeToFP n
-      eAst <- convertToZ3'' dists t1 e
+      sort <- trace "fpFloat" (convertBitsizeToFP n)
+      eAst <- convertToZ3'' dists (getFPType e) e
       mkFpaToFpFloat rm eAst sort
   | otherwise = typeError t1 t2 e'
-convertToZ3' dists Unknown (FPTrunc t@(FP n) e) = do
+convertToZ3' dists Unknown (FPTrunc (FP n) e) = do
   rm <- mkFpaRoundNearestTiesToEven
-  sort <- convertBitsizeToFP n
-  e' <- convertToZ3'' dists t e
+  sort <- trace "fpFloat" (convertBitsizeToFP n)
+  e' <- convertToZ3'' dists (getFPType e) e
   mkFpaToFpFloat rm e' sort
 convertToZ3' dists (BitVec n) (FPToUI t2 e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+  rm <- trace "ubv" mkFpaRoundNearestTiesToEven
   e' <- convertToZ3'' dists t2 e
   mkFpaToUbv rm e' n
 convertToZ3' dists (BitVec n) (FPToSI t2 e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+  rm <- trace "sbv" mkFpaRoundNearestTiesToEven
   e' <- convertToZ3'' dists t2 e
   mkFpaToSbv rm e' n
 convertToZ3' dists (FP n) (UIToFP t2 e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+  rm <- trace "fpUnsigned" mkFpaRoundNearestTiesToEven
   e' <- convertToZ3'' dists t2 e
   sort <- convertBitsizeToFP n
   mkFpaToFpUnsigned rm e' sort
 convertToZ3' dists Unknown (UIToFP t e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+  rm <- trace "fpUnsigned" mkFpaRoundNearestTiesToEven
   e' <- convertToZ3'' dists t e
   sort <- convertBitsizeToFP 32
   mkFpaToFpUnsigned rm e' sort
 convertToZ3' dists (FP n) (SIToFP t2 e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+  rm <- trace "fpSigned" mkFpaRoundNearestTiesToEven
   e' <- convertToZ3'' dists t2 e
   sort <- convertBitsizeToFP n
   mkFpaToFpSigned rm e' sort
 convertToZ3' dists Unknown (SIToFP t e) = do
-  rm <- mkFpaRoundNearestTiesToEven
+  rm <- trace "fpSigned" mkFpaRoundNearestTiesToEven
   e' <- convertToZ3'' dists t e
   sort <- convertBitsizeToFP 32 -- assuming normal 32-bit float
   mkFpaToFpSigned rm e' sort
@@ -452,6 +507,11 @@ convertToZ3' dists _ (FOLt e1 e2) = convertFpComparison dists mkFpaLt e1 e2
 convertToZ3' dists _ (FOLe e1 e2) = convertFpComparison dists mkFpaLeq e1 e2
 convertToZ3' dists _ (FOGt e1 e2) = convertFpComparison dists mkFpaGt e1 e2
 convertToZ3' dists _ (FOGe e1 e2) = convertFpComparison dists mkFpaGeq e1 e2
+convertToZ3' dists Real (Iverson e) = do
+  e' <- convertToZ3'' dists Boolean e
+  _0 <- mkRealNum (0 :: Double)
+  _1 <- mkRealNum (1 :: Double)
+  mkIte e' _1 _0
 convertToZ3' _ t e  = error ("Cannot convert " ++ show e ++ " into a Z3 AST " ++ show t)
 
 typeError :: (Show a1, Show a2, Show a3) => a1 -> a2 -> a3 -> a4
@@ -553,7 +613,7 @@ getKType (SExt t _) = t
 getKType (ReadLSB t _ _) = t
 getKType (ReadMSB t _ _) = t
 getKType (Read t _ _) = t
-getKType (KArrayUpdate ((i,val):_) _) = Arr (getKType i) (getKType val)
+getKType (KArrayUpdate (i:val:_) _) = Arr (getKType i) (getKType val)
 getKType (KArrayUpdate [] e) = getKType e
 getKType (KArray _) = Arr (BitVec 32) (BitVec 8)
 getKType (Select t _ _ _) = t
@@ -583,6 +643,7 @@ getKType (FOLt _ _) = Boolean
 getKType (FOLe _ _) = Boolean
 getKType (FOGt _ _) = Boolean
 getKType (FOGe _ _) = Boolean
+getKType (Iverson _) = Boolean
 
 getVarTypes :: [KExpr] -> Map.HashMap String KType
 getVarTypes = undefined
@@ -593,3 +654,30 @@ convertBitsizeToFP 32 = mkFpaSort32
 convertBitsizeToFP 64 = mkFpaSort64
 convertBitsizeToFP 128 = mkFpaSort128
 convertBitsizeToFP n = error $ "Unsupported bitsize for floating-point sort: " ++ show n
+
+convertUIntToFP :: MonadZ3 z3 => Int -> Integer -> z3 AST
+convertUIntToFP w v = case w of
+  16 -> let bv = BV.bitVec 16 v 
+        in toFP (extractToNat 15 15 bv) (extractToNat 14 10 bv) (extractToNat 9 0 bv) (1,5,10)
+  32 -> let bv = BV.bitVec 32 v 
+        in toFP (extractToNat 31 31 bv) (extractToNat 30 23 bv) (extractToNat 22 0 bv) (1,8,23)
+  64 -> let bv = BV.bitVec 64 v 
+        in toFP (extractToNat 63 63 bv) (extractToNat 62 52 bv) (extractToNat 51 0 bv) (1,11,52) 
+  128 -> let bv = BV.bitVec 128 v
+         in toFP (extractToNat 127 127 bv) (extractToNat 126 112 bv) (extractToNat 111 0 bv) (1,15,112)
+  _ -> error $ "Unsupported bitsize for conversion to floating-point: " ++ show w
+  where extractToNat :: Int -> Int -> BV.BV -> Integer
+        extractToNat j i bv = BV.nat $ BV.extract j i bv
+
+        toFP :: MonadZ3 z3 => Integer -> Integer -> Integer -> (Int,Int,Int) -> z3 AST
+        toFP sgn expp sig (sgnW, expW, sigW) = do
+          sgnBv <- mkBitvector sgnW sgn
+          expBv <- mkBitvector expW expp
+          sigBv <- mkBitvector sigW sig
+          mkFpaFp sgnBv expBv sigBv
+
+getFPType :: KExpr -> KType
+getFPType ke = case getKType ke of
+  BitVec n -> FP n
+  FP n -> FP n
+  _ -> error "Cannot truncate or extend non-FP expression"

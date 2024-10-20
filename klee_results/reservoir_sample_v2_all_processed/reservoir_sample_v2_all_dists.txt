@@ -1,7 +1,0 @@
-jpse_1 ~ UniformInt(0,5) :: w32
-jpse_2 ~ UniformInt(0,6) :: w32
-jpse_3 ~ UniformInt(0,7) :: w32
-jpse_4 ~ UniformInt(0,8) :: w32
-jpse_5 ~ UniformInt(0,9) :: w32
-jpse_6 ~ UniformInt(0,10) :: w32
-jpse_7 ~ UniformInt(0,11) :: w32

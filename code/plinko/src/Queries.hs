@@ -3,9 +3,10 @@ module Queries where
 import ParseArgs (Benchmark(..))
 import Convert
 import Syntax
+import Data.Ratio
 
 import Z3.Monad
-import Debug.Trace
+import Z3.Opts
 
 import qualified Data.HashMap.Lazy as Map
 import qualified Data.Traversable as T
@@ -17,37 +18,7 @@ exportProbs probsAST fpath = do
   probs <- evalZ3 (astToString =<< probsAST)
   writeFile fpath probs
 
-laplaceMechanism :: Z3 AST -> Z3 AST -> Z3 AST -> Z3 String
-laplaceMechanism pxProbs pyProbs assumes = do
-  -- Create empty set of parameters
-  params <- mkParams
-  threads <- mkStringSymbol "threads"
-  paramsSetUInt params threads 10
-  solverSetParams params
 
-  sum_probs <- mkFreshRealVar "sum_probs"
-  
-  rawProbsX <- pxProbs
-  rawProbsY <- pyProbs
-
-  -- lhs <- mkDiv rawProbsX rawProbsY
-
-  -- _epsilonReal <- mkFpaToReal =<< convertToZ3' Map.empty (FP 32) (ReadLSB (BitVec 32) (NumC 0) (VarC "epsilon_sym"))
-  e <- mkRealNum 2.718281
-  -- bound <- mkPower e _epsilonReal
-
-  body <- mkAnd =<< T.sequence
-    [ assumes,
-      -- mkEq rawProbsX sum_probs
-      mkLe rawProbsX rawProbsY
-      -- mkEq sum_probs rawProbsX
-    ]
-
-  assert body
-  (_res, mbModel) <- solverCheckAndGetModel
-  case mbModel of
-       Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"  
       
 floatingPointTest :: Z3 AST -> Z3 AST -> Z3 String
 floatingPointTest probs assumes = do
@@ -63,7 +34,7 @@ floatingPointTest probs assumes = do
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
   
 schwartzZippel :: Z3 AST -> Z3 AST -> Z3 String
 schwartzZippel probs assumes = do
@@ -81,7 +52,7 @@ schwartzZippel probs assumes = do
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 randomizedResponseFairNotEqual :: Z3 AST -> Z3 AST -> Z3 String
 randomizedResponseFairNotEqual probs assumes = do
@@ -98,7 +69,7 @@ randomizedResponseFairNotEqual probs assumes = do
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 randomizedResponseFairEqual :: Z3 AST -> Z3 AST -> Z3 String
 randomizedResponseFairEqual probs assumes = do
@@ -115,7 +86,7 @@ randomizedResponseFairEqual probs assumes = do
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 
 
@@ -159,7 +130,7 @@ z3Script probs = do
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 printZ3AST :: Z3 AST -> IO ()
 printZ3AST ast = do
@@ -178,9 +149,80 @@ printZ3ASTs asts = do
   print str
 
 ----------------------------------------------------------
+mironov :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Z3 String
+mironov threads probs assumes arrayAsserts dynProgAsserts = do
+  -- Create empty set of parameters
+  params <- mkParams
+  threadsName <- mkStringSymbol "threads"
+  paramsSetUInt params threadsName threads
+  solverSetParams params
 
-countMinSketch :: Word -> Z3 AST -> Z3 AST -> Double -> Z3 String
-countMinSketch threads probs assumes gamma = do
+  raw_probs <- probs
+  sum_probs <- mkFreshRealVar "sum_probs"
+
+  forall <- do symb <- mkStringSymbol "forall_sym"
+               sort <- mkBvSort 32
+               mkVar symb sort
+  _0 <- mkRealNum (0 :: Double)
+  _1 <- mkRealNum (1 :: Double)
+  lower <- mkBitvector 32 0
+  upper <- mkBitvector 32 65535
+
+  body <- mkAnd =<< T.sequence
+    [ assumes,
+      mkBvule lower forall,
+      mkBvule forall upper,
+      mkEq sum_probs raw_probs,
+      mkLt sum_probs _1
+    ]
+
+  assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
+
+  (_res, mbModel) <- solverCheckAndGetModel
+  case mbModel of
+       Just model -> showModel model
+       Nothing    -> return "Property verified!"  
+  
+
+laplaceMechanismEval :: Word -> Z3 AST -> Z3 AST -> Z3 AST -> IO String
+laplaceMechanismEval threads pxProbs pyProbs assumes =  evalZ3 $ laplaceMechanism threads pxProbs pyProbs assumes
+
+laplaceMechanism :: Word -> Z3 AST -> Z3 AST -> Z3 AST -> Z3 String
+laplaceMechanism threads pxProbs pyProbs assumes = do
+  -- Create empty set of parameters
+  params <- mkParams
+  threadsName <- mkStringSymbol "threads"
+  paramsSetUInt params threadsName threads
+  solverSetParams params
+
+  sum_probs <- mkFreshRealVar "sum_probs"
+  
+  rawProbsX <- pxProbs
+  rawProbsY <- pyProbs
+
+  lhs <- mkDiv rawProbsX rawProbsY
+
+  -- _epsilonReal <- mkFpaToReal =<< do symb <- mkStringSymbol "epsilon_sym"
+  --                                    sort <- convertBitsizeToFP 32
+  --                                    mkVar symb sort
+  _e <- mkRealNum (2.718281 :: Double)
+  -- bound <- mkPower _e _epsilonReal
+
+  body <- mkAnd =<< T.sequence
+    [ assumes,
+      mkGt lhs _e
+    ]
+
+  assert body
+  (_res, mbModel) <- solverCheckAndGetModel
+  case mbModel of
+       Just model -> showModel model
+       Nothing    -> return "Property verified!"  
+
+countMinSketch :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Double -> Z3 String
+countMinSketch threads probs assumes arrayAsserts dynProgAsserts gamma = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -196,14 +238,17 @@ countMinSketch threads probs assumes gamma = do
     ]
   
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
+
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 
-bloomFilter :: Word -> Z3 AST -> Z3 AST -> Double -> Z3 String
-bloomFilter threads probs assumes eps = do
+bloomFilter :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Double -> Z3 String
+bloomFilter threads probs assumes arrayAsserts dynProgAsserts eps = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -219,14 +264,17 @@ bloomFilter threads probs assumes eps = do
     ]
   
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
+
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 
-montyhall :: Word -> Z3 AST -> Z3 AST -> Z3 String
-montyhall threads probs assumes = do
+montyhall :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Z3 String
+montyhall threads probs assumes arrayAsserts dynProgAsserts = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -234,22 +282,24 @@ montyhall threads probs assumes = do
 
   sum_probs <- mkFreshRealVar "sum_probs"
   rawProbs <- probs
-  _third <- mkRealNum (35 / 100::Double)
+  _third <- mkRational (2 % 3)
 
   body <- mkAnd =<< T.sequence
     [
       mkEq sum_probs rawProbs,
       assumes,
-      mkGt sum_probs _third
+      mkNot =<< mkEq sum_probs _third
     ]
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
-reservoir :: Word -> Z3 AST -> Z3 AST -> Double -> Double -> Z3 String
-reservoir threads probs assumes n k = do
+reservoir :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Integer -> Integer -> Z3 String
+reservoir threads probs assumes arrayAsserts dynProgAsserts n k = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -258,21 +308,28 @@ reservoir threads probs assumes n k = do
   sum_probs <- mkFreshRealVar "sum_probs"
 
   rawProbs <- probs
-  _bound <- mkRealNum (k / n::Double)
+  _bound <- mkRational (k % n)
+--  _error <- mkRational (0 % 13)
+--  upper <- mkAdd [_error,_bound]
+--  lower <- mkSub [_bound,_error]
   body <- mkAnd =<< T.sequence
     [ mkEq sum_probs rawProbs,
       assumes,
+--      mkGt sum_probs upper,
+--      mkLt sum_probs lower
       mkNot =<< mkEq sum_probs _bound
     ]
   
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
-expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 String
-expectedValue threads probs assumes = do
+expectedValue :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Z3 String
+expectedValue threads probs assumes arrayAsserts dynProgAsserts = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -286,13 +343,17 @@ expectedValue threads probs assumes = do
     ]
 
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
+
   (_res, mbModel) <- solverCheckAndGetModel
-  case mbModel of
-       Just model -> do curMax <- modelEval model sum_probs True
-                        case curMax of
-                          Just curMaxAST -> z3Maximize assumes curMaxAST sum_probs model
-                          Nothing -> return "Error in evaluating model"
-       Nothing    -> return "Couldn't construct model"
+  ret <- case mbModel of
+    Just model -> do curMax <- modelEval model sum_probs True
+                     case curMax of
+                       Just curMaxAST -> z3Maximize assumes curMaxAST sum_probs model
+                       Nothing -> return "Error in evaluating model"
+    Nothing    -> return "Property verified!"
+  return "Quicksort number of comparisons verified!"
   where z3Maximize :: Z3 AST -> AST -> AST -> Model -> Z3 String
         z3Maximize assumes curMax toMaximize oldMod = do
           newConstr <- mkGt toMaximize curMax
@@ -327,10 +388,10 @@ expectedValue threads probs assumes = do
 --   (_res, mbModel) <- solverCheckAndGetModel
 --   case mbModel of
 --     Just model -> showModel model
---     Nothing    -> return "Couldn't construct model"
+--     Nothing    -> return "Property verified!"
 
-monotone :: Word -> Z3 AST -> Z3 AST -> Double -> Z3 String
-monotone threads probs assumes n = do
+monotone :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Double -> Z3 String
+monotone threads probs assumes arrayAsserts dynProgAsserts n = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -345,21 +406,24 @@ monotone threads probs assumes n = do
   _1_minus_delta <- mkSub [_1,_delta]
 
   rawProbs <- probs
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
   body <- mkAnd =<< T.sequence
     [ 
       mkEq sum_probs rawProbs,
       assumes,
       mkGt sum_probs _1_minus_delta
     ]
-  
   assert body
+  
+  --solverToString
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
-freivalds :: Word -> Z3 AST -> Z3 AST -> Int -> Z3 String
-freivalds threads probs assumes k = do
+freivalds :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Int -> Z3 String
+freivalds threads probs assumes arrayAsserts dynProgAsserts k = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -376,13 +440,16 @@ freivalds threads probs assumes k = do
     ]
   
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
+
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
-calcProb :: Word -> Z3 AST -> Z3 AST -> Z3 String
-calcProb threads probs assumes = do
+calcProb :: Word -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> Z3 String
+calcProb threads probs assumes arrayAsserts dynProgAsserts = do
   params <- mkParams
   threadsName <- mkStringSymbol "threads"
   paramsSetUInt params threadsName threads
@@ -397,10 +464,13 @@ calcProb threads probs assumes = do
     ]
   
   assert body
+  mapM_ assert =<< arrayAsserts
+  mapM_ assert =<< dynProgAsserts
+
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"
+       Nothing    -> return "Property verified!"
 
 check1 :: Word -> Z3 AST -> Z3 AST -> Z3 String
 check1 threads probs assumes = do
@@ -411,28 +481,30 @@ check1 threads probs assumes = do
 
   sum_probs <- mkFreshRealVar "sum_probs"
   rawProbs <- probs
-  _1 <- mkRealNum (1.0 :: Double)
+  _1 <- mkRealNum (1.5 :: Double)
   body <- mkAnd =<< T.sequence
     [
       mkEq sum_probs rawProbs,
       assumes,
-      mkNot =<< mkEq sum_probs _1
+      mkGt sum_probs _1
     ]
   
   assert body
   (_res, mbModel) <- solverCheckAndGetModel
   case mbModel of
        Just model -> showModel model
-       Nothing    -> return "Couldn't construct model"  
+       Nothing    -> return "Property verified!"  
 
-askZ3 :: Word -> Benchmark -> Z3 AST -> Z3 AST -> IO String
-askZ3 threads benchmark probs assumes = evalZ3 $ case benchmark of
-  Montyhall -> montyhall threads probs assumes
-  ReservoirSample n k -> reservoir threads probs assumes n k
-  ExpectedValue -> expectedValue threads probs assumes
-  Monotone n -> monotone threads probs assumes n
-  Freivalds k -> freivalds threads probs assumes k
-  BloomFilter eps -> bloomFilter threads probs assumes eps
-  CountMinSketch gamma -> countMinSketch threads probs assumes gamma
-  CalcProb -> calcProb threads probs assumes
+askZ3 :: Word -> Benchmark -> Z3 AST -> Z3 AST -> Z3 [AST] -> Z3 [AST] -> IO String
+askZ3 threads benchmark probs assumes arrayAsserts dynProgAsserts = evalZ3 $ case benchmark of
+  Montyhall -> montyhall threads probs assumes arrayAsserts dynProgAsserts
+  ReservoirSample n k -> reservoir threads probs assumes arrayAsserts dynProgAsserts n k
+  ExpectedValue -> expectedValue threads probs assumes arrayAsserts dynProgAsserts
+  Monotone n -> monotone threads probs assumes arrayAsserts dynProgAsserts n
+  Freivalds k -> freivalds threads probs assumes arrayAsserts dynProgAsserts k
+  BloomFilter eps -> bloomFilter threads probs assumes arrayAsserts dynProgAsserts eps
+  CountMinSketch gamma -> countMinSketch threads probs assumes arrayAsserts dynProgAsserts gamma
+  Mironov -> mironov threads probs assumes arrayAsserts dynProgAsserts
+  CalcProb -> calcProb threads probs assumes arrayAsserts dynProgAsserts
   PrintProb -> astToString =<< probs
+  CalcWorstCase -> expectedValue threads probs assumes arrayAsserts dynProgAsserts

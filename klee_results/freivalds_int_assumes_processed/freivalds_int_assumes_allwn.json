@@ -1,9 +1,0 @@
-[
-    {
-        "Path": [
-            "(Eq (Add w32 (Add w32 (Mul w32 (ReadLSB w32 0 B_sym1) (ReadLSB w32 0 A_sym0)) (Mul w32 (ReadLSB w32 0 B_sym4) (ReadLSB w32 0 A_sym1))) (Mul w32 (ReadLSB w32 0 B_sym7) (ReadLSB w32 0 A_sym2))) (ReadLSB w32 0 C_sym1))"
-        ],
-        "Var Name": "",
-        "Var Value": ""
-    }
-]

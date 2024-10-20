@@ -43,19 +43,19 @@ sleep 1
 SRC_PATH=${file_path_array[0]}
 example=${file_path_array[1]}
 
-clang++-10 -I $HOME/klee/include -I include -c -emit-llvm \
+$CXX -I $HOME/klee/include -I include -c -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp
 
 echo "Compilation : " > time.log
-/usr/bin/time --append --verbose -o time.log clang++-10 -I $HOME/klee/include -I include -S -emit-llvm \
+/usr/bin/time --append --verbose -o time.log $CXX -I $HOME/klee/include -I include -S -emit-llvm \
 -std=c++17 -g -O0 -fPIC -fno-rtti -Xclang \
 -disable-O0-optnone $SRC_PATH/${example}.cpp -o \
 klee_results/llvmir/${example}.ll
 
 echo "KLEE Symbolic Execution : " >> time.log
 /usr/bin/time --append --verbose -o time.log \
-klee --filename-act ${example} \
+klee --max-time=1s --filename-act ${example} \
 --disable-inlining --emit-all-errors --show-cond ${OPT} \
 --search=nurs:depth --search=nurs:covnew --dump-logs \
 --use-cex-cache --write-kqueries ${example}.bc
@@ -80,37 +80,37 @@ ${example} ${DUMPEXPECT} > plinko-results/${example}_processed/${example}_logs.t
 
 mv time.log plinko-results/${example}_processed/${example}_exec_time.txt
 
-dot -Tpdf -Nfontsize=12 \
--Efontname=Courier-Bold -Efontsize=8 \
-${example}_processed/${example}_execution_tree.dot > \
-${example}_processed/${example}_execution_tree.dot.pdf
+# dot -Tpdf -Nfontsize=12 \
+# -Efontname=Courier-Bold -Efontsize=8 \
+# ${example}_processed/${example}_execution_tree.dot > \
+# ${example}_processed/${example}_execution_tree.dot.pdf
 
 mv ${example}_summary.json ${example}_processed/${example}_summary.json
 mv ${example}_processed klee_results/
 
 mv klee_results/${example}_klee_out/*_dists.txt klee_results/${example}_processed/${example}_dists.txt
 
-# echo "Plinko running on ${example}_processed : " >> plinko-results/${example}_processed/${example}_exec_time.txt
-# echo -e "\e[1;34m===== Init Plinko =====\e[0m"
+echo "Plinko running on ${example}_processed : " >> plinko-results/${example}_processed/${example}_exec_time.txt
+echo -e "\e[1;34m===== Init Plinko =====\e[0m"
 
-# cd ./code/plinko
-# cabal v2-build
+cd ./code/plinko
+cabal v2-build
 
-# echo -e "\e[1;34m===== Run Plinko =====\e[0m"
+echo -e "\e[1;34m===== Run Plinko =====\e[0m"
 
-# echo "cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t ${THREADS} ${COMMANDS} ${3}"
+echo "cabal v2-run plinko -- -d ../../klee_results/${example}_processed -t ${THREADS} ${COMMANDS} ${3}"
 
-# /usr/bin/time --append --verbose -o \
-# ../../plinko-results/${example}_processed/${example}_exec_time.txt \
-# cabal v2-run plinko -- \
-# -d ../../klee_results/${example}_processed \
-# -t ${THREADS} ${COMMANDS} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
-# > ../../plinko-results/${example}_processed/${example}_processed.txt
+/usr/bin/time --append --verbose -o \
+../../plinko-results/${example}_processed/${example}_exec_time.txt \
+cabal v2-run plinko -- \
+-d ../../klee_results/${example}_processed \
+-t ${THREADS} ${COMMANDS} ${3} 2>> ../../plinko-results/${example}_processed/${example}_logs.txt \
+> ../../plinko-results/${example}_processed/${example}_processed.txt
 
-# echo "Example : ${example}" >> ../../complete_results.txt
-# echo "Date : `date`" >> ../../complete_results.txt
-# tail -n 2 ../../plinko-results/${example}_processed/${example}_logs.txt >> ../../complete_results.txt
-# echo "Winning : `cat ../../plinko-results/${example}_processed/${example}_logs.txt | grep "Winning" | wc -l`" >> ../../complete_results.txt
-# echo "Plinko Results : " >> ../../complete_results.txt
-# cat ../../plinko-results/${example}_processed/${example}_processed.txt >> ../../complete_results.txt
-# echo " ====== ====== " >> ../../complete_results.txt
+echo "Example : ${example}" >> ../../complete_results.txt
+echo "Date : `date`" >> ../../complete_results.txt
+tail -n 2 ../../plinko-results/${example}_processed/${example}_logs.txt >> ../../complete_results.txt
+echo "Winning : `cat ../../plinko-results/${example}_processed/${example}_logs.txt | grep "Winning" | wc -l`" >> ../../complete_results.txt
+echo "Plinko Results : " >> ../../complete_results.txt
+cat ../../plinko-results/${example}_processed/${example}_processed.txt >> ../../complete_results.txt
+echo " ====== ====== " >> ../../complete_results.txt

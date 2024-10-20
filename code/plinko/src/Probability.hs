@@ -1,19 +1,20 @@
 module Probability where
 
 import qualified Data.HashSet as Set
-import qualified Data.HashMap.Lazy as Map
+import qualified Data.HashMap.Strict as Map
 import Data.List as List
 import Data.Maybe
-import Data.Generics.Uniplate.Data
+import Data.Generics.Uniplate.Operations
 import Z3.Monad
-import Control.Monad ( join, zipWithM )
+import Control.Monad ( join, zipWithM, (<=<) )
+import Control.Monad.Extra (concatMapM)
 import Data.Ratio
+import Debug.Trace
 
 import Syntax
 import Util
 import Convert
-
-import Debug.Trace
+import Simplify (algSimplify, buildExprMap)
 
 indepOptimize :: [DistDef] -> DistMap -> [([KExpr],[DistDef],Integer)] -> [[IndPartition]] -> Z3 [AST]
 indepOptimize dists distMap = zipWithM kernel
@@ -28,22 +29,11 @@ indepOptimize dists distMap = zipWithM kernel
 
 constructProbs ::  DistMap -> [KExpr] -> [DistDef] -> Z3 AST
 constructProbs distMap ks dists = computePathProb dists $ map (convertToZ3 distMap) ks
-  where substsAsAST :: [DistDef] -> Z3 [([(AST,AST)],AST)]
-        substsAsAST ds = do vars <-  mapM varToSort ds
-                            let (vals, weights) = distsToDomainsAndWeights ds
-                            elems <- mapM valsToZ3 $ zip (map ktype ds) vals 
-                            let substs = zipWithM (zip . repeat) vars elems
-                            prodWeights <- mapM (mkRational . toRational . product) (sequence weights)
-                            return $ zip substs prodWeights
-
-        indicator :: Z3 AST -> AST -> Z3 AST
-        indicator p v = join $ mkIte <$> p <*> return v <*> mkRational 0
-
-        computePathProb :: [DistDef] -> [Z3 AST] -> Z3 AST
+  where computePathProb :: [DistDef] -> [Z3 AST] -> Z3 AST
         computePathProb ds bs = do
           rawASTs <- sequence bs
           fullPathCond <- mkAnd rawASTs
-          substsWithWeights <- substsAsAST ds
+          substsWithWeights <- distsToSubsts ds
           numer <- mapM (\(subst,w) -> indicator (substitute fullPathCond subst) w) substsWithWeights
           mkAdd numer
 --          str <- astToString numSum
@@ -53,32 +43,130 @@ constructProbs distMap ks dists = computePathProb dists $ map (convertToZ3 distM
 --          denomSort <- getSort denom >>= sortToString
 --          mkDiv numSum denom
 
+-- expandExprs :: [([KExpr],[DistDef],Integer)] -> Map.HashMap (KExpr,[DistDef]) KExpr
+-- expandExprs xs = let baseMap = filterUniquePaths xs
+--   in Map.mapWithKey applyAssignment baseMap
+--   where genAllAssignments :: [(KExpr,[Integer])] -> [([KExpr],[KExpr])]
+--         genAllAssignments varsAndVals = let vars = map fst varsAndVals
+--                                             vals = map snd varsAndVals
+--           in zip (repeat vars) (sequence $ map (map NumC) vals)
+
+--         applyAssignment :: (KExpr,[DistDef]) -> KExpr -> KExpr
+--         applyAssignment (e',ds) e = let 
+--           vals = map (getDistDomain . dist) ds
+--           vars = map (uncurry VarC) $ zip (map ktype ds) (map varName ds)
+
+--           sub :: KExpr -> KExpr -> KExpr -> KExpr
+--           sub vr vl e'' = if e == vr then vl else e''
+                                       
+--           assignments = genAllAssignments $ zip vars vals
+--           baseExpansion = Add Real $ map (\(vars',vals') -> Iverson $ foldl' (\cond -> \(var',val') -> transform (sub var' val') cond) e $ zip vars' vals') assignments
+--           in if isNegation e' e
+--              then Sub Real (NumC 1) baseExpansion
+--              else baseExpansion
+
+simplifyAndCombine' :: Bool -> [([KExpr],[DistDef],Integer)] -> [DistDef] -> DistMap -> Map.HashMap (KExpr,[DistDef]) KExpr -> Z3 [AST]
+simplifyAndCombine' simplify' paths dists distMap exprMap = do 
+  paths' <- mapM (convertToZ3Real distMap . combinePerPath) paths
+  denom <- (mkRational . toRational) $ distsToTotalWeight dists
+  zipWithM mkDiv paths' (repeat denom)
+  where combinePerPath :: ([KExpr], [DistDef], Integer) -> KExpr
+        combinePerPath (conjs, ds, weight) = let weightExpr = NumC weight
+                                                 probConjs = weightExpr : map (\ x_ -> curry (exprMap Map.!) x_ ds) conjs
+          in (if simplify' then algSimplify else id) $ foldl1' (Mul Real) probConjs
+
+constructRawProbFormula :: [([KExpr],[DistDef],Integer)] -> [[[KExpr]]]
+constructRawProbFormula = map (\(ps,ds,weight) -> computePathProbForm ps ds weight) 
+  where -- Expensive...
+        genAllAssignments :: [(KExpr,[Integer])] -> [([KExpr],[KExpr])]
+        genAllAssignments varsAndVals = let vars = map fst varsAndVals
+                                            vals = map snd varsAndVals
+          in zip (repeat vars) (mapM (map NumC) vals)
+
+        applyAssignments :: KExpr -> [KExpr] -> [[Integer]] -> [KExpr]
+        applyAssignments cond vars vals = let sub :: KExpr -> KExpr -> KExpr -> KExpr
+                                              sub var' val e = if e == var' then val else e
+
+                                              varsInCond = [v | VarC _ v <- universe cond]
+                                              filteredVarsAndVals = filter (\(VarC _ v,_) -> v `elem` varsInCond) $ zip vars vals
+                                              assignments = genAllAssignments filteredVarsAndVals
+          in map (\(vars',vals') -> foldl' (\cond' (var', val') -> transform (sub var' val') cond') cond $ zip vars' vals') assignments
+
+        computePathProbForm :: [KExpr] -> [DistDef] -> Integer -> [[KExpr]]
+        computePathProbForm ps ds weight = let vals = map (getDistDomain . dist) ds
+                                               vars = zipWith VarC (map ktype ds) (map varName ds)
+                                               weightExpr = [NumC weight]
+          in weightExpr:map (\ cond -> applyAssignments (Iverson cond) vars vals) ps
+
+simplifyAndCombine :: [DistDef] -> DistMap -> [[[KExpr]]] -> Z3 [AST]
+simplifyAndCombine dists distMap pss = let --pss' = map (map (map algSimplify)) pss
+                                           paths = map (algSimplify . combinePerPath) pss
+  in do paths' <- mapM (convertToZ3Real distMap) paths
+        denom <- (mkRational . toRational) $ distsToTotalWeight dists
+        zipWithM mkDiv paths' (repeat denom)
+  where combinePerPath :: [[KExpr]] -> KExpr
+        combinePerPath ps = let conjs = map combinePerConj ps
+--          in algSimplify $ foldl1' (Mul Real) conjs
+          in foldl1' (Mul Real) conjs
+        
+        combinePerConj :: [KExpr] -> KExpr
+--        combinePerConj ps = algSimplify $ foldl1' (Add Real) ps
+        combinePerConj = foldl1' (Add Real)
+
+exprMapToAsserts ::  DistMap -> Map.HashMap (KExpr,[DistDef]) (String,Bool) -> (Z3 [AST], Map.HashMap (KExpr,[DistDef]) (Z3 [AST]))
+exprMapToAsserts distMap exprMap = let uniqueExprs = nub $ Map.toList $ Map.map removeBool exprMap
+  in (concatMapM createAssert uniqueExprs, Map.mapWithKey updateExprMap exprMap)
+  where substMap :: Map.HashMap [DistDef] (Z3 [([(AST,AST)],AST)])
+        substMap = let allDists = Set.toList $ Set.map snd $ Map.keysSet exprMap
+          in Map.fromList $ zip allDists $ map distsToSubsts allDists
+
+        updateExprMap :: (KExpr,[DistDef]) -> (String,Bool) -> Z3 [AST]
+        updateExprMap (_,ds) (s,b) = do
+          substs <- case Map.lookup ds substMap of
+            Just x -> x
+            Nothing -> error "Shouldn't happen..."
+          varNamesAsASTs <- mapM (mkRealVar <=< mkStringSymbol) [ s ++ "-" ++ show i | i <- [0..length substs-1]]
+          if b 
+            then mapM (\p -> indicator (mkEq p =<< mkInteger 0) =<< mkInteger 1) varNamesAsASTs
+            else return varNamesAsASTs
+
+        removeBool :: (String,Bool) -> String
+        removeBool (s,_) = s
+
+        createAssert :: ((KExpr,[DistDef]),String) -> Z3 [AST]
+        createAssert ((e,ds),s) = do
+          substs <- case Map.lookup ds substMap of
+            Just x -> x
+            Nothing -> error "Shouldn't happen..."
+          varNamesAsASTs <- mapM (mkRealVar <=< mkStringSymbol) [ s ++ "-" ++ show i | i <- [0..length substs-1]]
+          ast <- convertToZ3 distMap e
+          probs <- mapM (\(subst,w) -> indicator (substitute ast subst) w) substs
+          zipWithM mkEq probs varNamesAsASTs
+
+distsToSubsts :: [DistDef] -> Z3 [([(AST,AST)],AST)]
+distsToSubsts ds = do
+  vars <-  mapM varToSort ds
+  let (vals, weights) = distsToDomainsAndWeights ds
+  elems <- mapM valsToZ3 $ zip (map ktype ds) vals
+  let substs = zipWithM (zip . repeat) vars elems
+  prodWeights <- mapM (mkRational . toRational . product) (sequence weights)
+  return $ zip substs prodWeights
+
 constructProbsNoIndep :: [DistDef] -> DistMap -> [([KExpr],[DistDef],Integer)] -> Z3 [AST]
 constructProbsNoIndep dists distMap = mapM (\(ps,ds,weight) -> computePathProb ds weight $ map (convertToZ3 distMap) ps)
-  where substsAsAST :: [DistDef] -> Z3 [([(AST,AST)],AST)]
-        substsAsAST ds = do vars <-  mapM varToSort ds
-                            let (vals, weights) = distsToDomainsAndWeights ds
-                            elems <- mapM valsToZ3 $ zip (map ktype ds) vals 
-                            let substs = zipWithM (zip . repeat) vars elems
-                            prodWeights <- mapM (mkRational . toRational . product) (sequence weights)
-                            return $ zip substs prodWeights
-
-        indicator :: Z3 AST -> AST -> Z3 AST
-        indicator p v = join $ mkIte <$> p <*> return v <*> mkRational 0
+  where denom :: Z3 AST
+        denom = (mkRational . toRational) $ distsToTotalWeight dists
 
         computePathProb :: [DistDef] -> Integer -> [Z3 AST] -> Z3 AST
         computePathProb ds weight bs = do
           rawASTs <- sequence bs
           fullPathCond <- mkAnd rawASTs
-          substsWithWeights <- substsAsAST ds
+          substsWithWeights <- distsToSubsts ds
           numer <- mapM (\(subst,w) -> indicator (substitute fullPathCond subst) w) substsWithWeights
           numSum <- mkMul =<< sequence [mkIntNum weight, mkAdd numer] -- multiply by weight
 --          str <- astToString numSum
 --          numSumSort <- getSort (trace str numSum) >>= sortToString
-          numSumSort <- getSort numSum >>= sortToString
-          denom <- (mkRational . toRational) $ distsToTotalWeight dists
-          denomSort <- getSort denom >>= sortToString
-          mkDiv numSum denom
+          mkDiv numSum =<< denom
 
 distsToDomainsAndWeights :: [DistDef] -> ([[Integer]], [[Integer]])
 distsToDomainsAndWeights dists = (map (getDistDomain . dist) dists, map (getWeight . dist) dists)
@@ -90,7 +178,7 @@ distsToDomainsAndWeights dists = (map (getDistDomain . dist) dists, map (getWeig
         getDistDomain (Bernoulli _) = [0,1]
 
         getWeight :: Dist -> [Integer]
-        getWeight (UniformInt (Left l) (Left u)) = replicate (u - l+1) 1
+        getWeight (UniformInt (Left l) (Left u)) = genericReplicate (u - l+1) 1
         getWeight (UniformInt _ _) = error "TODO: Implement weight for string Uniform weight"
         getWeight (Bernoulli (Left p)) = [denominator p - numerator p, numerator p]
         getWeight (Bernoulli (Right _)) = error "TODO: Implement weight for string Bernoulli weight"
@@ -183,3 +271,27 @@ preprocessSimple dists = map preprocessPath
           | otherwise = 0
         calcWeight _ d = error ("Unsupported dist: " ++ show d) 
           
+indicator :: Z3 AST -> AST -> Z3 AST
+indicator p v = join $ mkIte <$> p <*> return v <*> mkRational 0
+
+dynProgNoSimplify :: [([KExpr],[DistDef],Integer)] -> [DistDef] -> DistMap -> (Z3 [AST], Z3 [AST])
+dynProgNoSimplify paths dists distMap = let exprMap = buildExprMap paths
+                                            (varAsserts, exprMap') = exprMapToAsserts distMap exprMap
+  in (varAsserts, mapM (applyExprMap dists exprMap') paths)
+
+applyExprMap :: [DistDef] -> Map.HashMap (KExpr,[DistDef]) (Z3 [AST]) -> ([KExpr],[DistDef],Integer) -> Z3 AST
+applyExprMap dists _ ([],[],weight) = do
+  weight' <- mkInt2Real =<< mkIntNum weight
+  mkDiv weight' =<< denom
+  where denom :: Z3 AST
+        denom = (mkRational . toRational) $ distsToTotalWeight dists
+applyExprMap dists exprMap (path,ds,weight) = do
+  path' <- mapM (exprMap Map.!) $ zip path (repeat ds)
+  numer <- mkAdd =<< mapM mkMul (transpose path')
+  weight' <- mkIntNum weight
+  numerWithWeight <- mkMul [weight', numer]
+  mkDiv numerWithWeight =<< denom
+  where denom :: Z3 AST
+        denom = (mkRational . toRational) $ distsToTotalWeight dists
+
+

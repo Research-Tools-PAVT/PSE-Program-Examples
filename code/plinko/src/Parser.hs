@@ -11,12 +11,14 @@ import qualified Data.HashMap.Lazy as Map
 import qualified Text.Parsec as TP
 import qualified Text.Parsec.ByteString as B
 import Data.Aeson
+import Data.Aeson.Types
 import Data.Aeson.Key
 import qualified Data.Aeson.KeyMap as KM
-import qualified Data.List as L
+import qualified Data.List()
 import Text.ParserCombinators.Parsec
 import Numeric
-
+import qualified Data.Vector as V
+import qualified Control.Applicative as CA
 type KParser = TP.Parsec String Context
 
 instance FromJSON JSONPathList where
@@ -24,8 +26,9 @@ instance FromJSON JSONPathList where
     let kvs = KM.toList obj
         nums = map (read . toString . fst) kvs
         vals = map snd kvs
-    in do branches <- mapM parseJSON vals
-          return $ PathList (zipWith Path nums branches)
+        expVals = map (parseMaybe parseJSON) vals
+    in do branches' <- mapM parseJSON vals
+          return $ PathList (zipWith3 Path nums branches' expVals)
 
 instance FromJSON Branch where
   parseJSON = withObject "Branch" $ \obj -> do
@@ -37,15 +40,21 @@ instance FromJSON Branch where
                       nodeFalseQuery = nodeFalseQuery'
                     })
 
+instance FromJSON ObservedValue where
+  parseJSON = withArray "ObservedValue Array" $ \arr -> 
+    (withObject "ObservedValue Obj" $ \obj -> do
+        exps <- obj .:? "exp_value"
+        case exps of
+          Just [varName',valExpr] -> let val = runParser parseKExpr Map.empty "" valExpr
+                                in return $ ObservedValue varName' val
+          Just xs -> error ("Expected single variable name/value pair in \"exp_value\" list.\nFound " ++ show xs)
+          Nothing -> CA.empty
+    ) (V.last arr)
+
 instance FromJSON WinningPath where
   parseJSON = withObject "WinningPath" $ \obj -> do
-    pathNum <- obj .: "Path"
-    var <- obj .:? "Var Name"
-    case var of
-      Just "" -> return $ WinningPath pathNum Nothing Nothing
-      Just _ -> do val <- runParser parseKExpr Map.empty "" <$> obj .: "Var Value"
-                   return $ WinningPath pathNum var (Just val)
-      Nothing -> return $ WinningPath pathNum var Nothing
+    pathNum' <- obj .: "Path"
+    return $ WinningPath pathNum'
 
 parseListWithContext :: Context -> [String] -> [Either ParseError KExpr]
 parseListWithContext ctx (x:xs) = let curCtx = runParser (parseKExpr >> TP.getState) ctx "" x
@@ -159,7 +168,7 @@ parseIdent = TP.try $ do
   return ke
 
 parseNumC :: KParser KExpr
-parseNumC = NumC <$> number
+parseNumC = NumC <$> integer
 
 parseKType :: KParser KType
 parseKType = do
@@ -186,10 +195,10 @@ parseBoolC = TP.try $ BoolC <$> boolean
 
 parseVarC :: KParser KExpr
 parseVarC = do
-  var <- ident
+  var' <- ident
   ctx <- TP.getState
-  case Map.lookup var ctx of
-    Nothing -> return $ VarC Unknown var
+  case Map.lookup var' ctx of
+    Nothing -> return $ VarC Unknown var'
     Just ke -> return ke
 
 parseUnary :: String -> (KExpr -> KExpr) -> KParser KExpr -> KParser KExpr
@@ -197,7 +206,12 @@ parseUnary kw cnstr body = TP.try $ between (sym "(" *> keyword kw)
                                             (spaces <* char ')')
                                             (cnstr <$> body)
 
-parseUnaryWithType :: String -> (KType -> KExpr -> KExpr) -> KParser KExpr -> KParser KExpr
+parseUnaryWithoutType :: String -> (KType -> a -> KExpr) -> KParser a -> KParser KExpr
+parseUnaryWithoutType kw cnstr body = TP.try $ between (sym "(" *> keyword kw)
+                                                    (spaces <* char ')')
+                                                    (cnstr Boolean <$> body)
+
+parseUnaryWithType :: String -> (KType -> a -> KExpr) -> KParser a -> KParser KExpr
 parseUnaryWithType kw cnstr body = TP.try $ between (sym "(" *> keyword kw)
                                                     (spaces <* char ')')
                                                     (cnstr <$> parseKType <*> body)
@@ -313,12 +327,12 @@ parseExtract :: KParser KExpr
 parseExtract = TP.try
   (between
     (sym "(" *> keyword "Extract") (spaces <* char ')')
-    (Extract <$> parseKType <*> (skipMany space *> number)
+    (Extract <$> parseKType <*> (skipMany space *> integer)
      <*> (skipMany1 space *> parseKExpr)))
   <|>
   TP.try (between
           (sym "(" *> keyword "Extract") (spaces <* char ')')
-          (Extract Boolean <$> (skipMany space *> number)
+          (Extract Boolean <$> (skipMany space *> integer)
            <*> (skipMany1 space *> parseKExpr)))
 parseZExt :: KParser KExpr
 parseZExt = parseUnaryWithType "ZExt" ZExt parseKExpr
@@ -347,13 +361,13 @@ parseArray = TP.try $ between (sym "[")
                       (KArray <$> sepBy1 integer spaces)
 
 parseArrayUpdate :: KParser KExpr
-parseArrayUpdate = KArrayUpdate <$> (sym "[" *> sepBy1 parseIndexVal (sym ",")) <*> (sym "]" *> sym "@" *> parseKExpr)
-  where parseIndexVal :: KParser (KExpr,KExpr)
+parseArrayUpdate = KArrayUpdate <$> (concat <$> (sym "[" *> sepBy1 parseIndexVal (sym ","))) <*> (sym "]" *> sym "@" *> parseKExpr)
+  where parseIndexVal :: KParser [KExpr]
         parseIndexVal = do
           ind <- parseKExpr
           _ <- char '='
           val <- parseKExpr
-          return (ind,val)
+          return [ind,val]
 
 parseSelect :: KParser KExpr
 parseSelect = TP.try (between (sym "(" *> keyword "Select")
@@ -455,8 +469,8 @@ parseDist :: B.Parser Dist
 parseDist =  parseUniformIntDist
          <|> parseBernoulliDist
 
-parseEitherIntString :: B.Parser (Either Int String)
-parseEitherIntString = (Left <$> number <|> Right <$> ident) <* spaces
+parseEitherIntString :: B.Parser (Either Integer String)
+parseEitherIntString = (Left <$> integer <|> Right <$> ident) <* spaces
 
 parseEitherRationalString :: B.Parser (Either Rational String)
 parseEitherRationalString = (Left <$> rational <|> Right <$> ident) <* spaces

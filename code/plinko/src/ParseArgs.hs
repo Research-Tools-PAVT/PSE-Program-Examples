@@ -5,19 +5,24 @@ import Data.Monoid ((<>))
 
 data Args = Args { kleeDir :: FilePath
                  , threads :: Word
+                 , simplify :: Bool
+                 , dynamic :: Bool
+                 , arrayAssert :: Bool
                  , benchmark :: Benchmark
                  }
   deriving (Eq, Show)
 
 data Benchmark = Montyhall
-               | ReservoirSample Double Double
+               | ReservoirSample Integer Integer
                | ExpectedValue
                | Monotone Double
                | Freivalds Int
                | BloomFilter Double
                | CountMinSketch Double
+               | Mironov
                | CalcProb
                | PrintProb
+               | CalcWorstCase
   deriving (Eq, Show)
 
 reservoirBench :: Parser Benchmark
@@ -65,6 +70,14 @@ parseArgs = Args
                   <> metavar "NUM_THREADS"
                   <> value 1
                   <> help "number of threads to run Z3 with" )
+  <*> switch    (  long "simplify"
+                <> short 's'
+                <> help "turn on algebraic simplifications" )
+  <*> switch    (  long "dp"
+                <> help "turn on the dynamic programming optimization" )
+  <*> switch    (  long "array-assert"
+                <> short 'a'
+                <> help "turn on the array assertion optimization" )
   <*> subparser (  command "montyhall" (info (pure Montyhall) $ progDesc "run the Montyhall benchmark")
                 <> command "reservoir-sample" (info reservoirBench $ progDesc "run the reservoir sample benchmark")
                 <> command "expected-value" (info (pure ExpectedValue) $ progDesc "calculate the expected value")
@@ -73,7 +86,9 @@ parseArgs = Args
                 <> command "bloom-filter" (info bloomFilterBench $ progDesc "run the Bloom Filter benchmark")
                 <> command "countminsketch" (info countMinSketchBench $ progDesc "run the CountMinSketch benchmark")
                 <> command "calculate-prob" (info (pure CalcProb) $ progDesc "calculate the raw probability (not guaranteed to be maximal or minimal)")
-                <> command "print-prob" (info (pure PrintProb) $ progDesc "print the SMTLIBv2 string representing the probability sum"))
+                <> command "print-prob" (info (pure PrintProb) $ progDesc "print the SMTLIBv2 string representing the probability sum")
+                <> command "mironov" (info (pure Mironov) $ progDesc "do mironov test")
+                <> command "calculate-worst-case" (info (pure CalcWorstCase) $ progDesc "Calculate the probability of reaching the path with the most comparisons (for quicksort)"))
 
 runArgsParser :: IO Args
 runArgsParser = execParser opts

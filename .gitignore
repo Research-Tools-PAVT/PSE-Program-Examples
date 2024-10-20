@@ -433,3 +433,6 @@ build/
 */build/
 bin/
 code/haskell-z3
+
+klee_results/*
+plinko-results/**/*
